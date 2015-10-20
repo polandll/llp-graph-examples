@@ -1,0 +1,5 @@
+{"id":0,"label":"human","inE":{"brother":[{"id":9,"outV":4}]},"outE":{"hatchedBy":[{"id":17,"inV":14},{"id":21,"inV":18},{"id":13,"inV":10}],"sister":[{"id":8,"inV":4}]},"properties":{"origin":[{"id":3,"value":"Dragonstone"}],"name":[{"id":1,"value":"Daenerys"}],"house":[{"id":2,"value":"Targaryen"}]}}
+{"id":18,"label":"dragon","inE":{"hatchedBy":[{"id":21,"outV":0}]},"properties":{"name":[{"id":19,"value":"Rhaegal"}],"colors":[{"id":20,"value":"green bronze and yellow-orange"}]}}
+{"id":4,"label":"human","inE":{"sister":[{"id":8,"outV":0}]},"outE":{"brother":[{"id":9,"inV":0}]},"properties":{"origin":[{"id":7,"value":"King's Landing"}],"name":[{"id":5,"value":"Viserys"}],"house":[{"id":6,"value":"Targaryen"}]}}
+{"id":10,"label":"dragon","inE":{"hatchedBy":[{"id":13,"outV":0}]},"properties":{"name":[{"id":11,"value":"Drogon"}],"colors":[{"id":12,"value":"blackand red"}]}}
+{"id":14,"label":"dragon","inE":{"hatchedBy":[{"id":17,"outV":0}]},"properties":{"name":[{"id":15,"value":"Viserion"}],"colors":[{"id":16,"value":"gold and red-orange"}]}}

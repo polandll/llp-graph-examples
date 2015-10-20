@@ -1,0 +1,6 @@
+1,human,Daenerys,F,Targaryen,Dragonstone
+2,human,Viserys,M,Targaryen,King's Landing
+3,dragon,Drogon,black and red
+4,dragon,Viserion,gold and red-orange
+5,dragon,Rhaegal,green and bronze and yellow-orange
+

@@ -1,0 +1,23 @@
+graph = TinkerGraph.open()
+g = graph.traversal(standard())
+daenerys = graph.addVertex(label,'human','name','Daenerys','house','Targaryen','origin','Dragonstone')
+viserys = graph.addVertex(label,'human','name','Viserys','house','Targaryen','origin','King\'s Landing')
+g.V().has('name')
+g.V().has('name').values('name')
+graph
+g
+daenerys.addEdge('sister',viserys)
+viserys.addEdge('brother',daenerys)
+g.V().has('name','Daenerys').out('sister').values('name')
+// equivalent to above
+g.V(daenerys).out('sister').values('name')
+g.V().has('name','Daenerys').in('brother').values('name')
+g.V().has('name','Daenerys').in('brother').values('name').path()
+g.V(daenerys).properties()
+drogon = graph.addVertex(label,'dragon','name','Drogon','colors','black and red')
+viserion = graph.addVertex(label,'dragon','name','Viserion','colors','gold and red-orange')
+rhaegal = graph.addVertex(label,'dragon','name','Rhaegal','colors','green bronze and yellow-orange')
+daenerys.addEdge('hatchedBy',drogon)
+daenerys.addEdge('hatchedBy',viserion)
+daenerys.addEdge('hatchedBy',rhaegal)
+g.V().has('name','Daenerys').out('hatchedBy').values('names')
