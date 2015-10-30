@@ -58,13 +58,6 @@ def defineGoTSchema(titanGraph) {
 	m.buildIndex('byHumanName', Vertex.class).addKey(hname).buildCompositeIndex()
 	m.buildIndex('byHouse', Vertex.class).addKey(house).buildCompositeIndex()
 	m.buildIndex('byOrigin', Vertex.class).addKey(origin).buildCompositeIndex()
-	m.buildIndex('byDone', Vertex.class).addKey(done).buildCompositeIndex()m.
-    
-    // indexing for Vertex class
-    m.buildIndex("humanByName", Vertex.class).addKey(name).indexOnly(human).buildCompositeIndex()
-    m.buildIndex("dragonByName", Vertex.class).addKey(name).indexOnly(dragon).buildCompositeIndex()
-    m.buildIndex('byHouse', Vertex.class).addKey(house).buildCompositeIndex()
-	m.buildIndex('byOrigin', Vertex.class).addKey(origin).buildCompositeIndex()
 	
 	// indexing for Edge Class
 	m.buildIndex('byRelatedBy', Edge.class).addKey(relationship).buildCompositeIndex()
