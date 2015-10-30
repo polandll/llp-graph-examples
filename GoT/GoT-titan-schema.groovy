@@ -6,13 +6,14 @@
  *
  * Sample usage in a gremlin.sh session:
  *
- * gremlin> :load data/GoT-titan-schema.groovy
+ * gremlin> :load /home/polandll/CLONES/graph-examples/GoT/GoT-titan-schema.groovy
  * ==>true
  * ==>true
  * gremlin> t = TitanFactory.open('conf/titan-cassandra.properties')
  * ==>standardtitangraph[cassandrathrift:[127.0.0.1]]
  * gremlin> defineGoTSchema(t)
  * ==>null
+ * gremlin> t.io(IoCore.graphml()).readGraph('/home/polandll/CLONES/graph-examples/GoT/Got.gml')
  * gremlin> t.close()
  * ==>null
  * gremlin>
@@ -52,7 +53,7 @@ def defineGoTSchema(titanGraph) {
     hatchDate = m.makePropertyKey('hatchDate').dataType(String.class).make()
 
  	// creating keys for 'killedBy' edges (from 'human' vertex to 'human' vertex)
-	killDate = m.makePropertyKey('killedDate').dataType(String.class).make()
+	killDate = m.makePropertyKey('killDate').dataType(String.class).make()
 
 	// indexing for Vertex class
 	m.buildIndex('byHumanName', Vertex.class).addKey(hname).buildCompositeIndex()
