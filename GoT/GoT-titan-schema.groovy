@@ -13,7 +13,10 @@
  * ==>standardtitangraph[cassandrathrift:[127.0.0.1]]
  * gremlin> defineGoTSchema(t)
  * ==>null
- * gremlin> t.io(IoCore.graphml()).readGraph('/home/polandll/CLONES/graph-examples/GoT/Got.gml')
+ * gremlin> t.io(IoCore.graphml()).readGraph('/home/polandll/CLONES/graph-examples/GoT/GoT.gml')
+ *
+ * Do queries to check data before closing the graph
+ *
  * gremlin> t.close()
  * ==>null
  * gremlin>
