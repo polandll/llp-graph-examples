@@ -18,7 +18,7 @@
  * gremlin>
  */
 
-def defineGoTSchema(titanGraph) {
+def defineGoTSchema(TitanGraph graph) {
     graph = TitanGraph.openManagement()
     
     // vertex labels
