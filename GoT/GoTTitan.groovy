@@ -87,7 +87,7 @@ class GoTParser{
 		// creating keys for 'hatchedBy' edges (from 'human' vertex to 'dragon' vertex)
 		def hdate = mgmt.makePropertyKey('hatchDate').dataType(String.class).make()
 
-		// creating keys for 'relatedBy' edges (from 'human' vertex to 'human' vertex)
+		// creating keys for 'killedBy' edges (from 'human' vertex to 'human' vertex)
 		def kdate = mgmt.makePropertyKey('killedDate').dataType(String.class).make()
 
 		// indexing for Vertex class
