@@ -18,57 +18,57 @@
  * gremlin>
  */
 
-def defineGoTSchema(TitanGraph graph) {
-    graph = TitanGraph.openManagement()
+def defineGoTSchema(titanGraph) {
+    m = titanGraph.openManagement()
     
     // vertex labels
-    human = graph.makeVertexLabel("human").make()
-    dragon   = graph.makeVertexLabel("dragon").make()
-    location = graph.makeVertexLabel("location").make()
+    human = m.makeVertexLabel("human").make()
+    dragon   = m.makeVertexLabel("dragon").make()
+    location = m.makeVertexLabel("location").make()
     
     // edge labels
-    hatchedBy  = graph.makeEdgeLabel("hatchedBy").make()
-    killedBy = graph.makeEdgeLabel("killedBy").make()
-    relatedBy = graph.makeEdgeLabel("relatedBy").make()
+    hatchedBy  = m.makeEdgeLabel("hatchedBy").make()
+    killedBy = m.makeEdgeLabel("killedBy").make()
+    relatedBy = m.makeEdgeLabel("relatedBy").make()
     
     // creating keys for 'human' vertices 
-    hname   = graph.makePropertyKey("hname").dataType(String.class).make()
-    house  = graph.makePropertyKey("house").dataType(String.class).make()
-    gender = graph.makePropertyKey("gender").dataType(String.class).make()
-    origin = graph.makePropertyKey("origin").dataType(String.class).make()
+    hname   = m.makePropertyKey("hname").dataType(String.class).make()
+    house  = m.makePropertyKey("house").dataType(String.class).make()
+    gender = m.makePropertyKey("gender").dataType(String.class).make()
+    origin = m.makePropertyKey("origin").dataType(String.class).make()
                  
     // creating keys for 'dragon' vertices
-    dname = graph.makePropertyKey('dname').dataType(String.class).make()
-    colors = graph.makePropertyKey('colors').dataType(String.class).make()
+    dname = m.makePropertyKey('dname').dataType(String.class).make()
+    colors = m.makePropertyKey('colors').dataType(String.class).make()
 
     // creating key for 'location' vertices
-    locationId = graph.makePropertyKey('locationID').dataType(String.class).make()
-    lname = graph.makePropertyKey('lname').dataType(String.class).make()
+    locationId = m.makePropertyKey('locationID').dataType(String.class).make()
+    lname = m.makePropertyKey('lname').dataType(String.class).make()
                
     // creating keys for 'relatedBy' edges (from 'human' vertex to 'human' vertex)
-    relationship = graph.makePropertyKey('relationship').dataType(String.class).make()
+    relationship = m.makePropertyKey('relationship').dataType(String.class).make()
     
     // creating keys for 'hatchedBy' edges (from 'human' vertex to 'dragon' vertex)
-    hatchDate = graph.makePropertyKey('hatchDate').dataType(String.class).make()
+    hatchDate = m.makePropertyKey('hatchDate').dataType(String.class).make()
 
  	// creating keys for 'killedBy' edges (from 'human' vertex to 'human' vertex)
-	killDate = graph.makePropertyKey('killedDate').dataType(String.class).make()
+	killDate = m.makePropertyKey('killedDate').dataType(String.class).make()
 
 	// indexing for Vertex class
-	graph.buildIndex('byHumanName', Vertex.class).addKey(hname).buildCompositeIndex()
-	graph.buildIndex('byHouse', Vertex.class).addKey(house).buildCompositeIndex()
-	graph.buildIndex('byOrigin', Vertex.class).addKey(origin).buildCompositeIndex()
-	graph.buildIndex('byDone', Vertex.class).addKey(done).buildCompositeIndex()graph.
+	m.buildIndex('byHumanName', Vertex.class).addKey(hname).buildCompositeIndex()
+	m.buildIndex('byHouse', Vertex.class).addKey(house).buildCompositeIndex()
+	m.buildIndex('byOrigin', Vertex.class).addKey(origin).buildCompositeIndex()
+	m.buildIndex('byDone', Vertex.class).addKey(done).buildCompositeIndex()m.
     
     // indexing for Vertex class
-    graph.buildIndex("humanByName", Vertex.class).addKey(name).indexOnly(human).buildCompositeIndex()
-    graph.buildIndex("dragonByName", Vertex.class).addKey(name).indexOnly(dragon).buildCompositeIndex()
-    graph.buildIndex('byHouse', Vertex.class).addKey(house).buildCompositeIndex()
-	graph.buildIndex('byOrigin', Vertex.class).addKey(origin).buildCompositeIndex()
+    m.buildIndex("humanByName", Vertex.class).addKey(name).indexOnly(human).buildCompositeIndex()
+    m.buildIndex("dragonByName", Vertex.class).addKey(name).indexOnly(dragon).buildCompositeIndex()
+    m.buildIndex('byHouse', Vertex.class).addKey(house).buildCompositeIndex()
+	m.buildIndex('byOrigin', Vertex.class).addKey(origin).buildCompositeIndex()
 	
 	// indexing for Edge Class
-	graph.buildIndex('byRelatedBy', Edge.class).addKey(relationship).buildCompositeIndex()
-    graph.buildIndex('byHatchedBy', Edge.class).addKey(hatchDate).buildCompositeIndex()
-    graph.buildIndex('byKilledBy', Edge.class).addKey(killDate).buildCompositeIndex()
-    graph.commit()
+	m.buildIndex('byRelatedBy', Edge.class).addKey(relationship).buildCompositeIndex()
+    m.buildIndex('byHatchedBy', Edge.class).addKey(hatchDate).buildCompositeIndex()
+    m.buildIndex('byKilledBy', Edge.class).addKey(killDate).buildCompositeIndex()
+    m.commit()
 }
