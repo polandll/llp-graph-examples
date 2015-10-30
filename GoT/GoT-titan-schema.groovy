@@ -46,13 +46,13 @@ def defineGoTSchema(titanGraph) {
     lname = graph.makePropertyKey('lname').dataType(String.class).make()
                
     // creating keys for 'relatedBy' edges (from 'human' vertex to 'human' vertex)
-    def relationship = graph.makePropertyKey('relationship').dataType(String.class).make()
+    relationship = graph.makePropertyKey('relationship').dataType(String.class).make()
     
     // creating keys for 'hatchedBy' edges (from 'human' vertex to 'dragon' vertex)
-    def hatchDate = graph.makePropertyKey('hatchDate').dataType(String.class).make()
+    hatchDate = graph.makePropertyKey('hatchDate').dataType(String.class).make()
 
  	// creating keys for 'killedBy' edges (from 'human' vertex to 'human' vertex)
-	def killDate = graph.makePropertyKey('killedDate').dataType(String.class).make()
+	killDate = graph.makePropertyKey('killedDate').dataType(String.class).make()
 
 	// indexing for Vertex class
 	graph.buildIndex('byHumanName', Vertex.class).addKey(hname).buildCompositeIndex()
