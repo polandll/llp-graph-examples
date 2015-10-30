@@ -19,26 +19,56 @@
  */
 
 def defineGoTSchema(titanGraph) {
-    m = titanGraph.openManagement()
+    graph = TitanGraph.openManagement()
+    
     // vertex labels
-    human = m.makeVertexLabel("human").make()
-    dragon   = m.makeVertexLabel("dragon").make()
+    human = graph.makeVertexLabel("human").make()
+    dragon   = graph.makeVertexLabel("dragon").make()
+    location = graph.makeVertexLabel("location").make()
+    
     // edge labels
-    hatchedBy  = m.makeEdgeLabel("hatchedBy").make()
-    killedBy = m.makeEdgeLabel("killedBy").make()
-    relatedBy = m.makeEdgeLabel("relatedBy").make()
-    // vertex and edge properties
-    // blid         = m.makePropertyKey("bulkLoader.vertex.id").dataType(Long.class).make()
-    name   = m.makePropertyKey("name").dataType(String.class).make()
-    house  = m.makePropertyKey("house").dataType(String.class).make()
-    gender = m.makePropertyKey("gender").dataType(String.class).make()
-    origin = m.makePropertyKey("origin").dataType(String.class).make()
-    //weight       = m.makePropertyKey("weight").dataType(Integer.class).make()
-    // global indices
-    //m.buildIndex("byBulkLoaderVertexId", Vertex.class).addKey(blid).buildCompositeIndex()
-    m.buildIndex("humanByName", Vertex.class).addKey(name).indexOnly(human).buildCompositeIndex()
-    m.buildIndex("dragonByName", Vertex.class).addKey(name).indexOnly(dragon).buildCompositeIndex()
-    // vertex centric indices
-    m.buildEdgeIndex(killedBy, "killedByName", Direction.BOTH, Order.decr, name)
-    m.commit()
+    hatchedBy  = graph.makeEdgeLabel("hatchedBy").make()
+    killedBy = graph.makeEdgeLabel("killedBy").make()
+    relatedBy = graph.makeEdgeLabel("relatedBy").make()
+    
+    // creating keys for 'human' vertices 
+    hname   = graph.makePropertyKey("hname").dataType(String.class).make()
+    house  = graph.makePropertyKey("house").dataType(String.class).make()
+    gender = graph.makePropertyKey("gender").dataType(String.class).make()
+    origin = graph.makePropertyKey("origin").dataType(String.class).make()
+                 
+    // creating keys for 'dragon' vertices
+    dname = graph.makePropertyKey('dname').dataType(String.class).make()
+    colors = graph.makePropertyKey('colors').dataType(String.class).make()
+
+    // creating key for 'location' vertices
+    locationId = graph.makePropertyKey('locationID').dataType(String.class).make()
+    lname = graph.makePropertyKey('lname').dataType(String.class).make()
+               
+    // creating keys for 'relatedBy' edges (from 'human' vertex to 'human' vertex)
+    def relationship = graph.makePropertyKey('relationship').dataType(String.class).make()
+    
+    // creating keys for 'hatchedBy' edges (from 'human' vertex to 'dragon' vertex)
+    def hatchDate = graph.makePropertyKey('hatchDate').dataType(String.class).make()
+
+ 	// creating keys for 'killedBy' edges (from 'human' vertex to 'human' vertex)
+	def killDate = graph.makePropertyKey('killedDate').dataType(String.class).make()
+
+	// indexing for Vertex class
+	graph.buildIndex('byHumanName', Vertex.class).addKey(hname).buildCompositeIndex()
+	graph.buildIndex('byHouse', Vertex.class).addKey(house).buildCompositeIndex()
+	graph.buildIndex('byOrigin', Vertex.class).addKey(origin).buildCompositeIndex()
+	graph.buildIndex('byDone', Vertex.class).addKey(done).buildCompositeIndex()graph.
+    
+    // indexing for Vertex class
+    graph.buildIndex("humanByName", Vertex.class).addKey(name).indexOnly(human).buildCompositeIndex()
+    graph.buildIndex("dragonByName", Vertex.class).addKey(name).indexOnly(dragon).buildCompositeIndex()
+    graph.buildIndex('byHouse', Vertex.class).addKey(house).buildCompositeIndex()
+	graph.buildIndex('byOrigin', Vertex.class).addKey(origin).buildCompositeIndex()
+	
+	// indexing for Edge Class
+	graph.buildIndex('byRelatedBy', Edge.class).addKey(relationship).buildCompositeIndex()
+    graph.buildIndex('byHatchedBy', Edge.class).addKey(hatchDate).buildCompositeIndex()
+    graph.buildIndex('byKilledBy', Edge.class).addKey(killDate).buildCompositeIndex()
+    graph.commit()
 }
