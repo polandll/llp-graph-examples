@@ -56,8 +56,6 @@ class GoTParser{
 		// creating the different vertex types for our graph
 		mgmt.makeVertexLabel('human').make()
 		mgmt.makeVertexLabel('dragon').make()
-		//mgmt.makeVertexLabel('category').make()
-		//mgmt.makeVertexLabel('group').make()
 
 		// creating different edge types for our graph
 		mgmt.makeEdgeLabel('hatchedBy').make()
@@ -66,7 +64,7 @@ class GoTParser{
 		
 		// creating keys for 'human' vertices  
 		def humanId = mgmt.makePropertyKey('humanId').dataType(Integer.class).make()
-		def hname = mgmt.makePropertyKey('name')dataType(String.class).make()
+		def hname = mgmt.makePropertyKey('hname')dataType(String.class).make()
 		def gender = mgmt.makePropertyKey('gender')dataType(String.class).make()
 		def house = mgmt.makePropertyKey('house').dataType(String.class).make()
 		def origin = mgmt.makePropertyKey('origin').dataType(String.class).make()
@@ -74,32 +72,32 @@ class GoTParser{
 
   		// creating keys for 'dragon' vertices
 		def dragonId = mgmt.makePropertyKey('dragonId').dataType(String.class).make()
-		def dname = mgmt.makePropertyKey('name').dataType(String.class).make()
+		def dname = mgmt.makePropertyKey('dname').dataType(String.class).make()
 		def colors = mgmt.makePropertyKey('colors').dataType(String.class).make()
 
 		// creating key for 'location' vertices
 		def locationId = mgmt.makePropertyKey('locationID').dataType(String.class).make()
-		def lname = mgmt.makePropertyKey('name').dataType(String.class).make()
+		def lname = mgmt.makePropertyKey('lname').dataType(String.class).make()
 		
 		// creating keys for 'relatedBy' edges (from 'human' vertex to 'human' vertex)
 		def relationship = mgmt.makePropertyKey('relationship').dataType(String.class).make()
 
 		// creating keys for 'hatchedBy' edges (from 'human' vertex to 'dragon' vertex)
-		def hdate = mgmt.makePropertyKey('hatchDate').dataType(String.class).make()
+		def hatchDate = mgmt.makePropertyKey('hatchDate').dataType(String.class).make()
 
-		// creating keys for 'relatedBy' edges (from 'human' vertex to 'human' vertex)
-		def kdate = mgmt.makePropertyKey('killedDate').dataType(String.class).make()
+		// creating keys for 'killedBy' edges (from 'human' vertex to 'human' vertex)
+		def killDate = mgmt.makePropertyKey('killedDate').dataType(String.class).make()
 
 		// indexing for Vertex class
 		println "CREATESCHEMA: Indexing."
-		mgmt.buildIndex('byName', Vertex.class).addKey(humanId).buildCompositeIndex()
+		mgmt.buildIndex('byHumanName', Vertex.class).addKey(hname).buildCompositeIndex()
 		mgmt.buildIndex('byHouse', Vertex.class).addKey(house).buildCompositeIndex()
 		mgmt.buildIndex('byOrigin', Vertex.class).addKey(origin).buildCompositeIndex()
 		mgmt.buildIndex('byDone', Vertex.class).addKey(done).buildCompositeIndex()
 
 		// indexing for Edge class
 		mgmt.buildIndex('byRelatedBy', Edge.class).addKey(relationship).buildCompositeIndex()
-		mgmt.buildIndex('byHatchedBy', Edge.class).addKey(hdate).buildCompositeIndex()
+		mgmt.buildIndex('byHatchedBy', Edge.class).addKey(hatchDate).buildCompositeIndex()
 		mgmt.buildIndex('byKilledBy
 
 		println "CREATESCHEMA: Committing the schema."
