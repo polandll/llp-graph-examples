@@ -3,8 +3,9 @@
 <key id="labelV" for="node" attr.name="labelV" attr.type="string"/>
 <key id="gender" for="node" attr.name="gender" attr.type="string"/>
 <key id="origin" for="node" attr.name="origin" attr.type="string"/>
-<key id="name" for="node" attr.name="name" attr.type="string"/>
+<key id="hname" for="node" attr.name="hname" attr.type="string"/>
 <key id="house" for="node" attr.name="house" attr.type="string"/>
+<key id="dname" for="node" attr.name="dname" attr.type="string"/>
 <key id="colors" for="node" attr.name="colors" attr.type="string"/>
 <key id="labelE" for="edge" attr.name="labelE" attr.type="string"/>
 <key id="relationship" for="edge" attr.name="relationship" attr.typ="string"/>
@@ -12,19 +13,19 @@
 <key id="killDate" for="edge" attr.name="killDate" attr.typ="string"/>
 <graph id="G" edgedefault="directed">
 <node id="100"><data key="labelV">human</data>
-<data key="gender">F</data><data key="origin">Dragonstone</data><data key="name">Daenerys</data><data key="house">Targaryen</data></node>
+<data key="gender">F</data><data key="origin">Dragonstone</data><data key="hname">Daenerys</data><data key="house">Targaryen</data></node>
 <node id="101"><data key="labelV">human</data>
-<data key="gender">M</data><data key="origin">King's Landing</data><data key="name">Viserys</data><data key="house">Targaryen</data></node>
+<data key="gender">M</data><data key="origin">King's Landing</data><data key="hname">Viserys</data><data key="house">Targaryen</data></node>
 <node id="102"><data key="labelV">human</data>
-<data key="gender">M</data><data key="origin">King's Landing</data><data key="name">The King</data><data key="house">Targaryen</data></node>
+<data key="gender">M</data><data key="origin">King's Landing</data><data key="hname">The King</data><data key="house">Targaryen</data></node>
 <node id="103"><data key="labelV">human</data>
-<data key="gender">M</data><data key="origin">Vaes Dothrak</data><data key="name">Drogo</data><data key="house">Dothraki</data></node>
+<data key="gender">M</data><data key="origin">Vaes Dothrak</data><data key="hname">Drogo</data><data key="house">Dothraki</data></node>
 <node id="104"><data key="labelV">dragon</data>
-<data key="name">Drogon</data><data key="colors">blackand red</data></node>
+<data key="dname">Drogon</data><data key="colors">blackand red</data></node>
 <node id="105"><data key="labelV">dragon</data>
-<data key="name">Viserion</data><data key="colors">gold and red-orange</data></node>
+<data key="dname">Viserion</data><data key="colors">gold and red-orange</data></node>
 <node id="106"><data key="labelV">dragon</data>
-<data key="name">Rhaegal</data><data key="colors">green bronze and yellow-orange</data></node>
+<data key="dname">Rhaegal</data><data key="colors">green bronze and yellow-orange</data></node>
 <edge id="50" source="100" target="104">
 <data key="labelE">hatchedBy</data>
 <data key="hatchDate">at Drogo's funeral</data></edge>
