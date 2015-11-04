@@ -1,7 +1,7 @@
 println "Make Titan Cassandra graph"
 graph = TitanFactory.open('conf/titan-cassandra.properties')
 println "Load GoT script"
-:load /home/polandll/CLONES/graph-examples/GoT/GoT-titan-schema.groovy
+:load /home/polandll/CLONES/graph-examples/GoT/GoT-titan-createschema.groovy
 println "Run Schema function"
 defineGoTSchema(graph)
 println "Create a graph traversal object"

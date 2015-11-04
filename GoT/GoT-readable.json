@@ -2,9 +2,9 @@
   "vertices":[
     {"_id":1,"_type":"human","name":"Daenerys","gender":"F","house":"Targaryen","origin":"Dragonstone"},
     {"_id":1,"_type":"human","name":"Viserys","gender":"M","house":"Targaryen","origin":"King's Landing"},
-    {"name":"Drogon","colors":"black and red","_id":3,"_type":"dragon"},
-    {"name":"Viserion","colors":"gold and red-orange","_id":4,"_type":"dragon"},
-    {"name":"Rhaegal","colors":"green bronze and yellow-orange","_id":5,"_type":"dragon"}
+    {"_id":3,"_type":"dragon","name":"Drogon","colors":"black and red"},
+    {"_id":4,"_type":"dragon","name":"Viserion","colors":"gold and red-orange"},
+    {"_id":5,"_type":"dragon","name":"Rhaegal","colors":"green bronze and yellow-orange"}
   ],
   "edges":[
     {"_id":7,"_type":"edge","_outV":1,"_inV":2,"_label":"sister"},
