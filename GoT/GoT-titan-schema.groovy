@@ -13,9 +13,12 @@
  * ==>standardtitangraph[cassandrathrift:[127.0.0.1]]
  * gremlin> defineGoTSchema(t)
  * ==>null
- * gremlin> t.io(IoCore.graphml()).readGraph('/home/polandll/CLONES/graph-examples/GoT/GoT.gml')
+ * gremlin> t.io(IoCore.graphml()).readGraph("/home/polandll/CLONES/graph-examples/GoT/GoT.gml")
  *
  * Do queries to check data before closing the graph
+ * w = traveral(standard())
+ * Find all the edges that are labelled "relatedBy" and print the property values
+ * w.E().has(label,'relatedBy').values()  
  *
  * gremlin> t.close()
  * ==>null
@@ -57,6 +60,7 @@ def defineGoTSchema(titanGraph) {
 
  	// creating keys for 'killedBy' edges (from 'human' vertex to 'human' vertex)
 	killDate = m.makePropertyKey('killDate').dataType(String.class).make()
+	killMethod = m.makePropertyKey('killMethod').dataType(String.class).make()
 
 	// indexing for Vertex class
 	m.buildIndex('byHumanName', Vertex.class).addKey(hname).buildCompositeIndex()

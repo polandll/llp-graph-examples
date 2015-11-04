@@ -11,6 +11,7 @@
 <key id="relationship" for="edge" attr.name="relationship" attr.type="string"/>
 <key id="hatchDate" for="edge" attr.name="hatchDate" attr.type="string"/>
 <key id="killDate" for="edge" attr.name="killDate" attr.type="string"/>
+<key id="killMethod" for="edge" attr.name="killMethod" attr.type="string"/>
 
 <graph id="graph3" edgedefault="directed">
 
@@ -88,6 +89,7 @@
   <edge id="57" source="101" target="103">
     <data key="labelE">killedBy</data>
     <data key="killDate">at feast</data>
+    <data key="killMethod">with a crown of molten gold</data>
   </edge>
 </graph>
 </graphml>
