@@ -9,7 +9,7 @@ g = graph.traversal(standard())
 println "Count the number of objects"
 g.V().count()
 println "Load the GraphML data file"
-graph.io(IoCore.graphml()).readGraph("/home/polandll/CLONES/graph-examples/GoT/GoT.gml")
+graph.io(IoCore.graphml()).readGraph('/home/polandll/CLONES/graph-examples/GoT/GoT.gml')
 
 println "Find all relatedBy edges"
 g.E().has(label,'relatedBy').values()
