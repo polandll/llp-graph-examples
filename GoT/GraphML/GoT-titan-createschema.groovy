@@ -58,17 +58,17 @@ def defineGoTSchema(titanGraph) {
     // creating keys for 'hatchedBy' edges (from 'human' vertex to 'dragon' vertex)
     hatchDate = m.makePropertyKey('hatchDate').dataType(String.class).make()
 
- 	// creating keys for 'killedBy' edges (from 'human' vertex to 'human' vertex)
-	killDate = m.makePropertyKey('killDate').dataType(String.class).make()
-	killMethod = m.makePropertyKey('killMethod').dataType(String.class).make()
+    // creating keys for 'killedBy' edges (from 'human' vertex to 'human' vertex)
+    killDate = m.makePropertyKey('killDate').dataType(String.class).make()
+    killMethod = m.makePropertyKey('killMethod').dataType(String.class).make()
 
-	// indexing for Vertex class
-	m.buildIndex('byHumanName', Vertex.class).addKey(hname).buildCompositeIndex()
-	m.buildIndex('byHouse', Vertex.class).addKey(house).buildCompositeIndex()
-	m.buildIndex('byOrigin', Vertex.class).addKey(origin).buildCompositeIndex()
+    // indexing for Vertex class
+    m.buildIndex('byHumanName', Vertex.class).addKey(hname).buildCompositeIndex()
+    m.buildIndex('byHouse', Vertex.class).addKey(house).buildCompositeIndex()
+    m.buildIndex('byOrigin', Vertex.class).addKey(origin).buildCompositeIndex()
 	
-	// indexing for Edge Class
-	m.buildIndex('byRelatedBy', Edge.class).addKey(relationship).buildCompositeIndex()
+    // indexing for Edge Class
+    m.buildIndex('byRelatedBy', Edge.class).addKey(relationship).buildCompositeIndex()
     m.buildIndex('byHatchedBy', Edge.class).addKey(hatchDate).buildCompositeIndex()
     m.buildIndex('byKilledBy', Edge.class).addKey(killDate).buildCompositeIndex()
     m.commit()
