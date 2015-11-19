@@ -1,4 +1,4 @@
-/* titan-schema.groovy
+/* GoT-titan-createschema.groovy
  *
  * Helper functions for declaring Titan schema elements
  * (vertex labels, edge labels, property keys) to accommodate

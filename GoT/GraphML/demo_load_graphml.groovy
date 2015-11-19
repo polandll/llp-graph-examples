@@ -1,7 +1,7 @@
 println "Make Titan Cassandra graph"
 graph = TitanFactory.open('conf/titan-cassandra.properties')
 println "Load GoT script"
-:load /home/polandll/CLONES/graph-examples/GoT/GoT-titan-createschema.groovy
+:load /home/polandll/CLONES/graph-examples/GoT/GraphML/GoT-titan-createschema.groovy
 println "Run Schema function"
 defineGoTSchema(graph)
 println "Create a graph traversal object"
@@ -9,7 +9,7 @@ g = graph.traversal(standard())
 println "Count the number of objects"
 g.V().count()
 println "Load the GraphML data file"
-graph.io(IoCore.graphml()).readGraph('/home/polandll/CLONES/graph-examples/GoT/GoT.gml')
+graph.io(IoCore.graphml()).readGraph('/home/polandll/CLONES/graph-examples/GoT/GraphML/GoT.gml')
 
 println "Find all relatedBy edges"
 g.E().has(label,'relatedBy').values()
