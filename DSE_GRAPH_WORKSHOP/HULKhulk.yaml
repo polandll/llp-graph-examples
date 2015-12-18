@@ -1,0 +1,23 @@
+resultSizeLimit: 1000
+
+# User data being, where we store data specific to a user
+# in the application.  For the short-term this is the file system, which
+# is why we need to explicitly configure a location
+userData:
+  connectionsDirectory: userdata/connections
+  notebooksDirectory: userdata/notebooks
+
+connectionManagement:
+  #how long before we expire/close a connection that isn't in use.
+  #Defaulting to 1 hour
+  idleTimeoutInSeconds: 3600
+
+# GremlinServer connection configuration. Eventually this will be obtained
+# automatically by checking the DSE system tables.
+gremlinServer:
+  host: localhost
+  port: 8182
+  # If specific, then the GremlinClient will be initialized with this alias.
+  alias: crew.g
+  # If true, a GremlinServer is started using conf/gremlin-server.yaml.
+  # runStandalone: true

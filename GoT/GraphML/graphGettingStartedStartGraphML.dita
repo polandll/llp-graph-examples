@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE concept PUBLIC "-//DataStax//DTD DITA CONCEPT (hi-d ui-d pr-d sw-d abbrev-d)//EN" "concept_ds.dtd">
+<concept id="graphGettingStartedStartGraphML">
+ <title>Getting started with graph databases - GraphML</title>
+ <shortdesc>Getting started with graph databases - GraphML.</shortdesc>
+ <conbody>
+  <p>Graph databases are useful for discovering simple and complex relationships between things.
+   These things can be people, software, locations, automobiles, or anything else you can think of.
+   Relationships are fundamental to how humans interact with one another and their environment.</p>
+  <p>Graph databases consist of two elements: nodes and edges. Nodes are objects, such as people or
+   artifacts. Edges define the relationships between nodes.</p>
+  <p>
+   <fig id="fig_s2v_kq4_15">
+    <title>Game of Thrones Toy Graph</title>
+   </fig><image href="images/GoT.svg" id="image_fvq_3q4_15" scalefit="yes" alt=""/>
+  </p>
+  <p>Elements are labelled to distinguish the type of nodes and edges in a graph database. A node
+   that will hold information about people can be labelled <b>person</b>. An edge in the graph could
+   be labelled <b>relatedBy</b>.</p>
+  <p>Simple graphs consist of nodes that have properties. For instance, a <b>person</b> node
+   generally will have a name. Age, birthday, birthplace, and job title are all examples of
+   properties of a <b>person</b> node. Edges can also have properties. A <b>relatedBy</b> edge can
+   have a relationship property that identifies if the adjoining node is a mother, sister, aunt or
+   cousin.</p>
+ </conbody>
+</concept>

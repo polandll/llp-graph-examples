@@ -1,0 +1,54 @@
+shared_data:
+  refresh_interval: 60 
+
+graphs:
+  test_single:
+    default_property_key_cardinalty: Single
+    traversal_sources:
+      g:
+        type: default
+      r:
+        type: readonly
+        restrict_lambda: false
+      l:
+        restrict_lambda: false
+
+  test_multiple:
+    default_property_key_cardinalty: Multiple
+
+  ml:
+    default_property_key_cardinalty: Single
+    traversal_sources:
+      g:
+        type: default
+      a:
+        type: olap
+
+  mlnoverify:
+    tx_groups:
+      default:
+        external_vertex_verify: false
+
+server:
+  sandbox: com.datastax.bdp.graph.server.DseGraphSandboxExtension
+  
+gremlin_server:
+  host: localhost
+  port: 8182
+  scriptEvaluationTimeout: -1
+  maxContentLength: 2147483647
+  scriptEngines:
+    gremlin-groovy:
+      config:
+        compilerCustomizerProviders:
+          "org.apache.tinkerpop.gremlin.groovy.jsr223.customizer.ThreadInterruptCustomizerProvider":
+            -
+          "org.apache.tinkerpop.gremlin.groovy.jsr223.customizer.TimedInterruptCustomizerProvider":
+            -
+          #"org.apache.tinkerpop.gremlin.groovy.jsr223.customizer.CompileStaticCustomizerProvider":
+          #  - "com.datastax.bdp.graph.server.DseGraphSandboxExtension"
+  serializers:
+    - { className: org.apache.tinkerpop.gremlin.driver.ser.GryoMessageSerializerV1d0, config: { ioRegistries: [org.apache.tinkerpop.gremlin.tinkergraph.structure.TinkerIoRegis
+try, com.datastax.bdp.graph.impl.tinkerpop.io.DseGraphIoRegistry]}}
+  plugins:
+    - tinkerpop.tinkergraph

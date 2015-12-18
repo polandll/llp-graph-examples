@@ -1,0 +1,98 @@
+:remote connect tinkerpop.server conf/remote-objects.yaml   # connect to the gremlin server
+:remote config alias g modern.g								# alias the default graph "g" to "modern.g" which is defined in the kryo file
+:> g.getGraph().get().io(IoCore.gryo()).readGraph("/home/ubuntu/tinkerpop/data/tinkerpop-modern.kryo")	# read the kryo file which has
+:> g.V().valueMap()
+:> g.E().valueMap()
+:> graph.schema()
+schema = result.get(0).getObject().traversal()
+schema.V().valueMap(true)
+
+-------------
+/// different data set
+:remote config alias g crew.g
+:> g.getGraph().get().io(IoCore.gryo()).readGraph("/home/ubuntu/tinkerpop/data/tinkerpop-crew.kryo”)
+
+--------------------
+:remote connect tinkerpop.server conf/remote-objects.yaml
+:remote config alias g ml.g
+:remote config timeout max
+script = new File('/home/ubuntu/movielens/MovieLensParser.groovy').text; []
+:> @script
+:> g.V().limit(10).valueMap()
+
+-----------
+CONFIGURE HULK FOR CORRECT GRAPH, DEFAULT IS ml.g
+IN HULK:
+g.V().label().groupCount()
+g.V().outE("rated").values("stars").groupCount().order(local).by(keys, incr)
+g.V().hasLabel("occupation").as("o").map(
+          __.in("hasOccupation").outE("rated").values("stars").mean()).as("s").
+          select("o","s").by("name").by().order().by(select("s"), decr)
+          
+prScript = new File('/home/ubuntu/movielens/pagerank.groovy').text; []
+:> @prScript
+
+--------------
+: > graph.migration( “addKey”, {  it.buildPropertyKey(‘myID’, String.class.add() })
+: > graph.migration(“addLabel”, { it.buildVertexLabel(‘myLabel’).idComponent(‘myid’,IdPropertyKey.Type.Partition).add() })
+: > graph.schema().traversal().V().has(‘name’, ‘myID’).valueMap()
+: > g.addV(T.label,”person”)
+: > g.addV(t.label,”mylabel”, “myid”, “12345”)
+
+--------------
+g.V().has("name","marko").out().profile().cap(TraversalMetrics.METRICS_KEY)
+g.V().has(“person”,”name”,”marko”).out().profile().cap(TraversalMetrics.METRICS_KEY)
+ml.schema()
+
+----------
+script = """matthias = graph.addVertex('name','matthias')
+            matthias.addEdge('co-creator',g.V().has('name','marko').next())"""
+@script
+
+-------------
+incubator-tinkerpop/tinkergraph-gremlin/src/main/java/org/apache/tinkerpop/gremlin/tinkergraph/structure/TinkerFactory.java
+this file has "create graph" for the example items
+
+-------
+Pierre's hyperlink script (graph schema creation part)
+gremlinQuery = "" +
+                 "if(graph.schema().traversal().V().has('vertexLabel','name','website').hasNext()) {" +
+                 "  graph.migration('setup', { schema ->" +
+                 "    def website = schema.buildVertexLabel('website').add();" +
+                 "    def hyperlinksTo = schema.buildEdgeLabel('hyperlinks_to').add();" +
+                 "    def url = schema.buildPropertyKey('url', String.class).add();" +
+                "    def id = schema.buildPropertyKey('id', Long.class).add();" +
+                 "    def indexById = website.buildIndex('indexById').ofSecondary().byPropertyKey(id).add();" +
+                 "  });" +
+                 "}";
+                 
+                 
+cluster = Cluster.open(configurationFile);
+cluster.connect().rebind("graphkeyspace.g");
+
+
+---------
+Graph g = ...
+
+//First migration (7)
+g.mutateSchema("Setup initial schema", (schema) -> {
+    schema.buildProperty("name", String.class).add();
+    VertexLabel person = schema.buildVertexLabel("person").add();
+    person.addProperty("name");
+    EdgeLabel knows = schema.buildEdgeLabel("knows", Single).add();
+    knows.addProperty("age");
+});
+
+
+--------
+Add to graph.yaml:
+food:
+    default_property_key_cardinalty: Single
+    traversal_sources:
+      g:
+        type: default
+-----------
+:remote connect tinkerpop.server conf/remote-objects.yaml
+:remote config alias g food.g
+ script = new File('/home/ubuntu/RecipeParser.groovy').text; []
+:> @script

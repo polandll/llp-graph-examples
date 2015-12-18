@@ -1,0 +1,75 @@
+/***
+*
+*   Here is a snippet of what the data looks like
+*
+*
+*   V~"Label":"Place","Name":"New York"
+*   ------------
+*   V~"Label":"Place","Name":"Washington DC"
+*   ------------
+*   V~"Label":"Group","Name":"Guardians of the Galaxy"
+*   E~"Fights":"Thanos"
+*   ------------
+*   V~"Label":"Group","Name":"United States Army"
+*   E~"Fights":"Hydra"
+*   ------------
+*   V~"Label":"Person","Name":"Spider Man","Secret_Identity":"Peter Parker","Species":"Teenager"
+*   E~"Residence":"New York","Team":"Avengers","Fights":"Green Goblin"
+*
+*/
+
+public static void load_data(Cluster cluster, String keyspace, String pathToData){
+    def parse_v = { String raw ->
+        def count == 0
+        dataset = raw.split("------------")
+        for(def entry: dataset) {
+            entry.eachline { String line ->
+                if line.contains("V~") {
+                    line = line.replace("V~","")
+                    def datum = line.split(",")
+                    def label = datum[0].split(":")[1]
+                    def name = datum[1].split(":")[1]
+                    Vertex data_entry = graph.addVertex(t.Label, label, "name",name)
+                    count++
+
+                    // If a datapoint contains more than a name and a label, parse and add the the additional properties
+                    for(def x = 2; x<= datum.size(); x++) {
+                    def prop = datum[x].split(":")
+                    data_entry.property(prop[0],prop[1])
+                    }
+                }
+            }
+        }
+    }
+    def parse_e = { String raw ->
+        dataset = raw.split("------------")
+        for(def entry: dataset) {
+            Vertex out_vertex
+            entry.eachline { String line ->
+                if line.contains("V~") {
+                    line = line.replace("V~","")
+                    def name = line.split(",")1].split(":")[1]
+                    out_vertex = g.V().has("name",name).next()
+                }
+                if line.contains("E~") {
+                    line = line.replace("E~","")
+                    datum = line.split(",")
+                    for (String edge_data : datum) {
+                        Vertex in_vertex = g.V().has("Name",edge_data[1]).next()
+                        out_vertex.addEdge(edge_data[0],in_vertex)
+                    }
+                }
+            }
+        }
+    }
+
+
+    def client = cluster.connect()
+    def rebound  = client.rebind(keyspace + '.g')
+    String raw_data = new File(pathToData).text
+    def map = [parse_vertex:parse_v,parse_edge:parse_e,datafile:raw_data]
+
+    // Load all vertices
+    rebound.submit('parse_vertex(datafile)',map)
+    // Load all edges
+    rebound.submit('parse_edge(datafile)',map)
