@@ -10,7 +10,7 @@ import java.util.List
 
 class RecipeParser {
 
-	public static void createSchema(final DseGraph graph) {
+	public static void defineSchema(final DseGraph graph) {
     	graph.migration("setup", { def schema ->
     		def author = schema.buildVertexLabel('author').add()
     		def recipe = schema.buildVertexLabel('recipe').add()
@@ -49,7 +49,7 @@ class RecipeParser {
 		})
 	}
     //public static List load(final DseGraph graph, final GraphTraversalSource g, final String dataDirectory, final int numRatings, final int batchSize) {
-    //    createSchema(graph)
+    //    defineSchema(graph)
     //    return parse(graph, g, dataDirectory, numRatings, batchSize)
     //}
 }
