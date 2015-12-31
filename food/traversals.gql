@@ -1,5 +1,10 @@
 // TRAVERSAL EXAMPLES
 
+/* 
+SIMPLE TRAVERSAL:
+traverses through the steps in sequential order
+*/
+
 // How many recipes exist in the database?
 g.V().count()
 
@@ -33,7 +38,10 @@ g.V().count()
 // Which meals have a calorie count of 1,100 calories or less? 
 
 -----------
+/*
 BRANCHING TRAVERSAL:
+traversal will be sent down a single branch (choose), a subset of branches (repeat.emit) or all branches (union)
+*/
 // If the vertex selected is an author, then count the number of outgoing edges "created"; else if the vertex selected is a reviewer, then count the number of outgoing
 edges "rated"; otherwise, do nothing.
 g.V().choose(label()).
@@ -42,23 +50,84 @@ g.V().choose(label()).
  option(none, label())
 
 ------------
+/*
 RECURSIVE TRAVERSAL:
+loops to traverse a step already traversed
+*/
 // Return the names of the vertices 2 outgoing steps from the vertex named "Julia Child". This will likely include cookbooks, meals, reviewers, and ingredients.
 g.V().has('name','Julia Child').
  repeat(out()).times(2).
  values('name')
 
 -------
+/*
 PATH TRAVERSAL:
-
+maps traverse step to a location to use in case a step must revisit a previous location in the full traversal
+*/
 g.V().as("a").out().as("b","c").path()
 
 -----------
+/*
 PROJECTING TRAVERSAL:
+???
+*/
 
 g.V().as("a").out("knows").as("b").
 select("a","b").
 by(in("knows").count()).
 by(out("knows").count())
 
+---------
+/*
+CENTRALITY TRAVERSAL:
+uses graph statstics to extract meaningful information from the graph
+*/
+g.V().repeat(groupCount("m").out()).
+ times(30).cap("m")
 
+-----------
+/*
+MUTATING TRAVERSAL:
+mutates the graph
+*/
+// adds an inverse edge createdBy for every created edge
+g.V().as("a").out("created").addOutE("createdBy","a")
+// removes the original created edge
+g.V().outE("created").drop()
+
+---------
+/*
+DECLARATIVE TRAVERSAL:
+pattern matching traversal
+*/
+g.V().match(
+  as("a").out("created").as("b"),
+  as("b").in("created").count().is(gt(3)),
+  as("b").in("created").as("c"),
+  as("a").out("father").as("c")).
+ dedup("a").
+ select("a").by("name")
+
+----------
+/*
+DOMAIN SPECIFIC TRAVERSAL:
+creating traversals using domain-specific language - maps to Gremlin steps
+*/
+g.people().named("marko").
+ who().know(well).people().
+ who().created("software").
+ are().named()
+
+Each one of these steps would be the composite or 1 or more
+Gremlin steps.
+j
+g.people()          → g.V().hasLabel("person")
+named("marko")      → has("name","marko")
+who()               → identity()
+know(well)          → outE("knows").
+                      has("weight",gt(0.75)).
+                      inV()
+created("software") → out("created").
+                      hasLabel("software")
+are()               → identity()
+named()             → values("name")
