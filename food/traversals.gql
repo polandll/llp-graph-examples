@@ -1,9 +1,9 @@
 // TRAVERSAL EXAMPLES
 
-/* 
-SIMPLE TRAVERSAL:
-traverses through the steps in sequential order
-*/
+------------------------------------------------------
+/* SIMPLE TRAVERSAL:                                */
+/* traverses through the steps in sequential order  */
+------------------------------------------------------
 
 // How many recipes exist in the database?
 g.V().hasLabel('recipe').count()
@@ -26,7 +26,24 @@ g.V().hasLabel('book').has('publishDate',1980)
 // What cookbooks have recipes that list beef or mashed garlic as ingredients?
 g.V().hasLabel('recipe').out().has('name',within('beef','mashed garlic')).out().hasLabel('book').valueMap('title')
 
+// What cookbooks have recipes that list beef or mashed garlic as ingredients, order by title?
+g.V().hasLabel('recipe').out().has('name',within('beef','mashed garlic')).out().hasLabel('book').values('title').order()
+
 // What are the recipes included in the cookbooks that list beef and mashed garlic as ingredients?
+g.V().hasLabel('recipe').out().has('name',within('beef','mashed garlic')).out().hasLabel('book').out().hasLabel('recipe').valueMap('rName')
+
+// Profile to discover how various traversal strategies will work for a query
+// This profiles the last traversal
+g.V().hasLabel('recipe').out().
+      has('name',within('beef','mashed garlic')).out().
+      hasLabel('book').out().hasLabel('recipe').valueMap('rName').
+      profile().cap(TraversalMetrics.METRICS_KEY)
+
+// TimeLimit of 2 ms for the traversal
+g.V().hasLabel('recipe').out().
+      has('name',within('beef','mashed garlic')).out().
+      hasLabel('book').out().hasLabel('recipe').valueMap('rName').
+      timeLimit(2)
 
 // How many reviewers have reviewed Beef Bourguignon?
 g.V().hasLabel('recipe').has('rName','Beef Bourguignon').out().hasLabel('reviewer').count()
@@ -35,23 +52,36 @@ g.V().hasLabel('recipe').has('rName','Beef Bourguignon').out().hasLabel('reviewe
 g.V().hasLabel('reviewer').has('revName','John Doe').valueMap('comment')
 
 // What reviewers rated Beef Bourguignon in the last 15 days?
+// NOT SURE HOW TO DO "last 15 days" -- now()-15 is a placeholder
+// Don't need to include "hasLabel('recipe')" because reviewers only have edges to recipes
+g.V().hasLabel('reviewer').outE().has('reviewDate',lt(now()-15)).outV().has('rName','Beef Bourguignon')
 
 // Which reviewers who rated Beef Bourguignon with 5 stars rated other recipes?
+// NEED HELP WITH THIS ONE -- probably another type of TRAVERSAL
+// Don't need to include "hasLabel('recipe')" because reviewers only have edges to recipes
+g.V().hasLabel('reviewer').outE().has('stars',5).outV().has('rName','Beef Bourguignon')
 
 // What other recipes did reviewers who rated Beef Bourguignon with 5 stars also rate with 5 stars?
+// NEED TO USE AGGREGATE STEP? SEEMS LIKE THAT IS THE WAY TO DO THIS
 
---------------
 // Which meals list Beef Bourguignon as an item?
 g.V().hasLabel('meal').out().has('name','beef')
 
 // Which meals have a calorie count of 1,100 calories or less? 
-g.V().hasLabel('meal').has('calories',lt(1100))
+// COULD is() BE USED IN THIS TRAVERSAL?
+g.V().hasLabel('meal').has('calories',lt(1100)).valueMap('mName')
 
------------
-/*
-BRANCHING TRAVERSAL:
-traversal will be sent down a single branch (choose), a subset of branches (repeat.emit) or all branches (union)
-*/
+// Which meals have a calorie count of 1,100 calories or less (limit the output to 10 meal names)? 
+// COULD is() BE USED IN THIS TRAVERSAL?
+g.V().hasLabel('meal').has('calories',lt(1100)).valueMap('mName').limit(10)
+
+----------------------------------------------------------
+/* BRANCHING TRAVERSAL:					*/
+/* traversal will be sent down a single branch		*/ 
+/* (choose), a subset of branches (repeat.emit)		*/ 
+/* or all branches (union)				*/
+----------------------------------------------------------
+
 // If the vertex selected is an author, then count the number of outgoing edges "created"; else if the vertex selected is a reviewer, then count the number of outgoing
 edges "rated"; otherwise, do nothing.
 g.V().choose(label()).
@@ -59,57 +89,60 @@ g.V().choose(label()).
  option("reviewer", out("rated").count()).
  option(none, label())
 
-------------
-/*
-RECURSIVE TRAVERSAL:
-loops to traverse a step already traversed
-*/
-// Return the names of the vertices 2 outgoing steps from the vertex named "Julia Child". This will likely include cookbooks, meals, reviewers, and ingredients.
-g.V().has('name','Julia Child').
- repeat(out()).times(2).
- values('name')
+----------------------------------------------------------
+/* RECURSIVE TRAVERSAL:					*/
+/* loops to traverse a step already traversed		*/
+----------------------------------------------------------
 
--------
-/*
-PATH TRAVERSAL:
-maps traverse step to a location to use in case a step must revisit a previous location in the full traversal
-*/
+// Return the names of the vertices 2 outgoing steps from the vertex named "Julia Child". This will likely include cookbooks, meals, reviewers, and ingredients.
+g.V().has('name','Julia Child').repeat(out()).times(2).values('name')
+
+----------------------------------------------------------
+/* PATH TRAVERSAL:					*/
+/* maps traverse step to a location to use in case a 	*/
+/* step must revisit a previous location in the full 	*/
+/* traversal						*/
+----------------------------------------------------------
+
+// WRITE THIS ONE
 g.V().as("a").out().as("b","c").path()
 
------------
-/*
-PROJECTING TRAVERSAL:
-???
-*/
+----------------------------------------------------------
+/* PROJECTING TRAVERSAL:				*/
+/* ???							*/
+----------------------------------------------------------
 
+// WRITE THIS ONE
 g.V().as("a").out("knows").as("b").
 select("a","b").
 by(in("knows").count()).
 by(out("knows").count())
 
----------
-/*
-CENTRALITY TRAVERSAL:
-uses graph statstics to extract meaningful information from the graph
-*/
-g.V().repeat(groupCount("m").out()).
- times(30).cap("m")
+----------------------------------------------------------
+/* CENTRALITY TRAVERSAL:				*/
+/* uses graph statstics to extract meaningful 		*/
+/* information from the graph				*/
+----------------------------------------------------------
 
------------
-/*
-MUTATING TRAVERSAL:
-mutates the graph
-*/
+// WRITE THIS ONE
+g.V().repeat(groupCount("m").out()).times(30).cap("m")
+
+----------------------------------------------------------
+/* MUTATING TRAVERSAL:					*/
+/* mutates the graph					*/
+----------------------------------------------------------
+
 // adds an inverse edge createdBy for every created edge
 g.V().as("a").out("created").addOutE("createdBy","a")
 // removes the original created edge
 g.V().outE("created").drop()
 
----------
-/*
-DECLARATIVE TRAVERSAL:
-pattern matching traversal
-*/
+----------------------------------------------------------
+/* DECLARATIVE TRAVERSAL:				*/
+/* pattern matching traversal				*/
+----------------------------------------------------------
+
+// WRITE THIS ONE
 g.V().match(
   as("a").out("created").as("b"),
   as("b").in("created").count().is(gt(3)),
@@ -118,11 +151,13 @@ g.V().match(
  dedup("a").
  select("a").by("name")
 
-----------
-/*
-DOMAIN SPECIFIC TRAVERSAL:
-creating traversals using domain-specific language - maps to Gremlin steps
-*/
+----------------------------------------------------------
+/* DOMAIN SPECIFIC TRAVERSAL:				*/
+/* creating traversals using domain-specific language 	*/
+/* maps to Gremlin steps				*/
+----------------------------------------------------------
+
+//WRITE THIS ONE
 g.people().named("marko").
  who().know(well).people().
  who().created("software").
