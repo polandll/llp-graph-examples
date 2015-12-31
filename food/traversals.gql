@@ -1,0 +1,33 @@
+// TRAVERSAL EXAMPLES
+
+// How many recipes exist in the database?
+g.V().count()
+
+// How many recipes has Julia Child written?
+
+// Which recipes list beef as an ingredient?
+
+// Which recipes list beef and mashed garlic as ingredients?
+
+// Which cookbooks list Julia Child as an author?
+
+// Which cookbooks were published in 1980?
+
+// How many reviewers have reviewed Beef Bourguignon?
+
+// What did a particular reviewer say about Beef Bourguignon?
+
+// What reviewers rated Beef Bourguignon in the last 15 days?
+
+// Which reviewers who rated Beef Bourguignon with 5 stars rated other recipes?
+
+// What other recipes did reviewers who rated Beef Bourguignon with 5 stars also rate with 5 stars?
+
+// What cookbooks have recipes that list beef and mashed garlic as ingredients?
+
+// What are the recipes included in the cookbooks that list beef and mashed garlic as ingredients?
+
+--------------
+// Which meals list Beef Bourguignon as an item?
+
+// Which meals have a calorie count of 1,100 calories or less? 
