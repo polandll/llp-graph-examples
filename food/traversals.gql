@@ -6,21 +6,33 @@ traverses through the steps in sequential order
 */
 
 // How many recipes exist in the database?
-g.V().count()
+g.V().hasLabel('recipe').count()
 
 // How many recipes has Julia Child written?
+g.V().hasLabel('recipe').out().has('name','Julia Child')
 
 // Which recipes list beef as an ingredient?
+g.V().hasLabel('recipe').out().has('name','beef')
 
 // Which recipes list beef and mashed garlic as ingredients?
+g.V().hasLabel('recipe').out().has('name',within('beef','mashed garlic'))
 
 // Which cookbooks list Julia Child as an author?
+g.V().hasLabel('book').out().has('name','Julia Child')
 
 // Which cookbooks were published in 1980?
+g.V().hasLabel('book').has('publishDate',1980)
+
+// What cookbooks have recipes that list beef or mashed garlic as ingredients?
+g.V().hasLabel('recipe').out().has('name',within('beef','mashed garlic')).out().hasLabel('book').valueMap('title')
+
+// What are the recipes included in the cookbooks that list beef and mashed garlic as ingredients?
 
 // How many reviewers have reviewed Beef Bourguignon?
+g.V().hasLabel('recipe').has('rName','Beef Bourguignon').out().hasLabel('reviewer').count()
 
 // What did a particular reviewer say about Beef Bourguignon?
+g.V().hasLabel('reviewer').has('revName','John Doe').valueMap('comment')
 
 // What reviewers rated Beef Bourguignon in the last 15 days?
 
@@ -28,14 +40,12 @@ g.V().count()
 
 // What other recipes did reviewers who rated Beef Bourguignon with 5 stars also rate with 5 stars?
 
-// What cookbooks have recipes that list beef and mashed garlic as ingredients?
-
-// What are the recipes included in the cookbooks that list beef and mashed garlic as ingredients?
-
 --------------
 // Which meals list Beef Bourguignon as an item?
+g.V().hasLabel('meal').out().has('name','beef')
 
 // Which meals have a calorie count of 1,100 calories or less? 
+g.V().hasLabel('meal').has('calories',lt(1100))
 
 -----------
 /*
