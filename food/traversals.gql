@@ -31,3 +31,34 @@ g.V().count()
 // Which meals list Beef Bourguignon as an item?
 
 // Which meals have a calorie count of 1,100 calories or less? 
+
+-----------
+BRANCHING TRAVERSAL:
+// If the vertex selected is an author, then count the number of outgoing edges "created"; else if the vertex selected is a reviewer, then count the number of outgoing
+edges "rated"; otherwise, do nothing.
+g.V().choose(label()).
+ option("author", out("created").count()).
+ option("reviewer", out("rated").count()).
+ option(none, label())
+
+------------
+RECURSIVE TRAVERSAL:
+// Return the names of the vertices 2 outgoing steps from the vertex named "Julia Child". This will likely include cookbooks, meals, reviewers, and ingredients.
+g.V().has('name','Julia Child').
+ repeat(out()).times(2).
+ values('name')
+
+-------
+PATH TRAVERSAL:
+
+g.V().as("a").out().as("b","c").path()
+
+-----------
+PROJECTING TRAVERSAL:
+
+g.V().as("a").out("knows").as("b").
+select("a","b").
+by(in("knows").count()).
+by(out("knows").count())
+
+
