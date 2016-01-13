@@ -1,0 +1,67 @@
+$ curl -L -O https://www.apache.org/dist/incubator/tinkerpop/3.1.0-SNAPSHOT/apache-gremlin-console-3.1.0-SNAPSHOT-bin.zip
+$ unzip apache-gremlin-console-3.1.0-SNAPSHOT-bin.zip
+$ cd apache-gremlin-console-3.1.0-SNAPSHOT-bin.zip
+$ bin/gremlin.sh
+
+gremlin> graph = TinkerFactory.createModern()
+gremlin> g = graph.traversal()
+
+gremlin> g.V()
+gremlin> g.V(1)
+gremlin> g.V(1).values('name') 
+gremlin> g.V(1).outE('knows') 
+gremlin> g.V(1).outE('knows').inV().values('name')
+gremlin> g.V(1).out('knows').values('name')
+gremlin> g.V(1).out('knows').has('age', gt(30)).values('name')
+
+gremlin> graph = TinkerGraph.open()
+gremlin> v1 = graph.addVertex(id, 1, label, "person", "name", "marko", "age", 29)
+gremlin> v2 = graph.addVertex(id, 3, label, "software", "name", "lop", "lang", "java")
+gremlin> v1.addEdge("created", v2, id, 9, "weight", 0.4)
+
+gremlin> g.V().has('name','marko')
+gremlin> g.V().has('name','marko').outE('created')
+gremlin> g.V().has('name','marko').outE('created').inV()
+gremlin> g.V().has('name','marko').out('created')
+gremlin> g.V().has('name','marko').out('created').values('name')
+
+gremlin> graph = TinkerFactory.createModern()
+gremlin> g = graph.traversal()
+
+gremlin> g.V().has('name',within('vadas','marko')).values('age')
+gremlin> g.V().has('name',within('vadas','marko')).values('age').mean()
+gremlin> g.V().has('name','marko').out('created').in('created').values('name')
+gremlin> g.V().has('name','marko').as('exclude').out('created').in('created').where(neq('exclude')).values('name')
+
+gremlin> g.V().as('a').out().as('b').out().as('c').select('a','b','c')
+gremlin> g.V().group().by(label)
+gremlin> g.V().group().by(label).by('name')
+
+--------
+$ curl -L -O http://snap.stanford.edu/data/wiki-Vote.txt.gz
+$ gunzip wiki-Vote.txt.gz
+
+SCRIPT:
+graph = TinkerGraph.open()
+graph.createIndex('userId', Vertex.class) (1)
+
+gremlin> g = graph.traversal()
+
+getOrCreate = { id ->
+  g.V().has('userId', id).tryNext().orElseGet{ g.addV('userId', id).next() }
+}
+
+new File('wiki-Vote.txt').eachLine {
+  if (!it.startsWith("#")){
+    (fromVertex, toVertex) = it.split('\t').collect(getOrCreate) (2)
+    fromVertex.addEdge('votesFor', toVertex)
+  }
+}
+
+Gremlin server/REST example 
+
+$ curl -L -O https://www.apache.org/dist/incubator/tinkerpop/3.1.0-SNAPSHOT/apache-gremlin-server-3.1.0-SNAPSHOT-bin.zip
+$ unzip apache-gremlin-server-3.1.0-SNAPSHOT-bin.zip
+$ cd apache-gremlin-server-3.1.0-SNAPSHOT-bin.zip
+$ bin/gremlin-server.sh conf/gremlin-server-modern.yaml
+$ curl -X POST -d "{\"gremlin\":\"g.V(x).out().values('name')\", \"language\":\"gremlin-groovy\", \"bindings\":{\"x\":1}}" "http://localhost:8182"
