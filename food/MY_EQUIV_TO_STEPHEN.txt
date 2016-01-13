@@ -4,7 +4,9 @@
 :> g.V().count()
 =>0
 
+// enter author vertices
 :> juliaChild = g.addV(label,'author','id', 1, 'aname','Julia Child', 'gender','F').next()
+==>v[{member_id=0, community_id=184435, ~label=author, group_id=2}]
 :> simoneBeck = g.addV(label,'author','id', 2, 'aname','Simone Beck', 'gender','F').next()
 :> aliceWaters = g.addV(label,'author','id', 5, 'aname','Alice Waters', 'gender','F').next()
 :> jamesBeard = g.addV(label,'author','id', 10, 'aname','James Beard', 'gender','M').next()
@@ -22,14 +24,49 @@
 ==>Simone Beck
 ==>James Beard
 
-:> artOfFrenchCookingVolOne = g.addV('id', 100, label, 'book','bookTitle', 'The Art of French Cooking, Vol. 1', 'publishDate', 1961).next()
+:> artOfFrenchCookingVolOne = g.addV(label, 'book', 'id', 100,'bookTitle', 'The Art of French Cooking, Vol. 1', 'publishDate', 1961).next()
 ==>v[{member_id=0, community_id=619853, ~label=book, group_id=2}]
 
 :> g.V().hasLabel('book').values('bookTitle')
 ==>The Art of French Cooking, Vol. 1
 
+// enter an edge
 :> juliaChild.addEdge('authored', artOfFrenchCookingVolOne)
 ==>e[{out_vertex={member_id=0, community_id=184435, ~label=author, group_id=2}, local_id=312468c0-b99a-11e5-bdeb-e778035ca1a5, 
 in_vertex={member_id=0, community_id=113313, ~label=book, group_id=4}, ~type=authored}][{member_id=0, community_id=184435, 
 ~label=author, group_id=2}-authored->{member_id=0, community_id=113313, ~label=book, group_id=4}]
 
+----------
+Run a script to add more vertices and edges
+
+script = new File('/path/to/script/generateRecipe.groovy').text; []
+:> @script
+
+
+:> g.V().has('aname','Julia Child')
+==>v[{member_id=0, community_id=184435, ~label=author, group_id=2}]
+
+:> g.V().has('aname','Julia Child').outE('authored')
+GET OUTPUT
+
+g.V().outE('authored').inV().values('bookTitle')
+==>The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
+==>The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
+==>Simca's Cuisine: 100 Classic French Recipes for Every Occasion
+==>The Art of French Cooking, Vol. 1
+==>The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
+==>The Art of French Cooking, Vol. 1
+==>Simca's Cuisine: 100 Classic French Recipes for Every Occasion
+==>The Art of French Cooking, Vol. 1
+==>The French Chef Cookbook
+
+:> g.V().has('aname','Julia Child').outE('authored').inV().values('bookTitle')
+==>The Art of French Cooking, Vol. 1
+==>The French Chef Cookbook
+
+:> g.V().has('aname','Julia Child').out('authored').values('bookTitle')
+==>The Art of French Cooking, Vol. 1
+==>The French Chef Cookbook
+
+ :> g.V().has('aname','Julia Child').out('authored').has('publishDate', gt(1967)).values('bookTitle')
+==>The French Chef Cookbook
