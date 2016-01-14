@@ -1,16 +1,16 @@
 // Add all vertices and edges for Recipe
 
 // author vertices
-juliaChild = graph.addVertex(label, 'author', 'id', 1, 'aname','Julia Child', 'gender', 'F')
-simoneBeck = graph.addVertex(label, 'author', 'id', 2, 'aname', 'Simone Beck', 'gender', 'F')
-louisetteBertholie = graph.addVertex(label, 'author', 'id', 3, 'aname', 'Louisette Bertholie', 'gender', 'F')
-patriciaSimon = graph.addVertex(label, 'author', 'id', 4, 'aname', 'Patricia Simon', 'gender', 'F')
-aliceWaters = graph.addVertex(label, 'author', 'id', 5, 'aname', 'Alice Waters', 'gender', 'F')
-patriciaCurtan = graph.addVertex(label, 'author', 'id', 6, 'aname', 'Patricia Curtan', 'gender', 'F')
-kelsieKerr = graph.addVertex(label, 'author', 'id', 7, 'aname', 'Kelsie Kerr', 'gender', 'F')
-fritzStreiff = graph.addVertex(label, 'author', 'id', 8, 'aname', 'Fritz Streiff', 'gender', 'M')
-emerilLagasse = graph.addVertex(label, 'author', 'id', 9, 'aname', 'Emeril Lagasse', 'gender', 'M')
-jamesBeard = graph.addVertex(label, 'author', 'id', 10, 'aname', 'James Beard', 'gender', 'M')
+juliaChild = graph.addVertex(label, 'author', 'id', 1, 'aname','Julia Child', 'gender', 'F').next()
+simoneBeck = graph.addVertex(label, 'author', 'id', 2, 'aname', 'Simone Beck', 'gender', 'F').next()
+louisetteBertholie = graph.addVertex(label, 'author', 'id', 3, 'aname', 'Louisette Bertholie', 'gender', 'F').next()
+patriciaSimon = graph.addVertex(label, 'author', 'id', 4, 'aname', 'Patricia Simon', 'gender', 'F').next()
+aliceWaters = graph.addVertex(label, 'author', 'id', 5, 'aname', 'Alice Waters', 'gender', 'F').next()
+patriciaCurtan = graph.addVertex(label, 'author', 'id', 6, 'aname', 'Patricia Curtan', 'gender', 'F').next()
+kelsieKerr = graph.addVertex(label, 'author', 'id', 7, 'aname', 'Kelsie Kerr', 'gender', 'F').next()
+fritzStreiff = graph.addVertex(label, 'author', 'id', 8, 'aname', 'Fritz Streiff', 'gender', 'M').next()
+emerilLagasse = graph.addVertex(label, 'author', 'id', 9, 'aname', 'Emeril Lagasse', 'gender', 'M').next()
+jamesBeard = graph.addVertex(label, 'author', 'id', 10, 'aname', 'James Beard', 'gender', 'M').next()
 
 // book vertices
 artOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'id', 100, 'bookTitle', 'The Art of French Cooking, Vol. 1', 'publishDate', 1961)
