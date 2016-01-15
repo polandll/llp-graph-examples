@@ -126,3 +126,7 @@ carrotSoup.addEdge('includes', chickenBroth, 'amount', '6 cups')
 roastPorkLoin.addEdge('includes', porkLoin, 'amount', '1 bone-in, 4-rib')
 roastPorkLoin.addEdge('includes', redWine, 'amount', '1/2 cup')
 roastPorkLoin.addEdge('includes', chickenBroth, 'amount', '1 cup')
+
+// book - recipe edges
+
+beefBourguignon.addEdge('includedIn', artOfFrenchCookingVolOne)

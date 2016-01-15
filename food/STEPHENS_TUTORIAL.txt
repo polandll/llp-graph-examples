@@ -28,8 +28,8 @@ xgremlin> g.V().has('name','marko').out('created').values('name')
 xgremlin> graph = TinkerFactory.createModern()
 xgremlin> g = graph.traversal()
 
-gremlin> g.V().has('name',within('vadas','marko')).values('age')
-gremlin> g.V().has('name',within('vadas','marko')).values('age').mean()
+xgremlin> g.V().has('name',within('vadas','marko')).values('age')
+xgremlin> g.V().has('name',within('vadas','marko')).values('age').mean()
 gremlin> g.V().has('name','marko').out('created').in('created').values('name')
 gremlin> g.V().has('name','marko').as('exclude').out('created').in('created').where(neq('exclude')).values('name')
 

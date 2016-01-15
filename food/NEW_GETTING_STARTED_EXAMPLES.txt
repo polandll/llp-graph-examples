@@ -128,3 +128,33 @@ gremlin> :> g.V().hasLabel('recipe').out().has('iName',within('beef','mashed gar
 ==>[iName:[beef], id:[300]]
 ==>[iName:[mashed garlic], id:[302]]
 ==>[iName:[mashed garlic], id:[302]]
+
+gremlin> :> g.V().hasLabel('recipe').in().has('aname','Julia Child').count().profile().cap(TraversalMetrics.METRICS_KEY)
+==>Traversal Metrics
+Step                                                               Count  Traversers       Time (ms)    % Dur
+=============================================================================================================
+DsegGraphStep([~label.eq(recipe)])                                     8           8          17.134    17.43
+  query-optimizer                                                                              0.399
+  sub-query                                                                                    0.000
+  iterator-setup                                                                               0.281
+DsegVertexStep(IN,vertex)                                             13          13          17.106    17.40
+  query-optimizer-total                                                                        0.117
+  sub-query-total                                                                              0.000
+  iterator-setup-total                                                                         1.885
+HasStep([aname.eq(Julia Child)])                                       1           1          23.307    23.71
+CountGlobalStep                                                        1           1          17.204    17.50
+SideEffectCapStep([~metrics])                                          1           1          23.546    23.95
+                                            >TOTAL                     -           -          98.299        -
+
+gremlin> :> g.V().hasLabel('reviewer').has('revname','John Doe').outE('rated').valueMap()
+==>[comment:Pretty tasty!, stars:5, ratedDate:2014-01-01]
+==>[comment:Really spicy - be careful!, stars:4, ratedDate:2015-12-31]
+
+// THIS IS THE ACTUAL ONE! What did John Doe have to say?
+gremlin> :> g.V().hasLabel('reviewer').has('revname','John Doe').outE('rated').values('comment')
+==>Pretty tasty!
+==>Really spicy - be careful!
+
+gremlin> :> g.V().hasLabel('reviewer').has('revname','John Doe').outE('rated').inV().values('recipeTitle')
+==>Beef Bourguignon
+==>Spicy Meatloaf
