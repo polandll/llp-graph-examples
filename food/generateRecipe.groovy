@@ -2,7 +2,7 @@
 
 // author vertices
 // already created in the tutorial
-//juliaChild = graph.addVertex(label, 'author', 'id', 1, 'aname','Julia Child', 'gender', 'F')
+// juliaChild = graph.addVertex(label, 'author', 'id', 1, 'aname','Julia Child', 'gender', 'F')
 simoneBeck = graph.addVertex(label, 'author', 'id', 2, 'aname', 'Simone Beck', 'gender', 'F')
 louisetteBertholie = graph.addVertex(label, 'author', 'id', 3, 'aname', 'Louisette Bertholie', 'gender', 'F')
 patriciaSimon = graph.addVertex(label, 'author', 'id', 4, 'aname', 'Patricia Simon', 'gender', 'F')
@@ -15,7 +15,7 @@ jamesBeard = graph.addVertex(label, 'author', 'id', 10, 'aname', 'James Beard', 
 
 // book vertices
 // already created in the tutorial
-//artOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'id', 100, 'bookTitle', 'The Art of French Cooking, Vol. 1', 'publishDate', 1961)
+// artOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'id', 100, 'bookTitle', 'The Art of French Cooking, Vol. 1', 'publishDate', 1961)
 simcasCuisine = graph.addVertex(label, 'book', 'id', 101,'bookTitle', "Simca's Cuisine: 100 Classic French Recipes for Every Occasion", 'publishDate', 1972, 'IBSN', '0-394-40152-2')
 frenchChefCookbook = graph.addVertex(label, 'book', 'id', 102, 'bookTitle','The French Chef Cookbook', 'publishDate',1968, 'ISBN', '0-394-40135-2')
 artOfSimpleFood = graph.addVertex(label, 'book', 'id', 103, 'bookTitle', 'The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution', 'publishDate', 2007, 'ISBN', '0-307-33679-4')
@@ -65,7 +65,7 @@ redWine = graph.addVertex('id', 330, label, 'ingredient', 'iName', 'red wine')
 
 // author-book edges
 // already created in the tutorial
-//juliaChild.addEdge('authored', artOfFrenchCookingVolOne)
+// juliaChild.addEdge('authored', artOfFrenchCookingVolOne)
 simoneBeck.addEdge('authored', artOfFrenchCookingVolOne)
 louisetteBertholie.addEdge('authored', artOfFrenchCookingVolOne)
 simoneBeck.addEdge('authored',simcasCuisine)

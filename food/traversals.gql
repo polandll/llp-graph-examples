@@ -9,7 +9,7 @@
 g.V().hasLabel('recipe').count()
 
 // How many recipes has Julia Child written?
-g.V().hasLabel('recipe').out().has('name','Julia Child')
+g.V().hasLabel('recipe').in().has('aname','Julia Child').count()
 
 // Which recipes list beef as an ingredient?
 g.V().hasLabel('recipe').out().has('name','beef')
