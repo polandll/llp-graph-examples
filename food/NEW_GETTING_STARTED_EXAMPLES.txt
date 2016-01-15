@@ -8,7 +8,7 @@
 =>0
 
 // enter author vertices
-:> juliaChild = g.addV(label,'author','id', 1, 'aname','Julia Child', 'gender','F').next()
+:> juliaChild = graph.addVertex(label,'author','id', 1, 'aname','Julia Child', 'gender','F')
 ==>v[{member_id=0, community_id=184435, ~label=author, group_id=3}]
 
 :> g.V().count()
@@ -21,7 +21,7 @@
 ==>Julia Child
 
 
-:> artOfFrenchCookingVolOne = g.addV(label, 'book', 'id', 100,'bookTitle', 'The Art of French Cooking, Vol. 1', 'publishDate', 1961).next()
+:> artOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'id', 100,'bookTitle', 'The Art of French Cooking, Vol. 1', 'publishDate', 1961)
 ==>v[{member_id=0, community_id=264788, ~label=book, group_id=2}]
 
 :> g.V().hasLabel('book').values('bookTitle')
@@ -47,9 +47,12 @@ script = new File('/home/ubuntu/generateRecipe.groovy').text; []
 ==>v[{member_id=0, community_id=184435, ~label=author, group_id=2}]
 
 :> g.V().has('aname','Julia Child').outE('authored')
-GET OUTPUT
+==>e[{out_vertex={member_id=0, community_id=966350, ~label=author, group_id=3}, local_id=1c947f80-ba67-11e5-bdeb-e778035ca1a5, in_vertex={member_id=0, community_id=966350, ~label=book, group_id=14}, ~type=authored}][{member_id=0, community_id=966350, ~label=author, group_id=3}-authored->{member_id=0, community_id=966350, ~label=book, group_id=14}]
+gremlin> :> g.V().has('aname','Julia Child').outE('authored')
+==>e[{out_vertex={member_id=0, community_id=966350, ~label=author, group_id=3}, local_id=1c947f80-ba67-11e5-bdeb-e778035ca1a5, in_vertex={member_id=0, community_id=966350, ~label=book, group_id=14}, ~type=authored}][{member_id=0, community_id=966350, ~label=author, group_id=3}-authored->{member_id=0, community_id=966350, ~label=book, group_id=14}]
+==>e[{out_vertex={member_id=0, community_id=184435, ~label=author, group_id=4}, local_id=c41d5980-ba61-11e5-bdeb-e778035ca1a5, in_vertex={member_id=0, community_id=966350, ~label=book, group_id=1}, ~type=authored}][{member_id=0, community_id=184435, ~label=author, group_id=4}-authored->{member_id=0, community_id=966350, ~label=book, group_id=1}]
 
-g.V().outE('authored').inV().values('bookTitle')
+:> g.V().outE('authored').inV().values('bookTitle')
 ==>The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
 ==>The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
 ==>Simca's Cuisine: 100 Classic French Recipes for Every Occasion
@@ -70,3 +73,58 @@ g.V().outE('authored').inV().values('bookTitle')
 
  :> g.V().has('aname','Julia Child').out('authored').has('publishDate', gt(1967)).values('bookTitle')
 ==>The French Chef Cookbook
+
+// SILLLY, BUT .... the mean of the recipe creation dates
+:> g.E().has('rCreateDate').values('rCreateDate').mean()
+==>1981.5
+
+gremlin> :> g.V().label().groupCount()
+==>[ingredient:31, author:10, book:4, recipe:8]
+
+**************************
+script2 = new File('/home/ubuntu/generateReviews.groovy').text; []
+:> @script2
+
+gremlin> :> g.V().hasLabel('reviewer').values()
+==>401
+==>John Smith
+==>403
+==>Sharon Smith
+==>404
+==>Betsy Jones
+==>402
+==>Jane Doe
+==>400
+==>John Doe
+
+gremlin> :> g.E().hasLabel('rated').has('stars', gt(3)).valueMap()
+==>[stars:4, ratedDate:2014-01-23]
+==>[comment:Yummy!, stars:5, ratedDate:2014-02-01]
+==>[comment:Loved this soup! Yummy vegetarian!, stars:5, ratedDate:2015-12-30]
+==>[comment:Pretty tasty!, stars:5, ratedDate:2014-01-01]
+==>[comment:Really spicy - be careful!, stars:4, ratedDate:2015-12-31]
+
+// Need to figure out dates!! Notice how the date value is parsed by greater than
+gremlin> :> g.E().hasLabel('rated').has('stars', gt(3)).has('ratedDate', gt('2015-01-01')).valueMap()
+==>[comment:Loved this soup! Yummy vegetarian!, stars:5, ratedDate:2015-12-30]
+==>[comment:Really spicy - be careful!, stars:4, ratedDate:2015-12-31]
+
+// How many recipes has Julia Child written?
+gremlin> :> g.V().hasLabel('recipe').in().has('aname','Julia Child').count()
+==>1
+
+NOTES FOR FRIDAY:
+NEED TO SET UP VM TO BUILD BDP AND HULK FROM REPOS
+use these instructions: https://datastax.jira.com/wiki/pages/viewpage.action?pageId=106790929
+make sure Java 8 is installed
+
+// NOT QUITE RIGHT
+:> g.V().hasLabel('recipe').out().has('iName','beef').valueMap()
+==>[iName:[beef], id:[300]]
+// I wanted the recipe names that contain beef
+
+// SAME ISSUE
+gremlin> :> g.V().hasLabel('recipe').out().has('iName',within('beef','mashed garlic')).valueMap()
+==>[iName:[beef], id:[300]]
+==>[iName:[mashed garlic], id:[302]]
+==>[iName:[mashed garlic], id:[302]]

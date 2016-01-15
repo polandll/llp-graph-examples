@@ -18,10 +18,13 @@ g.V().hasLabel('recipe').out().has('name','beef')
 g.V().hasLabel('recipe').out().has('name',within('beef','mashed garlic'))
 
 // Which cookbooks list Julia Child as an author?
-g.V().hasLabel('book').out().has('name','Julia Child')
+g.V().has('aname','Julia Child').out('authored').values('bookTitle')
 
 // Which cookbooks were published in 1980?
 g.V().hasLabel('book').has('publishDate',1980)
+
+// Which cookbooks did Julia Child write after 1968?
+g.V().has('aname','Julia Child').out('authored').has('publishDate', gt(1967)).values('bookTitle')
 
 // What cookbooks have recipes that list beef or mashed garlic as ingredients?
 g.V().hasLabel('recipe').out().has('name',within('beef','mashed garlic')).out().hasLabel('book').valueMap('title')
