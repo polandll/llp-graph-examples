@@ -49,10 +49,11 @@ g.V().hasLabel('recipe').out().
       timeLimit(2)
 
 // How many reviewers have reviewed Beef Bourguignon?
-g.V().hasLabel('recipe').has('rName','Beef Bourguignon').out().hasLabel('reviewer').count()
+g.V().hasLabel('recipe').has('recipeTitle','Beef Bourguignon').out().hasLabel('reviewer').count()
 
 // What did a particular reviewer say about Beef Bourguignon?
-g.V().hasLabel('reviewer').has('revName','John Doe').valueMap('comment')
+// This is "what did John Doe say about any recipe?
+g.V().hasLabel('reviewer').has('revname','John Doe').outE('rated').values('comment')
 
 // What reviewers rated Beef Bourguignon in the last 15 days?
 // NOT SURE HOW TO DO "last 15 days" -- now()-15 is a placeholder
