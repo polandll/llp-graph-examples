@@ -1,63 +1,78 @@
-:remote connect tinkerpop.server conf/remote-objects.yaml
+---------------------------------
+|  // FOR CLEANUP                |
+|  :> g.V().drop().iterate()     |
+|  :> system.dropGraph('test')   |
+|  // TO GET WHAT GRAPHS EXIST   |
+|  :> system.getGraphs()         |
+---------------------------------
 
-*******
-system.createGraph("test").build();
-*********
+// CONNECT TO GREMLIN SERVER
+gremlin> :remote connect tinkerpop.server conf/remote-objects.yaml
+==>Connected - localhost/127.0.0.1:8182
 
-:remote config alias g test.g
+// CREATE GRAPH "TEST"
+gremlin> :> system.createGraph("test").build()
+==>test
 
-// FOR CLEANUP
-:> g.V().drop().iterate()
+// CONFIG GRAPH TRAVERSAL g TO ALIAS test.g
+gremlin> :remote config alias g test.g
+==>g=test.g
 
-:> g.V().count()
+// CHECK THAT NO VERTICES EXIST
+gremlin> :> g.V().count()
 =>0
 
 // ENTER AUTHOR VERTEX
-:> juliaChild = graph.addVertex(label,'author','id', 1, 'aname','Julia Child', 'gender','F')
+gremlin> :> Vertex juliaChild = graph.addVertex(label,'author','id', 1, 'aname','Julia Child', 'gender','F')
 ==>v[{member_id=0, community_id=184435, ~label=author, group_id=3}]
 
-:> g.V().count()
+// CHECK THAT ONE VERTEX NOW EXISTS
+gremlin> :> g.V().count()
 =>1
 
- :> g.V().valueMap()
+// GET VALUEMAP
+gremlin> :> g.V().valueMap()
 ==>[gender:[F], aname:[Julia Child], id:[1]]
 
-:> g.V().values('aname')
+// SHOW USE OF VALUES FOR ONE PROPERTY
+gremlin> :> g.V().values('aname')
 ==>Julia Child
 
 // ENTER BOOK VERTEX
-:> artOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'id', 100,'bookTitle', 'The Art of French Cooking, Vol. 1', 'publishDate', 1961)
+gremlin> :> Vertex artOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'id', 100,'bookTitle', 'The Art of French Cooking, Vol. 1', 'publishDate', 1961)
 ==>v[{member_id=0, community_id=264788, ~label=book, group_id=2}]
 
-:> g.V().hasLabel('book').values('bookTitle')
+// GET ALL BOOKS - THERE IS CURRENTLY ONLY ONE
+gremlin> :> g.V().hasLabel('book').values('bookTitle')
 ==>The Art of French Cooking, Vol. 1
 
 // ENTER AUTHOR-BOOK EDGE
-:> juliaChild.addEdge('authored', artOfFrenchCookingVolOne)
+gremlin> :> juliaChild.addEdge('authored', artOfFrenchCookingVolOne)
 ==>e[{out_vertex={member_id=0, community_id=184435, ~label=author, group_id=2}, local_id=312468c0-b99a-11e5-bdeb-e778035ca1a5, 
 in_vertex={member_id=0, community_id=113313, ~label=book, group_id=4}, ~type=authored}][{member_id=0, community_id=184435, 
 ~label=author, group_id=2}-authored->{member_id=0, community_id=113313, ~label=book, group_id=4}]
 
-:> g.E().count()
+// CHECK THAT EDGE IS CREATED USING COUNT
+gremlin> :> g.E().count()
 ==>1
 ----------
 // RUN A SCRIPT TO ADD MORE VERTICES AND EDGES
 //script = new File('/path/to/script/generateRecipe.groovy').text; []
-script = new File('/home/ubuntu/generateRecipe.groovy').text; []
-:> @script
+gremlin> script = new File('/home/ubuntu/generateRecipe.groovy').text; []
+gremlin> :> @script
 
 // GET VERTEX FOR PARTICULAR AUTHOR
-:> g.V().has('aname','Julia Child')
+gremlin> :> g.V().has('aname','Julia Child')
 ==>v[{member_id=0, community_id=184435, ~label=author, group_id=2}]
 
 // GET EDGES FROM PARTICULAR AUTHOR VERTEX
-:> g.V().has('aname','Julia Child').outE('authored')
+gremlin> :> g.V().has('aname','Julia Child').outE('authored')
 ==>e[{out_vertex={member_id=0, community_id=966350, ~label=author, group_id=3}, local_id=1c947f80-ba67-11e5-bdeb-e778035ca1a5, in_vertex={member_id=0, community_id=966350, ~label=book, group_id=14}, ~type=authored}][{member_id=0, community_id=966350, ~label=author, group_id=3}-authored->{member_id=0, community_id=966350, ~label=book, group_id=14}]
 ==>e[{out_vertex={member_id=0, community_id=184435, ~label=author, group_id=4}, local_id=c41d5980-ba61-11e5-bdeb-e778035ca1a5, in_vertex={member_id=0, community_id=966350, ~label=book, group_id=1}, ~type=authored}][{member_id=0, community_id=184435, ~label=author, group_id=4}-authored->{member_id=0, community_id=966350, ~label=book, group_id=1}]
 
 // GET BOOK TITLES FOR ALL AUTHORS
 // Note duplication for multiple authors
-:> g.V().outE('authored').inV().values('bookTitle')
+gremlin> :> g.V().outE('authored').inV().values('bookTitle')
 ==>The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
 ==>The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
 ==>Simca's Cuisine: 100 Classic French Recipes for Every Occasion
@@ -68,32 +83,54 @@ script = new File('/home/ubuntu/generateRecipe.groovy').text; []
 ==>The Art of French Cooking, Vol. 1
 ==>The French Chef Cookbook
 
+*******IDEA******
+SHOULD I USE DEDUP TO SHOW DEDUPLICATION OF THE RESULTS?
+*****************
+
 // GET BOOK TITLES FOR PARTICULAR AUTHOR
 // Uses outE() and inV() which is overkill - edge information is not needed, just passed through
-:> g.V().has('aname','Julia Child').outE('authored').inV().values('bookTitle')
+gremlin> :> g.V().has('aname','Julia Child').outE('authored').inV().values('bookTitle')
 ==>The Art of French Cooking, Vol. 1
 ==>The French Chef Cookbook
 
 // GET BOOK TITLES FOR PARTICULAR AUTHOR
 // Use out() which gets next vertex
-:> g.V().has('aname','Julia Child').out('authored').values('bookTitle')
+gremlin> :> g.V().has('aname','Julia Child').out('authored').values('bookTitle')
 ==>The Art of French Cooking, Vol. 1
 ==>The French Chef Cookbook
 
 // GET BOOK TITLES FOR PARTICULAR AUTHOR WITH A PUBLISH DATE GREATER THAN 1967
- :> g.V().has('aname','Julia Child').out('authored').has('publishDate', gt(1967)).values('bookTitle')
+ gremlin> :> g.V().has('aname','Julia Child').out('authored').has('publishDate', gt(1967)).values('bookTitle')
 ==>The French Chef Cookbook
-
-// SILLLY, BUT .... the mean of the recipe creation dates
-// SEE DOWN LOWER FOR DIFFERENT mean()
-:> g.E().has('rCreateDate').values('rCreateDate').mean()
-==>1981.5
 
 // FOR EACH VERTEX LABEL, GET THE NUMBER OF VERTICES
 gremlin> :> g.V().label().groupCount()
 ==>[ingredient:31, author:10, book:4, recipe:8]
 
+// WRITE THE DATA TO A GRYO FILE
+gremlin> :> graph.io(IoCore.gryo()).writeGraph("/home/ubuntu/recipe.gryo")
+==>NULL
+
+// LOAD DATA USING GRYO
+gremlin> :> graph.io(IoCore.gryo()).readGraph("/home/ubuntu/recipe.gryo")
+==>NULL
+
 **************************
+NOT ADDED TO EAP DOC YET
+**************************
+
+gremlin> :> g.V().hasLabel('author').as('a','b').select('a','b').by('aname').by(outE('authored').count())
+==>[a:Julia Child, b:2]
+==>[a:Patricia Curtan, b:1]
+==>[a:Fritz Streiff, b:1]
+==>[a:Kelsie Kerr, b:1]
+==>[a:James Beard, b:0]
+==>[a:Alice Waters, b:1]
+==>[a:Patricia Simon, b:1]
+==>[a:Simone Beck, b:2]
+==>[a:Louisette Bertholie, b:1]
+==>[a:Emeril Lagasse, b:0]
+
 // RUN SCRIPT TO ADD RECIPE REVIEWS
 script2 = new File('/home/ubuntu/generateReviews.groovy').text; []
 :> @script2
@@ -137,7 +174,7 @@ gremlin> :> g.V().hasLabel('recipe').in().has('aname','Julia Child').count()
 :> g.E().hasLabel('rated').values('stars').mean()
 ****GET VALUE
 ==>
-******
+****************************
 
 // FIND  THE MAX NUMBER OF RECIPE REVIEWS BY A SINGLE REVIEWER
 :> g.V().hasLabel('reviewer').map(outE('rated').count()).max()
@@ -188,18 +225,11 @@ gremlin> :> g.V().hasLabel('reviewer').has('revname','John Doe').outE('rated').i
 ==>Beef Bourguignon
 ==>Spicy Meatloaf
 
-CHECK OUT THIS INFO:
-system.createGraph("test_single").build();
-system.dropGraph("test");
-system.getGraphs();
 
-GRAPHS ARE NO LONGER AUTOGENERATED
-
-// FROM SHAUNAK
-gremlin> :> graph.config().toString()
-==>com.datastax.bdp.gcore.config.userimpl.UserConfigImpl@55954cb9
-gremlin> :> graph.config()
-Request timed out while processing - increase the timeout with the :remote command
+// SILLLY, BUT .... the mean of the recipe creation dates
+// SEE DOWN LOWER FOR DIFFERENT mean()
+:> g.E().has('rCreateDate').values('rCreateDate').mean()
+==>1981.5
 
 *** 
 IDEA: categories for recipes
@@ -207,12 +237,14 @@ separate vertex type?
 ****
 
 
+*** DONE ABOVE WITH AUTHORS AND BOOKS
 // For each category vertex, emit a map of its name and the number of movies it represents.
 // Both a vertex type category and an edge label category - this is from movie lens
 g.V().hasLabel('category').as('a','b').
  select('a','b').
     by('name').
     by(inE('category').count())
+***************
     
 // For each movie, emit a map of its name and average rating. Sort maps in decr. order by avg rating. Top 10 only
 g.V().hasLabel('movie').as('a','b').
@@ -240,3 +272,16 @@ g.V().hasLabel('movie').as('a','b').
       by(inE('rated').values('stars').mean()).
     order().by(select('b'), decr).
     limit(10)
+    
+    // Which programmers like Die Hard and what other movies do they like? Group and count the movies by their name.
+    // Sort group count map in decr order by count. Clip map to top 10 and stream out map's entries
+    
+  g.V().has('movie','name','Die Hard').as('a').
+    inE('rated').has('stars',5).outV().
+      where(out('occupation').has('name','programmer')).
+    outE('rated').has('stars',5).inV(). 
+      where(neq('a')).
+    groupCount().by('name').
+      order(local).by(valueDecr).
+      limit(local,10).
+      unfold()   // this puts each movie on its own line

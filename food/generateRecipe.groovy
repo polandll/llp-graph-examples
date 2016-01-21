@@ -16,7 +16,7 @@ jamesBeard = graph.addVertex(label, 'author', 'id', 10, 'aname', 'James Beard', 
 // book vertices
 // already created in the tutorial
 // artOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'id', 100, 'bookTitle', 'The Art of French Cooking, Vol. 1', 'publishDate', 1961)
-simcasCuisine = graph.addVertex(label, 'book', 'id', 101,'bookTitle', "Simca's Cuisine: 100 Classic French Recipes for Every Occasion", 'publishDate', 1972, 'IBSN', '0-394-40152-2')
+simcasCuisine = graph.addVertex(label, 'book', 'id', 101,'bookTitle', "Simca's Cuisine: 100 Classic French Recipes for Every Occasion", 'publishDate', 1972, 'ISBN', '0-394-40152-2')
 frenchChefCookbook = graph.addVertex(label, 'book', 'id', 102, 'bookTitle','The French Chef Cookbook', 'publishDate',1968, 'ISBN', '0-394-40135-2')
 artOfSimpleFood = graph.addVertex(label, 'book', 'id', 103, 'bookTitle', 'The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution', 'publishDate', 2007, 'ISBN', '0-307-33679-4')
 

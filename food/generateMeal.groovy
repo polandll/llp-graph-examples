@@ -2,8 +2,8 @@ mName|createDate|calories|[includes]
 Dec 1, 2015 Meal|2015-11-30|1,000 per person|[Beef Bourguignon,Roasted Potatoes,Brussel Sprouts,Creme Brulee]
 
 // meal vertices
-SaturdayFeast = graph.addVertex(label, 'meal', 'id', 500, 'createDate', '2015-11-30', 'calories', 1000)
-EverydayDinner = graph.addVertex(label, 'meal', 'id', 501, 'createDate', '2016-01-14', 'calories', 600)
+SaturdayFeast = graph.addVertex(label, 'meal', 'id', 500, 'mealTitle', 'Saturday Feast', 'mCreateDate', '2015-11-30', 'calories', 1000)
+EverydayDinner = graph.addVertex(label, 'meal', 'id', 501, 'mealTitle', 'EverydayDinner', 'mCreateDate', '2016-01-14', 'calories', 600)
 
 // meal - recipe edges
 
