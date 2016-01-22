@@ -13,7 +13,8 @@ import static com.datastax.bdp.graph.api.schema.VertexIndex.Type.SECONDARY
 class RecipeFactory {
 
 	public static void createSchema(final DseGraph graph) {
-    	graph.migration("setup", { def schema ->
+    	#graph.migration("setup", { def schema ->
+    	schema = graph.schema()
     	
     	    // Property Keys
     		def id = schema.buildPropertyKey('id', Integer.class).add()

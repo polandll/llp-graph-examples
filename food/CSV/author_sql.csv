@@ -1,9 +1,10 @@
-authorId|authorName|gender
-1||Julia Child
-2|Simone Beck
-3|Louisette Bertholie
-4|Patricia Simon
-5|Alice Waters
-6|Patricia Curtan
-7|Kelsie Kerr
-8|Fritz Streiff
+1::Julia Child::F
+2::Simone Beck::F
+3::Louisette Bertholie::F
+4::Patricia Simon::F
+5::Alice Waters::F
+6::Patricia Curtan::F
+7::Kelsie Kerr::F
+8::Fritz Streiff::M
+9::Emeril Lagasse::M
+10::James Beard::M
