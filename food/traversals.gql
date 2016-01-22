@@ -92,6 +92,26 @@ g.V().choose(label()).
  option("author", out("created").count()).
  option("reviewer", out("rated").count()).
  option(none, label())
+ 
+// example I tried
+gremlin> :> g.V().choose(label()).option('author', out('created').count()).option('reviewer', out('rated').count())
+==>0
+==>0
+==>2
+==>0
+==>0
+==>0
+==>2
+==>1
+==>0
+==>0
+==>0
+==>3
+==>0
+==>2
+==>2
+==>1
+==>2
 
 ----------------------------------------------------------
 /* RECURSIVE TRAVERSAL:					*/
@@ -99,7 +119,29 @@ g.V().choose(label()).
 ----------------------------------------------------------
 
 // Return the names of the vertices 2 outgoing steps from the vertex named "Julia Child". This will likely include cookbooks, meals, reviewers, and ingredients.
-g.V().has('name','Julia Child').repeat(out()).times(2).values('name')
+gremlin> :> g.V().has('aname','Julia Child').repeat(out()).times(2).valueMap()
+==>[iName:[beef], id:[300]]
+==>[iName:[onion], id:[301]]
+==>[iName:[mashed garlic], id:[302]]
+==>[iName:[butter], id:[303]]
+==>[iName:[tomato paste], id:[304]]
+==>[publishDate:[1961], id:[100], bookTitle:[The Art of French Cooking, Vol. 1]]
+==>[iName:[mashed garlic], id:[302]]
+==>[iName:[eggplant], id:[305]]
+==>[iName:[zucchini], id:[306]]
+==>[iName:[olive oil], id:[307]]
+==>[iName:[yellow onion], id:[308]]
+==>[iName:[olive oil], id:[307]]
+==>[iName:[green beans], id:[309]]
+==>[iName:[tuna], id:[310]]
+==>[iName:[tomato], id:[311]]
+==>[iName:[hard-boiled egg], id:[312]]
+
+// THREE TIMES
+gremlin> :> g.V().has('aname','Julia Child').repeat(out()).times(3).valueMap()
+==>[instructions:[Braise the beef. Saute the onions and carrots. Add wine and cook in a dutch oven at 425 degrees for 1 hour.], recipeTitle:[Beef Bourguignon], id:[200]]
+==>[instructions:[Take a salad bowl or platter and line it with lettuce leaves, shortly before serving. Drizzle some olive oil on the leaves and dust them with salt.], recipeTitle:[Salade Nicoise], id:[202]]
+==>[mCreateDate:[2016-01-14], mealTitle:[JuliaDinner], id:[502], calories:[900]]
 
 ----------------------------------------------------------
 /* PATH TRAVERSAL:					*/

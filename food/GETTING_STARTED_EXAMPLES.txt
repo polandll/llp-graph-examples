@@ -11,19 +11,23 @@ gremlin> :remote connect tinkerpop.server conf/remote-objects.yaml
 ==>Connected - localhost/127.0.0.1:8182
 
 // CREATE GRAPH "TEST"
-gremlin> :> system.createGraph("test").build()
+gremlin> :> system.createGraph("test").ifNotExist().build()
 ==>test
 
 // CONFIG GRAPH TRAVERSAL g TO ALIAS test.g
 gremlin> :remote config alias g test.g
 ==>g=test.g
 
+// CONFIG TIMEOUT TO MAXIMUM VALUE
+gremlin> :remote config timeout max
+==>Set remote timeout to 2147483647ms
+
 // CHECK THAT NO VERTICES EXIST
 gremlin> :> g.V().count()
 =>0
 
 // ENTER AUTHOR VERTEX
-gremlin> :> Vertex juliaChild = graph.addVertex(label,'author','id', 1, 'aname','Julia Child', 'gender','F')
+gremlin> :> juliaChild = graph.addVertex(label,'author','id', 1, 'aname','Julia Child', 'gender','F')
 ==>v[{member_id=0, community_id=184435, ~label=author, group_id=3}]
 
 // CHECK THAT ONE VERTEX NOW EXISTS
@@ -39,7 +43,7 @@ gremlin> :> g.V().values('aname')
 ==>Julia Child
 
 // ENTER BOOK VERTEX
-gremlin> :> Vertex artOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'id', 100,'bookTitle', 'The Art of French Cooking, Vol. 1', 'publishDate', 1961)
+gremlin> :> artOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'id', 100,'bookTitle', 'The Art of French Cooking, Vol. 1', 'publishDate', 1961)
 ==>v[{member_id=0, community_id=264788, ~label=book, group_id=2}]
 
 // GET ALL BOOKS - THERE IS CURRENTLY ONLY ONE
@@ -85,6 +89,11 @@ gremlin> :> g.V().outE('authored').inV().values('bookTitle')
 
 *******IDEA******
 SHOULD I USE DEDUP TO SHOW DEDUPLICATION OF THE RESULTS?
+gremlin> :> g.V().outE('authored').inV().values('bookTitle').dedup()
+==>Simca's Cuisine: 100 Classic French Recipes for Every Occasion
+==>The Art of French Cooking, Vol. 1
+==>The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
+==>The French Chef Cookbook
 *****************
 
 // GET BOOK TITLES FOR PARTICULAR AUTHOR
@@ -118,6 +127,9 @@ gremlin> :> graph.io(IoCore.gryo()).readGraph("/home/ubuntu/recipe.gryo")
 **************************
 NOT ADDED TO EAP DOC YET
 **************************
+
+gremlin> :> g.V().group().by(label).by('aname')
+==>[author:[Fritz Streiff, Kelsie Kerr, Patricia Curtan, Julia Child, Patricia Simon, Emeril Lagasse, Simone Beck, Louisette Bertholie, James Beard, Alice Waters]]
 
 gremlin> :> g.V().hasLabel('author').as('a','b').select('a','b').by('aname').by(outE('authored').count())
 ==>[a:Julia Child, b:2]
@@ -285,3 +297,34 @@ g.V().hasLabel('movie').as('a','b').
       order(local).by(valueDecr).
       limit(local,10).
       unfold()   // this puts each movie on its own line
+      
+--------------
+WHAT I DON'T DO THAT STEPHEN DOES:
+--------
+$ curl -L -O http://snap.stanford.edu/data/wiki-Vote.txt.gz
+$ gunzip wiki-Vote.txt.gz
+
+SCRIPT:
+graph = TinkerGraph.open()
+graph.createIndex('userId', Vertex.class) (1)
+
+gremlin> g = graph.traversal()
+
+getOrCreate = { id ->
+  g.V().has('userId', id).tryNext().orElseGet{ g.addV('userId', id).next() }
+}
+
+new File('wiki-Vote.txt').eachLine {
+  if (!it.startsWith("#")){
+    (fromVertex, toVertex) = it.split('\t').collect(getOrCreate) (2)
+    fromVertex.addEdge('votesFor', toVertex)
+  }
+}
+
+Gremlin server/REST example 
+
+$ curl -L -O https://www.apache.org/dist/incubator/tinkerpop/3.1.0-SNAPSHOT/apache-gremlin-server-3.1.0-SNAPSHOT-bin.zip
+$ unzip apache-gremlin-server-3.1.0-SNAPSHOT-bin.zip
+$ cd apache-gremlin-server-3.1.0-SNAPSHOT-bin.zip
+$ bin/gremlin-server.sh conf/gremlin-server-modern.yaml
+$ curl -X POST -d "{\"gremlin\":\"g.V(x).out().values('name')\", \"language\":\"gremlin-groovy\", \"bindings\":{\"x\":1}}" "http://localhost:8182"

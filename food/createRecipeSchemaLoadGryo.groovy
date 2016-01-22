@@ -1,4 +1,5 @@
 import com.datastax.bdp.graph.api.DseGraph
+n
 
 import org.apache.tinkerpop.gremlin.process.traversal.dsl.graph.GraphTraversalSource
 import org.apache.tinkerpop.gremlin.structure.Direction
@@ -13,8 +14,8 @@ import static com.datastax.bdp.graph.api.schema.VertexIndex.Type.SECONDARY
 class RecipeFactory {
 
 	public static void createSchema(final DseGraph graph) {
-    	#graph.migration("setup", { def schema ->
-    	schema = graph.schema()
+    	graph.migration("setup", { def schema ->
+    	//schema = graph.schema()
     	
     	    // Property Keys
     		def id = schema.buildPropertyKey('id', Integer.class).add()
@@ -59,26 +60,25 @@ class RecipeFactory {
 		})
 	}
 	
-	// I WOULD NEED A GRYO FILE OF MY DATA FOR THE NEXT TWO METHODS
-	//public static Graph load(final GraphTraversalSource g) {
-    //    def file = new File('/tmp/recipes.kryo')
-    //    if (file.exists() == false) {
-    //        def os = file.newOutputStream()
-    //        os << new URL("http://github.com/polandll/graph-examples/food/assets/recipes.kryo").openStream()
-    //        os.close()
-    //    }
-    //    RecipeFactory.load(g, file.getAbsolutePath())
-    //}
 
-    //public static Graph load(final GraphTraversalSource g, final String pathToGryo) {
-    //    RecipeFactory.load(g.getGraph().get(), pathToGryo)
-    //}
+	public static Graph load(final GraphTraversalSource g) {
+        def file = new File('//Users/lorinapoland/CLONES/graph-examples/food/Gryo/recipe.gryo')
+        if (file.exists() == false) {
+            def os = file.newOutputStream()
+            os << new URL("http://github.com/polandll/graph-examples/food/Gryo/recipe.gryo").openStream()
+            os.close()
+        }
+        RecipeFactory.load(g, file.getAbsolutePath())
+    }
+
+    public static Graph load(final GraphTraversalSource g, final String pathToGryo) {
+        RecipeFactory.load(g.getGraph().get(), pathToGryo)
+    }
 	
-	//public static Graph load(final DseGraph graph, final String pathToGryo) {
-	public static Graph load(final DseGraph graph) {
+	public static Graph load(final DseGraph graph, final String pathToGryo) {
+	//public static Graph load(final DseGraph graph) {
 	    RecipeFactory.createSchema(graph)
-	    // graph.io(IoCore.gryo()).readGraph(pathToGryo)
+	    graph.io(IoCore.gryo()).readGraph(pathToGryo)
 	    return graph
-	}
-	
+	}	
 }
