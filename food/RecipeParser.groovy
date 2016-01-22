@@ -16,7 +16,7 @@ class RecipeParser {
 
         def beforeTime = System.currentTimeMillis();
        
-		// AuthorID::Name::Gender
+	// AuthorID::Name::Gender
         new File(dataDirectory + '/author_sql.csv').eachLine { final String line ->
 
             def components = line.split("::")
@@ -53,7 +53,10 @@ class RecipeParser {
             if (++counter % batchSize == 0) graph.tx().commit()
             
             authors.split('\\|').each { def authId ->
-                def authVertex = g.V().has("author", "authorId", authId).tryNext()
+                def authVertex = g.V().has("author", "authorId", authId.toInteger()).tryNext()
+		// ****** NOT WORKING *******
+		// message indicates that bookVertex is not "known"
+		// I thought this is still in a loop where bookVertex is defined.
                 bookVertex.addEdge('authored', authVertex)
                 if (++counter % batchSize == 0) graph.tx().commit()
             }
@@ -79,27 +82,28 @@ class RecipeParser {
     		def iname = schema.buildPropertyKey('iname', String.class).add()
     		def category = schema.buildPropertyKey('category', String.class).add()
     		def bookTitle = schema.buildPropertyKey('bookTitle', String.class).add()
-    		def publishDate = schema.buildPropertyKey('publishDate', Date.class).add()
+    		def publishDate = schema.buildPropertyKey('publishDate', String.class).add()
     		def mname = schema.buildPropertyKey('mname', String.class).add()
-    		def createDate = schema.buildPropertyKey('createDate', Date.class).add()
+    		def createDate = schema.buildPropertyKey('createDate', String.class).add()
                 
-    		def rCreateDate = schema.buildPropertyKey('rCreateDate', Instant.class).add()
+    		def rCreateDate = schema.buildPropertyKey('rCreateDate', String.class).add()
     		def stars = schema.buildPropertyKey('stars', String.class).add()
-    		def ratedDate = schema.buildPropertyKey('ratedDate', Instant.class).add()
+    		def ratedDate = schema.buildPropertyKey('ratedDate', String.class).add()
     		def amount = schema.buildPropertyKey('amount', String.class).add()
     		
     		// Vertex Labels
     		def author = schema.buildVertexLabel('author').add()
     		def recipe = schema.buildVertexLabel('recipe').add()
-			def ingredient = schema.buildVertexLabel('ingredient').add()
+		def ingredient = schema.buildVertexLabel('ingredient').add()
     		def book = schema.buildVertexLabel('book').add()
     		def meal = schema.buildVertexLabel('meal').add()
     		def reviewer = schema.buildVertexLabel('reviewer').add()
                 
     		// Edge Labels
+    		def authored = schema.buildEdgeLabel('authored').add()
     		def created = schema.buildEdgeLabel('created').add()
     		def includes = schema.buildEdgeLabel('includes').add()
-			def includedIn = schema.buildEdgeLabel('includedIn').add()
+		def includedIn = schema.buildEdgeLabel('includedIn').add()
     		def rated = schema.buildEdgeLabel('rated').add()
                 
     		// Indexes
