@@ -87,14 +87,12 @@ gremlin> :> g.V().outE('authored').inV().values('bookTitle')
 ==>The Art of French Cooking, Vol. 1
 ==>The French Chef Cookbook
 
-*******IDEA******
-SHOULD I USE DEDUP TO SHOW DEDUPLICATION OF THE RESULTS?
+// DEDUPLICATE THE LAST LISTING
 gremlin> :> g.V().outE('authored').inV().values('bookTitle').dedup()
 ==>Simca's Cuisine: 100 Classic French Recipes for Every Occasion
 ==>The Art of French Cooking, Vol. 1
 ==>The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
 ==>The French Chef Cookbook
-*****************
 
 // GET BOOK TITLES FOR PARTICULAR AUTHOR
 // Uses outE() and inV() which is overkill - edge information is not needed, just passed through
@@ -124,31 +122,14 @@ gremlin> :> graph.io(IoCore.gryo()).writeGraph("/home/ubuntu/recipe.gryo")
 gremlin> :> graph.io(IoCore.gryo()).readGraph("/home/ubuntu/recipe.gryo")
 ==>NULL
 
-**************************
-NOT ADDED TO EAP DOC YET
-**************************
-
-gremlin> :> g.V().group().by(label).by('aname')
-==>[author:[Fritz Streiff, Kelsie Kerr, Patricia Curtan, Julia Child, Patricia Simon, Emeril Lagasse, Simone Beck, Louisette Bertholie, James Beard, Alice Waters]]
-
-gremlin> :> g.V().hasLabel('author').as('a','b').select('a','b').by('aname').by(outE('authored').count())
-==>[a:Julia Child, b:2]
-==>[a:Patricia Curtan, b:1]
-==>[a:Fritz Streiff, b:1]
-==>[a:Kelsie Kerr, b:1]
-==>[a:James Beard, b:0]
-==>[a:Alice Waters, b:1]
-==>[a:Patricia Simon, b:1]
-==>[a:Simone Beck, b:2]
-==>[a:Louisette Bertholie, b:1]
-==>[a:Emeril Lagasse, b:0]
+****** ADDED TO QUERY/TRAVERSAL PAGES
 
 // RUN SCRIPT TO ADD RECIPE REVIEWS
-script2 = new File('/home/ubuntu/generateReviews.groovy').text; []
-:> @script2
+gremlin> script2 = new File('/home/ubuntu/generateReviews.groovy').text; []
+gremlin> :> @script2
 
 // GET A COUNT OF REVIEWS
-:> g.V().hasLabel('reviewer').count()
+gremlin> :> g.V().hasLabel('reviewer').count()
 ==>5
 
 // GET THE VALUES FOR ALL REVIEWERS TO CHECK
@@ -172,11 +153,39 @@ gremlin> :> g.E().hasLabel('rated').has('stars', gt(3)).valueMap()
 ==>[comment:Pretty tasty!, stars:5, ratedDate:2014-01-01]
 ==>[comment:Really spicy - be careful!, stars:4, ratedDate:2015-12-31]
 
+// GET THE RECIPES THAT HAVE A RATING HIGHER THAN 3 STARS
+gremlin>  :> g.E().hasLabel('rated').has('stars', gt(3)).inV().values('recipeTitle')
+==>Beef Bourguignon
+==>Spicy Meatloaf
+==>Beef Bourguignon
+==>Carrot Soup
+==>Beef Bourguignon
+
 // GET THE VALUEMAP FOR EACH EDGE THAT HAS MORE THAN 3 STARS AND A RATED DATE GREATER THAN JAN 1, 2015
 // Need to figure out dates!! Notice how the date value is parsed by greater than
 gremlin> :> g.E().hasLabel('rated').has('stars', gt(3)).has('ratedDate', gt('2015-01-01')).valueMap()
 ==>[comment:Loved this soup! Yummy vegetarian!, stars:5, ratedDate:2015-12-30]
 ==>[comment:Really spicy - be careful!, stars:4, ratedDate:2015-12-31]
+
+**************************
+NOT ADDED TO EAP DOC YET
+**************************
+
+gremlin> :> g.V().group().by(label).by('aname')
+==>[author:[Fritz Streiff, Kelsie Kerr, Patricia Curtan, Julia Child, Patricia Simon, Emeril Lagasse, Simone Beck, Louisette Bertholie, James Beard, Alice Waters]]
+
+gremlin> :> g.V().hasLabel('author').as('a','b').select('a','b').by('aname').by(outE('authored').count())
+==>[a:Julia Child, b:2]
+==>[a:Patricia Curtan, b:1]
+==>[a:Fritz Streiff, b:1]
+==>[a:Kelsie Kerr, b:1]
+==>[a:James Beard, b:0]
+==>[a:Alice Waters, b:1]
+==>[a:Patricia Simon, b:1]
+==>[a:Simone Beck, b:2]
+==>[a:Louisette Bertholie, b:1]
+==>[a:Emeril Lagasse, b:0]
+
 
 // How many recipes has Julia Child written?
 gremlin> :> g.V().hasLabel('recipe').in().has('aname','Julia Child').count()
@@ -185,27 +194,25 @@ gremlin> :> g.V().hasLabel('recipe').in().has('aname','Julia Child').count()
 // MEAN STARS
 :> g.E().hasLabel('rated').values('stars').mean()
 ****GET VALUE
-==>
-****************************
+==>4.142857142857143
 
 // FIND  THE MAX NUMBER OF RECIPE REVIEWS BY A SINGLE REVIEWER
-:> g.V().hasLabel('reviewer').map(outE('rated').count()).max()
+gremlin> :> g.V().hasLabel('reviewer').map(outE('rated').count()).max()
+==>2
 
-NOTES FOR FRIDAY:
-NEED TO SET UP VM TO BUILD BDP AND HULK FROM REPOS
-use these instructions: https://datastax.jira.com/wiki/pages/viewpage.action?pageId=106790929
-make sure Java 8 is installed
+// RECIPES THAT CONTAIN BEEF
+gremlin> :> g.V().hasLabel('recipe').out().has('iName','beef').in().hasLabel('recipe').values('recipeTitle')
+==>Beef Bourguignon
 
-// NOT QUITE RIGHT
-:> g.V().hasLabel('recipe').out().has('iName','beef').valueMap()
-==>[iName:[beef], id:[300]]
-// I wanted the recipe names that contain beef
+// RECIPES THAT CONTAIN EITHER BEEF OR CARROTS
+gremlin> :> g.V().hasLabel('recipe').out().has('iName',within('beef','carrots')).in().hasLabel('recipe').values('recipeTitle')
+==>Beef Bourguignon
+==>Carrot Soup
 
-// SAME ISSUE
-gremlin> :> g.V().hasLabel('recipe').out().has('iName',within('beef','mashed garlic')).valueMap()
-==>[iName:[beef], id:[300]]
-==>[iName:[mashed garlic], id:[302]]
-==>[iName:[mashed garlic], id:[302]]
+// CLEANER VERSION OF LAST TRAVERSAL
+gremlin> :> g.V().hasLabel('ingredient').has('iName',within('beef','carrots')).in().hasLabel('recipe').values('recipeTitle')
+==>Beef Bourguignon
+==>Carrot Soup
 
 gremlin> :> g.V().hasLabel('recipe').in().has('aname','Julia Child').count().profile().cap(TraversalMetrics.METRICS_KEY)
 ==>Traversal Metrics
@@ -276,9 +283,9 @@ g.V().hasLabel('movie').as('a','b').
   order().by(select('b'), decr).
   limit(10) 
   
-  // For each movie with at least 11 ratings emilt a map of its name and avg rating. sort maps in decr order by avg rating. Top 10 only
+  // For each movie with at least 11 ratings emit a map of its name and avg rating. sort maps in decr order by avg rating. Top 10 only
   g.V().hasLabel('movie').as('a','b').
-    where(inE('rated').cout().is(gt(10))).
+    where(inE('rated').count().is(gt(10))).
     select('a','b').
       by('name').
       by(inE('rated').values('stars').mean()).

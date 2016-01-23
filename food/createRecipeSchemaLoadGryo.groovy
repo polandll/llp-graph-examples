@@ -32,7 +32,7 @@ class RecipeFactory {
     		def createDate = schema.buildPropertyKey('createDate', Date.class).add()
                 
     		def rCreateDate = schema.buildPropertyKey('rCreateDate', Instant.class).add()
-    		def stars = schema.buildPropertyKey('stars', String.class).add()
+    		def stars = schema.buildPropertyKey('stars', Integer.class).add()
     		def ratedDate = schema.buildPropertyKey('ratedDate', Instant.class).add()
     		def amount = schema.buildPropertyKey('amount', String.class).add()
     		
