@@ -162,14 +162,63 @@ gremlin>  :> g.E().hasLabel('rated').has('stars', gt(3)).inV().values('recipeTit
 ==>Beef Bourguignon
 
 // GET THE VALUEMAP FOR EACH EDGE THAT HAS MORE THAN 3 STARS AND A RATED DATE GREATER THAN JAN 1, 2015
-// Need to figure out dates!! Notice how the date value is parsed by greater than
+// Need to figure out dates!! Notice how the date value is parsed by greater than is not correct
+
 gremlin> :> g.E().hasLabel('rated').has('stars', gt(3)).has('ratedDate', gt('2015-01-01')).valueMap()
 ==>[comment:Loved this soup! Yummy vegetarian!, stars:5, ratedDate:2015-12-30]
 ==>[comment:Really spicy - be careful!, stars:4, ratedDate:2015-12-31]
 
+// MEAN STARS
+gremlin> :> g.E().hasLabel('rated').values('stars').mean()
+==>4.142857142857143
+
+// FIND  THE MAX NUMBER OF RECIPE REVIEWS BY A SINGLE REVIEWER
+gremlin> :> g.V().hasLabel('reviewer').map(outE('rated').count()).max()
+==>2
+
+gremlin> :> g.V().hasLabel('reviewer').as('reviewer','starCount').select('reviewer','starCount').by('revname').by(outE('rated').values('stars').mean())
+==>[reviewer:Jane Doe, starCount:5.0]
+==>[reviewer:Betsy Jones, starCount:NaN]
+==>[reviewer:John Doe, starCount:4.5]
+==>[reviewer:John Smith, starCount:4.0]
+==>[reviewer:Sharon Smith, starCount:3.0]
+
+gremlin> :> g.V().hasLabel('reviewer').as('reviewer','starCount').select('reviewer','starCount').by('revname').by(outE('rated').values('stars').mean()).order().by(select('starCount'), decr)
+==>[reviewer:Betsy Jones, starCount:NaN]
+==>[reviewer:Jane Doe, starCount:5.0]
+==>[reviewer:John Doe, starCount:4.5]
+==>[reviewer:John Smith, starCount:4.0]
+==>[reviewer:Sharon Smith, starCount:3.0]
+
+gremlin> :> g.V().hasLabel('reviewer').as('reviewer','starCount').select('reviewer','starCount').by('revname').by(coalesce(outE('rated').values('stars'),constant(0)).mean()).order().by(select('starCount'), decr)
+==>[reviewer:Jane Doe, starCount:5.0]
+==>[reviewer:John Doe, starCount:4.5]
+==>[reviewer:John Smith, starCount:4.0]
+==>[reviewer:Sharon Smith, starCount:3.0]
+==>[reviewer:Betsy Jones, starCount:0.0]
+
 **************************
 NOT ADDED TO EAP DOC YET
 **************************
+// THIS IS THE ACTUAL ONE! What did John Doe have to say?
+gremlin> :> g.V().hasLabel('reviewer').has('revname','John Doe').outE('rated').values('comment')
+==>Pretty tasty!
+==>Really spicy - be careful!
+
+gremlin> :> g.V().hasLabel('reviewer').has('revname','John Doe').outE('rated').inV().values('recipeTitle')
+==>Beef Bourguignon
+==>Spicy Meatloaf
+
+gremlin> :> g.V().hasLabel('reviewer').as('reviewer','starCount', 'recipe').select('reviewer','starCount','recipe').by('revname').by(outE('rated').values('stars').mean()).by(out('recipe').values('recipeTitle'))
+
+// RECIPES THAT CONTAIN BEEF
+gremlin> :> g.V().hasLabel('recipe').out().has('iName','beef').in().hasLabel('recipe').values('recipeTitle')
+==>Beef Bourguignon
+
+// RECIPES THAT CONTAIN EITHER BEEF OR CARROTS
+gremlin> :> g.V().hasLabel('recipe').out().has('iName',within('beef','carrots')).in().hasLabel('recipe').values('recipeTitle')
+==>Beef Bourguignon
+==>Carrot Soup
 
 gremlin> :> g.V().group().by(label).by('aname')
 ==>[author:[Fritz Streiff, Kelsie Kerr, Patricia Curtan, Julia Child, Patricia Simon, Emeril Lagasse, Simone Beck, Louisette Bertholie, James Beard, Alice Waters]]
@@ -186,28 +235,21 @@ gremlin> :> g.V().hasLabel('author').as('a','b').select('a','b').by('aname').by(
 ==>[a:Louisette Bertholie, b:1]
 ==>[a:Emeril Lagasse, b:0]
 
+gremlin>  :> g.V().hasLabel('author').as('a','wrote').select('a','wrote').by('aname').by(outE('authored').count())
+==>[a:James Beard, wrote:0]
+==>[a:Simone Beck, wrote:2]
+==>[a:Julia Child, wrote:2]
+==>[a:Emeril Lagasse, wrote:0]
+==>[a:Patricia Simon, wrote:1]
+==>[a:Louisette Bertholie, wrote:1]
+==>[a:Kelsie Kerr, wrote:1]
+==>[a:Alice Waters, wrote:1]
+==>[a:Fritz Streiff, wrote:1]
+==>[a:Patricia Curtan, wrote:1]
 
 // How many recipes has Julia Child written?
 gremlin> :> g.V().hasLabel('recipe').in().has('aname','Julia Child').count()
 ==>1
-
-// MEAN STARS
-:> g.E().hasLabel('rated').values('stars').mean()
-****GET VALUE
-==>4.142857142857143
-
-// FIND  THE MAX NUMBER OF RECIPE REVIEWS BY A SINGLE REVIEWER
-gremlin> :> g.V().hasLabel('reviewer').map(outE('rated').count()).max()
-==>2
-
-// RECIPES THAT CONTAIN BEEF
-gremlin> :> g.V().hasLabel('recipe').out().has('iName','beef').in().hasLabel('recipe').values('recipeTitle')
-==>Beef Bourguignon
-
-// RECIPES THAT CONTAIN EITHER BEEF OR CARROTS
-gremlin> :> g.V().hasLabel('recipe').out().has('iName',within('beef','carrots')).in().hasLabel('recipe').values('recipeTitle')
-==>Beef Bourguignon
-==>Carrot Soup
 
 // CLEANER VERSION OF LAST TRAVERSAL
 gremlin> :> g.V().hasLabel('ingredient').has('iName',within('beef','carrots')).in().hasLabel('recipe').values('recipeTitle')
@@ -231,24 +273,6 @@ CountGlobalStep                                                        1        
 SideEffectCapStep([~metrics])                                          1           1          23.546    23.95
                                             >TOTAL                     -           -          98.299        -
 
-gremlin> :> g.V().hasLabel('reviewer').has('revname','John Doe').outE('rated').valueMap()
-==>[comment:Pretty tasty!, stars:5, ratedDate:2014-01-01]
-==>[comment:Really spicy - be careful!, stars:4, ratedDate:2015-12-31]
-
-// THIS IS THE ACTUAL ONE! What did John Doe have to say?
-gremlin> :> g.V().hasLabel('reviewer').has('revname','John Doe').outE('rated').values('comment')
-==>Pretty tasty!
-==>Really spicy - be careful!
-
-gremlin> :> g.V().hasLabel('reviewer').has('revname','John Doe').outE('rated').inV().values('recipeTitle')
-==>Beef Bourguignon
-==>Spicy Meatloaf
-
-
-// SILLLY, BUT .... the mean of the recipe creation dates
-// SEE DOWN LOWER FOR DIFFERENT mean()
-:> g.E().has('rCreateDate').values('rCreateDate').mean()
-==>1981.5
 
 *** 
 IDEA: categories for recipes

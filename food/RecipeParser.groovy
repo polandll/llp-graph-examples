@@ -47,7 +47,7 @@ class RecipeParser {
             def bookVertex = graph.addVertex(label, "book",
                 "bookId", bookId,
                 "bookTitle", bookTitle,
-                "publishDate", publishDate,
+                "publishDate", Instant.parse(publishDate),
                 "ISBN", ISBN)
 
             if (++counter % batchSize == 0) graph.tx().commit()
@@ -82,13 +82,13 @@ class RecipeParser {
     		def iname = schema.buildPropertyKey('iname', String.class).add()
     		def category = schema.buildPropertyKey('category', String.class).add()
     		def bookTitle = schema.buildPropertyKey('bookTitle', String.class).add()
-    		def publishDate = schema.buildPropertyKey('publishDate', String.class).add()
+    		def publishDate = schema.buildPropertyKey('publishDate', Instant.class).add()
     		def mname = schema.buildPropertyKey('mname', String.class).add()
-    		def createDate = schema.buildPropertyKey('createDate', String.class).add()
+    		def createDate = schema.buildPropertyKey('createDate', Instant.class).add()
                 
-    		def rCreateDate = schema.buildPropertyKey('rCreateDate', String.class).add()
+    		def rCreateDate = schema.buildPropertyKey('rCreateDate', Instant.class).add()
     		def stars = schema.buildPropertyKey('stars', String.class).add()
-    		def ratedDate = schema.buildPropertyKey('ratedDate', String.class).add()
+    		def ratedDate = schema.buildPropertyKey('ratedDate', Instant.class).add()
     		def amount = schema.buildPropertyKey('amount', String.class).add()
     		
     		// Vertex Labels
