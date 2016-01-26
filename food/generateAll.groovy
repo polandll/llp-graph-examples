@@ -4,6 +4,7 @@
 // Add all vertices and edges for Recipe
 
 // author vertices
+
 juliaChild = graph.addVertex(label, 'author', 'id', 1, 'aname','Julia Child', 'gender', 'F')
 simoneBeck = graph.addVertex(label, 'author', 'id', 2, 'aname', 'Simone Beck', 'gender', 'F')
 louisetteBertholie = graph.addVertex(label, 'author', 'id', 3, 'aname', 'Louisette Bertholie', 'gender', 'F')
@@ -16,12 +17,14 @@ emerilLagasse = graph.addVertex(label, 'author', 'id', 9, 'aname', 'Emeril Lagas
 jamesBeard = graph.addVertex(label, 'author', 'id', 10, 'aname', 'James Beard', 'gender', 'M')
 
 // book vertices
+
 artOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'id', 100, 'bookTitle', 'The Art of French Cooking, Vol. 1', 'publishDate', 1961)
 simcasCuisine = graph.addVertex(label, 'book', 'id', 101,'bookTitle', "Simca's Cuisine: 100 Classic French Recipes for Every Occasion", 'publishDate', 1972, 'ISBN', '0-394-40152-2')
 frenchChefCookbook = graph.addVertex(label, 'book', 'id', 102, 'bookTitle','The French Chef Cookbook', 'publishDate',1968, 'ISBN', '0-394-40135-2')
 artOfSimpleFood = graph.addVertex(label, 'book', 'id', 103, 'bookTitle', 'The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution', 'publishDate', 2007, 'ISBN', '0-307-33679-4')
 
 // recipe vertices
+
 beefBourguignon = graph.addVertex('id', 200, label, 'recipe', 'recipeTitle', 'Beef Bourguignon', 'instructions', 'Braise the beef. Saute the onions and carrots. Add wine and cook in a dutch oven at 425 degrees for 1 hour.')
 ratatouille = graph.addVertex('id', 201, label, 'recipe', 'recipeTitle', 'Rataouille', 'instructions', 'Peel and cut the egglant. Make sure you cut eggplant into lengthwise slices that are about 1-inch wide, 3-inches long, and 3/8-inch thick')
 saladeNicoise = graph.addVertex('id', 202, label, 'recipe', 'recipeTitle', 'Salade Nicoise', 'instructions', 'Take a salad bowl or platter and line it with lettuce leaves, shortly before serving. Drizzle some olive oil on the leaves and dust them with salt.')
@@ -32,6 +35,7 @@ carrotSoup = graph.addVertex('id', 206, label, 'recipe', 'recipeTitle', 'Carrot 
 roastPorkLoin = graph.addVertex('id', 207, label, 'recipe', 'recipeTitle', 'Roast Pork Loin', 'instructions', 'The day before, separate the meat from the ribs, stopping about 1 inch before the end of the bones. Season the pork liberally inside and out with salt and pepper and refrigerate overnight.')
 
 // ingredients vertices
+
 beef = graph.addVertex('id', 300, label, 'ingredient', 'iName', 'beef')
 onion = graph.addVertex('id', 301, label, 'ingredient', 'iName', 'onion')
 mashedGarlic = graph.addVertex('id', 302, label, 'ingredient', 'iName', 'mashed garlic')
@@ -65,6 +69,7 @@ porkLoin = graph.addVertex('id', 329, label, 'ingredient', 'iName', 'pork loin')
 redWine = graph.addVertex('id', 330, label, 'ingredient', 'iName', 'red wine')
 
 // author-book edges
+
 juliaChild.addEdge('authored', artOfFrenchCookingVolOne)
 simoneBeck.addEdge('authored', artOfFrenchCookingVolOne)
 louisetteBertholie.addEdge('authored', artOfFrenchCookingVolOne)
@@ -77,6 +82,7 @@ kelsieKerr.addEdge('authored', artOfSimpleFood)
 fritzStreiff.addEdge('authored', artOfSimpleFood)
 
 // author - recipe edges
+
 juliaChild.addEdge('created', beefBourguignon, 'rCreateDate', 1961)
 juliaChild.addEdge('created', ratatouille, 'rCreateDate', 1965)
 juliaChild.addEdge('created', saladeNicoise, 'rCreateDate', 1962)
@@ -87,6 +93,7 @@ aliceWaters.addEdge('created', roastPorkLoin, 'rCreateDate', 1996)
 jamesBeard.addEdge('created', oystersRockefeller, 'rCreateDate', 1970)
 
 // recipe - ingredient edges
+
 beefBourguignon.addEdge('includes', beef, 'amount', '2 lbs')
 beefBourguignon.addEdge('includes', onion, 'amount', '1 sliced')
 beefBourguignon.addEdge('includes', mashedGarlic, 'amount', '2 cloves')
@@ -135,9 +142,11 @@ carrotSoup.addEdge('includedIn', artOfSimpleFood)
 roastPorkLoin.addEdge('includedIn', artOfSimpleFood)
 
 // meal vertices
+
 SaturdayFeast = graph.addVertex(label, 'meal', 'id', 500, 'mealTitle', 'Saturday Feast', 'mCreateDate', '2015-11-30', 'calories', 1000)
 EverydayDinner = graph.addVertex(label, 'meal', 'id', 501, 'mealTitle', 'EverydayDinner', 'mCreateDate', '2016-01-14', 'calories', 600)
 JuliaDinner = graph.addVertex(label, 'meal', 'id', 502, 'mealTitle', 'JuliaDinner', 'mCreateDate', '2016-01-14', 'calories', 900)
+
 // meal - recipe edges
 
 SaturdayFeast.addEdge('includedIn', beefBourguignon)
@@ -155,6 +164,7 @@ simcasCuisine.addEdge('includedIn', SaturdayFeast)
 artOfFrenchCookingVolOne.addEdge('includedIn', JuliaDinner)
 
 // reviewer vertices
+
 johnDoe = graph.addVertex(label, 'reviewer', 'id', 400, 'revname','John Doe')
 johnSmith = graph.addVertex(label, 'reviewer', 'id', 401, 'revname','John Smith')
 janeDoe = graph.addVertex(label, 'reviewer', 'id', 402, 'revname','Jane Doe')
@@ -162,6 +172,7 @@ sharonSmith = graph.addVertex(label, 'reviewer', 'id', 403, 'revname','Sharon Sm
 betsyJones = graph.addVertex(label, 'reviewer', 'id', 404, 'revname','Betsy Jones')
 
 // reviewer - recipe edges
+
 johnDoe.addEdge('rated', beefBourguignon, 'ratedDate', Instant.parse('2014-01-01T00:00:00.00Z'), 'stars', 5, 'comment', 'Pretty tasty!')
 johnSmith.addEdge('rated', beefBourguignon, 'ratedDate', Instant.parse('2014-01-23T00:00:00.00Z'), 'stars', 4)
 janeDoe.addEdge('rated', beefBourguignon, 'ratedDate', Instant.parse('2014-02-01T00:00:00.00Z'), 'stars', 5, 'comment', 'Yummy!')

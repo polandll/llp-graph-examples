@@ -52,11 +52,11 @@ class RecipeFactory {
                 
     		// Indexes
     		// Looks like these have changed - see northwind gist	
-    		def ratedByStars = reviewer.buildEdgeIndex('ratedByStars', rated).direction(Direction.OUT).byPropertyKey(stars).add()
-    		def byRecipe = recipe.buildIndex('byRecipe').ofMaterializedView().byPropertyKey(recipeTitle).add()
-    		def byMeal = meal.buildIndex('byMeal', MATERIALIZED).ofMaterializedView().byPropertyKey(mname).add()
-    		def byIngredient = ingredient.buildIndex('byIngredient').byPropertyKey('iname').add()
-    		def byReviewer = reviewer.buildIndex('byReviewer', MATERIALIXZED).byPropertyKey('revname').add()
+    		def ratedByStars = reviewer.buildEdgeIndex('ratedByStars', rated).direction(OUT).byPropertyKey('stars').add()
+    		def byRecipe = recipe.buildVertexIndex('byRecipe', MATERIALIZED).byPropertyKey('recipeTitle').add()
+    		def byMeal = meal.buildVertexIndex('byMeal', MATERIALIZED).byPropertyKey('mname').add()
+    		def byIngredient = ingredient.buildVertexIndex('byIngredient', MATERIALIZED).byPropertyKey('iname').add()
+    		def byReviewer = reviewer.buildVertexIndex('byReviewer', MATERIALIZED).byPropertyKey('revname').add()
 		})
 	}
 	

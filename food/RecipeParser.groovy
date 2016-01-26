@@ -94,7 +94,7 @@ class RecipeParser {
     		// Vertex Labels
     		def author = schema.buildVertexLabel('author').add()
     		def recipe = schema.buildVertexLabel('recipe').add()
-		def ingredient = schema.buildVertexLabel('ingredient').add()
+			def ingredient = schema.buildVertexLabel('ingredient').add()
     		def book = schema.buildVertexLabel('book').add()
     		def meal = schema.buildVertexLabel('meal').add()
     		def reviewer = schema.buildVertexLabel('reviewer').add()
@@ -103,16 +103,16 @@ class RecipeParser {
     		def authored = schema.buildEdgeLabel('authored').add()
     		def created = schema.buildEdgeLabel('created').add()
     		def includes = schema.buildEdgeLabel('includes').add()
-		def includedIn = schema.buildEdgeLabel('includedIn').add()
+			def includedIn = schema.buildEdgeLabel('includedIn').add()
     		def rated = schema.buildEdgeLabel('rated').add()
                 
     		// Indexes
-    		// Looks like these have changed - see northwind gist	
-    		//def ratedByStars = reviewer.buildEdgeIndex('ratedByStars', rated).direction(Direction.OUT).byPropertyKey(stars).add()
-    		//def byRecipe = recipe.buildIndex('byRecipe').ofMaterializedView().byPropertyKey(recipeTitle).add()
-    		//def byMeal = meal.buildIndex('byMeal', MATERIALIZED).ofMaterializedView().byPropertyKey(mname).add()
-    		//def byIngredient = ingredient.buildIndex('byIngredient').byPropertyKey('iname').add()
-    		//def byReviewer = reviewer.buildIndex('byReviewer', MATERIALIZED).byPropertyKey('revname').add()
+    			
+    		def ratedByStars = reviewer.buildEdgeIndex('ratedByStars', rated).direction(OUT).byPropertyKey('stars').add()
+    		def byRecipe = recipe.buildVertexIndex('byRecipe', MATERIALIZED).byPropertyKey('recipeTitle').add()
+    		def byMeal = meal.buildVertexIndex('byMeal', MATERIALIZED).byPropertyKey('mname').add()
+    		def byIngredient = ingredient.buildVertexIndex('byIngredient', MATERIALIZED).byPropertyKey('iname').add()
+    		def byReviewer = reviewer.buildVertexIndex('byReviewer', MATERIALIZED).byPropertyKey('revname').add()
 		})
 	}
 
