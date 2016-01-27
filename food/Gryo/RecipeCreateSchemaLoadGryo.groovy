@@ -1,3 +1,6 @@
+// script = new File('/Users/lorinapoland/CLONES/graph-examples/food/Gryo/RecipeCreateSchemaLoadGryo.groovy').text; []
+// :> @script
+
 import com.datastax.bdp.graph.api.DseGraph
 n
 
@@ -59,7 +62,6 @@ class RecipeFactory {
     		def byReviewer = reviewer.buildVertexIndex('byReviewer', MATERIALIZED).byPropertyKey('revname').add()
 		})
 	}
-	
 
 	public static Graph load(final GraphTraversalSource g) {
         def file = new File('//Users/lorinapoland/CLONES/graph-examples/food/Gryo/recipe.gryo')

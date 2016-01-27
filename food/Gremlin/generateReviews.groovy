@@ -1,3 +1,5 @@
+// Generates review vertices and edges for Recipe Toy Graph
+
 // script = new File('/Users/lorinapoland/CLONES/graph-examples/food/generateReviews.groovy').text; []
 
 // reviewer vertices

@@ -53,7 +53,8 @@ class RecipeParser {
             if (++counter % batchSize == 0) graph.tx().commit()
             
             authors.split('\\|').each { def authId ->
-                def authVertex = g.V().has("author", "authorId", authId.toInteger()).tryNext()
+                def authVertex = g.V().has("author", "aname", authId).tryNext()
+		// **************************
 		// ****** NOT WORKING *******
 		// message indicates that bookVertex is not "known"
 		// I thought this is still in a loop where bookVertex is defined.

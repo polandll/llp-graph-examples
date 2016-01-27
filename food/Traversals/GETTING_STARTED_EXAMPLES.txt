@@ -11,7 +11,7 @@ gremlin> :remote connect tinkerpop.server conf/remote-objects.yaml
 ==>Connected - localhost/127.0.0.1:8182
 
 // CREATE GRAPH "TEST"
-gremlin> :> system.createGraph("test").ifNotExist().build()
+gremlin> :> system.createGraph('test').ifNotExist().build()
 ==>test
 
 // CONFIG GRAPH TRAVERSAL g TO ALIAS test.g

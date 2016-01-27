@@ -2,35 +2,45 @@
 
 ------------------------------------------------------
 /* SIMPLE TRAVERSAL:                                */
-/* traverses through the steps in sequential order  */
+/* traverses through a series of traversal steps    */
 ------------------------------------------------------
 
 // How many recipes exist in the database?
 g.V().hasLabel('recipe').count()
+==>8
 
 // How many recipes has Julia Child written?
 g.V().hasLabel('recipe').in().has('aname','Julia Child').count()
+==>3
 
 // Which recipes list beef as an ingredient?
-g.V().hasLabel('recipe').out().has('name','beef')
+g.V().hasLabel('recipe').out().has('iName','beef').in().hasLabel('recipe').values('recipeTitle')
+==>Beef Bourguignon
 
-// Which recipes list beef and mashed garlic as ingredients?
-g.V().hasLabel('recipe').out().has('name',within('beef','mashed garlic'))
+// Which recipes list beef or carrots as ingredients?
+g.V().hasLabel('recipe').out().has('iName',within('beef','carrots')).in().hasLabel('recipe').values('recipeTitle')
+==>Beef Bourguignon
+==>Carrot Soup
 
 // Which cookbooks list Julia Child as an author?
 g.V().has('aname','Julia Child').out('authored').values('bookTitle')
+==>The Art of French Cooking, Vol. 1
+==>The French Chef Cookbook
 
-// Which cookbooks were published in 1980?
-g.V().hasLabel('book').has('publishDate',1980)
+// Which cookbooks were published in 1968?
+g.V().hasLabel('book').has('publishDate',1968).values('bookTitle')
+==>The French Chef Cookbook
 
 // Which cookbooks did Julia Child write after 1968?
 g.V().has('aname','Julia Child').out('authored').has('publishDate', gt(1967)).values('bookTitle')
+==>The French Chef Cookbook
 
-// What cookbooks have recipes that list beef or mashed garlic as ingredients?
-g.V().hasLabel('recipe').out().has('name',within('beef','mashed garlic')).out().hasLabel('book').valueMap('title')
-
-// What cookbooks have recipes that list beef or mashed garlic as ingredients, order by title?
-g.V().hasLabel('recipe').out().has('name',within('beef','mashed garlic')).out().hasLabel('book').values('title').order()
+// NOT QUITE RIGHT
+// What cookbooks have recipes that list beef or carrots as ingredients, order by title?
+g.V().hasLabel('recipe').out().
+	has('iName',within('beef','carrots')).
+	in().hasLabel('recipe').values('recipeTitle').
+	out().hasLabel('book').values('bookTitle').order()
 
 // What are the recipes included in the cookbooks that list beef and mashed garlic as ingredients?
 g.V().hasLabel('recipe').out().has('name',within('beef','mashed garlic')).out().hasLabel('book').out().hasLabel('recipe').valueMap('rName')
@@ -38,13 +48,13 @@ g.V().hasLabel('recipe').out().has('name',within('beef','mashed garlic')).out().
 // Profile to discover how various traversal strategies will work for a query
 // This profiles the last traversal
 g.V().hasLabel('recipe').out().
-      has('name',within('beef','mashed garlic')).out().
+      has('name',within('beef','carrots')).out().
       hasLabel('book').out().hasLabel('recipe').valueMap('rName').
       profile().cap(TraversalMetrics.METRICS_KEY)
 
 // TimeLimit of 2 ms for the traversal
 g.V().hasLabel('recipe').out().
-      has('name',within('beef','mashed garlic')).out().
+      has('name',within('beef','carrots')).out().
       hasLabel('book').out().hasLabel('recipe').valueMap('rName').
       timeLimit(2)
 
