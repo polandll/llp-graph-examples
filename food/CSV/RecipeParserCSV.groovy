@@ -87,7 +87,7 @@ class RecipeParser {
     		def iname = schema.buildPropertyKey('iname', String.class).add()
     		def category = schema.buildPropertyKey('category', String.class).add()
     		def bookTitle = schema.buildPropertyKey('bookTitle', String.class).add()
-    		def publishDate = schema.buildPropertyKey('publishDate', Instant.class).add()
+    		def publishDate = schema.buildPropertyKey('publishDate', Integer.class).add()
     		def mname = schema.buildPropertyKey('mname', String.class).add()
     		def createDate = schema.buildPropertyKey('createDate', Instant.class).add()
                 
