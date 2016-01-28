@@ -13,6 +13,7 @@ import java.util.ArrayList
 import java.util.List
 
 import static com.datastax.bdp.graph.api.schema.VertexIndex.Type.SECONDARY
+import static com.datastax.bdp.graph.api.schema.VertexIndex.Type.MATERIALIZED
 
 class RecipeFactory {
 
@@ -53,8 +54,7 @@ class RecipeFactory {
 			def includedIn = schema.buildEdgeLabel('includedIn').add()
     		def rated = schema.buildEdgeLabel('rated').add()
                 
-    		// Indexes
-    		// Looks like these have changed - see northwind gist	
+    		// Indexes	
     		def ratedByStars = reviewer.buildEdgeIndex('ratedByStars', rated).direction(OUT).byPropertyKey('stars').add()
     		def byRecipe = recipe.buildVertexIndex('byRecipe', MATERIALIZED).byPropertyKey('recipeTitle').add()
     		def byMeal = meal.buildVertexIndex('byMeal', MATERIALIZED).byPropertyKey('mname').add()

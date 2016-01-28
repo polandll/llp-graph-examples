@@ -35,15 +35,30 @@ g.V().hasLabel('book').has('publishDate',1968).values('bookTitle')
 g.V().has('aname','Julia Child').out('authored').has('publishDate', gt(1967)).values('bookTitle')
 ==>The French Chef Cookbook
 
-// NOT QUITE RIGHT
 // What cookbooks have recipes that list beef or carrots as ingredients, order by title?
 g.V().hasLabel('recipe').out().
 	has('iName',within('beef','carrots')).
-	in().hasLabel('recipe').values('recipeTitle').
-	out().hasLabel('book').values('bookTitle').order()
+	in().hasLabel('recipe').
+	out().hasLabel('book').values('bookTitle').
+	order()
+==>The Art of French Cooking, Vol. 1
+==>The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
 
-// What are the recipes included in the cookbooks that list beef and mashed garlic as ingredients?
-g.V().hasLabel('recipe').out().has('name',within('beef','mashed garlic')).out().hasLabel('book').out().hasLabel('recipe').valueMap('rName')
+// WHAT IS THE DIFFERENCE BETWEEN THE LAST ONE AND THIS ONE?
+//***********************
+//***********************
+gremlin> :> g.V().hasLabel('recipe').out().union(has('iName','beef'),has('iName','carrots'))
+	.in().hasLabel('recipe').out().hasLabel('book').values('bookTitle')
+==>The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
+==>The Art of French Cooking, Vol. 1
+
+// What are the recipes included in the cookbooks that list beef or carrots as ingredients?
+g.V().hasLabel('ingredient').has('iName',within('beef','carrots')).
+	in().as('Recipe').
+	out().hasLabel('book').as('Book').
+	select('Book','Recipe').by('bookTitle').by('recipeTitle')
+==>[Book:The Art of French Cooking, Vol. 1, Recipe:Beef Bourguignon]
+==>[Book:The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution, Recipe:Carrot Soup]
 
 // Profile to discover how various traversal strategies will work for a query
 // This profiles the last traversal
@@ -51,43 +66,106 @@ g.V().hasLabel('recipe').out().
       has('name',within('beef','carrots')).out().
       hasLabel('book').out().hasLabel('recipe').valueMap('rName').
       profile().cap(TraversalMetrics.METRICS_KEY)
+      
+// Another metrics traversal
+g.V().hasLabel('recipe').has('recipeTitle', 'Beef Bourguignon').inE('rated').values('comment').profile().cap(TraversalMetrics.METRICS_KEY)
+==>Traversal Metrics
+Step                                                               Count  Traversers       Time (ms)    % Dur
+=============================================================================================================
+DsegGraphStep([~label.eq(recipe), recipeTitle.e...                     1           1          15.717    92.51
+  query-optimizer                                                                              0.094
+  iterator-setup                                                                               0.006
+DsegVertexStep(IN,[rated],edge)                                        4           4           1.159     6.82
+  query-optimizer                                                                              0.135
+  iterator-setup                                                                               0.003
+DsegPropertiesStep([comment],value)                                    3           3           0.083     0.49
+SideEffectCapStep([~metrics])                                          1           1           0.029     0.17
+                                            >TOTAL                     -           -          16.989        -
 
 // TimeLimit of 2 ms for the traversal
-g.V().hasLabel('recipe').out().
-      has('name',within('beef','carrots')).out().
-      hasLabel('book').out().hasLabel('recipe').valueMap('rName').
-      timeLimit(2)
+g.V().hasLabel('recipe').has('recipeTitle', 'Beef Bourguignon').inE('rated').values('comment').timeLimit(2)
+==>Yummy!
+==>Pretty tasty!
+==>It was okay.
 
 // How many reviewers have reviewed Beef Bourguignon?
-g.V().hasLabel('recipe').has('recipeTitle','Beef Bourguignon').out().hasLabel('reviewer').count()
+g.V().hasLabel('recipe').has('recipeTitle','Beef Bourguignon').in().hasLabel('reviewer').count()
+==>4
 
-// What did a particular reviewer say about Beef Bourguignon?
-// This is "what did John Doe say about any recipe?
-g.V().hasLabel('reviewer').has('revname','John Doe').outE('rated').values('comment')
+// What did reviewers say about Beef Bourguignon?
+g.V().hasLabel('recipe').has('recipeTitle', 'Beef Bourguignon').inE().values('comment')
+==>Yummy!
+==>Pretty tasty!
+==>It was okay.
+// MORE PRECISE - doesn't get all incoming edges
+g.V().hasLabel('recipe').has('recipeTitle', 'Beef Bourguignon').inE('rated').values('comment')
 
 // What reviewers rated Beef Bourguignon in the last 15 days?
+//*******************
+//*******************
 // NOT SURE HOW TO DO "last 15 days" -- now()-15 is a placeholder
 // Don't need to include "hasLabel('recipe')" because reviewers only have edges to recipes
-g.V().hasLabel('reviewer').outE().has('reviewDate',lt(now()-15)).outV().has('rName','Beef Bourguignon')
+g.V().hasLabel('reviewer').outE().has('reviewDate',lt(now()-15)).outV().has('recipeTitle','Beef Bourguignon')
 
 // Which reviewers who rated Beef Bourguignon with 5 stars rated other recipes?
 // NEED HELP WITH THIS ONE -- probably another type of TRAVERSAL
-// Don't need to include "hasLabel('recipe')" because reviewers only have edges to recipes
-g.V().hasLabel('reviewer').outE().has('stars',5).outV().has('rName','Beef Bourguignon')
+//********************
+//********************
+
+// HERE IS SOMETHING TO CHEW ON
+//********************
+//********************
+gremlin> :> g.V().has('recipe', 'recipeTitle', 'Beef Bourguignon').as('a').inE('rated').has('stars',5).outV().outE('rated').has('stars',5).inV().where(neq('a')).groupCount().by('recipeTitle')
+==>[Carrot Soup:1]
+// PATTERNED AFTER THIS
+    // Which programmers like Die Hard and what other movies do they like? Group and count the movies by their name.
+    // Sort group count map in decr order by count. Clip map to top 10 and stream out map's entries
+    
+  g.V().has('movie','name','Die Hard').as('a').
+    inE('rated').has('stars',5).outV().
+      where(out('occupation').has('name','programmer')).
+    outE('rated').has('stars',5).inV(). 
+      where(neq('a')).
+    groupCount().by('name').
+      order(local).by(valueDecr).
+      limit(local,10).
+      unfold()   // this puts each movie on its own line
+
+// Which reviewers who rated Beef Bourguignon have also rated other recipes, and what are the recipes?
+//********************
+//********************
+// HOW DO I GET THE NAMES TO PRINT???
+g.V().hasLabel('recipe').has('recipeTitle', 'Beef Bourguignon').
+	in().hasLabel('reviewer').as('a').
+	out().values('recipeTitle').as('b').
+	select('a','b')
+==>[a:v[{member_id=0, community_id=278744, ~label=reviewer, group_id=1}], b:Carrot Soup]
+==>[a:v[{member_id=0, community_id=278744, ~label=reviewer, group_id=1}], b:Beef Bourguignon]
+==>[a:v[{member_id=0, community_id=278744, ~label=reviewer, group_id=58}], b:Beef Bourguignon]
+==>[a:v[{member_id=0, community_id=278744, ~label=reviewer, group_id=58}], b:Spicy Meatloaf]
+==>[a:v[{member_id=0, community_id=278744, ~label=reviewer, group_id=59}], b:Beef Bourguignon]
+==>[a:v[{member_id=0, community_id=278744, ~label=reviewer, group_id=60}], b:Beef Bourguignon]
+==>[a:v[{member_id=0, community_id=278744, ~label=reviewer, group_id=60}], b:Spicy Meatloaf]
 
 // What other recipes did reviewers who rated Beef Bourguignon with 5 stars also rate with 5 stars?
 // NEED TO USE AGGREGATE STEP? SEEMS LIKE THAT IS THE WAY TO DO THIS
+//*******************
+//*******************
 
 // Which meals list Beef Bourguignon as an item?
-g.V().hasLabel('meal').out().has('name','beef')
+g.V().hasLabel('recipe').has('recipeTitle','Beef Bourguignon').in().hasLabel('meal').values('mealTitle')
+==>Saturday Feast
+==>JuliaDinner
 
-// Which meals have a calorie count of 1,100 calories or less? 
-// COULD is() BE USED IN THIS TRAVERSAL?
-g.V().hasLabel('meal').has('calories',lt(1100)).valueMap('mName')
+// Which meals have a calorie count of 900 calories or less? 
+g.V().hasLabel('meal').has('calories', lte(900)).values('mealTitle')
+==>EverydayDinner
+==>JuliaDinner
 
-// Which meals have a calorie count of 1,100 calories or less (limit the output to 10 meal names)? 
-// COULD is() BE USED IN THIS TRAVERSAL?
-g.V().hasLabel('meal').has('calories',lt(1100)).valueMap('mName').limit(10)
+// Which meals have a calorie count of 900 calories or less (limit the output to 10 meal names)? 
+g.V().hasLabel('meal').has('calories', lte(900)).values('mealTitle').limit(10)
+==>EverydayDinner
+==>JuliaDinner
 
 ----------------------------------------------------------
 /* BRANCHING TRAVERSAL:					*/
@@ -129,7 +207,7 @@ gremlin> :> g.V().choose(label()).option('author', out('created').count()).optio
 ----------------------------------------------------------
 
 // Return the names of the vertices 2 outgoing steps from the vertex named "Julia Child". This will likely include cookbooks, meals, reviewers, and ingredients.
-gremlin> :> g.V().has('aname','Julia Child').repeat(out()).times(2).valueMap()
+g.V().has('aname','Julia Child').repeat(out()).times(2).valueMap()
 ==>[iName:[beef], id:[300]]
 ==>[iName:[onion], id:[301]]
 ==>[iName:[mashed garlic], id:[302]]
@@ -148,7 +226,7 @@ gremlin> :> g.V().has('aname','Julia Child').repeat(out()).times(2).valueMap()
 ==>[iName:[hard-boiled egg], id:[312]]
 
 // THREE TIMES
-gremlin> :> g.V().has('aname','Julia Child').repeat(out()).times(3).valueMap()
+g.V().has('aname','Julia Child').repeat(out()).times(3).valueMap()
 ==>[instructions:[Braise the beef. Saute the onions and carrots. Add wine and cook in a dutch oven at 425 degrees for 1 hour.], recipeTitle:[Beef Bourguignon], id:[200]]
 ==>[instructions:[Take a salad bowl or platter and line it with lettuce leaves, shortly before serving. Drizzle some olive oil on the leaves and dust them with salt.], recipeTitle:[Salade Nicoise], id:[202]]
 ==>[mCreateDate:[2016-01-14], mealTitle:[JuliaDinner], id:[502], calories:[900]]
@@ -160,8 +238,51 @@ gremlin> :> g.V().has('aname','Julia Child').repeat(out()).times(3).valueMap()
 /* traversal						*/
 ----------------------------------------------------------
 
-// WRITE THIS ONE
+// GENERAL CASE
 g.V().as("a").out().as("b","c").path()
+// WHAT IS THE PATH TRAVERSAL OF THE GIVEN TRAVERSAL?
+// INGREDIENT -> RECIPE -> BOOK
+g.V().hasLabel('ingredient').has('iName',within('beef','carrots')).in().as('Recipe')
+	.out().hasLabel('book').as('Book').
+	select('Book','Recipe').
+		by('bookTitle').by('recipeTitle').path()
+==>[v[{member_id=0, community_id=278744, ~label=ingredient, group_id=24}], 
+	v[{member_id=0, community_id=278744, ~label=recipe, group_id=17}], 
+	v[{member_id=0, community_id=278744, ~label=book, group_id=13}], 
+	{Book=The Art of French Cooking, Vol. 1, Recipe=Beef Bourguignon}]
+==>[v[{member_id=0, community_id=278744, ~label=ingredient, group_id=51}], 
+	v[{member_id=0, community_id=278744, ~label=recipe, group_id=2}], 
+	v[{member_id=0, community_id=278744, ~label=book, group_id=16}], 
+	{Book=The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution, Recipe=Carrot Soup}]
+
+// What is the tree that emanates from a book?	
+gremlin> :> g.V().hasLabel('book').in().tree().by('id').next()
+==>100={1={}, 2={}, 3={}, 200={}, 202={}}
+==>101={2={}, 4={}}
+==>102={1={}}
+==>103={5={}, 6={}, 7={}, 8={}, 206={}, 207={}}
+
+// What is the tree that emanates from a recipe?
+gremlin> :> g.V().hasLabel('recipe').in().tree().by('id').next()
+==>200={400={}, 1={}, 401={}, 402={}, 403={}, 500={}, 502={}}
+==>201={1={}}
+==>202={1={}, 502={}}
+==>203={9={}}
+==>204={400={}, 403={}, 9={}}
+==>205={500={}, 10={}}
+==>206={402={}, 500={}, 5={}, 501={}}
+==>207={5={}, 501={}}
+
+// What are all the outgoing tree branches for a recipe?
+gremlin> :> g.V().hasLabel('recipe').out().tree().by('id').next()
+==>200={304={}, 100={}, 300={}, 301={}, 302={}, 303={}}
+==>201={305={}, 306={}, 307={}, 308={}, 302={}}
+==>202={307={}, 100={}, 309={}, 310={}, 311={}, 312={}}
+==>203={308={}, 313={}, 314={}}
+==>204={315={}, 316={}, 301={}, 317={}, 318={}, 319={}}
+==>205={320={}, 321={}, 322={}, 323={}, 324={}, 325={}, 316={}}
+==>206={326={}, 327={}, 103={}, 328={}, 301={}, 303={}}
+==>207={103={}, 328={}, 329={}, 330={}}
 
 ----------------------------------------------------------
 /* PROJECTING TRAVERSAL:				*/
@@ -188,10 +309,10 @@ g.V().repeat(groupCount("m").out()).times(30).cap("m")
 /* mutates the graph					*/
 ----------------------------------------------------------
 
-// adds an inverse edge createdBy for every created edge
-g.V().as("a").out("created").addOutE("createdBy","a")
+// adds an inverse edge isAuthoredBy for every authored edge
+g.V().as('a').out('authored').addOutE('isAuthoredBy','a')
 // removes the original created edge
-g.V().outE("created").drop()
+g.V().outE('authored').drop()
 
 ----------------------------------------------------------
 /* DECLARATIVE TRAVERSAL:				*/
@@ -213,7 +334,7 @@ g.V().match(
 /* maps to Gremlin steps				*/
 ----------------------------------------------------------
 
-//WRITE THIS ONE
+//FOR RECIPE TOY GRAPH
 g.people().named("marko").
  who().know(well).people().
  who().created("software").
@@ -221,9 +342,9 @@ g.people().named("marko").
 
 Each one of these steps would be the composite or 1 or more
 Gremlin steps.
-j
-g.people()          → g.V().hasLabel("person")
-named("marko")      → has("name","marko")
+
+g.people()          → g.V().hasLabel('person')
+named('marko')      → has('name','marko')
 who()               → identity()
 know(well)          → outE("knows").
                       has("weight",gt(0.75)).

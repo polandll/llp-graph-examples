@@ -200,6 +200,19 @@ gremlin> :> g.V().hasLabel('reviewer').as('reviewer','starCount').select('review
 **************************
 NOT ADDED TO EAP DOC YET
 **************************
+
+// get the schema with datatypes
+:> graph.schema().traversal().V().valueMap(true)
+// partial output
+==>[id:32786, dataType:[java.lang.String], name:[mealTitle], label:propertyKey, cardinality:[Single]]
+==>[id:32787, dataType:[java.lang.String], name:[mCreateDate], label:propertyKey, cardinality:[Single]]
+==>[id:32784, dataType:[java.lang.String], name:[amount], label:propertyKey, cardinality:[Single]]
+==>[id:32785, name:[includedIn], directionality:[Bidirectional], label:edgeLabel, cardinality:[Multiple]]
+==>[id:32782, dataType:[java.lang.Integer], name:[rCreateDate], label:propertyKey, cardinality:[Single]]
+==>[id:32783, name:[includes], directionality:[Bidirectional], label:edgeLabel, cardinality:[Multiple]]
+==>[id:32780, name:[authored], directionality:[Bidirectional], label:edgeLabel, cardinality:[Multiple]]
+==>[id:32781, name:[created], directionality:[Bidirectional], label:edgeLabel, cardinality:[Multiple]]
+
 // THIS IS THE ACTUAL ONE! What did John Doe have to say?
 gremlin> :> g.V().hasLabel('reviewer').has('revname','John Doe').outE('rated').values('comment')
 ==>Pretty tasty!
@@ -328,34 +341,3 @@ g.V().hasLabel('movie').as('a','b').
       order(local).by(valueDecr).
       limit(local,10).
       unfold()   // this puts each movie on its own line
-      
---------------
-WHAT I DON'T DO THAT STEPHEN DOES:
---------
-$ curl -L -O http://snap.stanford.edu/data/wiki-Vote.txt.gz
-$ gunzip wiki-Vote.txt.gz
-
-SCRIPT:
-graph = TinkerGraph.open()
-graph.createIndex('userId', Vertex.class) (1)
-
-gremlin> g = graph.traversal()
-
-getOrCreate = { id ->
-  g.V().has('userId', id).tryNext().orElseGet{ g.addV('userId', id).next() }
-}
-
-new File('wiki-Vote.txt').eachLine {
-  if (!it.startsWith("#")){
-    (fromVertex, toVertex) = it.split('\t').collect(getOrCreate) (2)
-    fromVertex.addEdge('votesFor', toVertex)
-  }
-}
-
-Gremlin server/REST example 
-
-$ curl -L -O https://www.apache.org/dist/incubator/tinkerpop/3.1.0-SNAPSHOT/apache-gremlin-server-3.1.0-SNAPSHOT-bin.zip
-$ unzip apache-gremlin-server-3.1.0-SNAPSHOT-bin.zip
-$ cd apache-gremlin-server-3.1.0-SNAPSHOT-bin.zip
-$ bin/gremlin-server.sh conf/gremlin-server-modern.yaml
-$ curl -X POST -d "{\"gremlin\":\"g.V(x).out().values('name')\", \"language\":\"gremlin-groovy\", \"bindings\":{\"x\":1}}" "http://localhost:8182"
