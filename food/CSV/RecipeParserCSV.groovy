@@ -1,3 +1,6 @@
+// script = new File('/Users/lorinapoland/CLONES/graph-examples/food/CSV/RecipeParserCSV.groovy').text; []
+// :> @script
+
 import com.datastax.bdp.graph.api.DseGraph
 
 import org.apache.tinkerpop.gremlin.process.traversal.dsl.graph.GraphTraversalSource
@@ -8,6 +11,9 @@ import java.util.Map
 import java.util.ArrayList
 import java.util.List
 
+import static com.datastax.bdp.graph.api.schema.VertexIndex.Type.SECONDARY
+import static com.datastax.bdp.graph.api.schema.VertexIndex.Type.MATERIALIZED
+
 class RecipeParser {
     
     public static List parse(final Graph graph, final GraphTraversalSource g, final String dataDirectory, final int batchSize) {
@@ -17,7 +23,7 @@ class RecipeParser {
         def beforeTime = System.currentTimeMillis();
        
 	// AuthorID::Name::Gender
-        new File(dataDirectory + '/author_sql.csv').eachLine { final String line ->
+        new File(dataDirectory + '/authors.csv').eachLine { final String line ->
 
             def components = line.split("::")
             def authorId = components[0].toInteger()
@@ -34,30 +40,28 @@ class RecipeParser {
         
         def afterAuthor = System.currentTimeMillis();
 
-		counter = 0
         //bookId::bookTitle::publishDate::ISBN::authors
-        new File(dataDirectory + '/books_sql.csv').eachLine { final String line ->
+        new File(dataDirectory + '/books.csv').eachLine { final String line ->
 
             def components = line.split("::")
             def bookId = components[0].toInteger()
             def bookTitle = components[1]
-            def publishDate = components[2]
+            def publishDate = components[2].toInteger()
             def ISBN = components[3]
             def authors = components[4]
             def bookVertex = graph.addVertex(label, "book",
                 "bookId", bookId,
                 "bookTitle", bookTitle,
-                "publishDate", Instant.parse(publishDate),
+                "publishDate", publishDate,
                 "ISBN", ISBN)
 
             if (++counter % batchSize == 0) graph.tx().commit()
             
+            // **************************
+            // ********** PROBLEM HERE
+            // **************************
             authors.split('\\|').each { def authId ->
                 def authVertex = g.V().has("author", "aname", authId).tryNext()
-		// **************************
-		// ****** NOT WORKING *******
-		// message indicates that bookVertex is not "known"
-		// I thought this is still in a loop where bookVertex is defined.
                 bookVertex.addEdge('authored', authVertex)
                 if (++counter % batchSize == 0) graph.tx().commit()
             }
