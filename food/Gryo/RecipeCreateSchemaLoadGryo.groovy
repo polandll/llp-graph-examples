@@ -1,4 +1,5 @@
-// script = new File('/Users/lorinapoland/CLONES/graph-examples/food/Gryo/RecipeCreateSchemaLoadGryo.groovy').text; []
+// hold = new File('/Users/lorinapoland/CLONES/graph-examples/food/Gryo/RecipeCreateSchemaLoadGryo.groovy').text; []
+// script = [hold, 'RecipeFactory.load(g).toString()'].join("\n"); []
 // :> @script
 
 import com.datastax.bdp.graph.api.DseGraph
@@ -17,11 +18,8 @@ import static com.datastax.bdp.graph.api.schema.VertexIndex.Type.MATERIALIZED
 class RecipeFactory {
 
 	public static void createSchema(final DseGraph graph) {
-    	graph.migration("setup", { def schema ->
-    	//***********
-    	// SHOULD THE NEXT LINE BE USED NOW?
-    	//************
-    	//Schema schema = graph.schema()
+
+    	Schema schema = graph.schema()
     	
     	    // Property Keys
     		def id = schema.buildPropertyKey('id', Integer.class).add()
@@ -36,7 +34,7 @@ class RecipeFactory {
     		def ISBN = schema.buildPropertyKey('ISBN', String.class).add()
     		def mname = schema.buildPropertyKey('mealTitle', String.class).add()
     		def mCreateDate = schema.buildPropertyKey('mCreateDate', Instant.class).add()
-    		def calories = schema.builPropertyKey('calories'), Integer.class).add()
+    		def calories = schema.buildPropertyKey('calories', Integer.class).add()
                 
     		def rCreateDate = schema.buildPropertyKey('rCreateDate', Integer.class).add()
     		def amount = schema.buildPropertyKey('amount', String.class).add()
@@ -53,7 +51,7 @@ class RecipeFactory {
     		def reviewer = schema.buildVertexLabel('reviewer').add()
                 
     		// Edge Labels
-    		def authored = schema.builEdgeLabel('authored').add()
+    		def authored = schema.buildEdgeLabel('authored').add()
     		def created = schema.buildEdgeLabel('created').add()
     		def includes = schema.buildEdgeLabel('includes').add()
 			def includedIn = schema.buildEdgeLabel('includedIn').add()
@@ -65,11 +63,10 @@ class RecipeFactory {
     		def byMeal = meal.buildVertexIndex('byMeal', MATERIALIZED).byPropertyKey('mealTitle').add()
     		def byIngredient = ingredient.buildVertexIndex('byIngredient', MATERIALIZED).byPropertyKey('iName').add()
     		def byReviewer = reviewer.buildVertexIndex('byReviewer', MATERIALIZED).byPropertyKey('revname').add()
-		})
 	}
 
 	public static Graph load(final GraphTraversalSource g) {
-        def file = new File('//Users/lorinapoland/CLONES/graph-examples/food/Gryo/recipe.gryo')
+        def file = new File('/Users/lorinapoland/CLONES/graph-examples/food/Gryo/recipe.gryo')
         if (file.exists() == false) {
             def os = file.newOutputStream()
             os << new URL("http://github.com/polandll/graph-examples/food/Gryo/recipe.gryo").openStream()
@@ -83,7 +80,6 @@ class RecipeFactory {
     }
 	
 	public static Graph load(final DseGraph graph, final String pathToGryo) {
-	//public static Graph load(final DseGraph graph) {
 	    RecipeFactory.createSchema(graph)
 	    graph.io(IoCore.gryo()).readGraph(pathToGryo)
 	    return graph

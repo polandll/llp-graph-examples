@@ -19,8 +19,7 @@ class RecipeSchema {
 
 	public static void createSchema(final DseGraph graph) {
 
-		 graph.migration("setup", { def schema ->
-    	 //Schema schema = graph.schema()
+    	 Schema schema = graph.schema()
     	
     	    // Property Keys
     		def id = schema.buildPropertyKey('id', Integer.class).add()
@@ -52,7 +51,7 @@ class RecipeSchema {
     		def reviewer = schema.buildVertexLabel('reviewer').add()
                 
     		// Edge Labels
-    		def authored = schema.builEdgeLabel('authored').add()
+    		def authored = schema.buildEdgeLabel('authored').add()
     		def created = schema.buildEdgeLabel('created').add()
     		def includes = schema.buildEdgeLabel('includes').add()
 			def includedIn = schema.buildEdgeLabel('includedIn').add()
@@ -64,12 +63,6 @@ class RecipeSchema {
     		def byMeal = meal.buildVertexIndex('byMeal', MATERIALIZED).byPropertyKey('mealTitle').add()
     		def byIngredient = ingredient.buildVertexIndex('byIngredient', MATERIALIZED).byPropertyKey('iName').add()
     		def byReviewer = reviewer.buildVertexIndex('byReviewer', MATERIALIZED).byPropertyKey('revname').add()
-    	})
 	}
-	
-	//public static Graph load(final DseGraph graph) {
-	//    RecipeSchema.createSchema(graph)
-	    //return graph
-	//}	
 }
  RecipeSchema.createSchema(graph)

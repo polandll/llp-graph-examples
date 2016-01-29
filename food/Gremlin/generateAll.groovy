@@ -145,9 +145,9 @@ roastPorkLoin.addEdge('includedIn', artOfSimpleFood)
 
 // meal vertices
 
-SaturdayFeast = graph.addVertex(label, 'meal', 'id', 500, 'mealTitle', 'Saturday Feast', 'mCreateDate', '2015-11-30', 'calories', 1000)
-EverydayDinner = graph.addVertex(label, 'meal', 'id', 501, 'mealTitle', 'EverydayDinner', 'mCreateDate', '2016-01-14', 'calories', 600)
-JuliaDinner = graph.addVertex(label, 'meal', 'id', 502, 'mealTitle', 'JuliaDinner', 'mCreateDate', '2016-01-14', 'calories', 900)
+SaturdayFeast = graph.addVertex(label, 'meal', 'id', 500, 'mealTitle', 'Saturday Feast', 'mCreateDate', '2015-11-30T00:00:00.00Z', 'calories', 1000)
+EverydayDinner = graph.addVertex(label, 'meal', 'id', 501, 'mealTitle', 'EverydayDinner', 'mCreateDate', '2016-01-14T00:00:00.00Z', 'calories', 600)
+JuliaDinner = graph.addVertex(label, 'meal', 'id', 502, 'mealTitle', 'JuliaDinner', 'mCreateDate', '2016-01-14T00:00:00.00Z', 'calories', 900)
 
 // meal - recipe edges
 
