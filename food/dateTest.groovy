@@ -4,4 +4,5 @@ beefBourguignon = graph.addVertex('id', 200, label, 'recipe', 'recipeTitle', 'Be
 
 // reviewer - recipe edges
 
-johnDoe.addEdge('rated', beefBourguignon, 'ratedDate', Instant.parse('2014-01-01T00:00:00.00Z'), 'stars', 5, 'comment', 'Pretty tasty!')
+//johnDoe.addEdge('rated', beefBourguignon, 'ratedDate', Instant.parse(Date(99, 0, 1)'2014-01-01T00:00:00.00Z'), 'stars', 5, 'comment', 'Pretty tasty!')
+johnDoe.addEdge('rated', beefBourguignon, 'ratedDate', Instant.parse(Date(99, 0, 1)), 'stars', 5, 'comment', 'Pretty tasty!')
