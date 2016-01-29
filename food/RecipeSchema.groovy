@@ -35,7 +35,7 @@ class RecipeSchema {
     		def ISBN = schema.buildPropertyKey('ISBN', String.class).add()
     		def mname = schema.buildPropertyKey('mealTitle', String.class).add()
     		def mCreateDate = schema.buildPropertyKey('mCreateDate', Instant.class).add()
-    		def calories = schema.buildPropertyKey('calories'), Integer.class).add()
+    		def calories = schema.buildPropertyKey('calories', Integer.class).add()
                 
     		def rCreateDate = schema.buildPropertyKey('rCreateDate', Integer.class).add()
     		def amount = schema.buildPropertyKey('amount', String.class).add()
