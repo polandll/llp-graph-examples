@@ -1,4 +1,4 @@
-// script = new File('/Users/lorinapoland/CLONES/graph-examples/food/CSV/RecipeParserCSV.groovy').text; []
+// script = new File('/Users/lorinapoland/CLONES/graph-examples/food/RecipeSchema.groovy').text; []
 // :> @script
 
 import com.datastax.bdp.graph.api.DseGraph
@@ -14,68 +14,13 @@ import java.util.List
 import static com.datastax.bdp.graph.api.schema.VertexIndex.Type.SECONDARY
 import static com.datastax.bdp.graph.api.schema.VertexIndex.Type.MATERIALIZED
 
-class RecipeParser {
-    
-    public static List parse(final Graph graph, final GraphTraversalSource g, final String dataDirectory, final int batchSize) {
 
-        def counter = 0
+class RecipeSchema {
 
-        def beforeTime = System.currentTimeMillis();
-       
-	// AuthorID::Name::Gender
-        new File(dataDirectory + '/authors.csv').eachLine { final String line ->
+	public static void createSchema(final DseGraph graph) {
 
-            def components = line.split("::")
-            def authorId = components[0].toInteger()
-            def aname = components[1]
-            def gender = components[2]
-            def authorVertex = graph.addVertex(label, "author",
-                "authorId", authorId,
-                "aname", aname,
-                "gender", gender)
-
-            if (++counter % batchSize == 0) graph.tx().commit()
-        }
-        graph.tx().commit()
-        
-        def afterAuthor = System.currentTimeMillis();
-
-        //bookId::bookTitle::publishDate::ISBN::authors
-        new File(dataDirectory + '/books.csv').eachLine { final String line ->
-
-            def components = line.split("::")
-            def bookId = components[0].toInteger()
-            def bookTitle = components[1]
-            def publishDate = components[2].toInteger()
-            def ISBN = components[3]
-            def authors = components[4]
-            def bookVertex = graph.addVertex(label, "book",
-                "bookId", bookId,
-                "bookTitle", bookTitle,
-                "publishDate", publishDate,
-                "ISBN", ISBN)
-
-            if (++counter % batchSize == 0) graph.tx().commit()
-            
-            // **************************
-            // ********** PROBLEM HERE
-            // **************************
-            authors.split('\\|').each { def authId ->
-                def authVertex = g.V().has("author", "aname", authId).tryNext()
-                bookVertex.addEdge('authored', authVertex)
-                if (++counter % batchSize == 0) graph.tx().commit()
-            }
-        }
-        
-        graph.tx().commit()
-        def afterBook = System.currentTimeMillis();
-        
-        return [afterAuthor-beforeTime, afterBook-afterAuthor];
-    }
-         
-    public static void createSchema(final DseGraph graph) {
-            //schema = graph.schema()
-        graph.migration("setup", { def schema ->
+		 graph.migration("setup", { def schema ->
+    	 //Schema schema = graph.schema()
     	
     	    // Property Keys
     		def id = schema.buildPropertyKey('id', Integer.class).add()
@@ -119,12 +64,12 @@ class RecipeParser {
     		def byMeal = meal.buildVertexIndex('byMeal', MATERIALIZED).byPropertyKey('mealTitle').add()
     		def byIngredient = ingredient.buildVertexIndex('byIngredient', MATERIALIZED).byPropertyKey('iName').add()
     		def byReviewer = reviewer.buildVertexIndex('byReviewer', MATERIALIZED).byPropertyKey('revname').add()
-		})
+    	})
 	}
-
-    public static List load(final DseGraph graph, final GraphTraversalSource g, final String dataDirectory, final int batchSize) {
-        createSchema(graph)
-        return parse(graph, g, dataDirectory, batchSize)
-    }
+	
+	//public static Graph load(final DseGraph graph) {
+	//    RecipeSchema.createSchema(graph)
+	    //return graph
+	//}	
 }
-RecipeParser.load(graph, g, "/Users/lorinapoland/CLONES/graph-examples/food/CSV",250)
+ RecipeSchema.createSchema(graph)

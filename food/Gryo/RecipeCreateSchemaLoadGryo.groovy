@@ -2,7 +2,6 @@
 // :> @script
 
 import com.datastax.bdp.graph.api.DseGraph
-n
 
 import org.apache.tinkerpop.gremlin.process.traversal.dsl.graph.GraphTraversalSource
 import org.apache.tinkerpop.gremlin.structure.Direction
@@ -19,7 +18,10 @@ class RecipeFactory {
 
 	public static void createSchema(final DseGraph graph) {
     	graph.migration("setup", { def schema ->
-    	//schema = graph.schema()
+    	//***********
+    	// SHOULD THE NEXT LINE BE USED NOW?
+    	//************
+    	//Schema schema = graph.schema()
     	
     	    // Property Keys
     		def id = schema.buildPropertyKey('id', Integer.class).add()
@@ -28,17 +30,19 @@ class RecipeFactory {
     		def revname = schema.buildPropertyKey('revname', String.class).add()
     		def recipeTitle = schema.buildPropertyKey('recipeTitle', String.class).add()
     		def instructions = schema.buildPropertyKey('instructions', String.class).add()
-    		def iname = schema.buildPropertyKey('iname', String.class).add()
-    		def category = schema.buildPropertyKey('category', String.class).add()
+    		def iName = schema.buildPropertyKey('iName', String.class).add()
     		def bookTitle = schema.buildPropertyKey('bookTitle', String.class).add()
-    		def publishDate = schema.buildPropertyKey('publishDate', Instant.class).add()
-    		def mname = schema.buildPropertyKey('mname', String.class).add()
-    		def createDate = schema.buildPropertyKey('createDate', Instant.class).add()
+    		def publishDate = schema.buildPropertyKey('publishDate', Integer.class).add()
+    		def ISBN = schema.buildPropertyKey('ISBN', String.class).add()
+    		def mname = schema.buildPropertyKey('mealTitle', String.class).add()
+    		def mCreateDate = schema.buildPropertyKey('mCreateDate', Instant.class).add()
+    		def calories = schema.builPropertyKey('calories'), Integer.class).add()
                 
-    		def rCreateDate = schema.buildPropertyKey('rCreateDate', Instant.class).add()
+    		def rCreateDate = schema.buildPropertyKey('rCreateDate', Integer.class).add()
+    		def amount = schema.buildPropertyKey('amount', String.class).add()
     		def stars = schema.buildPropertyKey('stars', Integer.class).add()
     		def ratedDate = schema.buildPropertyKey('ratedDate', Instant.class).add()
-    		def amount = schema.buildPropertyKey('amount', String.class).add()
+    		def comment = schema.buildPropertyKey('comment', String.class).add()
     		
     		// Vertex Labels
     		def author = schema.buildVertexLabel('author').add()
@@ -49,6 +53,7 @@ class RecipeFactory {
     		def reviewer = schema.buildVertexLabel('reviewer').add()
                 
     		// Edge Labels
+    		def authored = schema.builEdgeLabel('authored').add()
     		def created = schema.buildEdgeLabel('created').add()
     		def includes = schema.buildEdgeLabel('includes').add()
 			def includedIn = schema.buildEdgeLabel('includedIn').add()
@@ -57,8 +62,8 @@ class RecipeFactory {
     		// Indexes	
     		def ratedByStars = reviewer.buildEdgeIndex('ratedByStars', rated).direction(OUT).byPropertyKey('stars').add()
     		def byRecipe = recipe.buildVertexIndex('byRecipe', MATERIALIZED).byPropertyKey('recipeTitle').add()
-    		def byMeal = meal.buildVertexIndex('byMeal', MATERIALIZED).byPropertyKey('mname').add()
-    		def byIngredient = ingredient.buildVertexIndex('byIngredient', MATERIALIZED).byPropertyKey('iname').add()
+    		def byMeal = meal.buildVertexIndex('byMeal', MATERIALIZED).byPropertyKey('mealTitle').add()
+    		def byIngredient = ingredient.buildVertexIndex('byIngredient', MATERIALIZED).byPropertyKey('iName').add()
     		def byReviewer = reviewer.buildVertexIndex('byReviewer', MATERIALIZED).byPropertyKey('revname').add()
 		})
 	}
