@@ -162,11 +162,9 @@ gremlin>  :> g.E().hasLabel('rated').has('stars', gt(3)).inV().values('recipeTit
 ==>Beef Bourguignon
 
 // GET THE VALUEMAP FOR EACH EDGE THAT HAS MORE THAN 3 STARS AND A RATED DATE GREATER THAN JAN 1, 2015
-// Need to figure out dates!! Notice how the date value is parsed by greater than is not correct
-
-gremlin> :> g.E().hasLabel('rated').has('stars', gt(3)).has('ratedDate', gt('2015-01-01')).valueMap()
-==>[comment:Loved this soup! Yummy vegetarian!, stars:5, ratedDate:2015-12-30]
-==>[comment:Really spicy - be careful!, stars:4, ratedDate:2015-12-31]
+gremlin> :> g.E().hasLabel('rated').has('stars',gte(4)).has('ratedDate', gte(Instant.parse('2015-01-01T00:00:00.00Z'))).valueMap()
+==>[comment:Loved this soup! Yummy vegetarian!, ratedDate:2015-12-30T00:00:00Z, stars:5]
+==>[comment:Really spicy - be careful!, ratedDate:2015-12-31T00:00:00Z, stars:4]
 
 // MEAN STARS
 gremlin> :> g.E().hasLabel('rated').values('stars').mean()

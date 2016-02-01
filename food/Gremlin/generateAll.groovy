@@ -145,9 +145,9 @@ roastPorkLoin.addEdge('includedIn', artOfSimpleFood)
 
 // meal vertices
 
-SaturdayFeast = graph.addVertex(label, 'meal', 'id', 500, 'mealTitle', 'Saturday Feast', 'mCreateDate', '2015-11-30T00:00:00.00Z', 'calories', 1000)
-EverydayDinner = graph.addVertex(label, 'meal', 'id', 501, 'mealTitle', 'EverydayDinner', 'mCreateDate', '2016-01-14T00:00:00.00Z', 'calories', 600)
-JuliaDinner = graph.addVertex(label, 'meal', 'id', 502, 'mealTitle', 'JuliaDinner', 'mCreateDate', '2016-01-14T00:00:00.00Z', 'calories', 900)
+SaturdayFeast = graph.addVertex(label, 'meal', 'id', 500, 'mealTitle', 'Saturday Feast', 'mCreateDate', Instant.parse('2015-11-30T00:00:00.00Z'), 'calories', 1000)
+EverydayDinner = graph.addVertex(label, 'meal', 'id', 501, 'mealTitle', 'EverydayDinner', 'mCreateDate', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 600)
+JuliaDinner = graph.addVertex(label, 'meal', 'id', 502, 'mealTitle', 'JuliaDinner', 'mCreateDate', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 900)
 
 // meal - recipe edges
 
@@ -175,10 +175,10 @@ betsyJones = graph.addVertex(label, 'reviewer', 'id', 404, 'revname','Betsy Jone
 
 // reviewer - recipe edges
 
-johnDoe.addEdge('rated', beefBourguignon, 'ratedDate', Instant.parse('2014-01-01T00:00:00.00Z').toEpochMilli(), 'stars', 5, 'comment', 'Pretty tasty!')
-johnSmith.addEdge('rated', beefBourguignon, 'ratedDate', Instant.parse('2014-01-23T00:00:00.00Z').toEpochMilli(), 'stars', 4)
-janeDoe.addEdge('rated', beefBourguignon, 'ratedDate', Instant.parse('2014-02-01T00:00:00.00Z').toEpochMilli(), 'stars', 5, 'comment', 'Yummy!')
-sharonSmith.addEdge('rated', beefBourguignon, 'ratedDate', Instant.parse('2015-01-01T00:00:00.00Z').toEpochMilli(), 'stars', 3, 'comment', 'It was okay.')
-johnDoe.addEdge('rated', spicyMeatloaf, 'ratedDate', Instant.parse('2015-12-31T00:00:00.00Z').toEpochMilli(), 'stars', 4, 'comment', 'Really spicy - be careful!')
-sharonSmith.addEdge('rated', spicyMeatloaf, 'ratedDate',Instant.parse('2014-07-23T00:00:00.00Z').toEpochMilli(), 'stars', 3, 'comment', 'Too spicy for me. Use less garlic.')
-janeDoe.addEdge('rated', carrotSoup, 'ratedDate', Instant.parse('2015-12-30T00:00:00.00Z').toEpochMilli(), 'stars', 5, 'comment', 'Loved this soup! Yummy vegetarian!')
+johnDoe.addEdge('rated', beefBourguignon, 'ratedDate', Instant.parse('2014-01-01T00:00:00.00Z'), 'stars', 5, 'comment', 'Pretty tasty!')
+johnSmith.addEdge('rated', beefBourguignon, 'ratedDate', Instant.parse('2014-01-23T00:00:00.00Z'), 'stars', 4)
+janeDoe.addEdge('rated', beefBourguignon, 'ratedDate', Instant.parse('2014-02-01T00:00:00.00Z'), 'stars', 5, 'comment', 'Yummy!')
+sharonSmith.addEdge('rated', beefBourguignon, 'ratedDate', Instant.parse('2015-01-01T00:00:00.00Z'), 'stars', 3, 'comment', 'It was okay.')
+johnDoe.addEdge('rated', spicyMeatloaf, 'ratedDate', Instant.parse('2015-12-31T00:00:00.00Z'), 'stars', 4, 'comment', 'Really spicy - be careful!')
+sharonSmith.addEdge('rated', spicyMeatloaf, 'ratedDate',Instant.parse('2014-07-23T00:00:00.00Z'), 'stars', 3, 'comment', 'Too spicy for me. Use less garlic.')
+janeDoe.addEdge('rated', carrotSoup, 'ratedDate', Instant.parse('2015-12-30T00:00:00.00Z'), 'stars', 5, 'comment', 'Loved this soup! Yummy vegetarian!')
