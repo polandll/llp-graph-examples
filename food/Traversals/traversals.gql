@@ -263,7 +263,7 @@ gremlin> :> g.V().hasLabel('book').in().tree().by('id').next()
 ==>103={5={}, 6={}, 7={}, 8={}, 206={}, 207={}}
 
 // What is the tree that emanates from a recipe?
-gremlin> :> g.V().hasLabel('recipe').in().tree().by('id').next()
+gremlin> :> g.V().hasLabel('recipe').in().tree().by('myId').next()
 ==>200={400={}, 1={}, 401={}, 402={}, 403={}, 500={}, 502={}}
 ==>201={1={}}
 ==>202={1={}, 502={}}
@@ -274,7 +274,7 @@ gremlin> :> g.V().hasLabel('recipe').in().tree().by('id').next()
 ==>207={5={}, 501={}}
 
 // What are all the outgoing tree branches for a recipe?
-gremlin> :> g.V().hasLabel('recipe').out().tree().by('id').next()
+gremlin> :> g.V().hasLabel('recipe').out().tree().by('myId').next()
 ==>200={304={}, 100={}, 300={}, 301={}, 302={}, 303={}}
 ==>201={305={}, 306={}, 307={}, 308={}, 302={}}
 ==>202={307={}, 100={}, 309={}, 310={}, 311={}, 312={}}
