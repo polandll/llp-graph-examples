@@ -308,7 +308,7 @@ g.V().hasLabel('movie').as('a','b').
   order().by(select('b'), decr).
   limit(10)
   
-  actually needs to be to fix empty stars value:
+  actually needs to be this to fix empty stars value:
   
  g.V().hasLabel('movie').as('a','b').
   select('a','b').
