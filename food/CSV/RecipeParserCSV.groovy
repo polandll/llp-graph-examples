@@ -30,7 +30,7 @@ class RecipeParser {
             def aname = components[1]
             def gender = components[2]
             def authorVertex = graph.addVertex(label, "author",
-                "authorId", authorId,
+                "myId", authorId,
                 "aname", aname,
                 "gender", gender)
 
@@ -50,7 +50,7 @@ class RecipeParser {
             def ISBN = components[3]
             def authors = components[4]
             def bookVertex = graph.addVertex(label, "book",
-                "bookId", bookId,
+                "myId", bookId,
                 "bookTitle", bookTitle,
                 "publishDate", publishDate,
                 "ISBN", ISBN)
@@ -78,7 +78,7 @@ class RecipeParser {
         graph.migration("setup", { def schema ->
     	
     	    // Property Keys
-    		def id = schema.buildPropertyKey('id', Integer.class).add()
+    		def id = schema.buildPropertyKey('myId', Integer.class).add()
     		def aname = schema.buildPropertyKey('aname', String.class).add()
     		def gender = schema.buildPropertyKey('gender', String.class).add()
     		def revname = schema.buildPropertyKey('revname', String.class).add()

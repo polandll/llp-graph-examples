@@ -29,7 +29,7 @@ class RecipeFactory {
     	Schema schema = graph.schema()
     	
     	    // Property Keys
-    		def id = schema.buildPropertyKey('id', Integer.class).add()
+    		def id = schema.buildPropertyKey('myId', Integer.class).add()
     		def aname = schema.buildPropertyKey('aname', String.class).add()
     		def gender = schema.buildPropertyKey('gender', String.class).add()
     		def revname = schema.buildPropertyKey('revname', String.class).add()
