@@ -1,2 +1,2 @@
 # graph-examples
-Titan and DSE Graph examples
+DSE Graph examples
