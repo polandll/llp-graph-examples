@@ -115,11 +115,11 @@ gremlin> :> g.V().label().groupCount()
 ==>[ingredient:31, author:10, book:4, recipe:8]
 
 // WRITE THE DATA TO A GRYO FILE
-gremlin> :> graph.io(IoCore.gryo()).writeGraph("/home/ubuntu/recipe.gryo")
+gremlin> :> graph.io(gryo()).writeGraph("/home/ubuntu/recipe.gryo")
 ==>NULL
 
 // LOAD DATA USING GRYO
-gremlin> :> graph.io(IoCore.gryo()).readGraph("/home/ubuntu/recipe.gryo")
+gremlin> :> graph.io(gryo()).readGraph("/home/ubuntu/recipe.gryo")
 ==>NULL
 
 ****** ADDED TO QUERY/TRAVERSAL PAGES
