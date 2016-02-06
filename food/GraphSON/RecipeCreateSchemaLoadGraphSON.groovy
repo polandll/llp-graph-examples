@@ -66,10 +66,10 @@ class RecipeFactory {
                 
     		// Indexes	
     		def ratedByStars = reviewer.buildEdgeIndex('ratedByStars', rated).direction(OUT).byPropertyKey('stars').add()
-    		def byRecipe = recipe.buildVertexIndex('byRecipe').materalized().byPropertyKey('recipeTitle').add()
-    		def byMeal = meal.buildVertexIndex('byMeal').materalized().byPropertyKey('mealTitle').add()
-    		def byIngredient = ingredient.buildVertexIndex('byIngredient').materalized().byPropertyKey('iName').add()
-    		def byReviewer = reviewer.buildVertexIndex('byReviewer').materalized().byPropertyKey('revname').add()
+    		def byRecipe = recipe.buildVertexIndex('byRecipe', MATERIALIZED).byPropertyKey('recipeTitle').add()
+    		def byMeal = meal.buildVertexIndex('byMeal', MATERIALIZED).byPropertyKey('mealTitle').add()
+    		def byIngredient = ingredient.buildVertexIndex('byIngredient', MATERIALIZED).byPropertyKey('iName').add()
+    		def byReviewer = reviewer.buildVertexIndex('byReviewer', MATERIALIZED).byPropertyKey('revname').add()
 	}
 
 	public static Graph load(final GraphTraversalSource g) {

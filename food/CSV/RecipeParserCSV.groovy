@@ -75,7 +75,6 @@ class RecipeParser {
          
     public static void createSchema(final DseGraph graph) {
             Schema schema = graph.schema()
-        //graph.migration("setup", { def schema ->
     	
     	    // Property Keys
     		PropertyKey id = schema.buildPropertyKey('myId', Integer.class).add()
@@ -115,11 +114,10 @@ class RecipeParser {
                 
     		// Indexes	
     		EdgeIndex ratedByStars = reviewer.buildEdgeIndex('ratedByStars', rated).direction(OUT).byPropertyKey('stars').add()
-    		VertexIndex byRecipe = recipe.buildVertexIndex('byRecipe').materalized().byPropertyKey('recipeTitle').add()
-    		VertexIndex byMeal = meal.buildVertexIndex('byMeal').materalized().byPropertyKey('mealTitle').add()
-    		VertexIndex byIngredient = ingredient.buildVertexIndex('byIngredient').materalized().byPropertyKey('iName').add()
-    		VertexIndex byReviewer = reviewer.buildVertexIndex('byReviewer').materalized().byPropertyKey('revname').add()
-		//})
+    		VertexIndex byRecipe = recipe.buildVertexIndex('byRecipe', MATERIALIZED).byPropertyKey('recipeTitle').add()
+    		VertexIndex byMeal = meal.buildVertexIndex('byMeal', MATERIALIZED).byPropertyKey('mealTitle').add()
+    		VertexIndex byIngredient = ingredient.buildVertexIndex('byIngredient', MATERIALIZED).byPropertyKey('iName').add()
+    		VertexIndex byReviewer = reviewer.buildVertexIndex('byReviewer', MATERIALIZED).byPropertyKey('revname').add()
 	}
 
     public static List load(final DseGraph graph, final GraphTraversalSource g, final String dataDirectory, final int batchSize) {
