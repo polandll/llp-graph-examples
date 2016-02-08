@@ -1,10 +1,12 @@
 // Generates all Recipe Toy Graph vertices and edges except Reviews
 
+// Drop previously created vertices and edges, so that I can add them again
+g.V().drop().iterate()
 // Add all vertices and edges for Recipe
 
 // author vertices
 // already created in the tutorial
-// Vertex juliaChild = graph.addVertex(label, 'author', 'myId', 1, 'aname','Julia Child', 'gender', 'F')
+Vertex juliaChild = graph.addVertex(label, 'author', 'myId', 1, 'aname','Julia Child', 'gender', 'F')
 Vertex simoneBeck = graph.addVertex(label, 'author', 'myId', 2, 'aname', 'Simone Beck', 'gender', 'F')
 Vertex louisetteBertholie = graph.addVertex(label, 'author', 'myId', 3, 'aname', 'Louisette Bertholie', 'gender', 'F')
 Vertex patriciaSimon = graph.addVertex(label, 'author', 'myId', 4, 'aname', 'Patricia Simon', 'gender', 'F')
@@ -17,7 +19,7 @@ Vertex jamesBeard = graph.addVertex(label, 'author', 'myId', 10, 'aname', 'James
 
 // book vertices
 // already created in the tutorial
-// artOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'myId', 100, 'bookTitle', 'The Art of French Cooking, Vol. 1', 'publishDate', 1961)
+Vertex artOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'myId', 100, 'bookTitle', 'The Art of French Cooking, Vol. 1', 'publishDate', 1961)
 Vertex simcasCuisine = graph.addVertex(label, 'book', 'myId', 101,'bookTitle', "Simca's Cuisine: 100 Classic French Recipes for Every Occasion", 'publishDate', 1972, 'ISBN', '0-394-40152-2')
 Vertex frenchChefCookbook = graph.addVertex(label, 'book', 'myId', 102, 'bookTitle','The French Chef Cookbook', 'publishDate',1968, 'ISBN', '0-394-40135-2')
 Vertex artOfSimpleFood = graph.addVertex(label, 'book', 'myId', 103, 'bookTitle', 'The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution', 'publishDate', 2007, 'ISBN', '0-307-33679-4')
@@ -67,7 +69,7 @@ Vertex redWine = graph.addVertex('myId', 330, label, 'ingredient', 'iName', 'red
 
 // author-book edges
 // already created in the tutorial
-// juliaChild.addEdge('authored', artOfFrenchCookingVolOne)
+juliaChild.addEdge('authored', artOfFrenchCookingVolOne)
 simoneBeck.addEdge('authored', artOfFrenchCookingVolOne)
 louisetteBertholie.addEdge('authored', artOfFrenchCookingVolOne)
 simoneBeck.addEdge('authored',simcasCuisine)
