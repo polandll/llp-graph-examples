@@ -137,9 +137,9 @@ beefBourguignon.addEdge('includedIn', artOfFrenchCookingVolOne)
 
 // meal vertices
 
-Vertex SaturdayFeast = graph.addVertex(label, 'meal', 'myId', 500, 'mealTitle', 'Saturday Feast', 'mCreateDate', '2015-11-30', 'calories', 1000)
-Vertex EverydayDinner = graph.addVertex(label, 'meal', 'myId', 501, 'mealTitle', 'EverydayDinner', 'mCreateDate', '2016-01-14', 'calories', 600)
-Vertex JuliaDinner = graph.addVertex(label, 'meal', 'myId', 502, 'mealTitle', 'JuliaDinner', 'mCreateDate', '2016-01-14', 'calories', 900)
+Vertex SaturdayFeast = graph.addVertex(label, 'meal', 'myId', 500, 'mealTitle', 'Saturday Feast', 'mCreateDate', Instant.parse('2015-11-30T00:00:00.00Z'), 'calories', 1000)
+Vertex EverydayDinner = graph.addVertex(label, 'meal', 'myId', 501, 'mealTitle', 'EverydayDinner', 'mCreateDate', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 600)
+Vertex JuliaDinner = graph.addVertex(label, 'meal', 'myId', 502, 'mealTitle', 'JuliaDinner', 'mCreateDate', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 900)
 
 // meal - recipe edges
 
