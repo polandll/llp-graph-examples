@@ -1,7 +1,8 @@
-// script = new File('/Users/lorinapoland/CLONES/graph-examples/food/RecipeSchema.groovy').text; []
+// hold = new File('/Users/lorinapoland/CLONES/graph-examples/food/RecipeSchema.groovy').text; []
+// script = [hold, 'RecipeSchema.load(g).toString()'].join("\n"); []
 // :> @script
 
-import com.datastax.bdp.graph.api.DseGraph
+import com.datastax.bdp.graph.api.DseGraph;
 
 import org.apache.tinkerpop.gremlin.process.traversal.dsl.graph.GraphTraversalSource
 import org.apache.tinkerpop.gremlin.structure.Direction
@@ -19,7 +20,7 @@ class RecipeSchema {
 
 	public static void createSchema(final DseGraph graph) {
 
-    	 Schema schema = graph.schema()
+    	  def schema = graph.schema()
     	
     	    // Property Keys
     		def id = schema.buildPropertyKey('myId', Integer.class).add()
@@ -64,5 +65,9 @@ class RecipeSchema {
     		def byIngredient = ingredient.buildVertexIndex('byIngredient', MATERIALIZED).byPropertyKey('iName').add()
     		def byReviewer = reviewer.buildVertexIndex('byReviewer', MATERIALIZED).byPropertyKey('revname').add()
 	}
+	
+	public static Graph load(final DseGraph graph) {
+		RecipeSchema.createSchema(graph)
+		return graph
+	}
 }
- RecipeSchema.createSchema(graph)
