@@ -1,5 +1,8 @@
 // Generates all Recipe Toy Graph vertices and edges except Reviews
 
+//script = new File('/Users/lorinapoland/CLONES/graph-examples/food/Gremlin/generateRecipe.groovy').text; []
+// :> @script
+
 // Drop previously created vertices and edges, so that I can add them again
 g.V().drop().iterate()
 // Add all vertices and edges for Recipe
