@@ -1,8 +1,8 @@
 // hold = new File('/Users/lorinapoland/CLONES/graph-examples/food/RecipeSchema.groovy').text; []
-// script = [hold, 'RecipeSchema.load(g).toString()'].join("\n"); []
+// script = [hold, 'RecipeSchema.load(graph).toString()'].join("\n"); []
 // :> @script
 
-import com.datastax.bdp.graph.api.DseGraph;
+import com.datastax.bdp.graph.api.DseGraph
 
 import org.apache.tinkerpop.gremlin.process.traversal.dsl.graph.GraphTraversalSource
 import org.apache.tinkerpop.gremlin.structure.Direction

@@ -9,6 +9,10 @@ Vertex janeDoe = graph.addVertex(label, 'reviewer', 'id', 402, 'revname','Jane D
 Vertex sharonSmith = graph.addVertex(label, 'reviewer', 'id', 403, 'revname','Sharon Smith')
 Vertex betsyJones = graph.addVertex(label, 'reviewer', 'myId', 404, 'revname','Betsy Jones')
 
+Vertex beefBourguignon = g.V().hasLabel('recipe').has('recipeTitle','Beef Bourguignon')
+Vertex spicyMeatLoaf = g.V().hasLabel('recipe').has('recipeTitle','Spicy Meatloaf')
+Vertex carrotSoup = g.V().hasLabel('recipe').has('recipeTitle','Carrot Soup')
+
 // reviewer - recipe edges
 johnDoe.addEdge('rated', beefBourguignon, 'ratedDate', Instant.parse('2014-01-01T00:00:00.00Z'), 'stars', 5, 'comment', 'Pretty tasty!')
 johnSmith.addEdge('rated', beefBourguignon, 'ratedDate', Instant.parse('2014-01-23T00:00:00.00Z'), 'stars', 4)
