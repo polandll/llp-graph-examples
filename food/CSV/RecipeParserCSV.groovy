@@ -1,6 +1,3 @@
-// script = new File('/Users/lorinapoland/CLONES/graph-examples/food/CSV/RecipeParserCSV.groovy').text; []
-// :> @script
-
 // hold = new File('/Users/lorinapoland/CLONES/graph-examples/food/CSV/RecipeParserCSV.groovy').text; []
 // script = [hold, 'RecipeParser.load(graph, g, "/Users/lorinapoland/CLONES/graph-examples/food/CSV",250).toString()'].join("\n"); []
 // :> @script

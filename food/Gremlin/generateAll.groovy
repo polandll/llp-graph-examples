@@ -1,9 +1,8 @@
 // Generates all vertices and edges for the Recipe Toy Graph
+// Add all vertices and edges for Recipe Toy Graph
 
 // script = new File('/Users/lorinapoland/CLONES/graph-examples/food/Gremlin/generateAll.groovy').text; []
 // :> @script
-
-// Add all vertices and edges for Recipe
 
 // author vertices
 
