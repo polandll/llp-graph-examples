@@ -1,0 +1,411 @@
+{
+  "id" : "9530473a-e20f-452f-895a-4422d9f78d70",
+  "name" : "QuickStart",
+  "connectionId" : "42f6654b-5330-46fc-ab1f-63d397253bd9",
+  "favorite" : false,
+  "cells" : [ {
+    "id" : "e34c6cc4-26d9-41c2-9041-3b873f98baab",
+    "status" : "SUCCESS",
+    "code" : "Graph databases are useful for discovering simple and complex relationships between objects. Relationships are fundamental to how objects interact with one another and their environment. Graph databases are the perfect representation of the relationships between objects.\n\nGraph databases consist of two elements: \n- vertex\n-- A vertex is an object, such as a person, location, automobile, recipe, or anything else you can think of as nouns.\n- edge\n-- An edge defines the relationship between two vertices. A person can create software, or an author can write a book. Think verbs when you are defining edges.\n\nBoth vertices and edges can have properties; for this reason, DSE Graph is classified as a property graph. The properties for both vertices and edges are an important element of storing and querying information from a property graph.\nProperty graphs are typically quite large, although the nature of querying the graph will vary depending on whether the graph has large numbers of vertices, edges, or both vertices and edges. To get started with graph database concepts, a \"toy\" graph is used for simplicity. The example used here explores the world of food.\n\n![Recipe Toy Graph](https://raw.githubusercontent.com/polandll/graph-examples/master/food/images/recipe3.jpg)\n\nElements are labelled to distinguish the type of vertices and edges in a graph database. A vertex that will hold information about an author is labelled _author_. An edge in the graph is labelled _authored_. Labels specify the types of vertices and edges that make up the graph. Specifying appropriate labels is an important step in [graph data modeling](http://docs.datastax.com/en/datastax_enterprise/5.0/datastax_enterprise/graph/data_modeling/dataModelTOC.html).\n\nVertices and edges generally have properties. For instance, an _author_ vertex can have a _name_. Gender and current job are examples of additional properties for an _author_ vertex. Edges also have properties. A _created_ edge can have a _createDate_ property that identifies when the adjoining _recipe_ vertex was created.\n\nInformation in a graph database can be retrieved using _graph traversals_. _Graph traversals_ \"walk\" a graph with a single or series of _traversal steps_ that can define a starting point for a traversal and filter the results to find the answers to queries about the graph data.\n\nIn order to run graph traversals to retrieve information, data must first be inserted. The steps listed in this section will allow you to gain a rudimentary understanding of DSE Graph with a minimum amount of configuration and schema creation",
+    "language" : "markdown",
+    "result" : {
+      "value" : "<p>Graph databases are useful for discovering simple and complex relationships between objects. Relationships are fundamental to how objects interact with one another and their environment. Graph databases are the perfect representation of the relationships between objects.</p>\n<p>Graph databases consist of two elements:</p>\n<ul>\n<li>vertex\n<br  />&ndash; A vertex is an object, such as a person, location, automobile, recipe, or anything else you can think of as nouns.</li>\n<li>edge\n<br  />&ndash; An edge defines the relationship between two vertices. A person can create software, or an author can write a book. Think verbs when you are defining edges.</li>\n</ul>\n<p>Both vertices and edges can have properties; for this reason, DSE Graph is classified as a property graph. The properties for both vertices and edges are an important element of storing and querying information from a property graph.\n<br  />Property graphs are typically quite large, although the nature of querying the graph will vary depending on whether the graph has large numbers of vertices, edges, or both vertices and edges. To get started with graph database concepts, a &ldquo;toy&rdquo; graph is used for simplicity. The example used here explores the world of food.</p>\n<p><img src=\"https://raw.githubusercontent.com/polandll/graph-examples/master/food/images/recipe3.jpg\" alt=\"Recipe Toy Graph\" /></p>\n<p>Elements are labelled to distinguish the type of vertices and edges in a graph database. A vertex that will hold information about an author is labelled <em>author</em>. An edge in the graph is labelled <em>authored</em>. Labels specify the types of vertices and edges that make up the graph. Specifying appropriate labels is an important step in <a href=\"http://docs.datastax.com/en/datastax_enterprise/5.0/datastax_enterprise/graph/data_modeling/dataModelTOC.html\">graph data modeling</a>.</p>\n<p>Vertices and edges generally have properties. For instance, an <em>author</em> vertex can have a <em>name</em>. Gender and current job are examples of additional properties for an <em>author</em> vertex. Edges also have properties. A <em>created</em> edge can have a <em>createDate</em> property that identifies when the adjoining <em>recipe</em> vertex was created.</p>\n<p>Information in a graph database can be retrieved using <em>graph traversals</em>. <em>Graph traversals</em> &ldquo;walk&rdquo; a graph with a single or series of <em>traversal steps</em> that can define a starting point for a traversal and filter the results to find the answers to queries about the graph data.</p>\n<p>In order to run graph traversals to retrieve information, data must first be inserted. The steps listed in this section will allow you to gain a rudimentary understanding of DSE Graph with a minimum amount of configuration and schema creation</p>\n",
+      "type" : "HTML",
+      "truncated" : false,
+      "id" : "23f89296-ce29-4098-adf8-381da1225fc1"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      },
+      "CODE" : {
+        "hidden" : true
+      }
+    }
+  }, {
+    "id" : "da75b4fe-6468-40d0-a558-83032f08de9e",
+    "status" : "SUCCESS",
+    "code" : "Install [DSE](http://docs.datastax.com/en/datastax_enterprise/5.0/datastax_enterprise/install/installTOC.html).",
+    "language" : "markdown",
+    "result" : {
+      "value" : "<p>Install <a href=\"http://docs.datastax.com/en/datastax_enterprise/5.0/datastax_enterprise/install/installTOC.html\">DSE</a>.</p>\n",
+      "type" : "HTML",
+      "truncated" : false,
+      "id" : "729e540f-8465-48a5-bcb2-f1bb6bd7f1e8"
+    },
+    "msg" : null,
+    "dataViewType" : null,
+    "viewSettings" : {
+      "CODE" : {
+        "hidden" : true
+      }
+    }
+  }, {
+    "id" : "1ba4dd9d-7327-4698-b59f-6f39c62d12ea",
+    "status" : "SUCCESS",
+    "code" : "Install Studio. Start a notebook and make a connection to a graph named **quickstart**. A graph will be created along with a graph traversal _g_ that will allow graph traversals to be executed.",
+    "language" : "markdown",
+    "result" : {
+      "value" : "<p>Install Studio. Start a notebook and make a connection to a graph named <strong>quickstart</strong>. A graph will be created along with a graph traversal <em>g</em> that will allow graph traversals to be executed.</p>\n",
+      "type" : "HTML",
+      "truncated" : false,
+      "id" : "fdd43995-e603-4823-9cb1-d4c818d46513"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CODE" : {
+        "hidden" : true
+      }
+    }
+  }, {
+    "id" : "df0ae516-a7f8-4ea9-a33b-bbcf1e3b1bc6",
+    "status" : "SUCCESS",
+    "code" : "Check the number of vertices that exist in the graph using the traversal step count(). There should currently be none.",
+    "language" : "markdown",
+    "result" : {
+      "value" : "<p>Check the number of vertices that exist in the graph using the traversal step count(). There should currently be none.</p>\n",
+      "type" : "HTML",
+      "truncated" : false,
+      "id" : "917f46a0-b99e-4d44-9f0e-1242b423767f"
+    },
+    "msg" : null,
+    "dataViewType" : null,
+    "viewSettings" : {
+      "CODE" : {
+        "hidden" : true
+      }
+    }
+  }, {
+    "id" : "3932cf7d-9a8d-44c0-ac9c-045c272908a5",
+    "status" : "SUCCESS",
+    "code" : "g.V().count()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ 0 ],
+      "type" : "NUMBER",
+      "truncated" : false,
+      "id" : "1d604f48-41cc-43f1-8320-56fda1242ec6"
+    },
+    "msg" : null,
+    "dataViewType" : "RAW",
+    "viewSettings" : null
+  }, {
+    "id" : "3c546a50-7825-4a9a-ac77-387997f40e56",
+    "status" : "SUCCESS",
+    "code" : "Submit a script comprised of three lines, which will be explained in detail in the next steps. The Gremlin console submits commands to the Gremlin server. Each command submitted from the Gremlin console is within a single session, so from command to command, the Gremlin server is not aware of any variables set on the previous line. If the three lines in the script that create two vertices and an edge between the two vertices are entered separately, an error will occur on the edge creation command.",
+    "language" : "markdown",
+    "result" : {
+      "value" : "<p>Submit a script comprised of three lines, which will be explained in detail in the next steps. The Gremlin console submits commands to the Gremlin server. Each command submitted from the Gremlin console is within a single session, so from command to command, the Gremlin server is not aware of any variables set on the previous line. If the three lines in the script that create two vertices and an edge between the two vertices are entered separately, an error will occur on the edge creation command.</p>\n",
+      "type" : "HTML",
+      "truncated" : false,
+      "id" : "f8b9bd17-92d1-4ef1-8134-b88380d9eb8a"
+    },
+    "msg" : null,
+    "dataViewType" : null,
+    "viewSettings" : {
+      "CODE" : {
+        "hidden" : true
+      }
+    }
+  }, {
+    "id" : "24da57ad-36b1-4882-96e8-edbe4924bd4e",
+    "status" : "SUCCESS",
+    "code" : "Vertex juliaChild = graph.addVertex(label,'author','myId', 1, 'aname','Julia Child', 'gender','F'); \nVertex artOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'myId', 100,'bookTitle', 'The Art of French Cooking, Vol. 1', 'publishDate', 1961); \njuliaChild.addEdge('authored', artOfFrenchCookingVolOne)",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ {
+        "id" : "{out_vertex={member_id=0, community_id=995611, ~label=author, group_id=3}, local_id=ac695b10-da76-11e5-81d4-5104e9ce8f3f, in_vertex={member_id=0, community_id=995611, ~label=book, group_id=4}, ~type=authored}",
+        "label" : "authored",
+        "type" : "edge",
+        "inVLabel" : "book",
+        "outVLabel" : "author",
+        "inV" : "book:995611:4:0",
+        "outV" : "author:995611:3:0"
+      } ],
+      "type" : "EDGE",
+      "truncated" : false,
+      "graph" : {
+        "vertices" : [ {
+          "id" : "book:995611:4:0",
+          "label" : "book",
+          "type" : "vertex",
+          "properties" : {
+            "myId" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=995611, ~label=book, group_id=4}, local_id=00000000-0000-8008-0000-000000000000, ~type=myId}",
+              "value" : 100
+            } ],
+            "publishDate" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=995611, ~label=book, group_id=4}, local_id=00000000-0000-8006-0000-000000000000, ~type=publishDate}",
+              "value" : 1961
+            } ],
+            "bookTitle" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=995611, ~label=book, group_id=4}, local_id=00000000-0000-8005-0000-000000000000, ~type=bookTitle}",
+              "value" : "The Art of French Cooking, Vol. 1"
+            } ]
+          }
+        }, {
+          "id" : "author:995611:3:0",
+          "label" : "author",
+          "type" : "vertex",
+          "properties" : {
+            "gender" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=995611, ~label=author, group_id=3}, local_id=00000000-0000-8004-0000-000000000000, ~type=gender}",
+              "value" : "F"
+            } ],
+            "myId" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=995611, ~label=author, group_id=3}, local_id=00000000-0000-8008-0000-000000000000, ~type=myId}",
+              "value" : 1
+            } ],
+            "aname" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=995611, ~label=author, group_id=3}, local_id=00000000-0000-8003-0000-000000000000, ~type=aname}",
+              "value" : "Julia Child"
+            } ]
+          }
+        } ],
+        "edges" : [ {
+          "id" : "{out_vertex={member_id=0, community_id=995611, ~label=author, group_id=3}, local_id=ac695b10-da76-11e5-81d4-5104e9ce8f3f, in_vertex={member_id=0, community_id=995611, ~label=book, group_id=4}, ~type=authored}",
+          "label" : "authored",
+          "type" : "edge",
+          "inVLabel" : "book",
+          "outVLabel" : "author",
+          "inV" : "book:995611:4:0",
+          "outV" : "author:995611:3:0"
+        } ]
+      },
+      "id" : "94bf743c-c1e5-41a1-93bb-b9ae69963200"
+    },
+    "msg" : null,
+    "dataViewType" : "GRAPH",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      },
+      "GRAPH" : {
+        "labelTemplates" : {
+          "book" : "{{myId}}: {{bookTitle}}",
+          "author" : "{{myId}}: {{aname}}"
+        },
+        "defaultLabelTemplate" : "{{label}}[{{id}}]",
+        "positions" : {
+          "book:995611:4:0" : {
+            "x" : -143,
+            "y" : 151
+          },
+          "author:995611:3:0" : {
+            "x" : 142,
+            "y" : -147
+          }
+        },
+        "position" : null,
+        "scale" : null,
+        "requestId" : "94bf743c-c1e5-41a1-93bb-b9ae69963200"
+      },
+      "CODE" : {
+        "hidden" : false
+      }
+    }
+  }, {
+    "id" : "ca307f92-5055-42c4-9ef0-45c711229afd",
+    "status" : "SUCCESS",
+    "code" : "g.V().has('author','aname','Julia Child')",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ {
+        "id" : "author:91833:1:0",
+        "label" : "author",
+        "type" : "vertex",
+        "properties" : {
+          "gender" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=1}, local_id=00000000-0000-8004-0000-000000000000, ~type=gender}",
+            "value" : "F"
+          } ],
+          "aname" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=aname}",
+            "value" : "Julia Child"
+          } ],
+          "id" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=id}",
+            "value" : 1
+          } ]
+        }
+      } ],
+      "type" : "VERTEX",
+      "truncated" : false,
+      "graph" : {
+        "vertices" : [ {
+          "id" : "author:91833:1:0",
+          "label" : "author",
+          "type" : "vertex",
+          "properties" : {
+            "gender" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=1}, local_id=00000000-0000-8004-0000-000000000000, ~type=gender}",
+              "value" : "F"
+            } ],
+            "aname" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=aname}",
+              "value" : "Julia Child"
+            } ],
+            "id" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=id}",
+              "value" : 1
+            } ]
+          }
+        } ],
+        "edges" : [ ]
+      },
+      "id" : "049f3e82-8bb3-406c-b121-cea8976ffb30"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : null
+  }, {
+    "id" : "cfed188f-a0a7-4a33-ae6b-93177ba525de",
+    "status" : "SUCCESS",
+    "code" : "An _author_ vertex was created. A vertex _label_ specifies the type of vertex, and the key-value pairs identify the _property key_ and its value for **myId**, **aname**, and **gender**.The _id_ is automatically generated and consists of a vertex label and three components associated with the location of the vertex within the graph. The [Anatomy of a Graph Traversal](http://docs.datastax.com/en/datastax_enterprise/5.0/datastax_enterprise/graph/getting_started/graphGettingStartedQueryAnatomy.html) explains the id components.",
+    "language" : "markdown",
+    "result" : {
+      "value" : "<p>An <em>author</em> vertex was created. A vertex <em>label</em> specifies the type of vertex, and the key-value pairs identify the <em>property key</em> and its value for <strong>myId</strong>, <strong>aname</strong>, and <strong>gender</strong>.The <em>id</em> is automatically generated and consists of a vertex label and three components associated with the location of the vertex within the graph. The <a href=\"http://docs.datastax.com/en/datastax_enterprise/5.0/datastax_enterprise/graph/getting_started/graphGettingStartedQueryAnatomy.html\">Anatomy of a Graph Traversal</a> explains the id components.</p>\n",
+      "type" : "HTML",
+      "truncated" : false,
+      "id" : "c74d4569-554e-4be0-97da-4a8b8a7b82a7"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CODE" : {
+        "hidden" : true
+      }
+    }
+  }, {
+    "id" : "5dbfc9c4-0888-4f5f-953c-3c250d6a4a34",
+    "status" : "SUCCESS",
+    "code" : "g.V().has('book', 'bookTitle', 'The Art of French Cooking, Vol. 1')",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ {
+        "id" : "book:91833:2:0",
+        "label" : "book",
+        "type" : "vertex",
+        "properties" : {
+          "publishDate" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=91833, ~label=book, group_id=2}, local_id=00000000-0000-8006-0000-000000000000, ~type=publishDate}",
+            "value" : 1961
+          } ],
+          "id" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=91833, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=id}",
+            "value" : 100
+          } ],
+          "bookTitle" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=91833, ~label=book, group_id=2}, local_id=00000000-0000-8005-0000-000000000000, ~type=bookTitle}",
+            "value" : "The Art of French Cooking, Vol. 1"
+          } ]
+        }
+      } ],
+      "type" : "VERTEX",
+      "truncated" : false,
+      "graph" : {
+        "vertices" : [ {
+          "id" : "book:91833:2:0",
+          "label" : "book",
+          "type" : "vertex",
+          "properties" : {
+            "publishDate" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=book, group_id=2}, local_id=00000000-0000-8006-0000-000000000000, ~type=publishDate}",
+              "value" : 1961
+            } ],
+            "id" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=id}",
+              "value" : 100
+            } ],
+            "bookTitle" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=book, group_id=2}, local_id=00000000-0000-8005-0000-000000000000, ~type=bookTitle}",
+              "value" : "The Art of French Cooking, Vol. 1"
+            } ]
+          }
+        } ],
+        "edges" : [ ]
+      },
+      "id" : "c47b6a8b-c4f4-4437-ba0c-ca0549fcf779"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : null
+  }, {
+    "id" : "4bc9b778-a0b4-41fb-9a59-ae6cf09f6297",
+    "status" : "SUCCESS",
+    "code" : "g.E().hasLabel('authored')",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ {
+        "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=1}, local_id=c534cc10-da62-11e5-81d4-5104e9ce8f3f, in_vertex={member_id=0, community_id=91833, ~label=book, group_id=2}, ~type=authored}",
+        "label" : "authored",
+        "type" : "edge",
+        "inVLabel" : "book",
+        "outVLabel" : "author",
+        "inV" : "book:91833:2:0",
+        "outV" : "author:91833:1:0"
+      } ],
+      "type" : "EDGE",
+      "truncated" : false,
+      "graph" : {
+        "vertices" : [ {
+          "id" : "book:91833:2:0",
+          "label" : "book",
+          "type" : "vertex",
+          "properties" : {
+            "publishDate" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=book, group_id=2}, local_id=00000000-0000-8006-0000-000000000000, ~type=publishDate}",
+              "value" : 1961
+            } ],
+            "id" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=id}",
+              "value" : 100
+            } ],
+            "bookTitle" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=book, group_id=2}, local_id=00000000-0000-8005-0000-000000000000, ~type=bookTitle}",
+              "value" : "The Art of French Cooking, Vol. 1"
+            } ]
+          }
+        }, {
+          "id" : "author:91833:1:0",
+          "label" : "author",
+          "type" : "vertex",
+          "properties" : {
+            "gender" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=1}, local_id=00000000-0000-8004-0000-000000000000, ~type=gender}",
+              "value" : "F"
+            } ],
+            "aname" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=aname}",
+              "value" : "Julia Child"
+            } ],
+            "id" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=id}",
+              "value" : 1
+            } ]
+          }
+        } ],
+        "edges" : [ {
+          "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=1}, local_id=c534cc10-da62-11e5-81d4-5104e9ce8f3f, in_vertex={member_id=0, community_id=91833, ~label=book, group_id=2}, ~type=authored}",
+          "label" : "authored",
+          "type" : "edge",
+          "inVLabel" : "book",
+          "outVLabel" : "author",
+          "inV" : "book:91833:2:0",
+          "outV" : "author:91833:1:0"
+        } ]
+      },
+      "id" : "996ebd5a-669b-4311-a58c-b0fb920f873c"
+    },
+    "msg" : null,
+    "dataViewType" : "RAW",
+    "viewSettings" : null
+  } ],
+  "created" : "2016-02-23T19:15:17.845Z",
+  "lastUsed" : "2016-02-23T21:47:36.984Z"
+}

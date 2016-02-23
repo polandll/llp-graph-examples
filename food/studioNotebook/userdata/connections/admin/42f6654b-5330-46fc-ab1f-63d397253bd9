@@ -1,0 +1,12 @@
+{
+  "name" : "QuickStart",
+  "id" : "42f6654b-5330-46fc-ab1f-63d397253bd9",
+  "port" : 9042,
+  "connectionHosts" : [ "127.0.0.1" ],
+  "username" : null,
+  "password" : null,
+  "compression" : "NONE",
+  "graphName" : "quickstart",
+  "serverSSLConfiguration" : null,
+  "clientSSLConfiguration" : null
+}

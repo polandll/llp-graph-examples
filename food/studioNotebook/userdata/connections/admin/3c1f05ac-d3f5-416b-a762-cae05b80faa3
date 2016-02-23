@@ -1,0 +1,12 @@
+{
+  "name" : "personTest",
+  "id" : "3c1f05ac-d3f5-416b-a762-cae05b80faa3",
+  "port" : 9042,
+  "connectionHosts" : [ "127.0.0.1" ],
+  "username" : null,
+  "password" : null,
+  "compression" : "NONE",
+  "graphName" : "personTest",
+  "serverSSLConfiguration" : null,
+  "clientSSLConfiguration" : null
+}
