@@ -1,0 +1,125 @@
+Starting the daemon:
+# on DSP-7740-manual-squash, after running ./gradlew clean jar copyLibs
+dalaro@bluebox:~/bdp$ rm -rf /var/{lib,log}/{cassandra,spark}/* && bin/dse -x 2 cassandra -g
+# waited a little bit for the daemon to start and bind on tcp/8182
+Loading and querying data:
+dalaro@bluebox:~/incubator-tinkerpop/gremlin-console$ bin/gremlin.sh 
+
+         \,,,/
+         (o o)
+-----oOOo-(3)-oOOo-----
+plugin activated: tinkerpop.server
+plugin activated: tinkerpop.utilities
+plugin activated: tinkerpop.tinkergraph
+gremlin> // Update these paths to match the test environment
+==>true
+gremlin> personSchemaFilePath = '/home/dalaro/bdp/dse-graph/personSchema.groovy'
+==>/home/dalaro/bdp/dse-graph/personSchema.groovy
+gremlin> amyDataFilePath = '/home/dalaro/bdp/dse-graph/src/test/resources/amy_person_import.json'
+==>/home/dalaro/bdp/dse-graph/src/test/resources/amy_person_import.json
+gremlin> vertexImportScriptFilePath = '/home/dalaro/bdp/dse-graph/loadPerson.groovy'
+==>/home/dalaro/bdp/dse-graph/loadPerson.groovy
+gremlin> 
+gremlin> // Connect
+==>true
+gremlin> :remote connect tinkerpop.server conf/remote-objects.yaml
+==>Connected - localhost/127.0.0.1:8182
+gremlin> cluster = Cluster.build().create()
+==>localhost/127.0.0.1:8182
+gremlin> client = cluster.connect()
+==>org.apache.tinkerpop.gremlin.driver.Client$ClusteredClient@61533ae
+gremlin> alias = client.alias("test.g")
+==>org.apache.tinkerpop.gremlin.driver.Client$AliasClusteredClient@466d49f0
+gremlin> 
+gremlin> // Create graph
+==>true
+gremlin> :> system.createGraph('test').build()
+==>test
+gremlin> 
+gremlin> // Load schema
+==>true
+gremlin> schemaScript = new File(personSchemaFilePath).text
+==>Schema schema = graph.schema();
+schema.buildPropertyKey("name", String.class).add();
+schema.buildPropertyKey("age", Integer.class).add();
+schema.buildPropertyKey("time", Integer.class).add();
+schema.buildVertexLabel("person").idComponent("name", IdPropertyKey.Type.Partition).add();
+schema.buildVertexLabel("organization").add();
+schema.buildVertexLabel("award").add();
+schema.buildVertexLabel("promotion").add();
+schema.buildEdgeLabel("knows").add();
+schema.buildEdgeLabel("worksFor").add();
+schema.buildPropertyKey("skills",String.class).cardinality(Cardinality.Multiple).add();
+graph.tx().commit();
+
+gremlin> alias.submit(schemaScript).all().get()
+==>result{object=null class=null}
+gremlin> 
+gremlin> // Read Amy's JSON definition into "amyDoc"
+==>true
+gremlin> mapper = new org.apache.tinkerpop.shaded.jackson.databind.ObjectMapper()
+==>org.apache.tinkerpop.shaded.jackson.databind.ObjectMapper@4078695f
+gremlin> amyData = new File(amyDataFilePath)
+==>/home/dalaro/bdp/dse-graph/src/test/resources/amy_person_import.json
+gremlin> amyDoc = mapper.readValue(amyData, Map.class)
+==>name=amy
+==>age=28
+==>social=222-22-2222
+==>knows=[john, frank]
+==>works={org={label=organization, name=xcorp}, time=2009}
+==>record=[{type=promotion, name=Director of Engineering, time=2013}]
+==>skills=[NoSQL, Cassandra, Hadoop]
+gremlin> 
+gremlin> // Read graph-data-mapper script into vertexImportScript
+==>true
+gremlin> vertexImportScript = new File(vertexImportScriptFilePath).text
+==>graph.load().vertex(doc, { com.datastax.bdp.graph.api.importer.VertexImport v ->
+    v.label("person"); //The documents describe "person" entities
+    v.key("name"); //Those "person" entities are uniquely identified by their "name" property
+    v.property("social", "ssn"); //The "social" field should be mapped to the existing "ssn" property key, by default "social" would be used as the property key
+    v.vertexProperty("clearance", { com.datastax.bdp.graph.api.importer.VertexPropertyImport vp ->
+        //The "clearance" field describes a vertex-property (with multiple values or meta-properties). Vertex-properties need to be called out specifically
+        vp.value("value"); //The value of the vertex-property is given in the "value" field
+    });
+    v.vertexProperty("skills"); // "skills" is also a vertex-property which multiple values
+    v.edge("works", "worksFor", Direction.OUT, { com.datastax.bdp.graph.api.importer.IncidentEdgeImport e ->
+        //The "works" field describes a relationship with label "worksFor" in the OUT direction ...
+        e.vertex("org", { com.datastax.bdp.graph.api.importer.NeighborVertexImport v2 ->
+            // ... to an adjacent vertex described in the nested "org" field
+            v2.labelField("label")  // ... with the label of that vertex (dynamically) defined in the "label" field
+              .key("name", "name"); // ... and which is uniquely identified by the (non-id) property key "name"
+        });
+        e.property("time", "time"); //Redundant
+    });
+    v.outE("supervisor", { com.datastax.bdp.graph.api.importer.IncidentEdgeImport e -> // The "supervisor" field describes a "supervisor" relationship
+        e.vertex("name", { com.datastax.bdp.graph.api.importer.NeighborVertexImport v2 ->
+            // to another vertex which is described in the "name" field
+            v2.label("person"); // and is of label "person"
+            v2.isKey("name"); // uniquely identified by its name which is stored in the field (i.e. not a nested document - just the value)
+        });
+        e.property("since", "since"); //Redundant
+    });
+    v.outV("knows", { com.datastax.bdp.graph.api.importer.NeighborVertexImport v2 ->
+        // The "knows" field describes a relationship with label "knows" where the edge is implicit (e.g. no edge properties) and only the neighbor is defined ...
+        v2.label("person") //which are other "person" vertices
+          .isKey("name"); //which are uniquely identified by their "name" property key
+    });
+    v.outV("record", "achieved", { com.datastax.bdp.graph.api.importer.VertexImport v2 -> // The "record" field describes "achieved" relationships to neighboring vertices
+        v2.labelField("type"); // ... which have label as defined in the "type" field. Not that no unique key is defined here which means a new vertex is created for each (nested) entry.
+    });
+    v.ignore("blablup"); // Ignore the "blablup" field. Otherwise we would create a property for each field not explicitly mentioned above
+} as java.util.function.Consumer);
+
+gremlin> 
+gremlin> // Run some queries
+==>true
+gremlin> alias.submit(vertexImportScript, ["doc": amyDoc]).all().get()
+==>result{object=null class=null}
+gremlin> alias.submit("g.V().has('name', 'amy').valueMap()").all().get()
+==>result{object={skills=[NoSQL, Cassandra, Hadoop], age=[28], ssn=[222-22-2222]} class=java.util.HashMap}
+gremlin> alias.submit("g.V().has('name', 'amy').bothE()").all().get()
+==>result{object=e[{out_vertex={~label=person, name=amy}, local_id=d2afa331-d146-11e5-a352-4dbafff48bf2, in_vertex={~label=person, name=john}, ~type=knows}][{~label=person, name=amy}-knows->{~label=person, name=john}] class=org.apache.tinkerpop.gremlin.structure.util.detached.DetachedEdge}
+==>result{object=e[{out_vertex={~label=person, name=amy}, local_id=d2afca40-d146-11e5-a352-4dbafff48bf2, in_vertex={~label=person, name=frank}, ~type=knows}][{~label=person, name=amy}-knows->{~label=person, name=frank}] class=org.apache.tinkerpop.gremlin.structure.util.detached.DetachedEdge}
+==>result{object=e[{out_vertex={~label=person, name=amy}, local_id=d2adce70-d146-11e5-a352-4dbafff48bf2, in_vertex={member_id=0, community_id=23329, ~label=organization, group_id=1}, ~type=worksFor}][{~label=person, name=amy}-worksFor->{member_id=0, community_id=23329, ~label=organization, group_id=1}] class=org.apache.tinkerpop.gremlin.structure.util.detached.DetachedEdge}
+==>result{object=e[{out_vertex={~label=person, name=amy}, local_id=d2afa330-d146-11e5-a352-4dbafff48bf2, in_vertex={member_id=0, community_id=23329, ~label=promotion, group_id=2}, ~type=achieved}][{~label=person, name=amy}-achieved->{member_id=0, community_id=23329, ~label=promotion, group_id=2}] class=org.apache.tinkerpop.gremlin.structure.util.detached.DetachedEdge}
+gremlin>

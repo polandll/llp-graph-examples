@@ -1,0 +1,16 @@
+INDEX
+
+vLabel1.buildVertexIndex('search').search()
+    .byPropertyKey('p_key_1')
+    .byPropertyKey('p_key_2', com.datastax.bdp.graph.impl.schema.TextIndexOptionInternal.FULLTEXT_INDEX)
+    .byPropertyKey('p_key_3',  com.datastax.bdp.graph.impl.schema.TextIndexOptionInternal.STRING_INDEX)
+    .add();
+    
+    
+     .byPropertyKey('p_key_2', fullTextIndex())
+     
+     vLabel1.buildVertexIndex('search').search()
+    .byPropertyKey('p_key_1')
+    .byPropertyKey('p_key_2', fullTextIndex())
+    .byPropertyKey('p_key_3', stringIndex())
+    .add();

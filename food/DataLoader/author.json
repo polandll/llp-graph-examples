@@ -1,0 +1,31 @@
+{
+  "name":"Julia Child",
+  "gender":"F",
+  "knows":[
+    "john",
+    "frank"
+  ],
+  "authored":{
+    "book":{
+      "label":"book",
+      "name":"Art of French Cooking Volume One"
+    },
+    "publishDate":1968
+  },
+  "record": [
+    {
+      "type" : "promotion",
+      "name" : "Director of Engineering",
+      "time" : 2013
+    },
+    {
+      "type" : "award",
+      "name" : "Employee of the Year",
+      "time" : 2010
+    }
+  ],
+  "supervisor" : {
+    "name" : "amanda",
+    "since" : 2011
+  }
+}
