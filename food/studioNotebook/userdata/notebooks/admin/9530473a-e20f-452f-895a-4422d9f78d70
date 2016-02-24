@@ -118,65 +118,65 @@
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "{out_vertex={member_id=0, community_id=995611, ~label=author, group_id=3}, local_id=ac695b10-da76-11e5-81d4-5104e9ce8f3f, in_vertex={member_id=0, community_id=995611, ~label=book, group_id=4}, ~type=authored}",
+        "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=3}, local_id=4fb86580-da7d-11e5-81d4-5104e9ce8f3f, in_vertex={member_id=0, community_id=91833, ~label=book, group_id=4}, ~type=authored}",
         "label" : "authored",
         "type" : "edge",
         "inVLabel" : "book",
         "outVLabel" : "author",
-        "inV" : "book:995611:4:0",
-        "outV" : "author:995611:3:0"
+        "inV" : "book:91833:4:0",
+        "outV" : "author:91833:3:0"
       } ],
       "type" : "EDGE",
       "truncated" : false,
       "graph" : {
         "vertices" : [ {
-          "id" : "book:995611:4:0",
+          "id" : "book:91833:4:0",
           "label" : "book",
           "type" : "vertex",
           "properties" : {
             "myId" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=995611, ~label=book, group_id=4}, local_id=00000000-0000-8008-0000-000000000000, ~type=myId}",
+              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=book, group_id=4}, local_id=00000000-0000-8008-0000-000000000000, ~type=myId}",
               "value" : 100
             } ],
             "publishDate" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=995611, ~label=book, group_id=4}, local_id=00000000-0000-8006-0000-000000000000, ~type=publishDate}",
+              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=book, group_id=4}, local_id=00000000-0000-8006-0000-000000000000, ~type=publishDate}",
               "value" : 1961
             } ],
             "bookTitle" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=995611, ~label=book, group_id=4}, local_id=00000000-0000-8005-0000-000000000000, ~type=bookTitle}",
+              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=book, group_id=4}, local_id=00000000-0000-8005-0000-000000000000, ~type=bookTitle}",
               "value" : "The Art of French Cooking, Vol. 1"
             } ]
           }
         }, {
-          "id" : "author:995611:3:0",
+          "id" : "author:91833:3:0",
           "label" : "author",
           "type" : "vertex",
           "properties" : {
             "gender" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=995611, ~label=author, group_id=3}, local_id=00000000-0000-8004-0000-000000000000, ~type=gender}",
+              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=3}, local_id=00000000-0000-8004-0000-000000000000, ~type=gender}",
               "value" : "F"
             } ],
             "myId" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=995611, ~label=author, group_id=3}, local_id=00000000-0000-8008-0000-000000000000, ~type=myId}",
+              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=3}, local_id=00000000-0000-8008-0000-000000000000, ~type=myId}",
               "value" : 1
             } ],
             "aname" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=995611, ~label=author, group_id=3}, local_id=00000000-0000-8003-0000-000000000000, ~type=aname}",
+              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=3}, local_id=00000000-0000-8003-0000-000000000000, ~type=aname}",
               "value" : "Julia Child"
             } ]
           }
         } ],
         "edges" : [ {
-          "id" : "{out_vertex={member_id=0, community_id=995611, ~label=author, group_id=3}, local_id=ac695b10-da76-11e5-81d4-5104e9ce8f3f, in_vertex={member_id=0, community_id=995611, ~label=book, group_id=4}, ~type=authored}",
+          "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=3}, local_id=4fb86580-da7d-11e5-81d4-5104e9ce8f3f, in_vertex={member_id=0, community_id=91833, ~label=book, group_id=4}, ~type=authored}",
           "label" : "authored",
           "type" : "edge",
           "inVLabel" : "book",
           "outVLabel" : "author",
-          "inV" : "book:995611:4:0",
-          "outV" : "author:995611:3:0"
+          "inV" : "book:91833:4:0",
+          "outV" : "author:91833:3:0"
         } ]
       },
-      "id" : "94bf743c-c1e5-41a1-93bb-b9ae69963200"
+      "id" : "01d479b7-1f49-468a-ba2d-35a09888df48"
     },
     "msg" : null,
     "dataViewType" : "GRAPH",
@@ -192,18 +192,21 @@
         },
         "defaultLabelTemplate" : "{{label}}[{{id}}]",
         "positions" : {
-          "book:995611:4:0" : {
+          "book:91833:4:0" : {
             "x" : -143,
             "y" : 151
           },
-          "author:995611:3:0" : {
+          "author:91833:3:0" : {
             "x" : 142,
             "y" : -147
           }
         },
-        "position" : null,
-        "scale" : null,
-        "requestId" : "94bf743c-c1e5-41a1-93bb-b9ae69963200"
+        "position" : {
+          "x" : 56.29618412144873,
+          "y" : 105.51784263190339
+        },
+        "scale" : 0.6578616298552147,
+        "requestId" : "01d479b7-1f49-468a-ba2d-35a09888df48"
       },
       "CODE" : {
         "hidden" : false
@@ -407,5 +410,5 @@
     "viewSettings" : null
   } ],
   "created" : "2016-02-23T19:15:17.845Z",
-  "lastUsed" : "2016-02-23T21:47:36.984Z"
+  "lastUsed" : "2016-02-24T01:13:53.281Z"
 }
