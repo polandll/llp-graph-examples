@@ -4,15 +4,15 @@
 // :> @script
 
 // reviewer vertices
-Vertex johnDoe = graph.addVertex(label, 'reviewer', 'id', 400, 'revname','John Doe')
-Vertex johnSmith = graph.addVertex(label, 'reviewer', 'id', 401, 'revname','John Smith')
-Vertex janeDoe = graph.addVertex(label, 'reviewer', 'id', 402, 'revname','Jane Doe')
-Vertex sharonSmith = graph.addVertex(label, 'reviewer', 'id', 403, 'revname','Sharon Smith')
-Vertex betsyJones = graph.addVertex(label, 'reviewer', 'myId', 404, 'revname','Betsy Jones')
+Vertex johnDoe = graph.addVertex(label, 'reviewer', 'name','John Doe')
+Vertex johnSmith = graph.addVertex(label, 'reviewer', John Smith')
+Vertex janeDoe = graph.addVertex(label, 'reviewer', 'name','Jane Doe')
+Vertex sharonSmith = graph.addVertex(label, 'reviewer', 'name','Sharon Smith')
+Vertex betsyJones = graph.addVertex(label, 'reviewer', 'name','Betsy Jones')
 
-beefBourguignon = g.V().hasLabel('recipe').has('recipeTitle','Beef Bourguignon').tryNext().orElseGet {graph.addVertex(label, "recipe", "recipeTitle", 'Beef Bourguignon')}
-spicyMeatLoaf = g.V().hasLabel('recipe').has('recipeTitle','Spicy Meatloaf').tryNext().orElseGet {graph.addVertex(label, "recipe", "recipeTitle", 'Spicy Meatloaf')}
-carrotSoup = g.V().hasLabel('recipe').has('recipeTitle','Carrot Soup').tryNext().orElseGet {graph.addVertex(label, "recipe", "recipeTitle", 'Carrot Soup')}
+beefBourguignon = g.V().has('recipe', 'name','Beef Bourguignon').tryNext().orElseGet {graph.addVertex(label, "recipe", "name", 'Beef Bourguignon')}
+spicyMeatLoaf = g.V().has('recipe', 'name','Spicy Meatloaf').tryNext().orElseGet {graph.addVertex(label, "recipe", "name", 'Spicy Meatloaf')}
+carrotSoup = g.V().has('recipe', 'name','Carrot Soup').tryNext().orElseGet {graph.addVertex(label, "recipe", "name", 'Carrot Soup')}
 
 // reviewer - recipe edges
 johnDoe.addEdge('rated', beefBourguignon, 'ratedDate', Instant.parse('2014-01-01T00:00:00.00Z'), 'stars', 5, 'comment', 'Pretty tasty!')

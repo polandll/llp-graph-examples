@@ -21,24 +21,15 @@ class RecipeParser {
     	  def schema = graph.schema()
     	
     	    // Property Keys
-    		def id = schema.buildPropertyKey('myId', Integer.class).add()
-    		def aname = schema.buildPropertyKey('aname', String.class).add()
+    		def name = schema.buildPropertyKey('name', String.class).add()
     		def gender = schema.buildPropertyKey('gender', String.class).add()
-    		def revname = schema.buildPropertyKey('revname', String.class).add()
-    		def recipeTitle = schema.buildPropertyKey('recipeTitle', String.class).add()
     		def instructions = schema.buildPropertyKey('instructions', String.class).add()
-    		def iName = schema.buildPropertyKey('iName', String.class).add()
-    		def bookTitle = schema.buildPropertyKey('bookTitle', String.class).add()
-    		def publishDate = schema.buildPropertyKey('publishDate', Integer.class).add()
+    		def timestamp = schema.buildPropertyKey('timestamp', Timestamp.class).add()
     		def ISBN = schema.buildPropertyKey('ISBN', String.class).add()
-    		def mname = schema.buildPropertyKey('mealTitle', String.class).add()
-    		def mCreateDate = schema.buildPropertyKey('mCreateDate', Instant.class).add()
     		def calories = schema.buildPropertyKey('calories', Integer.class).add()
                 
-    		def rCreateDate = schema.buildPropertyKey('rCreateDate', Integer.class).add()
     		def amount = schema.buildPropertyKey('amount', String.class).add()
     		def stars = schema.buildPropertyKey('stars', Integer.class).add()
-    		def ratedDate = schema.buildPropertyKey('ratedDate', Instant.class).add()
     		def comment = schema.buildPropertyKey('comment', String.class).add()
     		
     		// Vertex Labels
@@ -58,10 +49,10 @@ class RecipeParser {
                 
     		// Indexes	
     		def ratedByStars = reviewer.buildEdgeIndex('ratedByStars', rated).direction(OUT).byPropertyKey('stars').add()
-    		def byRecipe = recipe.buildVertexIndex('byRecipe', MATERIALIZED).byPropertyKey('recipeTitle').add()
-    		def byMeal = meal.buildVertexIndex('byMeal', MATERIALIZED).byPropertyKey('mealTitle').add()
-    		def byIngredient = ingredient.buildVertexIndex('byIngredient', MATERIALIZED).byPropertyKey('iName').add()
-    		def byReviewer = reviewer.buildVertexIndex('byReviewer', MATERIALIZED).byPropertyKey('revname').add()
+    		def byRecipe = recipe.buildVertexIndex('byRecipe').materialized().byPropertyKey('recipeTitle').add()
+    		def byMeal = meal.buildVertexIndex('byMeal').materialized().byPropertyKey('mealTitle').add()
+    		def byIngredient = ingredient.buildVertexIndex('byIngredient').materialized().byPropertyKey('iName').add()
+    		def byReviewer = reviewer.buildVertexIndex('byReviewer').materialized().byPropertyKey('revname').add()
 	}
 	
 	public static List parse(final Graph graph, final GraphTraversalSource g, final String dataDirectory, final int batchSize) {
@@ -70,16 +61,14 @@ class RecipeParser {
 
         def beforeTime = System.currentTimeMillis();
        
-		// AuthorID::Name::Gender
+		// Name::Gender
         new File(dataDirectory + '/authors.csv').eachLine { final String line ->
 
             def components = line.split("::")
-            def authorId = components[0].toInteger()
-            def aname = components[1]
-            def gender = components[2]
+            def name = components[0]
+            def gender = components[1]
             def authorVertex = graph.addVertex(label, "author",
-                "myId", authorId,
-                "aname", aname,
+                "name", name,
                 "gender", gender)
 
             if (++counter % batchSize == 0) graph.tx().commit()
@@ -88,25 +77,23 @@ class RecipeParser {
         
         def afterAuthor = System.currentTimeMillis();
 
-        //bookId::bookTitle::publishDate::ISBN::authors
+        //name::timestamp::ISBN::authors
         new File(dataDirectory + '/books.csv').eachLine { final String line ->
 
             def components = line.split("::")
-            def bookId = components[0].toInteger()
-            def bookTitle = components[1]
-            def publishDate = components[2].toInteger()
-            def ISBN = components[3]
-            def authors = components[4]
+            def name = components[0]
+            def timestamp = components[1]
+            def ISBN = components[2]
+            def authors = components[3]
             def bookVertex = graph.addVertex(label, "book",
-                "myId", bookId,
-                "bookTitle", bookTitle,
-                "publishDate", publishDate,
+                "name", name,
+                "timestamp", timestamp,
                 "ISBN", ISBN)
 
             if (++counter % batchSize == 0) graph.tx().commit()
             
             authors.split('\\|').each { def authName ->
-                def authVertex = g.V().has("author", "aname", authName).tryNext().orElseGet {graph.addVertex(label, "author", "aname", authName)}
+                def authVertex = g.V().has("author", "name", authName).tryNext().orElseGet {graph.addVertex(label, "author", "name", authName)}
                 authVertex.addEdge('authored', bookVertex)
                 if (++counter % batchSize == 0) graph.tx().commit()
             }
@@ -115,15 +102,13 @@ class RecipeParser {
         graph.tx().commit()
         def afterBook = System.currentTimeMillis();
    
-        //ingredientId::iName
+        //name
         new File(dataDirectory + '/ingredients.csv').eachLine { final String line ->
 
             def components = line.split("::")
-            def ingredientId = components[0].toInteger()
-            def iName = components[1]
+            def name = components[0]
             def ingredientVertex = graph.addVertex(label, "ingredient",
-                "myId", ingredientId,
-                "iName", iName)
+                "name", name)
 
             if (++counter % batchSize == 0) graph.tx().commit()
         }
@@ -131,18 +116,16 @@ class RecipeParser {
         graph.tx().commit()
         def afterIngredient = System.currentTimeMillis();
              
-        //recipeId::recipeTitle::author::[(ingredient,amount)]::instructions
+        //name::author::[(ingredient,amount)]::instructions
         new File(dataDirectory + '/recipes.csv').eachLine { final String line ->
 
             def components = line.split("::")
-            def recipeId = components[0].toInteger()
-            def recipeTitle = components[1]
-            def author = components[2]
-            def ingredient = components[3]
-            def instructions = components[4]
+            def name = components[0]
+            def author = components[1]
+            def ingredient = components[2]
+            def instructions = components[3]
             def recipeVertex = graph.addVertex(label, "recipe",
-                "myId", recipeId,
-                "recipeTitle", recipeTitle,
+                "name", name,
                 "author", author,
                 "instructions", instructions)
 
@@ -151,7 +134,7 @@ class RecipeParser {
             // FIX THIS SECTION *****************
             
            // ingredients.split('\\|').each { def ingredName ->
-           //     def ingredVertex = g.V().has("ingredient", "iName", ingredName).tryNext().orElseGet {graph.addVertex(label, "ingredient", "iName", ingredName)}
+           //     def ingredVertex = g.V().has("ingredient", "name", ingredName).tryNext().orElseGet {graph.addVertex(label, "ingredient", "name", ingredName)}
            //     recipeVertex.addEdge('includes', ingredVertex)
            //     if (++counter % batchSize == 0) graph.tx().commit()
            // }
@@ -160,25 +143,23 @@ class RecipeParser {
         graph.tx().commit()
         def afterRecipe = System.currentTimeMillis();
         
-        //mealId::mealTitle::mCreateDate::calories::recipes
+        //name::timestamp::calories::recipes
         new File(dataDirectory + '/meals.csv').eachLine { final String line ->
 
             def components = line.split("::")
-            def mealId = components[0].toInteger()
-            def mealTitle = components[1]
-            def mCreateDate = components[2].toInstant()
+            def name = components[0]
+            def timestamp = components[1].toInstant()
             def calories = components[3].toInteger()
             def recipes = components[4]
             def mealVertex = graph.addVertex(label, "meal",
-                "myId", mealId,
-                "mealTitle", mealTitle,
-                "mCreateDate", mCreateDate,
+                "name", name,
+                "timestamp", timestamp,
                 "calories", calories)
 
             if (++counter % batchSize == 0) graph.tx().commit()
             
             recipes.split('\\|').each { def recipeName ->
-                def recipeVertex = g.V().has("recipe", "recipeTitle", recipeName).tryNext().orElseGet {graph.addVertex(label, "recipe", "recipeTitle", recipeName)}
+                def recipeVertex = g.V().has("recipe", "name", recipeName).tryNext().orElseGet {graph.addVertex(label, "recipe", "name", recipeName)}
                 mealVertex.addEdge('includes', recipeVertex)
                 if (++counter % batchSize == 0) graph.tx().commit()
             }

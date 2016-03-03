@@ -29,24 +29,18 @@ class RecipeFactory {
     	Schema schema = graph.schema()
     	
     	    // Property Keys
-    		def id = schema.buildPropertyKey('myId', Integer.class).add()
-    		def aname = schema.buildPropertyKey('aname', String.class).add()
+    		def name = schema.buildPropertyKey('name', String.class).add()
     		def gender = schema.buildPropertyKey('gender', String.class).add()
-    		def revname = schema.buildPropertyKey('revname', String.class).add()
-    		def recipeTitle = schema.buildPropertyKey('recipeTitle', String.class).add()
     		def instructions = schema.buildPropertyKey('instructions', String.class).add()
-    		def iName = schema.buildPropertyKey('iName', String.class).add()
-    		def bookTitle = schema.buildPropertyKey('bookTitle', String.class).add()
-    		def publishDate = schema.buildPropertyKey('publishDate', Integer.class).add()
+    		def timestamp = schema.buildPropertyKey('timestamp', Integer.class).add()
     		def ISBN = schema.buildPropertyKey('ISBN', String.class).add()
-    		def mname = schema.buildPropertyKey('mealTitle', String.class).add()
-    		def mCreateDate = schema.buildPropertyKey('mCreateDate', Instant.class).add()
+    		def timestamp = schema.buildPropertyKey('timestamp', Instant.class).add()
     		def calories = schema.buildPropertyKey('calories', Integer.class).add()
                 
-    		def rCreateDate = schema.buildPropertyKey('rCreateDate', Integer.class).add()
+    		def timestamp = schema.buildPropertyKey('timestamp', Integer.class).add()
     		def amount = schema.buildPropertyKey('amount', String.class).add()
     		def stars = schema.buildPropertyKey('stars', Integer.class).add()
-    		def ratedDate = schema.buildPropertyKey('ratedDate', Instant.class).add()
+    		def timestamp = schema.buildPropertyKey('timestamp', Instant.class).add()
     		def comment = schema.buildPropertyKey('comment', String.class).add()
     		
     		// Vertex Labels
@@ -66,10 +60,10 @@ class RecipeFactory {
                 
     		// Indexes	
     		def ratedByStars = reviewer.buildEdgeIndex('ratedByStars', rated).direction(OUT).byPropertyKey('stars').add()
-    		def byRecipe = recipe.buildVertexIndex('byRecipe', MATERIALIZED).byPropertyKey('recipeTitle').add()
-    		def byMeal = meal.buildVertexIndex('byMeal', MATERIALIZED).byPropertyKey('mealTitle').add()
-    		def byIngredient = ingredient.buildVertexIndex('byIngredient', MATERIALIZED).byPropertyKey('iName').add()
-    		def byReviewer = reviewer.buildVertexIndex('byReviewer', MATERIALIZED).byPropertyKey('revname').add()
+    		def byRecipe = recipe.buildVertexIndex('byRecipe').materialized().byPropertyKey('recipeTitle').add()
+    		def byMeal = meal.buildVertexIndex('byMeal').materialized().byPropertyKey('mealTitle').add()
+    		def byIngredient = ingredient.buildVertexIndex('byIngredient').materialized().byPropertyKey('iName').add()
+    		def byReviewer = reviewer.buildVertexIndex('byReviewer').materialized().byPropertyKey('revname').add()
 	}
 
 	public static Graph load(final GraphTraversalSource g) {

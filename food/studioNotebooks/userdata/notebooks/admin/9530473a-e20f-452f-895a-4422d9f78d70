@@ -12,7 +12,7 @@
       "value" : "<p>Graph databases are useful for discovering simple and complex relationships between objects. Relationships are fundamental to how objects interact with one another and their environment. Graph databases are the perfect representation of the relationships between objects.</p>\n<p>Graph databases consist of two elements:</p>\n<ul>\n<li>vertex\n<br  />&ndash; A vertex is an object, such as a person, location, automobile, recipe, or anything else you can think of as nouns.</li>\n<li>edge\n<br  />&ndash; An edge defines the relationship between two vertices. A person can create software, or an author can write a book. Think verbs when you are defining edges.</li>\n</ul>\n<p>Both vertices and edges can have properties; for this reason, DSE Graph is classified as a property graph. The properties for both vertices and edges are an important element of storing and querying information from a property graph.\n<br  />Property graphs are typically quite large, although the nature of querying the graph will vary depending on whether the graph has large numbers of vertices, edges, or both vertices and edges. To get started with graph database concepts, a &ldquo;toy&rdquo; graph is used for simplicity. The example used here explores the world of food.</p>\n<p><img src=\"https://raw.githubusercontent.com/polandll/graph-examples/master/food/images/recipe3.jpg\" alt=\"Recipe Toy Graph\" /></p>\n<p>Elements are labelled to distinguish the type of vertices and edges in a graph database. A vertex that will hold information about an author is labelled <em>author</em>. An edge in the graph is labelled <em>authored</em>. Labels specify the types of vertices and edges that make up the graph. Specifying appropriate labels is an important step in <a href=\"http://docs.datastax.com/en/datastax_enterprise/5.0/datastax_enterprise/graph/data_modeling/dataModelTOC.html\">graph data modeling</a>.</p>\n<p>Vertices and edges generally have properties. For instance, an <em>author</em> vertex can have a <em>name</em>. Gender and current job are examples of additional properties for an <em>author</em> vertex. Edges also have properties. A <em>created</em> edge can have a <em>createDate</em> property that identifies when the adjoining <em>recipe</em> vertex was created.</p>\n<p>Information in a graph database can be retrieved using <em>graph traversals</em>. <em>Graph traversals</em> &ldquo;walk&rdquo; a graph with a single or series of <em>traversal steps</em> that can define a starting point for a traversal and filter the results to find the answers to queries about the graph data.</p>\n<p>In order to run graph traversals to retrieve information, data must first be inserted. The steps listed in this section will allow you to gain a rudimentary understanding of DSE Graph with a minimum amount of configuration and schema creation</p>\n",
       "type" : "HTML",
       "truncated" : false,
-      "id" : "23f89296-ce29-4098-adf8-381da1225fc1"
+      "id" : "a38889e1-2735-41c1-90b2-a31911467fcc"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -22,7 +22,7 @@
         "yAxis" : null
       },
       "CODE" : {
-        "hidden" : true
+        "hidden" : false
       }
     }
   }, {
@@ -114,69 +114,61 @@
   }, {
     "id" : "24da57ad-36b1-4882-96e8-edbe4924bd4e",
     "status" : "SUCCESS",
-    "code" : "Vertex juliaChild = graph.addVertex(label,'author','myId', 1, 'aname','Julia Child', 'gender','F'); \nVertex artOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'myId', 100,'bookTitle', 'The Art of French Cooking, Vol. 1', 'publishDate', 1961); \njuliaChild.addEdge('authored', artOfFrenchCookingVolOne)",
+    "code" : "Vertex juliaChild = graph.addVertex(label,'author', 'name','Julia Child', 'gender','F'); \nVertex artOfFrenchCookingVolOne = graph.addVertex(label, 'book','name', 'The Art of French Cooking, Vol. 1', 'timestamp', 1961); \njuliaChild.addEdge('authored', artOfFrenchCookingVolOne)",
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=3}, local_id=4fb86580-da7d-11e5-81d4-5104e9ce8f3f, in_vertex={member_id=0, community_id=91833, ~label=book, group_id=4}, ~type=authored}",
+        "id" : "{out_vertex={member_id=0, community_id=371627, ~label=author, group_id=1}, local_id=e125d630-e0d4-11e5-be0d-99afae6477e0, in_vertex={member_id=0, community_id=371627, ~label=book, group_id=2}, ~type=authored}",
         "label" : "authored",
         "type" : "edge",
         "inVLabel" : "book",
         "outVLabel" : "author",
-        "inV" : "book:91833:4:0",
-        "outV" : "author:91833:3:0"
+        "inV" : "book:371627:2:0",
+        "outV" : "author:371627:1:0"
       } ],
       "type" : "EDGE",
       "truncated" : false,
       "graph" : {
         "vertices" : [ {
-          "id" : "book:91833:4:0",
+          "id" : "book:371627:2:0",
           "label" : "book",
           "type" : "vertex",
           "properties" : {
-            "myId" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=book, group_id=4}, local_id=00000000-0000-8008-0000-000000000000, ~type=myId}",
-              "value" : 100
-            } ],
-            "publishDate" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=book, group_id=4}, local_id=00000000-0000-8006-0000-000000000000, ~type=publishDate}",
-              "value" : 1961
-            } ],
-            "bookTitle" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=book, group_id=4}, local_id=00000000-0000-8005-0000-000000000000, ~type=bookTitle}",
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=371627, ~label=book, group_id=2}, local_id=00000000-0000-8009-0000-000000000000, ~type=name}",
               "value" : "The Art of French Cooking, Vol. 1"
+            } ],
+            "timestamp" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=371627, ~label=book, group_id=2}, local_id=00000000-0000-800a-0000-000000000000, ~type=timestamp}",
+              "value" : 1961
             } ]
           }
         }, {
-          "id" : "author:91833:3:0",
+          "id" : "author:371627:1:0",
           "label" : "author",
           "type" : "vertex",
           "properties" : {
             "gender" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=3}, local_id=00000000-0000-8004-0000-000000000000, ~type=gender}",
+              "id" : "{out_vertex={member_id=0, community_id=371627, ~label=author, group_id=1}, local_id=00000000-0000-8004-0000-000000000000, ~type=gender}",
               "value" : "F"
             } ],
-            "myId" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=3}, local_id=00000000-0000-8008-0000-000000000000, ~type=myId}",
-              "value" : 1
-            } ],
-            "aname" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=3}, local_id=00000000-0000-8003-0000-000000000000, ~type=aname}",
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=371627, ~label=author, group_id=1}, local_id=00000000-0000-8009-0000-000000000000, ~type=name}",
               "value" : "Julia Child"
             } ]
           }
         } ],
         "edges" : [ {
-          "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=3}, local_id=4fb86580-da7d-11e5-81d4-5104e9ce8f3f, in_vertex={member_id=0, community_id=91833, ~label=book, group_id=4}, ~type=authored}",
+          "id" : "{out_vertex={member_id=0, community_id=371627, ~label=author, group_id=1}, local_id=e125d630-e0d4-11e5-be0d-99afae6477e0, in_vertex={member_id=0, community_id=371627, ~label=book, group_id=2}, ~type=authored}",
           "label" : "authored",
           "type" : "edge",
           "inVLabel" : "book",
           "outVLabel" : "author",
-          "inV" : "book:91833:4:0",
-          "outV" : "author:91833:3:0"
+          "inV" : "book:371627:2:0",
+          "outV" : "author:371627:1:0"
         } ]
       },
-      "id" : "01d479b7-1f49-468a-ba2d-35a09888df48"
+      "id" : "7e27a802-d261-4f4d-aa5d-b7254212aac5"
     },
     "msg" : null,
     "dataViewType" : "GRAPH",
@@ -187,26 +179,23 @@
       },
       "GRAPH" : {
         "labelTemplates" : {
-          "book" : "{{myId}}: {{bookTitle}}",
-          "author" : "{{myId}}: {{aname}}"
+          "book" : "{{label}}:{{name}}",
+          "author" : "{{label}}:{{name}}"
         },
         "defaultLabelTemplate" : "{{label}}[{{id}}]",
         "positions" : {
-          "book:91833:4:0" : {
-            "x" : -143,
-            "y" : 151
+          "book:371627:2:0" : {
+            "x" : 25,
+            "y" : -92
           },
-          "author:91833:3:0" : {
-            "x" : 142,
-            "y" : -147
+          "author:371627:1:0" : {
+            "x" : 22,
+            "y" : 87
           }
         },
-        "position" : {
-          "x" : 56.29618412144873,
-          "y" : 105.51784263190339
-        },
-        "scale" : 0.6578616298552147,
-        "requestId" : "01d479b7-1f49-468a-ba2d-35a09888df48"
+        "position" : null,
+        "scale" : null,
+        "requestId" : "7e27a802-d261-4f4d-aa5d-b7254212aac5"
       },
       "CODE" : {
         "hidden" : false
@@ -215,25 +204,21 @@
   }, {
     "id" : "ca307f92-5055-42c4-9ef0-45c711229afd",
     "status" : "SUCCESS",
-    "code" : "g.V().has('author','aname','Julia Child')",
+    "code" : "g.V().has('author','name','Julia Child')",
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "author:91833:1:0",
+        "id" : "author:371627:1:0",
         "label" : "author",
         "type" : "vertex",
         "properties" : {
           "gender" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=1}, local_id=00000000-0000-8004-0000-000000000000, ~type=gender}",
+            "id" : "{out_vertex={member_id=0, community_id=371627, ~label=author, group_id=1}, local_id=00000000-0000-8004-0000-000000000000, ~type=gender}",
             "value" : "F"
           } ],
-          "aname" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=aname}",
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=371627, ~label=author, group_id=1}, local_id=00000000-0000-8009-0000-000000000000, ~type=name}",
             "value" : "Julia Child"
-          } ],
-          "id" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=id}",
-            "value" : 1
           } ]
         }
       } ],
@@ -241,31 +226,32 @@
       "truncated" : false,
       "graph" : {
         "vertices" : [ {
-          "id" : "author:91833:1:0",
+          "id" : "author:371627:1:0",
           "label" : "author",
           "type" : "vertex",
           "properties" : {
             "gender" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=1}, local_id=00000000-0000-8004-0000-000000000000, ~type=gender}",
+              "id" : "{out_vertex={member_id=0, community_id=371627, ~label=author, group_id=1}, local_id=00000000-0000-8004-0000-000000000000, ~type=gender}",
               "value" : "F"
             } ],
-            "aname" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=aname}",
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=371627, ~label=author, group_id=1}, local_id=00000000-0000-8009-0000-000000000000, ~type=name}",
               "value" : "Julia Child"
-            } ],
-            "id" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=91833, ~label=author, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=id}",
-              "value" : 1
             } ]
           }
         } ],
         "edges" : [ ]
       },
-      "id" : "049f3e82-8bb3-406c-b121-cea8976ffb30"
+      "id" : "744cfd67-cf8f-4abc-b1b3-cf1c8cd103a1"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
-    "viewSettings" : null
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
   }, {
     "id" : "cfed188f-a0a7-4a33-ae6b-93177ba525de",
     "status" : "SUCCESS",
@@ -410,5 +396,5 @@
     "viewSettings" : null
   } ],
   "created" : "2016-02-23T19:15:17.845Z",
-  "lastUsed" : "2016-02-24T01:13:53.281Z"
+  "lastUsed" : "2016-03-03T00:17:53.233Z"
 }

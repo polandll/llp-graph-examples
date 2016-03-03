@@ -6,18 +6,13 @@
  					    "~type":"gender",
  					    "out_vertex":{"member_id":0,"community_id":48213,"~label":"author","group_id":1}},
  					    "value":"F"}],
- 			    "aname":[{
+ 			    "name":[{
  			    	"id":{
  			    	    "local_id":"00000000-0000-8004-0000-000000000000",
  			    	    "~type":"aname",
  			    	    "out_vertex":{"member_id":0,"community_id":48213,"~label":"author","group_id":1}},
- 			    	    "value":"Julia Child"}],
- 			    "id":[{
- 			        "id":{
- 			            "local_id":"00000000-0000-8003-0000-000000000000",
- 			            "~type":"id",
- 			            "out_vertex":{"member_id":0,"community_id":48213,"~label":"author","group_id":1}},
- 			            "value":1}]}}
+ 			    	    "value":"Julia Child"}]
+ 			            }}
  			            
  {"id":{"member_id":0,"community_id":349806,"~label":"author","group_id":39},
  "label":"author",
@@ -38,19 +33,19 @@
  		"local_id":"682dcb04-c001-11e5-9801-0785e0bc622f",
  		"in_vertex":{"member_id":0,"community_id":349806,"~label":"recipe","group_id":50},"~type":"created"},
  		"inV":{"member_id":0,"community_id":349806,"~label":"recipe","group_id":50},
- 			"properties":{"rCreateDate":1961}},
+ 			"properties":{"timestamp":1961}},
  			{
  		"id":{"out_vertex":{"member_id":0,"community_id":349806,"~label":"author","group_id":39},
  		"local_id":"682dcb0b-c001-11e5-9801-0785e0bc622f",
  		"in_vertex":{"member_id":0,"community_id":349806,"~label":"recipe","group_id":51},"~type":"created"},
  		"inV":{"member_id":0,"community_id":349806,"~label":"recipe","group_id":51},
- 			"properties":{"rCreateDate":1965}},
+ 			"properties":{"timestamp":1965}},
  			{
  		"id":{"out_vertex":{"member_id":0,"community_id":349806,"~label":"author","group_id":39},
  		"local_id":"682dcb0a-c001-11e5-9801-0785e0bc622f",
  		"in_vertex":{"member_id":0,"community_id":349806,"~label":"recipe","group_id":52},"~type":"created"},
  		"inV":{"member_id":0,"community_id":349806,"~label":"recipe","group_id":52},
- 			"properties":{"rCreateDate":1962}}
+ 			"properties":{"timestamp":1962}}
  	]
  }
  
@@ -66,16 +61,12 @@
  			"id":{"local_id":"00000000-0000-800a-0000-000000000000","~type":"ISBN",
  				"out_vertex":{"member_id":0,"community_id":349806,"~label":"book","group_id":44}},
  				"value":"0-394-40135-2"}],
- 				"publishDate":[{
- 					"id":{"local_id":"00000000-0000-8007-0000-000000000000","~type":"publishDate",
+ 				"timestamp":[{
+ 					"id":{"local_id":"00000000-0000-8007-0000-000000000000","~type":"timestamp",
  					"out_vertex":{"member_id":0,"community_id":349806,"~label":"book","group_id":44}},
  					"value":1968}],
- 				"id":[{"id":{
- 					"local_id":"00000000-0000-8003-0000-000000000000","~type":"id",
- 					"out_vertex":{"member_id":0,"community_id":349806,"~label":"book","group_id":44}},
- 					"value":102}],
- 				"bookTitle":[{"id":{
- 					"local_id":"00000000-0000-8006-0000-000000000000","~type":"bookTitle",
+ 				"name":[{"id":{
+ 					"local_id":"00000000-0000-8006-0000-000000000000","~type":"name",
  					"out_vertex":{"member_id":0,"community_id":349806,"~label":"book","group_id":44}},
  					"value":"The French Chef Cookbook"}
  		]

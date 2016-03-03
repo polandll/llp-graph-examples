@@ -1,0 +1,27 @@
+{
+  "id" : "a1f389c5-fdc2-4c03-a281-453b19d496db",
+  "name" : "Welcome to DataStax Studio!",
+  "connectionId" : "",
+  "favorite" : false,
+  "cells" : [ {
+    "id" : "6aaeb8e1-68bd-4ba3-8e48-b9dc44dc7bd7",
+    "status" : "SUCCESS",
+    "code" : "Hello.",
+    "language" : "markdown",
+    "result" : {
+      "value" : "<p>Hello.</p>\n",
+      "type" : "HTML",
+      "truncated" : false,
+      "id" : "8e7431da-def3-42e9-837d-eba5c5879b70"
+    },
+    "msg" : null,
+    "dataViewType" : null,
+    "viewSettings" : {
+      "CODE" : {
+        "hidden" : true
+      }
+    }
+  } ],
+  "created" : "2016-02-26T23:01:42.260Z",
+  "lastUsed" : "2016-03-03T00:00:23.552Z"
+}
