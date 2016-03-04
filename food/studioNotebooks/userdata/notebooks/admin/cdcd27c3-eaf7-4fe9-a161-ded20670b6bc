@@ -1,0 +1,23 @@
+{
+  "id" : "cdcd27c3-eaf7-4fe9-a161-ded20670b6bc",
+  "name" : "throwaway",
+  "connectionId" : "d782796c-7786-46ea-b39a-a03e2bafb6d5",
+  "favorite" : false,
+  "cells" : [ {
+    "id" : "5a468eed-3360-409e-b99d-02f5ed314720",
+    "status" : "SUCCESS",
+    "code" : "g.V().count()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ 0 ],
+      "type" : "NUMBER",
+      "truncated" : false,
+      "id" : "e5ef067a-a815-4fba-936f-212ddb83d204"
+    },
+    "msg" : null,
+    "dataViewType" : "RAW",
+    "viewSettings" : null
+  } ],
+  "created" : "2016-03-03T04:08:50.064Z",
+  "lastUsed" : "2016-03-03T04:13:36.329Z"
+}

@@ -26,6 +26,7 @@ class RecipeSchema {
     		def name = schema.buildPropertyKey('name', String.class).add()
     		def gender = schema.buildPropertyKey('gender', String.class).add()
     		def instructions = schema.buildPropertyKey('instructions', String.class).add()
+    		def year = schema.buildPropertyKey('year', Integer.class).add()
     		def timestamp = schema.buildPropertyKey('timestamp', Timestamp.class).add()
     		def ISBN = schema.buildPropertyKey('ISBN', String.class).add()
     		def calories = schema.buildPropertyKey('calories', Integer.class).add()

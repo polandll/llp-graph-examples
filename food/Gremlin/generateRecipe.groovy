@@ -22,10 +22,10 @@ Vertex jamesBeard = graph.addVertex(label, 'author', 'name', 'James Beard', 'gen
 
 // book vertices
 // already created in the tutorial
-Vertex artOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'name', 'The Art of French Cooking, Vol. 1', 'publishDate', 1961)
-Vertex simcasCuisine = graph.addVertex(label, 'book', name', "Simca's Cuisine: 100 Classic French Recipes for Every Occasion", 'publishDate', 1972, 'ISBN', '0-394-40152-2')
-Vertex frenchChefCookbook = graph.addVertex(label, 'book', 'name','The French Chef Cookbook', 'publishDate',1968, 'ISBN', '0-394-40135-2')
-Vertex artOfSimpleFood = graph.addVertex(label, 'book', 'name', 'The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution', 'publishDate', 2007, 'ISBN', '0-307-33679-4')
+Vertex artOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'name', 'The Art of French Cooking, Vol. 1', 'year', 1961)
+Vertex simcasCuisine = graph.addVertex(label, 'book', 'name', "Simca's Cuisine: 100 Classic French Recipes for Every Occasion", 'year', 1972, 'ISBN', '0-394-40152-2')
+Vertex frenchChefCookbook = graph.addVertex(label, 'book', 'name','The French Chef Cookbook', 'year', 1968, 'ISBN', '0-394-40135-2')
+Vertex artOfSimpleFood = graph.addVertex(label, 'book', 'name', 'The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution', 'year', 2007, 'ISBN', '0-307-33679-4')
 
 // recipe vertices
 Vertex beefBourguignon = graph.addVertex(label, 'recipe', 'name', 'Beef Bourguignon', 'instructions', 'Braise the beef. Saute the onions and carrots. Add wine and cook in a dutch oven at 425 degrees for 1 hour.')
@@ -84,14 +84,14 @@ kelsieKerr.addEdge('authored', artOfSimpleFood)
 fritzStreiff.addEdge('authored', artOfSimpleFood)
 
 // author - recipe edges
-juliaChild.addEdge('created', beefBourguignon, 'rCreateDate', 1961)
-juliaChild.addEdge('created', ratatouille, 'rCreateDate', 1965)
-juliaChild.addEdge('created', saladeNicoise, 'rCreateDate', 1962)
-emerilLagasse.addEdge('created', wildMushroomStroganoff, 'rCreateDate', 2003)
-emerilLagasse.addEdge('created', spicyMeatloaf, 'rCreateDate', 2000)
-aliceWaters.addEdge('created', carrotSoup, 'rCreateDate', 1995)
-aliceWaters.addEdge('created', roastPorkLoin, 'rCreateDate', 1996)
-jamesBeard.addEdge('created', oystersRockefeller, 'rCreateDate', 1970)
+juliaChild.addEdge('created', beefBourguignon, 'year', 1961)
+juliaChild.addEdge('created', ratatouille, 'year', 1965)
+juliaChild.addEdge('created', saladeNicoise, 'year', 1962)
+emerilLagasse.addEdge('created', wildMushroomStroganoff, 'year', 2003)
+emerilLagasse.addEdge('created', spicyMeatloaf, 'year', 2000)
+aliceWaters.addEdge('created', carrotSoup, 'year', 1995)
+aliceWaters.addEdge('created', roastPorkLoin, 'year', 1996)
+jamesBeard.addEdge('created', oystersRockefeller, 'year', 1970)
 
 // recipe - ingredient edges
 beefBourguignon.addEdge('includes', beef, 'amount', '2 lbs')
@@ -140,9 +140,9 @@ beefBourguignon.addEdge('includedIn', artOfFrenchCookingVolOne)
 
 // meal vertices
 
-Vertex SaturdayFeast = graph.addVertex(label, 'meal', 'name', 'Saturday Feast', 'mCreateDate', Instant.parse('2015-11-30T00:00:00.00Z'), 'calories', 1000)
-Vertex EverydayDinner = graph.addVertex(label, 'meal', 'name', 'EverydayDinner', 'mCreateDate', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 600)
-Vertex JuliaDinner = graph.addVertex(label, 'meal', 'name', 'JuliaDinner', 'mCreateDate', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 900)
+Vertex SaturdayFeast = graph.addVertex(label, 'meal', 'name', 'Saturday Feast', 'timestamp', Instant.parse('2015-11-30T00:00:00.00Z'), 'calories', 1000)
+Vertex EverydayDinner = graph.addVertex(label, 'meal', 'name', 'EverydayDinner', 'timestamp', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 600)
+Vertex JuliaDinner = graph.addVertex(label, 'meal', 'name', 'JuliaDinner', 'timestamp', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 900)
 
 // meal - recipe edges
 

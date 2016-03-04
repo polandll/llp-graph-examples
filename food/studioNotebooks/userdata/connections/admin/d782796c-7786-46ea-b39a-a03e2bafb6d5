@@ -1,0 +1,12 @@
+{
+  "name" : "throwaway",
+  "id" : "d782796c-7786-46ea-b39a-a03e2bafb6d5",
+  "port" : 9042,
+  "connectionHosts" : [ "127.0.0.1" ],
+  "username" : null,
+  "password" : null,
+  "compression" : "NONE",
+  "graphName" : "throwaway",
+  "serverSSLConfiguration" : null,
+  "clientSSLConfiguration" : null
+}

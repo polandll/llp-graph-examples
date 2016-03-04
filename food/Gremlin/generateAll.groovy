@@ -19,10 +19,10 @@ Vertex jamesBeard = graph.addVertex(label, 'author', 'name', 'James Beard', 'gen
 
 // book vertices
 
-Vertex artOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'name', 'The Art of French Cooking, Vol. 1', 'publishDate', 1961)
-Vertex simcasCuisine = graph.addVertex(label, 'book','name', "Simca's Cuisine: 100 Classic French Recipes for Every Occasion", 'publishDate', 1972, 'ISBN', '0-394-40152-2')
-Vertex frenchChefCookbook = graph.addVertex(label, 'book', 'name','The French Chef Cookbook', 'publishDate',1968, 'ISBN', '0-394-40135-2')
-Vertex artOfSimpleFood = graph.addVertex(label, 'book', 'name', 'The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution', 'publishDate', 2007, 'ISBN', '0-307-33679-4')
+Vertex artOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'name', 'The Art of French Cooking, Vol. 1', 'year', 1961)
+Vertex simcasCuisine = graph.addVertex(label, 'book','name', "Simca's Cuisine: 100 Classic French Recipes for Every Occasion", 'year', 1972, 'ISBN', '0-394-40152-2')
+Vertex frenchChefCookbook = graph.addVertex(label, 'book', 'name','The French Chef Cookbook', 'year',1968, 'ISBN', '0-394-40135-2')
+Vertex artOfSimpleFood = graph.addVertex(label, 'book', 'name', 'The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution', 'year', 2007, 'ISBN', '0-307-33679-4')
 
 // recipe vertices
 
@@ -84,14 +84,14 @@ fritzStreiff.addEdge('authored', artOfSimpleFood)
 
 // author - recipe edges
 
-juliaChild.addEdge('created', beefBourguignon, 'rCreateDate', 1961)
-juliaChild.addEdge('created', ratatouille, 'rCreateDate', 1965)
-juliaChild.addEdge('created', saladeNicoise, 'rCreateDate', 1962)
-emerilLagasse.addEdge('created', wildMushroomStroganoff, 'rCreateDate', 2003)
-emerilLagasse.addEdge('created', spicyMeatloaf, 'rCreateDate', 2000)
-aliceWaters.addEdge('created', carrotSoup, 'rCreateDate', 1995)
-aliceWaters.addEdge('created', roastPorkLoin, 'rCreateDate', 1996)
-jamesBeard.addEdge('created', oystersRockefeller, 'rCreateDate', 1970)
+juliaChild.addEdge('created', beefBourguignon, 'year', 1961)
+juliaChild.addEdge('created', ratatouille, 'year', 1965)
+juliaChild.addEdge('created', saladeNicoise, 'year', 1962)
+emerilLagasse.addEdge('created', wildMushroomStroganoff, 'year', 2003)
+emerilLagasse.addEdge('created', spicyMeatloaf, 'year', 2000)
+aliceWaters.addEdge('created', carrotSoup, 'year', 1995)
+aliceWaters.addEdge('created', roastPorkLoin, 'year', 1996)
+jamesBeard.addEdge('created', oystersRockefeller, 'year', 1970)
 
 // recipe - ingredient edges
 
@@ -144,9 +144,9 @@ roastPorkLoin.addEdge('includedIn', artOfSimpleFood)
 
 // meal vertices
 
-Vertex SaturdayFeast = graph.addVertex(label, 'meal', 'name', 'Saturday Feast', 'mCreateDate', Instant.parse('2015-11-30T00:00:00.00Z'), 'calories', 1000)
-Vertex EverydayDinner = graph.addVertex(label, 'meal', 'name', 'EverydayDinner', 'mCreateDate', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 600)
-Vertex JuliaDinner = graph.addVertex(label, 'meal', 'name', 'JuliaDinner', 'mCreateDate', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 900)
+Vertex SaturdayFeast = graph.addVertex(label, 'meal', 'name', 'Saturday Feast', 'timestamp', Instant.parse('2015-11-30T00:00:00.00Z'), 'calories', 1000)
+Vertex EverydayDinner = graph.addVertex(label, 'meal', 'name', 'EverydayDinner', 'timestamp', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 600)
+Vertex JuliaDinner = graph.addVertex(label, 'meal', 'name', 'JuliaDinner', 'timestamp', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 900)
 
 // meal - recipe edges
 
@@ -174,10 +174,10 @@ Vertex betsyJones = graph.addVertex(label, 'reviewer', 'name','Betsy Jones')
 
 // reviewer - recipe edges
 
-johnDoe.addEdge('rated', beefBourguignon, 'ratedDate', Instant.parse('2014-01-01T00:00:00.00Z'), 'stars', 5, 'comment', 'Pretty tasty!')
-johnSmith.addEdge('rated', beefBourguignon, 'ratedDate', Instant.parse('2014-01-23T00:00:00.00Z'), 'stars', 4)
-janeDoe.addEdge('rated', beefBourguignon, 'ratedDate', Instant.parse('2014-02-01T00:00:00.00Z'), 'stars', 5, 'comment', 'Yummy!')
-sharonSmith.addEdge('rated', beefBourguignon, 'ratedDate', Instant.parse('2015-01-01T00:00:00.00Z'), 'stars', 3, 'comment', 'It was okay.')
-johnDoe.addEdge('rated', spicyMeatloaf, 'ratedDate', Instant.parse('2015-12-31T00:00:00.00Z'), 'stars', 4, 'comment', 'Really spicy - be careful!')
-sharonSmith.addEdge('rated', spicyMeatloaf, 'ratedDate',Instant.parse('2014-07-23T00:00:00.00Z'), 'stars', 3, 'comment', 'Too spicy for me. Use less garlic.')
-janeDoe.addEdge('rated', carrotSoup, 'ratedDate', Instant.parse('2015-12-30T00:00:00.00Z'), 'stars', 5, 'comment', 'Loved this soup! Yummy vegetarian!')
+johnDoe.addEdge('rated', beefBourguignon, 'timestamp', Instant.parse('2014-01-01T00:00:00.00Z'), 'stars', 5, 'comment', 'Pretty tasty!')
+johnSmith.addEdge('rated', beefBourguignon, 'timestamp', Instant.parse('2014-01-23T00:00:00.00Z'), 'stars', 4)
+janeDoe.addEdge('rated', beefBourguignon, 'timestamp', Instant.parse('2014-02-01T00:00:00.00Z'), 'stars', 5, 'comment', 'Yummy!')
+sharonSmith.addEdge('rated', beefBourguignon, 'timestamp', Instant.parse('2015-01-01T00:00:00.00Z'), 'stars', 3, 'comment', 'It was okay.')
+johnDoe.addEdge('rated', spicyMeatloaf, 'timestamp', Instant.parse('2015-12-31T00:00:00.00Z'), 'stars', 4, 'comment', 'Really spicy - be careful!')
+sharonSmith.addEdge('rated', spicyMeatloaf, 'timestamp',Instant.parse('2014-07-23T00:00:00.00Z'), 'stars', 3, 'comment', 'Too spicy for me. Use less garlic.')
+janeDoe.addEdge('rated', carrotSoup, 'timestamp', Instant.parse('2015-12-30T00:00:00.00Z'), 'stars', 5, 'comment', 'Loved this soup! Yummy vegetarian!')

@@ -5,6 +5,15 @@
 // - configuring a graph traversal
 
 :remote connect tinkerpop.server resources/graph/gremlin-console/conf/remote-objects.yaml
+
 :> system.dropGraph('test')
 :> system.createGraph('test').ifNotExist().build()
 :remote config alias g test.g
+
+:> system.dropGraph('food')
+:> system.createGraph('food').ifNotExist().build()
+:remote config alias g food.g
+
+// dropping aliases
+ :remote config alias reset
+
