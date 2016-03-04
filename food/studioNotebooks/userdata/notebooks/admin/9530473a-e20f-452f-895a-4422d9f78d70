@@ -972,7 +972,7 @@
       "id" : "a36ab226-7d25-4364-842c-186ccbb0dcae"
     },
     "msg" : null,
-    "dataViewType" : "TABLE",
+    "dataViewType" : "GRAPH",
     "viewSettings" : {
       "CHART" : {
         "xAxis" : null,
@@ -998,8 +998,11 @@
             "y" : 132
           }
         },
-        "position" : null,
-        "scale" : null,
+        "position" : {
+          "x" : 146.48050859268986,
+          "y" : 48.41242775404249
+        },
+        "scale" : 1.5554709459198999,
         "requestId" : "a36ab226-7d25-4364-842c-186ccbb0dcae"
       }
     }
@@ -1253,10 +1256,15 @@
     }
   }, {
     "id" : "f324a1fe-9fd4-4e68-bc58-615f7eefca1c",
-    "status" : null,
-    "code" : "graph.io(gryo()).readGraph(\"/tmp/food/recipe.gryo\")",
+    "status" : "SUCCESS",
+    "code" : "graph.io(gryo()).readGraph(\"/Users/lorinapoland/recipe.gryo\")",
     "language" : "gremlin",
-    "result" : null,
+    "result" : {
+      "value" : [ null ],
+      "type" : "NULL",
+      "truncated" : false,
+      "id" : "be63bb2b-fd74-4d8e-bc68-e255dcd4ad27"
+    },
     "msg" : null,
     "dataViewType" : null,
     "viewSettings" : null
@@ -1280,5 +1288,5 @@
     }
   } ],
   "created" : "2016-02-23T19:15:17.845Z",
-  "lastUsed" : "2016-03-04T01:08:20.817Z"
+  "lastUsed" : "2016-03-04T17:48:50.235Z"
 }

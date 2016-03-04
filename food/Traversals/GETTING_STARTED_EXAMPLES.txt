@@ -27,7 +27,7 @@ gremlin> :> g.V().count()
 =>0
 
 // ENTER AUTHOR VERTEX
-gremlin> :> juliaChild = graph.addVertex(label,'author','id', 1, 'aname','Julia Child', 'gender','F')
+gremlin> :> juliaChild = graph.addVertex(label,'author', 'name','Julia Child', 'gender','F')
 ==>v[{member_id=0, community_id=184435, ~label=author, group_id=3}]
 
 // CHECK THAT ONE VERTEX NOW EXISTS
@@ -43,11 +43,11 @@ gremlin> :> g.V().values('aname')
 ==>Julia Child
 
 // ENTER BOOK VERTEX
-gremlin> :> artOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'id', 100,'bookTitle', 'The Art of French Cooking, Vol. 1', 'publishDate', 1961)
+gremlin> :> artOfFrenchCookingVolOne = graph.addVertex(label, 'book','name', 'The Art of French Cooking, Vol. 1', 'timestamp', 1961)
 ==>v[{member_id=0, community_id=264788, ~label=book, group_id=2}]
 
 // GET ALL BOOKS - THERE IS CURRENTLY ONLY ONE
-gremlin> :> g.V().hasLabel('book').values('bookTitle')
+gremlin> :> g.V().hasLabel('book').values('name')
 ==>The Art of French Cooking, Vol. 1
 
 // ENTER AUTHOR-BOOK EDGE

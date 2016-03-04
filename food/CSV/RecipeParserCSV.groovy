@@ -24,6 +24,7 @@ class RecipeParser {
     		def name = schema.buildPropertyKey('name', String.class).add()
     		def gender = schema.buildPropertyKey('gender', String.class).add()
     		def instructions = schema.buildPropertyKey('instructions', String.class).add()
+    		def year = schema.buildPropertyKey('year', Integer.class).add()
     		def timestamp = schema.buildPropertyKey('timestamp', Timestamp.class).add()
     		def ISBN = schema.buildPropertyKey('ISBN', String.class).add()
     		def calories = schema.buildPropertyKey('calories', Integer.class).add()
@@ -82,12 +83,12 @@ class RecipeParser {
 
             def components = line.split("::")
             def name = components[0]
-            def timestamp = components[1]
+            def year = components[1].toInteger()
             def ISBN = components[2]
             def authors = components[3]
             def bookVertex = graph.addVertex(label, "book",
                 "name", name,
-                "timestamp", timestamp,
+                "year", year,
                 "ISBN", ISBN)
 
             if (++counter % batchSize == 0) graph.tx().commit()
