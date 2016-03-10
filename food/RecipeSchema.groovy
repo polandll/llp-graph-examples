@@ -51,10 +51,10 @@ class RecipeSchema {
                 
     		// Indexes	
     		def ratedByStars = reviewer.buildEdgeIndex('ratedByStars', rated).direction(OUT).byPropertyKey('stars').add()
-    		def byRecipe = recipe.buildVertexIndex('byRecipe').materialized().byPropertyKey('recipeTitle').add()
-    		def byMeal = meal.buildVertexIndex('byMeal').materialized().byPropertyKey('mealTitle').add()
-    		def byIngredient = ingredient.buildVertexIndex('byIngredient').materialized().byPropertyKey('iName').add()
-    		def byReviewer = reviewer.buildVertexIndex('byReviewer').materialized().byPropertyKey('revname').add()
+    		def byRecipe = recipe.buildVertexIndex('byRecipe').materialized().byPropertyKey('name').add()
+    		def byMeal = meal.buildVertexIndex('byMeal').materialized().byPropertyKey('name').add()
+    		def byIngredient = ingredient.buildVertexIndex('byIngredient').materialized().byPropertyKey('name').add()
+    		def byReviewer = reviewer.buildVertexIndex('byReviewer').materialized().byPropertyKey('name').add()
 	}
 	
 	public static Graph load(final DseGraph graph) {

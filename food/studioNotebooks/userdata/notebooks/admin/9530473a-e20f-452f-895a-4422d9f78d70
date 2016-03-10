@@ -123,57 +123,57 @@
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "{out_vertex={member_id=0, community_id=533338, ~label=author, group_id=1}, local_id=aef279c0-e183-11e5-be0d-99afae6477e0, in_vertex={member_id=0, community_id=533338, ~label=book, group_id=2}, ~type=authored}",
+        "id" : "{out_vertex={member_id=0, community_id=67759, ~label=author, group_id=57}, local_id=40fd4fe0-e48e-11e5-be0d-99afae6477e0, in_vertex={member_id=0, community_id=67759, ~label=book, group_id=58}, ~type=authored}",
         "label" : "authored",
         "type" : "edge",
         "inVLabel" : "book",
         "outVLabel" : "author",
-        "inV" : "book:533338:2:0",
-        "outV" : "author:533338:1:0"
+        "inV" : "book:67759:58:0",
+        "outV" : "author:67759:57:0"
       } ],
       "type" : "EDGE",
       "truncated" : false,
       "graph" : {
         "vertices" : [ {
-          "id" : "author:533338:1:0",
-          "label" : "author",
-          "type" : "vertex",
-          "properties" : {
-            "gender" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=533338, ~label=author, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
-              "value" : "F"
-            } ],
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=533338, ~label=author, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "Julia Child"
-            } ]
-          }
-        }, {
-          "id" : "book:533338:2:0",
+          "id" : "book:67759:58:0",
           "label" : "book",
           "type" : "vertex",
           "properties" : {
             "year" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=533338, ~label=book, group_id=2}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
+              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=book, group_id=58}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
               "value" : 1961
             } ],
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=533338, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=book, group_id=58}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "The Art of French Cooking, Vol. 1"
+            } ]
+          }
+        }, {
+          "id" : "author:67759:57:0",
+          "label" : "author",
+          "type" : "vertex",
+          "properties" : {
+            "gender" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=author, group_id=57}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
+              "value" : "F"
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=author, group_id=57}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "Julia Child"
             } ]
           }
         } ],
         "edges" : [ {
-          "id" : "{out_vertex={member_id=0, community_id=533338, ~label=author, group_id=1}, local_id=aef279c0-e183-11e5-be0d-99afae6477e0, in_vertex={member_id=0, community_id=533338, ~label=book, group_id=2}, ~type=authored}",
+          "id" : "{out_vertex={member_id=0, community_id=67759, ~label=author, group_id=57}, local_id=40fd4fe0-e48e-11e5-be0d-99afae6477e0, in_vertex={member_id=0, community_id=67759, ~label=book, group_id=58}, ~type=authored}",
           "label" : "authored",
           "type" : "edge",
           "inVLabel" : "book",
           "outVLabel" : "author",
-          "inV" : "book:533338:2:0",
-          "outV" : "author:533338:1:0"
+          "inV" : "book:67759:58:0",
+          "outV" : "author:67759:57:0"
         } ]
       },
-      "id" : "146b09de-a497-4c41-bac2-7c7f938ef866"
+      "id" : "97ae59cd-83a3-49db-81f8-d29093bc6f84"
     },
     "msg" : null,
     "dataViewType" : "GRAPH",
@@ -189,21 +189,18 @@
         },
         "defaultLabelTemplate" : "{{label}}[{{id}}]",
         "positions" : {
-          "author:533338:1:0" : {
-            "x" : -45,
-            "y" : -25
+          "book:67759:58:0" : {
+            "x" : -66,
+            "y" : 2
           },
-          "book:533338:2:0" : {
-            "x" : 88,
-            "y" : -29
+          "author:67759:57:0" : {
+            "x" : 83,
+            "y" : 0
           }
         },
-        "position" : {
-          "x" : 209.76488006459982,
-          "y" : -14.33046881095409
-        },
-        "scale" : 1.5850156746535924,
-        "requestId" : "146b09de-a497-4c41-bac2-7c7f938ef866"
+        "position" : null,
+        "scale" : null,
+        "requestId" : "97ae59cd-83a3-49db-81f8-d29093bc6f84"
       },
       "CODE" : {
         "hidden" : false
@@ -571,64 +568,64 @@
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "{out_vertex={member_id=0, community_id=173549, ~label=book, group_id=1}, local_id=0bd79a89-e184-11e5-be0d-99afae6477e0, in_vertex={member_id=0, community_id=173549, ~label=meal, group_id=2}, ~type=includedIn}",
+        "id" : "{out_vertex={member_id=0, community_id=67759, ~label=book, group_id=59}, local_id=1717a359-e58e-11e5-be0d-99afae6477e0, in_vertex={member_id=0, community_id=67759, ~label=meal, group_id=60}, ~type=includedIn}",
         "label" : "includedIn",
         "type" : "edge",
         "inVLabel" : "meal",
         "outVLabel" : "book",
-        "inV" : "meal:173549:2:0",
-        "outV" : "book:173549:1:0"
+        "inV" : "meal:67759:60:0",
+        "outV" : "book:67759:59:0"
       } ],
       "type" : "EDGE",
       "truncated" : false,
       "graph" : {
         "vertices" : [ {
-          "id" : "meal:173549:2:0",
+          "id" : "meal:67759:60:0",
           "label" : "meal",
           "type" : "vertex",
           "properties" : {
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=173549, ~label=meal, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=meal, group_id=60}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "JuliaDinner"
             } ],
             "calories" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=173549, ~label=meal, group_id=2}, local_id=00000000-0000-800d-0000-000000000000, ~type=calories}",
+              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=meal, group_id=60}, local_id=00000000-0000-800d-0000-000000000000, ~type=calories}",
               "value" : 900
             } ],
             "timestamp" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=173549, ~label=meal, group_id=2}, local_id=00000000-0000-800c-0000-000000000000, ~type=timestamp}",
+              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=meal, group_id=60}, local_id=00000000-0000-800c-0000-000000000000, ~type=timestamp}",
               "value" : "2016-01-14T00:00:00Z"
             } ]
           }
         }, {
-          "id" : "book:173549:1:0",
+          "id" : "book:67759:59:0",
           "label" : "book",
           "type" : "vertex",
           "properties" : {
             "year" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=173549, ~label=book, group_id=1}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
+              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=book, group_id=59}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
               "value" : 1961
             } ],
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=173549, ~label=book, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=book, group_id=59}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "The Art of French Cooking, Vol. 1"
             } ]
           }
         } ],
         "edges" : [ {
-          "id" : "{out_vertex={member_id=0, community_id=173549, ~label=book, group_id=1}, local_id=0bd79a89-e184-11e5-be0d-99afae6477e0, in_vertex={member_id=0, community_id=173549, ~label=meal, group_id=2}, ~type=includedIn}",
+          "id" : "{out_vertex={member_id=0, community_id=67759, ~label=book, group_id=59}, local_id=1717a359-e58e-11e5-be0d-99afae6477e0, in_vertex={member_id=0, community_id=67759, ~label=meal, group_id=60}, ~type=includedIn}",
           "label" : "includedIn",
           "type" : "edge",
           "inVLabel" : "meal",
           "outVLabel" : "book",
-          "inV" : "meal:173549:2:0",
-          "outV" : "book:173549:1:0"
+          "inV" : "meal:67759:60:0",
+          "outV" : "book:67759:59:0"
         } ]
       },
-      "id" : "39abd5d4-8c7d-40c4-bb61-0d9e562a0da2"
+      "id" : "dacc433a-53c5-463b-8d45-c1c4625f8d34"
     },
     "msg" : null,
-    "dataViewType" : "TABLE",
+    "dataViewType" : "RAW",
     "viewSettings" : {
       "CODE" : {
         "hidden" : false
@@ -1288,5 +1285,5 @@
     }
   } ],
   "created" : "2016-02-23T19:15:17.845Z",
-  "lastUsed" : "2016-03-04T17:48:50.235Z"
+  "lastUsed" : "2016-03-09T00:30:40.899Z"
 }

@@ -1,0 +1,12 @@
+{
+  "name" : "Studio Tutorial Connection",
+  "id" : "8ed8c870-7622-431f-97a7-c0336ffde016",
+  "port" : 9042,
+  "connectionHosts" : [ "127.0.0.1" ],
+  "username" : null,
+  "password" : null,
+  "compression" : "NONE",
+  "graphName" : "STUDIO_TUTORIAL_GRAPH",
+  "serverSSLConfiguration" : null,
+  "clientSSLConfiguration" : null
+}
