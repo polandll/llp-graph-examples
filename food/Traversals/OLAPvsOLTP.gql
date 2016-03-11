@@ -1,0 +1,82 @@
+// How many recipes has Julia Child written?
+
+// As an OLAP query
+g.V().hasLabel('recipe').in().has('name','Julia Child').count()
+==>3
+
+gremlin> :> g.V().hasLabel('recipe').in().has('name','Julia Child').count().profile().cap(TraversalMetrics.METRICS_KEY)
+==>Traversal Metrics
+Step                                                               Count  Traversers       Time (ms)    % Dur
+=============================================================================================================
+DsegGraphStep([~label.eq(recipe)])                                     8           8          49.858    79.74
+  query-optimizer                                                                              0.974
+  iterator-setup                                                                               0.496
+DsegVertexStep(IN,vertex)                                             22          22           5.141     8.22
+  query-optimizer-total                                                                        0.334
+  iterator-setup-total                                                                         0.118
+HasStep([name.eq(Julia Child)])                                        3           3           7.418    11.87
+CountGlobalStep                                                        1           1           0.052     0.08
+SideEffectCapStep([~metrics])                                          1           1           0.053     0.09
+                                            >TOTAL                     -           -          62.524        -
+                                            
+// Note that first all the vertices with vertexLabel 'recipe' are found, a total of 8. 
+// This step takes a ton of time. Then, all incoming vertices are found by moving along
+// the edges with edgeLabel 'created', for a total of 22. 
+// The incoming vertex that is from Julia Child is then discovered, resulting in 3 hits.
+// Finally, the count is done. The last step involves running the profiling metrics.                                        
+                                            
+*********************************************************************
+// A better OLAP query
+// Note that the in() specifies the edgeLabel so that the number of 
+// initial items checked it less
+g.V().in('created').has('name','Julia Child').count()
+==>3
+
+gremlin> :> g.V().in('created').has('name','Julia Child').count().profile().cap(TraversalMetrics.METRICS_KEY)
+==>Traversal Metrics
+Step                                                               Count  Traversers       Time (ms)    % Dur
+=============================================================================================================
+DsegGraphStep([],vertex)                                              61          61          10.397    42.06
+  query-optimizer                                                                              0.046
+  iterator-setup                                                                               0.010
+DsegVertexStep(IN,[created],vertex)                                    8           8          12.975    52.49
+  query-optimizer-total                                                                        0.383
+  iterator-setup-total                                                                         0.215
+HasStep([name.eq(Julia Child)])                                        3           3           1.304     5.28
+CountGlobalStep                                                        1           1           0.020     0.08
+SideEffectCapStep([~metrics])                                          1           1           0.019     0.08
+                                            >TOTAL                     -           -          24.717        -
+
+// Note that the first step discovers all vertices, for a total of 61. The time for this 
+// step is not so great, since vertices are first class citizens. Next, the incoming
+// vertices are found by moving along the edges with edgeLabel 'created', with only 8 in 
+// this case, for authors -> recipes. The third step finds the edges that lead to the vertex 
+// 'Julia Child', similar to the third step in the last query. Note that the duration for 
+// this step is similar in duration percent (11.87% vs 5.28%), but the actual time is
+// about 1/4 of the last query.
+// Finally, the count is done. The last step involves running the profiling metrics.
+
+// As an OLTP query
+g.V().has('author', 'name', 'Julia Child').outE('created').count()
+
+gremlin> :> g.V().has('author','name','Julia Child').outE('created').count().profile().cap(TraversalMetrics.METRICS_KEY)
+==>Traversal Metrics
+Step                                                               Count  Traversers       Time (ms)    % Dur
+=============================================================================================================
+DsegGraphStep([~label.eq(author), name.eq(Julia...                     1           1           9.490    95.62
+  query-optimizer                                                                              0.090
+  iterator-setup                                                                               1.036
+DsegVertexStep(OUT,[created],edge)                                     3           3           0.375     3.78
+  query-optimizer                                                                              0.048
+  iterator-setup                                                                               0.002
+CountGlobalStep                                                        1           1           0.045     0.46
+SideEffectCapStep([~metrics])                                          1           1           0.014     0.15
+                                            >TOTAL                     -           -           9.925        -
+
+// Note that for OLTP, the  query changes to discover a more specific vertex immediately 
+// and then walk the edges to the other information desired. The first step now involves 
+// finding one vertex, and consumes most of the time of the overall query. But the 
+// time it takes for this step is short. The next step moves to the outgoing incident 
+// edge with the edgeLabel 'created', and finds a total of 3 edges.
+// Finally, the count is done. The last step involves running the profiling metrics.
+// Also notice that the count is done on edges, reducing the traversal steps by one step. 

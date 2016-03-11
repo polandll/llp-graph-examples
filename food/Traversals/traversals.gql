@@ -18,6 +18,8 @@ g.V().hasLabel('recipe').in().has('name','Julia Child').count()
 ==>3
 // BETTER, WORKS BECAUSE ONLY RECIPES ARE 'CREATED'
 g.V().in('created').has('name','Julia Child').count()
+// MAKE THIS OLTP
+g.V().has('author', 'name', 'Julia Child').outE('created').count()
 
 // Which recipes list beef as an ingredient?
 // OLAP
