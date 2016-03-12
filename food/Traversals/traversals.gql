@@ -26,15 +26,22 @@ g.V().has('author', 'name', 'Julia Child').outE('created').count()
 g.V().hasLabel('recipe').out().has('name','beef').in().hasLabel('recipe').values('name')
 ==>Beef Bourguignon
 // BETTER
-g. V().out('includes').has('name','beef').in('includes').values('name')
+g.V().out('includes').has('name','beef').in('includes').values('name')
+// MAKE THIS OLTP
+g.V().has('ingredient', 'name', 'beef').in('includes').values('name')
 
 // Which recipes list beef or carrots as ingredients?
 // OLAP
 g.V().hasLabel('recipe').out().has('name',within('beef','carrots')).in().hasLabel('recipe').values('name')
 ==>Beef Bourguignon
 ==>Carrot Soup
-// BETTER
-g. V().out('includes').has('name', within('carrots','beef')).in('includes').values('name')
+// BETTER OLAP
+g.V().out('includes').has('name', within('carrots','beef')).in('includes').values('name')
+Step counts: 61, 39, 2, 2, 2
+
+// OLTP
+g.V().has('ingredient', 'name', within('carrots','beef')).in('includes').values('name')
+Step counts: 2, 2, 2
 
 // Which cookbooks list Julia Child as an author?
 // OLTP
@@ -48,6 +55,7 @@ g.V().has('book', 'year',1968).values('name')
 ==>The French Chef Cookbook
 
 // Which cookbooks did Julia Child write after 1968?
+// OLTP
 g.V().has('author','name','Julia Child').out('authored').has('year', gte(1968)).values('name')
 ==>The French Chef Cookbook
 
@@ -61,15 +69,19 @@ g.V().hasLabel('recipe').out().
 	order()
 ==>The Art of French Cooking, Vol. 1
 ==>The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
-// BETTER
+// BETTER OLAP
 g.V().out('includes').has('ingredient','name', within('beef','carrots')).
   in('includes').out('includedIn').values('name').
   order()
+// OLTP
+g.V().has('ingredient', 'name', within('beef','carrots')).
+  in('includes').out('includedIn').values('name').
+  order()
 
-// WHAT IS THE DIFFERENCE BETWEEN THE LAST ONE AND THIS ONE?
-//union() is slower and has no explicit order - this is a BAD EXAMPLE of union()
-gremlin> :> g.V().out('includes').union(has('name','beef'),has('name','carrots'))
-	.in('includes').out('includedIn').values('name')
+// THIS EXAMPLE USES UNION, BUT THIS IS A BAD EXAMPLE OF USING union()
+//union() is slower and has no explicit order
+g.V().out('includes').union(has('name','beef'),has('name','carrots')).
+  in('includes').out('includedIn').values('name')
 ==>The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
 ==>The Art of French Cooking, Vol. 1
 
@@ -83,7 +95,7 @@ g.V().has('ingredient', 'name',within('beef','carrots')).
 	select('Book','Recipe').by('name').by('name')
 ==>[Book:The Art of French Cooking, Vol. 1, Recipe:Beef Bourguignon]
 ==>[Book:The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution, Recipe:Carrot Soup]
-// BETTER
+// BETTER OLAP
 g.V().has('ingredient', 'name', within('beef','carrots')).
   in('includes').as('Recipe').out('includedIn').as('Book').
   select('Book','Recipe').
@@ -91,16 +103,6 @@ g.V().has('ingredient', 'name', within('beef','carrots')).
 
 // Profile to discover how various traversal strategies will work for a query
 // This profiles the last traversal
-g.V().out('includes').
-      has('name',within('beef','carrots')).out('includedIn').
-      out('includes').valueMap('name').
-      profile().cap(TraversalMetrics.METRICS_KEY)
-// BETTER
-g.V().hasLabel('recipe').out('includes').has('name',within('beef','carrots')).
-  out('includedIn').out('includes').valueMap('name').
-  profile().cap(TraversalMetrics.METRICS_KEY)
-      
-// Another metrics traversal
 g.V().has('recipe', 'name', 'Beef Bourguignon').inE('rated').values('comment').profile().cap(TraversalMetrics.METRICS_KEY)
 ==>Traversal Metrics
 Step                                                               Count  Traversers       Time (ms)    % Dur
