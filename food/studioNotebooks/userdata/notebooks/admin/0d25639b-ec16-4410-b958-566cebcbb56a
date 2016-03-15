@@ -1,0 +1,26 @@
+{
+  "id" : "0d25639b-ec16-4410-b958-566cebcbb56a",
+  "name" : "fighter",
+  "connectionId" : "d709ebd5-16cb-4c4f-8667-de9e563f73c0",
+  "favorite" : false,
+  "cells" : [ {
+    "id" : "9c2076d1-548c-408a-8ee0-487cd7752afe",
+    "status" : "ERROR",
+    "code" : "g.addV('fighter').as('f1').\n    property('name','Robert Punchem').\n    property('nick_name','Brawlin Bob Beat em up').\n    property('style','Alliterative Altercation').\n    property('motto','Ryhming beats timing, but tongue twisting is more uplifting').\n    property('lives_at','POINT(34.171221 -118.359770)').\n    property('weight',184.2).\n  addV('fighter').as('f2').\n    property('name','Sylvester Wicklesmith').\n    property('nick_name','Silent Sly').\n    property('style','Silent but deadly').\n    property('motto','...').\n    property('lives_at','POINT(35.163427 -115.655068)').\n    property('weight',82.5).\n  addV('fighter').as('f3').\n    property('name','Colin Centigrad').\n    property('nick_name','Cool C Cold').\n    property('style','Frozen fighting').\n    property('motto','Brrrrr......').\n    property('lives_at','POINT(69.548841 -147.602608)').\n    property('weight',95).\n  addV('fighter').as('f4').\n    property('name','Fred fahrenheit').\n    property('nick_name','The Heat').\n    property('style','Fire fighting').\n    property('motto','Fire, Fire, help me, Im on Fire').\n    property('lives_at','POINT(19.463353 -155.592943)').\n    property('weight',105).\n  addV('fighter').as('f5').\n    property('name','Mike Shoutout').\n    property('nick_name','The funky noise').\n    property('style','Ear splitting').\n    property('motto','FIGHT OUT LOUD').\n    property('lives_at','POINT(19.463353 -155.592943)').\n    property('weight',321.9).\n  addV('trainer').as('t1').\n    property('name','Jimmy').\n    property('lives_at','POINT(46.486682 -95.519431)').\n    property('age',66).\n  addV('trainer').as('t2').\n    property('name','Radio Russ').\n    property('lives_at','POINT(41.941850 -87.689123)').\n    property('age',43 ).\n  addV('trainer').as('t3').\n    property('name','???').\n    property('lives_at','POINT(26.063809 -173.966484)').\n    property('age',233).\n  addV('trainer').as('t4').\n    property('name','Tommy Temp').\n    property('lives_at','POINT(26.063809 -173.966484)').\n    property('age',50)",
+    "language" : "gremlin",
+    "result" : null,
+    "msg" : "org.apache.tinkerpop.gremlin.driver.exception.ResponseException",
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CODE" : {
+        "hidden" : false
+      },
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
+  } ],
+  "created" : "2016-03-15T01:07:17.109Z",
+  "lastUsed" : "2016-03-15T01:15:14.146Z"
+}

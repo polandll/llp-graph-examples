@@ -32,15 +32,13 @@ class RecipeFactory {
     		def name = schema.buildPropertyKey('name', String.class).add()
     		def gender = schema.buildPropertyKey('gender', String.class).add()
     		def instructions = schema.buildPropertyKey('instructions', String.class).add()
-    		def timestamp = schema.buildPropertyKey('timestamp', Integer.class).add()
+    		def year = schema.buildPropertyKey('year', Integer.class).add()
     		def ISBN = schema.buildPropertyKey('ISBN', String.class).add()
-    		def timestamp = schema.buildPropertyKey('timestamp', Instant.class).add()
+    		def timestamp = schema.buildPropertyKey('timestamp', Timestamp.class).add()
     		def calories = schema.buildPropertyKey('calories', Integer.class).add()
                 
-    		def timestamp = schema.buildPropertyKey('timestamp', Integer.class).add()
     		def amount = schema.buildPropertyKey('amount', String.class).add()
     		def stars = schema.buildPropertyKey('stars', Integer.class).add()
-    		def timestamp = schema.buildPropertyKey('timestamp', Instant.class).add()
     		def comment = schema.buildPropertyKey('comment', String.class).add()
     		
     		// Vertex Labels

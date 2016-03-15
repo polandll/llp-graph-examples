@@ -166,11 +166,11 @@ artOfFrenchCookingVolOne.addEdge('includedIn', JuliaDinner)
 
 // reviewer vertices
 
-Vertex johnDoe = graph.addVertex(label, 'reviewer', 'name','John Doe')
-Vertex johnSmith = graph.addVertex(label, 'reviewer', 'name','John Smith')
-Vertex janeDoe = graph.addVertex(label, 'reviewer', 'name','Jane Doe')
-Vertex sharonSmith = graph.addVertex(label, 'reviewer', 'name','Sharon Smith')
-Vertex betsyJones = graph.addVertex(label, 'reviewer', 'name','Betsy Jones')
+Vertex johnDoe = graph.addVertex(label, 'reviewer', 'name', 'John Doe')
+Vertex johnSmith = graph.addVertex(label, 'reviewer', 'name', 'John Smith')
+Vertex janeDoe = graph.addVertex(label, 'reviewer', 'name', 'Jane Doe')
+Vertex sharonSmith = graph.addVertex(label, 'reviewer', 'name', 'Sharon Smith')
+Vertex betsyJones = graph.addVertex(label, 'reviewer', 'name', 'Betsy Jones')
 
 // reviewer - recipe edges
 

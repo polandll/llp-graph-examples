@@ -14,3 +14,29 @@ vLabel1.buildVertexIndex('search').search()
     .byPropertyKey('p_key_2', fullTextIndex())
     .byPropertyKey('p_key_3', stringIndex())
     .add();
+    
+    item.buildVertexIndex('search').search().byPropertyKey('itemId').
+    byPropertyKey('ASIN').byPropertyKey('title').byPropertyKey('group').
+    byPropertyKey('category').byPropertyKey('customerId').add();
+    
+    --------------------
+    
+    person.buildVertexIndex("secondary").type(Secondary).byPropertyKey("name").add();
+        person.buildVertexIndex("materialized").type(Materialized).byPropertyKey("name").add();
+        VertexIndexInternal search = person.buildVertexIndex("search").type(Search).byPropertyKey("position", GeoSearch.defaultGeoIndex()).add();
+        search.addPropertyKey("position2", GeoSearch.cartesianGeoIndex(1, 2, 3, 4).withMaxDistErr(5.0).withDistErrPct(6.0));
+        search.addPropertyKey("name", TextSearch.fullTextIndex());
+        search.addPropertyKey("address", TextSearch.stringIndex());
+        
+        
+gremlin> :> g.V().hasLabel('trainer').has('name',regex('.*y.*')).outE().inV().values('name')
+==>Robert Punchem
+==>Colin Centigrad
+==>Fred fahrenheit
+gremlin> :> g.V().hasLabel('fighter').has('motto',tokenRegex('r.*')).values('name')
+==>Robert Punchem
+
+--------
+Properties that map to TextField: token, tokenPrefix, tokenRegex
+Properties that map to StrField: eq, neq, regex, prefix 
+Everything else: eq, neq

@@ -23,6 +23,7 @@ gremlin> :remote config timeout max
 ==>Set remote timeout to 2147483647ms
 
 // CHECK THAT NO VERTICES EXIST
+// BAD TO DO FOR LARGE GRAPHS!!
 gremlin> :> g.V().count()
 =>0
 
@@ -36,10 +37,10 @@ gremlin> :> g.V().count()
 
 // GET VALUEMAP
 gremlin> :> g.V().valueMap()
-==>[gender:[F], aname:[Julia Child], id:[1]]
+==>[gender:[F], name:[Julia Child], id:[1]]
 
 // SHOW USE OF VALUES FOR ONE PROPERTY
-gremlin> :> g.V().values('aname')
+gremlin> :> g.V().values('name')
 ==>Julia Child
 
 // ENTER BOOK VERTEX
@@ -66,17 +67,17 @@ gremlin> script = new File('/home/ubuntu/generateRecipe.groovy').text; []
 gremlin> :> @script
 
 // GET VERTEX FOR PARTICULAR AUTHOR
-gremlin> :> g.V().has('aname','Julia Child')
+gremlin> :> g.V().has('name','Julia Child')
 ==>v[{member_id=0, community_id=184435, ~label=author, group_id=2}]
 
 // GET EDGES FROM PARTICULAR AUTHOR VERTEX
-gremlin> :> g.V().has('aname','Julia Child').outE('authored')
+gremlin> :> g.V().has('name','Julia Child').outE('authored')
 ==>e[{out_vertex={member_id=0, community_id=966350, ~label=author, group_id=3}, local_id=1c947f80-ba67-11e5-bdeb-e778035ca1a5, in_vertex={member_id=0, community_id=966350, ~label=book, group_id=14}, ~type=authored}][{member_id=0, community_id=966350, ~label=author, group_id=3}-authored->{member_id=0, community_id=966350, ~label=book, group_id=14}]
 ==>e[{out_vertex={member_id=0, community_id=184435, ~label=author, group_id=4}, local_id=c41d5980-ba61-11e5-bdeb-e778035ca1a5, in_vertex={member_id=0, community_id=966350, ~label=book, group_id=1}, ~type=authored}][{member_id=0, community_id=184435, ~label=author, group_id=4}-authored->{member_id=0, community_id=966350, ~label=book, group_id=1}]
 
 // GET BOOK TITLES FOR ALL AUTHORS
 // Note duplication for multiple authors
-gremlin> :> g.V().outE('authored').inV().values('bookTitle')
+gremlin> :> g.V().outE('authored').inV().values('name')
 ==>The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
 ==>The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
 ==>Simca's Cuisine: 100 Classic French Recipes for Every Occasion
@@ -88,7 +89,7 @@ gremlin> :> g.V().outE('authored').inV().values('bookTitle')
 ==>The French Chef Cookbook
 
 // DEDUPLICATE THE LAST LISTING
-gremlin> :> g.V().outE('authored').inV().values('bookTitle').dedup()
+gremlin> :> g.V().outE('authored').inV().values('name').dedup()
 ==>Simca's Cuisine: 100 Classic French Recipes for Every Occasion
 ==>The Art of French Cooking, Vol. 1
 ==>The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
@@ -96,18 +97,18 @@ gremlin> :> g.V().outE('authored').inV().values('bookTitle').dedup()
 
 // GET BOOK TITLES FOR PARTICULAR AUTHOR
 // Uses outE() and inV() which is overkill - edge information is not needed, just passed through
-gremlin> :> g.V().has('aname','Julia Child').outE('authored').inV().values('bookTitle')
+gremlin> :> g.V().has('name','Julia Child').outE('authored').inV().values('name')
 ==>The Art of French Cooking, Vol. 1
 ==>The French Chef Cookbook
 
 // GET BOOK TITLES FOR PARTICULAR AUTHOR
 // Use out() which gets next vertex
-gremlin> :> g.V().has('aname','Julia Child').out('authored').values('bookTitle')
+gremlin> :> g.V().has('name','Julia Child').out('authored').values('name')
 ==>The Art of French Cooking, Vol. 1
 ==>The French Chef Cookbook
 
 // GET BOOK TITLES FOR PARTICULAR AUTHOR WITH A PUBLISH DATE GREATER THAN 1967
- gremlin> :> g.V().has('aname','Julia Child').out('authored').has('publishDate', gt(1967)).values('bookTitle')
+ gremlin> :> g.V().has('name','Julia Child').out('authored').has('year', gt(1967)).values('name')
 ==>The French Chef Cookbook
 
 // FOR EACH VERTEX LABEL, GET THE NUMBER OF VERTICES
@@ -134,27 +135,22 @@ gremlin> :> g.V().hasLabel('reviewer').count()
 
 // GET THE VALUES FOR ALL REVIEWERS TO CHECK
 gremlin> :> g.V().hasLabel('reviewer').values()
-==>401
 ==>John Smith
-==>403
 ==>Sharon Smith
-==>404
 ==>Betsy Jones
-==>402
 ==>Jane Doe
-==>400
 ==>John Doe
 
 // GET THE VALUEMAP FOR EACH EDGE THAT HAS MORE THAN 3 STARS
 gremlin> :> g.E().hasLabel('rated').has('stars', gt(3)).valueMap()
-==>[stars:4, ratedDate:2014-01-23]
-==>[comment:Yummy!, stars:5, ratedDate:2014-02-01]
-==>[comment:Loved this soup! Yummy vegetarian!, stars:5, ratedDate:2015-12-30]
-==>[comment:Pretty tasty!, stars:5, ratedDate:2014-01-01]
-==>[comment:Really spicy - be careful!, stars:4, ratedDate:2015-12-31]
+==>[stars:4, timestamp:2014-01-23]
+==>[comment:Yummy!, stars:5, timestamp:2014-02-01]
+==>[comment:Loved this soup! Yummy vegetarian!, stars:5, timestamp:2015-12-30]
+==>[comment:Pretty tasty!, stars:5, timestamp:2014-01-01]
+==>[comment:Really spicy - be careful!, stars:4, timestamp:2015-12-31]
 
 // GET THE RECIPES THAT HAVE A RATING HIGHER THAN 3 STARS
-gremlin>  :> g.E().hasLabel('rated').has('stars', gt(3)).inV().values('recipeTitle')
+gremlin>  :> g.E().hasLabel('rated').has('stars', gt(3)).inV().values('name')
 ==>Beef Bourguignon
 ==>Spicy Meatloaf
 ==>Beef Bourguignon
@@ -162,9 +158,9 @@ gremlin>  :> g.E().hasLabel('rated').has('stars', gt(3)).inV().values('recipeTit
 ==>Beef Bourguignon
 
 // GET THE VALUEMAP FOR EACH EDGE THAT HAS MORE THAN 3 STARS AND A RATED DATE GREATER THAN JAN 1, 2015
-gremlin> :> g.E().hasLabel('rated').has('stars',gte(4)).has('ratedDate', gte(Instant.parse('2015-01-01T00:00:00.00Z'))).valueMap()
-==>[comment:Loved this soup! Yummy vegetarian!, ratedDate:2015-12-30T00:00:00Z, stars:5]
-==>[comment:Really spicy - be careful!, ratedDate:2015-12-31T00:00:00Z, stars:4]
+gremlin> :> g.E().hasLabel('rated').has('stars',gte(4)).has('timestamp', gte(Instant.parse('2015-01-01T00:00:00.00Z'))).valueMap()
+==>[comment:Loved this soup! Yummy vegetarian!, timestamp:2015-12-30T00:00:00Z, stars:5]
+==>[comment:Really spicy - be careful!, timestamp:2015-12-31T00:00:00Z, stars:4]
 
 // MEAN STARS
 gremlin> :> g.E().hasLabel('rated').values('stars').mean()
@@ -174,30 +170,30 @@ gremlin> :> g.E().hasLabel('rated').values('stars').mean()
 gremlin> :> g.V().hasLabel('reviewer').map(outE('rated').count()).max()
 ==>2
 
-gremlin> :> g.V().hasLabel('reviewer').as('reviewer','starCount').select('reviewer','starCount').by('revname').by(outE('rated').values('stars').mean())
+gremlin> :> g.V().hasLabel('reviewer').as('reviewer','starCount').select('reviewer','starCount').by('name').by(outE('rated').values('stars').mean())
 ==>[reviewer:Jane Doe, starCount:5.0]
 ==>[reviewer:Betsy Jones, starCount:NaN]
 ==>[reviewer:John Doe, starCount:4.5]
 ==>[reviewer:John Smith, starCount:4.0]
 ==>[reviewer:Sharon Smith, starCount:3.0]
 
-gremlin> :> g.V().hasLabel('reviewer').as('reviewer','starCount').select('reviewer','starCount').by('revname').by(outE('rated').values('stars').mean()).order().by(select('starCount'), decr)
+gremlin> :> g.V().hasLabel('reviewer').as('reviewer','starCount').
+  select('reviewer','starCount').by('name').by(outE('rated').values('stars').
+  mean()).order().by(select('starCount'), decr)
 ==>[reviewer:Betsy Jones, starCount:NaN]
 ==>[reviewer:Jane Doe, starCount:5.0]
 ==>[reviewer:John Doe, starCount:4.5]
 ==>[reviewer:John Smith, starCount:4.0]
 ==>[reviewer:Sharon Smith, starCount:3.0]
 
-gremlin> :> g.V().hasLabel('reviewer').as('reviewer','starCount').select('reviewer','starCount').by('revname').by(coalesce(outE('rated').values('stars'),constant(0)).mean()).order().by(select('starCount'), decr)
+gremlin> :> g.V().hasLabel('reviewer').as('reviewer','starCount').
+  select('reviewer','starCount').by('name').by(coalesce(outE('rated').
+  values('stars'),constant(0)).mean()).order().by(select('starCount'), decr)
 ==>[reviewer:Jane Doe, starCount:5.0]
 ==>[reviewer:John Doe, starCount:4.5]
 ==>[reviewer:John Smith, starCount:4.0]
 ==>[reviewer:Sharon Smith, starCount:3.0]
 ==>[reviewer:Betsy Jones, starCount:0.0]
-
-**************************
-NOT ADDED TO EAP DOC YET
-**************************
 
 // get the schema with datatypes
 :> graph.schema().traversal().V().valueMap(true)
@@ -211,30 +207,47 @@ NOT ADDED TO EAP DOC YET
 ==>[id:32780, name:[authored], directionality:[Bidirectional], label:edgeLabel, cardinality:[Multiple]]
 ==>[id:32781, name:[created], directionality:[Bidirectional], label:edgeLabel, cardinality:[Multiple]]
 
+**************************
+NOT ADDED TO EAP DOC YET
+**************************
+
 // THIS IS THE ACTUAL ONE! What did John Doe have to say?
-gremlin> :> g.V().hasLabel('reviewer').has('revname','John Doe').outE('rated').values('comment')
+gremlin> :> g.V().has('reviewer', 'name','John Doe').outE('rated').values('comment')
 ==>Pretty tasty!
 ==>Really spicy - be careful!
 
-gremlin> :> g.V().hasLabel('reviewer').has('revname','John Doe').outE('rated').inV().values('recipeTitle')
+gremlin> :> g.V().has('reviewer', 'name','John Doe').outE('rated').inV().values('name')
 ==>Beef Bourguignon
 ==>Spicy Meatloaf
 
-gremlin> :> g.V().hasLabel('reviewer').as('reviewer','starCount', 'recipe').select('reviewer','starCount','recipe').by('revname').by(outE('rated').values('stars').mean()).by(out('recipe').values('recipeTitle'))
+gremlin> :> g.V().has('reviewer').as('reviewer','starCount', 'recipe').
+  select('reviewer','starCount','recipe').by('name').by(outE('rated').
+  values('stars').mean()).by(out('recipe').values('name'))
 
 // RECIPES THAT CONTAIN BEEF
-gremlin> :> g.V().hasLabel('recipe').out().has('iName','beef').in().hasLabel('recipe').values('recipeTitle')
+gremlin> :> g.V().hasLabel('recipe').out().has('iName','beef').in().hasLabel('recipe').values('name')
 ==>Beef Bourguignon
 
 // RECIPES THAT CONTAIN EITHER BEEF OR CARROTS
-gremlin> :> g.V().hasLabel('recipe').out().has('iName',within('beef','carrots')).in().hasLabel('recipe').values('recipeTitle')
+gremlin> :> g.V().hasLabel('recipe').out().has('iName',within('beef','carrots')).in().hasLabel('recipe').values('name')
 ==>Beef Bourguignon
 ==>Carrot Soup
 
-gremlin> :> g.V().group().by(label).by('aname')
-==>[author:[Fritz Streiff, Kelsie Kerr, Patricia Curtan, Julia Child, Patricia Simon, Emeril Lagasse, Simone Beck, Louisette Bertholie, James Beard, Alice Waters]]
+gremlin> :> g.V().group().by(label).by('name')
+==>[meal:[JuliaDinner, Saturday Feast, EverydayDinner], ingredient:[olive oil, chicken broth, 
+eggplant, pork sausage, green bell pepper, yellow onion, celery, hard-boiled egg, shallots, 
+zucchini, butter, green beans, mashed garlic, onion, mushrooms, bacon, parsley, oyster, 
+tomato, thyme, pork loin, tuna, tomato paste, ground beef, red wine, fennel, Pernod, 
+chervil, egg noodles, carrots, beef], author:[Louisette Bertholie, Kelsie Kerr, 
+Alice Waters, Julia Child, Emeril Lagasse, Simone Beck, Patricia Curtan, Patricia Simon, 
+James Beard, Fritz Streiff], book:[Simca's Cuisine: 100 Classic French Recipes for Every 
+Occasion, The French Chef Cookbook, The Art of Simple Food: Notes, Lessons, and Recipes 
+from a Delicious Revolution, The Art of French Cooking, Vol. 1], recipe:[Wild Mushroom 
+Stroganoff, Roast Pork Loin, Spicy Meatloaf, Rataouille, Beef Bourguignon, Oysters 
+Rockefeller, Salade Nicoise, Carrot Soup], reviewer:[Sharon Smith, John Smith, Jane Doe, 
+Betsy Jones, John Doe]]
 
-gremlin> :> g.V().hasLabel('author').as('a','b').select('a','b').by('aname').by(outE('authored').count())
+gremlin> :> g.V().hasLabel('author').as('a','b').select('a','b').by('name').by(outE('authored').count())
 ==>[a:Julia Child, b:2]
 ==>[a:Patricia Curtan, b:1]
 ==>[a:Fritz Streiff, b:1]
@@ -246,7 +259,7 @@ gremlin> :> g.V().hasLabel('author').as('a','b').select('a','b').by('aname').by(
 ==>[a:Louisette Bertholie, b:1]
 ==>[a:Emeril Lagasse, b:0]
 
-gremlin>  :> g.V().hasLabel('author').as('a','wrote').select('a','wrote').by('aname').by(outE('authored').count())
+gremlin>  :> g.V().hasLabel('author').as('a','wrote').select('a','wrote').by('name').by(outE('authored').count())
 ==>[a:James Beard, wrote:0]
 ==>[a:Simone Beck, wrote:2]
 ==>[a:Julia Child, wrote:2]
@@ -259,15 +272,15 @@ gremlin>  :> g.V().hasLabel('author').as('a','wrote').select('a','wrote').by('an
 ==>[a:Patricia Curtan, wrote:1]
 
 // How many recipes has Julia Child written?
-gremlin> :> g.V().hasLabel('recipe').in().has('aname','Julia Child').count()
+gremlin> :> g.V().hasLabel('recipe').in().has('name','Julia Child').count()
 ==>1
 
 // CLEANER VERSION OF LAST TRAVERSAL
-gremlin> :> g.V().hasLabel('ingredient').has('iName',within('beef','carrots')).in().hasLabel('recipe').values('recipeTitle')
+gremlin> :> g.V().hasLabel('ingredient').has('name',within('beef','carrots')).in().hasLabel('recipe').values('name')
 ==>Beef Bourguignon
 ==>Carrot Soup
 
-gremlin> :> g.V().hasLabel('recipe').in().has('aname','Julia Child').count().profile().cap(TraversalMetrics.METRICS_KEY)
+gremlin> :> g.V().hasLabel('recipe').in().has('name','Julia Child').count().profile().cap(TraversalMetrics.METRICS_KEY)
 ==>Traversal Metrics
 Step                                                               Count  Traversers       Time (ms)    % Dur
 =============================================================================================================
