@@ -1,0 +1,256 @@
+2016-03-16 12:29:29 INFO  Executable:50 - Setting configuration dryrun=false
+2016-03-16 12:29:29 DEBUG Executable:58 - Setting cluster builder: com.datastax.dsegraphloader.api.ClusterBuilder@694e1548
+2016-03-16 12:29:29 DEBUG SystemProperties:32 - com.datastax.driver.NEW_NODE_DELAY_SECONDS is undefined, using default value 1
+2016-03-16 12:29:29 DEBUG SystemProperties:32 - com.datastax.driver.NON_BLOCKING_EXECUTOR_SIZE is undefined, using default value 8
+2016-03-16 12:29:29 DEBUG SystemProperties:32 - com.datastax.driver.NOTIF_LOCK_TIMEOUT_SECONDS is undefined, using default value 60
+2016-03-16 12:29:29 DEBUG Cluster:1350 - Starting new cluster with contact points [localhost/127.0.0.1:9042]
+2016-03-16 12:29:29 DEBUG InternalLoggerFactory:71 - Using SLF4J as the default logging framework
+2016-03-16 12:29:29 DEBUG PlatformDependent0:76 - java.nio.Buffer.address: available
+2016-03-16 12:29:29 DEBUG PlatformDependent0:76 - sun.misc.Unsafe.theUnsafe: available
+2016-03-16 12:29:29 DEBUG PlatformDependent0:71 - sun.misc.Unsafe.copyMemory: available
+2016-03-16 12:29:29 DEBUG PlatformDependent0:76 - java.nio.Bits.unaligned: true
+2016-03-16 12:29:29 DEBUG PlatformDependent:76 - Java version: 8
+2016-03-16 12:29:29 DEBUG PlatformDependent:76 - -Dio.netty.noUnsafe: false
+2016-03-16 12:29:29 DEBUG PlatformDependent:76 - sun.misc.Unsafe: available
+2016-03-16 12:29:29 DEBUG PlatformDependent:76 - -Dio.netty.noJavassist: false
+2016-03-16 12:29:29 DEBUG PlatformDependent:71 - Javassist: unavailable
+2016-03-16 12:29:29 DEBUG PlatformDependent:71 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2016-03-16 12:29:29 DEBUG PlatformDependent:76 - -Dio.netty.tmpdir: /var/folders/kt/8gksd2k94rd4f2x_8y4snnz40000gn/T (java.io.tmpdir)
+2016-03-16 12:29:29 DEBUG PlatformDependent:76 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2016-03-16 12:29:29 DEBUG PlatformDependent:76 - -Dio.netty.noPreferDirect: false
+2016-03-16 12:29:29 DEBUG SystemProperties:48 - com.datastax.driver.FORCE_NIO is undefined, using default value false
+2016-03-16 12:29:29 INFO  NettyUtil:83 - Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+2016-03-16 12:29:29 DEBUG MultithreadEventLoopGroup:76 - -Dio.netty.eventLoopThreads: 16
+2016-03-16 12:29:29 DEBUG NioEventLoop:76 - -Dio.netty.noKeySetOptimization: false
+2016-03-16 12:29:29 DEBUG NioEventLoop:76 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2016-03-16 12:29:29 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.level: simple
+2016-03-16 12:29:29 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.maxRecords: 4
+2016-03-16 12:29:30 DEBUG STATES:86 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 1
+2016-03-16 12:29:30 DEBUG SystemProperties:48 - com.datastax.driver.DISABLE_COALESCING is undefined, using default value false
+2016-03-16 12:29:30 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numHeapArenas: 16
+2016-03-16 12:29:30 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numDirectArenas: 16
+2016-03-16 12:29:30 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.pageSize: 8192
+2016-03-16 12:29:30 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxOrder: 11
+2016-03-16 12:29:30 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.chunkSize: 16777216
+2016-03-16 12:29:30 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.tinyCacheSize: 512
+2016-03-16 12:29:30 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.smallCacheSize: 256
+2016-03-16 12:29:30 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.normalCacheSize: 64
+2016-03-16 12:29:30 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2016-03-16 12:29:30 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2016-03-16 12:29:30 DEBUG ThreadLocalRandom:71 - -Dio.netty.initialSeedUniquifier: 0x884155fb833740b4 (took 7 ms)
+2016-03-16 12:29:30 DEBUG ByteBufUtil:76 - -Dio.netty.allocator.type: unpooled
+2016-03-16 12:29:30 DEBUG ByteBufUtil:76 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2016-03-16 12:29:30 DEBUG ByteBufUtil:76 - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2016-03-16 12:29:30 DEBUG Connection:159 - Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Connection established, initializing transport
+2016-03-16 12:29:30 DEBUG Recycler:76 - -Dio.netty.recycler.maxCapacity.default: 262144
+2016-03-16 12:29:30 DEBUG AbstractByteBuf:81 - -Dio.netty.buffer.bytebuf.checkAccessible: true
+2016-03-16 12:29:30 DEBUG STATES:306 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Transport initialized, connection ready
+2016-03-16 12:29:30 DEBUG ControlConnection:531 - [Control connection] Refreshing node list and token map
+2016-03-16 12:29:30 DEBUG ControlConnection:270 - [Control connection] Refreshing schema
+2016-03-16 12:29:30 DEBUG ControlConnection:531 - [Control connection] Refreshing node list and token map
+2016-03-16 12:29:30 DEBUG ReplicationStrategy$NetworkTopologyStrategy:123 - Computing token to replica map for keyspace: dse_leases.
+2016-03-16 12:29:30 DEBUG ReplicationStrategy$NetworkTopologyStrategy:211 - Token to replica map computation for keyspace dse_leases completed in 1 milliseconds
+2016-03-16 12:29:30 DEBUG STATES:181 - [Control connection] established to localhost/127.0.0.1:9042
+2016-03-16 12:29:30 INFO  DCAwareRoundRobinPolicy:95 - Using data-center name 'Graph' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+2016-03-16 12:29:30 INFO  Cluster:1475 - New Cassandra host localhost/127.0.0.1:9042 added
+2016-03-16 12:29:30 DEBUG STATES:86 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 2
+2016-03-16 12:29:30 DEBUG Connection:159 - Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Connection established, initializing transport
+2016-03-16 12:29:30 DEBUG STATES:306 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Transport initialized, connection ready
+2016-03-16 12:29:30 DEBUG HostConnectionPool:153 - Created connection pool to host localhost/127.0.0.1:9042 (1 connections needed, 1 successfully opened)
+2016-03-16 12:29:30 DEBUG Session:364 - Added connection pool for localhost/127.0.0.1:9042
+2016-03-16 12:29:30 DEBUG GroovyScriptExecutor:154 - Complete loading script: 
+[1	]  VertexImportImpl.metaClass.vertexProperty = { String arg0, String arg1,  Closure closure ->
+[2	]      return delegate.vertexProperty(arg0, arg1,  GroovyUtil.convert2Consumer(closure));
+[3	]  }
+[4	]  VertexImportImpl.metaClass.neighbor = { String arg0, String arg1, Direction arg2,  Closure closure ->
+[5	]      return delegate.neighbor(arg0, arg1, arg2,  GroovyUtil.convert2Consumer(closure));
+[6	]  }
+[7	]  VertexImportImpl.metaClass.edge = { String arg0, String arg1, Direction arg2,  Closure closure ->
+[8	]      return delegate.edge(arg0, arg1, arg2,  GroovyUtil.convert2Consumer(closure));
+[9	]  }
+[10	]  VertexImportImpl.metaClass.outE = { String arg0,  Closure closure ->
+[11	]      return delegate.outE(arg0,  GroovyUtil.convert2Consumer(closure));
+[12	]  }
+[13	]  VertexImportImpl.metaClass.outE = { String arg0, String arg1,  Closure closure ->
+[14	]      return delegate.outE(arg0, arg1,  GroovyUtil.convert2Consumer(closure));
+[15	]  }
+[16	]  VertexImportImpl.metaClass.vertexProperty = { String arg0,  Closure closure ->
+[17	]      return delegate.vertexProperty(arg0,  GroovyUtil.convert2Consumer(closure));
+[18	]  }
+[19	]  VertexImportImpl.metaClass.inE = { String arg0,  Closure closure ->
+[20	]      return delegate.inE(arg0,  GroovyUtil.convert2Consumer(closure));
+[21	]  }
+[22	]  VertexImportImpl.metaClass.inE = { String arg0, String arg1,  Closure closure ->
+[23	]      return delegate.inE(arg0, arg1,  GroovyUtil.convert2Consumer(closure));
+[24	]  }
+[25	]  VertexImportImpl.metaClass.outV = { String arg0,  Closure closure ->
+[26	]      return delegate.outV(arg0,  GroovyUtil.convert2Consumer(closure));
+[27	]  }
+[28	]  VertexImportImpl.metaClass.outV = { String arg0, String arg1,  Closure closure ->
+[29	]      return delegate.outV(arg0, arg1,  GroovyUtil.convert2Consumer(closure));
+[30	]  }
+[31	]  VertexImportImpl.metaClass.inV = { String arg0, String arg1,  Closure closure ->
+[32	]      return delegate.inV(arg0, arg1,  GroovyUtil.convert2Consumer(closure));
+[33	]  }
+[34	]  VertexImportImpl.metaClass.inV = { String arg0,  Closure closure ->
+[35	]      return delegate.inV(arg0,  GroovyUtil.convert2Consumer(closure));
+[36	]  }
+[37	]  EdgeImportImpl.metaClass.outV = { String arg0,  Closure closure ->
+[38	]      return delegate.outV(arg0,  GroovyUtil.convert2Consumer(closure));
+[39	]  }
+[40	]  EdgeImportImpl.metaClass.inV = { String arg0,  Closure closure ->
+[41	]      return delegate.inV(arg0,  GroovyUtil.convert2Consumer(closure));
+[42	]  }
+[43	]  IncidentEdgeImportImpl.metaClass.vertex = { String arg0,  Closure closure ->
+[44	]      return delegate.vertex(arg0,  GroovyUtil.convert2Consumer(closure));
+[45	]  }
+[46	]  
+[47	]  VertexImportImpl.metaClass.getProperty = { String propName ->
+[48	]      if (propName == 'isNew') {
+[49	]          delegate.isNew();
+[50	]          return true;
+[51	]      } else if (propName == 'exists') {
+[52	]          delegate.exists();
+[53	]          return true;
+[54	]      } else 
+[55	]          return VertexImportImpl.metaClass.getMetaProperty(propName).getProperty(delegate)
+[56	]  }
+[57	]  // #!/bin/sh
+[58	]  // LDR=/Users/lorinapoland/CLONES/dse-graph-loader/target/dse-graph-loader-0.1.0-SNAPSHOT-uberjar.jar
+[59	]  // INPUTFILENAME='/Users/lorinapoland/CLONES/graph-examples/food/TEXT/'
+[60	]  // dryrun set to TRUE until everything works, change to FALSE for real data creation
+[61	]  // java -jar $LDR authorBookMapping.groovy -filename INPUTFILENAME -graph ABTest -address 10.200.176.201 -dryrun true
+[62	]  
+[63	]  /** SAMPLE INPUT
+[64	]  author: Julia Child::F
+[65	]  book : Simca's Cuisine: 100 Classic French Recipes for Every Occasion::1972::0-394-40152-2
+[66	]  authorBook: Simca's Cuisine: 100 Classic French Recipes for Every Occasion::Simone Beck
+[67	]   */
+[68	]  
+[69	]  // CONFIGURATION
+[70	]  // Configures the data loader to create the schema
+[71	]  config create_schema: true, load_threads: 3
+[72	]  
+[73	]  // DATA INPUT
+[74	]  // Define the data input source (a file which can be specified via command line arguments)
+[75	]  // inputfilename is the directory for the input files that is given in the commandline
+[76	]  // as the "-filename" option
+[77	]  inputfilename = '/Users/lorinapoland/CLONES/graph-examples/food/TEXT/'
+[78	]  authorFile = text name: inputfilename + "author.dat", delimiter: "|", header: ['name', 'gender']
+[79	]  bookFile = text name: inputfilename + "book.dat", delimiter: "|", header: ['name', 'year', 'ISBN']
+[80	]  authorBookFile = text name: inputfilename + "authorBook.dat", delimiter: "|", header: ['bname', 'aname']
+[81	]  
+[82	]  //Specifies what data source to load using which mapper (as defined inline)
+[83	]  load from: authorFile, vertex: {
+[84	]      label "author"
+[85	]      key "name"
+[86	]      isNew
+[87	]  }
+[88	]  
+[89	]  load from: bookFile, vertex: {
+[90	]      label "book"
+[91	]      key "name"
+[92	]      isNew
+[93	]  }
+[94	]  
+[95	]  load from: authorBookFile, edge: {
+[96	]      label "authored"
+[97	]      outV "aname", {
+[98	]          label "author"
+[99	]          isKey "name"
+[100	]          exists
+[101	]      }
+[102	]      inV "bname", {
+[103	]          label "book"
+[104	]          isKey "name"
+[105	]          exists
+[106	]      }
+[107	]  }
+
+2016-03-16 12:29:31 DEBUG STATES:86 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 3
+2016-03-16 12:29:31 DEBUG Connection:159 - Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=false] Connection established, initializing transport
+2016-03-16 12:29:31 DEBUG STATES:306 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=false] Transport initialized, connection ready
+2016-03-16 12:29:31 DEBUG HostConnectionPool:153 - Created connection pool to host localhost/127.0.0.1:9042 (1 connections needed, 1 successfully opened)
+2016-03-16 12:29:31 DEBUG Session:364 - Added connection pool for localhost/127.0.0.1:9042
+2016-03-16 12:29:31 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/author.dat]
+2016-03-16 12:29:31 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/book.dat]
+2016-03-16 12:29:32 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/authorBook.dat]
+2016-03-16 12:29:32 WARN  DataLoaderImpl:193 - The following schema elements will be added. It is STRONGLY advised to create schema elements explicitly prior to data loading.
+2016-03-16 12:29:32 INFO  DataLoaderImpl:195 - Adding schema element: vertexLabel[author]
+2016-03-16 12:29:32 INFO  DataLoaderImpl:195 - Adding schema element: vertexLabel[book]
+2016-03-16 12:29:32 INFO  DataLoaderImpl:195 - Adding schema element: edgeLabel[authored]
+2016-03-16 12:29:32 INFO  DataLoaderImpl:195 - Adding schema element: propertyKey[gender]:String
+2016-03-16 12:29:32 INFO  DataLoaderImpl:195 - Adding schema element: propertyKey[ISBN]:String
+2016-03-16 12:29:32 INFO  DataLoaderImpl:195 - Adding schema element: propertyKey[year]:String
+2016-03-16 12:29:32 INFO  DataLoaderImpl:195 - Adding schema element: propertyKey[name]:String
+2016-03-16 12:29:32 INFO  DataLoaderImpl:200 - The following schema registrations will be added.
+2016-03-16 12:29:32 INFO  DataLoaderImpl:202 - Adding schema registration: propertyKey[name]:String incidentOn[OUT] vertexLabel[book]
+2016-03-16 12:29:32 INFO  DataLoaderImpl:202 - Adding schema registration: edgeLabel[authored] incidentOn[IN] vertexLabel[book] with: vertexLabel[author]
+2016-03-16 12:29:32 INFO  DataLoaderImpl:202 - Adding schema registration: propertyKey[name]:String incidentOn[OUT] vertexLabel[author]
+2016-03-16 12:29:32 INFO  DataLoaderImpl:202 - Adding schema registration: edgeLabel[authored] incidentOn[OUT] vertexLabel[author] with: vertexLabel[book]
+2016-03-16 12:29:32 INFO  DataLoaderImpl:202 - Adding schema registration: propertyKey[gender]:String incidentOn[OUT] vertexLabel[author]
+2016-03-16 12:29:32 INFO  DataLoaderImpl:202 - Adding schema registration: propertyKey[year]:String incidentOn[OUT] vertexLabel[book]
+2016-03-16 12:29:32 INFO  DataLoaderImpl:202 - Adding schema registration: propertyKey[ISBN]:String incidentOn[OUT] vertexLabel[book]
+2016-03-16 12:29:32 INFO  DataLoaderImpl:206 - Sum of loading statistics: LoadStatistic.Record[presentVertexCount=20,maybeVertexCount=0,absentVertexCount=14,edgeCount=10,vertexPropertyCount=52,elementPropertyCount=0]
+2016-03-16 12:29:32 INFO  DataLoaderImpl:208 - Max load for weight [VERTEX (Sum of vertex counts)]: LoadStatistic.Record[presentVertexCount=8,maybeVertexCount=0,absentVertexCount=0,edgeCount=4,vertexPropertyCount=8,elementPropertyCount=0]
+2016-03-16 12:29:32 INFO  DataLoaderImpl:208 - Max load for weight [TOTAL (Sum of vertex, edge, and vertex-property counts)]: LoadStatistic.Record[presentVertexCount=8,maybeVertexCount=0,absentVertexCount=0,edgeCount=4,vertexPropertyCount=8,elementPropertyCount=0]
+2016-03-16 12:29:32 INFO  DseGraphDriverImpl:147 - Schema update: Schema schema = graph.schema();
+schema.buildVertexLabel("author").add();
+schema.buildVertexLabel("book").add();
+schema.buildEdgeLabel("authored").add();
+schema.buildPropertyKey("gender", java.lang.String.class).cardinality(Cardinality.Single).add();
+schema.buildPropertyKey("ISBN", java.lang.String.class).cardinality(Cardinality.Single).add();
+schema.buildPropertyKey("year", java.lang.String.class).cardinality(Cardinality.Single).add();
+schema.buildPropertyKey("name", java.lang.String.class).cardinality(Cardinality.Single).add();
+schema.vertexLabel("book").registerPropertyKey("name");
+schema.vertexLabel("book").registerEdgeLabel(schema.edgeLabel("authored"), Direction.IN, schema.vertexLabel("author"));
+schema.vertexLabel("author").registerPropertyKey("name");
+schema.vertexLabel("author").registerEdgeLabel(schema.edgeLabel("authored"), Direction.OUT, schema.vertexLabel("book"));
+schema.vertexLabel("author").registerPropertyKey("gender");
+schema.vertexLabel("book").registerPropertyKey("year");
+schema.vertexLabel("book").registerPropertyKey("ISBN");
+
+2016-03-16 12:29:33 DEBUG Cluster:2295 - Received event EVENT CREATED TABLE ABTest.author_p, scheduling delivery
+2016-03-16 12:29:33 DEBUG Cluster:2295 - Received event EVENT CREATED TABLE ABTest.author_e, scheduling delivery
+2016-03-16 12:29:33 DEBUG Cluster:2295 - Received event EVENT UPDATED TABLE ABTest.author_p, scheduling delivery
+2016-03-16 12:29:33 DEBUG Cluster:2295 - Received event EVENT UPDATED TABLE ABTest.author_p, scheduling delivery
+2016-03-16 12:29:33 DEBUG Cluster:2295 - Received event EVENT CREATED TABLE ABTest.book_p, scheduling delivery
+2016-03-16 12:29:33 DEBUG Cluster:2295 - Received event EVENT CREATED TABLE ABTest.book_e, scheduling delivery
+2016-03-16 12:29:33 DEBUG Cluster:2295 - Received event EVENT UPDATED TABLE ABTest.book_p, scheduling delivery
+2016-03-16 12:29:33 DEBUG Cluster:2295 - Received event EVENT UPDATED TABLE ABTest.book_p, scheduling delivery
+2016-03-16 12:29:33 DEBUG Cluster:2295 - Received event EVENT UPDATED TABLE ABTest.book_p, scheduling delivery
+2016-03-16 12:29:33 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/author.dat]
+2016-03-16 12:29:34 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 3 vertices
+2016-03-16 12:29:34 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 4 vertices
+2016-03-16 12:29:34 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 3 vertices
+2016-03-16 12:29:34 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/book.dat]
+2016-03-16 12:29:34 DEBUG ControlConnection:298 - [Control connection] Refreshing schema for ABTest
+2016-03-16 12:29:35 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 1 vertices
+2016-03-16 12:29:35 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 2 vertices
+2016-03-16 12:29:35 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 1 vertices
+2016-03-16 12:29:35 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/authorBook.dat]
+2016-03-16 12:29:35 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/author.dat]
+2016-03-16 12:29:35 DEBUG ControlConnection:531 - [Control connection] Refreshing node list and token map
+2016-03-16 12:29:35 DEBUG ReplicationStrategy$NetworkTopologyStrategy:123 - Computing token to replica map for keyspace: dse_leases.
+2016-03-16 12:29:35 DEBUG ReplicationStrategy$NetworkTopologyStrategy:211 - Token to replica map computation for keyspace dse_leases completed in 0 milliseconds
+2016-03-16 12:29:36 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 4 properties, 0 edges
+2016-03-16 12:29:36 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 3 properties, 0 edges
+2016-03-16 12:29:36 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 3 properties, 0 edges
+2016-03-16 12:29:36 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/book.dat]
+2016-03-16 12:29:36 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 2 properties, 0 edges
+2016-03-16 12:29:36 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 2 properties, 0 edges
+2016-03-16 12:29:36 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 4 properties, 0 edges
+2016-03-16 12:29:36 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/authorBook.dat]
+2016-03-16 12:29:37 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 0 properties, 3 edges
+2016-03-16 12:29:37 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 0 properties, 4 edges
+2016-03-16 12:29:37 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 0 properties, 3 edges
+2016-03-16 12:29:37 DEBUG Cluster:1572 - Shutting down
+2016-03-16 12:29:37 DEBUG Connection:616 - Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=true] closing connection
+2016-03-16 12:29:37 DEBUG STATES:94 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=true] closed, remaining = 2
+2016-03-16 12:29:37 DEBUG Connection:616 - Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=true] closing connection
+2016-03-16 12:29:37 DEBUG STATES:94 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=true] closed, remaining = 1
+2016-03-16 12:29:37 DEBUG Connection:616 - Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=true] closing connection
+2016-03-16 12:29:37 DEBUG STATES:94 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=true] closed, remaining = 0
+2016-03-16 12:29:40 DEBUG PoolThreadCache:81 - Freed 36 thread-local buffer(s) from thread: cluster1-nio-worker-0
+2016-03-16 12:29:40 DEBUG PoolThreadCache:81 - Freed 7 thread-local buffer(s) from thread: cluster1-nio-worker-1
+2016-03-16 12:29:40 DEBUG PoolThreadCache:81 - Freed 20 thread-local buffer(s) from thread: cluster1-nio-worker-2

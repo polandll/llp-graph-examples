@@ -12,8 +12,9 @@ import java.util.Map
 import java.util.ArrayList
 import java.util.List
 
-import static com.datastax.bdp.graph.api.schema.VertexIndex.Type.SECONDARY
-import static com.datastax.bdp.graph.api.schema.VertexIndex.Type.MATERIALIZED
+import com.datastax.bdp.graph.api.property.BasicValueType;
+//import static com.datastax.bdp.graph.api.schema.VertexIndex.Type.SECONDARY
+//import static com.datastax.bdp.graph.api.schema.VertexIndex.Type.MATERIALIZED
 
 
 class RecipeSchema {
