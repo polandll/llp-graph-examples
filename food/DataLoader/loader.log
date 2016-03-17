@@ -1,64 +1,68 @@
-2016-03-16 17:22:56 INFO  Executable:50 - Setting configuration dryrun=false
-2016-03-16 17:22:56 DEBUG Executable:58 - Setting cluster builder: com.datastax.dsegraphloader.api.ClusterBuilder@694e1548
-2016-03-16 17:22:56 DEBUG SystemProperties:32 - com.datastax.driver.NEW_NODE_DELAY_SECONDS is undefined, using default value 1
-2016-03-16 17:22:56 DEBUG SystemProperties:32 - com.datastax.driver.NON_BLOCKING_EXECUTOR_SIZE is undefined, using default value 8
-2016-03-16 17:22:56 DEBUG SystemProperties:32 - com.datastax.driver.NOTIF_LOCK_TIMEOUT_SECONDS is undefined, using default value 60
-2016-03-16 17:22:56 DEBUG Cluster:1350 - Starting new cluster with contact points [localhost/127.0.0.1:9042]
-2016-03-16 17:22:56 DEBUG InternalLoggerFactory:71 - Using SLF4J as the default logging framework
-2016-03-16 17:22:56 DEBUG PlatformDependent0:76 - java.nio.Buffer.address: available
-2016-03-16 17:22:56 DEBUG PlatformDependent0:76 - sun.misc.Unsafe.theUnsafe: available
-2016-03-16 17:22:56 DEBUG PlatformDependent0:71 - sun.misc.Unsafe.copyMemory: available
-2016-03-16 17:22:56 DEBUG PlatformDependent0:76 - java.nio.Bits.unaligned: true
-2016-03-16 17:22:56 DEBUG PlatformDependent:76 - Java version: 8
-2016-03-16 17:22:56 DEBUG PlatformDependent:76 - -Dio.netty.noUnsafe: false
-2016-03-16 17:22:56 DEBUG PlatformDependent:76 - sun.misc.Unsafe: available
-2016-03-16 17:22:56 DEBUG PlatformDependent:76 - -Dio.netty.noJavassist: false
-2016-03-16 17:22:56 DEBUG PlatformDependent:71 - Javassist: unavailable
-2016-03-16 17:22:56 DEBUG PlatformDependent:71 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
-2016-03-16 17:22:56 DEBUG PlatformDependent:76 - -Dio.netty.tmpdir: /var/folders/kt/8gksd2k94rd4f2x_8y4snnz40000gn/T (java.io.tmpdir)
-2016-03-16 17:22:56 DEBUG PlatformDependent:76 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
-2016-03-16 17:22:56 DEBUG PlatformDependent:76 - -Dio.netty.noPreferDirect: false
-2016-03-16 17:22:56 DEBUG SystemProperties:48 - com.datastax.driver.FORCE_NIO is undefined, using default value false
-2016-03-16 17:22:56 INFO  NettyUtil:83 - Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
-2016-03-16 17:22:56 DEBUG MultithreadEventLoopGroup:76 - -Dio.netty.eventLoopThreads: 16
-2016-03-16 17:22:56 DEBUG NioEventLoop:76 - -Dio.netty.noKeySetOptimization: false
-2016-03-16 17:22:56 DEBUG NioEventLoop:76 - -Dio.netty.selectorAutoRebuildThreshold: 512
-2016-03-16 17:22:56 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.level: simple
-2016-03-16 17:22:56 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.maxRecords: 4
-2016-03-16 17:22:56 DEBUG STATES:86 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 1
-2016-03-16 17:22:56 DEBUG SystemProperties:48 - com.datastax.driver.DISABLE_COALESCING is undefined, using default value false
-2016-03-16 17:22:56 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numHeapArenas: 16
-2016-03-16 17:22:56 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numDirectArenas: 16
-2016-03-16 17:22:56 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.pageSize: 8192
-2016-03-16 17:22:56 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxOrder: 11
-2016-03-16 17:22:56 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.chunkSize: 16777216
-2016-03-16 17:22:56 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.tinyCacheSize: 512
-2016-03-16 17:22:56 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.smallCacheSize: 256
-2016-03-16 17:22:56 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.normalCacheSize: 64
-2016-03-16 17:22:56 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
-2016-03-16 17:22:56 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.cacheTrimInterval: 8192
-2016-03-16 17:22:56 DEBUG ThreadLocalRandom:71 - -Dio.netty.initialSeedUniquifier: 0xa528e5bdc7d01859 (took 6 ms)
-2016-03-16 17:22:56 DEBUG ByteBufUtil:76 - -Dio.netty.allocator.type: unpooled
-2016-03-16 17:22:56 DEBUG ByteBufUtil:76 - -Dio.netty.threadLocalDirectBufferSize: 65536
-2016-03-16 17:22:56 DEBUG ByteBufUtil:76 - -Dio.netty.maxThreadLocalCharBufferSize: 16384
-2016-03-16 17:22:56 DEBUG Connection:159 - Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Connection established, initializing transport
-2016-03-16 17:22:56 DEBUG Recycler:76 - -Dio.netty.recycler.maxCapacity.default: 262144
-2016-03-16 17:22:57 DEBUG AbstractByteBuf:81 - -Dio.netty.buffer.bytebuf.checkAccessible: true
-2016-03-16 17:22:57 DEBUG STATES:306 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Transport initialized, connection ready
-2016-03-16 17:22:57 DEBUG ControlConnection:531 - [Control connection] Refreshing node list and token map
-2016-03-16 17:22:57 DEBUG ControlConnection:270 - [Control connection] Refreshing schema
-2016-03-16 17:22:57 DEBUG ControlConnection:531 - [Control connection] Refreshing node list and token map
-2016-03-16 17:22:57 DEBUG ReplicationStrategy$NetworkTopologyStrategy:123 - Computing token to replica map for keyspace: dse_leases.
-2016-03-16 17:22:57 DEBUG ReplicationStrategy$NetworkTopologyStrategy:211 - Token to replica map computation for keyspace dse_leases completed in 0 milliseconds
-2016-03-16 17:22:57 DEBUG STATES:181 - [Control connection] established to localhost/127.0.0.1:9042
-2016-03-16 17:22:57 INFO  DCAwareRoundRobinPolicy:95 - Using data-center name 'Graph' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
-2016-03-16 17:22:57 INFO  Cluster:1475 - New Cassandra host localhost/127.0.0.1:9042 added
-2016-03-16 17:22:57 DEBUG STATES:86 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 2
-2016-03-16 17:22:57 DEBUG Connection:159 - Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Connection established, initializing transport
-2016-03-16 17:22:57 DEBUG STATES:306 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Transport initialized, connection ready
-2016-03-16 17:22:57 DEBUG HostConnectionPool:153 - Created connection pool to host localhost/127.0.0.1:9042 (1 connections needed, 1 successfully opened)
-2016-03-16 17:22:57 DEBUG Session:364 - Added connection pool for localhost/127.0.0.1:9042
-2016-03-16 17:22:57 DEBUG GroovyScriptExecutor:154 - Complete loading script: 
+2016-03-16 21:42:28 INFO  Executable:50 - Setting configuration dryrun=false
+2016-03-16 21:42:28 DEBUG Executable:58 - Setting cluster builder: com.datastax.dsegraphloader.api.ClusterBuilder@694e1548
+2016-03-16 21:42:28 DEBUG SystemProperties:32 - com.datastax.driver.NEW_NODE_DELAY_SECONDS is undefined, using default value 1
+2016-03-16 21:42:28 DEBUG SystemProperties:32 - com.datastax.driver.NON_BLOCKING_EXECUTOR_SIZE is undefined, using default value 8
+2016-03-16 21:42:28 DEBUG SystemProperties:32 - com.datastax.driver.NOTIF_LOCK_TIMEOUT_SECONDS is undefined, using default value 60
+2016-03-16 21:42:28 DEBUG Cluster:1350 - Starting new cluster with contact points [localhost/127.0.0.1:9042]
+2016-03-16 21:42:28 DEBUG InternalLoggerFactory:71 - Using SLF4J as the default logging framework
+2016-03-16 21:42:28 DEBUG PlatformDependent0:76 - java.nio.Buffer.address: available
+2016-03-16 21:42:28 DEBUG PlatformDependent0:76 - sun.misc.Unsafe.theUnsafe: available
+2016-03-16 21:42:28 DEBUG PlatformDependent0:71 - sun.misc.Unsafe.copyMemory: available
+2016-03-16 21:42:28 DEBUG PlatformDependent0:76 - java.nio.Bits.unaligned: true
+2016-03-16 21:42:28 DEBUG PlatformDependent:76 - Java version: 8
+2016-03-16 21:42:28 DEBUG PlatformDependent:76 - -Dio.netty.noUnsafe: false
+2016-03-16 21:42:28 DEBUG PlatformDependent:76 - sun.misc.Unsafe: available
+2016-03-16 21:42:28 DEBUG PlatformDependent:76 - -Dio.netty.noJavassist: false
+2016-03-16 21:42:28 DEBUG PlatformDependent:71 - Javassist: unavailable
+2016-03-16 21:42:28 DEBUG PlatformDependent:71 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2016-03-16 21:42:28 DEBUG PlatformDependent:76 - -Dio.netty.tmpdir: /var/folders/kt/8gksd2k94rd4f2x_8y4snnz40000gn/T (java.io.tmpdir)
+2016-03-16 21:42:28 DEBUG PlatformDependent:76 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2016-03-16 21:42:28 DEBUG PlatformDependent:76 - -Dio.netty.noPreferDirect: false
+2016-03-16 21:42:28 DEBUG SystemProperties:48 - com.datastax.driver.FORCE_NIO is undefined, using default value false
+2016-03-16 21:42:28 INFO  NettyUtil:83 - Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
+2016-03-16 21:42:28 DEBUG MultithreadEventLoopGroup:76 - -Dio.netty.eventLoopThreads: 16
+2016-03-16 21:42:28 DEBUG NioEventLoop:76 - -Dio.netty.noKeySetOptimization: false
+2016-03-16 21:42:28 DEBUG NioEventLoop:76 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2016-03-16 21:42:28 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.level: simple
+2016-03-16 21:42:28 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.maxRecords: 4
+2016-03-16 21:42:28 DEBUG STATES:86 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 1
+2016-03-16 21:42:28 DEBUG SystemProperties:48 - com.datastax.driver.DISABLE_COALESCING is undefined, using default value false
+2016-03-16 21:42:28 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numHeapArenas: 16
+2016-03-16 21:42:28 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numDirectArenas: 16
+2016-03-16 21:42:28 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.pageSize: 8192
+2016-03-16 21:42:28 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxOrder: 11
+2016-03-16 21:42:28 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.chunkSize: 16777216
+2016-03-16 21:42:28 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.tinyCacheSize: 512
+2016-03-16 21:42:28 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.smallCacheSize: 256
+2016-03-16 21:42:28 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.normalCacheSize: 64
+2016-03-16 21:42:28 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2016-03-16 21:42:28 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2016-03-16 21:42:28 DEBUG ThreadLocalRandom:71 - -Dio.netty.initialSeedUniquifier: 0x87657f5da97a7d2b (took 6 ms)
+2016-03-16 21:42:28 DEBUG ByteBufUtil:76 - -Dio.netty.allocator.type: unpooled
+2016-03-16 21:42:28 DEBUG ByteBufUtil:76 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2016-03-16 21:42:28 DEBUG ByteBufUtil:76 - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2016-03-16 21:42:28 DEBUG Connection:159 - Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Connection established, initializing transport
+2016-03-16 21:42:28 DEBUG Recycler:76 - -Dio.netty.recycler.maxCapacity.default: 262144
+2016-03-16 21:42:28 DEBUG AbstractByteBuf:81 - -Dio.netty.buffer.bytebuf.checkAccessible: true
+2016-03-16 21:42:28 DEBUG STATES:306 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Transport initialized, connection ready
+2016-03-16 21:42:28 DEBUG ControlConnection:531 - [Control connection] Refreshing node list and token map
+2016-03-16 21:42:28 DEBUG ControlConnection:270 - [Control connection] Refreshing schema
+2016-03-16 21:42:28 DEBUG ControlConnection:531 - [Control connection] Refreshing node list and token map
+2016-03-16 21:42:28 DEBUG ReplicationStrategy$NetworkTopologyStrategy:123 - Computing token to replica map for keyspace: dse_leases.
+2016-03-16 21:42:28 DEBUG ReplicationStrategy$NetworkTopologyStrategy:211 - Token to replica map computation for keyspace dse_leases completed in 0 milliseconds
+2016-03-16 21:42:28 DEBUG STATES:181 - [Control connection] established to localhost/127.0.0.1:9042
+2016-03-16 21:42:28 INFO  DCAwareRoundRobinPolicy:95 - Using data-center name 'Graph' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+2016-03-16 21:42:28 INFO  Cluster:1475 - New Cassandra host localhost/127.0.0.1:9042 added
+2016-03-16 21:42:28 DEBUG STATES:86 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 2
+2016-03-16 21:42:28 DEBUG Connection:159 - Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Connection established, initializing transport
+2016-03-16 21:42:28 DEBUG STATES:306 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Transport initialized, connection ready
+2016-03-16 21:42:28 DEBUG HostConnectionPool:153 - Created connection pool to host localhost/127.0.0.1:9042 (1 connections needed, 1 successfully opened)
+2016-03-16 21:42:28 DEBUG Session:364 - Added connection pool for localhost/127.0.0.1:9042
+2016-03-16 21:42:28 DEBUG Cluster:2295 - Received event EVENT CREATED KEYSPACE REGEXTEST, scheduling delivery
+2016-03-16 21:42:28 DEBUG Cluster:2295 - Received event EVENT CREATED KEYSPACE REGEXTEST_system, scheduling delivery
+2016-03-16 21:42:28 DEBUG Cluster:2295 - Received event EVENT CREATED KEYSPACE REGEXTEST_pvt, scheduling delivery
+2016-03-16 21:42:29 DEBUG Cluster:2295 - Received event EVENT CREATED TABLE REGEXTEST_system.dseg_variables, scheduling delivery
+2016-03-16 21:42:29 DEBUG GroovyScriptExecutor:154 - Complete loading script: 
 [1	]  VertexImportImpl.metaClass.edge = { String arg0, String arg1, Direction arg2,  Closure closure ->
 [2	]      return delegate.edge(arg0, arg1, arg2,  GroovyUtil.convert2Consumer(closure));
 [3	]  }
@@ -68,14 +72,14 @@
 [7	]  VertexImportImpl.metaClass.neighbor = { String arg0, String arg1, Direction arg2,  Closure closure ->
 [8	]      return delegate.neighbor(arg0, arg1, arg2,  GroovyUtil.convert2Consumer(closure));
 [9	]  }
-[10	]  VertexImportImpl.metaClass.outE = { String arg0,  Closure closure ->
-[11	]      return delegate.outE(arg0,  GroovyUtil.convert2Consumer(closure));
+[10	]  VertexImportImpl.metaClass.vertexProperty = { String arg0,  Closure closure ->
+[11	]      return delegate.vertexProperty(arg0,  GroovyUtil.convert2Consumer(closure));
 [12	]  }
-[13	]  VertexImportImpl.metaClass.outE = { String arg0, String arg1,  Closure closure ->
-[14	]      return delegate.outE(arg0, arg1,  GroovyUtil.convert2Consumer(closure));
+[13	]  VertexImportImpl.metaClass.outE = { String arg0,  Closure closure ->
+[14	]      return delegate.outE(arg0,  GroovyUtil.convert2Consumer(closure));
 [15	]  }
-[16	]  VertexImportImpl.metaClass.vertexProperty = { String arg0,  Closure closure ->
-[17	]      return delegate.vertexProperty(arg0,  GroovyUtil.convert2Consumer(closure));
+[16	]  VertexImportImpl.metaClass.outE = { String arg0, String arg1,  Closure closure ->
+[17	]      return delegate.outE(arg0, arg1,  GroovyUtil.convert2Consumer(closure));
 [18	]  }
 [19	]  VertexImportImpl.metaClass.inE = { String arg0,  Closure closure ->
 [20	]      return delegate.inE(arg0,  GroovyUtil.convert2Consumer(closure));
@@ -132,68 +136,76 @@
 [71	]  // inputfilename is the directory for the input files that is given in the commandline
 [72	]  // as the "-filename" option
 [73	]  
-[74	]  inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/TEXT/'
-[75	]  authorFile = text name: inputfiledir + "author.dat", delimiter: "|", header: ['name', 'gender'], transform: { it['gender'] = it['gender'].toLowerCase(); it }
-[76	]  bookFile = text name: inputfiledir + "book.dat", delimiter: "|", header: ['name', 'year', 'ISBN']
-[77	]  authorBookFile = text name: inputfiledir + "authorBook.dat", delimiter: "|", header: ['bname', 'aname']
-[78	]  
-[79	]  //Specifies what data source to load using which mapper (as defined inline)
-[80	]  load from: authorFile, vertex: {
-[81	]      label "author"
-[82	]      key "name"
-[83	]      isNew
-[84	]  }
-[85	]  
-[86	]  load from: bookFile, vertex: {
-[87	]      label "book"
+[74	]  inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/REGEX/'
+[75	]  authorFile = text name: inputfiledir + "authorREGEX.dat", 
+[76	]  	regex: "name:([A-Za-z]{1,30}[ ]{1}[A-Za-z]{1,30})\\tgender:([A-Z])", 
+[77	]  	header: ['name', 'gender']
+[78	]  bookFile = text name: inputfiledir + "bookREGEX.dat", 
+[79	]  	regex: "name:([A-Za-z':,.0-9 ]+)\\tyear:([0-9]{4})\\tISBN:([0-9]{1}[-]{1}[0-9]{3}[-]{1}[0-9]{5}[-]{1}[0-9]{0,1})", 
+[80	]  	header: ['name', 'year', 'ISBN']
+[81	]  authorBookFile = text name: inputfiledir + "authorBookREGEX.dat", 
+[82	]  	regex: "bname:([A-Za-z':,.0-9 ]+)\\taname:([A-Za-z]{1,30}[ ]{1}[A-Za-z]{1,30})", 
+[83	]  	header: ['bname', 'aname']
+[84	]  
+[85	]  //Specifies what data source to load using which mapper (as defined inline)
+[86	]  load from: authorFile, vertex: {
+[87	]      label "author"
 [88	]      key "name"
 [89	]      isNew
 [90	]  }
 [91	]  
-[92	]  load from: authorBookFile, edge: {
-[93	]      label "authored"
-[94	]      outV "aname", {
-[95	]          label "author"
-[96	]          isKey "name"
-[97	]          exists
-[98	]      }
-[99	]      inV "bname", {
-[100	]          label "book"
-[101	]          isKey "name"
-[102	]          exists
-[103	]      }
-[104	]  }
+[92	]  load from: bookFile, vertex: {
+[93	]      label "book"
+[94	]      key "name"
+[95	]  	isNew
+[96	]  }
+[97	]  
+[98	]  load from: authorBookFile, edge: {
+[99	]      label "authored"
+[100	]      outV "aname", {
+[101	]          label "author"
+[102	]          isKey "name"
+[103	]          exists
+[104	]      }
+[105	]      inV "bname", {
+[106	]          label "book"
+[107	]          isKey "name"
+[108	]          exists
+[109	]      }
+[110	]  }
+[111	]  
 
-2016-03-16 17:22:57 DEBUG STATES:86 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 3
-2016-03-16 17:22:57 DEBUG Connection:159 - Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=false] Connection established, initializing transport
-2016-03-16 17:22:57 DEBUG STATES:306 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=false] Transport initialized, connection ready
-2016-03-16 17:22:57 DEBUG HostConnectionPool:153 - Created connection pool to host localhost/127.0.0.1:9042 (1 connections needed, 1 successfully opened)
-2016-03-16 17:22:57 DEBUG Session:364 - Added connection pool for localhost/127.0.0.1:9042
-2016-03-16 17:22:58 DEBUG Cluster:2295 - Received event EVENT CREATED TABLE TEXTXFORMTEST_system.id_allocation, scheduling delivery
-2016-03-16 17:22:58 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/author.dat]
-2016-03-16 17:22:58 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/book.dat]
-2016-03-16 17:22:59 DEBUG ControlConnection:298 - [Control connection] Refreshing schema for TEXTXFORMTEST_system.id_allocation (TABLE)
-2016-03-16 17:22:59 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/authorBook.dat]
-2016-03-16 17:22:59 WARN  DataLoaderImpl:193 - The following schema elements will be added. It is STRONGLY advised to create schema elements explicitly prior to data loading.
-2016-03-16 17:22:59 INFO  DataLoaderImpl:195 - Adding schema element: vertexLabel[author]
-2016-03-16 17:22:59 INFO  DataLoaderImpl:195 - Adding schema element: vertexLabel[book]
-2016-03-16 17:22:59 INFO  DataLoaderImpl:195 - Adding schema element: edgeLabel[authored]
-2016-03-16 17:22:59 INFO  DataLoaderImpl:195 - Adding schema element: propertyKey[gender]:String
-2016-03-16 17:22:59 INFO  DataLoaderImpl:195 - Adding schema element: propertyKey[ISBN]:String
-2016-03-16 17:22:59 INFO  DataLoaderImpl:195 - Adding schema element: propertyKey[year]:String
-2016-03-16 17:22:59 INFO  DataLoaderImpl:195 - Adding schema element: propertyKey[name]:String
-2016-03-16 17:22:59 INFO  DataLoaderImpl:200 - The following schema registrations will be added.
-2016-03-16 17:22:59 INFO  DataLoaderImpl:202 - Adding schema registration: propertyKey[gender]:String incidentOn[OUT] vertexLabel[author]
-2016-03-16 17:22:59 INFO  DataLoaderImpl:202 - Adding schema registration: propertyKey[name]:String incidentOn[OUT] vertexLabel[book]
-2016-03-16 17:22:59 INFO  DataLoaderImpl:202 - Adding schema registration: propertyKey[ISBN]:String incidentOn[OUT] vertexLabel[book]
-2016-03-16 17:22:59 INFO  DataLoaderImpl:202 - Adding schema registration: propertyKey[year]:String incidentOn[OUT] vertexLabel[book]
-2016-03-16 17:22:59 INFO  DataLoaderImpl:202 - Adding schema registration: edgeLabel[authored] incidentOn[IN] vertexLabel[book] with: vertexLabel[author]
-2016-03-16 17:22:59 INFO  DataLoaderImpl:202 - Adding schema registration: propertyKey[name]:String incidentOn[OUT] vertexLabel[author]
-2016-03-16 17:22:59 INFO  DataLoaderImpl:202 - Adding schema registration: edgeLabel[authored] incidentOn[OUT] vertexLabel[author] with: vertexLabel[book]
-2016-03-16 17:22:59 INFO  DataLoaderImpl:206 - Sum of loading statistics: LoadStatistic.Record[presentVertexCount=20,maybeVertexCount=0,absentVertexCount=11,edgeCount=10,vertexPropertyCount=46,elementPropertyCount=0]
-2016-03-16 17:22:59 INFO  DataLoaderImpl:208 - Max load for weight [VERTEX (Sum of vertex counts)]: LoadStatistic.Record[presentVertexCount=8,maybeVertexCount=0,absentVertexCount=0,edgeCount=4,vertexPropertyCount=8,elementPropertyCount=0]
-2016-03-16 17:22:59 INFO  DataLoaderImpl:208 - Max load for weight [TOTAL (Sum of vertex, edge, and vertex-property counts)]: LoadStatistic.Record[presentVertexCount=8,maybeVertexCount=0,absentVertexCount=0,edgeCount=4,vertexPropertyCount=8,elementPropertyCount=0]
-2016-03-16 17:22:59 INFO  DseGraphDriverImpl:147 - Schema update: Schema schema = graph.schema();
+2016-03-16 21:42:29 DEBUG STATES:86 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 3
+2016-03-16 21:42:29 DEBUG Connection:159 - Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=false] Connection established, initializing transport
+2016-03-16 21:42:29 DEBUG STATES:306 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=false] Transport initialized, connection ready
+2016-03-16 21:42:29 DEBUG HostConnectionPool:153 - Created connection pool to host localhost/127.0.0.1:9042 (1 connections needed, 1 successfully opened)
+2016-03-16 21:42:29 DEBUG Session:364 - Added connection pool for localhost/127.0.0.1:9042
+2016-03-16 21:42:29 DEBUG Cluster:2295 - Received event EVENT CREATED TABLE REGEXTEST_system.shared_data, scheduling delivery
+2016-03-16 21:42:29 DEBUG Cluster:2295 - Received event EVENT CREATED TABLE REGEXTEST_system.id_allocation, scheduling delivery
+2016-03-16 21:42:29 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/REGEX/authorREGEX.dat]
+2016-03-16 21:42:30 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/REGEX/bookREGEX.dat]
+2016-03-16 21:42:30 DEBUG ControlConnection:298 - [Control connection] Refreshing schema for everything.null (null)
+2016-03-16 21:42:30 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/REGEX/authorBookREGEX.dat]
+2016-03-16 21:42:31 WARN  DataLoaderImpl:193 - The following schema elements will be added. It is STRONGLY advised to create schema elements explicitly prior to data loading.
+2016-03-16 21:42:31 INFO  DataLoaderImpl:195 - Adding schema element: vertexLabel[author]
+2016-03-16 21:42:31 INFO  DataLoaderImpl:195 - Adding schema element: vertexLabel[book]
+2016-03-16 21:42:31 INFO  DataLoaderImpl:195 - Adding schema element: edgeLabel[authored]
+2016-03-16 21:42:31 INFO  DataLoaderImpl:195 - Adding schema element: propertyKey[gender]:String
+2016-03-16 21:42:31 INFO  DataLoaderImpl:195 - Adding schema element: propertyKey[ISBN]:String
+2016-03-16 21:42:31 INFO  DataLoaderImpl:195 - Adding schema element: propertyKey[year]:String
+2016-03-16 21:42:31 INFO  DataLoaderImpl:195 - Adding schema element: propertyKey[name]:String
+2016-03-16 21:42:31 INFO  DataLoaderImpl:200 - The following schema registrations will be added.
+2016-03-16 21:42:31 INFO  DataLoaderImpl:202 - Adding schema registration: propertyKey[gender]:String incidentOn[OUT] vertexLabel[author]
+2016-03-16 21:42:31 INFO  DataLoaderImpl:202 - Adding schema registration: propertyKey[year]:String incidentOn[OUT] vertexLabel[book]
+2016-03-16 21:42:31 INFO  DataLoaderImpl:202 - Adding schema registration: edgeLabel[authored] incidentOn[OUT] vertexLabel[author] with: vertexLabel[book]
+2016-03-16 21:42:31 INFO  DataLoaderImpl:202 - Adding schema registration: propertyKey[name]:String incidentOn[OUT] vertexLabel[author]
+2016-03-16 21:42:31 INFO  DataLoaderImpl:202 - Adding schema registration: edgeLabel[authored] incidentOn[IN] vertexLabel[book] with: vertexLabel[author]
+2016-03-16 21:42:31 INFO  DataLoaderImpl:202 - Adding schema registration: propertyKey[name]:String incidentOn[OUT] vertexLabel[book]
+2016-03-16 21:42:31 INFO  DataLoaderImpl:202 - Adding schema registration: propertyKey[ISBN]:String incidentOn[OUT] vertexLabel[book]
+2016-03-16 21:42:31 INFO  DataLoaderImpl:206 - Sum of loading statistics: LoadStatistic.Record[presentVertexCount=20,maybeVertexCount=0,absentVertexCount=10,edgeCount=10,vertexPropertyCount=44,elementPropertyCount=0]
+2016-03-16 21:42:31 INFO  DataLoaderImpl:208 - Max load for weight [VERTEX (Sum of vertex counts)]: LoadStatistic.Record[presentVertexCount=8,maybeVertexCount=0,absentVertexCount=0,edgeCount=4,vertexPropertyCount=8,elementPropertyCount=0]
+2016-03-16 21:42:31 INFO  DataLoaderImpl:208 - Max load for weight [TOTAL (Sum of vertex, edge, and vertex-property counts)]: LoadStatistic.Record[presentVertexCount=8,maybeVertexCount=0,absentVertexCount=0,edgeCount=4,vertexPropertyCount=8,elementPropertyCount=0]
+2016-03-16 21:42:31 INFO  DseGraphDriverImpl:147 - Schema update: Schema schema = graph.schema();
 schema.buildVertexLabel("author").add();
 schema.buildVertexLabel("book").add();
 schema.buildEdgeLabel("authored").add();
@@ -202,279 +214,209 @@ schema.buildPropertyKey("ISBN", java.lang.String.class).cardinality(Cardinality.
 schema.buildPropertyKey("year", java.lang.String.class).cardinality(Cardinality.Single).add();
 schema.buildPropertyKey("name", java.lang.String.class).cardinality(Cardinality.Single).add();
 schema.vertexLabel("author").registerPropertyKey("gender");
-schema.vertexLabel("book").registerPropertyKey("name");
-schema.vertexLabel("book").registerPropertyKey("ISBN");
 schema.vertexLabel("book").registerPropertyKey("year");
-schema.vertexLabel("book").registerEdgeLabel(schema.edgeLabel("authored"), Direction.IN, schema.vertexLabel("author"));
-schema.vertexLabel("author").registerPropertyKey("name");
 schema.vertexLabel("author").registerEdgeLabel(schema.edgeLabel("authored"), Direction.OUT, schema.vertexLabel("book"));
-
-2016-03-16 17:23:00 DEBUG Cluster:2295 - Received event EVENT CREATED TABLE TEXTXFORMTEST.author_p, scheduling delivery
-2016-03-16 17:23:00 DEBUG Cluster:2295 - Received event EVENT CREATED TABLE TEXTXFORMTEST.author_e, scheduling delivery
-2016-03-16 17:23:00 DEBUG Cluster:2295 - Received event EVENT UPDATED TABLE TEXTXFORMTEST.author_p, scheduling delivery
-2016-03-16 17:23:00 DEBUG Cluster:2295 - Received event EVENT UPDATED TABLE TEXTXFORMTEST.author_p, scheduling delivery
-2016-03-16 17:23:00 DEBUG Cluster:2295 - Received event EVENT CREATED TABLE TEXTXFORMTEST.book_p, scheduling delivery
-2016-03-16 17:23:00 DEBUG Cluster:2295 - Received event EVENT CREATED TABLE TEXTXFORMTEST.book_e, scheduling delivery
-2016-03-16 17:23:00 DEBUG Cluster:2295 - Received event EVENT UPDATED TABLE TEXTXFORMTEST.book_p, scheduling delivery
-2016-03-16 17:23:00 DEBUG Cluster:2295 - Received event EVENT UPDATED TABLE TEXTXFORMTEST.book_p, scheduling delivery
-2016-03-16 17:23:00 DEBUG Cluster:2295 - Received event EVENT UPDATED TABLE TEXTXFORMTEST.book_p, scheduling delivery
-2016-03-16 17:23:00 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/author.dat]
-2016-03-16 17:23:01 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 2 vertices
-2016-03-16 17:23:01 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 4 vertices
-2016-03-16 17:23:01 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 4 vertices
-2016-03-16 17:23:01 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/book.dat]
-2016-03-16 17:23:01 DEBUG ControlConnection:298 - [Control connection] Refreshing schema for TEXTXFORMTEST
-2016-03-16 17:23:02 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 1 vertices
-2016-03-16 17:23:02 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 2 vertices
-2016-03-16 17:23:02 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 1 vertices
-2016-03-16 17:23:02 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/authorBook.dat]
-2016-03-16 17:23:02 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/author.dat]
-2016-03-16 17:23:02 DEBUG ControlConnection:531 - [Control connection] Refreshing node list and token map
-2016-03-16 17:23:02 DEBUG ReplicationStrategy$NetworkTopologyStrategy:123 - Computing token to replica map for keyspace: dse_leases.
-2016-03-16 17:23:02 DEBUG ReplicationStrategy$NetworkTopologyStrategy:211 - Token to replica map computation for keyspace dse_leases completed in 0 milliseconds
-2016-03-16 17:23:03 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 3 properties, 0 edges
-2016-03-16 17:23:03 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 4 properties, 0 edges
-2016-03-16 17:23:03 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 3 properties, 0 edges
-2016-03-16 17:23:03 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/book.dat]
-2016-03-16 17:23:03 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 4 properties, 0 edges
-2016-03-16 17:23:03 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 2 properties, 0 edges
-2016-03-16 17:23:03 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 2 properties, 0 edges
-2016-03-16 17:23:03 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/authorBook.dat]
-2016-03-16 17:23:04 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 0 properties, 4 edges
-2016-03-16 17:23:04 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 0 properties, 3 edges
-2016-03-16 17:23:04 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 0 properties, 3 edges
-2016-03-16 17:23:04 DEBUG Cluster:1572 - Shutting down
-2016-03-16 17:23:04 DEBUG Connection:616 - Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=true] closing connection
-2016-03-16 17:23:04 DEBUG STATES:94 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=true] closed, remaining = 2
-2016-03-16 17:23:04 DEBUG Connection:616 - Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=true] closing connection
-2016-03-16 17:23:04 DEBUG STATES:94 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=true] closed, remaining = 1
-2016-03-16 17:23:04 DEBUG Connection:616 - Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=true] closing connection
-2016-03-16 17:23:04 DEBUG STATES:94 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=true] closed, remaining = 0
-2016-03-16 17:23:07 DEBUG PoolThreadCache:81 - Freed 40 thread-local buffer(s) from thread: cluster1-nio-worker-0
-2016-03-16 17:23:07 DEBUG PoolThreadCache:81 - Freed 7 thread-local buffer(s) from thread: cluster1-nio-worker-1
-2016-03-16 17:23:07 DEBUG PoolThreadCache:81 - Freed 21 thread-local buffer(s) from thread: cluster1-nio-worker-2
-2016-03-16 17:30:54 INFO  Executable:50 - Setting configuration dryrun=false
-2016-03-16 17:30:54 DEBUG Executable:58 - Setting cluster builder: com.datastax.dsegraphloader.api.ClusterBuilder@694e1548
-2016-03-16 17:30:54 DEBUG SystemProperties:32 - com.datastax.driver.NEW_NODE_DELAY_SECONDS is undefined, using default value 1
-2016-03-16 17:30:54 DEBUG SystemProperties:32 - com.datastax.driver.NON_BLOCKING_EXECUTOR_SIZE is undefined, using default value 8
-2016-03-16 17:30:54 DEBUG SystemProperties:32 - com.datastax.driver.NOTIF_LOCK_TIMEOUT_SECONDS is undefined, using default value 60
-2016-03-16 17:30:54 DEBUG Cluster:1350 - Starting new cluster with contact points [localhost/127.0.0.1:9042]
-2016-03-16 17:30:54 DEBUG InternalLoggerFactory:71 - Using SLF4J as the default logging framework
-2016-03-16 17:30:54 DEBUG PlatformDependent0:76 - java.nio.Buffer.address: available
-2016-03-16 17:30:54 DEBUG PlatformDependent0:76 - sun.misc.Unsafe.theUnsafe: available
-2016-03-16 17:30:54 DEBUG PlatformDependent0:71 - sun.misc.Unsafe.copyMemory: available
-2016-03-16 17:30:54 DEBUG PlatformDependent0:76 - java.nio.Bits.unaligned: true
-2016-03-16 17:30:54 DEBUG PlatformDependent:76 - Java version: 8
-2016-03-16 17:30:54 DEBUG PlatformDependent:76 - -Dio.netty.noUnsafe: false
-2016-03-16 17:30:54 DEBUG PlatformDependent:76 - sun.misc.Unsafe: available
-2016-03-16 17:30:54 DEBUG PlatformDependent:76 - -Dio.netty.noJavassist: false
-2016-03-16 17:30:54 DEBUG PlatformDependent:71 - Javassist: unavailable
-2016-03-16 17:30:54 DEBUG PlatformDependent:71 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
-2016-03-16 17:30:54 DEBUG PlatformDependent:76 - -Dio.netty.tmpdir: /var/folders/kt/8gksd2k94rd4f2x_8y4snnz40000gn/T (java.io.tmpdir)
-2016-03-16 17:30:54 DEBUG PlatformDependent:76 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
-2016-03-16 17:30:54 DEBUG PlatformDependent:76 - -Dio.netty.noPreferDirect: false
-2016-03-16 17:30:54 DEBUG SystemProperties:48 - com.datastax.driver.FORCE_NIO is undefined, using default value false
-2016-03-16 17:30:54 INFO  NettyUtil:83 - Did not find Netty's native epoll transport in the classpath, defaulting to NIO.
-2016-03-16 17:30:54 DEBUG MultithreadEventLoopGroup:76 - -Dio.netty.eventLoopThreads: 16
-2016-03-16 17:30:54 DEBUG NioEventLoop:76 - -Dio.netty.noKeySetOptimization: false
-2016-03-16 17:30:54 DEBUG NioEventLoop:76 - -Dio.netty.selectorAutoRebuildThreshold: 512
-2016-03-16 17:30:54 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.level: simple
-2016-03-16 17:30:54 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.maxRecords: 4
-2016-03-16 17:30:54 DEBUG STATES:86 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 1
-2016-03-16 17:30:54 DEBUG SystemProperties:48 - com.datastax.driver.DISABLE_COALESCING is undefined, using default value false
-2016-03-16 17:30:55 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numHeapArenas: 16
-2016-03-16 17:30:55 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numDirectArenas: 16
-2016-03-16 17:30:55 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.pageSize: 8192
-2016-03-16 17:30:55 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxOrder: 11
-2016-03-16 17:30:55 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.chunkSize: 16777216
-2016-03-16 17:30:55 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.tinyCacheSize: 512
-2016-03-16 17:30:55 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.smallCacheSize: 256
-2016-03-16 17:30:55 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.normalCacheSize: 64
-2016-03-16 17:30:55 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
-2016-03-16 17:30:55 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.cacheTrimInterval: 8192
-2016-03-16 17:30:55 DEBUG ThreadLocalRandom:71 - -Dio.netty.initialSeedUniquifier: 0x0a8043fe30a4a8be (took 6 ms)
-2016-03-16 17:30:55 DEBUG ByteBufUtil:76 - -Dio.netty.allocator.type: unpooled
-2016-03-16 17:30:55 DEBUG ByteBufUtil:76 - -Dio.netty.threadLocalDirectBufferSize: 65536
-2016-03-16 17:30:55 DEBUG ByteBufUtil:76 - -Dio.netty.maxThreadLocalCharBufferSize: 16384
-2016-03-16 17:30:55 DEBUG Connection:159 - Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Connection established, initializing transport
-2016-03-16 17:30:55 DEBUG Recycler:76 - -Dio.netty.recycler.maxCapacity.default: 262144
-2016-03-16 17:30:55 DEBUG AbstractByteBuf:81 - -Dio.netty.buffer.bytebuf.checkAccessible: true
-2016-03-16 17:30:55 DEBUG STATES:306 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Transport initialized, connection ready
-2016-03-16 17:30:55 DEBUG ControlConnection:531 - [Control connection] Refreshing node list and token map
-2016-03-16 17:30:55 DEBUG ControlConnection:270 - [Control connection] Refreshing schema
-2016-03-16 17:30:55 DEBUG ControlConnection:531 - [Control connection] Refreshing node list and token map
-2016-03-16 17:30:55 DEBUG ReplicationStrategy$NetworkTopologyStrategy:123 - Computing token to replica map for keyspace: dse_leases.
-2016-03-16 17:30:55 DEBUG ReplicationStrategy$NetworkTopologyStrategy:211 - Token to replica map computation for keyspace dse_leases completed in 0 milliseconds
-2016-03-16 17:30:55 DEBUG STATES:181 - [Control connection] established to localhost/127.0.0.1:9042
-2016-03-16 17:30:55 INFO  DCAwareRoundRobinPolicy:95 - Using data-center name 'Graph' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
-2016-03-16 17:30:55 INFO  Cluster:1475 - New Cassandra host localhost/127.0.0.1:9042 added
-2016-03-16 17:30:55 DEBUG STATES:86 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 2
-2016-03-16 17:30:55 DEBUG Connection:159 - Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Connection established, initializing transport
-2016-03-16 17:30:55 DEBUG STATES:306 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Transport initialized, connection ready
-2016-03-16 17:30:55 DEBUG HostConnectionPool:153 - Created connection pool to host localhost/127.0.0.1:9042 (1 connections needed, 1 successfully opened)
-2016-03-16 17:30:55 DEBUG Session:364 - Added connection pool for localhost/127.0.0.1:9042
-2016-03-16 17:30:55 DEBUG GroovyScriptExecutor:154 - Complete loading script: 
-[1	]  VertexImportImpl.metaClass.edge = { String arg0, String arg1, Direction arg2,  Closure closure ->
-[2	]      return delegate.edge(arg0, arg1, arg2,  GroovyUtil.convert2Consumer(closure));
-[3	]  }
-[4	]  VertexImportImpl.metaClass.vertexProperty = { String arg0, String arg1,  Closure closure ->
-[5	]      return delegate.vertexProperty(arg0, arg1,  GroovyUtil.convert2Consumer(closure));
-[6	]  }
-[7	]  VertexImportImpl.metaClass.neighbor = { String arg0, String arg1, Direction arg2,  Closure closure ->
-[8	]      return delegate.neighbor(arg0, arg1, arg2,  GroovyUtil.convert2Consumer(closure));
-[9	]  }
-[10	]  VertexImportImpl.metaClass.outE = { String arg0,  Closure closure ->
-[11	]      return delegate.outE(arg0,  GroovyUtil.convert2Consumer(closure));
-[12	]  }
-[13	]  VertexImportImpl.metaClass.outE = { String arg0, String arg1,  Closure closure ->
-[14	]      return delegate.outE(arg0, arg1,  GroovyUtil.convert2Consumer(closure));
-[15	]  }
-[16	]  VertexImportImpl.metaClass.inV = { String arg0,  Closure closure ->
-[17	]      return delegate.inV(arg0,  GroovyUtil.convert2Consumer(closure));
-[18	]  }
-[19	]  VertexImportImpl.metaClass.inV = { String arg0, String arg1,  Closure closure ->
-[20	]      return delegate.inV(arg0, arg1,  GroovyUtil.convert2Consumer(closure));
-[21	]  }
-[22	]  VertexImportImpl.metaClass.inE = { String arg0, String arg1,  Closure closure ->
-[23	]      return delegate.inE(arg0, arg1,  GroovyUtil.convert2Consumer(closure));
-[24	]  }
-[25	]  VertexImportImpl.metaClass.inE = { String arg0,  Closure closure ->
-[26	]      return delegate.inE(arg0,  GroovyUtil.convert2Consumer(closure));
-[27	]  }
-[28	]  VertexImportImpl.metaClass.outV = { String arg0, String arg1,  Closure closure ->
-[29	]      return delegate.outV(arg0, arg1,  GroovyUtil.convert2Consumer(closure));
-[30	]  }
-[31	]  VertexImportImpl.metaClass.outV = { String arg0,  Closure closure ->
-[32	]      return delegate.outV(arg0,  GroovyUtil.convert2Consumer(closure));
-[33	]  }
-[34	]  VertexImportImpl.metaClass.vertexProperty = { String arg0,  Closure closure ->
-[35	]      return delegate.vertexProperty(arg0,  GroovyUtil.convert2Consumer(closure));
-[36	]  }
-[37	]  EdgeImportImpl.metaClass.inV = { String arg0,  Closure closure ->
-[38	]      return delegate.inV(arg0,  GroovyUtil.convert2Consumer(closure));
-[39	]  }
-[40	]  EdgeImportImpl.metaClass.outV = { String arg0,  Closure closure ->
-[41	]      return delegate.outV(arg0,  GroovyUtil.convert2Consumer(closure));
-[42	]  }
-[43	]  IncidentEdgeImportImpl.metaClass.vertex = { String arg0,  Closure closure ->
-[44	]      return delegate.vertex(arg0,  GroovyUtil.convert2Consumer(closure));
-[45	]  }
-[46	]  
-[47	]  VertexImportImpl.metaClass.getProperty = { String propName ->
-[48	]      if (propName == 'isNew') {
-[49	]          delegate.isNew();
-[50	]          return true;
-[51	]      } else if (propName == 'exists') {
-[52	]          delegate.exists();
-[53	]          return true;
-[54	]      } else 
-[55	]          return VertexImportImpl.metaClass.getMetaProperty(propName).getProperty(delegate)
-[56	]  }
-[57	]  // Use /Users/lorinapoland/CLONES/graph-examples/DataLoader/runDGL.sh to run this script
-[58	]  
-[59	]  /** SAMPLE INPUT
-[60	]  author: Julia Child::F
-[61	]  book : Simca's Cuisine: 100 Classic French Recipes for Every Occasion::1972::0-394-40152-2
-[62	]  authorBook: Simca's Cuisine: 100 Classic French Recipes for Every Occasion::Simone Beck
-[63	]   */
-[64	]  
-[65	]  // CONFIGURATION
-[66	]  // Configures the data loader to create the schema
-[67	]  config create_schema: true, load_threads: 3
-[68	]  
-[69	]  // DATA INPUT
-[70	]  // Define the data input source 
-[71	]  // inputfilename is the directory for the input files that is given in the commandline
-[72	]  // as the "-filename" option
-[73	]  
-[74	]  inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/TEXT/'
-[75	]  authorFile = text name: inputfiledir + "author.dat", delimiter: "|", header: ['name', 'gender'], transform: { it['gender'] = it['gender'].toLowerCase(); it }
-[76	]  bookFile = text name: inputfiledir + "book.dat", delimiter: "|", header: ['name', 'year', 'ISBN']
-[77	]  authorBookFile = text name: inputfiledir + "authorBook.dat", delimiter: "|", header: ['bname', 'aname']
-[78	]  
-[79	]  //Specifies what data source to load using which mapper (as defined inline)
-[80	]  load from: authorFile, vertex: {
-[81	]      label "author"
-[82	]      key "name"
-[83	]      isNew
-[84	]  }
-[85	]  
-[86	]  load from: bookFile, vertex: {
-[87	]      label "book"
-[88	]      key "name"
-[89	]      isNew
-[90	]  }
-[91	]  
-[92	]  load from: authorBookFile, edge: {
-[93	]      label "authored"
-[94	]      outV "aname", {
-[95	]          label "author"
-[96	]          isKey "name"
-[97	]          exists
-[98	]      }
-[99	]      inV "bname", {
-[100	]          label "book"
-[101	]          isKey "name"
-[102	]          exists
-[103	]      }
-[104	]  }
-
-2016-03-16 17:30:55 DEBUG STATES:86 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 3
-2016-03-16 17:30:55 DEBUG Connection:159 - Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=false] Connection established, initializing transport
-2016-03-16 17:30:55 DEBUG STATES:306 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=false] Transport initialized, connection ready
-2016-03-16 17:30:55 DEBUG HostConnectionPool:153 - Created connection pool to host localhost/127.0.0.1:9042 (1 connections needed, 1 successfully opened)
-2016-03-16 17:30:55 DEBUG Session:364 - Added connection pool for localhost/127.0.0.1:9042
-2016-03-16 17:30:56 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/author.dat]
-2016-03-16 17:30:56 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/book.dat]
-2016-03-16 17:30:57 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/authorBook.dat]
-2016-03-16 17:30:57 INFO  DataLoaderImpl:200 - The following schema registrations will be added.
-2016-03-16 17:30:57 INFO  DataLoaderImpl:202 - Adding schema registration: propertyKey[ISBN] incidentOn[OUT] vertexLabel[book]
-2016-03-16 17:30:57 INFO  DataLoaderImpl:202 - Adding schema registration: propertyKey[gender] incidentOn[OUT] vertexLabel[author]
-2016-03-16 17:30:57 INFO  DataLoaderImpl:202 - Adding schema registration: propertyKey[name] incidentOn[OUT] vertexLabel[author]
-2016-03-16 17:30:57 INFO  DataLoaderImpl:202 - Adding schema registration: propertyKey[year] incidentOn[OUT] vertexLabel[book]
-2016-03-16 17:30:57 INFO  DataLoaderImpl:202 - Adding schema registration: edgeLabel[authored] incidentOn[IN] vertexLabel[book] with: vertexLabel[author]
-2016-03-16 17:30:57 INFO  DataLoaderImpl:202 - Adding schema registration: propertyKey[name] incidentOn[OUT] vertexLabel[book]
-2016-03-16 17:30:57 INFO  DataLoaderImpl:202 - Adding schema registration: edgeLabel[authored] incidentOn[OUT] vertexLabel[author] with: vertexLabel[book]
-2016-03-16 17:30:57 INFO  DataLoaderImpl:206 - Sum of loading statistics: LoadStatistic.Record[presentVertexCount=20,maybeVertexCount=0,absentVertexCount=10,edgeCount=10,vertexPropertyCount=44,elementPropertyCount=0]
-2016-03-16 17:30:57 INFO  DataLoaderImpl:208 - Max load for weight [VERTEX (Sum of vertex counts)]: LoadStatistic.Record[presentVertexCount=8,maybeVertexCount=0,absentVertexCount=0,edgeCount=4,vertexPropertyCount=8,elementPropertyCount=0]
-2016-03-16 17:30:57 INFO  DataLoaderImpl:208 - Max load for weight [TOTAL (Sum of vertex, edge, and vertex-property counts)]: LoadStatistic.Record[presentVertexCount=8,maybeVertexCount=0,absentVertexCount=0,edgeCount=4,vertexPropertyCount=8,elementPropertyCount=0]
-2016-03-16 17:30:57 INFO  DseGraphDriverImpl:147 - Schema update: Schema schema = graph.schema();
-schema.vertexLabel("book").registerPropertyKey("ISBN");
-schema.vertexLabel("author").registerPropertyKey("gender");
 schema.vertexLabel("author").registerPropertyKey("name");
-schema.vertexLabel("book").registerPropertyKey("year");
 schema.vertexLabel("book").registerEdgeLabel(schema.edgeLabel("authored"), Direction.IN, schema.vertexLabel("author"));
 schema.vertexLabel("book").registerPropertyKey("name");
-schema.vertexLabel("author").registerEdgeLabel(schema.edgeLabel("authored"), Direction.OUT, schema.vertexLabel("book"));
+schema.vertexLabel("book").registerPropertyKey("ISBN");
 
-2016-03-16 17:30:58 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/author.dat]
-2016-03-16 17:30:58 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 4 vertices
-2016-03-16 17:30:58 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 3 vertices
-2016-03-16 17:30:58 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 3 vertices
-2016-03-16 17:30:58 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/book.dat]
-2016-03-16 17:30:59 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 1 vertices
-2016-03-16 17:30:59 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 2 vertices
-2016-03-16 17:30:59 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 1 vertices
-2016-03-16 17:30:59 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/authorBook.dat]
-2016-03-16 17:30:59 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/author.dat]
-2016-03-16 17:31:00 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 4 properties, 0 edges
-2016-03-16 17:31:00 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 3 properties, 0 edges
-2016-03-16 17:31:00 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 3 properties, 0 edges
-2016-03-16 17:31:00 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/book.dat]
-2016-03-16 17:31:00 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 2 properties, 0 edges
-2016-03-16 17:31:00 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 2 properties, 0 edges
-2016-03-16 17:31:00 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 4 properties, 0 edges
-2016-03-16 17:31:01 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/TEXT/authorBook.dat]
-2016-03-16 17:31:01 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 0 properties, 3 edges
-2016-03-16 17:31:01 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 0 properties, 3 edges
-2016-03-16 17:31:01 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 0 properties, 4 edges
-2016-03-16 17:31:01 DEBUG Cluster:1572 - Shutting down
-2016-03-16 17:31:01 DEBUG Connection:616 - Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=true] closing connection
-2016-03-16 17:31:01 DEBUG STATES:94 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=true] closed, remaining = 2
-2016-03-16 17:31:01 DEBUG Connection:616 - Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=true] closing connection
-2016-03-16 17:31:01 DEBUG STATES:94 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=true] closed, remaining = 1
-2016-03-16 17:31:01 DEBUG Connection:616 - Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=true] closing connection
-2016-03-16 17:31:01 DEBUG STATES:94 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=true] closed, remaining = 0
-2016-03-16 17:31:04 DEBUG PoolThreadCache:81 - Freed 25 thread-local buffer(s) from thread: cluster1-nio-worker-0
-2016-03-16 17:31:04 DEBUG PoolThreadCache:81 - Freed 7 thread-local buffer(s) from thread: cluster1-nio-worker-1
-2016-03-16 17:31:04 DEBUG PoolThreadCache:81 - Freed 20 thread-local buffer(s) from thread: cluster1-nio-worker-2
+2016-03-16 21:42:31 DEBUG ControlConnection:531 - [Control connection] Refreshing node list and token map
+2016-03-16 21:42:31 DEBUG ReplicationStrategy$NetworkTopologyStrategy:123 - Computing token to replica map for keyspace: dse_leases.
+2016-03-16 21:42:31 DEBUG ReplicationStrategy$NetworkTopologyStrategy:211 - Token to replica map computation for keyspace dse_leases completed in 0 milliseconds
+2016-03-16 21:42:31 DEBUG Cluster:2295 - Received event EVENT CREATED TABLE REGEXTEST.author_p, scheduling delivery
+2016-03-16 21:42:32 DEBUG Cluster:2295 - Received event EVENT CREATED TABLE REGEXTEST.author_e, scheduling delivery
+2016-03-16 21:42:32 DEBUG Cluster:2295 - Received event EVENT UPDATED TABLE REGEXTEST.author_p, scheduling delivery
+2016-03-16 21:42:32 DEBUG Cluster:2295 - Received event EVENT UPDATED TABLE REGEXTEST.author_p, scheduling delivery
+2016-03-16 21:42:32 DEBUG Cluster:2295 - Received event EVENT CREATED TABLE REGEXTEST.book_p, scheduling delivery
+2016-03-16 21:42:32 DEBUG Cluster:2295 - Received event EVENT CREATED TABLE REGEXTEST.book_e, scheduling delivery
+2016-03-16 21:42:32 DEBUG Cluster:2295 - Received event EVENT UPDATED TABLE REGEXTEST.book_p, scheduling delivery
+2016-03-16 21:42:32 DEBUG Cluster:2295 - Received event EVENT UPDATED TABLE REGEXTEST.book_p, scheduling delivery
+2016-03-16 21:42:32 DEBUG Cluster:2295 - Received event EVENT UPDATED TABLE REGEXTEST.book_p, scheduling delivery
+2016-03-16 21:42:32 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/REGEX/authorREGEX.dat]
+2016-03-16 21:42:33 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 3 vertices
+2016-03-16 21:42:33 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 3 vertices
+2016-03-16 21:42:33 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 4 vertices
+2016-03-16 21:42:33 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/REGEX/bookREGEX.dat]
+2016-03-16 21:42:33 DEBUG ControlConnection:298 - [Control connection] Refreshing schema for REGEXTEST
+2016-03-16 21:42:33 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 2 vertices
+2016-03-16 21:42:33 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 2 vertices
+2016-03-16 21:42:33 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/REGEX/authorBookREGEX.dat]
+2016-03-16 21:42:34 INFO  DseGraphDriverImpl:207 - Sending ADD-VERTEX request for 1 vertices
+2016-03-16 21:42:34 WARN  RequestHandler:552 - localhost/127.0.0.1:9042 replied with server error (Cannot invoke method id() on null object), defuncting connection.
+2016-03-16 21:42:34 DEBUG STATES:403 - Defuncting Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=false] because: An unexpected error occurred server side on localhost/127.0.0.1:9042: Cannot invoke method id() on null object
+2016-03-16 21:42:34 DEBUG Connection:616 - Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=true] closing connection
+2016-03-16 21:42:34 DEBUG STATES:118 - [localhost/127.0.0.1:9042] preventing new connections for the next 1000 ms
+2016-03-16 21:42:34 DEBUG STATES:104 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=true] failed, remaining = 2
+2016-03-16 21:42:34 DEBUG RequestHandler:372 - [1526483273-1] Doing retry 1 for query List result = []
+for (Map vertex : vertices) {
+    String exists = vertex.get('~exists');
+    vertex.remove('~exists');
+    Vertex v;
+    if (exists == 'absent') v = graph.addVertex(vertex);
+    else if (exists == 'present') v = graph.getVertex(vertex);
+    else v = graph.getOrAddVertex(vertex);
+    result << v.id();
+}
+result; at consistency LOCAL_ONE
+2016-03-16 21:42:34 DEBUG RequestHandler:415 - [1526483273-1] Error querying localhost/127.0.0.1:9042 : com.datastax.driver.core.exceptions.ServerError: An unexpected error occurred server side on localhost/127.0.0.1:9042: Cannot invoke method id() on null object
+2016-03-16 21:42:34 DEBUG Connection:657 - Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=true] has already terminated
+2016-03-16 21:42:34 ERROR DataLoaderImpl:329 - Encountered exception while loading [/Users/lorinapoland/CLONES/graph-examples/food/REGEX/authorBookREGEX.dat]
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (tried: localhost/127.0.0.1:9042 (com.datastax.driver.core.exceptions.ServerError: An unexpected error occurred server side on localhost/127.0.0.1:9042: Cannot invoke method id() on null object))
+	at com.datastax.driver.core.exceptions.NoHostAvailableException.copy(NoHostAvailableException.java:84)
+	at com.datastax.driver.core.exceptions.NoHostAvailableException.copy(NoHostAvailableException.java:37)
+	at com.datastax.driver.dse.DriverThrowables.propagateCause(DriverThrowables.java:26)
+	at com.datastax.driver.dse.DefaultDseSession.executeGraph(DefaultDseSession.java:66)
+	at com.datastax.driver.dse.DefaultDseSession.executeGraph(DefaultDseSession.java:58)
+	at com.datastax.dsegraphloader.impl.loader.driver.DseGraphDriverImpl.getOrCreateVertices(DseGraphDriverImpl.java:208)
+	at com.datastax.dsegraphloader.impl.loader.vertex.VertexLoader.completeLoad(VertexLoader.java:102)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:326)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (tried: localhost/127.0.0.1:9042 (com.datastax.driver.core.exceptions.ServerError: An unexpected error occurred server side on localhost/127.0.0.1:9042: Cannot invoke method id() on null object))
+	at com.datastax.driver.core.RequestHandler.reportNoMoreHosts(RequestHandler.java:218)
+	at com.datastax.driver.core.RequestHandler.access$1000(RequestHandler.java:43)
+	at com.datastax.driver.core.RequestHandler$SpeculativeExecution.sendRequest(RequestHandler.java:284)
+	at com.datastax.driver.core.RequestHandler$SpeculativeExecution$1.run(RequestHandler.java:406)
+	... 3 more
+2016-03-16 21:42:34 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/REGEX/authorREGEX.dat]
+2016-03-16 21:42:34 DEBUG ControlConnection:531 - [Control connection] Refreshing node list and token map
+2016-03-16 21:42:34 DEBUG ReplicationStrategy$NetworkTopologyStrategy:123 - Computing token to replica map for keyspace: dse_leases.
+2016-03-16 21:42:34 DEBUG ReplicationStrategy$NetworkTopologyStrategy:211 - Token to replica map computation for keyspace dse_leases completed in 0 milliseconds
+2016-03-16 21:42:34 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 4 properties, 0 edges
+2016-03-16 21:42:34 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 3 properties, 0 edges
+2016-03-16 21:42:34 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 3 properties, 0 edges
+2016-03-16 21:42:34 DEBUG RequestHandler:415 - [1215193351-1] Error querying localhost/127.0.0.1:9042 : com.datastax.driver.core.exceptions.DriverException: Timeout while trying to acquire available connection (you may want to increase the driver number of per-host connections)
+2016-03-16 21:42:34 DEBUG RequestHandler:415 - [145352154-1] Error querying localhost/127.0.0.1:9042 : com.datastax.driver.core.exceptions.DriverException: Timeout while trying to acquire available connection (you may want to increase the driver number of per-host connections)
+2016-03-16 21:42:34 ERROR DataLoaderImpl:329 - Encountered exception while loading [/Users/lorinapoland/CLONES/graph-examples/food/REGEX/authorREGEX.dat]
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (tried: localhost/127.0.0.1:9042 (com.datastax.driver.core.exceptions.DriverException: Timeout while trying to acquire available connection (you may want to increase the driver number of per-host connections)))
+	at com.datastax.driver.core.exceptions.NoHostAvailableException.copy(NoHostAvailableException.java:84)
+	at com.datastax.driver.core.exceptions.NoHostAvailableException.copy(NoHostAvailableException.java:37)
+	at com.datastax.driver.dse.DriverThrowables.propagateCause(DriverThrowables.java:26)
+	at com.datastax.driver.dse.DefaultDseSession.executeGraph(DefaultDseSession.java:66)
+	at com.datastax.driver.dse.DefaultDseSession.executeGraph(DefaultDseSession.java:58)
+	at com.datastax.dsegraphloader.impl.loader.driver.DseGraphDriverImpl.add(DseGraphDriverImpl.java:257)
+	at com.datastax.dsegraphloader.impl.loader.relations.RelationLoader.completeLoad(RelationLoader.java:44)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:326)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (tried: localhost/127.0.0.1:9042 (com.datastax.driver.core.exceptions.DriverException: Timeout while trying to acquire available connection (you may want to increase the driver number of per-host connections)))
+	at com.datastax.driver.core.RequestHandler.reportNoMoreHosts(RequestHandler.java:218)
+	at com.datastax.driver.core.RequestHandler.access$1000(RequestHandler.java:43)
+	at com.datastax.driver.core.RequestHandler$SpeculativeExecution.sendRequest(RequestHandler.java:284)
+	at com.datastax.driver.core.RequestHandler.startNewExecution(RequestHandler.java:115)
+	at com.datastax.driver.core.RequestHandler.sendRequest(RequestHandler.java:91)
+	at com.datastax.driver.core.SessionManager.executeAsync(SessionManager.java:132)
+	at com.datastax.driver.dse.DefaultDseSession.executeGraphAsync(DefaultDseSession.java:84)
+	at com.datastax.driver.dse.DefaultDseSession.executeGraph(DefaultDseSession.java:64)
+	... 9 more
+2016-03-16 21:42:34 DEBUG RequestHandler:415 - [251789644-1] Error querying localhost/127.0.0.1:9042 : com.datastax.driver.core.exceptions.DriverException: Timeout while trying to acquire available connection (you may want to increase the driver number of per-host connections)
+2016-03-16 21:42:34 ERROR DataLoaderImpl:329 - Encountered exception while loading [/Users/lorinapoland/CLONES/graph-examples/food/REGEX/authorREGEX.dat]
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (tried: localhost/127.0.0.1:9042 (com.datastax.driver.core.exceptions.DriverException: Timeout while trying to acquire available connection (you may want to increase the driver number of per-host connections)))
+	at com.datastax.driver.core.exceptions.NoHostAvailableException.copy(NoHostAvailableException.java:84)
+	at com.datastax.driver.core.exceptions.NoHostAvailableException.copy(NoHostAvailableException.java:37)
+	at com.datastax.driver.dse.DriverThrowables.propagateCause(DriverThrowables.java:26)
+	at com.datastax.driver.dse.DefaultDseSession.executeGraph(DefaultDseSession.java:66)
+	at com.datastax.driver.dse.DefaultDseSession.executeGraph(DefaultDseSession.java:58)
+	at com.datastax.dsegraphloader.impl.loader.driver.DseGraphDriverImpl.add(DseGraphDriverImpl.java:257)
+	at com.datastax.dsegraphloader.impl.loader.relations.RelationLoader.completeLoad(RelationLoader.java:44)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:326)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (tried: localhost/127.0.0.1:9042 (com.datastax.driver.core.exceptions.DriverException: Timeout while trying to acquire available connection (you may want to increase the driver number of per-host connections)))
+	at com.datastax.driver.core.RequestHandler.reportNoMoreHosts(RequestHandler.java:218)
+	at com.datastax.driver.core.RequestHandler.access$1000(RequestHandler.java:43)
+	at com.datastax.driver.core.RequestHandler$SpeculativeExecution.sendRequest(RequestHandler.java:284)
+	at com.datastax.driver.core.RequestHandler.startNewExecution(RequestHandler.java:115)
+	at com.datastax.driver.core.RequestHandler.sendRequest(RequestHandler.java:91)
+	at com.datastax.driver.core.SessionManager.executeAsync(SessionManager.java:132)
+	at com.datastax.driver.dse.DefaultDseSession.executeGraphAsync(DefaultDseSession.java:84)
+	at com.datastax.driver.dse.DefaultDseSession.executeGraph(DefaultDseSession.java:64)
+	... 9 more
+2016-03-16 21:42:34 ERROR DataLoaderImpl:329 - Encountered exception while loading [/Users/lorinapoland/CLONES/graph-examples/food/REGEX/authorREGEX.dat]
+com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (tried: localhost/127.0.0.1:9042 (com.datastax.driver.core.exceptions.DriverException: Timeout while trying to acquire available connection (you may want to increase the driver number of per-host connections)))
+	at com.datastax.driver.core.exceptions.NoHostAvailableException.copy(NoHostAvailableException.java:84)
+	at com.datastax.driver.core.exceptions.NoHostAvailableException.copy(NoHostAvailableException.java:37)
+	at com.datastax.driver.dse.DriverThrowables.propagateCause(DriverThrowables.java:26)
+	at com.datastax.driver.dse.DefaultDseSession.executeGraph(DefaultDseSession.java:66)
+	at com.datastax.driver.dse.DefaultDseSession.executeGraph(DefaultDseSession.java:58)
+	at com.datastax.dsegraphloader.impl.loader.driver.DseGraphDriverImpl.add(DseGraphDriverImpl.java:257)
+	at com.datastax.dsegraphloader.impl.loader.relations.RelationLoader.completeLoad(RelationLoader.java:44)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:326)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+Caused by: com.datastax.driver.core.exceptions.NoHostAvailableException: All host(s) tried for query failed (tried: localhost/127.0.0.1:9042 (com.datastax.driver.core.exceptions.DriverException: Timeout while trying to acquire available connection (you may want to increase the driver number of per-host connections)))
+	at com.datastax.driver.core.RequestHandler.reportNoMoreHosts(RequestHandler.java:218)
+	at com.datastax.driver.core.RequestHandler.access$1000(RequestHandler.java:43)
+	at com.datastax.driver.core.RequestHandler$SpeculativeExecution.sendRequest(RequestHandler.java:284)
+	at com.datastax.driver.core.RequestHandler.startNewExecution(RequestHandler.java:115)
+	at com.datastax.driver.core.RequestHandler.sendRequest(RequestHandler.java:91)
+	at com.datastax.driver.core.SessionManager.executeAsync(SessionManager.java:132)
+	at com.datastax.driver.dse.DefaultDseSession.executeGraphAsync(DefaultDseSession.java:84)
+	at com.datastax.driver.dse.DefaultDseSession.executeGraph(DefaultDseSession.java:64)
+	... 9 more
+2016-03-16 21:42:34 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/REGEX/bookREGEX.dat]
+2016-03-16 21:42:35 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 2 properties, 0 edges
+2016-03-16 21:42:35 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 4 properties, 0 edges
+2016-03-16 21:42:35 INFO  DseGraphDriverImpl:256 - Sending ADD-RELATION request for 0 anonymous, 2 properties, 0 edges
+2016-03-16 21:42:35 DEBUG HostConnectionPool:454 - Creating new connection on busy pool to localhost/127.0.0.1:9042
+2016-03-16 21:42:35 DEBUG STATES:86 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 3
+2016-03-16 21:42:35 DEBUG Connection:159 - Connection[localhost/127.0.0.1:9042-4, inFlight=0, closed=false] Connection established, initializing transport
+2016-03-16 21:42:35 DEBUG STATES:306 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-4, inFlight=0, closed=false] Transport initialized, connection ready
+2016-03-16 21:42:35 INFO  DataLoaderImpl:137 - Starting to read [/Users/lorinapoland/CLONES/graph-examples/food/REGEX/authorBookREGEX.dat]
+2016-03-16 21:42:36 ERROR DataLoaderImpl:329 - Encountered exception while loading [/Users/lorinapoland/CLONES/graph-examples/food/REGEX/authorBookREGEX.dat]
+java.lang.IllegalStateException: Vertex has not yet been created
+	at com.datastax.dsegraphloader.impl.loader.vertex.InternalVertexId.getVertexId(InternalVertexId.java:55)
+	at com.datastax.dsegraphloader.impl.loader.driver.DseGraphDriverImpl.getVertexLocator(DseGraphDriverImpl.java:264)
+	at com.datastax.dsegraphloader.impl.loader.driver.DseGraphDriverImpl.add(DseGraphDriverImpl.java:244)
+	at com.datastax.dsegraphloader.impl.loader.relations.RelationLoader.completeLoad(RelationLoader.java:44)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:326)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2016-03-16 21:42:36 ERROR DataLoaderImpl:329 - Encountered exception while loading [/Users/lorinapoland/CLONES/graph-examples/food/REGEX/authorBookREGEX.dat]
+java.lang.IllegalStateException: Vertex has not yet been created
+	at com.datastax.dsegraphloader.impl.loader.vertex.InternalVertexId.getVertexId(InternalVertexId.java:55)
+	at com.datastax.dsegraphloader.impl.loader.driver.DseGraphDriverImpl.getVertexLocator(DseGraphDriverImpl.java:264)
+	at com.datastax.dsegraphloader.impl.loader.driver.DseGraphDriverImpl.add(DseGraphDriverImpl.java:244)
+	at com.datastax.dsegraphloader.impl.loader.relations.RelationLoader.completeLoad(RelationLoader.java:44)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:326)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2016-03-16 21:42:36 ERROR DataLoaderImpl:329 - Encountered exception while loading [/Users/lorinapoland/CLONES/graph-examples/food/REGEX/authorBookREGEX.dat]
+java.lang.IllegalStateException: Vertex has not yet been created
+	at com.datastax.dsegraphloader.impl.loader.vertex.InternalVertexId.getVertexId(InternalVertexId.java:55)
+	at com.datastax.dsegraphloader.impl.loader.driver.DseGraphDriverImpl.getVertexLocator(DseGraphDriverImpl.java:264)
+	at com.datastax.dsegraphloader.impl.loader.driver.DseGraphDriverImpl.add(DseGraphDriverImpl.java:244)
+	at com.datastax.dsegraphloader.impl.loader.relations.RelationLoader.completeLoad(RelationLoader.java:44)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:326)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:266)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2016-03-16 21:42:36 DEBUG Cluster:1572 - Shutting down
+2016-03-16 21:42:36 DEBUG Connection:616 - Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=true] closing connection
+2016-03-16 21:42:36 DEBUG STATES:94 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=true] closed, remaining = 2
+2016-03-16 21:42:36 DEBUG Connection:616 - Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=true] closing connection
+2016-03-16 21:42:36 DEBUG STATES:94 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=true] closed, remaining = 1
+2016-03-16 21:42:36 DEBUG Connection:616 - Connection[localhost/127.0.0.1:9042-4, inFlight=0, closed=true] closing connection
+2016-03-16 21:42:36 DEBUG STATES:94 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-4, inFlight=0, closed=true] closed, remaining = 0
+2016-03-16 21:42:37 DEBUG PoolThreadCache:81 - Freed 20 thread-local buffer(s) from thread: cluster1-nio-worker-2

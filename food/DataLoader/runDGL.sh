@@ -8,8 +8,8 @@
 # to loading
 
 LDR=/Users/lorinapoland/CLONES/dse-graph-loader/target/dse-graph-loader-0.1.0-SNAPSHOT-uberjar.jar
-TYPE=TEXT
-DRYRUN_SETTING=true
+TYPE=REGEX
+DRYRUN_SETTING=false
 INPUTFILEDIR=/Users/lorinapoland/CLONES/graph-examples/food/$TYPE/
 SCRIPTNAME='authorBookMapping'$TYPE'.groovy'
 GRAPHNAME=$TYPE'TEST'
