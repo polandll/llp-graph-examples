@@ -1,6 +1,6 @@
 // Use /Users/lorinapoland/CLONES/graph-examples/DataLoader/runDGL.sh to run this script
 
-/** SAMPLE INPUT
+/* SAMPLE INPUT
 author: {"author_name":"Julia Child","gender":"F"}
 book : {"name":"The Art of French Cooking, Vol. 1","year":"1961","ISBN":"none"}
 authorBook: {"name":"The Art of French Cooking, Vol. 1","author":"Julia Child"}
@@ -12,7 +12,7 @@ config create_schema: true, load_threads: 3
 
 // DATA INPUT
 // Define the data input source 
-// inputfilename is the directory for the input files that is given in the commandline
+// inputfiledir is the directory for the input files that is given in the command line
 // as the "-filename" option
 
 inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/JSON/'
