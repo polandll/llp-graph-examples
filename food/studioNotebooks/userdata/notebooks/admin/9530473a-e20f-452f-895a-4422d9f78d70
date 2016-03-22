@@ -88,7 +88,7 @@
       "value" : [ 0 ],
       "type" : "NUMBER",
       "truncated" : false,
-      "id" : "414d9435-8d64-49e4-a888-5c0a503f47e5"
+      "id" : "972d4d0d-04d4-475f-8fea-3beb6138e4ee"
     },
     "msg" : null,
     "dataViewType" : "RAW",
@@ -123,57 +123,57 @@
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "{out_vertex={member_id=0, community_id=67759, ~label=author, group_id=57}, local_id=40fd4fe0-e48e-11e5-be0d-99afae6477e0, in_vertex={member_id=0, community_id=67759, ~label=book, group_id=58}, ~type=authored}",
+        "id" : "{out_vertex={member_id=0, community_id=960863, ~label=author, group_id=1}, local_id=46ecbc60-efbf-11e5-91dc-977754e82b92, in_vertex={member_id=0, community_id=960863, ~label=book, group_id=2}, ~type=authored}",
         "label" : "authored",
         "type" : "edge",
         "inVLabel" : "book",
         "outVLabel" : "author",
-        "inV" : "book:67759:58:0",
-        "outV" : "author:67759:57:0"
+        "inV" : "book:960863:2:0",
+        "outV" : "author:960863:1:0"
       } ],
       "type" : "EDGE",
       "truncated" : false,
       "graph" : {
         "vertices" : [ {
-          "id" : "book:67759:58:0",
+          "id" : "book:960863:2:0",
           "label" : "book",
           "type" : "vertex",
           "properties" : {
             "year" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=book, group_id=58}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
+              "id" : "{out_vertex={member_id=0, community_id=960863, ~label=book, group_id=2}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
               "value" : 1961
             } ],
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=book, group_id=58}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=960863, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "The Art of French Cooking, Vol. 1"
             } ]
           }
         }, {
-          "id" : "author:67759:57:0",
+          "id" : "author:960863:1:0",
           "label" : "author",
           "type" : "vertex",
           "properties" : {
             "gender" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=author, group_id=57}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
+              "id" : "{out_vertex={member_id=0, community_id=960863, ~label=author, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
               "value" : "F"
             } ],
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=author, group_id=57}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=960863, ~label=author, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "Julia Child"
             } ]
           }
         } ],
         "edges" : [ {
-          "id" : "{out_vertex={member_id=0, community_id=67759, ~label=author, group_id=57}, local_id=40fd4fe0-e48e-11e5-be0d-99afae6477e0, in_vertex={member_id=0, community_id=67759, ~label=book, group_id=58}, ~type=authored}",
+          "id" : "{out_vertex={member_id=0, community_id=960863, ~label=author, group_id=1}, local_id=46ecbc60-efbf-11e5-91dc-977754e82b92, in_vertex={member_id=0, community_id=960863, ~label=book, group_id=2}, ~type=authored}",
           "label" : "authored",
           "type" : "edge",
           "inVLabel" : "book",
           "outVLabel" : "author",
-          "inV" : "book:67759:58:0",
-          "outV" : "author:67759:57:0"
+          "inV" : "book:960863:2:0",
+          "outV" : "author:960863:1:0"
         } ]
       },
-      "id" : "97ae59cd-83a3-49db-81f8-d29093bc6f84"
+      "id" : "56449aef-a297-42ca-bac9-0a4b2c785ca6"
     },
     "msg" : null,
     "dataViewType" : "GRAPH",
@@ -189,18 +189,21 @@
         },
         "defaultLabelTemplate" : "{{label}}[{{id}}]",
         "positions" : {
-          "book:67759:58:0" : {
-            "x" : -66,
-            "y" : 2
+          "book:960863:2:0" : {
+            "x" : 69,
+            "y" : -20
           },
-          "author:67759:57:0" : {
-            "x" : 83,
-            "y" : 0
+          "author:960863:1:0" : {
+            "x" : -101,
+            "y" : 29
           }
         },
-        "position" : null,
-        "scale" : null,
-        "requestId" : "97ae59cd-83a3-49db-81f8-d29093bc6f84"
+        "position" : {
+          "x" : 37.227237302824385,
+          "y" : 111.17166945962752
+        },
+        "scale" : 0.6482639953769922,
+        "requestId" : "56449aef-a297-42ca-bac9-0a4b2c785ca6"
       },
       "CODE" : {
         "hidden" : false
@@ -231,16 +234,16 @@
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "author:533338:1:0",
+        "id" : "author:960863:1:0",
         "label" : "author",
         "type" : "vertex",
         "properties" : {
           "gender" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=533338, ~label=author, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
+            "id" : "{out_vertex={member_id=0, community_id=960863, ~label=author, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
             "value" : "F"
           } ],
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=533338, ~label=author, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=960863, ~label=author, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "Julia Child"
           } ]
         }
@@ -249,23 +252,23 @@
       "truncated" : false,
       "graph" : {
         "vertices" : [ {
-          "id" : "author:533338:1:0",
+          "id" : "author:960863:1:0",
           "label" : "author",
           "type" : "vertex",
           "properties" : {
             "gender" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=533338, ~label=author, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
+              "id" : "{out_vertex={member_id=0, community_id=960863, ~label=author, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
               "value" : "F"
             } ],
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=533338, ~label=author, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=960863, ~label=author, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "Julia Child"
             } ]
           }
         } ],
         "edges" : [ ]
       },
-      "id" : "0dc8bbfa-d855-42b7-99d1-005f974c2037"
+      "id" : "1ab45650-f664-4c7e-b03a-e596a318da55"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -305,7 +308,7 @@
       } ],
       "type" : "MAP",
       "truncated" : false,
-      "id" : "fd5088e2-54dc-482c-bcbb-c96c9acf99ea"
+      "id" : "02016608-bedb-4ac8-94a2-57942aca355e"
     },
     "msg" : null,
     "dataViewType" : "RAW",
@@ -342,7 +345,7 @@
       "value" : [ "Julia Child", "The Art of French Cooking, Vol. 1" ],
       "type" : "STRING",
       "truncated" : false,
-      "id" : "0d9767ff-8d73-4402-85dd-b3dae38eb415"
+      "id" : "8488fad4-047e-4070-b009-558a1d691f96"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -377,16 +380,16 @@
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "book:533338:2:0",
+        "id" : "book:960863:2:0",
         "label" : "book",
         "type" : "vertex",
         "properties" : {
           "year" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=533338, ~label=book, group_id=2}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
+            "id" : "{out_vertex={member_id=0, community_id=960863, ~label=book, group_id=2}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
             "value" : 1961
           } ],
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=533338, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=960863, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "The Art of French Cooking, Vol. 1"
           } ]
         }
@@ -395,23 +398,23 @@
       "truncated" : false,
       "graph" : {
         "vertices" : [ {
-          "id" : "book:533338:2:0",
+          "id" : "book:960863:2:0",
           "label" : "book",
           "type" : "vertex",
           "properties" : {
             "year" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=533338, ~label=book, group_id=2}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
+              "id" : "{out_vertex={member_id=0, community_id=960863, ~label=book, group_id=2}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
               "value" : 1961
             } ],
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=533338, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=960863, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "The Art of French Cooking, Vol. 1"
             } ]
           }
         } ],
         "edges" : [ ]
       },
-      "id" : "6e61c53e-4ab1-4e04-a8db-ddbc1de1dda2"
+      "id" : "faf61654-993f-410c-acf3-df826bb63efd"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -446,57 +449,57 @@
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "{out_vertex={member_id=0, community_id=533338, ~label=author, group_id=1}, local_id=aef279c0-e183-11e5-be0d-99afae6477e0, in_vertex={member_id=0, community_id=533338, ~label=book, group_id=2}, ~type=authored}",
+        "id" : "{out_vertex={member_id=0, community_id=960863, ~label=author, group_id=1}, local_id=46ecbc60-efbf-11e5-91dc-977754e82b92, in_vertex={member_id=0, community_id=960863, ~label=book, group_id=2}, ~type=authored}",
         "label" : "authored",
         "type" : "edge",
         "inVLabel" : "book",
         "outVLabel" : "author",
-        "inV" : "book:533338:2:0",
-        "outV" : "author:533338:1:0"
+        "inV" : "book:960863:2:0",
+        "outV" : "author:960863:1:0"
       } ],
       "type" : "EDGE",
       "truncated" : false,
       "graph" : {
         "vertices" : [ {
-          "id" : "author:533338:1:0",
-          "label" : "author",
-          "type" : "vertex",
-          "properties" : {
-            "gender" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=533338, ~label=author, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
-              "value" : "F"
-            } ],
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=533338, ~label=author, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "Julia Child"
-            } ]
-          }
-        }, {
-          "id" : "book:533338:2:0",
+          "id" : "book:960863:2:0",
           "label" : "book",
           "type" : "vertex",
           "properties" : {
             "year" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=533338, ~label=book, group_id=2}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
+              "id" : "{out_vertex={member_id=0, community_id=960863, ~label=book, group_id=2}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
               "value" : 1961
             } ],
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=533338, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=960863, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "The Art of French Cooking, Vol. 1"
+            } ]
+          }
+        }, {
+          "id" : "author:960863:1:0",
+          "label" : "author",
+          "type" : "vertex",
+          "properties" : {
+            "gender" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=960863, ~label=author, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
+              "value" : "F"
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=960863, ~label=author, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "Julia Child"
             } ]
           }
         } ],
         "edges" : [ {
-          "id" : "{out_vertex={member_id=0, community_id=533338, ~label=author, group_id=1}, local_id=aef279c0-e183-11e5-be0d-99afae6477e0, in_vertex={member_id=0, community_id=533338, ~label=book, group_id=2}, ~type=authored}",
+          "id" : "{out_vertex={member_id=0, community_id=960863, ~label=author, group_id=1}, local_id=46ecbc60-efbf-11e5-91dc-977754e82b92, in_vertex={member_id=0, community_id=960863, ~label=book, group_id=2}, ~type=authored}",
           "label" : "authored",
           "type" : "edge",
           "inVLabel" : "book",
           "outVLabel" : "author",
-          "inV" : "book:533338:2:0",
-          "outV" : "author:533338:1:0"
+          "inV" : "book:960863:2:0",
+          "outV" : "author:960863:1:0"
         } ]
       },
-      "id" : "91a306e8-66d7-4076-b7c7-9ea8a7988e1a"
+      "id" : "1de0d740-a807-4062-8c95-ddbed666cc07"
     },
     "msg" : null,
     "dataViewType" : "RAW",
@@ -533,7 +536,7 @@
       "value" : [ 1 ],
       "type" : "NUMBER",
       "truncated" : false,
-      "id" : "b62fdb68-627a-4ab1-a09d-b240d6a569f3"
+      "id" : "55aeaae0-27f5-44df-ade0-8157ed35ee82"
     },
     "msg" : null,
     "dataViewType" : "RAW",
@@ -564,65 +567,65 @@
   }, {
     "id" : "10a6a6ce-52e8-4147-bc9c-ec97f7c8ec35",
     "status" : "SUCCESS",
-    "code" : "// Generates all Recipe Toy Graph vertices and edges except Reviews\n\n//script = new File('/Users/lorinapoland/CLONES/graph-examples/food/Gremlin/generateRecipe.groovy').text; []\n// :> @script\n\n// Drop previously created vertices and edges, so that I can add them again\ng.V().drop().iterate()\n// Add all vertices and edges for Recipe\n\n// author vertices\n// already created in the tutorial\nVertex juliaChild = graph.addVertex(label, 'author', 'name','Julia Child', 'gender', 'F')\nVertex simoneBeck = graph.addVertex(label, 'author', 'name', 'Simone Beck', 'gender', 'F')\nVertex louisetteBertholie = graph.addVertex(label, 'author', 'name', 'Louisette Bertholie', 'gender', 'F')\nVertex patriciaSimon = graph.addVertex(label, 'author', 'name', 'Patricia Simon', 'gender', 'F')\nVertex aliceWaters = graph.addVertex(label, 'author', 'name', 'Alice Waters', 'gender', 'F')\nVertex patriciaCurtan = graph.addVertex(label, 'author', 'name', 'Patricia Curtan', 'gender', 'F')\nVertex kelsieKerr = graph.addVertex(label, 'author', 'name', 'Kelsie Kerr', 'gender', 'F')\nVertex fritzStreiff = graph.addVertex(label, 'author', 'name', 'Fritz Streiff', 'gender', 'M')\nVertex emerilLagasse = graph.addVertex(label, 'author', 'name', 'Emeril Lagasse', 'gender', 'M')\nVertex jamesBeard = graph.addVertex(label, 'author', 'name', 'James Beard', 'gender', 'M')\n\n// book vertices\n// already created in the tutorial\nVertex artOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'name', 'The Art of French Cooking, Vol. 1', 'year', 1961)\nVertex simcasCuisine = graph.addVertex(label, 'book', 'name', \"Simca's Cuisine: 100 Classic French Recipes for Every Occasion\", 'year', 1972, 'ISBN', '0-394-40152-2')\nVertex frenchChefCookbook = graph.addVertex(label, 'book', 'name','The French Chef Cookbook', 'year', 1968, 'ISBN', '0-394-40135-2')\nVertex artOfSimpleFood = graph.addVertex(label, 'book', 'name', 'The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution', 'year', 2007, 'ISBN', '0-307-33679-4')\n\n// recipe vertices\nVertex beefBourguignon = graph.addVertex(label, 'recipe', 'name', 'Beef Bourguignon', 'instructions', 'Braise the beef. Saute the onions and carrots. Add wine and cook in a dutch oven at 425 degrees for 1 hour.')\nVertex ratatouille = graph.addVertex(label, 'recipe', 'name', 'Rataouille', 'instructions', 'Peel and cut the egglant. Make sure you cut eggplant into lengthwise slices that are about 1-inch wmyIde, 3-inches long, and 3/8-inch thick')\nVertex saladeNicoise = graph.addVertex(label, 'recipe', 'name', 'Salade Nicoise', 'instructions', 'Take a salad bowl or platter and line it with lettuce leaves, shortly before serving. Drizzle some olive oil on the leaves and dust them with salt.')\nVertex wildMushroomStroganoff = graph.addVertex(label, 'recipe', 'name', 'Wild Mushroom Stroganoff', 'instructions', 'Cook the egg noodles according to the package directions and keep warm. Heat 1 1/2 tablespoons of the oliveoil in a large saute pan over medium-high heat.')\nVertex spicyMeatloaf = graph.addVertex(label, 'recipe', 'name', 'Spicy Meatloaf', 'instructions', 'Preheat the oven to 375 degrees F. Cook bacon in a large skillet over medium heat until very crisp and fat has rendered, 8-10 minutes.')\nVertex oystersRockefeller = graph.addVertex(label, 'recipe', 'name', 'Oysters Rockefeller', 'instructions', 'Saute the shallots, celery, herbs, and seasonings in 3 tablespoons of the butter for 3 minutes. Add the watercress and let it wilt.')\nVertex carrotSoup = graph.addVertex(label, 'recipe', 'name', 'Carrot Soup', 'instructions', 'In a heavy-bottomed pot, melt the butter. When it starts to foam, add the onions and thyme and cook over medium-low heat until tender, about 10 minutes.')\nVertex roastPorkLoin = graph.addVertex(label, 'recipe', 'name', 'Roast Pork Loin', 'instructions', 'The day before, separate the meat from the ribs, stopping about 1 inch before the end of the bones. Season the pork liberally insmyIde and out with salt and pepper and refrigerate overnight.')\n\n// ingredients vertices\nVertex beef = graph.addVertex(label, 'ingredient', 'name', 'beef')\nVertex onion = graph.addVertex(label, 'ingredient', 'name', 'onion')\nVertex mashedGarlic = graph.addVertex(label, 'ingredient', 'name', 'mashed garlic')\nVertex butter = graph.addVertex(label, 'ingredient', 'name', 'butter')\nVertex tomatoPaste = graph.addVertex(label, 'ingredient', 'name', 'tomato paste')\nVertex eggplant = graph.addVertex(label, 'ingredient', 'name', 'eggplant')\nVertex zucchini = graph.addVertex(label, 'ingredient', 'name', 'zucchini')\nVertex oliveOil = graph.addVertex(label, 'ingredient', 'name', 'olive oil')\nVertex yellowOnion = graph.addVertex(label, 'ingredient', 'name', 'yellow onion')\nVertex greenBean = graph.addVertex(label, 'ingredient', 'name', 'green beans')\nVertex tuna = graph.addVertex(label, 'ingredient', 'name', 'tuna')\nVertex tomato = graph.addVertex(label, 'ingredient', 'name', 'tomato')\nVertex hardBoiledEgg = graph.addVertex(label, 'ingredient', 'name', 'hard-boiled egg')\nVertex eggNoodles = graph.addVertex(label, 'ingredient', 'name', 'egg noodles')\nVertex mushroom = graph.addVertex(label, 'ingredient', 'name', 'mushrooms')\nVertex bacon = graph.addVertex(label, 'ingredient', 'name', 'bacon')\nVertex celery = graph.addVertex(label, 'ingredient', 'name', 'celery')\nVertex greenBellPepper = graph.addVertex(label, 'ingredient', 'name', 'green bell pepper')\nVertex groundBeef = graph.addVertex(label, 'ingredient', 'name', 'ground beef')\nVertex porkSausage = graph.addVertex(label, 'ingredient', 'name', 'pork sausage')\nVertex shallot = graph.addVertex(label, 'ingredient', 'name', 'shallots')\nVertex chervil = graph.addVertex(label, 'ingredient', 'name', 'chervil')\nVertex fennel = graph.addVertex(label, 'ingredient', 'name', 'fennel')\nVertex parsley = graph.addVertex(label, 'ingredient', 'name', 'parsley')\nVertex oyster = graph.addVertex(label, 'ingredient', 'name', 'oyster')\nVertex pernod = graph.addVertex(label, 'ingredient', 'name', 'Pernod')\nVertex thyme = graph.addVertex(label, 'ingredient', 'name', 'thyme')\nVertex carrot = graph.addVertex(label, 'ingredient', 'name', 'carrots')\nVertex chickenBroth = graph.addVertex(label, 'ingredient', 'name', 'chicken broth')\nVertex porkLoin = graph.addVertex(label, 'ingredient', 'name', 'pork loin')\nVertex redWine = graph.addVertex(label, 'ingredient', 'name', 'red wine')\n\n// author-book edges\n// already created in the tutorial\njuliaChild.addEdge('authored', artOfFrenchCookingVolOne)\nsimoneBeck.addEdge('authored', artOfFrenchCookingVolOne)\nlouisetteBertholie.addEdge('authored', artOfFrenchCookingVolOne)\nsimoneBeck.addEdge('authored',simcasCuisine)\npatriciaSimon.addEdge('authored',simcasCuisine)\njuliaChild.addEdge('authored', frenchChefCookbook)\naliceWaters.addEdge('authored', artOfSimpleFood)\npatriciaCurtan.addEdge('authored', artOfSimpleFood)\nkelsieKerr.addEdge('authored', artOfSimpleFood)\nfritzStreiff.addEdge('authored', artOfSimpleFood)\n\n// author - recipe edges\njuliaChild.addEdge('created', beefBourguignon, 'year', 1961)\njuliaChild.addEdge('created', ratatouille, 'year', 1965)\njuliaChild.addEdge('created', saladeNicoise, 'year', 1962)\nemerilLagasse.addEdge('created', wildMushroomStroganoff, 'year', 2003)\nemerilLagasse.addEdge('created', spicyMeatloaf, 'year', 2000)\naliceWaters.addEdge('created', carrotSoup, 'year', 1995)\naliceWaters.addEdge('created', roastPorkLoin, 'year', 1996)\njamesBeard.addEdge('created', oystersRockefeller, 'year', 1970)\n\n// recipe - ingredient edges\nbeefBourguignon.addEdge('includes', beef, 'amount', '2 lbs')\nbeefBourguignon.addEdge('includes', onion, 'amount', '1 sliced')\nbeefBourguignon.addEdge('includes', mashedGarlic, 'amount', '2 cloves')\nbeefBourguignon.addEdge('includes', butter, 'amount', '3.5 Tbsp')\nbeefBourguignon.addEdge('includes', tomatoPaste, 'amount', '1 Tbsp')\nratatouille.addEdge('includes', eggplant, 'amount', '1 lb')\nratatouille.addEdge('includes', zucchini, 'amount', '1 lb')\nratatouille.addEdge('includes', mashedGarlic, 'amount', '2 cloves')\nratatouille.addEdge('includes', oliveOil, 'amount', '4-6 Tbsp')\nratatouille.addEdge('includes', yellowOnion, 'amount', '1 1/2 cups or 1/2 lb thinly sliced')\nsaladeNicoise.addEdge('includes', oliveOil, 'amount', '2-3 Tbsp')\nsaladeNicoise.addEdge('includes', greenBean, 'amount', '1 1/2 lbs blanched, trimmed')\nsaladeNicoise.addEdge('includes', tuna, 'amount', '8-10 ozs oil-packed, drained and flaked')\nsaladeNicoise.addEdge('includes', tomato, 'amount', '3 or 4 red, peeled, quartered, cored, and seasoned')\nsaladeNicoise.addEdge('includes', hardBoiledEgg, 'amount', '8 halved lengthwise')\nwildMushroomStroganoff.addEdge('includes', eggNoodles, 'amount', '16 ozs wmyIde')\nwildMushroomStroganoff.addEdge('includes', mushroom, 'amount', '2 lbs wild or exotic, cleaned, stemmed, and sliced')\nwildMushroomStroganoff.addEdge('includes', yellowOnion, 'amount', '1 cup thinly sliced')\nspicyMeatloaf.addEdge('includes', bacon, 'amount', '3 ozs diced')\nspicyMeatloaf.addEdge('includes', onion, 'amount', '2 cups finely chopped')\nspicyMeatloaf.addEdge('includes', celery, 'amount', '2 cups finely chopped')\nspicyMeatloaf.addEdge('includes', greenBellPepper, 'amount', '1/4 cup finely chopped')\nspicyMeatloaf.addEdge('includes', porkSausage, 'amount', '3/4 lbs hot')\nspicyMeatloaf.addEdge('includes', groundBeef, 'amount', '1 1/2 lbs chuck')\noystersRockefeller.addEdge('includes', shallot, 'amount', '1/4 cup chopped')\noystersRockefeller.addEdge('includes', celery, 'amount', '1/4 cup chopped')\noystersRockefeller.addEdge('includes', chervil, 'amount', '1 tsp')\noystersRockefeller.addEdge('includes', fennel, 'amount', '1/3 cup chopped')\noystersRockefeller.addEdge('includes', parsley, 'amount', '1/3 cup chopped')\noystersRockefeller.addEdge('includes', oyster, 'amount', '2 dozen on the half shell')\noystersRockefeller.addEdge('includes', pernod, 'amount', '1/3 cup')\ncarrotSoup.addEdge('includes', butter, 'amount', '4 Tbsp')\ncarrotSoup.addEdge('includes', onion, 'amount', '2 medium sliced')\ncarrotSoup.addEdge('includes', thyme, 'amount', '1 sprig')\ncarrotSoup.addEdge('includes', carrot, 'amount', '2 1/2 lbs, peeled and sliced')\ncarrotSoup.addEdge('includes', chickenBroth, 'amount', '6 cups')\nroastPorkLoin.addEdge('includes', porkLoin, 'amount', '1 bone-in, 4-rib')\nroastPorkLoin.addEdge('includes', redWine, 'amount', '1/2 cup')\nroastPorkLoin.addEdge('includes', chickenBroth, 'amount', '1 cup')\n\n// book - recipe edges\n\nbeefBourguignon.addEdge('includedIn', artOfFrenchCookingVolOne)\n\n// meal vertices\n\nVertex SaturdayFeast = graph.addVertex(label, 'meal', 'name', 'Saturday Feast', 'timestamp', Instant.parse('2015-11-30T00:00:00.00Z'), 'calories', 1000)\nVertex EverydayDinner = graph.addVertex(label, 'meal', 'name', 'EverydayDinner', 'timestamp', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 600)\nVertex JuliaDinner = graph.addVertex(label, 'meal', 'name', 'JuliaDinner', 'timestamp', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 900)\n\n// meal - recipe edges\n\nSaturdayFeast.addEdge('includedIn', beefBourguignon)\nSaturdayFeast.addEdge('includedIn', carrotSoup)\nSaturdayFeast.addEdge('includedIn', oystersRockefeller)\nEverydayDinner.addEdge('includedIn', carrotSoup)\nEverydayDinner.addEdge('includedIn', roastPorkLoin)\nJuliaDinner.addEdge('includedIn', beefBourguignon)\nJuliaDinner.addEdge('includedIn', saladeNicoise)\n\n// meal - book edges\n\nartOfSimpleFood.addEdge('includedIn', EverydayDinner)\nsimcasCuisine.addEdge('includedIn', SaturdayFeast)\nartOfFrenchCookingVolOne.addEdge('includedIn', JuliaDinner)\n",
+    "code" : "// Generates all Recipe Toy Graph vertices and edges except Reviews\n\n//script = new File('/Users/lorinapoland/CLONES/graph-examples/food/Gremlin/generateRecipe.groovy').text; []\n// :> @script\n\n// Drop previously created vertices and edges, so that I can add them again\ng.V().drop().iterate()\n// Add all vertices and edges for Recipe\n\n// author vertices\nVertex juliaChild = graph.addVertex(label, 'author', 'name','Julia Child', 'gender', 'F')\nVertex simoneBeck = graph.addVertex(label, 'author', 'name', 'Simone Beck', 'gender', 'F')\nVertex louisetteBertholie = graph.addVertex(label, 'author', 'name', 'Louisette Bertholie', 'gender', 'F')\nVertex patriciaSimon = graph.addVertex(label, 'author', 'name', 'Patricia Simon', 'gender', 'F')\nVertex aliceWaters = graph.addVertex(label, 'author', 'name', 'Alice Waters', 'gender', 'F')\nVertex patriciaCurtan = graph.addVertex(label, 'author', 'name', 'Patricia Curtan', 'gender', 'F')\nVertex kelsieKerr = graph.addVertex(label, 'author', 'name', 'Kelsie Kerr', 'gender', 'F')\nVertex fritzStreiff = graph.addVertex(label, 'author', 'name', 'Fritz Streiff', 'gender', 'M')\nVertex emerilLagasse = graph.addVertex(label, 'author', 'name', 'Emeril Lagasse', 'gender', 'M')\nVertex jamesBeard = graph.addVertex(label, 'author', 'name', 'James Beard', 'gender', 'M')\n\n// book vertices\nVertex artOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'name', 'The Art of French Cooking, Vol. 1', 'year', 1961)\nVertex simcasCuisine = graph.addVertex(label, 'book', 'name', \"Simca's Cuisine: 100 Classic French Recipes for Every Occasion\", 'year', 1972, 'ISBN', '0-394-40152-2')\nVertex frenchChefCookbook = graph.addVertex(label, 'book', 'name','The French Chef Cookbook', 'year', 1968, 'ISBN', '0-394-40135-2')\nVertex artOfSimpleFood = graph.addVertex(label, 'book', 'name', 'The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution', 'year', 2007, 'ISBN', '0-307-33679-4')\n\n// recipe vertices\nVertex beefBourguignon = graph.addVertex(label, 'recipe', 'name', 'Beef Bourguignon', 'instructions', 'Braise the beef. Saute the onions and carrots. Add wine and cook in a dutch oven at 425 degrees for 1 hour.')\nVertex ratatouille = graph.addVertex(label, 'recipe', 'name', 'Rataouille', 'instructions', 'Peel and cut the egglant. Make sure you cut eggplant into lengthwise slices that are about 1-inch wmyIde, 3-inches long, and 3/8-inch thick')\nVertex saladeNicoise = graph.addVertex(label, 'recipe', 'name', 'Salade Nicoise', 'instructions', 'Take a salad bowl or platter and line it with lettuce leaves, shortly before serving. Drizzle some olive oil on the leaves and dust them with salt.')\nVertex wildMushroomStroganoff = graph.addVertex(label, 'recipe', 'name', 'Wild Mushroom Stroganoff', 'instructions', 'Cook the egg noodles according to the package directions and keep warm. Heat 1 1/2 tablespoons of the oliveoil in a large saute pan over medium-high heat.')\nVertex spicyMeatloaf = graph.addVertex(label, 'recipe', 'name', 'Spicy Meatloaf', 'instructions', 'Preheat the oven to 375 degrees F. Cook bacon in a large skillet over medium heat until very crisp and fat has rendered, 8-10 minutes.')\nVertex oystersRockefeller = graph.addVertex(label, 'recipe', 'name', 'Oysters Rockefeller', 'instructions', 'Saute the shallots, celery, herbs, and seasonings in 3 tablespoons of the butter for 3 minutes. Add the watercress and let it wilt.')\nVertex carrotSoup = graph.addVertex(label, 'recipe', 'name', 'Carrot Soup', 'instructions', 'In a heavy-bottomed pot, melt the butter. When it starts to foam, add the onions and thyme and cook over medium-low heat until tender, about 10 minutes.')\nVertex roastPorkLoin = graph.addVertex(label, 'recipe', 'name', 'Roast Pork Loin', 'instructions', 'The day before, separate the meat from the ribs, stopping about 1 inch before the end of the bones. Season the pork liberally insmyIde and out with salt and pepper and refrigerate overnight.')\n\n// ingredients vertices\nVertex beef = graph.addVertex(label, 'ingredient', 'name', 'beef')\nVertex onion = graph.addVertex(label, 'ingredient', 'name', 'onion')\nVertex mashedGarlic = graph.addVertex(label, 'ingredient', 'name', 'mashed garlic')\nVertex butter = graph.addVertex(label, 'ingredient', 'name', 'butter')\nVertex tomatoPaste = graph.addVertex(label, 'ingredient', 'name', 'tomato paste')\nVertex eggplant = graph.addVertex(label, 'ingredient', 'name', 'eggplant')\nVertex zucchini = graph.addVertex(label, 'ingredient', 'name', 'zucchini')\nVertex oliveOil = graph.addVertex(label, 'ingredient', 'name', 'olive oil')\nVertex yellowOnion = graph.addVertex(label, 'ingredient', 'name', 'yellow onion')\nVertex greenBean = graph.addVertex(label, 'ingredient', 'name', 'green beans')\nVertex tuna = graph.addVertex(label, 'ingredient', 'name', 'tuna')\nVertex tomato = graph.addVertex(label, 'ingredient', 'name', 'tomato')\nVertex hardBoiledEgg = graph.addVertex(label, 'ingredient', 'name', 'hard-boiled egg')\nVertex eggNoodles = graph.addVertex(label, 'ingredient', 'name', 'egg noodles')\nVertex mushroom = graph.addVertex(label, 'ingredient', 'name', 'mushrooms')\nVertex bacon = graph.addVertex(label, 'ingredient', 'name', 'bacon')\nVertex celery = graph.addVertex(label, 'ingredient', 'name', 'celery')\nVertex greenBellPepper = graph.addVertex(label, 'ingredient', 'name', 'green bell pepper')\nVertex groundBeef = graph.addVertex(label, 'ingredient', 'name', 'ground beef')\nVertex porkSausage = graph.addVertex(label, 'ingredient', 'name', 'pork sausage')\nVertex shallot = graph.addVertex(label, 'ingredient', 'name', 'shallots')\nVertex chervil = graph.addVertex(label, 'ingredient', 'name', 'chervil')\nVertex fennel = graph.addVertex(label, 'ingredient', 'name', 'fennel')\nVertex parsley = graph.addVertex(label, 'ingredient', 'name', 'parsley')\nVertex oyster = graph.addVertex(label, 'ingredient', 'name', 'oyster')\nVertex pernod = graph.addVertex(label, 'ingredient', 'name', 'Pernod')\nVertex thyme = graph.addVertex(label, 'ingredient', 'name', 'thyme')\nVertex carrot = graph.addVertex(label, 'ingredient', 'name', 'carrots')\nVertex chickenBroth = graph.addVertex(label, 'ingredient', 'name', 'chicken broth')\nVertex porkLoin = graph.addVertex(label, 'ingredient', 'name', 'pork loin')\nVertex redWine = graph.addVertex(label, 'ingredient', 'name', 'red wine')\n\n// meal vertices\nVertex SaturdayFeast = graph.addVertex(label, 'meal', 'name', 'Saturday Feast', 'timestamp', Instant.parse('2015-11-30T00:00:00.00Z'), 'calories', 1000)\nVertex EverydayDinner = graph.addVertex(label, 'meal', 'name', 'EverydayDinner', 'timestamp', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 600)\nVertex JuliaDinner = graph.addVertex(label, 'meal', 'name', 'JuliaDinner', 'timestamp', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 900)\n\n// author-book edges\njuliaChild.addEdge('authored', artOfFrenchCookingVolOne)\nsimoneBeck.addEdge('authored', artOfFrenchCookingVolOne)\nlouisetteBertholie.addEdge('authored', artOfFrenchCookingVolOne)\nsimoneBeck.addEdge('authored',simcasCuisine)\npatriciaSimon.addEdge('authored',simcasCuisine)\njuliaChild.addEdge('authored', frenchChefCookbook)\naliceWaters.addEdge('authored', artOfSimpleFood)\npatriciaCurtan.addEdge('authored', artOfSimpleFood)\nkelsieKerr.addEdge('authored', artOfSimpleFood)\nfritzStreiff.addEdge('authored', artOfSimpleFood)\n\n// author - recipe edges\njuliaChild.addEdge('created', beefBourguignon, 'year', 1961)\njuliaChild.addEdge('created', ratatouille, 'year', 1965)\njuliaChild.addEdge('created', saladeNicoise, 'year', 1962)\nemerilLagasse.addEdge('created', wildMushroomStroganoff, 'year', 2003)\nemerilLagasse.addEdge('created', spicyMeatloaf, 'year', 2000)\naliceWaters.addEdge('created', carrotSoup, 'year', 1995)\naliceWaters.addEdge('created', roastPorkLoin, 'year', 1996)\njamesBeard.addEdge('created', oystersRockefeller, 'year', 1970)\n\n// recipe - ingredient edges\nbeefBourguignon.addEdge('includes', beef, 'amount', '2 lbs')\nbeefBourguignon.addEdge('includes', onion, 'amount', '1 sliced')\nbeefBourguignon.addEdge('includes', mashedGarlic, 'amount', '2 cloves')\nbeefBourguignon.addEdge('includes', butter, 'amount', '3.5 Tbsp')\nbeefBourguignon.addEdge('includes', tomatoPaste, 'amount', '1 Tbsp')\nratatouille.addEdge('includes', eggplant, 'amount', '1 lb')\nratatouille.addEdge('includes', zucchini, 'amount', '1 lb')\nratatouille.addEdge('includes', mashedGarlic, 'amount', '2 cloves')\nratatouille.addEdge('includes', oliveOil, 'amount', '4-6 Tbsp')\nratatouille.addEdge('includes', yellowOnion, 'amount', '1 1/2 cups or 1/2 lb thinly sliced')\nsaladeNicoise.addEdge('includes', oliveOil, 'amount', '2-3 Tbsp')\nsaladeNicoise.addEdge('includes', greenBean, 'amount', '1 1/2 lbs blanched, trimmed')\nsaladeNicoise.addEdge('includes', tuna, 'amount', '8-10 ozs oil-packed, drained and flaked')\nsaladeNicoise.addEdge('includes', tomato, 'amount', '3 or 4 red, peeled, quartered, cored, and seasoned')\nsaladeNicoise.addEdge('includes', hardBoiledEgg, 'amount', '8 halved lengthwise')\nwildMushroomStroganoff.addEdge('includes', eggNoodles, 'amount', '16 ozs wmyIde')\nwildMushroomStroganoff.addEdge('includes', mushroom, 'amount', '2 lbs wild or exotic, cleaned, stemmed, and sliced')\nwildMushroomStroganoff.addEdge('includes', yellowOnion, 'amount', '1 cup thinly sliced')\nspicyMeatloaf.addEdge('includes', bacon, 'amount', '3 ozs diced')\nspicyMeatloaf.addEdge('includes', onion, 'amount', '2 cups finely chopped')\nspicyMeatloaf.addEdge('includes', celery, 'amount', '2 cups finely chopped')\nspicyMeatloaf.addEdge('includes', greenBellPepper, 'amount', '1/4 cup finely chopped')\nspicyMeatloaf.addEdge('includes', porkSausage, 'amount', '3/4 lbs hot')\nspicyMeatloaf.addEdge('includes', groundBeef, 'amount', '1 1/2 lbs chuck')\noystersRockefeller.addEdge('includes', shallot, 'amount', '1/4 cup chopped')\noystersRockefeller.addEdge('includes', celery, 'amount', '1/4 cup chopped')\noystersRockefeller.addEdge('includes', chervil, 'amount', '1 tsp')\noystersRockefeller.addEdge('includes', fennel, 'amount', '1/3 cup chopped')\noystersRockefeller.addEdge('includes', parsley, 'amount', '1/3 cup chopped')\noystersRockefeller.addEdge('includes', oyster, 'amount', '2 dozen on the half shell')\noystersRockefeller.addEdge('includes', pernod, 'amount', '1/3 cup')\ncarrotSoup.addEdge('includes', butter, 'amount', '4 Tbsp')\ncarrotSoup.addEdge('includes', onion, 'amount', '2 medium sliced')\ncarrotSoup.addEdge('includes', thyme, 'amount', '1 sprig')\ncarrotSoup.addEdge('includes', carrot, 'amount', '2 1/2 lbs, peeled and sliced')\ncarrotSoup.addEdge('includes', chickenBroth, 'amount', '6 cups')\nroastPorkLoin.addEdge('includes', porkLoin, 'amount', '1 bone-in, 4-rib')\nroastPorkLoin.addEdge('includes', redWine, 'amount', '1/2 cup')\nroastPorkLoin.addEdge('includes', chickenBroth, 'amount', '1 cup')\n\n// book - recipe edges\nbeefBourguignon.addEdge('includedIn', artOfFrenchCookingVolOne)\n\n// meal - recipe edges\nbeefBourguignon.addEdge('includedIn', SaturdayFeast)\ncarrotSoup.addEdge('includedIn', SaturdayFeast)\noystersRockefeller.addEdge('includedIn', SaturdayFeast)\ncarrotSoup.addEdge('includedIn', EverydayDinner)\nroastPorkLoin.addEdge('includedIn', EverydayDinner)\nbeefBourguignon.addEdge('includedIn', JuliaDinner)\nsaladeNicoise.addEdge('includedIn', JuliaDinner)\n\n// meal - book edges\nEverydayDinner.addEdge('includedIn', artOfSimpleFood)\nSaturdayFeast.addEdge('includedIn', simcasCuisine)\nJuliaDinner.addEdge('includedIn', artOfFrenchCookingVolOne)\n",
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "{out_vertex={member_id=0, community_id=67759, ~label=book, group_id=59}, local_id=1717a359-e58e-11e5-be0d-99afae6477e0, in_vertex={member_id=0, community_id=67759, ~label=meal, group_id=60}, ~type=includedIn}",
+        "id" : "{out_vertex={member_id=0, community_id=235704, ~label=meal, group_id=1}, local_id=bbb3f312-efc0-11e5-91dc-977754e82b92, in_vertex={member_id=0, community_id=235704, ~label=book, group_id=2}, ~type=includedIn}",
         "label" : "includedIn",
         "type" : "edge",
-        "inVLabel" : "meal",
-        "outVLabel" : "book",
-        "inV" : "meal:67759:60:0",
-        "outV" : "book:67759:59:0"
+        "inVLabel" : "book",
+        "outVLabel" : "meal",
+        "inV" : "book:235704:2:0",
+        "outV" : "meal:235704:1:0"
       } ],
       "type" : "EDGE",
       "truncated" : false,
       "graph" : {
         "vertices" : [ {
-          "id" : "meal:67759:60:0",
-          "label" : "meal",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=meal, group_id=60}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "JuliaDinner"
-            } ],
-            "calories" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=meal, group_id=60}, local_id=00000000-0000-800d-0000-000000000000, ~type=calories}",
-              "value" : 900
-            } ],
-            "timestamp" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=meal, group_id=60}, local_id=00000000-0000-800c-0000-000000000000, ~type=timestamp}",
-              "value" : "2016-01-14T00:00:00Z"
-            } ]
-          }
-        }, {
-          "id" : "book:67759:59:0",
+          "id" : "book:235704:2:0",
           "label" : "book",
           "type" : "vertex",
           "properties" : {
             "year" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=book, group_id=59}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
+              "id" : "{out_vertex={member_id=0, community_id=235704, ~label=book, group_id=2}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
               "value" : 1961
             } ],
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=book, group_id=59}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=235704, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "The Art of French Cooking, Vol. 1"
+            } ]
+          }
+        }, {
+          "id" : "meal:235704:1:0",
+          "label" : "meal",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=235704, ~label=meal, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "JuliaDinner"
+            } ],
+            "calories" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=235704, ~label=meal, group_id=1}, local_id=00000000-0000-800d-0000-000000000000, ~type=calories}",
+              "value" : 900
+            } ],
+            "timestamp" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=235704, ~label=meal, group_id=1}, local_id=00000000-0000-800c-0000-000000000000, ~type=timestamp}",
+              "value" : "2016-01-14T00:00:00Z"
             } ]
           }
         } ],
         "edges" : [ {
-          "id" : "{out_vertex={member_id=0, community_id=67759, ~label=book, group_id=59}, local_id=1717a359-e58e-11e5-be0d-99afae6477e0, in_vertex={member_id=0, community_id=67759, ~label=meal, group_id=60}, ~type=includedIn}",
+          "id" : "{out_vertex={member_id=0, community_id=235704, ~label=meal, group_id=1}, local_id=bbb3f312-efc0-11e5-91dc-977754e82b92, in_vertex={member_id=0, community_id=235704, ~label=book, group_id=2}, ~type=includedIn}",
           "label" : "includedIn",
           "type" : "edge",
-          "inVLabel" : "meal",
-          "outVLabel" : "book",
-          "inV" : "meal:67759:60:0",
-          "outV" : "book:67759:59:0"
+          "inVLabel" : "book",
+          "outVLabel" : "meal",
+          "inV" : "book:235704:2:0",
+          "outV" : "meal:235704:1:0"
         } ]
       },
-      "id" : "dacc433a-53c5-463b-8d45-c1c4625f8d34"
+      "id" : "9687f44d-412f-4e4e-9ec0-c7eb12cbbf15"
     },
     "msg" : null,
     "dataViewType" : "RAW",
@@ -679,11 +682,16 @@
       "value" : [ 56 ],
       "type" : "NUMBER",
       "truncated" : false,
-      "id" : "223b2b69-292b-4558-8481-a83dd0444df5"
+      "id" : "6ed054bc-ca5a-4f74-8007-677fefef7198"
     },
     "msg" : null,
     "dataViewType" : "RAW",
-    "viewSettings" : null
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
   }, {
     "id" : "07d3854f-ae1b-4348-b8db-1513f2510baf",
     "status" : "SUCCESS",
@@ -783,10 +791,10 @@
       } ],
       "type" : "MAP",
       "truncated" : false,
-      "id" : "09b2bf82-3eb0-4f7b-865e-48200ab38f20"
+      "id" : "34faba00-9c22-4374-a616-2549f2ed3ce7"
     },
     "msg" : null,
-    "dataViewType" : "TABLE",
+    "dataViewType" : "RAW",
     "viewSettings" : {
       "CHART" : {
         "xAxis" : null,
@@ -818,16 +826,16 @@
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "author:173549:3:0",
+        "id" : "author:734307:3:0",
         "label" : "author",
         "type" : "vertex",
         "properties" : {
           "gender" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=173549, ~label=author, group_id=3}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
+            "id" : "{out_vertex={member_id=0, community_id=734307, ~label=author, group_id=3}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
             "value" : "F"
           } ],
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=173549, ~label=author, group_id=3}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=734307, ~label=author, group_id=3}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "Julia Child"
           } ]
         }
@@ -836,27 +844,32 @@
       "truncated" : false,
       "graph" : {
         "vertices" : [ {
-          "id" : "author:173549:3:0",
+          "id" : "author:734307:3:0",
           "label" : "author",
           "type" : "vertex",
           "properties" : {
             "gender" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=173549, ~label=author, group_id=3}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
+              "id" : "{out_vertex={member_id=0, community_id=734307, ~label=author, group_id=3}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
               "value" : "F"
             } ],
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=173549, ~label=author, group_id=3}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=734307, ~label=author, group_id=3}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "Julia Child"
             } ]
           }
         } ],
         "edges" : [ ]
       },
-      "id" : "36cc4b5d-77c9-4c21-8294-69af666dec62"
+      "id" : "916765bc-7309-4fc3-814c-7572b10c006d"
     },
     "msg" : null,
-    "dataViewType" : null,
-    "viewSettings" : null
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
   }, {
     "id" : "d119c333-bde8-4265-9bce-68d784950125",
     "status" : "SUCCESS",
@@ -882,91 +895,91 @@
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "{out_vertex={member_id=0, community_id=67759, ~label=author, group_id=61}, local_id=1715f5a0-e58e-11e5-be0d-99afae6477e0, in_vertex={member_id=0, community_id=67759, ~label=book, group_id=59}, ~type=authored}",
+        "id" : "{out_vertex={member_id=0, community_id=734307, ~label=author, group_id=3}, local_id=5bc976f0-efbf-11e5-91dc-977754e82b92, in_vertex={member_id=0, community_id=734307, ~label=book, group_id=1}, ~type=authored}",
         "label" : "authored",
         "type" : "edge",
         "inVLabel" : "book",
         "outVLabel" : "author",
-        "inV" : "book:67759:59:0",
-        "outV" : "author:67759:61:0"
+        "inV" : "book:734307:1:0",
+        "outV" : "author:734307:3:0"
       }, {
-        "id" : "{out_vertex={member_id=0, community_id=67759, ~label=author, group_id=61}, local_id=1715f5a5-e58e-11e5-be0d-99afae6477e0, in_vertex={member_id=0, community_id=67759, ~label=book, group_id=72}, ~type=authored}",
+        "id" : "{out_vertex={member_id=0, community_id=734307, ~label=author, group_id=3}, local_id=5bc99e03-efbf-11e5-91dc-977754e82b92, in_vertex={member_id=0, community_id=734307, ~label=book, group_id=14}, ~type=authored}",
         "label" : "authored",
         "type" : "edge",
         "inVLabel" : "book",
         "outVLabel" : "author",
-        "inV" : "book:67759:72:0",
-        "outV" : "author:67759:61:0"
+        "inV" : "book:734307:14:0",
+        "outV" : "author:734307:3:0"
       } ],
       "type" : "EDGE",
       "truncated" : false,
       "graph" : {
         "vertices" : [ {
-          "id" : "book:67759:59:0",
+          "id" : "book:734307:1:0",
           "label" : "book",
           "type" : "vertex",
           "properties" : {
             "year" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=book, group_id=59}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
+              "id" : "{out_vertex={member_id=0, community_id=734307, ~label=book, group_id=1}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
               "value" : 1961
             } ],
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=book, group_id=59}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=734307, ~label=book, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "The Art of French Cooking, Vol. 1"
             } ]
           }
         }, {
-          "id" : "book:67759:72:0",
-          "label" : "book",
-          "type" : "vertex",
-          "properties" : {
-            "ISBN" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=book, group_id=72}, local_id=00000000-0000-8006-0000-000000000000, ~type=ISBN}",
-              "value" : "0-394-40135-2"
-            } ],
-            "year" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=book, group_id=72}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
-              "value" : 1968
-            } ],
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=book, group_id=72}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "The French Chef Cookbook"
-            } ]
-          }
-        }, {
-          "id" : "author:67759:61:0",
+          "id" : "author:734307:3:0",
           "label" : "author",
           "type" : "vertex",
           "properties" : {
             "gender" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=author, group_id=61}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
+              "id" : "{out_vertex={member_id=0, community_id=734307, ~label=author, group_id=3}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
               "value" : "F"
             } ],
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=67759, ~label=author, group_id=61}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=734307, ~label=author, group_id=3}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "Julia Child"
+            } ]
+          }
+        }, {
+          "id" : "book:734307:14:0",
+          "label" : "book",
+          "type" : "vertex",
+          "properties" : {
+            "ISBN" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=734307, ~label=book, group_id=14}, local_id=00000000-0000-8006-0000-000000000000, ~type=ISBN}",
+              "value" : "0-394-40135-2"
+            } ],
+            "year" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=734307, ~label=book, group_id=14}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
+              "value" : 1968
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=734307, ~label=book, group_id=14}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "The French Chef Cookbook"
             } ]
           }
         } ],
         "edges" : [ {
-          "id" : "{out_vertex={member_id=0, community_id=67759, ~label=author, group_id=61}, local_id=1715f5a0-e58e-11e5-be0d-99afae6477e0, in_vertex={member_id=0, community_id=67759, ~label=book, group_id=59}, ~type=authored}",
+          "id" : "{out_vertex={member_id=0, community_id=734307, ~label=author, group_id=3}, local_id=5bc99e03-efbf-11e5-91dc-977754e82b92, in_vertex={member_id=0, community_id=734307, ~label=book, group_id=14}, ~type=authored}",
           "label" : "authored",
           "type" : "edge",
           "inVLabel" : "book",
           "outVLabel" : "author",
-          "inV" : "book:67759:59:0",
-          "outV" : "author:67759:61:0"
+          "inV" : "book:734307:14:0",
+          "outV" : "author:734307:3:0"
         }, {
-          "id" : "{out_vertex={member_id=0, community_id=67759, ~label=author, group_id=61}, local_id=1715f5a5-e58e-11e5-be0d-99afae6477e0, in_vertex={member_id=0, community_id=67759, ~label=book, group_id=72}, ~type=authored}",
+          "id" : "{out_vertex={member_id=0, community_id=734307, ~label=author, group_id=3}, local_id=5bc976f0-efbf-11e5-91dc-977754e82b92, in_vertex={member_id=0, community_id=734307, ~label=book, group_id=1}, ~type=authored}",
           "label" : "authored",
           "type" : "edge",
           "inVLabel" : "book",
           "outVLabel" : "author",
-          "inV" : "book:67759:72:0",
-          "outV" : "author:67759:61:0"
+          "inV" : "book:734307:1:0",
+          "outV" : "author:734307:3:0"
         } ]
       },
-      "id" : "4f47eaba-4d13-43da-bd84-c2901c991cd3"
+      "id" : "830004e7-b56e-4c1c-95ae-ed4ff367d07d"
     },
     "msg" : null,
     "dataViewType" : "GRAPH",
@@ -982,25 +995,22 @@
         },
         "defaultLabelTemplate" : "{{label}}[{{id}}]",
         "positions" : {
-          "book:67759:59:0" : {
-            "x" : 205,
-            "y" : -181
+          "book:734307:1:0" : {
+            "x" : 52,
+            "y" : 37
           },
-          "book:67759:72:0" : {
-            "x" : -17,
-            "y" : 217
+          "author:734307:3:0" : {
+            "x" : -166,
+            "y" : 50
           },
-          "author:67759:61:0" : {
-            "x" : -175,
-            "y" : -139
+          "book:734307:14:0" : {
+            "x" : 78,
+            "y" : -58
           }
         },
-        "position" : {
-          "x" : 419.5256330206515,
-          "y" : 216.02213391044316
-        },
-        "scale" : 10,
-        "requestId" : "4f47eaba-4d13-43da-bd84-c2901c991cd3"
+        "position" : null,
+        "scale" : null,
+        "requestId" : "830004e7-b56e-4c1c-95ae-ed4ff367d07d"
       }
     }
   }, {
@@ -1027,14 +1037,19 @@
     "code" : "g.V().outE('authored').inV().values('name')",
     "language" : "gremlin",
     "result" : {
-      "value" : [ "The Art of French Cooking, Vol. 1", "Simca's Cuisine: 100 Classic French Recipes for Every Occasion", "Simca's Cuisine: 100 Classic French Recipes for Every Occasion", "The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution", "The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution", "The Art of French Cooking, Vol. 1", "The French Chef Cookbook", "The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution", "The Art of French Cooking, Vol. 1", "The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution" ],
+      "value" : [ "The Art of French Cooking, Vol. 1", "Simca's Cuisine: 100 Classic French Recipes for Every Occasion", "The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution", "The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution", "Simca's Cuisine: 100 Classic French Recipes for Every Occasion", "The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution", "The Art of French Cooking, Vol. 1", "The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution", "The Art of French Cooking, Vol. 1", "The French Chef Cookbook" ],
       "type" : "STRING",
       "truncated" : false,
-      "id" : "add98b55-04bb-4ba7-9af5-fbb627388395"
+      "id" : "e01a5a30-f7a6-4a6a-b943-586cb84708c8"
     },
     "msg" : null,
-    "dataViewType" : null,
-    "viewSettings" : null
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
   }, {
     "id" : "0d2aff04-9db2-407c-8506-cb91de589281",
     "status" : "SUCCESS",
@@ -1062,11 +1077,16 @@
       "value" : [ "The Art of French Cooking, Vol. 1", "Simca's Cuisine: 100 Classic French Recipes for Every Occasion", "The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution", "The French Chef Cookbook" ],
       "type" : "STRING",
       "truncated" : false,
-      "id" : "a11e8bb0-c4e1-47ca-9afc-280dbfbd7b67"
+      "id" : "500a38ac-96b4-46bd-8ca3-534330ef33c6"
     },
     "msg" : null,
-    "dataViewType" : null,
-    "viewSettings" : null
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
   }, {
     "id" : "a8d3cf38-12fd-4e22-ab06-05ecddb7bdf7",
     "status" : "SUCCESS",
@@ -1094,11 +1114,16 @@
       "value" : [ "The Art of French Cooking, Vol. 1", "The French Chef Cookbook" ],
       "type" : "STRING",
       "truncated" : false,
-      "id" : "5976b42b-e288-45f7-9ec5-4f993d24c3a8"
+      "id" : "4fdf0722-58c4-44ad-b661-1316c0bce037"
     },
     "msg" : null,
-    "dataViewType" : null,
-    "viewSettings" : null
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
   }, {
     "id" : "32f84aa3-f2d2-40cf-b0e0-4ab40a722a64",
     "status" : "SUCCESS",
@@ -1126,11 +1151,16 @@
       "value" : [ "The Art of French Cooking, Vol. 1", "The French Chef Cookbook" ],
       "type" : "STRING",
       "truncated" : false,
-      "id" : "5fd94e87-4e46-4d8a-befd-eb47ede7d952"
+      "id" : "fa93fed3-35ee-48af-a8da-4195f8c7dc18"
     },
     "msg" : null,
-    "dataViewType" : null,
-    "viewSettings" : null
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
   }, {
     "id" : "7769e3ae-2ad4-4904-bcbc-4f093f3c9ce8",
     "status" : "SUCCESS",
@@ -1158,11 +1188,16 @@
       "value" : [ "The French Chef Cookbook" ],
       "type" : "STRING",
       "truncated" : false,
-      "id" : "98cb4c3b-34bf-4aa5-b433-66bea807a75b"
+      "id" : "43183d3f-1a3e-4c9b-811a-3df0b2e608aa"
     },
     "msg" : null,
-    "dataViewType" : null,
-    "viewSettings" : null
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
   }, {
     "id" : "109ff139-57b7-4b4e-b803-26489f9f52a8",
     "status" : "SUCCESS",
@@ -1196,11 +1231,16 @@
       } ],
       "type" : "MAP",
       "truncated" : false,
-      "id" : "1559b48e-c9fd-48d0-bd39-e432118cb8bb"
+      "id" : "dd7da36f-54ae-4481-8a57-be1066d3a691"
     },
     "msg" : null,
-    "dataViewType" : null,
-    "viewSettings" : null
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : "__domain",
+        "yAxis" : "__range"
+      }
+    }
   }, {
     "id" : "a88e3a2e-a008-4b7f-bf41-3acf7f7adddc",
     "status" : "SUCCESS",
@@ -1285,5 +1325,5 @@
     }
   } ],
   "created" : "2016-02-23T19:15:17.845Z",
-  "lastUsed" : "2016-03-16T00:35:29.054Z"
+  "lastUsed" : "2016-03-21T23:58:06.870Z"
 }

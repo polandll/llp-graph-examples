@@ -6,13 +6,13 @@
   "cells" : [ {
     "id" : "ccf15907-4410-438b-8f97-7e6ea119de57",
     "status" : "SUCCESS",
-    "code" : "Hello!\n==\n**Welcome to the DataStax Studio Tutorial Notebook.**\n\nFirst things first: If you have an error on the top of this screen then you need to configure your connection. You should go take care of that first and come back here when you're ready.\n\nGot your connection all setup? Great! Lets get started with something simple to make sure things are working correctly. Go down to the next cell and click the play button.",
+    "code" : "Hello!\n==\n**Welcome to the DataStax Studio Tutorial Notebook.**\n\nFirst things first: If you have an error on the top of this screen then you need to configure your connection. You should take care of that first and come back here when you're ready.\n\nGot your connection all setup? Great! Lets get started with something simple to make sure things are working correctly. Go down to the next cell and click the play button.",
     "language" : "markdown",
     "result" : {
-      "value" : "<h1>Hello!</h1>\n<p><strong>Welcome to the DataStax Studio Tutorial Notebook.</strong></p>\n<p>First things first: If you have an error on the top of this screen then you need to configure your connection. You should go take care of that first and come back here when you're ready.</p>\n<p>Got your connection all setup? Great! Lets get started with something simple to make sure things are working correctly. Go down to the next cell and click the play button.</p>\n",
+      "value" : "<h1>Hello!</h1>\n<p><strong>Welcome to the DataStax Studio Tutorial Notebook.</strong></p>\n<p>First things first: If you have an error on the top of this screen then you need to configure your connection. You should take care of that first and come back here when you're ready.</p>\n<p>Got your connection all setup? Great! Lets get started with something simple to make sure things are working correctly. Go down to the next cell and click the play button.</p>\n",
       "type" : "HTML",
       "truncated" : false,
-      "id" : "d0416dec-0288-4317-bea4-d52687bc6f0d"
+      "id" : "ec5c5b26-baee-4d30-a65c-c6490562956e"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -33,13 +33,13 @@
   }, {
     "id" : "c45a7365-027a-44e3-84f8-7e68cf96ed00",
     "status" : "SUCCESS",
-    "code" : "Cool! We're goign to need some data to play with. The next cell will take care of that. Don't worry too much about this code right now; we'll get to that later. For now, just go click the play button and when it succeeds, continue the next cell.",
+    "code" : "Cool! We're going to need some data to play with. The next cell will take care of that. Don't worry too much about this code right now; we'll get to that later. For now, just go click the play button and when it succeeds, continue the next cell.",
     "language" : "markdown",
     "result" : {
-      "value" : "<p>Cool! We're goign to need some data to play with. The next cell will take care of that. Don't worry too much about this code right now; we'll get to that later. For now, just go click the play button and when it succeeds, continue the next cell.</p>\n",
+      "value" : "<p>Cool! We're going to need some data to play with. The next cell will take care of that. Don't worry too much about this code right now; we'll get to that later. For now, just go click the play button and when it succeeds, continue the next cell.</p>\n",
       "type" : "HTML",
       "truncated" : false,
-      "id" : "d73bfb28-2229-44fb-afe1-c82fb10a45e7"
+      "id" : "c7ed38c4-764b-4e93-bd1e-a72deb9a5cce"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -50,23 +50,36 @@
     }
   }, {
     "id" : "e16ec10c-f17d-45a0-8db8-6472846c30ec",
-    "status" : null,
-    "code" : "Vertex saturn = graph.addVertex(T.label, \"titan\", \"name\", \"saturn\", \"age\", 10000);\nVertex sky = graph.addVertex(T.label, \"location\", \"name\", \"sky\");\nVertex sea = graph.addVertex(T.label, \"location\", \"name\", \"sea\");\nVertex jupiter = graph.addVertex(T.label, \"god\", \"name\", \"jupiter\", \"age\", 5000);\nVertex neptune = graph.addVertex(T.label, \"god\", \"name\", \"neptune\", \"age\", 4500);\nVertex hercules = graph.addVertex(T.label, \"demigod\", \"name\", \"hercules\", \"age\", 30);\n\nVertex alcmene = graph.addVertex(T.label, \"human\", \"name\", \"alcmene\", \"age\", 45);\nVertex pluto = graph.addVertex(T.label, \"god\", \"name\", \"pluto\", \"age\", 4000);\nVertex nemean = graph.addVertex(T.label, \"monster\", \"name\", \"nemean\");\nVertex hydra = graph.addVertex(T.label, \"monster\", \"name\", \"hydra\");\nVertex cerberus = graph.addVertex(T.label, \"monster\", \"name\", \"cerberus\");\nVertex tartarus = graph.addVertex(T.label, \"location\", \"name\", \"tartarus\");\n\njupiter.addEdge(\"father\", saturn);\njupiter.addEdge(\"lives\", sky, \"reason\", \"loves fresh breezes\");\njupiter.addEdge(\"brother\", neptune);\njupiter.addEdge(\"brother\", pluto);\n\nneptune.addEdge(\"lives\", sea).property(\"reason\", \"loves waves\");\nneptune.addEdge(\"brother\", jupiter);\nneptune.addEdge(\"brother\", pluto);\nneptune.addEdge(\"battled\", neptune).property(\"time\", java.time.Instant.ofEpochMilli(5)); //self-edge\n\nneptune.property(\"nicknames\",\"Neppy\",\"time\", java.time.Instant.ofEpochMilli(22));\nneptune.property(\"nicknames\",\"Flipper\",\"time\", java.time.Instant.ofEpochMilli(25));\n\nhercules.addEdge(\"father\", jupiter);\nhercules.addEdge(\"mother\", alcmene);\n\nhercules.addEdge(\"battled\", nemean, \"time\", java.time.Instant.ofEpochMilli(1), \"place\", \"POINT(38.1 23.7)\");\nhercules.addEdge(\"battled\", hydra, \"time\", java.time.Instant.ofEpochMilli(2), \"place\", \"POINT(37.7 23.9)\");\nhercules.addEdge(\"battled\", cerberus, \"time\", java.time.Instant.ofEpochMilli(12), \"place\", \"POINT(39 22)\");\n\npluto.addEdge(\"brother\", jupiter);\npluto.addEdge(\"brother\", neptune);\npluto.addEdge(\"lives\", tartarus, \"reason\", \"no fear of death\");\npluto.addEdge(\"pet\", cerberus);\n\ncerberus.addEdge(\"lives\", tartarus);\n[g.V().limit(1000000).count().next(), g.E().limit(1000000).count().next()]",
+    "status" : "SUCCESS",
+    "code" : "Vertex saturn = graph.addVertex(T.label, \"titan\", \"name\", \"saturn\", \"age\", 10000);\nVertex sky = graph.addVertex(T.label, \"location\", \"name\", \"sky\");\nVertex sea = graph.addVertex(T.label, \"location\", \"name\", \"sea\");\nVertex jupiter = graph.addVertex(T.label, \"god\", \"name\", \"jupiter\", \"age\", 5000);\nVertex neptune = graph.addVertex(T.label, \"god\", \"name\", \"neptune\", \"age\", 4500);\nVertex hercules = graph.addVertex(T.label, \"demigod\", \"name\", \"hercules\", \"age\", 30);\n\nVertex alcmene = graph.addVertex(T.label, \"human\", \"name\", \"alcmene\", \"age\", 45);\nVertex pluto = graph.addVertex(T.label, \"god\", \"name\", \"pluto\", \"age\", 4000);\nVertex nemean = graph.addVertex(T.label, \"monster\", \"name\", \"nemean\");\nVertex hydra = graph.addVertex(T.label, \"monster\", \"name\", \"hydra\");\nVertex cerberus = graph.addVertex(T.label, \"monster\", \"name\", \"cerberus\");\nVertex tartarus = graph.addVertex(T.label, \"location\", \"name\", \"tartarus\");\n\njupiter.addEdge(\"father\", saturn);\njupiter.addEdge(\"lives\", sky, \"reason\", \"loves fresh breezes\");\njupiter.addEdge(\"brother\", neptune);\njupiter.addEdge(\"brother\", pluto);\n\nneptune.addEdge(\"lives\", sea).property(\"reason\", \"loves waves\");\nneptune.addEdge(\"brother\", jupiter);\nneptune.addEdge(\"brother\", pluto);\nneptune.addEdge(\"battled\", neptune).property(\"time\", java.time.Instant.ofEpochMilli(5)); //self-edge\n\nneptune.property(\"nicknames\",\"Neppy\",\"time\", java.time.Instant.ofEpochMilli(22));\nneptune.property(\"nicknames\",\"Flipper\",\"time\", java.time.Instant.ofEpochMilli(25));\n\nhercules.addEdge(\"father\", jupiter);\nhercules.addEdge(\"mother\", alcmene);\n\nhercules.addEdge(\"battled\", nemean, \"time\", java.time.Instant.ofEpochMilli(1), \"place\", \"POINT(38.1 23.7)\");\nhercules.addEdge(\"battled\", hydra, \"time\", java.time.Instant.ofEpochMilli(2), \"place\", \"POINT(37.7 23.9)\");\nhercules.addEdge(\"battled\", cerberus, \"time\", java.time.Instant.ofEpochMilli(12), \"place\", \"POINT(39 22)\");\n\npluto.addEdge(\"brother\", jupiter);\npluto.addEdge(\"brother\", neptune);\npluto.addEdge(\"lives\", tartarus, \"reason\", \"no fear of death\");\npluto.addEdge(\"pet\", cerberus);\n\ncerberus.addEdge(\"lives\", tartarus);\n\n\"success\"",
     "language" : "gremlin",
-    "result" : null,
+    "result" : {
+      "value" : [ 12, 18 ],
+      "type" : "NUMBER",
+      "truncated" : false,
+      "id" : "789294e1-743e-460c-a2b7-b64422f1195d"
+    },
     "msg" : null,
     "dataViewType" : null,
-    "viewSettings" : null
+    "viewSettings" : {
+      "CODE" : {
+        "hidden" : true
+      },
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
   }, {
     "id" : "81bb44d5-959d-4124-8e8e-96e00eb0cdbf",
     "status" : "SUCCESS",
-    "code" : "Let's take a look at our entire data set. Go ahead and run the next cell. You'll notice that you are presented with a table view by default. You can also check out the Raw view (all the way to the left) and the Graph view (all the way to the right). Poke around a little bit, and when you're ready, continue to the next cell.",
+    "code" : "Let's take a look at our entire data set. Run the next cell. You will notice that you are presented with a table view by default. You can also check out the Raw view (all the way to the left) and the Graph view (all the way to the right). Poke around a little bit, and when you're ready, continue to the next cell.",
     "language" : "markdown",
     "result" : {
-      "value" : "<p>Let's take a look at our entire data set. Go ahead and run the next cell. You'll notice that you are presented with a table view by default. You can also check out the Raw view (all the way to the left) and the Graph view (all the way to the right). Poke around a little bit, and when you're ready, continue to the next cell.</p>\n",
+      "value" : "<p>Let's take a look at our entire data set. Run the next cell. You will notice that you are presented with a table view by default. You can also check out the Raw view (all the way to the left) and the Graph view (all the way to the right). Poke around a little bit, and when you're ready, continue to the next cell.</p>\n",
       "type" : "HTML",
       "truncated" : false,
-      "id" : "f376411c-4fa5-4582-97c5-6999819792a0"
+      "id" : "d442d17c-e61b-4c02-8304-7b0d3145a48e"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -656,10 +669,10 @@
           }
         },
         "position" : {
-          "x" : -4.5207060445273495,
-          "y" : -85.01387935910776
+          "x" : -48.71179137793246,
+          "y" : -41.00590896952165
         },
-        "scale" : 0.7743228792144192
+        "scale" : 0.441355662220679
       },
       "CODE" : {
         "hidden" : false
@@ -1123,11 +1136,8 @@
             "y" : -3
           }
         },
-        "position" : {
-          "x" : -47.472425105206085,
-          "y" : 0.24053997203418448
-        },
-        "scale" : 1.0608353620040916
+        "position" : null,
+        "scale" : null
       }
     }
   }, {
@@ -2013,5 +2023,5 @@
     }
   } ],
   "created" : "2016-02-26T23:01:42.260Z",
-  "lastUsed" : "2016-03-15T04:28:21.036Z"
+  "lastUsed" : "2016-03-07T14:10:06.754Z"
 }
