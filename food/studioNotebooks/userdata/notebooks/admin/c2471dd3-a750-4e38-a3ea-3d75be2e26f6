@@ -2769,7 +2769,16 @@
         "yAxis" : "__index"
       }
     }
+  }, {
+    "id" : "9acd2983-0614-4bbe-8096-a618f4b9dda3",
+    "status" : "ERROR",
+    "code" : "Vertex johnDoe = graph.addVertex(label, 'reviewer', 'name','John Doe')\nVertex johnSmith = graph.addVertex(label, 'reviewer', 'John Smith')\nVertex janeDoe = graph.addVertex(label, 'reviewer', 'name','Jane Doe')\nVertex sharonSmith = graph.addVertex(label, 'reviewer', 'name','Sharon Smith')\nVertex betsyJones = graph.addVertex(label, 'reviewer', 'name','Betsy Jones')\n\nbeefBourguignon = g.V().has('recipe', 'name','Beef Bourguignon').tryNext()\nspicyMeatLoaf = g.V().has('recipe', 'name','Spicy Meatloaf').tryNext()\ncarrotSoup = g.V().has('recipe', 'name','Carrot Soup').tryNext()\n\n// reviewer - recipe edges\njohnDoe.addEdge('rated', beefBourguignon, 'timestamp', Instant.parse('2014-01-01T00:00:00.00Z'), 'stars', 5, 'comment', 'Pretty tasty!')\njohnSmith.addEdge('rated', beefBourguignon, 'timestamp', Instant.parse('2014-01-23T00:00:00.00Z'), 'stars', 4)\njaneDoe.addEdge('rated', beefBourguignon, 'timestamp', Instant.parse('2014-02-01T00:00:00.00Z'), 'stars', 5, 'comment', 'Yummy!')\nsharonSmith.addEdge('rated', beefBourguignon, 'timestamp', Instant.parse('2015-01-01T00:00:00.00Z'), 'stars', 3, 'comment', 'It was okay.')\njohnDoe.addEdge('rated', spicyMeatLoaf, 'timestamp', Instant.parse('2015-12-31T00:00:00.00Z'), 'stars', 4, 'comment', 'Really spicy - be careful!')\nsharonSmith.addEdge('rated', spicyMeatLoaf, 'timestamp',Instant.parse('2014-07-23T00:00:00.00Z'), 'stars', 3, 'comment', 'Too spicy for me. Use less garlic.')\njaneDoe.addEdge('rated', carrotSoup, 'timestamp', Instant.parse('2015-12-30T00:00:00.00Z'), 'stars', 5, 'comment', 'Loved this soup! Yummy vegetarian!')\n\n// Traversal to find reviews with stars of 4 or greater and a ratedDate more recent than\ng.E().hasLabel('rated').has('stars',gte(4)).has('timestamp', gte(Instant.parse('2015-12-31T00:00:00.00Z'))).valueMap()\n",
+    "language" : "gremlin",
+    "result" : null,
+    "msg" : "org.apache.tinkerpop.gremlin.driver.exception.ResponseException: The provided key/value array length must be a multiple of two",
+    "dataViewType" : null,
+    "viewSettings" : null
   } ],
   "created" : "2016-02-20T21:58:50.173Z",
-  "lastUsed" : "2016-03-21T23:58:57.331Z"
+  "lastUsed" : "2016-03-22T00:37:11.244Z"
 }

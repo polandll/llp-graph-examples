@@ -1,0 +1,2811 @@
+{
+  "id" : "92943264-3778-445d-842d-2d8840ccd267",
+  "name" : "junk",
+  "connectionId" : "c2595500-b448-40a5-a7d7-f57b13753dca",
+  "favorite" : false,
+  "cells" : [ {
+    "id" : "76ed6e52-64c6-463a-8fbc-edd5a2a0a2d1",
+    "status" : "SUCCESS",
+    "code" : "graph.schema().clear()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ null ],
+      "type" : "NULL",
+      "truncated" : false,
+      "id" : "01f11e9f-229f-4d2f-9316-124db9f2717a"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : null
+  }, {
+    "id" : "1f1eb992-0b66-4c47-865b-5b7e6cdb79bc",
+    "status" : "SUCCESS",
+    "code" : "// Property Keys\nname = graph.schema().buildPropertyKey('name', String).add()\nnickname = graph.schema().buildPropertyKey('nickname', String).multiple().add()\ngender = graph.schema().buildPropertyKey('gender', String).add()\ninstructions = graph.schema().buildPropertyKey('instructions', String).add()\nyear = graph.schema().buildPropertyKey('year', Integer).add()\ntimestamp = graph.schema().buildPropertyKey('timestamp', Timestamp).add()\nISBN = graph.schema().buildPropertyKey('ISBN', String).add()\ncalories = graph.schema().buildPropertyKey('calories', Integer).add()\namount = graph.schema().buildPropertyKey('amount', String).add()\nstars = graph.schema().buildPropertyKey('stars', Integer).add()\ncomment = graph.schema().buildPropertyKey('comment', String).add()\n    \t\t\n// Vertex Labels\nauthor = graph.schema().buildVertexLabel('author').add()\nrecipe = graph.schema().buildVertexLabel('recipe').add()\ningredient = graph.schema().buildVertexLabel('ingredient').add()\nbook = graph.schema().buildVertexLabel('book').add()\nmeal = graph.schema().buildVertexLabel('meal').add()\nreviewer = graph.schema().buildVertexLabel('reviewer').add()\n                \n// Edge Labels\nauthored = graph.schema().buildEdgeLabel('authored').add()\ncreated = graph.schema().buildEdgeLabel('created').add()\nincludes = graph.schema().buildEdgeLabel('includes').add()\nincludedIn = graph.schema().buildEdgeLabel('includedIn').add()\nrated = graph.schema().buildEdgeLabel('rated').add()\n                \n// Indexes\t\nratedByStars = reviewer.buildEdgeIndex('ratedByStars', 'rated').direction(OUT).byPropertyKey('stars').add()\nbyRecipe = recipe.buildVertexIndex('byRecipe').materialized().byPropertyKey('name').add()\nbyMeal = meal.buildVertexIndex('byMeal').materialized().byPropertyKey('name').add()\nbyIngredient = ingredient.buildVertexIndex('byIngredient').materialized().byPropertyKey('name').add()\nbyReviewer = reviewer.buildVertexIndex('byReviewer').materialized().byPropertyKey('name').add()\ngraph.schema().print()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ "name=[ingredient]", "name=[book]", "name=[meal]", "name=[reviewer]", "name=[author]", "name=[recipe]", "name=[byRecipe], type=[Materialized]", "name=[byMeal], type=[Materialized]", "name=[byIngredient], type=[Materialized]", "name=[byReviewer], type=[Materialized]", "dataType=[Text], name=[ISBN], cardinality=[Single]", "dataType=[Int], name=[year], cardinality=[Single]", "dataType=[Timestamp], name=[timestamp], cardinality=[Single]", "dataType=[Text], name=[gender], cardinality=[Single]", "dataType=[Text], name=[instructions], cardinality=[Single]", "dataType=[Text], name=[name], cardinality=[Single]", "dataType=[Text], name=[nickname], cardinality=[Multiple]", "dataType=[Int], name=[stars], cardinality=[Single]", "dataType=[Text], name=[comment], cardinality=[Single]", "dataType=[Int], name=[calories], cardinality=[Single]", "dataType=[Text], name=[amount], cardinality=[Single]", "dataType=[Smallint], name=[member_id], cardinality=[Single]", "dataType=[Int], name=[community_id], cardinality=[Single]", "dataType=[Int], name=[group_id], cardinality=[Single]", "name=[rated], directionality=[Bidirectional], cardinality=[Multiple]", "name=[includedIn], directionality=[Bidirectional], cardinality=[Multiple]", "name=[created], directionality=[Bidirectional], cardinality=[Multiple]", "name=[includes], directionality=[Bidirectional], cardinality=[Multiple]", "name=[authored], directionality=[Bidirectional], cardinality=[Multiple]", "name=[ratedByStars], directionality=[OUT]" ],
+      "type" : "STRING",
+      "truncated" : false,
+      "id" : "42f4fef4-cea1-44ae-bddd-182e1fee7cbd"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
+  }, {
+    "id" : "3d63e7e4-5e60-4cb8-898d-e38e2ddc8470",
+    "status" : "SUCCESS",
+    "code" : "// Generates all vertices and edges for the Recipe Toy Graph\n// Add all vertices and edges for Recipe Toy Graph\n\n// script = new File('/Users/lorinapoland/CLONES/graph-examples/food/Gremlin/generateAll.groovy').text; []\n// :> @script\n\n// author vertices\n\nVertex juliaChild = graph.addVertex(label, 'author', 'name','Julia Child', 'gender', 'F')\nVertex simoneBeck = graph.addVertex(label, 'author', 'name', 'Simone Beck', 'gender', 'F')\nVertex louisetteBertholie = graph.addVertex(label, 'author', 'name', 'Louisette Bertholie', 'gender', 'F')\nVertex patriciaSimon = graph.addVertex(label, 'author', 'name', 'Patricia Simon', 'gender', 'F')\nVertex aliceWaters = graph.addVertex(label, 'author', 'name', 'Alice Waters', 'gender', 'F')\nVertex patriciaCurtan = graph.addVertex(label, 'author', 'name', 'Patricia Curtan', 'gender', 'F')\nVertex kelsieKerr = graph.addVertex(label, 'author', 'name', 'Kelsie Kerr', 'gender', 'F')\nVertex fritzStreiff = graph.addVertex(label, 'author', 'name', 'Fritz Streiff', 'gender', 'M')\nVertex emerilLagasse = graph.addVertex(label, 'author', 'name', 'Emeril Lagasse', 'gender', 'M')\nVertex jamesBeard = graph.addVertex(label, 'author', 'name', 'James Beard', 'gender', 'M')\n\n// book vertices\n\nVertex artOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'name', 'The Art of French Cooking, Vol. 1', 'year', 1961)\nVertex simcasCuisine = graph.addVertex(label, 'book','name', \"Simca's Cuisine: 100 Classic French Recipes for Every Occasion\", 'year', 1972, 'ISBN', '0-394-40152-2')\nVertex frenchChefCookbook = graph.addVertex(label, 'book', 'name','The French Chef Cookbook', 'year',1968, 'ISBN', '0-394-40135-2')\nVertex artOfSimpleFood = graph.addVertex(label, 'book', 'name', 'The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution', 'year', 2007, 'ISBN', '0-307-33679-4')\n\n// recipe vertices\n\nVertex beefBourguignon = graph.addVertex(label, 'recipe', 'name', 'Beef Bourguignon', 'instructions', 'Braise the beef. Saute the onions and carrots. Add wine and cook in a dutch oven at 425 degrees for 1 hour.')\nVertex ratatouille = graph.addVertex(label, 'recipe', 'name', 'Rataouille', 'instructions', 'Peel and cut the egglant. Make sure you cut eggplant into lengthwise slices that are about 1-inch wide, 3-inches long, and 3/8-inch thick')\nVertex saladeNicoise = graph.addVertex(label, 'recipe', 'name', 'Salade Nicoise', 'instructions', 'Take a salad bowl or platter and line it with lettuce leaves, shortly before serving. Drizzle some olive oil on the leaves and dust them with salt.')\nVertex wildMushroomStroganoff = graph.addVertex(label, 'recipe', 'name', 'Wild Mushroom Stroganoff', 'instructions', 'Cook the egg noodles according to the package directions and keep warm. Heat 1 1/2 tablespoons of the oliveoil in a large saute pan over medium-high heat.')\nVertex spicyMeatloaf = graph.addVertex(label, 'recipe', 'name', 'Spicy Meatloaf', 'instructions', 'Preheat the oven to 375 degrees F. Cook bacon in a large skillet over medium heat until very crisp and fat has rendered, 8-10 minutes.')\nVertex oystersRockefeller = graph.addVertex(label, 'recipe', 'name', 'Oysters Rockefeller', 'instructions', 'Saute the shallots, celery, herbs, and seasonings in 3 tablespoons of the butter for 3 minutes. Add the watercress and let it wilt.')\nVertex carrotSoup = graph.addVertex(label, 'recipe', 'name', 'Carrot Soup', 'instructions', 'In a heavy-bottomed pot, melt the butter. When it starts to foam, add the onions and thyme and cook over medium-low heat until tender, about 10 minutes.')\nVertex roastPorkLoin = graph.addVertex(label, 'recipe', 'name', 'Roast Pork Loin', 'instructions', 'The day before, separate the meat from the ribs, stopping about 1 inch before the end of the bones. Season the pork liberally inside and out with salt and pepper and refrigerate overnight.')\n\n// ingredients vertices\n\nVertex beef = graph.addVertex(label, 'ingredient', 'name', 'beef')\nVertex onion = graph.addVertex(label, 'ingredient', 'name', 'onion')\nVertex mashedGarlic = graph.addVertex(label, 'ingredient', 'name', 'mashed garlic')\nVertex butter = graph.addVertex(label, 'ingredient', 'name', 'butter')\nVertex tomatoPaste = graph.addVertex(label, 'ingredient', 'name', 'tomato paste')\nVertex eggplant = graph.addVertex(label, 'ingredient', 'name', 'eggplant')\nVertex zucchini = graph.addVertex(label, 'ingredient', 'name', 'zucchini')\nVertex oliveOil = graph.addVertex(label, 'ingredient', 'name', 'olive oil')\nVertex yellowOnion = graph.addVertex(label, 'ingredient', 'name', 'yellow onion')\nVertex greenBean = graph.addVertex(label, 'ingredient', 'name', 'green beans')\nVertex tuna = graph.addVertex(label, 'ingredient', 'name', 'tuna')\nVertex tomato = graph.addVertex(label, 'ingredient', 'name', 'tomato')\nVertex hardBoiledEgg = graph.addVertex(label, 'ingredient', 'name', 'hard-boiled egg')\nVertex eggNoodles = graph.addVertex(label, 'ingredient', 'name', 'egg noodles')\nVertex mushroom = graph.addVertex(label, 'ingredient', 'name', 'mushrooms')\nVertex bacon = graph.addVertex(label, 'ingredient', 'name', 'bacon')\nVertex celery = graph.addVertex(label, 'ingredient', 'name', 'celery')\nVertex greenBellPepper = graph.addVertex(label, 'ingredient', 'name', 'green bell pepper')\nVertex groundBeef = graph.addVertex(label, 'ingredient', 'name', 'ground beef')\nVertex porkSausage = graph.addVertex(label, 'ingredient', 'name', 'pork sausage')\nVertex shallot = graph.addVertex(label, 'ingredient', 'name', 'shallots')\nVertex chervil = graph.addVertex(label, 'ingredient', 'name', 'chervil')\nVertex fennel = graph.addVertex(label, 'ingredient', 'name', 'fennel')\nVertex parsley = graph.addVertex(label, 'ingredient', 'name', 'parsley')\nVertex oyster = graph.addVertex(label, 'ingredient', 'name', 'oyster')\nVertex pernod = graph.addVertex(label, 'ingredient', 'name', 'Pernod')\nVertex thyme = graph.addVertex(label, 'ingredient', 'name', 'thyme')\nVertex carrot = graph.addVertex(label, 'ingredient', 'name', 'carrots')\nVertex chickenBroth = graph.addVertex(label, 'ingredient', 'name', 'chicken broth')\nVertex porkLoin = graph.addVertex(label, 'ingredient', 'name', 'pork loin')\nVertex redWine = graph.addVertex(label, 'ingredient', 'name', 'red wine')\n\n// author-book edges\n\njuliaChild.addEdge('authored', artOfFrenchCookingVolOne)\nsimoneBeck.addEdge('authored', artOfFrenchCookingVolOne)\nlouisetteBertholie.addEdge('authored', artOfFrenchCookingVolOne)\nsimoneBeck.addEdge('authored',simcasCuisine)\npatriciaSimon.addEdge('authored',simcasCuisine)\njuliaChild.addEdge('authored', frenchChefCookbook)\naliceWaters.addEdge('authored', artOfSimpleFood)\npatriciaCurtan.addEdge('authored', artOfSimpleFood)\nkelsieKerr.addEdge('authored', artOfSimpleFood)\nfritzStreiff.addEdge('authored', artOfSimpleFood)\n\n// author - recipe edges\n\njuliaChild.addEdge('created', beefBourguignon, 'year', 1961)\njuliaChild.addEdge('created', ratatouille, 'year', 1965)\njuliaChild.addEdge('created', saladeNicoise, 'year', 1962)\nemerilLagasse.addEdge('created', wildMushroomStroganoff, 'year', 2003)\nemerilLagasse.addEdge('created', spicyMeatloaf, 'year', 2000)\naliceWaters.addEdge('created', carrotSoup, 'year', 1995)\naliceWaters.addEdge('created', roastPorkLoin, 'year', 1996)\njamesBeard.addEdge('created', oystersRockefeller, 'year', 1970)\n\n// recipe - ingredient edges\n\nbeefBourguignon.addEdge('includes', beef, 'amount', '2 lbs')\nbeefBourguignon.addEdge('includes', onion, 'amount', '1 sliced')\nbeefBourguignon.addEdge('includes', mashedGarlic, 'amount', '2 cloves')\nbeefBourguignon.addEdge('includes', butter, 'amount', '3.5 Tbsp')\nbeefBourguignon.addEdge('includes', tomatoPaste, 'amount', '1 Tbsp')\nratatouille.addEdge('includes', eggplant, 'amount', '1 lb')\nratatouille.addEdge('includes', zucchini, 'amount', '1 lb')\nratatouille.addEdge('includes', mashedGarlic, 'amount', '2 cloves')\nratatouille.addEdge('includes', oliveOil, 'amount', '4-6 Tbsp')\nratatouille.addEdge('includes', yellowOnion, 'amount', '1 1/2 cups or 1/2 lb thinly sliced')\nsaladeNicoise.addEdge('includes', oliveOil, 'amount', '2-3 Tbsp')\nsaladeNicoise.addEdge('includes', greenBean, 'amount', '1 1/2 lbs blanched, trimmed')\nsaladeNicoise.addEdge('includes', tuna, 'amount', '8-10 ozs oil-packed, drained and flaked')\nsaladeNicoise.addEdge('includes', tomato, 'amount', '3 or 4 red, peeled, quartered, cored, and seasoned')\nsaladeNicoise.addEdge('includes', hardBoiledEgg, 'amount', '8 halved lengthwise')\nwildMushroomStroganoff.addEdge('includes', eggNoodles, 'amount', '16 ozs wide')\nwildMushroomStroganoff.addEdge('includes', mushroom, 'amount', '2 lbs wild or exotic, cleaned, stemmed, and sliced')\nwildMushroomStroganoff.addEdge('includes', yellowOnion, 'amount', '1 cup thinly sliced')\nspicyMeatloaf.addEdge('includes', bacon, 'amount', '3 ozs diced')\nspicyMeatloaf.addEdge('includes', onion, 'amount', '2 cups finely chopped')\nspicyMeatloaf.addEdge('includes', celery, 'amount', '2 cups finely chopped')\nspicyMeatloaf.addEdge('includes', greenBellPepper, 'amount', '1/4 cup finely chopped')\nspicyMeatloaf.addEdge('includes', porkSausage, 'amount', '3/4 lbs hot')\nspicyMeatloaf.addEdge('includes', groundBeef, 'amount', '1 1/2 lbs chuck')\noystersRockefeller.addEdge('includes', shallot, 'amount', '1/4 cup chopped')\noystersRockefeller.addEdge('includes', celery, 'amount', '1/4 cup chopped')\noystersRockefeller.addEdge('includes', chervil, 'amount', '1 tsp')\noystersRockefeller.addEdge('includes', fennel, 'amount', '1/3 cup chopped')\noystersRockefeller.addEdge('includes', parsley, 'amount', '1/3 cup chopped')\noystersRockefeller.addEdge('includes', oyster, 'amount', '2 dozen on the half shell')\noystersRockefeller.addEdge('includes', pernod, 'amount', '1/3 cup')\ncarrotSoup.addEdge('includes', butter, 'amount', '4 Tbsp')\ncarrotSoup.addEdge('includes', onion, 'amount', '2 medium sliced')\ncarrotSoup.addEdge('includes', thyme, 'amount', '1 sprig')\ncarrotSoup.addEdge('includes', carrot, 'amount', '2 1/2 lbs, peeled and sliced')\ncarrotSoup.addEdge('includes', chickenBroth, 'amount', '6 cups')\nroastPorkLoin.addEdge('includes', porkLoin, 'amount', '1 bone-in, 4-rib')\nroastPorkLoin.addEdge('includes', redWine, 'amount', '1/2 cup')\nroastPorkLoin.addEdge('includes', chickenBroth, 'amount', '1 cup')\n\n// book - recipe edges\n\nbeefBourguignon.addEdge('includedIn', artOfFrenchCookingVolOne)\nsaladeNicoise.addEdge('includedIn', artOfFrenchCookingVolOne)\ncarrotSoup.addEdge('includedIn', artOfSimpleFood)\nroastPorkLoin.addEdge('includedIn', artOfSimpleFood)\n\n// meal vertices\n\nVertex SaturdayFeast = graph.addVertex(label, 'meal', 'name', 'Saturday Feast', 'timestamp', Instant.parse('2015-11-30T00:00:00.00Z'), 'calories', 1000)\nVertex EverydayDinner = graph.addVertex(label, 'meal', 'name', 'EverydayDinner', 'timestamp', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 600)\nVertex JuliaDinner = graph.addVertex(label, 'meal', 'name', 'JuliaDinner', 'timestamp', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 900)\n\n// meal - recipe edges\n\nSaturdayFeast.addEdge('includedIn', beefBourguignon)\nSaturdayFeast.addEdge('includedIn', carrotSoup)\nSaturdayFeast.addEdge('includedIn', oystersRockefeller)\nEverydayDinner.addEdge('includedIn', carrotSoup)\nEverydayDinner.addEdge('includedIn', roastPorkLoin)\nJuliaDinner.addEdge('includedIn', beefBourguignon)\nJuliaDinner.addEdge('includedIn', saladeNicoise)\n\n// meal - book edges\n\nartOfSimpleFood.addEdge('includedIn', EverydayDinner)\nsimcasCuisine.addEdge('includedIn', SaturdayFeast)\nartOfFrenchCookingVolOne.addEdge('includedIn', JuliaDinner)\n\n// reviewer vertices\n\nVertex johnDoe = graph.addVertex(label, 'reviewer', 'name', 'John Doe')\nVertex johnSmith = graph.addVertex(label, 'reviewer', 'name', 'John Smith')\nVertex janeDoe = graph.addVertex(label, 'reviewer', 'name', 'Jane Doe')\nVertex sharonSmith = graph.addVertex(label, 'reviewer', 'name', 'Sharon Smith')\nVertex betsyJones = graph.addVertex(label, 'reviewer', 'name', 'Betsy Jones')\n\n// reviewer - recipe edges\n\njohnDoe.addEdge('rated', beefBourguignon, 'timestamp', Instant.parse('2014-01-01T00:00:00.00Z'), 'stars', 5, 'comment', 'Pretty tasty!')\njohnSmith.addEdge('rated', beefBourguignon, 'timestamp', Instant.parse('2014-01-23T00:00:00.00Z'), 'stars', 4)\njaneDoe.addEdge('rated', beefBourguignon, 'timestamp', Instant.parse('2014-02-01T00:00:00.00Z'), 'stars', 5, 'comment', 'Yummy!')\nsharonSmith.addEdge('rated', beefBourguignon, 'timestamp', Instant.parse('2015-01-01T00:00:00.00Z'), 'stars', 3, 'comment', 'It was okay.')\njohnDoe.addEdge('rated', spicyMeatloaf, 'timestamp', Instant.parse('2015-12-31T00:00:00.00Z'), 'stars', 4, 'comment', 'Really spicy - be careful!')\nsharonSmith.addEdge('rated', spicyMeatloaf, 'timestamp',Instant.parse('2014-07-23T00:00:00.00Z'), 'stars', 3, 'comment', 'Too spicy for me. Use less garlic.')\njaneDoe.addEdge('rated', carrotSoup, 'timestamp', Instant.parse('2015-12-30T00:00:00.00Z'), 'stars', 5, 'comment', 'Loved this soup! Yummy vegetarian!')\n",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ {
+        "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=45}, local_id=e78f0f92-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=7}, ~type=rated}",
+        "label" : "rated",
+        "type" : "edge",
+        "inVLabel" : "recipe",
+        "outVLabel" : "reviewer",
+        "inV" : "recipe:595241:7:0",
+        "outV" : "reviewer:595241:45:0",
+        "properties" : {
+          "comment" : "Loved this soup! Yummy vegetarian!",
+          "stars" : 5,
+          "timestamp" : "2015-12-30T00:00:00Z"
+        }
+      } ],
+      "type" : "EDGE",
+      "truncated" : false,
+      "graph" : {
+        "vertices" : [ {
+          "id" : "recipe:595241:7:0",
+          "label" : "recipe",
+          "type" : "vertex",
+          "properties" : {
+            "instructions" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=7}, local_id=00000000-0000-8032-0000-000000000000, ~type=instructions}",
+              "value" : "In a heavy-bottomed pot, melt the butter. When it starts to foam, add the onions and thyme and cook over medium-low heat until tender, about 10 minutes."
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=7}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Carrot Soup"
+            } ]
+          }
+        }, {
+          "id" : "reviewer:595241:45:0",
+          "label" : "reviewer",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=45}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Jane Doe"
+            } ]
+          }
+        } ],
+        "edges" : [ {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=45}, local_id=e78f0f92-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=7}, ~type=rated}",
+          "label" : "rated",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "reviewer",
+          "inV" : "recipe:595241:7:0",
+          "outV" : "reviewer:595241:45:0",
+          "properties" : {
+            "comment" : "Loved this soup! Yummy vegetarian!",
+            "stars" : 5,
+            "timestamp" : "2015-12-30T00:00:00Z"
+          }
+        } ]
+      },
+      "id" : "44c775f8-91b2-40e3-9bbc-30b033ad942d"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
+  }, {
+    "id" : "1dfd9b05-93bf-4e04-9e53-ed7e179227a4",
+    "status" : "SUCCESS",
+    "code" : "g.V()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ {
+        "id" : "meal:595241:41:0",
+        "label" : "meal",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=41}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "EverydayDinner"
+          } ],
+          "calories" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=41}, local_id=00000000-0000-8036-0000-000000000000, ~type=calories}",
+            "value" : 600
+          } ],
+          "timestamp" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=41}, local_id=00000000-0000-8034-0000-000000000000, ~type=timestamp}",
+            "value" : "2016-01-14T00:00:00Z"
+          } ]
+        }
+      }, {
+        "id" : "meal:595241:40:0",
+        "label" : "meal",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=40}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Saturday Feast"
+          } ],
+          "calories" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=40}, local_id=00000000-0000-8036-0000-000000000000, ~type=calories}",
+            "value" : 1000
+          } ],
+          "timestamp" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=40}, local_id=00000000-0000-8034-0000-000000000000, ~type=timestamp}",
+            "value" : "2015-11-30T00:00:00Z"
+          } ]
+        }
+      }, {
+        "id" : "meal:595241:42:0",
+        "label" : "meal",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=42}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "JuliaDinner"
+          } ],
+          "calories" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=42}, local_id=00000000-0000-8036-0000-000000000000, ~type=calories}",
+            "value" : 900
+          } ],
+          "timestamp" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=42}, local_id=00000000-0000-8034-0000-000000000000, ~type=timestamp}",
+            "value" : "2016-01-14T00:00:00Z"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:26:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=26}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "green bell pepper"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:28:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=28}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "pork sausage"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:35:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=35}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "thyme"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:27:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=27}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "ground beef"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:25:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=25}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "celery"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:31:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=31}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "fennel"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:24:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=24}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "bacon"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:19:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=19}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "tuna"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:38:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=38}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "pork loin"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:18:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=18}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "green beans"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:37:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=37}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "chicken broth"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:34:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=34}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Pernod"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:30:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=30}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "chervil"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:32:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=32}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "parsley"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:13:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=13}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "tomato paste"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:21:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=21}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "hard-boiled egg"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:39:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=39}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "red wine"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:14:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=14}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "eggplant"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:23:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=23}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "mushrooms"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:10:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=10}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "onion"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:9:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=9}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "beef"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:29:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=29}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "shallots"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:17:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=17}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "yellow onion"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:11:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=11}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "mashed garlic"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:36:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=36}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "carrots"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:33:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=33}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "oyster"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:22:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=22}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "egg noodles"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:16:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=16}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "olive oil"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:20:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=20}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "tomato"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:15:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=15}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "zucchini"
+          } ]
+        }
+      }, {
+        "id" : "ingredient:595241:12:0",
+        "label" : "ingredient",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=12}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "butter"
+          } ]
+        }
+      }, {
+        "id" : "author:595241:57:0",
+        "label" : "author",
+        "type" : "vertex",
+        "properties" : {
+          "gender" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=57}, local_id=00000000-0000-8031-0000-000000000000, ~type=gender}",
+            "value" : "M"
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=57}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "James Beard"
+          } ]
+        }
+      }, {
+        "id" : "author:595241:56:0",
+        "label" : "author",
+        "type" : "vertex",
+        "properties" : {
+          "gender" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=56}, local_id=00000000-0000-8031-0000-000000000000, ~type=gender}",
+            "value" : "M"
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=56}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Emeril Lagasse"
+          } ]
+        }
+      }, {
+        "id" : "author:595241:50:0",
+        "label" : "author",
+        "type" : "vertex",
+        "properties" : {
+          "gender" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=50}, local_id=00000000-0000-8031-0000-000000000000, ~type=gender}",
+            "value" : "F"
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=50}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Louisette Bertholie"
+          } ]
+        }
+      }, {
+        "id" : "author:595241:49:0",
+        "label" : "author",
+        "type" : "vertex",
+        "properties" : {
+          "gender" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=49}, local_id=00000000-0000-8031-0000-000000000000, ~type=gender}",
+            "value" : "F"
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=49}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Simone Beck"
+          } ]
+        }
+      }, {
+        "id" : "author:595241:52:0",
+        "label" : "author",
+        "type" : "vertex",
+        "properties" : {
+          "gender" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=52}, local_id=00000000-0000-8031-0000-000000000000, ~type=gender}",
+            "value" : "F"
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=52}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Alice Waters"
+          } ]
+        }
+      }, {
+        "id" : "author:595241:53:0",
+        "label" : "author",
+        "type" : "vertex",
+        "properties" : {
+          "gender" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=53}, local_id=00000000-0000-8031-0000-000000000000, ~type=gender}",
+            "value" : "F"
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=53}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Patricia Curtan"
+          } ]
+        }
+      }, {
+        "id" : "author:595241:55:0",
+        "label" : "author",
+        "type" : "vertex",
+        "properties" : {
+          "gender" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=55}, local_id=00000000-0000-8031-0000-000000000000, ~type=gender}",
+            "value" : "M"
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=55}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Fritz Streiff"
+          } ]
+        }
+      }, {
+        "id" : "author:595241:48:0",
+        "label" : "author",
+        "type" : "vertex",
+        "properties" : {
+          "gender" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=48}, local_id=00000000-0000-8031-0000-000000000000, ~type=gender}",
+            "value" : "F"
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=48}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Julia Child"
+          } ]
+        }
+      }, {
+        "id" : "author:595241:51:0",
+        "label" : "author",
+        "type" : "vertex",
+        "properties" : {
+          "gender" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=51}, local_id=00000000-0000-8031-0000-000000000000, ~type=gender}",
+            "value" : "F"
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=51}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Patricia Simon"
+          } ]
+        }
+      }, {
+        "id" : "author:595241:54:0",
+        "label" : "author",
+        "type" : "vertex",
+        "properties" : {
+          "gender" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=54}, local_id=00000000-0000-8031-0000-000000000000, ~type=gender}",
+            "value" : "F"
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=54}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Kelsie Kerr"
+          } ]
+        }
+      }, {
+        "id" : "book:595241:61:0",
+        "label" : "book",
+        "type" : "vertex",
+        "properties" : {
+          "ISBN" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=61}, local_id=00000000-0000-8035-0000-000000000000, ~type=ISBN}",
+            "value" : "0-307-33679-4"
+          } ],
+          "year" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=61}, local_id=00000000-0000-8033-0000-000000000000, ~type=year}",
+            "value" : 2007
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=61}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution"
+          } ]
+        }
+      }, {
+        "id" : "book:595241:58:0",
+        "label" : "book",
+        "type" : "vertex",
+        "properties" : {
+          "year" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=58}, local_id=00000000-0000-8033-0000-000000000000, ~type=year}",
+            "value" : 1961
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=58}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "The Art of French Cooking, Vol. 1"
+          } ]
+        }
+      }, {
+        "id" : "book:595241:59:0",
+        "label" : "book",
+        "type" : "vertex",
+        "properties" : {
+          "ISBN" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=59}, local_id=00000000-0000-8035-0000-000000000000, ~type=ISBN}",
+            "value" : "0-394-40152-2"
+          } ],
+          "year" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=59}, local_id=00000000-0000-8033-0000-000000000000, ~type=year}",
+            "value" : 1972
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=59}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Simca's Cuisine: 100 Classic French Recipes for Every Occasion"
+          } ]
+        }
+      }, {
+        "id" : "book:595241:60:0",
+        "label" : "book",
+        "type" : "vertex",
+        "properties" : {
+          "ISBN" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=60}, local_id=00000000-0000-8035-0000-000000000000, ~type=ISBN}",
+            "value" : "0-394-40135-2"
+          } ],
+          "year" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=60}, local_id=00000000-0000-8033-0000-000000000000, ~type=year}",
+            "value" : 1968
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=60}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "The French Chef Cookbook"
+          } ]
+        }
+      }, {
+        "id" : "recipe:595241:4:0",
+        "label" : "recipe",
+        "type" : "vertex",
+        "properties" : {
+          "instructions" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=4}, local_id=00000000-0000-8032-0000-000000000000, ~type=instructions}",
+            "value" : "Cook the egg noodles according to the package directions and keep warm. Heat 1 1/2 tablespoons of the oliveoil in a large saute pan over medium-high heat."
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=4}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Wild Mushroom Stroganoff"
+          } ]
+        }
+      }, {
+        "id" : "recipe:595241:1:0",
+        "label" : "recipe",
+        "type" : "vertex",
+        "properties" : {
+          "instructions" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=1}, local_id=00000000-0000-8032-0000-000000000000, ~type=instructions}",
+            "value" : "Braise the beef. Saute the onions and carrots. Add wine and cook in a dutch oven at 425 degrees for 1 hour."
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=1}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Beef Bourguignon"
+          } ]
+        }
+      }, {
+        "id" : "recipe:595241:8:0",
+        "label" : "recipe",
+        "type" : "vertex",
+        "properties" : {
+          "instructions" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=8}, local_id=00000000-0000-8032-0000-000000000000, ~type=instructions}",
+            "value" : "The day before, separate the meat from the ribs, stopping about 1 inch before the end of the bones. Season the pork liberally inside and out with salt and pepper and refrigerate overnight."
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=8}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Roast Pork Loin"
+          } ]
+        }
+      }, {
+        "id" : "recipe:595241:2:0",
+        "label" : "recipe",
+        "type" : "vertex",
+        "properties" : {
+          "instructions" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=2}, local_id=00000000-0000-8032-0000-000000000000, ~type=instructions}",
+            "value" : "Peel and cut the egglant. Make sure you cut eggplant into lengthwise slices that are about 1-inch wide, 3-inches long, and 3/8-inch thick"
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=2}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Rataouille"
+          } ]
+        }
+      }, {
+        "id" : "recipe:595241:3:0",
+        "label" : "recipe",
+        "type" : "vertex",
+        "properties" : {
+          "instructions" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=3}, local_id=00000000-0000-8032-0000-000000000000, ~type=instructions}",
+            "value" : "Take a salad bowl or platter and line it with lettuce leaves, shortly before serving. Drizzle some olive oil on the leaves and dust them with salt."
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=3}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Salade Nicoise"
+          } ]
+        }
+      }, {
+        "id" : "recipe:595241:6:0",
+        "label" : "recipe",
+        "type" : "vertex",
+        "properties" : {
+          "instructions" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=6}, local_id=00000000-0000-8032-0000-000000000000, ~type=instructions}",
+            "value" : "Saute the shallots, celery, herbs, and seasonings in 3 tablespoons of the butter for 3 minutes. Add the watercress and let it wilt."
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=6}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Oysters Rockefeller"
+          } ]
+        }
+      }, {
+        "id" : "recipe:595241:7:0",
+        "label" : "recipe",
+        "type" : "vertex",
+        "properties" : {
+          "instructions" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=7}, local_id=00000000-0000-8032-0000-000000000000, ~type=instructions}",
+            "value" : "In a heavy-bottomed pot, melt the butter. When it starts to foam, add the onions and thyme and cook over medium-low heat until tender, about 10 minutes."
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=7}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Carrot Soup"
+          } ]
+        }
+      }, {
+        "id" : "recipe:595241:5:0",
+        "label" : "recipe",
+        "type" : "vertex",
+        "properties" : {
+          "instructions" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=5}, local_id=00000000-0000-8032-0000-000000000000, ~type=instructions}",
+            "value" : "Preheat the oven to 375 degrees F. Cook bacon in a large skillet over medium heat until very crisp and fat has rendered, 8-10 minutes."
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=5}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Spicy Meatloaf"
+          } ]
+        }
+      }, {
+        "id" : "reviewer:595241:45:0",
+        "label" : "reviewer",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=45}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Jane Doe"
+          } ]
+        }
+      }, {
+        "id" : "reviewer:595241:44:0",
+        "label" : "reviewer",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=44}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "John Smith"
+          } ]
+        }
+      }, {
+        "id" : "reviewer:595241:43:0",
+        "label" : "reviewer",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=43}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "John Doe"
+          } ]
+        }
+      }, {
+        "id" : "reviewer:595241:46:0",
+        "label" : "reviewer",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=46}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Sharon Smith"
+          } ]
+        }
+      }, {
+        "id" : "reviewer:595241:47:0",
+        "label" : "reviewer",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=47}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+            "value" : "Betsy Jones"
+          } ]
+        }
+      } ],
+      "type" : "VERTEX",
+      "truncated" : false,
+      "graph" : {
+        "vertices" : [ {
+          "id" : "recipe:595241:3:0",
+          "label" : "recipe",
+          "type" : "vertex",
+          "properties" : {
+            "instructions" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=3}, local_id=00000000-0000-8032-0000-000000000000, ~type=instructions}",
+              "value" : "Take a salad bowl or platter and line it with lettuce leaves, shortly before serving. Drizzle some olive oil on the leaves and dust them with salt."
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=3}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Salade Nicoise"
+            } ]
+          }
+        }, {
+          "id" : "reviewer:595241:46:0",
+          "label" : "reviewer",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=46}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Sharon Smith"
+            } ]
+          }
+        }, {
+          "id" : "recipe:595241:1:0",
+          "label" : "recipe",
+          "type" : "vertex",
+          "properties" : {
+            "instructions" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=1}, local_id=00000000-0000-8032-0000-000000000000, ~type=instructions}",
+              "value" : "Braise the beef. Saute the onions and carrots. Add wine and cook in a dutch oven at 425 degrees for 1 hour."
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=1}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Beef Bourguignon"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:35:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=35}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "thyme"
+            } ]
+          }
+        }, {
+          "id" : "book:595241:61:0",
+          "label" : "book",
+          "type" : "vertex",
+          "properties" : {
+            "ISBN" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=61}, local_id=00000000-0000-8035-0000-000000000000, ~type=ISBN}",
+              "value" : "0-307-33679-4"
+            } ],
+            "year" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=61}, local_id=00000000-0000-8033-0000-000000000000, ~type=year}",
+              "value" : 2007
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=61}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:28:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=28}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "pork sausage"
+            } ]
+          }
+        }, {
+          "id" : "book:595241:58:0",
+          "label" : "book",
+          "type" : "vertex",
+          "properties" : {
+            "year" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=58}, local_id=00000000-0000-8033-0000-000000000000, ~type=year}",
+              "value" : 1961
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=58}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "The Art of French Cooking, Vol. 1"
+            } ]
+          }
+        }, {
+          "id" : "reviewer:595241:43:0",
+          "label" : "reviewer",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=43}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "John Doe"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:24:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=24}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "bacon"
+            } ]
+          }
+        }, {
+          "id" : "reviewer:595241:44:0",
+          "label" : "reviewer",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=44}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "John Smith"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:37:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=37}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "chicken broth"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:9:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=9}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "beef"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:17:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=17}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "yellow onion"
+            } ]
+          }
+        }, {
+          "id" : "author:595241:50:0",
+          "label" : "author",
+          "type" : "vertex",
+          "properties" : {
+            "gender" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=50}, local_id=00000000-0000-8031-0000-000000000000, ~type=gender}",
+              "value" : "F"
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=50}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Louisette Bertholie"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:30:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=30}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "chervil"
+            } ]
+          }
+        }, {
+          "id" : "book:595241:59:0",
+          "label" : "book",
+          "type" : "vertex",
+          "properties" : {
+            "ISBN" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=59}, local_id=00000000-0000-8035-0000-000000000000, ~type=ISBN}",
+              "value" : "0-394-40152-2"
+            } ],
+            "year" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=59}, local_id=00000000-0000-8033-0000-000000000000, ~type=year}",
+              "value" : 1972
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=59}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Simca's Cuisine: 100 Classic French Recipes for Every Occasion"
+            } ]
+          }
+        }, {
+          "id" : "meal:595241:40:0",
+          "label" : "meal",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=40}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Saturday Feast"
+            } ],
+            "calories" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=40}, local_id=00000000-0000-8036-0000-000000000000, ~type=calories}",
+              "value" : 1000
+            } ],
+            "timestamp" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=40}, local_id=00000000-0000-8034-0000-000000000000, ~type=timestamp}",
+              "value" : "2015-11-30T00:00:00Z"
+            } ]
+          }
+        }, {
+          "id" : "author:595241:57:0",
+          "label" : "author",
+          "type" : "vertex",
+          "properties" : {
+            "gender" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=57}, local_id=00000000-0000-8031-0000-000000000000, ~type=gender}",
+              "value" : "M"
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=57}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "James Beard"
+            } ]
+          }
+        }, {
+          "id" : "reviewer:595241:47:0",
+          "label" : "reviewer",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=47}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Betsy Jones"
+            } ]
+          }
+        }, {
+          "id" : "recipe:595241:7:0",
+          "label" : "recipe",
+          "type" : "vertex",
+          "properties" : {
+            "instructions" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=7}, local_id=00000000-0000-8032-0000-000000000000, ~type=instructions}",
+              "value" : "In a heavy-bottomed pot, melt the butter. When it starts to foam, add the onions and thyme and cook over medium-low heat until tender, about 10 minutes."
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=7}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Carrot Soup"
+            } ]
+          }
+        }, {
+          "id" : "reviewer:595241:45:0",
+          "label" : "reviewer",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=45}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Jane Doe"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:23:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=23}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "mushrooms"
+            } ]
+          }
+        }, {
+          "id" : "author:595241:55:0",
+          "label" : "author",
+          "type" : "vertex",
+          "properties" : {
+            "gender" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=55}, local_id=00000000-0000-8031-0000-000000000000, ~type=gender}",
+              "value" : "M"
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=55}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Fritz Streiff"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:27:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=27}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "ground beef"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:18:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=18}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "green beans"
+            } ]
+          }
+        }, {
+          "id" : "recipe:595241:5:0",
+          "label" : "recipe",
+          "type" : "vertex",
+          "properties" : {
+            "instructions" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=5}, local_id=00000000-0000-8032-0000-000000000000, ~type=instructions}",
+              "value" : "Preheat the oven to 375 degrees F. Cook bacon in a large skillet over medium heat until very crisp and fat has rendered, 8-10 minutes."
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=5}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Spicy Meatloaf"
+            } ]
+          }
+        }, {
+          "id" : "author:595241:53:0",
+          "label" : "author",
+          "type" : "vertex",
+          "properties" : {
+            "gender" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=53}, local_id=00000000-0000-8031-0000-000000000000, ~type=gender}",
+              "value" : "F"
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=53}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Patricia Curtan"
+            } ]
+          }
+        }, {
+          "id" : "recipe:595241:4:0",
+          "label" : "recipe",
+          "type" : "vertex",
+          "properties" : {
+            "instructions" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=4}, local_id=00000000-0000-8032-0000-000000000000, ~type=instructions}",
+              "value" : "Cook the egg noodles according to the package directions and keep warm. Heat 1 1/2 tablespoons of the oliveoil in a large saute pan over medium-high heat."
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=4}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Wild Mushroom Stroganoff"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:21:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=21}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "hard-boiled egg"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:26:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=26}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "green bell pepper"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:10:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=10}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "onion"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:34:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=34}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Pernod"
+            } ]
+          }
+        }, {
+          "id" : "author:595241:48:0",
+          "label" : "author",
+          "type" : "vertex",
+          "properties" : {
+            "gender" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=48}, local_id=00000000-0000-8031-0000-000000000000, ~type=gender}",
+              "value" : "F"
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=48}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Julia Child"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:14:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=14}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "eggplant"
+            } ]
+          }
+        }, {
+          "id" : "author:595241:56:0",
+          "label" : "author",
+          "type" : "vertex",
+          "properties" : {
+            "gender" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=56}, local_id=00000000-0000-8031-0000-000000000000, ~type=gender}",
+              "value" : "M"
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=56}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Emeril Lagasse"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:11:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=11}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "mashed garlic"
+            } ]
+          }
+        }, {
+          "id" : "recipe:595241:8:0",
+          "label" : "recipe",
+          "type" : "vertex",
+          "properties" : {
+            "instructions" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=8}, local_id=00000000-0000-8032-0000-000000000000, ~type=instructions}",
+              "value" : "The day before, separate the meat from the ribs, stopping about 1 inch before the end of the bones. Season the pork liberally inside and out with salt and pepper and refrigerate overnight."
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=8}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Roast Pork Loin"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:16:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=16}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "olive oil"
+            } ]
+          }
+        }, {
+          "id" : "book:595241:60:0",
+          "label" : "book",
+          "type" : "vertex",
+          "properties" : {
+            "ISBN" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=60}, local_id=00000000-0000-8035-0000-000000000000, ~type=ISBN}",
+              "value" : "0-394-40135-2"
+            } ],
+            "year" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=60}, local_id=00000000-0000-8033-0000-000000000000, ~type=year}",
+              "value" : 1968
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=60}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "The French Chef Cookbook"
+            } ]
+          }
+        }, {
+          "id" : "meal:595241:41:0",
+          "label" : "meal",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=41}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "EverydayDinner"
+            } ],
+            "calories" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=41}, local_id=00000000-0000-8036-0000-000000000000, ~type=calories}",
+              "value" : 600
+            } ],
+            "timestamp" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=41}, local_id=00000000-0000-8034-0000-000000000000, ~type=timestamp}",
+              "value" : "2016-01-14T00:00:00Z"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:13:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=13}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "tomato paste"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:22:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=22}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "egg noodles"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:25:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=25}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "celery"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:29:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=29}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "shallots"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:38:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=38}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "pork loin"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:12:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=12}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "butter"
+            } ]
+          }
+        }, {
+          "id" : "recipe:595241:6:0",
+          "label" : "recipe",
+          "type" : "vertex",
+          "properties" : {
+            "instructions" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=6}, local_id=00000000-0000-8032-0000-000000000000, ~type=instructions}",
+              "value" : "Saute the shallots, celery, herbs, and seasonings in 3 tablespoons of the butter for 3 minutes. Add the watercress and let it wilt."
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=6}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Oysters Rockefeller"
+            } ]
+          }
+        }, {
+          "id" : "author:595241:52:0",
+          "label" : "author",
+          "type" : "vertex",
+          "properties" : {
+            "gender" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=52}, local_id=00000000-0000-8031-0000-000000000000, ~type=gender}",
+              "value" : "F"
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=52}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Alice Waters"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:31:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=31}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "fennel"
+            } ]
+          }
+        }, {
+          "id" : "meal:595241:42:0",
+          "label" : "meal",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=42}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "JuliaDinner"
+            } ],
+            "calories" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=42}, local_id=00000000-0000-8036-0000-000000000000, ~type=calories}",
+              "value" : 900
+            } ],
+            "timestamp" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=42}, local_id=00000000-0000-8034-0000-000000000000, ~type=timestamp}",
+              "value" : "2016-01-14T00:00:00Z"
+            } ]
+          }
+        }, {
+          "id" : "author:595241:49:0",
+          "label" : "author",
+          "type" : "vertex",
+          "properties" : {
+            "gender" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=49}, local_id=00000000-0000-8031-0000-000000000000, ~type=gender}",
+              "value" : "F"
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=49}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Simone Beck"
+            } ]
+          }
+        }, {
+          "id" : "author:595241:54:0",
+          "label" : "author",
+          "type" : "vertex",
+          "properties" : {
+            "gender" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=54}, local_id=00000000-0000-8031-0000-000000000000, ~type=gender}",
+              "value" : "F"
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=54}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Kelsie Kerr"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:33:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=33}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "oyster"
+            } ]
+          }
+        }, {
+          "id" : "author:595241:51:0",
+          "label" : "author",
+          "type" : "vertex",
+          "properties" : {
+            "gender" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=51}, local_id=00000000-0000-8031-0000-000000000000, ~type=gender}",
+              "value" : "F"
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=51}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Patricia Simon"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:15:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=15}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "zucchini"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:19:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=19}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "tuna"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:20:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=20}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "tomato"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:32:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=32}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "parsley"
+            } ]
+          }
+        }, {
+          "id" : "recipe:595241:2:0",
+          "label" : "recipe",
+          "type" : "vertex",
+          "properties" : {
+            "instructions" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=2}, local_id=00000000-0000-8032-0000-000000000000, ~type=instructions}",
+              "value" : "Peel and cut the egglant. Make sure you cut eggplant into lengthwise slices that are about 1-inch wide, 3-inches long, and 3/8-inch thick"
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=2}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "Rataouille"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:39:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=39}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "red wine"
+            } ]
+          }
+        }, {
+          "id" : "ingredient:595241:36:0",
+          "label" : "ingredient",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=36}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "value" : "carrots"
+            } ]
+          }
+        } ],
+        "edges" : [ {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=1}, local_id=e78e2535-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=12}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:12:0",
+          "outV" : "recipe:595241:1:0",
+          "properties" : {
+            "amount" : "3.5 Tbsp"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=61}, local_id=e78ec177-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=meal, group_id=41}, ~type=includedIn}",
+          "label" : "includedIn",
+          "type" : "edge",
+          "inVLabel" : "meal",
+          "outVLabel" : "book",
+          "inV" : "meal:595241:41:0",
+          "outV" : "book:595241:61:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=51}, local_id=e78dfe24-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=book, group_id=59}, ~type=authored}",
+          "label" : "authored",
+          "type" : "edge",
+          "inVLabel" : "book",
+          "outVLabel" : "author",
+          "inV" : "book:595241:59:0",
+          "outV" : "author:595241:51:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=56}, local_id=e78dfe2d-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=4}, ~type=created}",
+          "label" : "created",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "author",
+          "inV" : "recipe:595241:4:0",
+          "outV" : "author:595241:56:0",
+          "properties" : {
+            "year" : 2003
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=45}, local_id=e78f0f92-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=7}, ~type=rated}",
+          "label" : "rated",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "reviewer",
+          "inV" : "recipe:595241:7:0",
+          "outV" : "reviewer:595241:45:0",
+          "properties" : {
+            "comment" : "Loved this soup! Yummy vegetarian!",
+            "stars" : 5,
+            "timestamp" : "2015-12-30T00:00:00Z"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=43}, local_id=e78f0f90-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=5}, ~type=rated}",
+          "label" : "rated",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "reviewer",
+          "inV" : "recipe:595241:5:0",
+          "outV" : "reviewer:595241:43:0",
+          "properties" : {
+            "comment" : "Really spicy - be careful!",
+            "stars" : 4,
+            "timestamp" : "2015-12-31T00:00:00Z"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=5}, local_id=e78e2544-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=24}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:24:0",
+          "outV" : "recipe:595241:5:0",
+          "properties" : {
+            "amount" : "3 ozs diced"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=7}, local_id=e78e4c55-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=book, group_id=61}, ~type=includedIn}",
+          "label" : "includedIn",
+          "type" : "edge",
+          "inVLabel" : "book",
+          "outVLabel" : "recipe",
+          "inV" : "book:595241:61:0",
+          "outV" : "recipe:595241:7:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=6}, local_id=e78e4c46-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=30}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:30:0",
+          "outV" : "recipe:595241:6:0",
+          "properties" : {
+            "amount" : "1 tsp"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=5}, local_id=e78e4c42-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=28}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:28:0",
+          "outV" : "recipe:595241:5:0",
+          "properties" : {
+            "amount" : "3/4 lbs hot"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=5}, local_id=e78e4c41-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=26}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:26:0",
+          "outV" : "recipe:595241:5:0",
+          "properties" : {
+            "amount" : "1/4 cup finely chopped"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=45}, local_id=e78ee882-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=1}, ~type=rated}",
+          "label" : "rated",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "reviewer",
+          "inV" : "recipe:595241:1:0",
+          "outV" : "reviewer:595241:45:0",
+          "properties" : {
+            "comment" : "Yummy!",
+            "stars" : 5,
+            "timestamp" : "2014-02-01T00:00:00Z"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=55}, local_id=e78dfe29-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=book, group_id=61}, ~type=authored}",
+          "label" : "authored",
+          "type" : "edge",
+          "inVLabel" : "book",
+          "outVLabel" : "author",
+          "inV" : "book:595241:61:0",
+          "outV" : "author:595241:55:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=1}, local_id=e78e4c53-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=book, group_id=58}, ~type=includedIn}",
+          "label" : "includedIn",
+          "type" : "edge",
+          "inVLabel" : "book",
+          "outVLabel" : "recipe",
+          "inV" : "book:595241:58:0",
+          "outV" : "recipe:595241:1:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=8}, local_id=e78e4c52-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=37}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:37:0",
+          "outV" : "recipe:595241:8:0",
+          "properties" : {
+            "amount" : "1 cup"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=46}, local_id=e78ee883-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=1}, ~type=rated}",
+          "label" : "rated",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "reviewer",
+          "inV" : "recipe:595241:1:0",
+          "outV" : "reviewer:595241:46:0",
+          "properties" : {
+            "comment" : "It was okay.",
+            "stars" : 3,
+            "timestamp" : "2015-01-01T00:00:00Z"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=5}, local_id=e78e4c40-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=25}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:25:0",
+          "outV" : "recipe:595241:5:0",
+          "properties" : {
+            "amount" : "2 cups finely chopped"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=3}, local_id=e78e253d-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=18}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:18:0",
+          "outV" : "recipe:595241:3:0",
+          "properties" : {
+            "amount" : "1 1/2 lbs blanched, trimmed"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=6}, local_id=e78e4c47-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=31}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:31:0",
+          "outV" : "recipe:595241:6:0",
+          "properties" : {
+            "amount" : "1/3 cup chopped"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=53}, local_id=e78dfe27-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=book, group_id=61}, ~type=authored}",
+          "label" : "authored",
+          "type" : "edge",
+          "inVLabel" : "book",
+          "outVLabel" : "author",
+          "inV" : "book:595241:61:0",
+          "outV" : "author:595241:53:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=6}, local_id=e78e4c49-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=33}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:33:0",
+          "outV" : "recipe:595241:6:0",
+          "properties" : {
+            "amount" : "2 dozen on the half shell"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=41}, local_id=e78ec174-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=8}, ~type=includedIn}",
+          "label" : "includedIn",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "meal",
+          "inV" : "recipe:595241:8:0",
+          "outV" : "meal:595241:41:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=4}, local_id=e78e2543-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=17}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:17:0",
+          "outV" : "recipe:595241:4:0",
+          "properties" : {
+            "amount" : "1 cup thinly sliced"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=49}, local_id=e78dfe21-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=book, group_id=58}, ~type=authored}",
+          "label" : "authored",
+          "type" : "edge",
+          "inVLabel" : "book",
+          "outVLabel" : "author",
+          "inV" : "book:595241:58:0",
+          "outV" : "author:595241:49:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=50}, local_id=e78dfe22-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=book, group_id=58}, ~type=authored}",
+          "label" : "authored",
+          "type" : "edge",
+          "inVLabel" : "book",
+          "outVLabel" : "author",
+          "inV" : "book:595241:58:0",
+          "outV" : "author:595241:50:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=40}, local_id=e78ec171-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=7}, ~type=includedIn}",
+          "label" : "includedIn",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "meal",
+          "inV" : "recipe:595241:7:0",
+          "outV" : "meal:595241:40:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=1}, local_id=e78e2536-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=13}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:13:0",
+          "outV" : "recipe:595241:1:0",
+          "properties" : {
+            "amount" : "1 Tbsp"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=5}, local_id=e78e2545-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=10}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:10:0",
+          "outV" : "recipe:595241:5:0",
+          "properties" : {
+            "amount" : "2 cups finely chopped"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=48}, local_id=e78dfe25-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=book, group_id=60}, ~type=authored}",
+          "label" : "authored",
+          "type" : "edge",
+          "inVLabel" : "book",
+          "outVLabel" : "author",
+          "inV" : "book:595241:60:0",
+          "outV" : "author:595241:48:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=52}, local_id=e78dfe26-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=book, group_id=61}, ~type=authored}",
+          "label" : "authored",
+          "type" : "edge",
+          "inVLabel" : "book",
+          "outVLabel" : "author",
+          "inV" : "book:595241:61:0",
+          "outV" : "author:595241:52:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=7}, local_id=e78e4c4d-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=35}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:35:0",
+          "outV" : "recipe:595241:7:0",
+          "properties" : {
+            "amount" : "1 sprig"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=43}, local_id=e78ee880-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=1}, ~type=rated}",
+          "label" : "rated",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "reviewer",
+          "inV" : "recipe:595241:1:0",
+          "outV" : "reviewer:595241:43:0",
+          "properties" : {
+            "comment" : "Pretty tasty!",
+            "stars" : 5,
+            "timestamp" : "2014-01-01T00:00:00Z"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=7}, local_id=e78e4c4f-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=37}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:37:0",
+          "outV" : "recipe:595241:7:0",
+          "properties" : {
+            "amount" : "6 cups"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=44}, local_id=e78ee881-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=1}, ~type=rated}",
+          "label" : "rated",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "reviewer",
+          "inV" : "recipe:595241:1:0",
+          "outV" : "reviewer:595241:44:0",
+          "properties" : {
+            "stars" : 4,
+            "timestamp" : "2014-01-23T00:00:00Z"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=4}, local_id=e78e2541-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=22}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:22:0",
+          "outV" : "recipe:595241:4:0",
+          "properties" : {
+            "amount" : "16 ozs wide"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=42}, local_id=e78ec176-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=3}, ~type=includedIn}",
+          "label" : "includedIn",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "meal",
+          "inV" : "recipe:595241:3:0",
+          "outV" : "meal:595241:42:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=6}, local_id=e78e4c45-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=25}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:25:0",
+          "outV" : "recipe:595241:6:0",
+          "properties" : {
+            "amount" : "1/4 cup chopped"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=46}, local_id=e78f0f91-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=5}, ~type=rated}",
+          "label" : "rated",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "reviewer",
+          "inV" : "recipe:595241:5:0",
+          "outV" : "reviewer:595241:46:0",
+          "properties" : {
+            "comment" : "Too spicy for me. Use less garlic.",
+            "stars" : 3,
+            "timestamp" : "2014-07-23T00:00:00Z"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=2}, local_id=e78e253a-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=16}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:16:0",
+          "outV" : "recipe:595241:2:0",
+          "properties" : {
+            "amount" : "4-6 Tbsp"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=1}, local_id=e78e2534-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=11}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:11:0",
+          "outV" : "recipe:595241:1:0",
+          "properties" : {
+            "amount" : "2 cloves"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=1}, local_id=e78e2533-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=10}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:10:0",
+          "outV" : "recipe:595241:1:0",
+          "properties" : {
+            "amount" : "1 sliced"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=6}, local_id=e78e4c4a-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=34}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:34:0",
+          "outV" : "recipe:595241:6:0",
+          "properties" : {
+            "amount" : "1/3 cup"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=52}, local_id=e78dfe2f-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=7}, ~type=created}",
+          "label" : "created",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "author",
+          "inV" : "recipe:595241:7:0",
+          "outV" : "author:595241:52:0",
+          "properties" : {
+            "year" : 1995
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=5}, local_id=e78e4c43-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=27}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:27:0",
+          "outV" : "recipe:595241:5:0",
+          "properties" : {
+            "amount" : "1 1/2 lbs chuck"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=7}, local_id=e78e4c4c-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=10}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:10:0",
+          "outV" : "recipe:595241:7:0",
+          "properties" : {
+            "amount" : "2 medium sliced"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=57}, local_id=e78e2531-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=6}, ~type=created}",
+          "label" : "created",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "author",
+          "inV" : "recipe:595241:6:0",
+          "outV" : "author:595241:57:0",
+          "properties" : {
+            "year" : 1970
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=40}, local_id=e78ec172-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=6}, ~type=includedIn}",
+          "label" : "includedIn",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "meal",
+          "inV" : "recipe:595241:6:0",
+          "outV" : "meal:595241:40:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=3}, local_id=e78e253e-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=19}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:19:0",
+          "outV" : "recipe:595241:3:0",
+          "properties" : {
+            "amount" : "8-10 ozs oil-packed, drained and flaked"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=59}, local_id=e78ec178-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=meal, group_id=40}, ~type=includedIn}",
+          "label" : "includedIn",
+          "type" : "edge",
+          "inVLabel" : "meal",
+          "outVLabel" : "book",
+          "inV" : "meal:595241:40:0",
+          "outV" : "book:595241:59:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=8}, local_id=e78e4c56-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=book, group_id=61}, ~type=includedIn}",
+          "label" : "includedIn",
+          "type" : "edge",
+          "inVLabel" : "book",
+          "outVLabel" : "recipe",
+          "inV" : "book:595241:61:0",
+          "outV" : "recipe:595241:8:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=52}, local_id=e78e2530-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=8}, ~type=created}",
+          "label" : "created",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "author",
+          "inV" : "recipe:595241:8:0",
+          "outV" : "author:595241:52:0",
+          "properties" : {
+            "year" : 1996
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=41}, local_id=e78ec173-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=7}, ~type=includedIn}",
+          "label" : "includedIn",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "meal",
+          "inV" : "recipe:595241:7:0",
+          "outV" : "meal:595241:41:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=48}, local_id=e78dfe2b-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=2}, ~type=created}",
+          "label" : "created",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "author",
+          "inV" : "recipe:595241:2:0",
+          "outV" : "author:595241:48:0",
+          "properties" : {
+            "year" : 1965
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=4}, local_id=e78e2542-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=23}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:23:0",
+          "outV" : "recipe:595241:4:0",
+          "properties" : {
+            "amount" : "2 lbs wild or exotic, cleaned, stemmed, and sliced"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=49}, local_id=e78dfe23-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=book, group_id=59}, ~type=authored}",
+          "label" : "authored",
+          "type" : "edge",
+          "inVLabel" : "book",
+          "outVLabel" : "author",
+          "inV" : "book:595241:59:0",
+          "outV" : "author:595241:49:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=56}, local_id=e78dfe2e-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=5}, ~type=created}",
+          "label" : "created",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "author",
+          "inV" : "recipe:595241:5:0",
+          "outV" : "author:595241:56:0",
+          "properties" : {
+            "year" : 2000
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=48}, local_id=e78dfe2a-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=1}, ~type=created}",
+          "label" : "created",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "author",
+          "inV" : "recipe:595241:1:0",
+          "outV" : "author:595241:48:0",
+          "properties" : {
+            "year" : 1961
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=3}, local_id=e78e253c-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=16}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:16:0",
+          "outV" : "recipe:595241:3:0",
+          "properties" : {
+            "amount" : "2-3 Tbsp"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=2}, local_id=e78e2538-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=15}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:15:0",
+          "outV" : "recipe:595241:2:0",
+          "properties" : {
+            "amount" : "1 lb"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=54}, local_id=e78dfe28-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=book, group_id=61}, ~type=authored}",
+          "label" : "authored",
+          "type" : "edge",
+          "inVLabel" : "book",
+          "outVLabel" : "author",
+          "inV" : "book:595241:61:0",
+          "outV" : "author:595241:54:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=40}, local_id=e78ec170-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=1}, ~type=includedIn}",
+          "label" : "includedIn",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "meal",
+          "inV" : "recipe:595241:1:0",
+          "outV" : "meal:595241:40:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=6}, local_id=e78e4c44-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=29}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:29:0",
+          "outV" : "recipe:595241:6:0",
+          "properties" : {
+            "amount" : "1/4 cup chopped"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=2}, local_id=e78e2537-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=14}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:14:0",
+          "outV" : "recipe:595241:2:0",
+          "properties" : {
+            "amount" : "1 lb"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=3}, local_id=e78e2540-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=21}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:21:0",
+          "outV" : "recipe:595241:3:0",
+          "properties" : {
+            "amount" : "8 halved lengthwise"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=8}, local_id=e78e4c50-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=38}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:38:0",
+          "outV" : "recipe:595241:8:0",
+          "properties" : {
+            "amount" : "1 bone-in, 4-rib"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=3}, local_id=e78e4c54-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=book, group_id=58}, ~type=includedIn}",
+          "label" : "includedIn",
+          "type" : "edge",
+          "inVLabel" : "book",
+          "outVLabel" : "recipe",
+          "inV" : "book:595241:58:0",
+          "outV" : "recipe:595241:3:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=6}, local_id=e78e4c48-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=32}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:32:0",
+          "outV" : "recipe:595241:6:0",
+          "properties" : {
+            "amount" : "1/3 cup chopped"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=48}, local_id=e78dfe20-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=book, group_id=58}, ~type=authored}",
+          "label" : "authored",
+          "type" : "edge",
+          "inVLabel" : "book",
+          "outVLabel" : "author",
+          "inV" : "book:595241:58:0",
+          "outV" : "author:595241:48:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=8}, local_id=e78e4c51-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=39}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:39:0",
+          "outV" : "recipe:595241:8:0",
+          "properties" : {
+            "amount" : "1/2 cup"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=author, group_id=48}, local_id=e78dfe2c-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=3}, ~type=created}",
+          "label" : "created",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "author",
+          "inV" : "recipe:595241:3:0",
+          "outV" : "author:595241:48:0",
+          "properties" : {
+            "year" : 1962
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=2}, local_id=e78e253b-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=17}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:17:0",
+          "outV" : "recipe:595241:2:0",
+          "properties" : {
+            "amount" : "1 1/2 cups or 1/2 lb thinly sliced"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=2}, local_id=e78e2539-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=11}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:11:0",
+          "outV" : "recipe:595241:2:0",
+          "properties" : {
+            "amount" : "2 cloves"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=1}, local_id=e78e2532-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=9}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:9:0",
+          "outV" : "recipe:595241:1:0",
+          "properties" : {
+            "amount" : "2 lbs"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=7}, local_id=e78e4c4b-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=12}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:12:0",
+          "outV" : "recipe:595241:7:0",
+          "properties" : {
+            "amount" : "4 Tbsp"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=book, group_id=58}, local_id=e78ec179-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=meal, group_id=42}, ~type=includedIn}",
+          "label" : "includedIn",
+          "type" : "edge",
+          "inVLabel" : "meal",
+          "outVLabel" : "book",
+          "inV" : "meal:595241:42:0",
+          "outV" : "book:595241:58:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=7}, local_id=e78e4c4e-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=36}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:36:0",
+          "outV" : "recipe:595241:7:0",
+          "properties" : {
+            "amount" : "2 1/2 lbs, peeled and sliced"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=meal, group_id=42}, local_id=e78ec175-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=1}, ~type=includedIn}",
+          "label" : "includedIn",
+          "type" : "edge",
+          "inVLabel" : "recipe",
+          "outVLabel" : "meal",
+          "inV" : "recipe:595241:1:0",
+          "outV" : "meal:595241:42:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=3}, local_id=e78e253f-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=ingredient, group_id=20}, ~type=includes}",
+          "label" : "includes",
+          "type" : "edge",
+          "inVLabel" : "ingredient",
+          "outVLabel" : "recipe",
+          "inV" : "ingredient:595241:20:0",
+          "outV" : "recipe:595241:3:0",
+          "properties" : {
+            "amount" : "3 or 4 red, peeled, quartered, cored, and seasoned"
+          }
+        } ]
+      },
+      "id" : "d8ccad31-8505-41f1-89fb-b3a54d2dcb9d"
+    },
+    "msg" : null,
+    "dataViewType" : "GRAPH",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      },
+      "GRAPH" : {
+        "labelTemplates" : { },
+        "defaultLabelTemplate" : "{{label}}[{{id}}]",
+        "requestId" : "d8ccad31-8505-41f1-89fb-b3a54d2dcb9d",
+        "positions" : {
+          "recipe:595241:3:0" : {
+            "x" : 372,
+            "y" : -409
+          },
+          "reviewer:595241:46:0" : {
+            "x" : -117,
+            "y" : -82
+          },
+          "recipe:595241:1:0" : {
+            "x" : 170,
+            "y" : 12
+          },
+          "ingredient:595241:35:0" : {
+            "x" : -237,
+            "y" : 109
+          },
+          "book:595241:61:0" : {
+            "x" : -252,
+            "y" : 371
+          },
+          "ingredient:595241:28:0" : {
+            "x" : -714,
+            "y" : 29
+          },
+          "book:595241:58:0" : {
+            "x" : 245,
+            "y" : -209
+          },
+          "reviewer:595241:43:0" : {
+            "x" : -103,
+            "y" : -136
+          },
+          "ingredient:595241:24:0" : {
+            "x" : -575,
+            "y" : -247
+          },
+          "reviewer:595241:44:0" : {
+            "x" : 347,
+            "y" : -221
+          },
+          "ingredient:595241:37:0" : {
+            "x" : -123,
+            "y" : 618
+          },
+          "ingredient:595241:9:0" : {
+            "x" : 142,
+            "y" : -273
+          },
+          "ingredient:595241:17:0" : {
+            "x" : -265,
+            "y" : -727
+          },
+          "author:595241:50:0" : {
+            "x" : 505,
+            "y" : -310
+          },
+          "ingredient:595241:30:0" : {
+            "x" : 230,
+            "y" : 480
+          },
+          "book:595241:59:0" : {
+            "x" : 240,
+            "y" : -1
+          },
+          "meal:595241:40:0" : {
+            "x" : -85,
+            "y" : 16
+          },
+          "author:595241:57:0" : {
+            "x" : 445,
+            "y" : 182
+          },
+          "reviewer:595241:47:0" : {
+            "x" : 16,
+            "y" : 7
+          },
+          "recipe:595241:7:0" : {
+            "x" : -18,
+            "y" : 297
+          },
+          "reviewer:595241:45:0" : {
+            "x" : -120,
+            "y" : -13
+          },
+          "ingredient:595241:23:0" : {
+            "x" : -591,
+            "y" : -468
+          },
+          "author:595241:55:0" : {
+            "x" : -222,
+            "y" : 665
+          },
+          "ingredient:595241:27:0" : {
+            "x" : -401,
+            "y" : -294
+          },
+          "ingredient:595241:18:0" : {
+            "x" : 667,
+            "y" : -425
+          },
+          "recipe:595241:5:0" : {
+            "x" : -402,
+            "y" : -6
+          },
+          "author:595241:53:0" : {
+            "x" : -532,
+            "y" : 252
+          },
+          "recipe:595241:4:0" : {
+            "x" : -297,
+            "y" : -435
+          },
+          "ingredient:595241:21:0" : {
+            "x" : 436,
+            "y" : -699
+          },
+          "ingredient:595241:26:0" : {
+            "x" : -681,
+            "y" : -131
+          },
+          "ingredient:595241:10:0" : {
+            "x" : -118,
+            "y" : 72
+          },
+          "ingredient:595241:34:0" : {
+            "x" : 435,
+            "y" : 277
+          },
+          "author:595241:48:0" : {
+            "x" : 46,
+            "y" : -312
+          },
+          "ingredient:595241:14:0" : {
+            "x" : 83,
+            "y" : -861
+          },
+          "author:595241:56:0" : {
+            "x" : -160,
+            "y" : -189
+          },
+          "ingredient:595241:11:0" : {
+            "x" : 2,
+            "y" : -256
+          },
+          "recipe:595241:8:0" : {
+            "x" : -423,
+            "y" : 514
+          },
+          "ingredient:595241:16:0" : {
+            "x" : 268,
+            "y" : -687
+          },
+          "book:595241:60:0" : {
+            "x" : 165,
+            "y" : -573
+          },
+          "meal:595241:41:0" : {
+            "x" : -113,
+            "y" : 577
+          },
+          "ingredient:595241:13:0" : {
+            "x" : 462,
+            "y" : 27
+          },
+          "ingredient:595241:22:0" : {
+            "x" : -481,
+            "y" : -664
+          },
+          "ingredient:595241:25:0" : {
+            "x" : -150,
+            "y" : 171
+          },
+          "ingredient:595241:29:0" : {
+            "x" : 399,
+            "y" : 362
+          },
+          "ingredient:595241:38:0" : {
+            "x" : -641,
+            "y" : 732
+          },
+          "ingredient:595241:12:0" : {
+            "x" : -158,
+            "y" : 24
+          },
+          "recipe:595241:6:0" : {
+            "x" : 153,
+            "y" : 192
+          },
+          "author:595241:52:0" : {
+            "x" : -340,
+            "y" : 177
+          },
+          "ingredient:595241:31:0" : {
+            "x" : 120,
+            "y" : 491
+          },
+          "meal:595241:42:0" : {
+            "x" : 467,
+            "y" : -93
+          },
+          "author:595241:49:0" : {
+            "x" : 535,
+            "y" : -114
+          },
+          "author:595241:54:0" : {
+            "x" : -553,
+            "y" : 421
+          },
+          "ingredient:595241:33:0" : {
+            "x" : 325,
+            "y" : 433
+          },
+          "author:595241:51:0" : {
+            "x" : 531,
+            "y" : 82
+          },
+          "ingredient:595241:15:0" : {
+            "x" : -125,
+            "y" : -852
+          },
+          "ingredient:595241:19:0" : {
+            "x" : 592,
+            "y" : -605
+          },
+          "ingredient:595241:20:0" : {
+            "x" : 624,
+            "y" : -250
+          },
+          "ingredient:595241:32:0" : {
+            "x" : -8,
+            "y" : 443
+          },
+          "recipe:595241:2:0" : {
+            "x" : -10,
+            "y" : -573
+          },
+          "ingredient:595241:39:0" : {
+            "x" : -216,
+            "y" : 753
+          },
+          "ingredient:595241:36:0" : {
+            "x" : -317,
+            "y" : 266
+          }
+        },
+        "position" : null,
+        "scale" : null
+      }
+    }
+  }, {
+    "id" : "ec828f61-2235-4995-a016-541c674d640c",
+    "status" : "ERROR",
+    "code" : "graph.schema().buildPropertyKey('nationality', String).add()\ngraph.schema().vertexLabel('author').addPropertyKey('nationality')",
+    "language" : "gremlin",
+    "result" : null,
+    "msg" : "org.apache.tinkerpop.gremlin.driver.exception.ResponseException: Property 'nationality' was already defined",
+    "dataViewType" : null,
+    "viewSettings" : null
+  }, {
+    "id" : "5ad1fefc-ed65-4bfd-858e-809f14abd6fd",
+    "status" : "SUCCESS",
+    "code" : " g.V().has('author','name','Julia Child').property('nationality','American')\n g.V().hasLabel('author').valueMap()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ {
+        "gender" : [ "M" ],
+        "name" : [ "James Beard" ]
+      }, {
+        "gender" : [ "M" ],
+        "name" : [ "Emeril Lagasse" ]
+      }, {
+        "gender" : [ "F" ],
+        "name" : [ "Louisette Bertholie" ]
+      }, {
+        "gender" : [ "F" ],
+        "name" : [ "Simone Beck" ]
+      }, {
+        "gender" : [ "F" ],
+        "name" : [ "Alice Waters" ]
+      }, {
+        "gender" : [ "F" ],
+        "name" : [ "Patricia Curtan" ]
+      }, {
+        "gender" : [ "M" ],
+        "name" : [ "Fritz Streiff" ]
+      }, {
+        "gender" : [ "F" ],
+        "nationality" : [ "American" ],
+        "name" : [ "Julia Child" ]
+      }, {
+        "gender" : [ "F" ],
+        "name" : [ "Patricia Simon" ]
+      }, {
+        "gender" : [ "F" ],
+        "name" : [ "Kelsie Kerr" ]
+      } ],
+      "type" : "MAP",
+      "truncated" : false,
+      "id" : "5a4c0e5e-97e9-4682-a667-c83fa0cd9b12"
+    },
+    "msg" : null,
+    "dataViewType" : "RAW",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
+  }, {
+    "id" : "da75835e-fd0f-469a-bcf0-708f1673255d",
+    "status" : "SUCCESS",
+    "code" : "graph.schema().vertexLabel('author').toString()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ "{\n  \"id\" : 13,\n  \"name\" : \"author\",\n  \"propertyKeys\" : [ {\n    \"id\" : 32826,\n    \"name\" : \"community_id\"\n  }, {\n    \"id\" : 32827,\n    \"name\" : \"group_id\"\n  }, {\n    \"id\" : 32828,\n    \"name\" : \"member_id\"\n  }, {\n    \"id\" : 32839,\n    \"name\" : \"nationality\"\n  }, {\n    \"id\" : 32815,\n    \"name\" : \"name\"\n  }, {\n    \"id\" : 32817,\n    \"name\" : \"gender\"\n  } ],\n  \"edgeLabels\" : [ {\n    \"id\" : 32829,\n    \"name\" : \"authored\"\n  }, {\n    \"id\" : 32830,\n    \"name\" : \"created\"\n  } ],\n  \"adjacencies\" : [ {\n    \"edgeLabel\" : {\n      \"id\" : 32829,\n      \"name\" : \"authored\"\n    },\n    \"direction\" : \"OUT\",\n    \"vertexLabel\" : {\n      \"id\" : 16,\n      \"name\" : \"book\"\n    }\n  }, {\n    \"edgeLabel\" : {\n      \"id\" : 32829,\n      \"name\" : \"authored\"\n    },\n    \"direction\" : \"IN\",\n    \"vertexLabel\" : {\n      \"id\" : 16,\n      \"name\" : \"book\"\n    }\n  }, {\n    \"edgeLabel\" : {\n      \"id\" : 32830,\n      \"name\" : \"created\"\n    },\n    \"direction\" : \"OUT\",\n    \"vertexLabel\" : {\n      \"id\" : 14,\n      \"name\" : \"recipe\"\n    }\n  }, {\n    \"edgeLabel\" : {\n      \"id\" : 32830,\n      \"name\" : \"created\"\n    },\n    \"direction\" : \"IN\",\n    \"vertexLabel\" : {\n      \"id\" : 14,\n      \"name\" : \"recipe\"\n    }\n  } ],\n  \"vertexIndices\" : { },\n  \"edgeIndices\" : { },\n  \"propertyIndices\" : { },\n  \"partitions\" : [ ],\n  \"idPropertyKeys\" : [ {\n    \"id\" : 32826,\n    \"name\" : \"community_id\",\n    \"type\" : \"Partition\"\n  }, {\n    \"id\" : 32827,\n    \"name\" : \"group_id\",\n    \"type\" : \"Partition\"\n  }, {\n    \"id\" : 32828,\n    \"name\" : \"member_id\",\n    \"type\" : \"Clustering\"\n  } ],\n  \"ttl\" : null\n}" ],
+      "type" : "STRING",
+      "truncated" : false,
+      "id" : "f0023d12-64f4-4fc7-b810-9910832da2f3"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
+  }, {
+    "id" : "76cb0400-f7cb-4b31-a8d7-ad2d7caa3d53",
+    "status" : "SUCCESS",
+    "code" : "g.V().drop().iterate()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ ],
+      "type" : "EMPTY",
+      "truncated" : false,
+      "id" : "2b7b1e6b-7cac-461c-86c7-51ab67ed395c"
+    },
+    "msg" : null,
+    "dataViewType" : null,
+    "viewSettings" : null
+  }, {
+    "id" : "427cae5c-155c-4882-be47-19a482643233",
+    "status" : "SUCCESS",
+    "code" : "g.V().has('author', 'name', 'Emeril Lagasse').out('created').values('name')",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ "Wild Mushroom Stroganoff", "Spicy Meatloaf" ],
+      "type" : "STRING",
+      "truncated" : false,
+      "id" : "f2caf9de-be7d-4fd1-a749-1eb858d21aa8"
+    },
+    "msg" : null,
+    "dataViewType" : null,
+    "viewSettings" : null
+  }, {
+    "id" : "21e15000-2b5f-450e-a60e-e7e652aedfd7",
+    "status" : "SUCCESS",
+    "code" : "graph.config().set('graph.schema_mode',Schema.Mode.Development).applyChanges()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ null ],
+      "type" : "NULL",
+      "truncated" : false,
+      "id" : "12a5dd50-2040-4266-8d65-41103fb1a0cb"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
+  }, {
+    "id" : "0951a521-397a-479f-82a2-0e0baf9faa57",
+    "status" : "SUCCESS",
+    "code" : "graph.schema().mode().name()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ "Development" ],
+      "type" : "STRING",
+      "truncated" : false,
+      "id" : "c738642c-1456-4c02-a066-9e62e5d40aba"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
+  }, {
+    "id" : "660fb592-500f-4ef1-a6c1-30a9e63ea3f8",
+    "status" : "ERROR",
+    "code" : "graph.schema().buildPropertyKey('expiration_date', Timestamp).add()\ngraph.schema().buildEdgeLabel('isA').add()\ngraph.schema().buildVertexLabel(\"FridgeItem\").addPropertyKeys(\"name\",\"expiration_date\",\"amount\").addAdjacency(\"isA\", OUT, \"ingredient\").add()",
+    "language" : "gremlin",
+    "result" : null,
+    "msg" : "com.fasterxml.jackson.databind.JsonMappingException: java.util.ArrayList cannot be cast to java.lang.String (through reference chain: com.datastax.studio.notebook.model.Notebook[\"cells\"]->java.util.UnmodifiableList[11]->com.datastax.studio.notebook.model.NotebookCell[\"result\"]->com.datastax.studio.notebook.model.Result[\"value\"]->java.util.ArrayList[0])",
+    "dataViewType" : null,
+    "viewSettings" : null
+  } ],
+  "created" : "2016-03-22T20:01:48.441Z",
+  "lastUsed" : "2016-03-25T00:17:19.623Z"
+}

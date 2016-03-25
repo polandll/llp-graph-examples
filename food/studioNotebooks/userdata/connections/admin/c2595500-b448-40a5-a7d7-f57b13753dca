@@ -1,0 +1,12 @@
+{
+  "name" : "junk",
+  "id" : "c2595500-b448-40a5-a7d7-f57b13753dca",
+  "port" : 9042,
+  "connectionHosts" : [ "127.0.0.1" ],
+  "username" : null,
+  "password" : null,
+  "compression" : "NONE",
+  "graphName" : "junk",
+  "serverSSLConfiguration" : null,
+  "clientSSLConfiguration" : null
+}
