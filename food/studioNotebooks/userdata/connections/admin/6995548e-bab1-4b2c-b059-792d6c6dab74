@@ -1,12 +1,12 @@
 {
-  "name" : "throwaway",
-  "id" : "d782796c-7786-46ea-b39a-a03e2bafb6d5",
+  "name" : "EAP-IMDB2",
+  "id" : "6995548e-bab1-4b2c-b059-792d6c6dab74",
   "port" : 9042,
-  "connectionHosts" : [ "127.0.0.1" ],
+  "connectionHosts" : [ "10.200.176.201" ],
   "username" : null,
   "password" : null,
   "compression" : "NONE",
-  "graphName" : "throwaway",
+  "graphName" : "imdb",
   "serverSSLConfiguration" : null,
   "clientSSLConfiguration" : null
 }

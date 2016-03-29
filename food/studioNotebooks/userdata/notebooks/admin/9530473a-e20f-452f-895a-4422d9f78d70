@@ -1,6 +1,6 @@
 {
   "id" : "9530473a-e20f-452f-895a-4422d9f78d70",
-  "name" : "QuickStart",
+  "name" : "DSE Graph QuickStart",
   "connectionId" : "42f6654b-5330-46fc-ab1f-63d397253bd9",
   "favorite" : false,
   "cells" : [ {
@@ -1322,5 +1322,5 @@
     }
   } ],
   "created" : "2016-02-23T19:15:17.845Z",
-  "lastUsed" : "2016-03-22T19:48:58.121Z"
+  "lastUsed" : "2016-03-29T23:20:07.559Z"
 }
