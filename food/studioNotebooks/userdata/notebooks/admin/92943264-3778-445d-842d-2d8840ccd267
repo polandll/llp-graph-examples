@@ -2819,7 +2819,90 @@
     "msg" : null,
     "dataViewType" : null,
     "viewSettings" : null
+  }, {
+    "id" : "0e532841-0457-407c-afcb-82b16a65cb25",
+    "status" : "SUCCESS",
+    "code" : "g.V().has('author','name','Julia Child').outE('created').count().profile().cap(TraversalMetrics.METRICS_KEY)",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ {
+        "dur" : 17.321342,
+        "metrics" : [ {
+          "dur" : 17.129266,
+          "counts" : {
+            "traverserCount" : 0,
+            "elementCount" : 0
+          },
+          "name" : "DsegGraphStep([~label.eq(author), name.eq(Julia Child)])",
+          "annotations" : {
+            "percentDur" : 98.8911020866628
+          },
+          "id" : "8.0.0()",
+          "metrics" : [ {
+            "dur" : 0.614075,
+            "counts" : {
+              "limit" : 2147483647,
+              "numQNFclauses" : 1,
+              "numQueries" : 1
+            },
+            "name" : "query-optimizer",
+            "annotations" : {
+              "condition" : "(((schema[author]) & (true)) & name = Julia Child)"
+            },
+            "id" : "8.0.0().query-optimizer[0]"
+          }, {
+            "dur" : 0.093872,
+            "counts" : { },
+            "name" : "iterator-setup",
+            "annotations" : {
+              "isFitted" : "false",
+              "isSorted" : "false"
+            },
+            "id" : "8.0.0().iterator-setup[0]"
+          } ]
+        }, {
+          "dur" : 0.004724,
+          "counts" : {
+            "traverserCount" : 0,
+            "elementCount" : 0
+          },
+          "name" : "DsegVertexStep(OUT,[created],edge)",
+          "annotations" : {
+            "percentDur" : 0.027272713626923364
+          },
+          "id" : "7.0.0()"
+        }, {
+          "dur" : 0.129156,
+          "counts" : {
+            "traverserCount" : 1,
+            "elementCount" : 1
+          },
+          "name" : "CountGlobalStep",
+          "annotations" : {
+            "percentDur" : 0.745646613293589
+          },
+          "id" : "4.0.0()"
+        }, {
+          "dur" : 0.058196,
+          "counts" : {
+            "traverserCount" : 1,
+            "elementCount" : 1
+          },
+          "name" : "SideEffectCapStep([~metrics])",
+          "annotations" : {
+            "percentDur" : 0.3359785864166876
+          },
+          "id" : "6.0.0()"
+        } ]
+      } ],
+      "type" : "PROFILE",
+      "truncated" : false,
+      "id" : "664066f2-41d9-4cc6-879f-1c4c660a6496"
+    },
+    "msg" : null,
+    "dataViewType" : null,
+    "viewSettings" : null
   } ],
   "created" : "2016-03-22T20:01:48.441Z",
-  "lastUsed" : "2016-03-29T18:32:50.188Z"
+  "lastUsed" : "2016-03-30T21:47:01.148Z"
 }

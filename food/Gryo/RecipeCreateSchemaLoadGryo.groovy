@@ -37,7 +37,7 @@ class RecipeFactory {
     		// Vertex Labels
     		def author = schema.buildVertexLabel('author').add()
     		def recipe = schema.buildVertexLabel('recipe').add()
-			def ingredient = schema.buildVertexLabel('ingredient').add()
+		def ingredient = schema.buildVertexLabel('ingredient').add()
     		def book = schema.buildVertexLabel('book').add()
     		def meal = schema.buildVertexLabel('meal').add()
     		def reviewer = schema.buildVertexLabel('reviewer').add()

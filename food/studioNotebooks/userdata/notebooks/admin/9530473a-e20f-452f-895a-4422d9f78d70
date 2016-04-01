@@ -85,10 +85,10 @@
     "code" : "g.V().count()",
     "language" : "gremlin",
     "result" : {
-      "value" : [ 0 ],
+      "value" : [ 58 ],
       "type" : "NUMBER",
       "truncated" : false,
-      "id" : "972d4d0d-04d4-475f-8fea-3beb6138e4ee"
+      "id" : "5d9f1085-efdf-4ca5-ae5e-a0fd3a764787"
     },
     "msg" : null,
     "dataViewType" : "RAW",
@@ -198,8 +198,11 @@
             "y" : 90
           }
         },
-        "position" : null,
-        "scale" : null,
+        "position" : {
+          "x" : 24.031558109189262,
+          "y" : -23.520402904579182
+        },
+        "scale" : 0.7410352789949906,
         "requestId" : "dec84224-da18-4b6d-9b0a-10a3cd048917"
       },
       "CODE" : {
@@ -1322,5 +1325,5 @@
     }
   } ],
   "created" : "2016-02-23T19:15:17.845Z",
-  "lastUsed" : "2016-03-29T23:20:07.559Z"
+  "lastUsed" : "2016-03-31T23:14:45.701Z"
 }
