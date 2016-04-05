@@ -6,13 +6,14 @@
   "cells" : [ {
     "id" : "ccf15907-4410-438b-8f97-7e6ea119de57",
     "status" : "SUCCESS",
-    "code" : "Hello!\n==\n**Welcome to the DataStax Studio Tutorial Notebook.**\n\nFirst things first: If you have an error on the top of this screen then you need to configure your connection. You should take care of that first and come back here when you're ready.\n\nGot your connection all setup? Great! Lets get started with something simple to make sure things are working correctly. Go down to the next cell and click the play button.",
+    "code" : "Hello!\n==\n**Welcome to the DataStax Studio Tutorial Notebook.**\n\nFirst things first: If you have an error on the top of this screen then you need to configure your connection. You should take care of that first and come back here when you're ready.\n\nGot your connection all setup? Great! Lets get started with something simple to make sure things are working correctly.",
     "language" : "markdown",
     "result" : {
-      "value" : "<h1>Hello!</h1>\n<p><strong>Welcome to the DataStax Studio Tutorial Notebook.</strong></p>\n<p>First things first: If you have an error on the top of this screen then you need to configure your connection. You should take care of that first and come back here when you're ready.</p>\n<p>Got your connection all setup? Great! Lets get started with something simple to make sure things are working correctly. Go down to the next cell and click the play button.</p>\n",
+      "value" : "<h1>Hello!</h1>\n<p><strong>Welcome to the DataStax Studio Tutorial Notebook.</strong></p>\n<p>First things first: If you have an error on the top of this screen then you need to configure your connection. You should take care of that first and come back here when you're ready.</p>\n<p>Got your connection all setup? Great! Lets get started with something simple to make sure things are working correctly.</p>\n",
       "type" : "HTML",
       "truncated" : false,
-      "id" : "ec5c5b26-baee-4d30-a65c-c6490562956e"
+      "duration" : 0,
+      "id" : "c8feff8f-2fb7-4fdf-8c4d-475314cecc09"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -22,64 +23,44 @@
       }
     }
   }, {
-    "id" : "6c0969ea-4a0f-490f-a7ef-7a0119410efb",
+    "id" : "c45a7365-027a-44e3-84f8-7e68cf96ed00",
+    "status" : "SUCCESS",
+    "code" : "We're going to need some data to play with. The next cell will take care of that. Don't worry too much about this code right now; you will get to that later. For now, just click the play button and when it succeeds, continue the next cell.",
+    "language" : "markdown",
+    "result" : {
+      "value" : "<p>We're going to need some data to play with. The next cell will take care of that. Don't worry too much about this code right now; you will get to that later. For now, just click the play button and when it succeeds, continue the next cell.</p>\n",
+      "type" : "HTML",
+      "truncated" : false,
+      "duration" : 0,
+      "id" : "1b3659c4-576b-4d29-876a-2857d95d7421"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CODE" : {
+        "hidden" : true
+      }
+    }
+  }, {
+    "id" : "b77eb51e-dda4-49b6-bb2c-411fd5c2878b",
     "status" : null,
-    "code" : "\"if this message displays below without error after you click play, then proceed to the next cell\"",
+    "code" : "\n// Schema\nschema.vertexLabel('god').create();\nschema.vertexLabel('demigod').create();\nschema.vertexLabel('human').create();\nschema.vertexLabel('monster').create();\nschema.vertexLabel('location').create();\n\nschema.propertyKey('name').Text().create();\n\n// Indexes\nschema.vertexLabel('god').index('godByName').materialized().by('name').add()\nschema.vertexLabel('demigod').index('demigodByName').materialized().by('name').add()\nschema.vertexLabel('human').index('humanByName').materialized().by('name').add()\nschema.vertexLabel('monster').index('monsterByName').materialized().by('name').add()\nschema.vertexLabel('location').index('locationByName').materialized().by('name').add()\n\n// Instances - Vertices\nVertex saturn = graph.addVertex(T.label, \"titan\", \"name\", \"saturn\", \"age\", 10000);\nVertex sky = graph.addVertex(T.label, \"location\", \"name\", \"sky\");\nVertex sea = graph.addVertex(T.label, \"location\", \"name\", \"sea\");\nVertex jupiter = graph.addVertex(T.label, \"god\", \"name\", \"jupiter\", \"age\", 5000);\nVertex neptune = graph.addVertex(T.label, \"god\", \"name\", \"neptune\", \"age\", 4500);\nVertex hercules = graph.addVertex(T.label, \"demigod\", \"name\", \"hercules\", \"age\", 30);\nVertex alcmene = graph.addVertex(T.label, \"human\", \"name\", \"alcmene\", \"age\", 45);\nVertex pluto = graph.addVertex(T.label, \"god\", \"name\", \"pluto\", \"age\", 4000);\nVertex nemean = graph.addVertex(T.label, \"monster\", \"name\", \"nemean\");\nVertex hydra = graph.addVertex(T.label, \"monster\", \"name\", \"hydra\");\nVertex cerberus = graph.addVertex(T.label, \"monster\", \"name\", \"cerberus\");\nVertex tartarus = graph.addVertex(T.label, \"location\", \"name\", \"tartarus\");\n\n// Instances - Edges\njupiter.addEdge(\"father\", saturn);\njupiter.addEdge(\"lives\", sky, \"reason\", \"loves fresh breezes\");\njupiter.addEdge(\"brother\", neptune);\njupiter.addEdge(\"brother\", pluto);\n\nneptune.addEdge(\"lives\", sea).property(\"reason\", \"loves waves\");\nneptune.addEdge(\"brother\", jupiter);\nneptune.addEdge(\"brother\", pluto);\nneptune.addEdge(\"battled\", neptune).property(\"time\", java.time.Instant.ofEpochMilli(5));\n\nhercules.addEdge(\"father\", jupiter);\nhercules.addEdge(\"mother\", alcmene);\nhercules.addEdge(\"battled\", nemean, \"time\", java.time.Instant.ofEpochMilli(1), \"place\", \"POINT(38.1 23.7)\");\nhercules.addEdge(\"battled\", hydra, \"time\", java.time.Instant.ofEpochMilli(2), \"place\", \"POINT(37.7 23.9)\");\nhercules.addEdge(\"battled\", cerberus, \"time\", java.time.Instant.ofEpochMilli(12), \"place\", \"POINT(39 22)\");\n\npluto.addEdge(\"brother\", jupiter);\npluto.addEdge(\"brother\", neptune);\npluto.addEdge(\"lives\", tartarus, \"reason\", \"no fear of death\");\npluto.addEdge(\"pet\", cerberus);\n\ncerberus.addEdge(\"lives\", tartarus);\n\n\"success\"",
     "language" : "gremlin",
     "result" : null,
     "msg" : null,
     "dataViewType" : null,
     "viewSettings" : null
   }, {
-    "id" : "c45a7365-027a-44e3-84f8-7e68cf96ed00",
-    "status" : "SUCCESS",
-    "code" : "Cool! We're going to need some data to play with. The next cell will take care of that. Don't worry too much about this code right now; we'll get to that later. For now, just go click the play button and when it succeeds, continue the next cell.",
-    "language" : "markdown",
-    "result" : {
-      "value" : "<p>Cool! We're going to need some data to play with. The next cell will take care of that. Don't worry too much about this code right now; we'll get to that later. For now, just go click the play button and when it succeeds, continue the next cell.</p>\n",
-      "type" : "HTML",
-      "truncated" : false,
-      "id" : "c7ed38c4-764b-4e93-bd1e-a72deb9a5cce"
-    },
-    "msg" : null,
-    "dataViewType" : "TABLE",
-    "viewSettings" : {
-      "CODE" : {
-        "hidden" : true
-      }
-    }
-  }, {
-    "id" : "e16ec10c-f17d-45a0-8db8-6472846c30ec",
-    "status" : "SUCCESS",
-    "code" : "Vertex saturn = graph.addVertex(T.label, \"titan\", \"name\", \"saturn\", \"age\", 10000);\nVertex sky = graph.addVertex(T.label, \"location\", \"name\", \"sky\");\nVertex sea = graph.addVertex(T.label, \"location\", \"name\", \"sea\");\nVertex jupiter = graph.addVertex(T.label, \"god\", \"name\", \"jupiter\", \"age\", 5000);\nVertex neptune = graph.addVertex(T.label, \"god\", \"name\", \"neptune\", \"age\", 4500);\nVertex hercules = graph.addVertex(T.label, \"demigod\", \"name\", \"hercules\", \"age\", 30);\n\nVertex alcmene = graph.addVertex(T.label, \"human\", \"name\", \"alcmene\", \"age\", 45);\nVertex pluto = graph.addVertex(T.label, \"god\", \"name\", \"pluto\", \"age\", 4000);\nVertex nemean = graph.addVertex(T.label, \"monster\", \"name\", \"nemean\");\nVertex hydra = graph.addVertex(T.label, \"monster\", \"name\", \"hydra\");\nVertex cerberus = graph.addVertex(T.label, \"monster\", \"name\", \"cerberus\");\nVertex tartarus = graph.addVertex(T.label, \"location\", \"name\", \"tartarus\");\n\njupiter.addEdge(\"father\", saturn);\njupiter.addEdge(\"lives\", sky, \"reason\", \"loves fresh breezes\");\njupiter.addEdge(\"brother\", neptune);\njupiter.addEdge(\"brother\", pluto);\n\nneptune.addEdge(\"lives\", sea).property(\"reason\", \"loves waves\");\nneptune.addEdge(\"brother\", jupiter);\nneptune.addEdge(\"brother\", pluto);\nneptune.addEdge(\"battled\", neptune).property(\"time\", java.time.Instant.ofEpochMilli(5)); //self-edge\n\nneptune.property(\"nicknames\",\"Neppy\",\"time\", java.time.Instant.ofEpochMilli(22));\nneptune.property(\"nicknames\",\"Flipper\",\"time\", java.time.Instant.ofEpochMilli(25));\n\nhercules.addEdge(\"father\", jupiter);\nhercules.addEdge(\"mother\", alcmene);\n\nhercules.addEdge(\"battled\", nemean, \"time\", java.time.Instant.ofEpochMilli(1), \"place\", \"POINT(38.1 23.7)\");\nhercules.addEdge(\"battled\", hydra, \"time\", java.time.Instant.ofEpochMilli(2), \"place\", \"POINT(37.7 23.9)\");\nhercules.addEdge(\"battled\", cerberus, \"time\", java.time.Instant.ofEpochMilli(12), \"place\", \"POINT(39 22)\");\n\npluto.addEdge(\"brother\", jupiter);\npluto.addEdge(\"brother\", neptune);\npluto.addEdge(\"lives\", tartarus, \"reason\", \"no fear of death\");\npluto.addEdge(\"pet\", cerberus);\n\ncerberus.addEdge(\"lives\", tartarus);\n\n\"success\"",
-    "language" : "gremlin",
-    "result" : {
-      "value" : [ 12, 18 ],
-      "type" : "NUMBER",
-      "truncated" : false,
-      "id" : "789294e1-743e-460c-a2b7-b64422f1195d"
-    },
-    "msg" : null,
-    "dataViewType" : null,
-    "viewSettings" : {
-      "CODE" : {
-        "hidden" : true
-      },
-      "CHART" : {
-        "xAxis" : null,
-        "yAxis" : null
-      }
-    }
-  }, {
     "id" : "81bb44d5-959d-4124-8e8e-96e00eb0cdbf",
     "status" : "SUCCESS",
-    "code" : "Let's take a look at our entire data set. Run the next cell. You will notice that you are presented with a table view by default. You can also check out the Raw view (all the way to the left) and the Graph view (all the way to the right). Poke around a little bit, and when you're ready, continue to the next cell.",
+    "code" : "Let's take a quick look at our entire data set. Run the next cell. You will notice that you are presented with a table view by default. You can also take a look at the Raw/JSON view (all the way to the left). Poke around a little bit, and when you're ready, continue to the next cell where we try out the Graph View.",
     "language" : "markdown",
     "result" : {
-      "value" : "<p>Let's take a look at our entire data set. Run the next cell. You will notice that you are presented with a table view by default. You can also check out the Raw view (all the way to the left) and the Graph view (all the way to the right). Poke around a little bit, and when you're ready, continue to the next cell.</p>\n",
+      "value" : "<p>Let's take a quick look at our entire data set. Run the next cell. You will notice that you are presented with a table view by default. You can also take a look at the Raw/JSON view (all the way to the left). Poke around a little bit, and when you're ready, continue to the next cell where we try out the Graph View.</p>\n",
       "type" : "HTML",
       "truncated" : false,
-      "id" : "d442d17c-e61b-4c02-8304-7b0d3145a48e"
+      "duration" : 0,
+      "id" : "a52845bc-ace9-4ed5-9248-579eb369fd68"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -100,13 +81,14 @@
   }, {
     "id" : "115d4f1e-742e-4e95-b2f0-38107c9e7627",
     "status" : "SUCCESS",
-    "code" : "The Graph View\n===\n\nLabel Templates\n---\nYou probably noticed in the previous example that the display labels for the Graph View were pretty cryptic. You can use templates to make this better. We've taken care of this for you in the next cell. Click on the settings button to see how we did it.\n\nThe templates use the moustache templating language. You can read more about how they work here. **TODO: INSERT LINK TO DOCS**\n\nQuick Tips\n---\n\n* You can zoom and pan.\n* You can double click the canvas to reset the view.\n* Properties are shown on mouseover.\n* You can select vertices and edges by clicking on them. Select multiple by holding the command/control key.\n* There is a full-screen option in the cell menu.\n* You can hide the code editor by clicking the eye in the cell menu. (In fact, we already hid the code for all these markdown cells.)\n\nFun interlude: Hide the editor, go full screen, and play around w/ the Graph view. MMMmmmm.\n",
+    "code" : "The Graph View\n===\n\nLabel Templates\n---\nYou probably noticed in the previous example that the display labels for the Graph View were pretty cryptic. You can use templates to make this better. The templates use the moustache templating language. We've taken care of providing some examples for you in the next cell. Click on the settings button to see how we did it.\n\n\nQuick Tips\n---\n\n* You can zoom and pan.\n* You can double click the canvas to reset the view.\n* Properties are shown on mouseover.\n* You can select vertices and edges by clicking on them. Select multiple by holding the control/command⌘ key.\n* There is a full-screen option in the cell menu.\n* You can hide the code editor by clicking the eye in the cell menu. (In fact, we already hid the code for all these markdown cells.)\n\nFun interlude: Hide the editor, go full screen, and play around w/ the Graph view. MMMmmmm.\n",
     "language" : "markdown",
     "result" : {
-      "value" : "<h1>The Graph View</h1>\n<h2>Label Templates</h2>\n<p>You probably noticed in the previous example that the display labels for the Graph View were pretty cryptic. You can use templates to make this better. We've taken care of this for you in the next cell. Click on the settings button to see how we did it.</p>\n<p>The templates use the moustache templating language. You can read more about how they work here. <strong>TODO: INSERT LINK TO DOCS</strong></p>\n<h2>Quick Tips</h2>\n<ul>\n<li>You can zoom and pan.</li>\n<li>You can double click the canvas to reset the view.</li>\n<li>Properties are shown on mouseover.</li>\n<li>You can select vertices and edges by clicking on them. Select multiple by holding the command/control key.</li>\n<li>There is a full-screen option in the cell menu.</li>\n<li>You can hide the code editor by clicking the eye in the cell menu. (In fact, we already hid the code for all these markdown cells.)</li>\n</ul>\n<p>Fun interlude: Hide the editor, go full screen, and play around w/ the Graph view. MMMmmmm.</p>\n",
+      "value" : "<h1>The Graph View</h1>\n<h2>Label Templates</h2>\n<p>You probably noticed in the previous example that the display labels for the Graph View were pretty cryptic. You can use templates to make this better. The templates use the moustache templating language. We've taken care of providing some examples for you in the next cell. Click on the settings button to see how we did it.</p>\n<h2>Quick Tips</h2>\n<ul>\n<li>You can zoom and pan.</li>\n<li>You can double click the canvas to reset the view.</li>\n<li>Properties are shown on mouseover.</li>\n<li>You can select vertices and edges by clicking on them. Select multiple by holding the control/command⌘ key.</li>\n<li>There is a full-screen option in the cell menu.</li>\n<li>You can hide the code editor by clicking the eye in the cell menu. (In fact, we already hid the code for all these markdown cells.)</li>\n</ul>\n<p>Fun interlude: Hide the editor, go full screen, and play around w/ the Graph view. MMMmmmm.</p>\n",
       "type" : "HTML",
       "truncated" : false,
-      "id" : "619dbfed-3ab1-46c6-82fb-f826f798890e"
+      "duration" : 0,
+      "id" : "fe516b88-48b7-4f4b-abf8-81b950cc18f1"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -122,483 +104,470 @@
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "demigod:409547:6:0",
+        "id" : "demigod:379107:6:0",
         "label" : "demigod",
         "type" : "vertex",
         "properties" : {
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=demigod, group_id=6}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "hercules"
           } ],
           "age" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=demigod, group_id=6}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
             "value" : 30
           } ]
         }
       }, {
-        "id" : "titan:409547:1:0",
+        "id" : "titan:379107:1:0",
         "label" : "titan",
         "type" : "vertex",
         "properties" : {
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=titan, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=titan, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "saturn"
           } ],
           "age" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=titan, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=titan, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
             "value" : 10000
           } ]
         }
       }, {
-        "id" : "location:409547:2:0",
+        "id" : "location:379107:12:0",
         "label" : "location",
         "type" : "vertex",
         "properties" : {
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=location, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-            "value" : "sky"
-          } ]
-        }
-      }, {
-        "id" : "location:409547:12:0",
-        "label" : "location",
-        "type" : "vertex",
-        "properties" : {
-          "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=location, group_id=12}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=location, group_id=12}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "tartarus"
           } ]
         }
       }, {
-        "id" : "location:409547:3:0",
+        "id" : "location:379107:3:0",
         "label" : "location",
         "type" : "vertex",
         "properties" : {
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=location, group_id=3}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=location, group_id=3}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "sea"
           } ]
         }
       }, {
-        "id" : "human:409547:7:0",
+        "id" : "location:379107:2:0",
+        "label" : "location",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=location, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "value" : "sky"
+          } ]
+        }
+      }, {
+        "id" : "human:379107:7:0",
         "label" : "human",
         "type" : "vertex",
         "properties" : {
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=human, group_id=7}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=human, group_id=7}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "alcmene"
           } ],
           "age" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=human, group_id=7}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=human, group_id=7}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
             "value" : 45
           } ]
         }
       }, {
-        "id" : "god:409547:5:0",
+        "id" : "god:379107:5:0",
         "label" : "god",
         "type" : "vertex",
         "properties" : {
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=5}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "neptune"
           } ],
-          "nicknames" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, local_id=00000000-0000-800a-0000-000000000000, ~type=nicknames}",
-            "value" : "Flipper",
-            "properties" : {
-              "time" : "1970-01-01T00:00:00.025Z"
-            }
-          } ],
           "age" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=5}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
             "value" : 4500
           } ]
         }
       }, {
-        "id" : "god:409547:8:0",
+        "id" : "god:379107:4:0",
         "label" : "god",
         "type" : "vertex",
         "properties" : {
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=8}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-            "value" : "pluto"
-          } ],
-          "age" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=8}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
-            "value" : 4000
-          } ]
-        }
-      }, {
-        "id" : "god:409547:4:0",
-        "label" : "god",
-        "type" : "vertex",
-        "properties" : {
-          "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=4}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "jupiter"
           } ],
           "age" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=4}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
             "value" : 5000
           } ]
         }
       }, {
-        "id" : "monster:409547:11:0",
+        "id" : "god:379107:8:0",
+        "label" : "god",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=8}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "value" : "pluto"
+          } ],
+          "age" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=8}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+            "value" : 4000
+          } ]
+        }
+      }, {
+        "id" : "monster:379107:11:0",
         "label" : "monster",
         "type" : "vertex",
         "properties" : {
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=monster, group_id=11}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=monster, group_id=11}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "cerberus"
           } ]
         }
       }, {
-        "id" : "monster:409547:10:0",
+        "id" : "monster:379107:10:0",
         "label" : "monster",
         "type" : "vertex",
         "properties" : {
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=monster, group_id=10}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=monster, group_id=10}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "hydra"
           } ]
         }
       }, {
-        "id" : "monster:409547:9:0",
+        "id" : "monster:379107:9:0",
         "label" : "monster",
         "type" : "vertex",
         "properties" : {
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=monster, group_id=9}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=monster, group_id=9}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "nemean"
           } ]
         }
       } ],
       "type" : "VERTEX",
       "truncated" : false,
+      "duration" : 0,
       "graph" : {
         "vertices" : [ {
-          "id" : "monster:409547:9:0",
-          "label" : "monster",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=monster, group_id=9}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "nemean"
-            } ]
-          }
-        }, {
-          "id" : "god:409547:4:0",
+          "id" : "god:379107:5:0",
           "label" : "god",
           "type" : "vertex",
           "properties" : {
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "jupiter"
-            } ],
-            "age" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
-              "value" : 5000
-            } ]
-          }
-        }, {
-          "id" : "demigod:409547:6:0",
-          "label" : "demigod",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "hercules"
-            } ],
-            "age" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
-              "value" : 30
-            } ]
-          }
-        }, {
-          "id" : "human:409547:7:0",
-          "label" : "human",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=human, group_id=7}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "alcmene"
-            } ],
-            "age" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=human, group_id=7}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
-              "value" : 45
-            } ]
-          }
-        }, {
-          "id" : "location:409547:3:0",
-          "label" : "location",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=location, group_id=3}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "sea"
-            } ]
-          }
-        }, {
-          "id" : "location:409547:12:0",
-          "label" : "location",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=location, group_id=12}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "tartarus"
-            } ]
-          }
-        }, {
-          "id" : "monster:409547:10:0",
-          "label" : "monster",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=monster, group_id=10}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "hydra"
-            } ]
-          }
-        }, {
-          "id" : "god:409547:5:0",
-          "label" : "god",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=5}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "neptune"
             } ],
-            "nicknames" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, local_id=00000000-0000-800a-0000-000000000000, ~type=nicknames}",
-              "value" : "Flipper",
-              "properties" : {
-                "time" : "1970-01-01T00:00:00.025Z"
-              }
-            } ],
             "age" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=5}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
               "value" : 4500
             } ]
           }
         }, {
-          "id" : "monster:409547:11:0",
-          "label" : "monster",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=monster, group_id=11}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "cerberus"
-            } ]
-          }
-        }, {
-          "id" : "god:409547:8:0",
-          "label" : "god",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=8}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "pluto"
-            } ],
-            "age" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=8}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
-              "value" : 4000
-            } ]
-          }
-        }, {
-          "id" : "location:409547:2:0",
+          "id" : "location:379107:2:0",
           "label" : "location",
           "type" : "vertex",
           "properties" : {
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=location, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=location, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "sky"
             } ]
           }
         }, {
-          "id" : "titan:409547:1:0",
+          "id" : "monster:379107:9:0",
+          "label" : "monster",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=monster, group_id=9}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "nemean"
+            } ]
+          }
+        }, {
+          "id" : "titan:379107:1:0",
           "label" : "titan",
           "type" : "vertex",
           "properties" : {
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=titan, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=titan, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "saturn"
             } ],
             "age" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=titan, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=titan, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
               "value" : 10000
+            } ]
+          }
+        }, {
+          "id" : "god:379107:4:0",
+          "label" : "god",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=4}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "jupiter"
+            } ],
+            "age" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=4}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+              "value" : 5000
+            } ]
+          }
+        }, {
+          "id" : "god:379107:8:0",
+          "label" : "god",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=8}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "pluto"
+            } ],
+            "age" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=8}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+              "value" : 4000
+            } ]
+          }
+        }, {
+          "id" : "demigod:379107:6:0",
+          "label" : "demigod",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=demigod, group_id=6}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "hercules"
+            } ],
+            "age" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=demigod, group_id=6}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+              "value" : 30
+            } ]
+          }
+        }, {
+          "id" : "monster:379107:11:0",
+          "label" : "monster",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=monster, group_id=11}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "cerberus"
+            } ]
+          }
+        }, {
+          "id" : "monster:379107:10:0",
+          "label" : "monster",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=monster, group_id=10}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "hydra"
+            } ]
+          }
+        }, {
+          "id" : "location:379107:12:0",
+          "label" : "location",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=location, group_id=12}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "tartarus"
+            } ]
+          }
+        }, {
+          "id" : "human:379107:7:0",
+          "label" : "human",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=human, group_id=7}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "alcmene"
+            } ],
+            "age" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=human, group_id=7}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+              "value" : 45
+            } ]
+          }
+        }, {
+          "id" : "location:379107:3:0",
+          "label" : "location",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=location, group_id=3}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "sea"
             } ]
           }
         } ],
         "edges" : [ {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=8}, local_id=5f4d9d91-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, ~type=brother}",
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=4}, local_id=4dbb2741-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=god, group_id=8}, ~type=brother}",
           "label" : "brother",
           "type" : "edge",
           "inVLabel" : "god",
           "outVLabel" : "god",
-          "inV" : "god:409547:5:0",
-          "outV" : "god:409547:8:0"
+          "inV" : "god:379107:8:0",
+          "outV" : "god:379107:4:0"
         }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=5f4a9050-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=human, group_id=7}, ~type=mother}",
-          "label" : "mother",
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=8}, local_id=4dbb7562-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=monster, group_id=11}, ~type=pet}",
+          "label" : "pet",
           "type" : "edge",
-          "inVLabel" : "human",
-          "outVLabel" : "demigod",
-          "inV" : "human:409547:7:0",
-          "outV" : "demigod:409547:6:0"
+          "inVLabel" : "monster",
+          "outVLabel" : "god",
+          "inV" : "monster:379107:11:0",
+          "outV" : "god:379107:8:0"
         }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=5f4ab760-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=monster, group_id=9}, ~type=battled}",
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=demigod, group_id=6}, local_id=4dbb4e50-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=god, group_id=4}, ~type=father}",
+          "label" : "father",
+          "type" : "edge",
+          "inVLabel" : "god",
+          "outVLabel" : "demigod",
+          "inV" : "god:379107:4:0",
+          "outV" : "demigod:379107:6:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=8}, local_id=4dbb7560-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=god, group_id=5}, ~type=brother}",
+          "label" : "brother",
+          "type" : "edge",
+          "inVLabel" : "god",
+          "outVLabel" : "god",
+          "inV" : "god:379107:5:0",
+          "outV" : "god:379107:8:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=4}, local_id=4dbb0030-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=titan, group_id=1}, ~type=father}",
+          "label" : "father",
+          "type" : "edge",
+          "inVLabel" : "titan",
+          "outVLabel" : "god",
+          "inV" : "titan:379107:1:0",
+          "outV" : "god:379107:4:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=5}, local_id=4dbb2742-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=location, group_id=3}, ~type=lives}",
+          "label" : "lives",
+          "type" : "edge",
+          "inVLabel" : "location",
+          "outVLabel" : "god",
+          "inV" : "location:379107:3:0",
+          "outV" : "god:379107:5:0",
+          "properties" : {
+            "reason" : "loves waves"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=4}, local_id=4dbb2740-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=god, group_id=5}, ~type=brother}",
+          "label" : "brother",
+          "type" : "edge",
+          "inVLabel" : "god",
+          "outVLabel" : "god",
+          "inV" : "god:379107:5:0",
+          "outV" : "god:379107:4:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=demigod, group_id=6}, local_id=4dbb4e52-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=monster, group_id=9}, ~type=battled}",
           "label" : "battled",
           "type" : "edge",
           "inVLabel" : "monster",
           "outVLabel" : "demigod",
-          "inV" : "monster:409547:9:0",
-          "outV" : "demigod:409547:6:0",
+          "inV" : "monster:379107:9:0",
+          "outV" : "demigod:379107:6:0",
           "properties" : {
             "time" : "1970-01-01T00:00:00.001Z",
             "place" : "POINT(38.1 23.7)"
           }
         }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, local_id=5f43b280-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, ~type=brother}",
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=5}, local_id=4dbb2743-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=god, group_id=4}, ~type=brother}",
           "label" : "brother",
           "type" : "edge",
           "inVLabel" : "god",
           "outVLabel" : "god",
-          "inV" : "god:409547:4:0",
-          "outV" : "god:409547:5:0"
+          "inV" : "god:379107:4:0",
+          "outV" : "god:379107:5:0"
         }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, local_id=5f3ef790-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, ~type=brother}",
-          "label" : "brother",
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=8}, local_id=4dbb7561-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=location, group_id=12}, ~type=lives}",
+          "label" : "lives",
           "type" : "edge",
-          "inVLabel" : "god",
+          "inVLabel" : "location",
           "outVLabel" : "god",
-          "inV" : "god:409547:5:0",
-          "outV" : "god:409547:4:0"
-        }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, local_id=5f43b281-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=god, group_id=8}, ~type=brother}",
-          "label" : "brother",
-          "type" : "edge",
-          "inVLabel" : "god",
-          "outVLabel" : "god",
-          "inV" : "god:409547:8:0",
-          "outV" : "god:409547:5:0"
-        }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, local_id=5f44c3f0-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, ~type=battled}",
-          "label" : "battled",
-          "type" : "edge",
-          "inVLabel" : "god",
-          "outVLabel" : "god",
-          "inV" : "god:409547:5:0",
-          "outV" : "god:409547:5:0",
+          "inV" : "location:379107:12:0",
+          "outV" : "god:379107:8:0",
           "properties" : {
-            "time" : "1970-01-01T00:00:00.005Z"
+            "reason" : "no fear of death"
           }
         }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=5f4d4f70-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=monster, group_id=11}, ~type=battled}",
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=demigod, group_id=6}, local_id=4dbb4e54-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=monster, group_id=11}, ~type=battled}",
           "label" : "battled",
           "type" : "edge",
           "inVLabel" : "monster",
           "outVLabel" : "demigod",
-          "inV" : "monster:409547:11:0",
-          "outV" : "demigod:409547:6:0",
+          "inV" : "monster:379107:11:0",
+          "outV" : "demigod:379107:6:0",
           "properties" : {
             "time" : "1970-01-01T00:00:00.012Z",
             "place" : "POINT(39 22)"
           }
         }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=8}, local_id=5f4d9d90-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, ~type=brother}",
-          "label" : "brother",
-          "type" : "edge",
-          "inVLabel" : "god",
-          "outVLabel" : "god",
-          "inV" : "god:409547:4:0",
-          "outV" : "god:409547:8:0"
-        }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=8}, local_id=5f4dc4a0-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=location, group_id=12}, ~type=lives}",
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=4}, local_id=4dbb0031-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=location, group_id=2}, ~type=lives}",
           "label" : "lives",
           "type" : "edge",
           "inVLabel" : "location",
           "outVLabel" : "god",
-          "inV" : "location:409547:12:0",
-          "outV" : "god:409547:8:0",
+          "inV" : "location:379107:2:0",
+          "outV" : "god:379107:4:0",
           "properties" : {
-            "reason" : "no fear of death"
+            "reason" : "loves fresh breezes"
           }
         }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, local_id=5f375670-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=titan, group_id=1}, ~type=father}",
-          "label" : "father",
-          "type" : "edge",
-          "inVLabel" : "titan",
-          "outVLabel" : "god",
-          "inV" : "titan:409547:1:0",
-          "outV" : "god:409547:4:0"
-        }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=5f4d0150-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=monster, group_id=10}, ~type=battled}",
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=demigod, group_id=6}, local_id=4dbb4e53-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=monster, group_id=10}, ~type=battled}",
           "label" : "battled",
           "type" : "edge",
           "inVLabel" : "monster",
           "outVLabel" : "demigod",
-          "inV" : "monster:409547:10:0",
-          "outV" : "demigod:409547:6:0",
+          "inV" : "monster:379107:10:0",
+          "outV" : "demigod:379107:6:0",
           "properties" : {
             "time" : "1970-01-01T00:00:00.002Z",
             "place" : "POINT(37.7 23.9)"
           }
         }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, local_id=5f390420-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=location, group_id=2}, ~type=lives}",
-          "label" : "lives",
-          "type" : "edge",
-          "inVLabel" : "location",
-          "outVLabel" : "god",
-          "inV" : "location:409547:2:0",
-          "outV" : "god:409547:4:0",
-          "properties" : {
-            "reason" : "loves fresh breezes"
-          }
-        }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=monster, group_id=11}, local_id=5f5035a1-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=location, group_id=12}, ~type=lives}",
-          "label" : "lives",
-          "type" : "edge",
-          "inVLabel" : "location",
-          "outVLabel" : "monster",
-          "inV" : "location:409547:12:0",
-          "outV" : "monster:409547:11:0"
-        }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=8}, local_id=5f5035a0-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=monster, group_id=11}, ~type=pet}",
-          "label" : "pet",
-          "type" : "edge",
-          "inVLabel" : "monster",
-          "outVLabel" : "god",
-          "inV" : "monster:409547:11:0",
-          "outV" : "god:409547:8:0"
-        }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, local_id=5f3f1ea0-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=location, group_id=3}, ~type=lives}",
-          "label" : "lives",
-          "type" : "edge",
-          "inVLabel" : "location",
-          "outVLabel" : "god",
-          "inV" : "location:409547:3:0",
-          "outV" : "god:409547:5:0",
-          "properties" : {
-            "reason" : "loves waves"
-          }
-        }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, local_id=5f3ef791-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=god, group_id=8}, ~type=brother}",
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=8}, local_id=4dbb4e55-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=god, group_id=4}, ~type=brother}",
           "label" : "brother",
           "type" : "edge",
           "inVLabel" : "god",
           "outVLabel" : "god",
-          "inV" : "god:409547:8:0",
-          "outV" : "god:409547:4:0"
+          "inV" : "god:379107:4:0",
+          "outV" : "god:379107:8:0"
         }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=5f489480-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, ~type=father}",
-          "label" : "father",
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=monster, group_id=11}, local_id=4dbb7563-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=location, group_id=12}, ~type=lives}",
+          "label" : "lives",
+          "type" : "edge",
+          "inVLabel" : "location",
+          "outVLabel" : "monster",
+          "inV" : "location:379107:12:0",
+          "outV" : "monster:379107:11:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=5}, local_id=4dbb2745-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=god, group_id=5}, ~type=battled}",
+          "label" : "battled",
           "type" : "edge",
           "inVLabel" : "god",
+          "outVLabel" : "god",
+          "inV" : "god:379107:5:0",
+          "outV" : "god:379107:5:0",
+          "properties" : {
+            "time" : "1970-01-01T00:00:00.005Z"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=5}, local_id=4dbb2744-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=god, group_id=8}, ~type=brother}",
+          "label" : "brother",
+          "type" : "edge",
+          "inVLabel" : "god",
+          "outVLabel" : "god",
+          "inV" : "god:379107:8:0",
+          "outV" : "god:379107:5:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=demigod, group_id=6}, local_id=4dbb4e51-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=human, group_id=7}, ~type=mother}",
+          "label" : "mother",
+          "type" : "edge",
+          "inVLabel" : "human",
           "outVLabel" : "demigod",
-          "inV" : "god:409547:4:0",
-          "outV" : "demigod:409547:6:0"
+          "inV" : "human:379107:7:0",
+          "outV" : "demigod:379107:6:0"
         } ]
       },
-      "id" : "8a559817-5974-4782-bca5-fc1bffad10ce"
+      "id" : "53f3f4c7-0fa5-4307-9c70-09780641205b"
     },
     "msg" : null,
     "dataViewType" : "GRAPH",
@@ -617,62 +586,62 @@
           "titan" : "{{label}} {{name}}"
         },
         "defaultLabelTemplate" : "{{label}}[{{id}}]",
-        "requestId" : "8a559817-5974-4782-bca5-fc1bffad10ce",
+        "requestId" : "53f3f4c7-0fa5-4307-9c70-09780641205b",
         "positions" : {
-          "monster:409547:9:0" : {
-            "x" : -439,
-            "y" : -80
+          "god:379107:5:0" : {
+            "x" : -302,
+            "y" : 140
           },
-          "god:409547:4:0" : {
-            "x" : 87,
-            "y" : -186
+          "location:379107:2:0" : {
+            "x" : 98,
+            "y" : 219
           },
-          "demigod:409547:6:0" : {
-            "x" : -163,
-            "y" : -10
+          "monster:379107:9:0" : {
+            "x" : 45,
+            "y" : -156
           },
-          "human:409547:7:0" : {
-            "x" : -379,
-            "y" : 157
+          "titan:379107:1:0" : {
+            "x" : -102,
+            "y" : 265
           },
-          "location:409547:3:0" : {
-            "x" : 326,
-            "y" : 336
+          "god:379107:4:0" : {
+            "x" : -72,
+            "y" : -39
           },
-          "location:409547:12:0" : {
-            "x" : 53,
-            "y" : 348
+          "god:379107:8:0" : {
+            "x" : -338,
+            "y" : -168
           },
-          "monster:409547:10:0" : {
-            "x" : -284,
-            "y" : -285
+          "demigod:379107:6:0" : {
+            "x" : 153,
+            "y" : 114
           },
-          "god:409547:5:0" : {
-            "x" : 296,
-            "y" : 37
+          "monster:379107:11:0" : {
+            "x" : -57,
+            "y" : -145
           },
-          "monster:409547:11:0" : {
-            "x" : -216,
-            "y" : 283
+          "monster:379107:10:0" : {
+            "x" : 452,
+            "y" : 90
           },
-          "god:409547:8:0" : {
-            "x" : 11,
-            "y" : 98
+          "location:379107:12:0" : {
+            "x" : -173,
+            "y" : -435
           },
-          "location:409547:2:0" : {
-            "x" : 170,
-            "y" : -445
+          "human:379107:7:0" : {
+            "x" : 278,
+            "y" : -155
           },
-          "titan:409547:1:0" : {
-            "x" : 358,
-            "y" : -215
+          "location:379107:3:0" : {
+            "x" : -585,
+            "y" : 227
           }
         },
         "position" : {
-          "x" : -48.71179137793246,
-          "y" : -41.00590896952165
+          "x" : -54.04751646699759,
+          "y" : -77.06510859840287
         },
-        "scale" : 0.441355662220679
+        "scale" : 0.49876463677842925
       },
       "CODE" : {
         "hidden" : false
@@ -681,13 +650,14 @@
   }, {
     "id" : "8bb68d9a-7a07-414d-a7d9-3b0649a0d3b2",
     "status" : "SUCCESS",
-    "code" : "***What do the colors mean?***\n\nVertices are colored by community, and edges inherit color from their vertices. The communites are calculated using a community detection algorithm (Louvain, to be specific). In the future we'll have more options for applying color.",
+    "code" : "***What do the colors mean?***\n\n**Vertices** are colored by community. **Edges** inherit color from their vertices. The communites are calculated using a community detection algorithm (Louvain, to be specific). In the future we'll have more options for applying color.\n",
     "language" : "markdown",
     "result" : {
-      "value" : "<p><strong><em>What do the colors mean?</em></strong></p>\n<p>Vertices are colored by community, and edges inherit color from their vertices. The communites are calculated using a community detection algorithm (Louvain, to be specific). In the future we'll have more options for applying color.</p>\n",
+      "value" : "<p><strong><em>What do the colors mean?</em></strong></p>\n<p><strong>Vertices</strong> are colored by community. <strong>Edges</strong> inherit color from their vertices. The communites are calculated using a community detection algorithm (Louvain, to be specific). In the future we'll have more options for applying color.</p>\n",
       "type" : "HTML",
       "truncated" : false,
-      "id" : "ae2d99a0-b593-4b3d-be66-e608444dbd3f"
+      "duration" : 0,
+      "id" : "5f5a8de3-62f0-49f4-b056-2f450aeb2443"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -699,13 +669,14 @@
   }, {
     "id" : "71a64b13-a791-4312-8bc7-f41de5aa183d",
     "status" : "SUCCESS",
-    "code" : "Neighborhood Visualization\n--------------------------\nIt's pretty common to want to see the neighborhood for a single vertex. Check out the next cell where we take a look at Hercule's 1st degree neighborhood.\n\n**TODO: Hercules is a poor example because none of his neighbors share an edge.**",
+    "code" : "Neighborhood Visualization\n--------------------------\nIt's pretty common to want to see the neighborhood for a single vertex. Check out the next cell where we take a look at Pluto's 1st degree neighborhood.",
     "language" : "markdown",
     "result" : {
-      "value" : "<h2>Neighborhood Visualization</h2>\n<p>It's pretty common to want to see the neighborhood for a single vertex. Check out the next cell where we take a look at Hercule's 1st degree neighborhood.</p>\n<p><strong>TODO: Hercules is a poor example because none of his neighbors share an edge.</strong></p>\n",
+      "value" : "<h2>Neighborhood Visualization</h2>\n<p>It's pretty common to want to see the neighborhood for a single vertex. Check out the next cell where we take a look at Pluto's 1st degree neighborhood.</p>\n",
       "type" : "HTML",
       "truncated" : false,
-      "id" : "fb922525-18bb-474f-a8e8-9ab6298d01c6"
+      "duration" : 0,
+      "id" : "0fb344bc-d0d2-4cb4-a20e-dbc2dcd3245f"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -717,193 +688,217 @@
   }, {
     "id" : "22c329e4-754c-4575-b517-5f61327ce98e",
     "status" : "SUCCESS",
-    "code" : "g.V().has('name', 'hercules').bothE()",
+    "code" : "g.V().hasLabel('god').has('name', 'pluto').bothE()",
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=5f489480-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, ~type=father}",
-        "label" : "father",
+        "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=7}, local_id=1ed29592-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=location, group_id=11}, ~type=lives}",
+        "label" : "lives",
+        "type" : "edge",
+        "inVLabel" : "location",
+        "outVLabel" : "god",
+        "inV" : "location:31823:11:0",
+        "outV" : "god:31823:7:0",
+        "properties" : {
+          "reason" : "no fear of death"
+        }
+      }, {
+        "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=7}, local_id=1ed29590-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=god, group_id=3}, ~type=brother}",
+        "label" : "brother",
         "type" : "edge",
         "inVLabel" : "god",
-        "outVLabel" : "demigod",
-        "inV" : "god:409547:4:0",
-        "outV" : "demigod:409547:6:0"
+        "outVLabel" : "god",
+        "inV" : "god:31823:3:0",
+        "outV" : "god:31823:7:0"
       }, {
-        "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=5f4ab760-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=monster, group_id=9}, ~type=battled}",
-        "label" : "battled",
+        "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=7}, local_id=1ed29591-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=god, group_id=4}, ~type=brother}",
+        "label" : "brother",
+        "type" : "edge",
+        "inVLabel" : "god",
+        "outVLabel" : "god",
+        "inV" : "god:31823:4:0",
+        "outV" : "god:31823:7:0"
+      }, {
+        "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=3}, local_id=1ebe7150-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=god, group_id=7}, ~type=brother}",
+        "label" : "brother",
+        "type" : "edge",
+        "inVLabel" : "god",
+        "outVLabel" : "god",
+        "inV" : "god:31823:7:0",
+        "outV" : "god:31823:3:0"
+      }, {
+        "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=4}, local_id=1ec35351-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=god, group_id=7}, ~type=brother}",
+        "label" : "brother",
+        "type" : "edge",
+        "inVLabel" : "god",
+        "outVLabel" : "god",
+        "inV" : "god:31823:7:0",
+        "outV" : "god:31823:4:0"
+      }, {
+        "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=7}, local_id=1ed50690-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=monster, group_id=10}, ~type=pet}",
+        "label" : "pet",
         "type" : "edge",
         "inVLabel" : "monster",
-        "outVLabel" : "demigod",
-        "inV" : "monster:409547:9:0",
-        "outV" : "demigod:409547:6:0",
-        "properties" : {
-          "time" : "1970-01-01T00:00:00.001Z",
-          "place" : "POINT(38.1 23.7)"
-        }
-      }, {
-        "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=5f4d0150-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=monster, group_id=10}, ~type=battled}",
-        "label" : "battled",
-        "type" : "edge",
-        "inVLabel" : "monster",
-        "outVLabel" : "demigod",
-        "inV" : "monster:409547:10:0",
-        "outV" : "demigod:409547:6:0",
-        "properties" : {
-          "time" : "1970-01-01T00:00:00.002Z",
-          "place" : "POINT(37.7 23.9)"
-        }
-      }, {
-        "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=5f4d4f70-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=monster, group_id=11}, ~type=battled}",
-        "label" : "battled",
-        "type" : "edge",
-        "inVLabel" : "monster",
-        "outVLabel" : "demigod",
-        "inV" : "monster:409547:11:0",
-        "outV" : "demigod:409547:6:0",
-        "properties" : {
-          "time" : "1970-01-01T00:00:00.012Z",
-          "place" : "POINT(39 22)"
-        }
-      }, {
-        "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=5f4a9050-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=human, group_id=7}, ~type=mother}",
-        "label" : "mother",
-        "type" : "edge",
-        "inVLabel" : "human",
-        "outVLabel" : "demigod",
-        "inV" : "human:409547:7:0",
-        "outV" : "demigod:409547:6:0"
+        "outVLabel" : "god",
+        "inV" : "monster:31823:10:0",
+        "outV" : "god:31823:7:0"
       } ],
       "type" : "EDGE",
       "truncated" : false,
+      "duration" : 0,
       "graph" : {
         "vertices" : [ {
-          "id" : "monster:409547:9:0",
-          "label" : "monster",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=monster, group_id=9}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "nemean"
-            } ]
-          }
-        }, {
-          "id" : "god:409547:4:0",
+          "id" : "god:31823:7:0",
           "label" : "god",
           "type" : "vertex",
           "properties" : {
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=7}, local_id=00000000-0000-8008-0000-000000000000, ~type=name}",
+              "value" : "pluto"
+            } ],
+            "age" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=7}, local_id=00000000-0000-800e-0000-000000000000, ~type=age}",
+              "value" : 4000
+            } ]
+          }
+        }, {
+          "id" : "god:31823:3:0",
+          "label" : "god",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=3}, local_id=00000000-0000-8008-0000-000000000000, ~type=name}",
               "value" : "jupiter"
             } ],
             "age" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+              "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=3}, local_id=00000000-0000-800e-0000-000000000000, ~type=age}",
               "value" : 5000
             } ]
           }
         }, {
-          "id" : "demigod:409547:6:0",
-          "label" : "demigod",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "hercules"
-            } ],
-            "age" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
-              "value" : 30
-            } ]
-          }
-        }, {
-          "id" : "human:409547:7:0",
-          "label" : "human",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=human, group_id=7}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "alcmene"
-            } ],
-            "age" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=human, group_id=7}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
-              "value" : 45
-            } ]
-          }
-        }, {
-          "id" : "monster:409547:10:0",
+          "id" : "monster:31823:10:0",
           "label" : "monster",
           "type" : "vertex",
           "properties" : {
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=monster, group_id=10}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "hydra"
-            } ]
-          }
-        }, {
-          "id" : "monster:409547:11:0",
-          "label" : "monster",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=monster, group_id=11}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=31823, ~label=monster, group_id=10}, local_id=00000000-0000-8008-0000-000000000000, ~type=name}",
               "value" : "cerberus"
+            } ]
+          }
+        }, {
+          "id" : "location:31823:11:0",
+          "label" : "location",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=31823, ~label=location, group_id=11}, local_id=00000000-0000-8008-0000-000000000000, ~type=name}",
+              "value" : "tartarus"
+            } ]
+          }
+        }, {
+          "id" : "god:31823:4:0",
+          "label" : "god",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=4}, local_id=00000000-0000-8008-0000-000000000000, ~type=name}",
+              "value" : "neptune"
+            } ],
+            "age" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=4}, local_id=00000000-0000-800e-0000-000000000000, ~type=age}",
+              "value" : 4500
             } ]
           }
         } ],
         "edges" : [ {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=5f4a9050-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=human, group_id=7}, ~type=mother}",
-          "label" : "mother",
-          "type" : "edge",
-          "inVLabel" : "human",
-          "outVLabel" : "demigod",
-          "inV" : "human:409547:7:0",
-          "outV" : "demigod:409547:6:0"
-        }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=5f4d0150-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=monster, group_id=10}, ~type=battled}",
-          "label" : "battled",
-          "type" : "edge",
-          "inVLabel" : "monster",
-          "outVLabel" : "demigod",
-          "inV" : "monster:409547:10:0",
-          "outV" : "demigod:409547:6:0",
-          "properties" : {
-            "time" : "1970-01-01T00:00:00.002Z",
-            "place" : "POINT(37.7 23.9)"
-          }
-        }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=5f4ab760-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=monster, group_id=9}, ~type=battled}",
-          "label" : "battled",
-          "type" : "edge",
-          "inVLabel" : "monster",
-          "outVLabel" : "demigod",
-          "inV" : "monster:409547:9:0",
-          "outV" : "demigod:409547:6:0",
-          "properties" : {
-            "time" : "1970-01-01T00:00:00.001Z",
-            "place" : "POINT(38.1 23.7)"
-          }
-        }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=5f4d4f70-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=monster, group_id=11}, ~type=battled}",
-          "label" : "battled",
-          "type" : "edge",
-          "inVLabel" : "monster",
-          "outVLabel" : "demigod",
-          "inV" : "monster:409547:11:0",
-          "outV" : "demigod:409547:6:0",
-          "properties" : {
-            "time" : "1970-01-01T00:00:00.012Z",
-            "place" : "POINT(39 22)"
-          }
-        }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=5f489480-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, ~type=father}",
-          "label" : "father",
+          "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=3}, local_id=1ebe4a40-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=god, group_id=4}, ~type=brother}",
+          "label" : "brother",
           "type" : "edge",
           "inVLabel" : "god",
-          "outVLabel" : "demigod",
-          "inV" : "god:409547:4:0",
-          "outV" : "demigod:409547:6:0"
+          "outVLabel" : "god",
+          "inV" : "god:31823:4:0",
+          "outV" : "god:31823:3:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=31823, ~label=monster, group_id=10}, local_id=1ed52da0-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=location, group_id=11}, ~type=lives}",
+          "label" : "lives",
+          "type" : "edge",
+          "inVLabel" : "location",
+          "outVLabel" : "monster",
+          "inV" : "location:31823:11:0",
+          "outV" : "monster:31823:10:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=4}, local_id=1ec723e0-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=god, group_id=4}, ~type=battled}",
+          "label" : "battled",
+          "type" : "edge",
+          "inVLabel" : "god",
+          "outVLabel" : "god",
+          "inV" : "god:31823:4:0",
+          "outV" : "god:31823:4:0",
+          "properties" : {
+            "time" : "1970-01-01T00:00:00.005Z"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=4}, local_id=1ec35350-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=god, group_id=3}, ~type=brother}",
+          "label" : "brother",
+          "type" : "edge",
+          "inVLabel" : "god",
+          "outVLabel" : "god",
+          "inV" : "god:31823:3:0",
+          "outV" : "god:31823:4:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=3}, local_id=1ebe7150-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=god, group_id=7}, ~type=brother}",
+          "label" : "brother",
+          "type" : "edge",
+          "inVLabel" : "god",
+          "outVLabel" : "god",
+          "inV" : "god:31823:7:0",
+          "outV" : "god:31823:3:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=7}, local_id=1ed50690-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=monster, group_id=10}, ~type=pet}",
+          "label" : "pet",
+          "type" : "edge",
+          "inVLabel" : "monster",
+          "outVLabel" : "god",
+          "inV" : "monster:31823:10:0",
+          "outV" : "god:31823:7:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=7}, local_id=1ed29590-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=god, group_id=3}, ~type=brother}",
+          "label" : "brother",
+          "type" : "edge",
+          "inVLabel" : "god",
+          "outVLabel" : "god",
+          "inV" : "god:31823:3:0",
+          "outV" : "god:31823:7:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=7}, local_id=1ed29591-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=god, group_id=4}, ~type=brother}",
+          "label" : "brother",
+          "type" : "edge",
+          "inVLabel" : "god",
+          "outVLabel" : "god",
+          "inV" : "god:31823:4:0",
+          "outV" : "god:31823:7:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=7}, local_id=1ed29592-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=location, group_id=11}, ~type=lives}",
+          "label" : "lives",
+          "type" : "edge",
+          "inVLabel" : "location",
+          "outVLabel" : "god",
+          "inV" : "location:31823:11:0",
+          "outV" : "god:31823:7:0",
+          "properties" : {
+            "reason" : "no fear of death"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=4}, local_id=1ec35351-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=god, group_id=7}, ~type=brother}",
+          "label" : "brother",
+          "type" : "edge",
+          "inVLabel" : "god",
+          "outVLabel" : "god",
+          "inV" : "god:31823:7:0",
+          "outV" : "god:31823:4:0"
         } ]
       },
-      "id" : "2cfcc2fe-3953-44a2-adab-6327d3b0a656"
+      "id" : "f2a7c3b0-e707-405b-98a5-3416d14f5827"
     },
     "msg" : null,
     "dataViewType" : "GRAPH",
@@ -914,56 +909,53 @@
       },
       "GRAPH" : {
         "labelTemplates" : {
-          "monster" : "{{name}}",
-          "god" : "{{name}}",
+          "monster" : "",
+          "god" : "",
           "demigod" : "{{name}}",
           "human" : "{{name}}"
         },
-        "defaultLabelTemplate" : "{{label}}[{{id}}]",
-        "requestId" : "2cfcc2fe-3953-44a2-adab-6327d3b0a656",
+        "defaultLabelTemplate" : "{{name}} ({{label}})",
+        "requestId" : "f2a7c3b0-e707-405b-98a5-3416d14f5827",
         "positions" : {
-          "monster:409547:9:0" : {
-            "x" : 110,
-            "y" : -115
+          "god:31823:7:0" : {
+            "x" : -409,
+            "y" : -28
           },
-          "god:409547:4:0" : {
-            "x" : -128,
-            "y" : -123
+          "god:31823:3:0" : {
+            "x" : -513,
+            "y" : 209
           },
-          "demigod:409547:6:0" : {
-            "x" : -7,
-            "y" : 134
+          "monster:31823:10:0" : {
+            "x" : -118,
+            "y" : 80
           },
-          "human:409547:7:0" : {
-            "x" : -9,
-            "y" : -140
+          "location:31823:11:0" : {
+            "x" : -47,
+            "y" : -88
           },
-          "monster:409547:10:0" : {
-            "x" : 256,
-            "y" : 174
-          },
-          "monster:409547:11:0" : {
-            "x" : -272,
-            "y" : 182
+          "god:31823:4:0" : {
+            "x" : -691,
+            "y" : -72
           }
         },
         "position" : {
-          "x" : -12.505825951468289,
-          "y" : 28.470799505025198
+          "x" : -363.4305188249457,
+          "y" : 68.3186126025447
         },
-        "scale" : 0.994984984984985
+        "scale" : 1.0000077319873382
       }
     }
   }, {
     "id" : "fcde13d5-9756-430f-b3b3-15b0967f13d2",
     "status" : "SUCCESS",
-    "code" : "Sometimes it is more interesting to view a neighborhood with the ego vertex removed. After all, we know it is connected to everything in the view anyway. Plus this usually makes the community structure of the neighborhood more apparent. \n\nStudio makes this easy by automatically populating all shared edges for you. **You grab the vertices you're interested in, and the edges are populated in the Graph View automatically.**",
+    "code" : "Sometimes it is more interesting to view a neighborhood with the ego vertex removed. After all, we know that vertex is connected to the others in the view. Plus this usually makes the community structure of the neighborhood graph more apparent. \n\nStudio makes this easy by automatically populating all shared edges for you. **You grab the vertices you're interested in, and the edges are populated in the Graph View automatically.**",
     "language" : "markdown",
     "result" : {
-      "value" : "<p>Sometimes it is more interesting to view a neighborhood with the ego vertex removed. After all, we know it is connected to everything in the view anyway. Plus this usually makes the community structure of the neighborhood more apparent.</p>\n<p>Studio makes this easy by automatically populating all shared edges for you. <strong>You grab the vertices you're interested in, and the edges are populated in the Graph View automatically.</strong></p>\n",
+      "value" : "<p>Sometimes it is more interesting to view a neighborhood with the ego vertex removed. After all, we know that vertex is connected to the others in the view. Plus this usually makes the community structure of the neighborhood graph more apparent.</p>\n<p>Studio makes this easy by automatically populating all shared edges for you. <strong>You grab the vertices you're interested in, and the edges are populated in the Graph View automatically.</strong></p>\n",
       "type" : "HTML",
       "truncated" : false,
-      "id" : "5ea4e324-3646-4a28-b107-4c54a247ecd7"
+      "duration" : 0,
+      "id" : "3a8fe09d-f076-4f37-91b6-aeb7feda102e"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -975,133 +967,177 @@
   }, {
     "id" : "38fc88b9-00e3-4589-870b-e26f0e95ea32",
     "status" : "SUCCESS",
-    "code" : "g.V().has('name', 'hercules').both().has('name', neq('hercules'))\n// Note:        The 2nd has filter --^ prevents the ego vertex from being emitted when traversing self-referencing edges",
+    "code" : "g.V().hasLabel('god').has('name', 'pluto').both().has('name', neq('pluto'))\n// Note:        The 2nd has filter --^ prevents the ego vertex from being emitted when traversing self-referencing edges",
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "god:114763:4:0",
+        "id" : "location:31823:11:0",
+        "label" : "location",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=31823, ~label=location, group_id=11}, local_id=00000000-0000-8008-0000-000000000000, ~type=name}",
+            "value" : "tartarus"
+          } ]
+        }
+      }, {
+        "id" : "god:31823:3:0",
         "label" : "god",
         "type" : "vertex",
         "properties" : {
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=114763, ~label=god, group_id=4}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=3}, local_id=00000000-0000-8008-0000-000000000000, ~type=name}",
             "value" : "jupiter"
           } ],
           "age" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=114763, ~label=god, group_id=4}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+            "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=3}, local_id=00000000-0000-800e-0000-000000000000, ~type=age}",
             "value" : 5000
           } ]
         }
       }, {
-        "id" : "monster:114763:9:0",
-        "label" : "monster",
+        "id" : "god:31823:4:0",
+        "label" : "god",
         "type" : "vertex",
         "properties" : {
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=114763, ~label=monster, group_id=9}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-            "value" : "nemean"
-          } ]
-        }
-      }, {
-        "id" : "monster:114763:10:0",
-        "label" : "monster",
-        "type" : "vertex",
-        "properties" : {
-          "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=114763, ~label=monster, group_id=10}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-            "value" : "hydra"
-          } ]
-        }
-      }, {
-        "id" : "monster:114763:11:0",
-        "label" : "monster",
-        "type" : "vertex",
-        "properties" : {
-          "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=114763, ~label=monster, group_id=11}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-            "value" : "cerberus"
-          } ]
-        }
-      }, {
-        "id" : "human:114763:7:0",
-        "label" : "human",
-        "type" : "vertex",
-        "properties" : {
-          "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=114763, ~label=human, group_id=7}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-            "value" : "alcmene"
+            "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=4}, local_id=00000000-0000-8008-0000-000000000000, ~type=name}",
+            "value" : "neptune"
           } ],
           "age" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=114763, ~label=human, group_id=7}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
-            "value" : 45
+            "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=4}, local_id=00000000-0000-800e-0000-000000000000, ~type=age}",
+            "value" : 4500
+          } ]
+        }
+      }, {
+        "id" : "god:31823:3:0",
+        "label" : "god",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=3}, local_id=00000000-0000-8008-0000-000000000000, ~type=name}",
+            "value" : "jupiter"
+          } ],
+          "age" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=3}, local_id=00000000-0000-800e-0000-000000000000, ~type=age}",
+            "value" : 5000
+          } ]
+        }
+      }, {
+        "id" : "god:31823:4:0",
+        "label" : "god",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=4}, local_id=00000000-0000-8008-0000-000000000000, ~type=name}",
+            "value" : "neptune"
+          } ],
+          "age" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=4}, local_id=00000000-0000-800e-0000-000000000000, ~type=age}",
+            "value" : 4500
+          } ]
+        }
+      }, {
+        "id" : "monster:31823:10:0",
+        "label" : "monster",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=31823, ~label=monster, group_id=10}, local_id=00000000-0000-8008-0000-000000000000, ~type=name}",
+            "value" : "cerberus"
           } ]
         }
       } ],
       "type" : "VERTEX",
       "truncated" : false,
+      "duration" : 0,
       "graph" : {
         "vertices" : [ {
-          "id" : "god:114763:4:0",
+          "id" : "god:31823:3:0",
           "label" : "god",
           "type" : "vertex",
           "properties" : {
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=114763, ~label=god, group_id=4}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=3}, local_id=00000000-0000-8008-0000-000000000000, ~type=name}",
               "value" : "jupiter"
             } ],
             "age" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=114763, ~label=god, group_id=4}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+              "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=3}, local_id=00000000-0000-800e-0000-000000000000, ~type=age}",
               "value" : 5000
             } ]
           }
         }, {
-          "id" : "monster:114763:11:0",
+          "id" : "monster:31823:10:0",
           "label" : "monster",
           "type" : "vertex",
           "properties" : {
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=114763, ~label=monster, group_id=11}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=31823, ~label=monster, group_id=10}, local_id=00000000-0000-8008-0000-000000000000, ~type=name}",
               "value" : "cerberus"
             } ]
           }
         }, {
-          "id" : "monster:114763:9:0",
-          "label" : "monster",
+          "id" : "location:31823:11:0",
+          "label" : "location",
           "type" : "vertex",
           "properties" : {
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=114763, ~label=monster, group_id=9}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "nemean"
+              "id" : "{out_vertex={member_id=0, community_id=31823, ~label=location, group_id=11}, local_id=00000000-0000-8008-0000-000000000000, ~type=name}",
+              "value" : "tartarus"
             } ]
           }
         }, {
-          "id" : "human:114763:7:0",
-          "label" : "human",
+          "id" : "god:31823:4:0",
+          "label" : "god",
           "type" : "vertex",
           "properties" : {
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=114763, ~label=human, group_id=7}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "alcmene"
+              "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=4}, local_id=00000000-0000-8008-0000-000000000000, ~type=name}",
+              "value" : "neptune"
             } ],
             "age" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=114763, ~label=human, group_id=7}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
-              "value" : 45
-            } ]
-          }
-        }, {
-          "id" : "monster:114763:10:0",
-          "label" : "monster",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=114763, ~label=monster, group_id=10}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "hydra"
+              "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=4}, local_id=00000000-0000-800e-0000-000000000000, ~type=age}",
+              "value" : 4500
             } ]
           }
         } ],
-        "edges" : [ ]
+        "edges" : [ {
+          "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=3}, local_id=1ebe4a40-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=god, group_id=4}, ~type=brother}",
+          "label" : "brother",
+          "type" : "edge",
+          "inVLabel" : "god",
+          "outVLabel" : "god",
+          "inV" : "god:31823:4:0",
+          "outV" : "god:31823:3:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=31823, ~label=monster, group_id=10}, local_id=1ed52da0-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=location, group_id=11}, ~type=lives}",
+          "label" : "lives",
+          "type" : "edge",
+          "inVLabel" : "location",
+          "outVLabel" : "monster",
+          "inV" : "location:31823:11:0",
+          "outV" : "monster:31823:10:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=4}, local_id=1ec723e0-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=god, group_id=4}, ~type=battled}",
+          "label" : "battled",
+          "type" : "edge",
+          "inVLabel" : "god",
+          "outVLabel" : "god",
+          "inV" : "god:31823:4:0",
+          "outV" : "god:31823:4:0",
+          "properties" : {
+            "time" : "1970-01-01T00:00:00.005Z"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=4}, local_id=1ec35350-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=god, group_id=3}, ~type=brother}",
+          "label" : "brother",
+          "type" : "edge",
+          "inVLabel" : "god",
+          "outVLabel" : "god",
+          "inV" : "god:31823:3:0",
+          "outV" : "god:31823:4:0"
+        } ]
       },
-      "id" : "d1c449f8-49f3-4b82-a6bd-91295eed341e"
+      "id" : "36808ac4-b874-4369-86a2-6692fb579e0a"
     },
     "msg" : null,
     "dataViewType" : "GRAPH",
@@ -1111,45 +1147,47 @@
         "yAxis" : null
       },
       "GRAPH" : {
-        "labelTemplates" : { },
-        "defaultLabelTemplate" : "{{label}}[{{id}}]",
-        "requestId" : "d1c449f8-49f3-4b82-a6bd-91295eed341e",
+        "labelTemplates" : {
+          "god" : ""
+        },
+        "defaultLabelTemplate" : "{{label}} {{name}}",
+        "requestId" : "36808ac4-b874-4369-86a2-6692fb579e0a",
         "positions" : {
-          "god:114763:4:0" : {
-            "x" : -487,
-            "y" : 476
+          "god:31823:3:0" : {
+            "x" : 28,
+            "y" : 135
           },
-          "monster:114763:11:0" : {
-            "x" : 73,
-            "y" : 144
+          "monster:31823:10:0" : {
+            "x" : -140,
+            "y" : 130
           },
-          "monster:114763:9:0" : {
-            "x" : 478,
-            "y" : -486
+          "location:31823:11:0" : {
+            "x" : -28,
+            "y" : -184
           },
-          "human:114763:7:0" : {
-            "x" : -77,
-            "y" : -84
-          },
-          "monster:114763:10:0" : {
-            "x" : 8,
-            "y" : -3
+          "god:31823:4:0" : {
+            "x" : 92,
+            "y" : -119
           }
         },
-        "position" : null,
-        "scale" : null
+        "position" : {
+          "x" : -31.637445805954258,
+          "y" : -16.79230733913903
+        },
+        "scale" : 1
       }
     }
   }, {
     "id" : "b8893f32-c275-4816-9d12-72a98dcb793c",
     "status" : "SUCCESS",
-    "code" : "Subgraphs\n===\nIt is common to want to examine a subset of the graph based on a particular Edge Label or set of Edge Labels. In the following cell we take a look at the family tree of Hercules. This technique is useful for visualizing subgraphs of a particular type as well as paths in the graph.\n\n*Note: As mentioned earlier, Studio will automatically populate all shared edges between vertices in a result. However, when you retrieve a subgraph, Studio assumes you grabed exactly what you want, and does not augment the result.*",
+    "code" : "Paths and Subgraphs\n===\nIt is common to want to examine a subset of the graph based on a particular Edge Label, a set of Edge Labels, or a specific set of edges. In the following cell we take a look at the family tree of Hercules. This technique is useful for visualizing subgraphs of a particular type.\n\nThis same technique can be used to examine paths, or network walks. After all, a path is really just a subgraph when you include the vertices.\n\n*Note: As mentioned earlier, Studio will automatically populate all shared edges between vertices in a result. However, when you retrieve a subgraph, Studio assumes you grabed exactly what you want, and does not augment the result.*",
     "language" : "markdown",
     "result" : {
-      "value" : "<h1>Subgraphs</h1>\n<p>It is common to want to examine a subset of the graph based on a particular Edge Label or set of Edge Labels. In the following cell we take a look at the family tree of Hercules. This technique is useful for visualizing subgraphs of a particular type as well as paths in the graph.</p>\n<p><em>Note: As mentioned earlier, Studio will automatically populate all shared edges between vertices in a result. However, when you retrieve a subgraph, Studio assumes you grabed exactly what you want, and does not augment the result.</em></p>\n",
+      "value" : "<h1>Paths and Subgraphs</h1>\n<p>It is common to want to examine a subset of the graph based on a particular Edge Label, a set of Edge Labels, or a specific set of edges. In the following cell we take a look at the family tree of Hercules. This technique is useful for visualizing subgraphs of a particular type.</p>\n<p>This same technique can be used to examine paths, or network walks. After all, a path is really just a subgraph when you include the vertices.</p>\n<p><em>Note: As mentioned earlier, Studio will automatically populate all shared edges between vertices in a result. However, when you retrieve a subgraph, Studio assumes you grabed exactly what you want, and does not augment the result.</em></p>\n",
       "type" : "HTML",
       "truncated" : false,
-      "id" : "04edcea2-a9de-41f0-bf3a-691b5be9414d"
+      "duration" : 0,
+      "id" : "050061b9-42ce-442a-b1f2-4b2cd27242c2"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -1161,99 +1199,100 @@
   }, {
     "id" : "df2c0d20-95f3-49e2-bfc0-a94833f90ba5",
     "status" : "SUCCESS",
-    "code" : "g.V().has('name', 'hercules').repeat(outE('mother', 'father').subgraph('sg').otherV()).cap('sg')",
+    "code" : "// \"Starting from the hercules vertex, repeatedly traverse mother and father edges. Store the mother and father edges in the subgraph named 'sg'. Lastly, emit the subgraph via cap() Step.\"\ng.V().hasLabel('demigod').has('name', 'hercules').repeat(outE('mother', 'father').subgraph('sg').otherV()).cap('sg')",
     "language" : "gremlin",
     "result" : {
       "value" : [ {
         "vertices" : [ {
-          "id" : "human:114763:7:0",
+          "id" : "human:31823:6:0",
           "label" : "human",
           "type" : "vertex",
           "properties" : {
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=114763, ~label=human, group_id=7}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=31823, ~label=human, group_id=6}, local_id=00000000-0000-8008-0000-000000000000, ~type=name}",
               "value" : "alcmene"
             } ],
             "age" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=114763, ~label=human, group_id=7}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+              "id" : "{out_vertex={member_id=0, community_id=31823, ~label=human, group_id=6}, local_id=00000000-0000-800e-0000-000000000000, ~type=age}",
               "value" : 45
             } ]
           }
         }, {
-          "id" : "god:114763:4:0",
+          "id" : "god:31823:3:0",
           "label" : "god",
           "type" : "vertex",
           "properties" : {
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=114763, ~label=god, group_id=4}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=3}, local_id=00000000-0000-8008-0000-000000000000, ~type=name}",
               "value" : "jupiter"
             } ],
             "age" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=114763, ~label=god, group_id=4}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+              "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=3}, local_id=00000000-0000-800e-0000-000000000000, ~type=age}",
               "value" : 5000
             } ]
           }
         }, {
-          "id" : "titan:114763:1:0",
+          "id" : "titan:31823:12:0",
           "label" : "titan",
           "type" : "vertex",
           "properties" : {
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=114763, ~label=titan, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=31823, ~label=titan, group_id=12}, local_id=00000000-0000-8008-0000-000000000000, ~type=name}",
               "value" : "saturn"
             } ],
             "age" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=114763, ~label=titan, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+              "id" : "{out_vertex={member_id=0, community_id=31823, ~label=titan, group_id=12}, local_id=00000000-0000-800e-0000-000000000000, ~type=age}",
               "value" : 10000
             } ]
           }
         }, {
-          "id" : "demigod:114763:6:0",
+          "id" : "demigod:31823:5:0",
           "label" : "demigod",
           "type" : "vertex",
           "properties" : {
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=114763, ~label=demigod, group_id=6}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=31823, ~label=demigod, group_id=5}, local_id=00000000-0000-8008-0000-000000000000, ~type=name}",
               "value" : "hercules"
             } ],
             "age" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=114763, ~label=demigod, group_id=6}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+              "id" : "{out_vertex={member_id=0, community_id=31823, ~label=demigod, group_id=5}, local_id=00000000-0000-800e-0000-000000000000, ~type=age}",
               "value" : 30
             } ]
           }
         } ],
         "edges" : [ {
-          "id" : "{out_vertex={member_id=0, community_id=114763, ~label=demigod, group_id=6}, local_id=9abb2be0-e210-11e5-92b4-bde487a51a22, in_vertex={member_id=0, community_id=114763, ~label=god, group_id=4}, ~type=father}",
+          "id" : "{out_vertex={member_id=0, community_id=31823, ~label=demigod, group_id=5}, local_id=1ecf1320-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=god, group_id=3}, ~type=father}",
           "label" : "father",
           "type" : "edge",
           "inVLabel" : "god",
           "outVLabel" : "demigod",
-          "inV" : "god:114763:4:0",
-          "outV" : "demigod:114763:6:0"
+          "inV" : "god:31823:3:0",
+          "outV" : "demigod:31823:5:0"
         }, {
-          "id" : "{out_vertex={member_id=0, community_id=114763, ~label=god, group_id=4}, local_id=9aa6e090-e210-11e5-92b4-bde487a51a22, in_vertex={member_id=0, community_id=114763, ~label=titan, group_id=1}, ~type=father}",
-          "label" : "father",
-          "type" : "edge",
-          "inVLabel" : "titan",
-          "outVLabel" : "god",
-          "inV" : "titan:114763:1:0",
-          "outV" : "god:114763:4:0"
-        }, {
-          "id" : "{out_vertex={member_id=0, community_id=114763, ~label=demigod, group_id=6}, local_id=9abed560-e210-11e5-92b4-bde487a51a22, in_vertex={member_id=0, community_id=114763, ~label=human, group_id=7}, ~type=mother}",
+          "id" : "{out_vertex={member_id=0, community_id=31823, ~label=demigod, group_id=5}, local_id=1ed099c0-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=human, group_id=6}, ~type=mother}",
           "label" : "mother",
           "type" : "edge",
           "inVLabel" : "human",
           "outVLabel" : "demigod",
-          "inV" : "human:114763:7:0",
-          "outV" : "demigod:114763:6:0"
+          "inV" : "human:31823:6:0",
+          "outV" : "demigod:31823:5:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=3}, local_id=1eb5e5d0-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=titan, group_id=12}, ~type=father}",
+          "label" : "father",
+          "type" : "edge",
+          "inVLabel" : "titan",
+          "outVLabel" : "god",
+          "inV" : "titan:31823:12:0",
+          "outV" : "god:31823:3:0"
         } ]
       } ],
       "type" : "GRAPH",
       "truncated" : false,
-      "id" : "94b7441d-7a2f-4e09-94b3-f5be7a597f30"
+      "duration" : 0,
+      "id" : "9a5fea2a-0c09-4b8f-995b-4a71cffad2ab"
     },
     "msg" : null,
-    "dataViewType" : "TABLE",
+    "dataViewType" : "GRAPH",
     "viewSettings" : {
       "CHART" : {
         "xAxis" : null,
@@ -1262,30 +1301,33 @@
       "GRAPH" : {
         "labelTemplates" : { },
         "defaultLabelTemplate" : "{{name}} ({{label}})",
-        "requestId" : "94b7441d-7a2f-4e09-94b3-f5be7a597f30",
+        "requestId" : "9a5fea2a-0c09-4b8f-995b-4a71cffad2ab",
         "positions" : {
-          "human:114763:7:0" : {
-            "x" : 134,
-            "y" : -107
+          "human:31823:6:0" : {
+            "x" : -454,
+            "y" : 149
           },
-          "god:114763:4:0" : {
-            "x" : -14,
-            "y" : 113
+          "god:31823:3:0" : {
+            "x" : -84,
+            "y" : 91
           },
-          "titan:114763:1:0" : {
-            "x" : -134,
-            "y" : -2
+          "titan:31823:12:0" : {
+            "x" : 92,
+            "y" : -137
           },
-          "demigod:114763:6:0" : {
-            "x" : 147,
-            "y" : 75
+          "demigod:31823:5:0" : {
+            "x" : -296,
+            "y" : 328
           }
         },
         "position" : {
-          "x" : 92.09727385242917,
-          "y" : 13.411231827004185
+          "x" : -185.88543854806028,
+          "y" : 102.64926932208269
         },
-        "scale" : 1.470139900533334
+        "scale" : 0.7325380016076227
+      },
+      "CODE" : {
+        "hidden" : false
       }
     }
   }, {
@@ -1297,6 +1339,7 @@
       "value" : "<h1>Syntax Validation</h1>\n<p>Studio will automatcally detect syntax errors for you. This is demonstrated in the following cell. Syntax validation can also be disabled from the cell menu bar.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "681c9b7f-ab19-48b0-b66e-1e4ed77499f5"
     },
     "msg" : null,
@@ -1309,7 +1352,7 @@
   }, {
     "id" : "01b202ee-60c1-4bbe-a7e8-0e9f7efdb5f1",
     "status" : null,
-    "code" : "g.V.both()     // missing ()'s\ng.V().has(123) // invalid argument type",
+    "code" : "g.V.both()     // missing ()'s on V.\ng.V().has(123) // invalid argument type",
     "language" : "gremlin",
     "result" : null,
     "msg" : null,
@@ -1318,13 +1361,14 @@
   }, {
     "id" : "9e1aa439-2b2b-438f-8414-9906be28fc5d",
     "status" : "SUCCESS",
-    "code" : "Content Assist\n==============\nLike most advanced editors, Studio provides content assist. If you're new to Gremlin then this can be really helpful. Position your cursor at the end of the following statements and press ctrl/cmd+spc to see some suggestions.",
+    "code" : "Content Assist\n==============\nLike most advanced editors, Studio provides content assist. If you're new to Gremlin then this can be really helpful. Position your cursor at the end of the following statement and press ctrl+spc to see some suggestions.",
     "language" : "markdown",
     "result" : {
-      "value" : "<h1>Content Assist</h1>\n<p>Like most advanced editors, Studio provides content assist. If you're new to Gremlin then this can be really helpful. Position your cursor at the end of the following statements and press ctrl/cmd+spc to see some suggestions.</p>\n",
+      "value" : "<h1>Content Assist</h1>\n<p>Like most advanced editors, Studio provides content assist. If you're new to Gremlin then this can be really helpful. Position your cursor at the end of the following statement and press ctrl+spc to see some suggestions.</p>\n",
       "type" : "HTML",
       "truncated" : false,
-      "id" : "5d6688e2-bff1-4761-86f2-bba80f2ee3af"
+      "duration" : 0,
+      "id" : "bd6f6881-1d0a-4b56-ab4a-5bc1c5f4129e"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -1336,7 +1380,7 @@
   }, {
     "id" : "fb9b56d7-c319-4c21-872a-125f7fb349e6",
     "status" : null,
-    "code" : "g.V().both().\n// TODO ADD MORE\n// TODO ADD MORE\n// TODO ADD MORE\n// TODO ADD MORE\n// TODO ADD MORE\n// TODO ADD MORE",
+    "code" : "g.V().both().\n",
     "language" : "gremlin",
     "result" : null,
     "msg" : null,
@@ -1351,6 +1395,7 @@
       "value" : "<h2>Schema-Aware Content Assist</h2>\n<p>Studio also provides contextual &ldquo;schema aware&rdquo; content assist. In other words, Studio examines the schema and suggests Vertex/Edge Labels and Property Keys based on the underlying graph schema.</p>\n<p>Position your cursor at the end of the following statements and press ctrl/cmd+spc to see the schema-driven suggestions.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "e06bf468-4aaf-448e-995f-7b8340f1eff0"
     },
     "msg" : null,
@@ -1363,7 +1408,7 @@
   }, {
     "id" : "af50304b-72df-4c71-a0f9-228ef622d9a0",
     "status" : null,
-    "code" : "g.V().hasLabel(\ng.V().bothE(\n\n// Notice that in this example the Edge Labels are filtered to include only edges adjacent to demigod. How cool is that!?\n// TODO\n// TODO\n// TODO\n// TODO\n// TODO\n// TODO\n// TODO this isn't actually hooked up yet.\ng.V().hasLabel('demigod').bothE(",
+    "code" : "g.V().hasLabel(\ng.V().bothE(\n\n// Notice that in this example the Edge Labels are filtered to include only edges adjacent to demigod. How cool is that!?\ng.V().hasLabel('demigod').bothE(",
     "language" : "gremlin",
     "result" : null,
     "msg" : null,
@@ -1371,18 +1416,22 @@
     "viewSettings" : {
       "VALIDATIONS" : {
         "enabled" : false
+      },
+      "CODE" : {
+        "hidden" : false
       }
     }
   }, {
     "id" : "9a709fba-ded4-42ff-8631-f86ff0acc6e7",
     "status" : "SUCCESS",
-    "code" : "Schema View\n====\nWhile we're on the topic of the schema, lets check out the schema view! It shows you what's connected and how. The button is in the very top right corner of the notebook. Try it out.\n\nQuick tips:\n* Properties, indexes, TTL's, and partitions are shown on mouseover.\n* You can double-click a Vertex Label to check out it's adajencies in a hierarchical view. Double-click any blank cavas area to return to the normal view.\n* You can zoom and pan just like you can in the Graph View. Double-click the canvas to reset the view if things get too wild.",
+    "code" : "Schema View\n====\nWhile we're on the topic of the schema, lets check out the schema view! It shows you what's connected and how. The button is in the very top right corner of the notebook. Try it out.\n\nQuick tips:\n* Properties, indexes, TTL's, and partitions are shown on mouseover. The details panel can be pinned via click.\n* You can double-click a Vertex Label to check out it's adajencies in a hierarchical view. Double-click any blank cavas area to return to the normal view.\n* You can zoom and pan just like you can in the Graph View. Double-click the canvas to reset the view if things get too wild.",
     "language" : "markdown",
     "result" : {
-      "value" : "<h1>Schema View</h1>\n<p>While we're on the topic of the schema, lets check out the schema view! It shows you what's connected and how. The button is in the very top right corner of the notebook. Try it out.</p>\n<p>Quick tips:</p>\n<ul>\n<li>Properties, indexes, TTL's, and partitions are shown on mouseover.</li>\n<li>You can double-click a Vertex Label to check out it's adajencies in a hierarchical view. Double-click any blank cavas area to return to the normal view.</li>\n<li>You can zoom and pan just like you can in the Graph View. Double-click the canvas to reset the view if things get too wild.</li>\n</ul>\n",
+      "value" : "<h1>Schema View</h1>\n<p>While we're on the topic of the schema, lets check out the schema view! It shows you what's connected and how. The button is in the very top right corner of the notebook. Try it out.</p>\n<p>Quick tips:</p>\n<ul>\n<li>Properties, indexes, TTL's, and partitions are shown on mouseover. The details panel can be pinned via click.</li>\n<li>You can double-click a Vertex Label to check out it's adajencies in a hierarchical view. Double-click any blank cavas area to return to the normal view.</li>\n<li>You can zoom and pan just like you can in the Graph View. Double-click the canvas to reset the view if things get too wild.</li>\n</ul>\n",
       "type" : "HTML",
       "truncated" : false,
-      "id" : "14559959-fedb-47c8-8dcf-db6678b63500"
+      "duration" : 0,
+      "id" : "07330ab6-de12-4309-bb0c-149fbc942c29"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -1392,15 +1441,119 @@
       }
     }
   }, {
-    "id" : "21b17157-b7ee-4514-ae33-c529acd833d1",
+    "id" : "0a77568b-22a3-4144-9fe0-4cbf46eeb168",
     "status" : "SUCCESS",
-    "code" : "Charts\n===\n\nLets switch gears a little bit and do some charting. We went ahead and created an example for you in the next cell. We're using the Gremlin groupCount()-Step in this example. Charting and groupCount() are a very powerful combination. Take a look at the Raw View to see how the results translate into the bar chart.\n\nThis particular result type is charted automatically by Studio.",
+    "code" : "Profiling\n=========\n\nGremlin provides the ability to profile traversals. Metrics are gathered for the duration taken by each step and the number of Traversers emitted by that step. This can be very useful for quickly spotting bottlenecks in a Traversal.\n\nQuick tips:\n* Each top-level row corresponds to a Step in the Traversal. Keep in mind that the Traversal may be optimized at this point. In this case you can see that *g.V().hasLabel('demigod').has('name', 'pluto')* has all been combined into a single step.\n* Mouse-over the duration bars to see the detailed metrics for that row.\n* Index utilization is one of the most critical aspects to a Traversals performance. Inspect this in the 'iterator-setup' rows. If that step leveraged an index then 'isFitted' will be true.\n",
     "language" : "markdown",
     "result" : {
-      "value" : "<h1>Charts</h1>\n<p>Lets switch gears a little bit and do some charting. We went ahead and created an example for you in the next cell. We're using the Gremlin groupCount()-Step in this example. Charting and groupCount() are a very powerful combination. Take a look at the Raw View to see how the results translate into the bar chart.</p>\n<p>This particular result type is charted automatically by Studio.</p>\n",
+      "value" : "<h1>Profiling</h1>\n<p>Gremlin provides the ability to profile traversals. Metrics are gathered for the duration taken by each step and the number of Traversers emitted by that step. This can be very useful for quickly spotting bottlenecks in a Traversal.</p>\n<p>Quick tips:</p>\n<ul>\n<li>Each top-level row corresponds to a Step in the Traversal. Keep in mind that the Traversal may be optimized at this point. In this case you can see that <em>g.V().hasLabel('demigod').has('name', 'pluto')</em> has all been combined into a single step.</li>\n<li>Mouse-over the duration bars to see the detailed metrics for that row.</li>\n<li>Index utilization is one of the most critical aspects to a Traversals performance. Inspect this in the 'iterator-setup' rows. If that step leveraged an index then 'isFitted' will be true.</li>\n</ul>\n",
       "type" : "HTML",
       "truncated" : false,
-      "id" : "a1708e37-dc53-48fb-98a7-dcf71300f799"
+      "duration" : 0,
+      "id" : "fd393349-03b1-4a61-a28e-c2b72e7ce7b7"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CODE" : {
+        "hidden" : true
+      }
+    }
+  }, {
+    "id" : "e04e3060-da27-41b4-925f-8a0c97e1ef7d",
+    "status" : "SUCCESS",
+    "code" : "g.V().hasLabel('demigod').has('name', 'pluto').both().count().profile().cap(TraversalMetrics.METRICS_KEY)",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ {
+        "dur" : 4.406305,
+        "metrics" : [ {
+          "dur" : 4.131944,
+          "counts" : {
+            "traverserCount" : 0,
+            "elementCount" : 0
+          },
+          "name" : "DsegGraphStep([~label.eq(demigod), name.eq(pluto)])",
+          "annotations" : {
+            "percentDur" : 93.7734450974229
+          },
+          "id" : "9.0.0()",
+          "metrics" : [ {
+            "dur" : 0.474298,
+            "counts" : {
+              "limit" : 2147483647,
+              "numQNFclauses" : 1,
+              "numQueries" : 1
+            },
+            "name" : "query-optimizer",
+            "annotations" : {
+              "condition" : "(((schema[demigod]) & (true)) & name = pluto)"
+            },
+            "id" : "9.0.0().query-optimizer[0]"
+          }, {
+            "dur" : 0.031736,
+            "counts" : { },
+            "name" : "iterator-setup",
+            "annotations" : {
+              "isFitted" : "true",
+              "isSorted" : "false"
+            },
+            "id" : "9.0.0().iterator-setup[0]"
+          } ]
+        }, {
+          "dur" : 0.0309,
+          "counts" : {
+            "traverserCount" : 0,
+            "elementCount" : 0
+          },
+          "name" : "DsegVertexStep(BOTH,edge)",
+          "annotations" : {
+            "percentDur" : 0.7012678423304787
+          },
+          "id" : "8.0.0()"
+        }, {
+          "dur" : 0.135495,
+          "counts" : {
+            "traverserCount" : 1,
+            "elementCount" : 1
+          },
+          "name" : "CountGlobalStep",
+          "annotations" : {
+            "percentDur" : 3.075025446490881
+          },
+          "id" : "4.0.0()"
+        }, {
+          "dur" : 0.107966,
+          "counts" : {
+            "traverserCount" : 1,
+            "elementCount" : 1
+          },
+          "name" : "SideEffectCapStep([~metrics])",
+          "annotations" : {
+            "percentDur" : 2.4502616137557434
+          },
+          "id" : "6.0.0()"
+        } ]
+      } ],
+      "type" : "PROFILE",
+      "truncated" : false,
+      "duration" : 0,
+      "id" : "4bd1e198-b2af-42bf-b338-3c79caf49d2c"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : null
+  }, {
+    "id" : "21b17157-b7ee-4514-ae33-c529acd833d1",
+    "status" : "SUCCESS",
+    "code" : "Charts\n===\n\nLets switch gears a little bit and do some charting. We went ahead and created an example for you in the next cell. We're using the Gremlin groupCount()-Step in this example. Charting and groupCount() are a very powerful combination. Take a look at the Raw View to see how the results translate into the bar chart.\n\nThe domain and range axis assignments are detected automatically for this particular result type.",
+    "language" : "markdown",
+    "result" : {
+      "value" : "<h1>Charts</h1>\n<p>Lets switch gears a little bit and do some charting. We went ahead and created an example for you in the next cell. We're using the Gremlin groupCount()-Step in this example. Charting and groupCount() are a very powerful combination. Take a look at the Raw View to see how the results translate into the bar chart.</p>\n<p>The domain and range axis assignments are detected automatically for this particular result type.</p>\n",
+      "type" : "HTML",
+      "truncated" : false,
+      "duration" : 0,
+      "id" : "4b87f72b-4784-42b7-80d2-509d65734aa9"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -1425,7 +1578,8 @@
       } ],
       "type" : "MAP",
       "truncated" : false,
-      "id" : "3a97064e-83ea-42b1-82f2-9a46db795a66"
+      "duration" : 0,
+      "id" : "aa43188f-2709-4e01-ba59-ac8b74afda9a"
     },
     "msg" : null,
     "dataViewType" : "BAR",
@@ -1438,13 +1592,14 @@
   }, {
     "id" : "89d8c6fe-ef1e-4e6e-8108-b7b1e715f4e9",
     "status" : "SUCCESS",
-    "code" : "**Now it's your turn.** Studio can chart a wide variety of data, but you typically have to tell it how. Specifically, you need to specify the domain and range for the chart. In the next cell, click on the Bar Chart button and select 'NAME' for the x axis and 'AGE' for the y axis.",
+    "code" : "**Now it's your turn.** Studio can chart a wide variety of data, but you typically need to specify the domain and range for the chart (i.e. how to map values onto axis and data series). In the next cell, click on the Bar Chart button and select 'NAME' for the x axis and 'AGE' for the y axis.",
     "language" : "markdown",
     "result" : {
-      "value" : "<p><strong>Now it's your turn.</strong> Studio can chart a wide variety of data, but you typically have to tell it how. Specifically, you need to specify the domain and range for the chart. In the next cell, click on the Bar Chart button and select 'NAME' for the x axis and 'AGE' for the y axis.</p>\n",
+      "value" : "<p><strong>Now it's your turn.</strong> Studio can chart a wide variety of data, but you typically need to specify the domain and range for the chart (i.e. how to map values onto axis and data series). In the next cell, click on the Bar Chart button and select 'NAME' for the x axis and 'AGE' for the y axis.</p>\n",
       "type" : "HTML",
       "truncated" : false,
-      "id" : "82f6a23f-00ca-4573-88b6-b8bb0f0e0c76"
+      "duration" : 0,
+      "id" : "ab1ac929-2b2c-440b-8b40-41aa10a1d29b"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -1460,497 +1615,490 @@
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "demigod:409547:6:0",
+        "id" : "demigod:379107:6:0",
         "label" : "demigod",
         "type" : "vertex",
         "properties" : {
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=demigod, group_id=6}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "hercules"
           } ],
           "age" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=demigod, group_id=6}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
             "value" : 30
           } ]
         }
       }, {
-        "id" : "titan:409547:1:0",
+        "id" : "titan:379107:1:0",
         "label" : "titan",
         "type" : "vertex",
         "properties" : {
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=titan, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=titan, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "saturn"
           } ],
           "age" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=titan, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=titan, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
             "value" : 10000
           } ]
         }
       }, {
-        "id" : "location:409547:2:0",
+        "id" : "location:379107:12:0",
         "label" : "location",
         "type" : "vertex",
         "properties" : {
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=location, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-            "value" : "sky"
-          } ]
-        }
-      }, {
-        "id" : "location:409547:12:0",
-        "label" : "location",
-        "type" : "vertex",
-        "properties" : {
-          "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=location, group_id=12}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=location, group_id=12}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "tartarus"
           } ]
         }
       }, {
-        "id" : "location:409547:3:0",
+        "id" : "location:379107:3:0",
         "label" : "location",
         "type" : "vertex",
         "properties" : {
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=location, group_id=3}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=location, group_id=3}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "sea"
           } ]
         }
       }, {
-        "id" : "human:409547:7:0",
+        "id" : "location:379107:2:0",
+        "label" : "location",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=location, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "value" : "sky"
+          } ]
+        }
+      }, {
+        "id" : "human:379107:7:0",
         "label" : "human",
         "type" : "vertex",
         "properties" : {
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=human, group_id=7}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=human, group_id=7}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "alcmene"
           } ],
           "age" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=human, group_id=7}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=human, group_id=7}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
             "value" : 45
           } ]
         }
       }, {
-        "id" : "god:409547:5:0",
+        "id" : "god:379107:5:0",
         "label" : "god",
         "type" : "vertex",
         "properties" : {
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=5}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "neptune"
           } ],
-          "nicknames" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, local_id=00000000-0000-800a-0000-000000000000, ~type=nicknames}",
-            "value" : "Flipper",
-            "properties" : {
-              "time" : "1970-01-01T00:00:00.025Z"
-            }
-          } ],
           "age" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=5}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
             "value" : 4500
           } ]
         }
       }, {
-        "id" : "god:409547:8:0",
+        "id" : "god:379107:4:0",
         "label" : "god",
         "type" : "vertex",
         "properties" : {
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=8}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-            "value" : "pluto"
-          } ],
-          "age" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=8}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
-            "value" : 4000
-          } ]
-        }
-      }, {
-        "id" : "god:409547:4:0",
-        "label" : "god",
-        "type" : "vertex",
-        "properties" : {
-          "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=4}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "jupiter"
           } ],
           "age" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=4}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
             "value" : 5000
           } ]
         }
       }, {
-        "id" : "monster:409547:11:0",
+        "id" : "god:379107:8:0",
+        "label" : "god",
+        "type" : "vertex",
+        "properties" : {
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=8}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "value" : "pluto"
+          } ],
+          "age" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=8}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+            "value" : 4000
+          } ]
+        }
+      }, {
+        "id" : "monster:379107:11:0",
         "label" : "monster",
         "type" : "vertex",
         "properties" : {
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=monster, group_id=11}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=monster, group_id=11}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "cerberus"
           } ]
         }
       }, {
-        "id" : "monster:409547:10:0",
+        "id" : "monster:379107:10:0",
         "label" : "monster",
         "type" : "vertex",
         "properties" : {
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=monster, group_id=10}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=monster, group_id=10}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "hydra"
           } ]
         }
       }, {
-        "id" : "monster:409547:9:0",
+        "id" : "monster:379107:9:0",
         "label" : "monster",
         "type" : "vertex",
         "properties" : {
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=409547, ~label=monster, group_id=9}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=379107, ~label=monster, group_id=9}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "nemean"
           } ]
         }
       } ],
       "type" : "VERTEX",
       "truncated" : false,
+      "duration" : 0,
       "graph" : {
         "vertices" : [ {
-          "id" : "monster:409547:9:0",
-          "label" : "monster",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=monster, group_id=9}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "nemean"
-            } ]
-          }
-        }, {
-          "id" : "god:409547:4:0",
+          "id" : "god:379107:5:0",
           "label" : "god",
           "type" : "vertex",
           "properties" : {
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "jupiter"
-            } ],
-            "age" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
-              "value" : 5000
-            } ]
-          }
-        }, {
-          "id" : "demigod:409547:6:0",
-          "label" : "demigod",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "hercules"
-            } ],
-            "age" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
-              "value" : 30
-            } ]
-          }
-        }, {
-          "id" : "human:409547:7:0",
-          "label" : "human",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=human, group_id=7}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "alcmene"
-            } ],
-            "age" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=human, group_id=7}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
-              "value" : 45
-            } ]
-          }
-        }, {
-          "id" : "location:409547:3:0",
-          "label" : "location",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=location, group_id=3}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "sea"
-            } ]
-          }
-        }, {
-          "id" : "location:409547:12:0",
-          "label" : "location",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=location, group_id=12}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "tartarus"
-            } ]
-          }
-        }, {
-          "id" : "monster:409547:10:0",
-          "label" : "monster",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=monster, group_id=10}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "hydra"
-            } ]
-          }
-        }, {
-          "id" : "god:409547:5:0",
-          "label" : "god",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=5}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "neptune"
             } ],
-            "nicknames" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, local_id=00000000-0000-800a-0000-000000000000, ~type=nicknames}",
-              "value" : "Flipper",
-              "properties" : {
-                "time" : "1970-01-01T00:00:00.025Z"
-              }
-            } ],
             "age" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=5}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
               "value" : 4500
             } ]
           }
         }, {
-          "id" : "monster:409547:11:0",
-          "label" : "monster",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=monster, group_id=11}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "cerberus"
-            } ]
-          }
-        }, {
-          "id" : "god:409547:8:0",
-          "label" : "god",
-          "type" : "vertex",
-          "properties" : {
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=8}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "pluto"
-            } ],
-            "age" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=8}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
-              "value" : 4000
-            } ]
-          }
-        }, {
-          "id" : "location:409547:2:0",
+          "id" : "location:379107:2:0",
           "label" : "location",
           "type" : "vertex",
           "properties" : {
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=location, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=location, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "sky"
             } ]
           }
         }, {
-          "id" : "titan:409547:1:0",
+          "id" : "monster:379107:9:0",
+          "label" : "monster",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=monster, group_id=9}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "nemean"
+            } ]
+          }
+        }, {
+          "id" : "titan:379107:1:0",
           "label" : "titan",
           "type" : "vertex",
           "properties" : {
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=titan, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=titan, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "saturn"
             } ],
             "age" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=409547, ~label=titan, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=titan, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
               "value" : 10000
+            } ]
+          }
+        }, {
+          "id" : "god:379107:4:0",
+          "label" : "god",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=4}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "jupiter"
+            } ],
+            "age" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=4}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+              "value" : 5000
+            } ]
+          }
+        }, {
+          "id" : "god:379107:8:0",
+          "label" : "god",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=8}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "pluto"
+            } ],
+            "age" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=8}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+              "value" : 4000
+            } ]
+          }
+        }, {
+          "id" : "demigod:379107:6:0",
+          "label" : "demigod",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=demigod, group_id=6}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "hercules"
+            } ],
+            "age" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=demigod, group_id=6}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+              "value" : 30
+            } ]
+          }
+        }, {
+          "id" : "monster:379107:11:0",
+          "label" : "monster",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=monster, group_id=11}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "cerberus"
+            } ]
+          }
+        }, {
+          "id" : "monster:379107:10:0",
+          "label" : "monster",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=monster, group_id=10}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "hydra"
+            } ]
+          }
+        }, {
+          "id" : "location:379107:12:0",
+          "label" : "location",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=location, group_id=12}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "tartarus"
+            } ]
+          }
+        }, {
+          "id" : "human:379107:7:0",
+          "label" : "human",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=human, group_id=7}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "alcmene"
+            } ],
+            "age" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=human, group_id=7}, local_id=00000000-0000-8003-0000-000000000000, ~type=age}",
+              "value" : 45
+            } ]
+          }
+        }, {
+          "id" : "location:379107:3:0",
+          "label" : "location",
+          "type" : "vertex",
+          "properties" : {
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=379107, ~label=location, group_id=3}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "sea"
             } ]
           }
         } ],
         "edges" : [ {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=8}, local_id=5f4d9d91-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, ~type=brother}",
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=4}, local_id=4dbb2741-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=god, group_id=8}, ~type=brother}",
           "label" : "brother",
           "type" : "edge",
           "inVLabel" : "god",
           "outVLabel" : "god",
-          "inV" : "god:409547:5:0",
-          "outV" : "god:409547:8:0"
+          "inV" : "god:379107:8:0",
+          "outV" : "god:379107:4:0"
         }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=5f4a9050-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=human, group_id=7}, ~type=mother}",
-          "label" : "mother",
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=8}, local_id=4dbb7562-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=monster, group_id=11}, ~type=pet}",
+          "label" : "pet",
           "type" : "edge",
-          "inVLabel" : "human",
-          "outVLabel" : "demigod",
-          "inV" : "human:409547:7:0",
-          "outV" : "demigod:409547:6:0"
+          "inVLabel" : "monster",
+          "outVLabel" : "god",
+          "inV" : "monster:379107:11:0",
+          "outV" : "god:379107:8:0"
         }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=5f4ab760-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=monster, group_id=9}, ~type=battled}",
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=demigod, group_id=6}, local_id=4dbb4e50-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=god, group_id=4}, ~type=father}",
+          "label" : "father",
+          "type" : "edge",
+          "inVLabel" : "god",
+          "outVLabel" : "demigod",
+          "inV" : "god:379107:4:0",
+          "outV" : "demigod:379107:6:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=8}, local_id=4dbb7560-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=god, group_id=5}, ~type=brother}",
+          "label" : "brother",
+          "type" : "edge",
+          "inVLabel" : "god",
+          "outVLabel" : "god",
+          "inV" : "god:379107:5:0",
+          "outV" : "god:379107:8:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=4}, local_id=4dbb0030-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=titan, group_id=1}, ~type=father}",
+          "label" : "father",
+          "type" : "edge",
+          "inVLabel" : "titan",
+          "outVLabel" : "god",
+          "inV" : "titan:379107:1:0",
+          "outV" : "god:379107:4:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=5}, local_id=4dbb2742-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=location, group_id=3}, ~type=lives}",
+          "label" : "lives",
+          "type" : "edge",
+          "inVLabel" : "location",
+          "outVLabel" : "god",
+          "inV" : "location:379107:3:0",
+          "outV" : "god:379107:5:0",
+          "properties" : {
+            "reason" : "loves waves"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=4}, local_id=4dbb2740-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=god, group_id=5}, ~type=brother}",
+          "label" : "brother",
+          "type" : "edge",
+          "inVLabel" : "god",
+          "outVLabel" : "god",
+          "inV" : "god:379107:5:0",
+          "outV" : "god:379107:4:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=demigod, group_id=6}, local_id=4dbb4e52-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=monster, group_id=9}, ~type=battled}",
           "label" : "battled",
           "type" : "edge",
           "inVLabel" : "monster",
           "outVLabel" : "demigod",
-          "inV" : "monster:409547:9:0",
-          "outV" : "demigod:409547:6:0",
+          "inV" : "monster:379107:9:0",
+          "outV" : "demigod:379107:6:0",
           "properties" : {
             "time" : "1970-01-01T00:00:00.001Z",
             "place" : "POINT(38.1 23.7)"
           }
         }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, local_id=5f43b280-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, ~type=brother}",
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=5}, local_id=4dbb2743-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=god, group_id=4}, ~type=brother}",
           "label" : "brother",
           "type" : "edge",
           "inVLabel" : "god",
           "outVLabel" : "god",
-          "inV" : "god:409547:4:0",
-          "outV" : "god:409547:5:0"
+          "inV" : "god:379107:4:0",
+          "outV" : "god:379107:5:0"
         }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, local_id=5f3ef790-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, ~type=brother}",
-          "label" : "brother",
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=8}, local_id=4dbb7561-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=location, group_id=12}, ~type=lives}",
+          "label" : "lives",
           "type" : "edge",
-          "inVLabel" : "god",
+          "inVLabel" : "location",
           "outVLabel" : "god",
-          "inV" : "god:409547:5:0",
-          "outV" : "god:409547:4:0"
-        }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, local_id=5f43b281-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=god, group_id=8}, ~type=brother}",
-          "label" : "brother",
-          "type" : "edge",
-          "inVLabel" : "god",
-          "outVLabel" : "god",
-          "inV" : "god:409547:8:0",
-          "outV" : "god:409547:5:0"
-        }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, local_id=5f44c3f0-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, ~type=battled}",
-          "label" : "battled",
-          "type" : "edge",
-          "inVLabel" : "god",
-          "outVLabel" : "god",
-          "inV" : "god:409547:5:0",
-          "outV" : "god:409547:5:0",
+          "inV" : "location:379107:12:0",
+          "outV" : "god:379107:8:0",
           "properties" : {
-            "time" : "1970-01-01T00:00:00.005Z"
+            "reason" : "no fear of death"
           }
         }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=5f4d4f70-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=monster, group_id=11}, ~type=battled}",
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=demigod, group_id=6}, local_id=4dbb4e54-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=monster, group_id=11}, ~type=battled}",
           "label" : "battled",
           "type" : "edge",
           "inVLabel" : "monster",
           "outVLabel" : "demigod",
-          "inV" : "monster:409547:11:0",
-          "outV" : "demigod:409547:6:0",
+          "inV" : "monster:379107:11:0",
+          "outV" : "demigod:379107:6:0",
           "properties" : {
             "time" : "1970-01-01T00:00:00.012Z",
             "place" : "POINT(39 22)"
           }
         }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=8}, local_id=5f4d9d90-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, ~type=brother}",
-          "label" : "brother",
-          "type" : "edge",
-          "inVLabel" : "god",
-          "outVLabel" : "god",
-          "inV" : "god:409547:4:0",
-          "outV" : "god:409547:8:0"
-        }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=8}, local_id=5f4dc4a0-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=location, group_id=12}, ~type=lives}",
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=4}, local_id=4dbb0031-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=location, group_id=2}, ~type=lives}",
           "label" : "lives",
           "type" : "edge",
           "inVLabel" : "location",
           "outVLabel" : "god",
-          "inV" : "location:409547:12:0",
-          "outV" : "god:409547:8:0",
+          "inV" : "location:379107:2:0",
+          "outV" : "god:379107:4:0",
           "properties" : {
-            "reason" : "no fear of death"
+            "reason" : "loves fresh breezes"
           }
         }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, local_id=5f375670-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=titan, group_id=1}, ~type=father}",
-          "label" : "father",
-          "type" : "edge",
-          "inVLabel" : "titan",
-          "outVLabel" : "god",
-          "inV" : "titan:409547:1:0",
-          "outV" : "god:409547:4:0"
-        }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=5f4d0150-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=monster, group_id=10}, ~type=battled}",
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=demigod, group_id=6}, local_id=4dbb4e53-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=monster, group_id=10}, ~type=battled}",
           "label" : "battled",
           "type" : "edge",
           "inVLabel" : "monster",
           "outVLabel" : "demigod",
-          "inV" : "monster:409547:10:0",
-          "outV" : "demigod:409547:6:0",
+          "inV" : "monster:379107:10:0",
+          "outV" : "demigod:379107:6:0",
           "properties" : {
             "time" : "1970-01-01T00:00:00.002Z",
             "place" : "POINT(37.7 23.9)"
           }
         }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, local_id=5f390420-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=location, group_id=2}, ~type=lives}",
-          "label" : "lives",
-          "type" : "edge",
-          "inVLabel" : "location",
-          "outVLabel" : "god",
-          "inV" : "location:409547:2:0",
-          "outV" : "god:409547:4:0",
-          "properties" : {
-            "reason" : "loves fresh breezes"
-          }
-        }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=monster, group_id=11}, local_id=5f5035a1-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=location, group_id=12}, ~type=lives}",
-          "label" : "lives",
-          "type" : "edge",
-          "inVLabel" : "location",
-          "outVLabel" : "monster",
-          "inV" : "location:409547:12:0",
-          "outV" : "monster:409547:11:0"
-        }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=8}, local_id=5f5035a0-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=monster, group_id=11}, ~type=pet}",
-          "label" : "pet",
-          "type" : "edge",
-          "inVLabel" : "monster",
-          "outVLabel" : "god",
-          "inV" : "monster:409547:11:0",
-          "outV" : "god:409547:8:0"
-        }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=5}, local_id=5f3f1ea0-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=location, group_id=3}, ~type=lives}",
-          "label" : "lives",
-          "type" : "edge",
-          "inVLabel" : "location",
-          "outVLabel" : "god",
-          "inV" : "location:409547:3:0",
-          "outV" : "god:409547:5:0",
-          "properties" : {
-            "reason" : "loves waves"
-          }
-        }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, local_id=5f3ef791-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=god, group_id=8}, ~type=brother}",
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=8}, local_id=4dbb4e55-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=god, group_id=4}, ~type=brother}",
           "label" : "brother",
           "type" : "edge",
           "inVLabel" : "god",
           "outVLabel" : "god",
-          "inV" : "god:409547:8:0",
-          "outV" : "god:409547:4:0"
+          "inV" : "god:379107:4:0",
+          "outV" : "god:379107:8:0"
         }, {
-          "id" : "{out_vertex={member_id=0, community_id=409547, ~label=demigod, group_id=6}, local_id=5f489480-e17a-11e5-8d71-7f86bea27822, in_vertex={member_id=0, community_id=409547, ~label=god, group_id=4}, ~type=father}",
-          "label" : "father",
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=monster, group_id=11}, local_id=4dbb7563-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=location, group_id=12}, ~type=lives}",
+          "label" : "lives",
+          "type" : "edge",
+          "inVLabel" : "location",
+          "outVLabel" : "monster",
+          "inV" : "location:379107:12:0",
+          "outV" : "monster:379107:11:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=5}, local_id=4dbb2745-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=god, group_id=5}, ~type=battled}",
+          "label" : "battled",
           "type" : "edge",
           "inVLabel" : "god",
+          "outVLabel" : "god",
+          "inV" : "god:379107:5:0",
+          "outV" : "god:379107:5:0",
+          "properties" : {
+            "time" : "1970-01-01T00:00:00.005Z"
+          }
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=god, group_id=5}, local_id=4dbb2744-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=god, group_id=8}, ~type=brother}",
+          "label" : "brother",
+          "type" : "edge",
+          "inVLabel" : "god",
+          "outVLabel" : "god",
+          "inV" : "god:379107:8:0",
+          "outV" : "god:379107:5:0"
+        }, {
+          "id" : "{out_vertex={member_id=0, community_id=379107, ~label=demigod, group_id=6}, local_id=4dbb4e51-ed47-11e5-bfbd-3d55e00a4411, in_vertex={member_id=0, community_id=379107, ~label=human, group_id=7}, ~type=mother}",
+          "label" : "mother",
+          "type" : "edge",
+          "inVLabel" : "human",
           "outVLabel" : "demigod",
-          "inV" : "god:409547:4:0",
-          "outV" : "demigod:409547:6:0"
+          "inV" : "human:379107:7:0",
+          "outV" : "demigod:379107:6:0"
         } ]
       },
-      "id" : "57b039ee-792c-4fb7-968a-c217de10e10a"
+      "id" : "11f7ea93-48d7-404c-a663-4377934bc7fa"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
-    "viewSettings" : null
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
   }, {
     "id" : "37f28bfb-004b-4263-a1b2-99d0daee4df4",
     "status" : "SUCCESS",
-    "code" : "Let's try something even more interesting. In the next cell we are charting the degree distribution for the entire graph.\n\nSome things to keep in mind:\n\n* This can be an expensive operation on large graphs. If you have DSE Analytics, then this type of operation would be best executed with the Computer Traversal Source. Read more about that here **INSERT LINK**.\n* We're sampling the result in the following cell to make things manageable in the confines of the browser. This makes no difference for our example dataset, but it will come in handy when you start analyzing larger graphs.\n\n*(Note: We want to sample 5K values from the Group Count Map. As such, the sample step is used in conjuction w/ the 'local' option. Without 'local' we would be sampling the first 5K Maps, which is not what we want in this case.)*\n\n\n**TODO: Consider using power law example graph for charts**\n",
+    "code" : "Let's try something even more interesting. In the next cell we are charting the degree distribution for the entire graph.\n\nSome things to keep in mind:\n\n* This can be an expensive operation on large graphs. If you have DSE Analytics and a large dataset then this type of operation would be best executed using Spark/OLAP.\n* We're sampling the result in the following cell to make things manageable in the confines of the browser. This makes no difference for our example dataset, but it will come in handy when you start analyzing larger graphs.\n\n*(Note: We want to sample 5K values from the Group Count Map. As such, the sample step is used in conjuction w/ the 'local' option. Without 'local' we would be sampling the first 5K Maps, which is not what we want in this case.)*\n",
     "language" : "markdown",
     "result" : {
-      "value" : "<p>Let's try something even more interesting. In the next cell we are charting the degree distribution for the entire graph.</p>\n<p>Some things to keep in mind:</p>\n<ul>\n<li>This can be an expensive operation on large graphs. If you have DSE Analytics, then this type of operation would be best executed with the Computer Traversal Source. Read more about that here <strong>INSERT LINK</strong>.</li>\n<li>We're sampling the result in the following cell to make things manageable in the confines of the browser. This makes no difference for our example dataset, but it will come in handy when you start analyzing larger graphs.</li>\n</ul>\n<p><em>(Note: We want to sample 5K values from the Group Count Map. As such, the sample step is used in conjuction w/ the 'local' option. Without 'local' we would be sampling the first 5K Maps, which is not what we want in this case.)</em></p>\n<p><strong>TODO: Consider using power law example graph for charts</strong></p>\n",
+      "value" : "<p>Let's try something even more interesting. In the next cell we are charting the degree distribution for the entire graph.</p>\n<p>Some things to keep in mind:</p>\n<ul>\n<li>This can be an expensive operation on large graphs. If you have DSE Analytics and a large dataset then this type of operation would be best executed using Spark/OLAP.</li>\n<li>We're sampling the result in the following cell to make things manageable in the confines of the browser. This makes no difference for our example dataset, but it will come in handy when you start analyzing larger graphs.</li>\n</ul>\n<p><em>(Note: We want to sample 5K values from the Group Count Map. As such, the sample step is used in conjuction w/ the 'local' option. Without 'local' we would be sampling the first 5K Maps, which is not what we want in this case.)</em></p>\n",
       "type" : "HTML",
       "truncated" : false,
-      "id" : "14c46987-6c62-4a4e-a309-6c8554306389"
+      "duration" : 0,
+      "id" : "8836fc0d-af1f-4105-98bc-38c698c28d7d"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -1975,7 +2123,8 @@
       } ],
       "type" : "MAP",
       "truncated" : false,
-      "id" : "76e69997-bd68-4872-8287-8d60d6419695"
+      "duration" : 0,
+      "id" : "5f4ff778-c0b8-44da-83e1-b2d3cec9980a"
     },
     "msg" : null,
     "dataViewType" : "LINE",
@@ -1988,13 +2137,215 @@
   }, {
     "id" : "6303096c-56fd-4728-b75d-9c2518ad1f36",
     "status" : "SUCCESS",
-    "code" : "Keyboard Shortcuts\n==\nYou can check out all the available keyboard shortcuts by **INSERT DIRECTIONS HERE**. TL;DR: shift+enter to execute :)",
+    "code" : "Keyboard Shortcuts\n==\nStudio provides many keyboard shortcuts. You can see them all via the Help ? Menu in the top right of this notebook. \n\nQuick hint: shift+enter to execute :)",
     "language" : "markdown",
     "result" : {
-      "value" : "<h1>Keyboard Shortcuts</h1>\n<p>You can check out all the available keyboard shortcuts by <strong>INSERT DIRECTIONS HERE</strong>. TL;DR: shift+enter to execute :)</p>\n",
+      "value" : "<h1>Keyboard Shortcuts</h1>\n<p>Studio provides many keyboard shortcuts. You can see them all via the Help ? Menu in the top right of this notebook.</p>\n<p>Quick hint: shift+enter to execute :)</p>\n",
       "type" : "HTML",
       "truncated" : false,
-      "id" : "67620e00-6cb8-40dc-b122-e65924b079fb"
+      "duration" : 0,
+      "id" : "1311a4bd-16e5-409d-afe6-1defe2f45a82"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CODE" : {
+        "hidden" : true
+      }
+    }
+  }, {
+    "id" : "7d409e0a-677d-432b-82c1-d0eea4186da0",
+    "status" : "SUCCESS",
+    "code" : "A quick but important note on iteration!\n=========================\n\nThis tutorial is meant to introduce the features of DataStax Studio. It is not a primer on Gremlin. However, there is one common gotcha that you should be aware of when working with Gremlin in Studio, and that is the subtlty of \"Automatic Iteration\".\n\n**Let's start with a pop quiz.**\nWhat do you think the result of the next cell will be? Think about your answer and then run the cell.",
+    "language" : "markdown",
+    "result" : {
+      "value" : "<h1>A quick but important note on iteration!</h1>\n<p>This tutorial is meant to introduce the features of DataStax Studio. It is not a primer on Gremlin. However, there is one common gotcha that you should be aware of when working with Gremlin in Studio, and that is the subtlty of &ldquo;Automatic Iteration&rdquo;.</p>\n<p><strong>Let's start with a pop quiz.</strong>\n<br  />What do you think the result of the next cell will be? Think about your answer and then run the cell.</p>\n",
+      "type" : "HTML",
+      "truncated" : false,
+      "duration" : 0,
+      "id" : "2262d0fe-0380-429b-9fdf-463531c4f772"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CODE" : {
+        "hidden" : true
+      }
+    }
+  }, {
+    "id" : "d35419e6-a1dc-426e-8297-1667f0334d78",
+    "status" : null,
+    "code" : "g.V().drop();\ng.V().count()",
+    "language" : "gremlin",
+    "result" : null,
+    "msg" : null,
+    "dataViewType" : null,
+    "viewSettings" : null
+  }, {
+    "id" : "48e6ef6c-a0a3-4146-8f13-6fe22af10f61",
+    "status" : "SUCCESS",
+    "code" : "If you were expecting 0, don't feel bad. This is a common gotcha.\n\nHere is what you need to know:\n* The executor will automatically inspect the result of the final statement in each cell, and if that result is an Iterator or Iterable, then it is iterated by the executor and entries are returned sequentially.\n* Gremlin Traversals implement Iterator and are thus iterated by the executor, but ***only when they are the last statement***.\n* If you want to iterate a Traversal manually then simply finish the Traversal with the .iterate() Step.\n\nLet's take a look at one more example just to re-enforce this idea. We'll start with something very simple...",
+    "language" : "markdown",
+    "result" : {
+      "value" : "<p>If you were expecting 0, don't feel bad. This is a common gotcha.</p>\n<p>Here is what you need to know:</p>\n<ul>\n<li>The executor will automatically inspect the result of the final statement in each cell, and if that result is an Iterator or Iterable, then it is iterated by the executor and entries are returned sequentially.</li>\n<li>Gremlin Traversals implement Iterator and are thus iterated by the executor, but <strong><em>only when they are the last statement</em></strong>.</li>\n<li>If you want to iterate a Traversal manually then simply finish the Traversal with the .iterate() Step.</li>\n</ul>\n<p>Let's take a look at one more example just to re-enforce this idea. We'll start with something very simple&hellip;</p>\n",
+      "type" : "HTML",
+      "truncated" : false,
+      "duration" : 0,
+      "id" : "2e1af919-4c07-490b-ab9c-ff272b940073"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CODE" : {
+        "hidden" : true
+      }
+    }
+  }, {
+    "id" : "7fd343d8-a23e-4511-b5c0-cf176a0ea85a",
+    "status" : "SUCCESS",
+    "code" : "g.V().values('name')",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ "hercules", "saturn", "tartarus", "sky", "sea", "alcmene", "jupiter", "pluto", "neptune", "nemean", "hydra", "cerberus" ],
+      "type" : "STRING",
+      "truncated" : false,
+      "duration" : 0,
+      "id" : "fad7a69a-0387-4ba2-a606-82f6360af22f"
+    },
+    "msg" : null,
+    "dataViewType" : "RAW",
+    "viewSettings" : null
+  }, {
+    "id" : "390f0892-32d6-46fa-84a8-0d5eccb393e6",
+    "status" : "SUCCESS",
+    "code" : "Based on the previous cell, you might think that assigning a statement like this to a variable would give you a Collection of names, but as shown below, this is in fact not the case. The following cell provides some insight into what is actually happening.",
+    "language" : "markdown",
+    "result" : {
+      "value" : "<p>Based on the previous cell, you might think that assigning a statement like this to a variable would give you a Collection of names, but as shown below, this is in fact not the case. The following cell provides some insight into what is actually happening.</p>\n",
+      "type" : "HTML",
+      "truncated" : false,
+      "duration" : 0,
+      "id" : "2305525a-1436-48dc-aa9c-e97de207521b"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CODE" : {
+        "hidden" : true
+      }
+    }
+  }, {
+    "id" : "993486b1-84be-4c9c-b153-9d474a3c6366",
+    "status" : "SUCCESS",
+    "code" : "def traversal = g.V().values('name')\ntraversal.class.getName()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ "org.apache.tinkerpop.gremlin.process.traversal.dsl.graph.DefaultGraphTraversal" ],
+      "type" : "STRING",
+      "truncated" : false,
+      "duration" : 0,
+      "id" : "7c8dcc0c-64cf-43cf-8644-601b57d7f7f2"
+    },
+    "msg" : null,
+    "dataViewType" : "RAW",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      },
+      "CODE" : {
+        "hidden" : false
+      }
+    }
+  }, {
+    "id" : "ca93b3e3-0d5a-4027-bfd7-6d0c82a73310",
+    "status" : "SUCCESS",
+    "code" : "**All the first statement does is build a Traversal (which as we said before, is really just an Iterator) and assigns it to the variable 'traversal'**. For the sake of completeness, here is how you would actually get a Collection of the names.",
+    "language" : "markdown",
+    "result" : {
+      "value" : "<p><strong>All the first statement does is build a Traversal (which as we said before, is really just an Iterator) and assigns it to the variable 'traversal'</strong>. For the sake of completeness, here is how you would actually get a Collection of the names.</p>\n",
+      "type" : "HTML",
+      "truncated" : false,
+      "duration" : 0,
+      "id" : "9fe8d14e-bed7-4477-bb25-39bc5a9548a9"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CODE" : {
+        "hidden" : true
+      }
+    }
+  }, {
+    "id" : "80453a88-0655-423b-a2e4-dbafb278f55a",
+    "status" : "SUCCESS",
+    "code" : "def names = g.V().values('name').store('names').cap('names').next()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ "hercules", "saturn", "tartarus", "sky", "sea", "alcmene", "jupiter", "pluto", "neptune", "nemean", "hydra", "cerberus" ],
+      "type" : "STRING",
+      "truncated" : false,
+      "duration" : 0,
+      "id" : "5cfe2b85-6086-479d-b6d3-7fb0e2a05e5e"
+    },
+    "msg" : null,
+    "dataViewType" : "RAW",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
+  }, {
+    "id" : "075c15a1-9469-43d6-9ebd-5b02238bb3fe",
+    "status" : "SUCCESS",
+    "code" : "(and just in case you were wondering...)",
+    "language" : "markdown",
+    "result" : {
+      "value" : "<p>(and just in case you were wondering&hellip;)</p>\n",
+      "type" : "HTML",
+      "truncated" : false,
+      "duration" : 0,
+      "id" : "f9e54d60-ba46-46bd-aebd-0fb0e5c26529"
+    },
+    "msg" : null,
+    "dataViewType" : null,
+    "viewSettings" : {
+      "CODE" : {
+        "hidden" : true
+      }
+    }
+  }, {
+    "id" : "8a67e99d-d801-4b7e-abba-2b7235f5a672",
+    "status" : "SUCCESS",
+    "code" : "names instanceof Collection",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ true ],
+      "type" : "MISC",
+      "truncated" : false,
+      "duration" : 0,
+      "id" : "35977d19-f467-4bfa-8c43-e4c6e675901c"
+    },
+    "msg" : null,
+    "dataViewType" : "RAW",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
+  }, {
+    "id" : "0bbc4f30-f64c-42b7-9790-a4ad51e9e674",
+    "status" : "SUCCESS",
+    "code" : "The Notebook Session\n====================\n\nDid you notice in the previous example that we defined the variable 'names' in one cell and used it in the next? Each notebook has a Session that stores the variables you create. So feel free to break your ideas up into multiple cells however you like.\n\nKeep in mind that these sessions do expire after 24 hours or when the server-side C* node shuts down.",
+    "language" : "markdown",
+    "result" : {
+      "value" : "<h1>The Notebook Session</h1>\n<p>Did you notice in the previous example that we defined the variable 'names' in one cell and used it in the next? Each notebook has a Session that stores the variables you create. So feel free to break your ideas up into multiple cells however you like.</p>\n<p>Keep in mind that these sessions do expire after 24 hours or when the server-side C* node shuts down.</p>\n",
+      "type" : "HTML",
+      "truncated" : false,
+      "duration" : 0,
+      "id" : "3719b74a-aaee-4081-8af9-a861ec9f8895"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -2006,16 +2357,17 @@
   }, {
     "id" : "819d9c43-8355-41fa-8a1b-9fd0f021cbf0",
     "status" : "SUCCESS",
-    "code" : "Next Steps\n==\n**TODO**\n",
+    "code" : "Thank You!!!\n============\n\n**That's all for now. We here at DataStax hope you enjoy using Studio. Best of luck!**\n",
     "language" : "markdown",
     "result" : {
-      "value" : "<h1>Next Steps</h1>\n<p><strong>TODO</strong></p>\n",
+      "value" : "<h1>Thank You!!!</h1>\n<p><strong>That's all for now. We here at DataStax hope you enjoy using Studio. Best of luck!</strong></p>\n",
       "type" : "HTML",
       "truncated" : false,
-      "id" : "c548c679-04c7-4512-a76c-561b2229f9a2"
+      "duration" : 0,
+      "id" : "d091a46d-e16e-44b3-9fec-0c1f4b94e745"
     },
     "msg" : null,
-    "dataViewType" : null,
+    "dataViewType" : "TABLE",
     "viewSettings" : {
       "CODE" : {
         "hidden" : true
@@ -2023,5 +2375,5 @@
     }
   } ],
   "created" : "2016-02-26T23:01:42.260Z",
-  "lastUsed" : "2016-03-07T14:10:06.754Z"
+  "lastUsed" : "2016-04-05T12:24:39.338Z"
 }

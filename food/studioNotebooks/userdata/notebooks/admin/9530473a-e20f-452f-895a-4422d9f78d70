@@ -12,6 +12,7 @@
       "value" : "<p>Graph databases are useful for discovering simple and complex relationships between objects. Relationships are fundamental to how objects interact with one another and their environment. Graph databases are the perfect representation of the relationships between objects.</p>\n<p>Graph databases consist of two elements:</p>\n<ul>\n<li>vertex\n<br  />&ndash; A vertex is an object, such as a person, location, automobile, recipe, or anything else you can think of as nouns.</li>\n<li>edge\n<br  />&ndash; An edge defines the relationship between two vertices. A person can create software, or an author can write a book. Think verbs when you are defining edges.</li>\n</ul>\n<p>Both vertices and edges can have properties; for this reason, DSE Graph is classified as a property graph. The properties for both vertices and edges are an important element of storing and querying information from a property graph.\n<br  />Property graphs are typically quite large, although the nature of querying the graph will vary depending on whether the graph has large numbers of vertices, edges, or both vertices and edges. To get started with graph database concepts, a &ldquo;toy&rdquo; graph is used for simplicity. The example used here explores the world of food.</p>\n<p><img src=\"http://docs.datastax.com/en/datastax_enterprise/5.0/datastax_enterprise/graph/images/recipe3.svg\" alt=\"Recipe Toy Graph\" /></p>\n<p>Elements are labelled to distinguish the type of vertices and edges in a graph database. A vertex that will hold information about an author is labelled <em>author</em>. An edge in the graph is labelled <em>authored</em>. Labels specify the types of vertices and edges that make up the graph. Specifying appropriate labels is an important step in <a href=\"http://docs.datastax.com/en/datastax_enterprise/5.0/datastax_enterprise/graph/data_modeling/dataModelTOC.html\">graph data modeling</a>.</p>\n<p>Vertices and edges generally have properties. For instance, an <em>author</em> vertex can have a <em>name</em>. Gender and current job are examples of additional properties for an <em>author</em> vertex. Edges also have properties. A <em>created</em> edge can have a <em>createDate</em> property that identifies when the adjoining <em>recipe</em> vertex was created.</p>\n<p>Information in a graph database can be retrieved using <em>graph traversals</em>. <em>Graph traversals</em> &ldquo;walk&rdquo; a graph with a single or series of <em>traversal steps</em> that can define a starting point for a traversal and filter the results to find the answers to queries about the graph data.</p>\n<p>In order to run graph traversals to retrieve information, data must first be inserted. The steps listed in this section will allow you to gain a rudimentary understanding of DSE Graph with a minimum amount of configuration and schema creation</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "812cd015-ed75-4d72-8cd0-09a62b116929"
     },
     "msg" : null,
@@ -34,6 +35,7 @@
       "value" : "<p>Install <a href=\"http://docs.datastax.com/en/datastax_enterprise/5.0/datastax_enterprise/install/installTOC.html\">DSE</a>.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "729e540f-8465-48a5-bcb2-f1bb6bd7f1e8"
     },
     "msg" : null,
@@ -52,6 +54,7 @@
       "value" : "<p>Install Studio. Start a notebook and make a connection to a graph named <strong>quickstart</strong>. A graph will be created along with a graph traversal <em>g</em> that will allow graph traversals to be executed.</p>\n<p>Commands that use <em>graph</em> usually are adding vertices or edges to the database. Commands that use <em>g</em> are generally doing queries.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "eff53bcf-bcff-4e88-ba76-b0512f0ed3a9"
     },
     "msg" : null,
@@ -70,6 +73,7 @@
       "value" : "<p>Check the number of vertices that exist in the graph using the traversal step count(). There should currently be none.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "917f46a0-b99e-4d44-9f0e-1242b423767f"
     },
     "msg" : null,
@@ -85,10 +89,11 @@
     "code" : "g.V().count()",
     "language" : "gremlin",
     "result" : {
-      "value" : [ 58 ],
+      "value" : [ 0 ],
       "type" : "NUMBER",
       "truncated" : false,
-      "id" : "5d9f1085-efdf-4ca5-ae5e-a0fd3a764787"
+      "duration" : 32,
+      "id" : "e35e1715-ea1e-412f-8ce2-1f863e7b5a6f"
     },
     "msg" : null,
     "dataViewType" : "RAW",
@@ -107,6 +112,7 @@
       "value" : "<p>Submit a script comprised of three lines, which will be explained in detail in the next steps. The commands are submitted to the Gremlin server. Each command submitted from the Studio cell is within a single session, so from cell to cell, the Gremlin server is not aware of any variables set on the previous line. If the three lines in the script that create two vertices and an edge between the two vertices are entered separately, an error will occur on the edge creation command.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "8621394f-c9b6-4573-96da-dec54fe316c7"
     },
     "msg" : null,
@@ -123,57 +129,58 @@
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "{out_vertex={member_id=0, community_id=5065, ~label=author, group_id=1}, local_id=495cb110-f066-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=5065, ~label=book, group_id=2}, ~type=authored}",
+        "id" : "{out_vertex={member_id=0, community_id=72418, ~label=author, group_id=1}, local_id=105d8490-fb5e-11e5-9c44-f178a0fd8d76, in_vertex={member_id=0, community_id=72418, ~label=book, group_id=2}, ~type=authored}",
         "label" : "authored",
         "type" : "edge",
         "inVLabel" : "book",
         "outVLabel" : "author",
-        "inV" : "book:5065:2:0",
-        "outV" : "author:5065:1:0"
+        "inV" : "book:72418:2:0",
+        "outV" : "author:72418:1:0"
       } ],
       "type" : "EDGE",
       "truncated" : false,
+      "duration" : 47,
       "graph" : {
         "vertices" : [ {
-          "id" : "author:5065:1:0",
-          "label" : "author",
-          "type" : "vertex",
-          "properties" : {
-            "gender" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=5065, ~label=author, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
-              "value" : "F"
-            } ],
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=5065, ~label=author, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "Julia Child"
-            } ]
-          }
-        }, {
-          "id" : "book:5065:2:0",
+          "id" : "book:72418:2:0",
           "label" : "book",
           "type" : "vertex",
           "properties" : {
             "year" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=5065, ~label=book, group_id=2}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
+              "id" : "{out_vertex={member_id=0, community_id=72418, ~label=book, group_id=2}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
               "value" : 1961
             } ],
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=5065, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=72418, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "The Art of French Cooking, Vol. 1"
+            } ]
+          }
+        }, {
+          "id" : "author:72418:1:0",
+          "label" : "author",
+          "type" : "vertex",
+          "properties" : {
+            "gender" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=72418, ~label=author, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
+              "value" : "F"
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=72418, ~label=author, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "Julia Child"
             } ]
           }
         } ],
         "edges" : [ {
-          "id" : "{out_vertex={member_id=0, community_id=5065, ~label=author, group_id=1}, local_id=495cb110-f066-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=5065, ~label=book, group_id=2}, ~type=authored}",
+          "id" : "{out_vertex={member_id=0, community_id=72418, ~label=author, group_id=1}, local_id=105d8490-fb5e-11e5-9c44-f178a0fd8d76, in_vertex={member_id=0, community_id=72418, ~label=book, group_id=2}, ~type=authored}",
           "label" : "authored",
           "type" : "edge",
           "inVLabel" : "book",
           "outVLabel" : "author",
-          "inV" : "book:5065:2:0",
-          "outV" : "author:5065:1:0"
+          "inV" : "book:72418:2:0",
+          "outV" : "author:72418:1:0"
         } ]
       },
-      "id" : "dec84224-da18-4b6d-9b0a-10a3cd048917"
+      "id" : "ac505187-9657-4668-b1f6-be3a7fdd10c3"
     },
     "msg" : null,
     "dataViewType" : "GRAPH",
@@ -189,21 +196,18 @@
         },
         "defaultLabelTemplate" : "{{label}}[{{id}}]",
         "positions" : {
-          "author:5065:1:0" : {
-            "x" : -8,
-            "y" : -95
+          "book:72418:2:0" : {
+            "x" : 92,
+            "y" : 11
           },
-          "book:5065:2:0" : {
-            "x" : -1,
-            "y" : 90
+          "author:72418:1:0" : {
+            "x" : -64,
+            "y" : 20
           }
         },
-        "position" : {
-          "x" : 24.031558109189262,
-          "y" : -23.520402904579182
-        },
-        "scale" : 0.7410352789949906,
-        "requestId" : "dec84224-da18-4b6d-9b0a-10a3cd048917"
+        "position" : null,
+        "scale" : null,
+        "requestId" : "ac505187-9657-4668-b1f6-be3a7fdd10c3"
       },
       "CODE" : {
         "hidden" : false
@@ -218,6 +222,7 @@
       "value" : "<p>The resulting graph shows the two vertices, one author and one book, and the edge that connects them.</p>\n<p>Check that the data inserted for the author is correct by checking with a <em>has()</em> step that uses the vertex label <em>author</em> and <em>name = Julia Child</em> to find the correct vertex.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "1717c5a2-3d4a-4f97-a2af-aebe3fa07a73"
     },
     "msg" : null,
@@ -234,41 +239,42 @@
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "author:960863:1:0",
+        "id" : "author:641704:1:0",
         "label" : "author",
         "type" : "vertex",
         "properties" : {
           "gender" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=960863, ~label=author, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
+            "id" : "{out_vertex={member_id=0, community_id=641704, ~label=author, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
             "value" : "F"
           } ],
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=960863, ~label=author, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=641704, ~label=author, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "Julia Child"
           } ]
         }
       } ],
       "type" : "VERTEX",
       "truncated" : false,
+      "duration" : 46,
       "graph" : {
         "vertices" : [ {
-          "id" : "author:960863:1:0",
+          "id" : "author:641704:1:0",
           "label" : "author",
           "type" : "vertex",
           "properties" : {
             "gender" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=960863, ~label=author, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
+              "id" : "{out_vertex={member_id=0, community_id=641704, ~label=author, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
               "value" : "F"
             } ],
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=960863, ~label=author, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=641704, ~label=author, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "Julia Child"
             } ]
           }
         } ],
         "edges" : [ ]
       },
-      "id" : "1ab45650-f664-4c7e-b03a-e596a318da55"
+      "id" : "bdd645ce-bcfc-488a-aa8f-81dae8b26be6"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -287,6 +293,7 @@
       "value" : "<p>An <em>author</em> vertex was created. A vertex <em>label</em> specifies the type of vertex, and the key-value pairs identify the <em>property key</em> and its value for <strong>name</strong> and <strong>gender</strong>.The <em>id</em> is automatically generated and consists of a vertex label and three components associated with the location of the vertex within the graph. The <a href=\"http://docs.datastax.com/en/datastax_enterprise/5.0/datastax_enterprise/graph/getting_started/graphGettingStartedQueryAnatomy.html\">Anatomy of a Graph Traversal</a> explains the id components.</p>\n<p>Use <em>valueMap</em> to check the author property key information. The traversal <em>g</em> checks all vertices with the traversal step <em>V()</em> and prints out the key-value listing of the property values for each vertex using the traversal step <em>valueMap()</em>.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "d6767d95-c25f-4707-87ac-7e36f39a9357"
     },
     "msg" : null,
@@ -308,7 +315,8 @@
       } ],
       "type" : "MAP",
       "truncated" : false,
-      "id" : "02016608-bedb-4ac8-94a2-57942aca355e"
+      "duration" : 42,
+      "id" : "9936bb62-14fa-4d7f-af81-a9e6213f71d9"
     },
     "msg" : null,
     "dataViewType" : "RAW",
@@ -327,6 +335,7 @@
       "value" : "<p>If only the value of a particular property key is desired, the <em>values()</em> traversal step can be used. This example below gets the <em>name</em> of all vertices.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "357d3864-d337-479c-94d7-f33985e0a404"
     },
     "msg" : null,
@@ -345,7 +354,8 @@
       "value" : [ "Julia Child", "The Art of French Cooking, Vol. 1" ],
       "type" : "STRING",
       "truncated" : false,
-      "id" : "8488fad4-047e-4070-b009-558a1d691f96"
+      "duration" : 53,
+      "id" : "55d3bb93-86e0-475e-b3ff-ff6d63e3ef55"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -364,6 +374,7 @@
       "value" : "<p>Two vertices exist, an author and a book, and are returned by the traversal. Graphs are interesting when relationships exist.</p>\n<p>The property keys for a book vertex are name, timestamp, and optionally ISBN. The author and book vertices will form a relationship when an edge is created.</p>\n<p>Check the book data, using the vertex label <em>book</em> and <em>name = The Art of French Cooking, Vol. 1</em>.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "529f3ac3-11ae-4fe6-b75c-fd7bfa40d1ba"
     },
     "msg" : null,
@@ -380,41 +391,42 @@
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "book:960863:2:0",
+        "id" : "book:641704:2:0",
         "label" : "book",
         "type" : "vertex",
         "properties" : {
           "year" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=960863, ~label=book, group_id=2}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
+            "id" : "{out_vertex={member_id=0, community_id=641704, ~label=book, group_id=2}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
             "value" : 1961
           } ],
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=960863, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=641704, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "The Art of French Cooking, Vol. 1"
           } ]
         }
       } ],
       "type" : "VERTEX",
       "truncated" : false,
+      "duration" : 42,
       "graph" : {
         "vertices" : [ {
-          "id" : "book:960863:2:0",
+          "id" : "book:641704:2:0",
           "label" : "book",
           "type" : "vertex",
           "properties" : {
             "year" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=960863, ~label=book, group_id=2}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
+              "id" : "{out_vertex={member_id=0, community_id=641704, ~label=book, group_id=2}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
               "value" : 1961
             } ],
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=960863, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=641704, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "The Art of French Cooking, Vol. 1"
             } ]
           }
         } ],
         "edges" : [ ]
       },
-      "id" : "faf61654-993f-410c-acf3-df826bb63efd"
+      "id" : "c6217063-7565-4a08-bc53-ab002ea8f928"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -433,6 +445,7 @@
       "value" : "<p>Check the edge by filtering for an edge that has the edge label <em>authored</em>. The edge information displays details about the incoming and outgoing vertices as well as edge parameters.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "38ae04f5-e3cf-4bbb-b226-3cf4d5c83352"
     },
     "msg" : null,
@@ -449,57 +462,58 @@
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "{out_vertex={member_id=0, community_id=960863, ~label=author, group_id=1}, local_id=46ecbc60-efbf-11e5-91dc-977754e82b92, in_vertex={member_id=0, community_id=960863, ~label=book, group_id=2}, ~type=authored}",
+        "id" : "{out_vertex={member_id=0, community_id=641704, ~label=author, group_id=1}, local_id=9c017660-fb5d-11e5-9c44-f178a0fd8d76, in_vertex={member_id=0, community_id=641704, ~label=book, group_id=2}, ~type=authored}",
         "label" : "authored",
         "type" : "edge",
         "inVLabel" : "book",
         "outVLabel" : "author",
-        "inV" : "book:960863:2:0",
-        "outV" : "author:960863:1:0"
+        "inV" : "book:641704:2:0",
+        "outV" : "author:641704:1:0"
       } ],
       "type" : "EDGE",
       "truncated" : false,
+      "duration" : 51,
       "graph" : {
         "vertices" : [ {
-          "id" : "book:960863:2:0",
+          "id" : "book:641704:2:0",
           "label" : "book",
           "type" : "vertex",
           "properties" : {
             "year" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=960863, ~label=book, group_id=2}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
+              "id" : "{out_vertex={member_id=0, community_id=641704, ~label=book, group_id=2}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
               "value" : 1961
             } ],
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=960863, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=641704, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "The Art of French Cooking, Vol. 1"
             } ]
           }
         }, {
-          "id" : "author:960863:1:0",
+          "id" : "author:641704:1:0",
           "label" : "author",
           "type" : "vertex",
           "properties" : {
             "gender" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=960863, ~label=author, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
+              "id" : "{out_vertex={member_id=0, community_id=641704, ~label=author, group_id=1}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
               "value" : "F"
             } ],
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=960863, ~label=author, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=641704, ~label=author, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "Julia Child"
             } ]
           }
         } ],
         "edges" : [ {
-          "id" : "{out_vertex={member_id=0, community_id=960863, ~label=author, group_id=1}, local_id=46ecbc60-efbf-11e5-91dc-977754e82b92, in_vertex={member_id=0, community_id=960863, ~label=book, group_id=2}, ~type=authored}",
+          "id" : "{out_vertex={member_id=0, community_id=641704, ~label=author, group_id=1}, local_id=9c017660-fb5d-11e5-9c44-f178a0fd8d76, in_vertex={member_id=0, community_id=641704, ~label=book, group_id=2}, ~type=authored}",
           "label" : "authored",
           "type" : "edge",
           "inVLabel" : "book",
           "outVLabel" : "author",
-          "inV" : "book:960863:2:0",
-          "outV" : "author:960863:1:0"
+          "inV" : "book:641704:2:0",
+          "outV" : "author:641704:1:0"
         } ]
       },
-      "id" : "1de0d740-a807-4062-8c95-ddbed666cc07"
+      "id" : "9f26807f-774e-492b-b40f-24c489b4e1c0"
     },
     "msg" : null,
     "dataViewType" : "RAW",
@@ -518,6 +532,7 @@
       "value" : "<p>The traversal step <em>count()</em> is also useful for counting the number of edges. Note the use of <em>E()</em> rather than <em>V()</em>.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "b818a7af-e1e1-4fe4-a22d-1decca050695"
     },
     "msg" : null,
@@ -536,7 +551,8 @@
       "value" : [ 1 ],
       "type" : "NUMBER",
       "truncated" : false,
-      "id" : "55aeaae0-27f5-44df-ade0-8157ed35ee82"
+      "duration" : 36,
+      "id" : "3997c691-a002-46e9-80d2-86d435e303ec"
     },
     "msg" : null,
     "dataViewType" : "RAW",
@@ -555,6 +571,7 @@
       "value" : "<p>Add more vertices and edges using a script. To explore more connections in the recipe data model, more vertices and edges are input into the graph. A script, generateRecipe.groovy, is entered and then executed by the remote Gremlin server.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "593d4cd9-61c6-4c53-a7e6-bd31501f363f"
     },
     "msg" : null,
@@ -571,61 +588,62 @@
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "{out_vertex={member_id=0, community_id=235704, ~label=meal, group_id=1}, local_id=bbb3f312-efc0-11e5-91dc-977754e82b92, in_vertex={member_id=0, community_id=235704, ~label=book, group_id=2}, ~type=includedIn}",
+        "id" : "{out_vertex={member_id=0, community_id=522332, ~label=meal, group_id=1}, local_id=b36d6755-fb5d-11e5-9c44-f178a0fd8d76, in_vertex={member_id=0, community_id=522332, ~label=book, group_id=2}, ~type=includedIn}",
         "label" : "includedIn",
         "type" : "edge",
         "inVLabel" : "book",
         "outVLabel" : "meal",
-        "inV" : "book:235704:2:0",
-        "outV" : "meal:235704:1:0"
+        "inV" : "book:522332:2:0",
+        "outV" : "meal:522332:1:0"
       } ],
       "type" : "EDGE",
       "truncated" : false,
+      "duration" : 4242,
       "graph" : {
         "vertices" : [ {
-          "id" : "book:235704:2:0",
-          "label" : "book",
-          "type" : "vertex",
-          "properties" : {
-            "year" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=235704, ~label=book, group_id=2}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
-              "value" : 1961
-            } ],
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=235704, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "The Art of French Cooking, Vol. 1"
-            } ]
-          }
-        }, {
-          "id" : "meal:235704:1:0",
+          "id" : "meal:522332:1:0",
           "label" : "meal",
           "type" : "vertex",
           "properties" : {
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=235704, ~label=meal, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=522332, ~label=meal, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "JuliaDinner"
             } ],
             "calories" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=235704, ~label=meal, group_id=1}, local_id=00000000-0000-800d-0000-000000000000, ~type=calories}",
+              "id" : "{out_vertex={member_id=0, community_id=522332, ~label=meal, group_id=1}, local_id=00000000-0000-8009-0000-000000000000, ~type=calories}",
               "value" : 900
             } ],
             "timestamp" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=235704, ~label=meal, group_id=1}, local_id=00000000-0000-800c-0000-000000000000, ~type=timestamp}",
+              "id" : "{out_vertex={member_id=0, community_id=522332, ~label=meal, group_id=1}, local_id=00000000-0000-8008-0000-000000000000, ~type=timestamp}",
               "value" : "2016-01-14T00:00:00Z"
+            } ]
+          }
+        }, {
+          "id" : "book:522332:2:0",
+          "label" : "book",
+          "type" : "vertex",
+          "properties" : {
+            "year" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=522332, ~label=book, group_id=2}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
+              "value" : 1961
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=522332, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "The Art of French Cooking, Vol. 1"
             } ]
           }
         } ],
         "edges" : [ {
-          "id" : "{out_vertex={member_id=0, community_id=235704, ~label=meal, group_id=1}, local_id=bbb3f312-efc0-11e5-91dc-977754e82b92, in_vertex={member_id=0, community_id=235704, ~label=book, group_id=2}, ~type=includedIn}",
+          "id" : "{out_vertex={member_id=0, community_id=522332, ~label=meal, group_id=1}, local_id=b36d6755-fb5d-11e5-9c44-f178a0fd8d76, in_vertex={member_id=0, community_id=522332, ~label=book, group_id=2}, ~type=includedIn}",
           "label" : "includedIn",
           "type" : "edge",
           "inVLabel" : "book",
           "outVLabel" : "meal",
-          "inV" : "book:235704:2:0",
-          "outV" : "meal:235704:1:0"
+          "inV" : "book:522332:2:0",
+          "outV" : "meal:522332:1:0"
         } ]
       },
-      "id" : "9687f44d-412f-4e4e-9ec0-c7eb12cbbf15"
+      "id" : "84b45dc3-fa30-4546-a12d-54f329c30b7e"
     },
     "msg" : null,
     "dataViewType" : "RAW",
@@ -664,6 +682,7 @@
       "value" : "<p>Note that the output shown for the successful completion of the script is the output of the last edge created.</p>\n<p>If a vertex count is run, there is now a higher count of 56 vertices.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "5c1020c9-b1ea-4519-91a8-3bc18778362d"
     },
     "msg" : null,
@@ -682,7 +701,8 @@
       "value" : [ 56 ],
       "type" : "NUMBER",
       "truncated" : false,
-      "id" : "6ed054bc-ca5a-4f74-8007-677fefef7198"
+      "duration" : 29,
+      "id" : "3ffa6586-eb72-4112-9288-faa90df3d5e2"
     },
     "msg" : null,
     "dataViewType" : "RAW",
@@ -701,6 +721,7 @@
       "value" : "<p>All properties can be inspected using a graph schema traversal over all vertices that is mapped. Looking at a single property shows the data type, name and cardinality of the property:</p>\n<p>{ &ldquo;dataType&rdquo;: [ &ldquo;Timestamp&rdquo; ],  &ldquo;name&rdquo;: [ &ldquo;timestamp&rdquo; ], &ldquo;cardinality&rdquo;: [ &ldquo;Single&rdquo; ] }</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "b91bdfd7-e5ed-4946-8297-b4ae91511cd4"
     },
     "msg" : null,
@@ -718,15 +739,15 @@
     "result" : {
       "value" : [ {
         "mode" : [ "Development" ]
-      }, { }, { }, { }, {
-        "dataType" : [ "Timestamp" ],
-        "name" : [ "timestamp" ],
+      }, { }, { }, { }, { }, {
+        "dataType" : [ "Text" ],
+        "name" : [ "amount" ],
         "cardinality" : [ "Single" ]
       }, {
-        "dataType" : [ "Int" ],
-        "name" : [ "calories" ],
-        "cardinality" : [ "Single" ]
-      }, { }, {
+        "name" : [ "includedIn" ],
+        "directionality" : [ "Bidirectional" ],
+        "cardinality" : [ "Multiple" ]
+      }, {
         "dataType" : [ "Int" ],
         "name" : [ "group_id" ],
         "cardinality" : [ "Single" ]
@@ -743,9 +764,9 @@
         "name" : [ "instructions" ],
         "cardinality" : [ "Single" ]
       }, { }, {
-        "name" : [ "created" ],
-        "directionality" : [ "Bidirectional" ],
-        "cardinality" : [ "Multiple" ]
+        "dataType" : [ "Timestamp" ],
+        "name" : [ "timestamp" ],
+        "cardinality" : [ "Single" ]
       }, {
         "name" : [ "author" ]
       }, {
@@ -776,22 +797,23 @@
         "dataType" : [ "Text" ],
         "name" : [ "name" ],
         "cardinality" : [ "Single" ]
-      }, {
-        "name" : [ "includedIn" ],
-        "directionality" : [ "Bidirectional" ],
-        "cardinality" : [ "Multiple" ]
       }, { }, {
         "name" : [ "includes" ],
         "directionality" : [ "Bidirectional" ],
         "cardinality" : [ "Multiple" ]
-      }, {
-        "dataType" : [ "Text" ],
-        "name" : [ "amount" ],
+      }, { }, { }, {
+        "dataType" : [ "Int" ],
+        "name" : [ "calories" ],
         "cardinality" : [ "Single" ]
+      }, {
+        "name" : [ "created" ],
+        "directionality" : [ "Bidirectional" ],
+        "cardinality" : [ "Multiple" ]
       } ],
       "type" : "MAP",
       "truncated" : false,
-      "id" : "f19ee2bf-84e1-41c9-b038-f6aabdea7a07"
+      "duration" : 76,
+      "id" : "52bb970d-97f5-400b-8457-1a65110d9292"
     },
     "msg" : null,
     "dataViewType" : "RAW",
@@ -810,6 +832,7 @@
       "value" : "<p>Exploring the graph with graph traversals can lead to interesting conclusions.</p>\n<p>With several <em>author</em> vertices in the graph, a specific <em>name</em> must be given to find a particular vertex. This traversal gets the stored vertex information for the vertex that <em>has</em> the <em>name</em> of <em>Julia Child</em>. Note that the constraint that the vertex is an <em>author</em> is also included in the <em>has</em> clause</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "1df50114-1da1-4710-846e-d32a86bb58c4"
     },
     "msg" : null,
@@ -826,41 +849,42 @@
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "author:734307:3:0",
+        "id" : "author:522332:3:0",
         "label" : "author",
         "type" : "vertex",
         "properties" : {
           "gender" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=734307, ~label=author, group_id=3}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
+            "id" : "{out_vertex={member_id=0, community_id=522332, ~label=author, group_id=3}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
             "value" : "F"
           } ],
           "name" : [ {
-            "id" : "{out_vertex={member_id=0, community_id=734307, ~label=author, group_id=3}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+            "id" : "{out_vertex={member_id=0, community_id=522332, ~label=author, group_id=3}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
             "value" : "Julia Child"
           } ]
         }
       } ],
       "type" : "VERTEX",
       "truncated" : false,
+      "duration" : 44,
       "graph" : {
         "vertices" : [ {
-          "id" : "author:734307:3:0",
+          "id" : "author:522332:3:0",
           "label" : "author",
           "type" : "vertex",
           "properties" : {
             "gender" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=734307, ~label=author, group_id=3}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
+              "id" : "{out_vertex={member_id=0, community_id=522332, ~label=author, group_id=3}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
               "value" : "F"
             } ],
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=734307, ~label=author, group_id=3}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=522332, ~label=author, group_id=3}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "Julia Child"
             } ]
           }
         } ],
         "edges" : [ ]
       },
-      "id" : "916765bc-7309-4fc3-814c-7572b10c006d"
+      "id" : "369f986f-aa1d-40b1-938a-b9c2324f7924"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -879,6 +903,7 @@
       "value" : "<p>The traversal step <em>has</em> gets the vertex information. The traversal step <em>outE</em> discovers the outgoing edges from the <em>juliaChild</em> vertex with the <em>authored</em> label. The edge information is the result.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "cd78f384-294b-4b1f-b550-b0eb6c40a13c"
     },
     "msg" : null,
@@ -895,91 +920,92 @@
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "{out_vertex={member_id=0, community_id=734307, ~label=author, group_id=3}, local_id=5bc976f0-efbf-11e5-91dc-977754e82b92, in_vertex={member_id=0, community_id=734307, ~label=book, group_id=1}, ~type=authored}",
+        "id" : "{out_vertex={member_id=0, community_id=522332, ~label=author, group_id=3}, local_id=b36aa830-fb5d-11e5-9c44-f178a0fd8d76, in_vertex={member_id=0, community_id=522332, ~label=book, group_id=2}, ~type=authored}",
         "label" : "authored",
         "type" : "edge",
         "inVLabel" : "book",
         "outVLabel" : "author",
-        "inV" : "book:734307:1:0",
-        "outV" : "author:734307:3:0"
+        "inV" : "book:522332:2:0",
+        "outV" : "author:522332:3:0"
       }, {
-        "id" : "{out_vertex={member_id=0, community_id=734307, ~label=author, group_id=3}, local_id=5bc99e03-efbf-11e5-91dc-977754e82b92, in_vertex={member_id=0, community_id=734307, ~label=book, group_id=14}, ~type=authored}",
+        "id" : "{out_vertex={member_id=0, community_id=522332, ~label=author, group_id=3}, local_id=b36acf44-fb5d-11e5-9c44-f178a0fd8d76, in_vertex={member_id=0, community_id=522332, ~label=book, group_id=14}, ~type=authored}",
         "label" : "authored",
         "type" : "edge",
         "inVLabel" : "book",
         "outVLabel" : "author",
-        "inV" : "book:734307:14:0",
-        "outV" : "author:734307:3:0"
+        "inV" : "book:522332:14:0",
+        "outV" : "author:522332:3:0"
       } ],
       "type" : "EDGE",
       "truncated" : false,
+      "duration" : 46,
       "graph" : {
         "vertices" : [ {
-          "id" : "book:734307:1:0",
-          "label" : "book",
-          "type" : "vertex",
-          "properties" : {
-            "year" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=734307, ~label=book, group_id=1}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
-              "value" : 1961
-            } ],
-            "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=734307, ~label=book, group_id=1}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
-              "value" : "The Art of French Cooking, Vol. 1"
-            } ]
-          }
-        }, {
-          "id" : "author:734307:3:0",
+          "id" : "author:522332:3:0",
           "label" : "author",
           "type" : "vertex",
           "properties" : {
             "gender" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=734307, ~label=author, group_id=3}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
+              "id" : "{out_vertex={member_id=0, community_id=522332, ~label=author, group_id=3}, local_id=00000000-0000-8003-0000-000000000000, ~type=gender}",
               "value" : "F"
             } ],
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=734307, ~label=author, group_id=3}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=522332, ~label=author, group_id=3}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "Julia Child"
             } ]
           }
         }, {
-          "id" : "book:734307:14:0",
+          "id" : "book:522332:2:0",
+          "label" : "book",
+          "type" : "vertex",
+          "properties" : {
+            "year" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=522332, ~label=book, group_id=2}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
+              "value" : 1961
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=522332, ~label=book, group_id=2}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "value" : "The Art of French Cooking, Vol. 1"
+            } ]
+          }
+        }, {
+          "id" : "book:522332:14:0",
           "label" : "book",
           "type" : "vertex",
           "properties" : {
             "ISBN" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=734307, ~label=book, group_id=14}, local_id=00000000-0000-8006-0000-000000000000, ~type=ISBN}",
+              "id" : "{out_vertex={member_id=0, community_id=522332, ~label=book, group_id=14}, local_id=00000000-0000-8006-0000-000000000000, ~type=ISBN}",
               "value" : "0-394-40135-2"
             } ],
             "year" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=734307, ~label=book, group_id=14}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
+              "id" : "{out_vertex={member_id=0, community_id=522332, ~label=book, group_id=14}, local_id=00000000-0000-8004-0000-000000000000, ~type=year}",
               "value" : 1968
             } ],
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=734307, ~label=book, group_id=14}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=522332, ~label=book, group_id=14}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "The French Chef Cookbook"
             } ]
           }
         } ],
         "edges" : [ {
-          "id" : "{out_vertex={member_id=0, community_id=734307, ~label=author, group_id=3}, local_id=5bc99e03-efbf-11e5-91dc-977754e82b92, in_vertex={member_id=0, community_id=734307, ~label=book, group_id=14}, ~type=authored}",
+          "id" : "{out_vertex={member_id=0, community_id=522332, ~label=author, group_id=3}, local_id=b36acf44-fb5d-11e5-9c44-f178a0fd8d76, in_vertex={member_id=0, community_id=522332, ~label=book, group_id=14}, ~type=authored}",
           "label" : "authored",
           "type" : "edge",
           "inVLabel" : "book",
           "outVLabel" : "author",
-          "inV" : "book:734307:14:0",
-          "outV" : "author:734307:3:0"
+          "inV" : "book:522332:14:0",
+          "outV" : "author:522332:3:0"
         }, {
-          "id" : "{out_vertex={member_id=0, community_id=734307, ~label=author, group_id=3}, local_id=5bc976f0-efbf-11e5-91dc-977754e82b92, in_vertex={member_id=0, community_id=734307, ~label=book, group_id=1}, ~type=authored}",
+          "id" : "{out_vertex={member_id=0, community_id=522332, ~label=author, group_id=3}, local_id=b36aa830-fb5d-11e5-9c44-f178a0fd8d76, in_vertex={member_id=0, community_id=522332, ~label=book, group_id=2}, ~type=authored}",
           "label" : "authored",
           "type" : "edge",
           "inVLabel" : "book",
           "outVLabel" : "author",
-          "inV" : "book:734307:1:0",
-          "outV" : "author:734307:3:0"
+          "inV" : "book:522332:2:0",
+          "outV" : "author:522332:3:0"
         } ]
       },
-      "id" : "830004e7-b56e-4c1c-95ae-ed4ff367d07d"
+      "id" : "b563924f-a282-4fc2-baac-f575769ecff4"
     },
     "msg" : null,
     "dataViewType" : "GRAPH",
@@ -995,22 +1021,22 @@
         },
         "defaultLabelTemplate" : "{{label}}[{{id}}]",
         "positions" : {
-          "book:734307:1:0" : {
-            "x" : 52,
-            "y" : 37
+          "author:522332:3:0" : {
+            "x" : 32,
+            "y" : 32
           },
-          "author:734307:3:0" : {
-            "x" : -166,
-            "y" : 50
+          "book:522332:2:0" : {
+            "x" : 180,
+            "y" : -44
           },
-          "book:734307:14:0" : {
-            "x" : 78,
-            "y" : -58
+          "book:522332:14:0" : {
+            "x" : -148,
+            "y" : 15
           }
         },
         "position" : null,
         "scale" : null,
-        "requestId" : "830004e7-b56e-4c1c-95ae-ed4ff367d07d"
+        "requestId" : "b563924f-a282-4fc2-baac-f575769ecff4"
       }
     }
   }, {
@@ -1022,6 +1048,7 @@
       "value" : "<p>If the query is seeking the books that authors have written, the last example does not supply the book vertex information desired. Add a traversal step <em>inV()</em> to find all the vertices that connect to the outgoing edges, then print the book titles of those vertices.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "e8af87ee-f4e4-452e-beb0-b26500164aec"
     },
     "msg" : null,
@@ -1037,10 +1064,11 @@
     "code" : "g.V().outE('authored').inV().values('name')",
     "language" : "gremlin",
     "result" : {
-      "value" : [ "The Art of French Cooking, Vol. 1", "Simca's Cuisine: 100 Classic French Recipes for Every Occasion", "The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution", "The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution", "Simca's Cuisine: 100 Classic French Recipes for Every Occasion", "The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution", "The Art of French Cooking, Vol. 1", "The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution", "The Art of French Cooking, Vol. 1", "The French Chef Cookbook" ],
+      "value" : [ "The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution", "The Art of French Cooking, Vol. 1", "The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution", "The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution", "Simca's Cuisine: 100 Classic French Recipes for Every Occasion", "The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution", "The Art of French Cooking, Vol. 1", "Simca's Cuisine: 100 Classic French Recipes for Every Occasion", "The Art of French Cooking, Vol. 1", "The French Chef Cookbook" ],
       "type" : "STRING",
       "truncated" : false,
-      "id" : "e01a5a30-f7a6-4a6a-b943-586cb84708c8"
+      "duration" : 96,
+      "id" : "1790499f-a75a-4b20-8201-fb97456625d3"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -1059,6 +1087,7 @@
       "value" : "<p>Notice that the book titles are duplicated in the resulting list, because a listing is returned for each author. If a book has three authors, three listings are returned. The traversal step <em>dedup()</em> can eliminate the duplication.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "28ad178e-7acd-4d6e-9df2-9e7e873bafb3"
     },
     "msg" : null,
@@ -1074,10 +1103,11 @@
     "code" : "g.V().outE('authored').inV().values('name').dedup()",
     "language" : "gremlin",
     "result" : {
-      "value" : [ "The Art of French Cooking, Vol. 1", "Simca's Cuisine: 100 Classic French Recipes for Every Occasion", "The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution", "The French Chef Cookbook" ],
+      "value" : [ "The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution", "The Art of French Cooking, Vol. 1", "Simca's Cuisine: 100 Classic French Recipes for Every Occasion", "The French Chef Cookbook" ],
       "type" : "STRING",
       "truncated" : false,
-      "id" : "500a38ac-96b4-46bd-8ca3-534330ef33c6"
+      "duration" : 83,
+      "id" : "8649f73f-4b54-45cf-833c-359390f9aa42"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -1096,6 +1126,7 @@
       "value" : "<p>Refine the traversal by reinserting the <em>has</em> step to filter for a particular author. Find all the books authored by <em>Julia Child</em>.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "b936c87e-ac93-4af3-b683-2cbf167bfa14"
     },
     "msg" : null,
@@ -1114,7 +1145,8 @@
       "value" : [ "The Art of French Cooking, Vol. 1", "The French Chef Cookbook" ],
       "type" : "STRING",
       "truncated" : false,
-      "id" : "4fdf0722-58c4-44ad-b661-1316c0bce037"
+      "duration" : 66,
+      "id" : "9a189c0d-d517-44a9-8d7b-fa36a8791e28"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -1133,6 +1165,7 @@
       "value" : "<p>The last example and the next example accomplish the same result. However, the number of traversal steps and the type of traversal steps can affect performance. The traversal step <em>outE()</em> should be used if the edges are explicitly required. In this example, the edges are traversed to get information about connected vertices, but the edge information is not important to the query, making the latter example more expedient.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "006ff7b4-55bc-411c-bed9-b3638a57ba0e"
     },
     "msg" : null,
@@ -1151,7 +1184,8 @@
       "value" : [ "The Art of French Cooking, Vol. 1", "The French Chef Cookbook" ],
       "type" : "STRING",
       "truncated" : false,
-      "id" : "fa93fed3-35ee-48af-a8da-4195f8c7dc18"
+      "duration" : 67,
+      "id" : "b0e0b9a0-78ce-4ce1-baa3-5e096915b832"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -1170,6 +1204,7 @@
       "value" : "<p>The traversal step <em>out()</em> retrieves the connected book vertices based on the edge label <em>authored</em> without retrieving the edge information. In a larger graph traversal, this subtle difference in the traversal can become a latency issue.</p>\n<p>Additional traversal steps continue to fine-tune the results. Adding another chained <em>has</em> traversal step finds only books authored by Julia Child that are published after 1967. This example also displays the use of the <em>gt</em>, or <em>greater than</em> function.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "4458b049-ed3f-4680-922b-eff96ea6fd3d"
     },
     "msg" : null,
@@ -1188,7 +1223,8 @@
       "value" : [ "The French Chef Cookbook" ],
       "type" : "STRING",
       "truncated" : false,
-      "id" : "43183d3f-1a3e-4c9b-811a-3df0b2e608aa"
+      "duration" : 70,
+      "id" : "e3c537f5-5a2f-40ed-8160-31bdc440563c"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -1207,6 +1243,7 @@
       "value" : "<p>To find the number of vertices by vertex label, use the traversal step <em>label()</em> followed by the traversal step <em>groupCount()</em>.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "b5077d40-c6d8-4513-bb8b-85a7f056a61a"
     },
     "msg" : null,
@@ -1231,7 +1268,8 @@
       } ],
       "type" : "MAP",
       "truncated" : false,
-      "id" : "dd7da36f-54ae-4481-8a57-be1066d3a691"
+      "duration" : 56,
+      "id" : "7afbfdac-fa51-43d2-973e-3f8bd062254c"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -1250,6 +1288,7 @@
       "value" : "<p>Write your data to a Gryo file. A Gryo file is a binary format file that can be used to reload data to DSE Graph.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "00d7ab6b-7f39-408f-b9d2-fed799a8489c"
     },
     "msg" : null,
@@ -1268,10 +1307,11 @@
       "value" : [ null ],
       "type" : "NULL",
       "truncated" : false,
-      "id" : "86ae3bd1-d0cd-4b51-bc85-4e0f35c84bfe"
+      "duration" : 234,
+      "id" : "ccc4dc2a-0035-48f0-ae2b-a54f32e3fba1"
     },
     "msg" : null,
-    "dataViewType" : null,
+    "dataViewType" : "TABLE",
     "viewSettings" : null
   }, {
     "id" : "cda99b93-6521-4f9a-b818-2267a2c46e7a",
@@ -1282,6 +1322,7 @@
       "value" : "<p>To load a Gryo file, use a read command.</p>\n",
       "type" : "HTML",
       "truncated" : false,
+      "duration" : 0,
       "id" : "71bfee5c-5024-4fd5-9ed1-5f70d7f091cc"
     },
     "msg" : null,
@@ -1300,6 +1341,7 @@
       "value" : [ null ],
       "type" : "NULL",
       "truncated" : false,
+      "duration" : 0,
       "id" : "be63bb2b-fd74-4d8e-bc68-e255dcd4ad27"
     },
     "msg" : null,
@@ -1308,13 +1350,14 @@
   }, {
     "id" : "bf3da5df-bc49-45d7-93a1-f85fcf6da5bf",
     "status" : "SUCCESS",
-    "code" : "Further adventures in traversing can be found in [Creating queries using traversals] (http://docs.datastax.com/en/datastax_enterprise/5.0/datastax_enterprise/graph/getting_started/graphGettingStartedQueryTOC.html). If you want to explore various loading options, check out [DSE Graph Loader](http://docs.datastax.com/en/datastax_enterprisegraph/dseGraphLoader/graphdseGraphLoaderTOC.html) or [Using DSE Graph](http://docs.datastax.com/en/datastax_enterprise/5.0/datastax_enterprise/graph/gusing/graphUsingTOC.html).",
+    "code" : "Further adventures in traversing can be found in [Creating queries using traversals] (http://docs.datastax.com/en/datastax_enterprise/5.0/datastax_enterprise/graph/getting_started/graphGettingStartedQueryTOC.html). If you want to explore various loading options, check out [DSE Graph Loader](http://docs.datastax.com/en/datastax_enterprise/5.0/datastax_enterprise/graph/dseGraphLoader/graphdseGraphLoaderTOC.html) or [Using DSE Graph](http://docs.datastax.com/en/datastax_enterprise/5.0/datastax_enterprise/graph/gusing/graphUsingTOC.html).",
     "language" : "markdown",
     "result" : {
-      "value" : "<p>Further adventures in traversing can be found in <a href=\"http://docs.datastax.com/en/datastax_enterprise/5.0/datastax_enterprise/graph/getting_started/graphGettingStartedQueryTOC.html\">Creating queries using traversals</a>. If you want to explore various loading options, check out <a href=\"http://docs.datastax.com/en/datastax_enterprisegraph/dseGraphLoader/graphdseGraphLoaderTOC.html\">DSE Graph Loader</a> or <a href=\"http://docs.datastax.com/en/datastax_enterprise/5.0/datastax_enterprise/graph/gusing/graphUsingTOC.html\">Using DSE Graph</a>.</p>\n",
+      "value" : "<p>Further adventures in traversing can be found in <a href=\"http://docs.datastax.com/en/datastax_enterprise/5.0/datastax_enterprise/graph/getting_started/graphGettingStartedQueryTOC.html\">Creating queries using traversals</a>. If you want to explore various loading options, check out <a href=\"http://docs.datastax.com/en/datastax_enterprise/5.0/datastax_enterprise/graph/dseGraphLoader/graphdseGraphLoaderTOC.html\">DSE Graph Loader</a> or <a href=\"http://docs.datastax.com/en/datastax_enterprise/5.0/datastax_enterprise/graph/gusing/graphUsingTOC.html\">Using DSE Graph</a>.</p>\n",
       "type" : "HTML",
       "truncated" : false,
-      "id" : "1bfccfa0-7f1b-4798-b240-4602cdcb91c0"
+      "duration" : 0,
+      "id" : "01347378-f34d-4e70-9450-26cd80da2646"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -1325,5 +1368,5 @@
     }
   } ],
   "created" : "2016-02-23T19:15:17.845Z",
-  "lastUsed" : "2016-04-05T18:07:46.082Z"
+  "lastUsed" : "2016-04-05T18:47:47.701Z"
 }
