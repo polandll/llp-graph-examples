@@ -1,0 +1,18 @@
+{
+  "id" : "2a652123-fd6c-405d-877c-d61c71d38bbb",
+  "name" : "test",
+  "connectionId" : "5107702e-1bc3-4c2b-9f99-67fdd8752f79",
+  "favorite" : false,
+  "cells" : [ {
+    "id" : "67fca6be-c83f-443d-bdf1-599fbc6e296e",
+    "status" : "ERROR",
+    "code" : "graph.io(gryo()).readGraph(\"/tmp/food/recipe.gryo\")\n",
+    "language" : "gremlin",
+    "result" : null,
+    "msg" : "java.lang.RuntimeException: org.apache.tinkerpop.gremlin.driver.exception.ResponseException: No signature of method: com.datastax.bdp.graph.impl.GraphSystemImpl$1.ifNotExist() is applicable for argument types: () values: []\nPossible solutions: ifNotExists()",
+    "dataViewType" : null,
+    "viewSettings" : null
+  } ],
+  "created" : "2016-04-04T19:36:23.004Z",
+  "lastUsed" : "2016-04-04T19:50:47.804Z"
+}
