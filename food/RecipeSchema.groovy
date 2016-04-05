@@ -1,65 +1,72 @@
-// hold = new File('/Users/lorinapoland/CLONES/graph-examples/food/RecipeSchema.groovy').text; []
-// script = [hold, 'RecipeSchema.load(graph).toString()'].join("\n"); []
+// RECIPE SCHEMA
+
+// To run in Studio, copy and paste all lines to a cell and run.
+
+// To run in Gremlin console, use the next two lines:
+// script = new File('/Users/lorinapoland/CLONES/graph-examples/food/NEWRecipeSchema.groovy').text; []
 // :> @script
-
-import com.datastax.bdp.graph.api.DseGraph
-
-import org.apache.tinkerpop.gremlin.process.traversal.dsl.graph.GraphTraversalSource
-import org.apache.tinkerpop.gremlin.structure.Direction
-import org.apache.tinkerpop.gremlin.structure.Graph
-
-import java.util.Map
-import java.util.ArrayList
-import java.util.List
-
-import com.datastax.bdp.graph.api.property.BasicValueType;
-//import static com.datastax.bdp.graph.api.schema.VertexIndex.Type.SECONDARY
-//import static com.datastax.bdp.graph.api.schema.VertexIndex.Type.MATERIALIZED
-
-
-class RecipeSchema {
-
-	public static void createSchema(final DseGraph graph) {
-
-    	  def schema = graph.schema()
     	
-    	    // Property Keys
-    		def name = schema.buildPropertyKey('name', String.class).add()
-    		def gender = schema.buildPropertyKey('gender', String.class).add()
-    		def instructions = schema.buildPropertyKey('instructions', String.class).add()
-    		def year = schema.buildPropertyKey('year', Integer.class).add()
-    		def timestamp = schema.buildPropertyKey('timestamp', Timestamp.class).add()
-    		def ISBN = schema.buildPropertyKey('ISBN', String.class).add()
-    		def calories = schema.buildPropertyKey('calories', Integer.class).add()
-    		def amount = schema.buildPropertyKey('amount', String.class).add()
-    		def stars = schema.buildPropertyKey('stars', Integer.class).add()
-    		def comment = schema.buildPropertyKey('comment', String.class).add()
+// Property Keys 
+// Check for previous creation of property key with ifNotExists() 
+schema.propertyKey('name').Text().ifNotExists().create() 
+schema.propertyKey('gender').Text().create()
+schema.propertyKey('instructions').Text().create()
+schema.propertyKey('category').Text().create()
+schema.propertyKey('year').Int().create()
+schema.propertyKey('timestamp').Timestamp().create()
+schema.propertyKey('ISBN').Text().create()
+schema.propertyKey('calories').Int().create()
+schema.propertyKey('amount').Text().create()
+schema.propertyKey('stars').Int().create()
+schema.propertyKey('comment').Text().single()create() // single() is optional - default
+// Example of multiple property
+// schema.propertyKey('nickname').Text().multiple().create();
+// Example meta-property added to property: 
+// schema.propertyKey('livedIn').Text().create()
+// schema.propertyKey('country').Text().properties('livedIn').create()
     		
-    		// Vertex Labels
-    		def author = schema.buildVertexLabel('author').add()
-    		def recipe = schema.buildVertexLabel('recipe').add()
-			def ingredient = schema.buildVertexLabel('ingredient').add()
-    		def book = schema.buildVertexLabel('book').add()
-    		def meal = schema.buildVertexLabel('meal').add()
-    		def reviewer = schema.buildVertexLabel('reviewer').add()
+// Vertex Labels
+schema.vertexLabel('author').ifNotExists().create()
+schema.vertexLabel('recipe').create()
+// Example of creating vertex label with properties
+// schema.vertexLabel('recipe').properties('name','instructions').create()
+schema.vertexLabel('ingredient').create()
+schema.vertexLabel('book').create()
+schema.vertexLabel('meal').create()
+schema.vertexLabel('reviewer').create()
+// Example of custom vertex id:
+// schema.propertyKey('city_id').Int().create()
+// schema.propertyKey('sensor_id').Uuid().create()
+// schema().vertexLabel('FridgeSensor').partitionKey('city_id').clusteringKey('sensor_id').create()
                 
-    		// Edge Labels
-    		def authored = schema.buildEdgeLabel('authored').add()
-    		def created = schema.buildEdgeLabel('created').add()
-    		def includes = schema.buildEdgeLabel('includes').add()
-			def includedIn = schema.buildEdgeLabel('includedIn').add()
-    		def rated = schema.buildEdgeLabel('rated').add()
+// Edge Labels
+schema.edgeLabel('authored').ifNotExists().create()
+schema.edgeLabel('created').create()
+schema.edgeLabel('includes').create()
+schema.edgeLabel('includedIn').create()
+schema.edgeLabel('rated').connection('reviewer','recipe').create()
                 
-    		// Indexes	
-    		def ratedByStars = reviewer.buildEdgeIndex('ratedByStars', rated).direction(OUT).byPropertyKey('stars').add()
-    		def byRecipe = recipe.buildVertexIndex('byRecipe').materialized().byPropertyKey('name').add()
-    		def byMeal = meal.buildVertexIndex('byMeal').materialized().byPropertyKey('name').add()
-    		def byIngredient = ingredient.buildVertexIndex('byIngredient').materialized().byPropertyKey('name').add()
-    		def byReviewer = reviewer.buildVertexIndex('byReviewer').materialized().byPropertyKey('name').add()
-	}
-	
-	public static Graph load(final DseGraph graph) {
-		RecipeSchema.createSchema(graph)
-		return graph
-	}
-}
+// Vertex Indexes
+// Secondary
+schema.vertexLabel('author').index('byName').secondary().by('name').add()
+// Materialized	  		
+schema.vertexLabel('recipe').index('byRecipe').materialized().by('name').add()
+schema.vertexLabel('meal').index('byMeal').materialized().by('name').add()
+schema.vertexLabel('ingredient').index('byIngredient').materialized().by('name').add()
+schema.vertexLabel('reviewer').index('byReviewer').materialized().by('name').add()
+// Search
+// schema.vertexLabel('recipe').index('search').search().by('instructions').asText().add()
+// schema.vertexLabel('recipe').index('search').search().by('instructions').asString().add()
+// If more than one property key is search indexed
+// schema.vertexLabel('recipe').index('search').search().by('instructions').asText().by('category').asString().add()
+
+// Edge Index
+schema.vertexLabel('reviewer').index('ratedByStars').outE('rated').by('stars').add()
+
+// Example of property index using meta-property 'livedIn': 
+// schema().vertexLabel('author').index('byLocation').property('country').by('livedIn').add()
+
+// Schema description
+// Use to check that the schema is built as desired
+schema.describe()
+
