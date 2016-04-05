@@ -46,13 +46,13 @@
   }, {
     "id" : "1ba4dd9d-7327-4698-b59f-6f39c62d12ea",
     "status" : "SUCCESS",
-    "code" : "Install Studio. Start a notebook and make a connection to a graph named **quickstart**. A graph will be created along with a graph traversal _g_ that will allow graph traversals to be executed.",
+    "code" : "Install Studio. Start a notebook and make a connection to a graph named **quickstart**. A graph will be created along with a graph traversal _g_ that will allow graph traversals to be executed.\n\nCommands that use _graph_ usually are adding vertices or edges to the database. Commands that use _g_ are generally doing queries.",
     "language" : "markdown",
     "result" : {
-      "value" : "<p>Install Studio. Start a notebook and make a connection to a graph named <strong>quickstart</strong>. A graph will be created along with a graph traversal <em>g</em> that will allow graph traversals to be executed.</p>\n",
+      "value" : "<p>Install Studio. Start a notebook and make a connection to a graph named <strong>quickstart</strong>. A graph will be created along with a graph traversal <em>g</em> that will allow graph traversals to be executed.</p>\n<p>Commands that use <em>graph</em> usually are adding vertices or edges to the database. Commands that use <em>g</em> are generally doing queries.</p>\n",
       "type" : "HTML",
       "truncated" : false,
-      "id" : "fdd43995-e603-4823-9cb1-d4c818d46513"
+      "id" : "eff53bcf-bcff-4e88-ba76-b0512f0ed3a9"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -1325,5 +1325,5 @@
     }
   } ],
   "created" : "2016-02-23T19:15:17.845Z",
-  "lastUsed" : "2016-04-05T17:24:10.921Z"
+  "lastUsed" : "2016-04-05T18:07:46.082Z"
 }
