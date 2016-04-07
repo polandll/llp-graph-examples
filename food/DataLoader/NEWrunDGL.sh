@@ -9,10 +9,9 @@
 
 #LDR=/Users/lorinapoland/CLONES/dse-graph-loader/target/dse-graph-loader-0.1.0-SNAPSHOT-uberjar.jar
 LDR=/Users/lorinapoland/CLONES/dse-graph-loader/bin/graphloader
-TYPE=TEXT
+TYPE=CSV
 DRYRUN_SETTING=false
 INPUTFILEDIR=/Users/lorinapoland/CLONES/graph-examples/food/$TYPE/
-#SCRIPTNAME='authorBookMapping'$TYPE'.groovy'
-SCRIPTNAME='authorBookMapping'$TYPE'XFORM2.groovy'
-GRAPHNAME=$TYPE'TEST'
+SCRIPTNAME='fridgeItemMappingCOMPKEY.groovy'
+GRAPHNAME=$TYPE'COMPKEYTEST'
 $LDR $INPUTFILEDIR/$SCRIPTNAME -filename INPUTFILEDIR -graph $GRAPHNAME -address localhost -dryrun DRYRUN_SETTING
