@@ -12,7 +12,8 @@
       "value" : [ null ],
       "type" : "NULL",
       "truncated" : false,
-      "id" : "01f11e9f-229f-4d2f-9316-124db9f2717a"
+      "duration" : 4850,
+      "id" : "67b2fb0f-7b3c-4215-a46f-613d6e62223b"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -20,13 +21,14 @@
   }, {
     "id" : "1f1eb992-0b66-4c47-865b-5b7e6cdb79bc",
     "status" : "SUCCESS",
-    "code" : "// Property Keys\nname = graph.schema().buildPropertyKey('name', String).add()\nnickname = graph.schema().buildPropertyKey('nickname', String).multiple().add()\ngender = graph.schema().buildPropertyKey('gender', String).add()\ninstructions = graph.schema().buildPropertyKey('instructions', String).add()\nyear = graph.schema().buildPropertyKey('year', Integer).add()\ntimestamp = graph.schema().buildPropertyKey('timestamp', Timestamp).add()\nISBN = graph.schema().buildPropertyKey('ISBN', String).add()\ncalories = graph.schema().buildPropertyKey('calories', Integer).add()\namount = graph.schema().buildPropertyKey('amount', String).add()\nstars = graph.schema().buildPropertyKey('stars', Integer).add()\ncomment = graph.schema().buildPropertyKey('comment', String).add()\n    \t\t\n// Vertex Labels\nauthor = graph.schema().buildVertexLabel('author').add()\nrecipe = graph.schema().buildVertexLabel('recipe').add()\ningredient = graph.schema().buildVertexLabel('ingredient').add()\nbook = graph.schema().buildVertexLabel('book').add()\nmeal = graph.schema().buildVertexLabel('meal').add()\nreviewer = graph.schema().buildVertexLabel('reviewer').add()\n                \n// Edge Labels\nauthored = graph.schema().buildEdgeLabel('authored').add()\ncreated = graph.schema().buildEdgeLabel('created').add()\nincludes = graph.schema().buildEdgeLabel('includes').add()\nincludedIn = graph.schema().buildEdgeLabel('includedIn').add()\nrated = graph.schema().buildEdgeLabel('rated').add()\n                \n// Indexes\t\nratedByStars = reviewer.buildEdgeIndex('ratedByStars', 'rated').direction(OUT).byPropertyKey('stars').add()\nbyRecipe = recipe.buildVertexIndex('byRecipe').materialized().byPropertyKey('name').add()\nbyMeal = meal.buildVertexIndex('byMeal').materialized().byPropertyKey('name').add()\nbyIngredient = ingredient.buildVertexIndex('byIngredient').materialized().byPropertyKey('name').add()\nbyReviewer = reviewer.buildVertexIndex('byReviewer').materialized().byPropertyKey('name').add()\ngraph.schema().print()",
+    "code" : "// RECIPE SCHEMA\n\n// To run in Studio, copy and paste all lines to a cell and run.\n\n// To run in Gremlin console, use the next two lines:\n// script = new File('/Users/lorinapoland/CLONES/graph-examples/food/NEWRecipeSchema.groovy').text; []\n// :> @script\n    \t\n// Property Keys \n// Check for previous creation of property key with ifNotExists() \nschema.propertyKey('name').Text().ifNotExists().create() \nschema.propertyKey('gender').Text().create()\nschema.propertyKey('instructions').Text().create()\nschema.propertyKey('category').Text().create()\nschema.propertyKey('year').Int().create()\nschema.propertyKey('timestamp').Timestamp().create()\nschema.propertyKey('ISBN').Text().create()\nschema.propertyKey('calories').Int().create()\nschema.propertyKey('amount').Text().create()\nschema.propertyKey('stars').Int().create()\nschema.propertyKey('comment').Text().single()create() // single() is optional - default\n// Example of multiple property\n// schema.propertyKey('nickname').Text().multiple().create();\n// Example meta-property added to property: \n// schema.propertyKey('livedIn').Text().create()\n// schema.propertyKey('country').Text().properties('livedIn').create()\n    \t\t\n// Vertex Labels\nschema.vertexLabel('author').ifNotExists().create()\nschema.vertexLabel('recipe').create()\n// Example of creating vertex label with properties\n// schema.vertexLabel('recipe').properties('name','instructions').create()\nschema.vertexLabel('ingredient').create()\nschema.vertexLabel('book').create()\nschema.vertexLabel('meal').create()\nschema.vertexLabel('reviewer').create()\n// Example of custom vertex id:\n// schema.propertyKey('city_id').Int().create()\n// schema.propertyKey('sensor_id').Uuid().create()\n// schema().vertexLabel('FridgeSensor').partitionKey('city_id').clusteringKey('sensor_id').create()\n                \n// Edge Labels\nschema.edgeLabel('authored').ifNotExists().create()\nschema.edgeLabel('created').create()\nschema.edgeLabel('includes').create()\nschema.edgeLabel('includedIn').create()\nschema.edgeLabel('rated').connection('reviewer','recipe').create()\n                \n// Vertex Indexes\n// Secondary\nschema.vertexLabel('author').index('byName').secondary().by('name').add()\n// Materialized\t  \t\t\nschema.vertexLabel('recipe').index('byRecipe').materialized().by('name').add()\nschema.vertexLabel('meal').index('byMeal').materialized().by('name').add()\nschema.vertexLabel('ingredient').index('byIngredient').materialized().by('name').add()\nschema.vertexLabel('reviewer').index('byReviewer').materialized().by('name').add()\n// Search\n// schema.vertexLabel('recipe').index('search').search().by('instructions').asText().add()\n// schema.vertexLabel('recipe').index('search').search().by('instructions').asString().add()\n// If more than one property key is search indexed\n// schema.vertexLabel('recipe').index('search').search().by('instructions').asText().by('category').asString().add()\n\n// Edge Index\nschema.vertexLabel('reviewer').index('ratedByStars').outE('rated').by('stars').add()\n\n// Example of property index using meta-property 'livedIn': \n// schema().vertexLabel('author').index('byLocation').property('country').by('livedIn').add()\n\n// Schema description\n// Use to check that the schema is built as desired\nschema.describe()\n\n",
     "language" : "gremlin",
     "result" : {
-      "value" : [ "name=[ingredient]", "name=[book]", "name=[meal]", "name=[reviewer]", "name=[author]", "name=[recipe]", "name=[byRecipe], type=[Materialized]", "name=[byMeal], type=[Materialized]", "name=[byIngredient], type=[Materialized]", "name=[byReviewer], type=[Materialized]", "dataType=[Text], name=[ISBN], cardinality=[Single]", "dataType=[Int], name=[year], cardinality=[Single]", "dataType=[Timestamp], name=[timestamp], cardinality=[Single]", "dataType=[Text], name=[gender], cardinality=[Single]", "dataType=[Text], name=[instructions], cardinality=[Single]", "dataType=[Text], name=[name], cardinality=[Single]", "dataType=[Text], name=[nickname], cardinality=[Multiple]", "dataType=[Int], name=[stars], cardinality=[Single]", "dataType=[Text], name=[comment], cardinality=[Single]", "dataType=[Int], name=[calories], cardinality=[Single]", "dataType=[Text], name=[amount], cardinality=[Single]", "dataType=[Smallint], name=[member_id], cardinality=[Single]", "dataType=[Int], name=[community_id], cardinality=[Single]", "dataType=[Int], name=[group_id], cardinality=[Single]", "name=[rated], directionality=[Bidirectional], cardinality=[Multiple]", "name=[includedIn], directionality=[Bidirectional], cardinality=[Multiple]", "name=[created], directionality=[Bidirectional], cardinality=[Multiple]", "name=[includes], directionality=[Bidirectional], cardinality=[Multiple]", "name=[authored], directionality=[Bidirectional], cardinality=[Multiple]", "name=[ratedByStars], directionality=[OUT]" ],
+      "value" : [ "schema.propertyKey(\"member_id\").Smallint().single().create()\nschema.propertyKey(\"instructions\").Text().single().create()\nschema.propertyKey(\"amount\").Text().single().create()\nschema.propertyKey(\"gender\").Text().single().create()\nschema.propertyKey(\"year\").Int().single().create()\nschema.propertyKey(\"calories\").Int().single().create()\nschema.propertyKey(\"stars\").Int().single().create()\nschema.propertyKey(\"community_id\").Int().single().create()\nschema.propertyKey(\"ISBN\").Text().single().create()\nschema.propertyKey(\"group_id\").Int().single().create()\nschema.propertyKey(\"name\").Text().single().create()\nschema.propertyKey(\"comment\").Text().single().create()\nschema.propertyKey(\"category\").Text().single().create()\nschema.propertyKey(\"timestamp\").Timestamp().single().create()\nschema.edgeLabel(\"authored\").multiple().create()\nschema.edgeLabel(\"rated\").multiple().properties(\"stars\").create()\nschema.edgeLabel(\"includedIn\").multiple().create()\nschema.edgeLabel(\"created\").multiple().create()\nschema.edgeLabel(\"includes\").multiple().create()\nschema.vertexLabel(\"meal\").properties(\"name\").create()\nschema.vertexLabel(\"meal\").index(\"byMeal\").materialized().by(\"name\").add()\nschema.vertexLabel(\"ingredient\").properties(\"name\").create()\nschema.vertexLabel(\"ingredient\").index(\"byIngredient\").materialized().by(\"name\").add()\nschema.vertexLabel(\"author\").properties(\"name\").create()\nschema.vertexLabel(\"author\").index(\"byName\").secondary().by(\"name\").add()\nschema.vertexLabel(\"book\").create()\nschema.vertexLabel(\"recipe\").properties(\"name\").create()\nschema.vertexLabel(\"recipe\").index(\"byRecipe\").materialized().by(\"name\").add()\nschema.vertexLabel(\"reviewer\").properties(\"name\").create()\nschema.vertexLabel(\"reviewer\").index(\"byReviewer\").materialized().by(\"name\").add()\nschema.vertexLabel(\"reviewer\").index(\"ratedByStars\").outE(\"rated\").by(\"stars\").add()\n\nschema.edgeLabel(\"rated\").connection(\"recipe\", \"reviewer\").connection(\"reviewer\", \"recipe\").add()\n\n\n" ],
       "type" : "STRING",
       "truncated" : false,
-      "id" : "42f4fef4-cea1-44ae-bddd-182e1fee7cbd"
+      "duration" : 2535,
+      "id" : "13d3723a-eb25-40a5-846a-d33187c9d46d"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -43,13 +45,13 @@
     "language" : "gremlin",
     "result" : {
       "value" : [ {
-        "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=45}, local_id=e78f0f92-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=7}, ~type=rated}",
+        "id" : "{out_vertex={member_id=0, community_id=772575, ~label=reviewer, group_id=62}, local_id=fa59b281-fb86-11e5-b68c-6b1304c830f5, in_vertex={member_id=0, community_id=772575, ~label=recipe, group_id=63}, ~type=rated}",
         "label" : "rated",
         "type" : "edge",
         "inVLabel" : "recipe",
         "outVLabel" : "reviewer",
-        "inV" : "recipe:595241:7:0",
-        "outV" : "reviewer:595241:45:0",
+        "inV" : "recipe:772575:63:0",
+        "outV" : "reviewer:772575:62:0",
         "properties" : {
           "comment" : "Loved this soup! Yummy vegetarian!",
           "stars" : 5,
@@ -58,40 +60,41 @@
       } ],
       "type" : "EDGE",
       "truncated" : false,
+      "duration" : 778,
       "graph" : {
         "vertices" : [ {
-          "id" : "recipe:595241:7:0",
+          "id" : "recipe:772575:63:0",
           "label" : "recipe",
           "type" : "vertex",
           "properties" : {
             "instructions" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=7}, local_id=00000000-0000-8032-0000-000000000000, ~type=instructions}",
+              "id" : "{out_vertex={member_id=0, community_id=772575, ~label=recipe, group_id=63}, local_id=00000000-0000-8006-0000-000000000000, ~type=instructions}",
               "value" : "In a heavy-bottomed pot, melt the butter. When it starts to foam, add the onions and thyme and cook over medium-low heat until tender, about 10 minutes."
             } ],
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=7}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=772575, ~label=recipe, group_id=63}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "Carrot Soup"
             } ]
           }
         }, {
-          "id" : "reviewer:595241:45:0",
+          "id" : "reviewer:772575:62:0",
           "label" : "reviewer",
           "type" : "vertex",
           "properties" : {
             "name" : [ {
-              "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=45}, local_id=00000000-0000-802f-0000-000000000000, ~type=name}",
+              "id" : "{out_vertex={member_id=0, community_id=772575, ~label=reviewer, group_id=62}, local_id=00000000-0000-8002-0000-000000000000, ~type=name}",
               "value" : "Jane Doe"
             } ]
           }
         } ],
         "edges" : [ {
-          "id" : "{out_vertex={member_id=0, community_id=595241, ~label=reviewer, group_id=45}, local_id=e78f0f92-f084-11e5-8b04-9bfde01cdcc8, in_vertex={member_id=0, community_id=595241, ~label=recipe, group_id=7}, ~type=rated}",
+          "id" : "{out_vertex={member_id=0, community_id=772575, ~label=reviewer, group_id=62}, local_id=fa59b281-fb86-11e5-b68c-6b1304c830f5, in_vertex={member_id=0, community_id=772575, ~label=recipe, group_id=63}, ~type=rated}",
           "label" : "rated",
           "type" : "edge",
           "inVLabel" : "recipe",
           "outVLabel" : "reviewer",
-          "inV" : "recipe:595241:7:0",
-          "outV" : "reviewer:595241:45:0",
+          "inV" : "recipe:772575:63:0",
+          "outV" : "reviewer:772575:62:0",
           "properties" : {
             "comment" : "Loved this soup! Yummy vegetarian!",
             "stars" : 5,
@@ -99,7 +102,7 @@
           }
         } ]
       },
-      "id" : "44c775f8-91b2-40e3-9bbc-30b033ad942d"
+      "id" : "8d9ae599-8369-40b9-94bc-d8e16f3f666b"
     },
     "msg" : null,
     "dataViewType" : "TABLE",
@@ -852,6 +855,7 @@
       } ],
       "type" : "VERTEX",
       "truncated" : false,
+      "duration" : 0,
       "graph" : {
         "vertices" : [ {
           "id" : "recipe:595241:3:0",
@@ -2648,8 +2652,11 @@
             "y" : 266
           }
         },
-        "position" : null,
-        "scale" : null
+        "position" : {
+          "x" : -672.6465236724526,
+          "y" : 694.0664032520541
+        },
+        "scale" : 10
       }
     }
   }, {
@@ -2701,6 +2708,7 @@
       } ],
       "type" : "MAP",
       "truncated" : false,
+      "duration" : 0,
       "id" : "5a4c0e5e-97e9-4682-a667-c83fa0cd9b12"
     },
     "msg" : null,
@@ -2720,6 +2728,7 @@
       "value" : [ "{\n  \"id\" : 13,\n  \"name\" : \"author\",\n  \"propertyKeys\" : [ {\n    \"id\" : 32826,\n    \"name\" : \"community_id\"\n  }, {\n    \"id\" : 32827,\n    \"name\" : \"group_id\"\n  }, {\n    \"id\" : 32828,\n    \"name\" : \"member_id\"\n  }, {\n    \"id\" : 32839,\n    \"name\" : \"nationality\"\n  }, {\n    \"id\" : 32815,\n    \"name\" : \"name\"\n  }, {\n    \"id\" : 32817,\n    \"name\" : \"gender\"\n  } ],\n  \"edgeLabels\" : [ {\n    \"id\" : 32829,\n    \"name\" : \"authored\"\n  }, {\n    \"id\" : 32830,\n    \"name\" : \"created\"\n  } ],\n  \"adjacencies\" : [ {\n    \"edgeLabel\" : {\n      \"id\" : 32829,\n      \"name\" : \"authored\"\n    },\n    \"direction\" : \"OUT\",\n    \"vertexLabel\" : {\n      \"id\" : 16,\n      \"name\" : \"book\"\n    }\n  }, {\n    \"edgeLabel\" : {\n      \"id\" : 32829,\n      \"name\" : \"authored\"\n    },\n    \"direction\" : \"IN\",\n    \"vertexLabel\" : {\n      \"id\" : 16,\n      \"name\" : \"book\"\n    }\n  }, {\n    \"edgeLabel\" : {\n      \"id\" : 32830,\n      \"name\" : \"created\"\n    },\n    \"direction\" : \"OUT\",\n    \"vertexLabel\" : {\n      \"id\" : 14,\n      \"name\" : \"recipe\"\n    }\n  }, {\n    \"edgeLabel\" : {\n      \"id\" : 32830,\n      \"name\" : \"created\"\n    },\n    \"direction\" : \"IN\",\n    \"vertexLabel\" : {\n      \"id\" : 14,\n      \"name\" : \"recipe\"\n    }\n  } ],\n  \"vertexIndices\" : { },\n  \"edgeIndices\" : { },\n  \"propertyIndices\" : { },\n  \"partitions\" : [ ],\n  \"idPropertyKeys\" : [ {\n    \"id\" : 32826,\n    \"name\" : \"community_id\",\n    \"type\" : \"Partition\"\n  }, {\n    \"id\" : 32827,\n    \"name\" : \"group_id\",\n    \"type\" : \"Partition\"\n  }, {\n    \"id\" : 32828,\n    \"name\" : \"member_id\",\n    \"type\" : \"Clustering\"\n  } ],\n  \"ttl\" : null\n}" ],
       "type" : "STRING",
       "truncated" : false,
+      "duration" : 0,
       "id" : "f0023d12-64f4-4fc7-b810-9910832da2f3"
     },
     "msg" : null,
@@ -2739,6 +2748,7 @@
       "value" : [ ],
       "type" : "EMPTY",
       "truncated" : false,
+      "duration" : 0,
       "id" : "2b7b1e6b-7cac-461c-86c7-51ab67ed395c"
     },
     "msg" : null,
@@ -2753,6 +2763,7 @@
       "value" : [ "Wild Mushroom Stroganoff", "Spicy Meatloaf" ],
       "type" : "STRING",
       "truncated" : false,
+      "duration" : 0,
       "id" : "f2caf9de-be7d-4fd1-a749-1eb858d21aa8"
     },
     "msg" : null,
@@ -2767,6 +2778,7 @@
       "value" : [ null ],
       "type" : "NULL",
       "truncated" : false,
+      "duration" : 0,
       "id" : "12a5dd50-2040-4266-8d65-41103fb1a0cb"
     },
     "msg" : null,
@@ -2786,6 +2798,7 @@
       "value" : [ "Development" ],
       "type" : "STRING",
       "truncated" : false,
+      "duration" : 0,
       "id" : "c738642c-1456-4c02-a066-9e62e5d40aba"
     },
     "msg" : null,
@@ -2814,6 +2827,7 @@
       "value" : [ "[{\n  \"id\" : 32863,\n  \"name\" : \"byRecipe\",\n  \"propertyKeys\" : [ {\n    \"id\" : 32843,\n    \"name\" : \"name\",\n    \"indexingOption\" : [ \"default\", \"Standard\" ]\n  } ]\n}]" ],
       "type" : "STRING",
       "truncated" : false,
+      "duration" : 0,
       "id" : "aa1c3431-940c-4321-8b5d-647b4411bac5"
     },
     "msg" : null,
@@ -2897,12 +2911,635 @@
       } ],
       "type" : "PROFILE",
       "truncated" : false,
+      "duration" : 0,
       "id" : "664066f2-41d9-4cc6-879f-1c4c660a6496"
     },
     "msg" : null,
     "dataViewType" : null,
     "viewSettings" : null
+  }, {
+    "id" : "7869c8ea-35a5-4910-a6f5-e3c2b6994c44",
+    "status" : "SUCCESS",
+    "code" : "g.V().drop().iterate()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ ],
+      "type" : "EMPTY",
+      "truncated" : false,
+      "duration" : 287,
+      "id" : "29081ce5-c409-4499-b288-826d0e630ac9"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : null
+  }, {
+    "id" : "560405f2-0588-4a26-a00b-0213a76bf0cf",
+    "status" : "SUCCESS",
+    "code" : "schema.describe()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ "schema.propertyKey(\"member_id\").Smallint().single().create()\nschema.propertyKey(\"instructions\").Text().single().create()\nschema.propertyKey(\"amount\").Text().single().create()\nschema.propertyKey(\"gender\").Text().single().create()\nschema.propertyKey(\"year\").Int().single().create()\nschema.propertyKey(\"calories\").Int().single().create()\nschema.propertyKey(\"stars\").Int().single().create()\nschema.propertyKey(\"community_id\").Int().single().create()\nschema.propertyKey(\"ISBN\").Text().single().create()\nschema.propertyKey(\"group_id\").Int().single().create()\nschema.propertyKey(\"name\").Text().single().create()\nschema.propertyKey(\"comment\").Text().single().create()\nschema.propertyKey(\"timestamp\").Timestamp().single().create()\nschema.edgeLabel(\"authored\").multiple().create()\nschema.edgeLabel(\"rated\").multiple().properties(\"timestamp\", \"stars\", \"comment\").create()\nschema.edgeLabel(\"includedIn\").multiple().create()\nschema.edgeLabel(\"created\").multiple().properties(\"year\").create()\nschema.edgeLabel(\"includes\").multiple().properties(\"amount\").create()\nschema.vertexLabel(\"meal\").properties(\"name\", \"timestamp\", \"calories\").create()\nschema.vertexLabel(\"ingredient\").properties(\"name\").create()\nschema.vertexLabel(\"author\").properties(\"name\", \"gender\").create()\nschema.vertexLabel(\"book\").properties(\"name\", \"year\", \"ISBN\").create()\nschema.vertexLabel(\"recipe\").properties(\"name\", \"instructions\").create()\nschema.vertexLabel(\"reviewer\").properties(\"name\").create()\nschema.edgeLabel(\"authored\").connection(\"author\", \"book\").connection(\"book\", \"author\").add()\nschema.edgeLabel(\"rated\").connection(\"recipe\", \"reviewer\").connection(\"reviewer\", \"recipe\").add()\nschema.edgeLabel(\"includedIn\").connection(\"meal\", \"recipe\").connection(\"meal\", \"book\").connection(\"book\", \"recipe\").connection(\"book\", \"meal\").connection(\"recipe\", \"book\").connection(\"recipe\", \"meal\").add()\nschema.edgeLabel(\"created\").connection(\"author\", \"recipe\").connection(\"recipe\", \"author\").add()\nschema.edgeLabel(\"includes\").connection(\"ingredient\", \"recipe\").connection(\"recipe\", \"ingredient\").add()" ],
+      "type" : "STRING",
+      "truncated" : false,
+      "duration" : 13,
+      "id" : "d182e967-9053-4411-a23b-e540b4fb3652"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
+  }, {
+    "id" : "65fdd28f-ca1d-4fd5-9955-292562553091",
+    "status" : "SUCCESS",
+    "code" : "schema.vertexLabel('meal').describe()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ "schema.vertexLabel(\"meal\").properties(\"name\").create()" ],
+      "type" : "STRING",
+      "truncated" : false,
+      "duration" : 9,
+      "id" : "f0ad8f65-ef56-4e7b-8b41-00de9cbb4d86"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
+  }, {
+    "id" : "fd98cab0-f48f-4137-b5e7-0389f4ed58d0",
+    "status" : "SUCCESS",
+    "code" : "schema.vertexLabel('meal').index('byMeal').remove()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ null ],
+      "type" : "NULL",
+      "truncated" : false,
+      "duration" : 336,
+      "id" : "6381d6b0-9fec-44ee-a1c0-255a689c7095"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : null
+  }, {
+    "id" : "156b8847-1cad-4e85-9245-c01ac8dc7bb2",
+    "status" : "SUCCESS",
+    "code" : "schema.vertexLabel('meal').index('byMeal').materialized().by('name').add()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ null ],
+      "type" : "NULL",
+      "truncated" : false,
+      "duration" : 227,
+      "id" : "1336a8b3-1f8a-4e0d-941c-fbf5011c54b5"
+    },
+    "msg" : null,
+    "dataViewType" : null,
+    "viewSettings" : null
+  }, {
+    "id" : "fb8997d2-b847-4015-9a35-cce04e1445ac",
+    "status" : "ERROR",
+    "code" : "//schema.propertyKey('city_id').Int().create()\n//schema.propertyKey('sensor_id').Uuid().create()\n//schema.vertexLabel('FridgeSensor').partitionKey('sensor_id').create()\nschema.vertexLabel('FridgeSensor').partitionKey('sensor_id').add()",
+    "language" : "gremlin",
+    "result" : null,
+    "msg" : "org.apache.tinkerpop.gremlin.driver.exception.ResponseException: Property 'sensor_id' was already defined",
+    "dataViewType" : null,
+    "viewSettings" : null
+  }, {
+    "id" : "2f5030fe-4c80-42d7-adba-883656425f46",
+    "status" : "SUCCESS",
+    "code" : "schema.describe()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ "schema.propertyKey(\"member_id\").Smallint().single().create()\nschema.propertyKey(\"instructions\").Text().single().create()\nschema.propertyKey(\"amount\").Text().single().create()\nschema.propertyKey(\"gender\").Text().single().create()\nschema.propertyKey(\"year\").Int().single().create()\nschema.propertyKey(\"calories\").Int().single().create()\nschema.propertyKey(\"stars\").Int().single().create()\nschema.propertyKey(\"sensor_id\").Uuid().single().create()\nschema.propertyKey(\"community_id\").Int().single().create()\nschema.propertyKey(\"ISBN\").Text().single().create()\nschema.propertyKey(\"group_id\").Int().single().create()\nschema.propertyKey(\"name\").Text().single().create()\nschema.propertyKey(\"comment\").Text().single().create()\nschema.propertyKey(\"category\").Text().single().create()\nschema.propertyKey(\"timestamp\").Timestamp().single().create()\nschema.propertyKey(\"city_id\").Int().single().create()\nschema.edgeLabel(\"authored\").multiple().create()\nschema.edgeLabel(\"rated\").multiple().properties(\"stars\").create()\nschema.edgeLabel(\"includedIn\").multiple().create()\nschema.edgeLabel(\"created\").multiple().create()\nschema.edgeLabel(\"includes\").multiple().create()\nschema.vertexLabel(\"meal\").properties(\"name\").create()\nschema.vertexLabel(\"ingredient\").properties(\"name\").create()\nschema.vertexLabel(\"ingredient\").index(\"byIngredient\").materialized().by(\"name\").add()\nschema.vertexLabel(\"FridgeSensor\").create()\nschema.vertexLabel(\"author\").properties(\"name\").create()\nschema.vertexLabel(\"author\").index(\"byName\").secondary().by(\"name\").add()\nschema.vertexLabel(\"book\").create()\nschema.vertexLabel(\"recipe\").properties(\"name\").create()\nschema.vertexLabel(\"recipe\").index(\"byRecipe\").materialized().by(\"name\").add()\nschema.vertexLabel(\"reviewer\").properties(\"name\").create()\nschema.vertexLabel(\"reviewer\").index(\"byReviewer\").materialized().by(\"name\").add()\nschema.vertexLabel(\"reviewer\").index(\"ratedByStars\").outE(\"rated\").by(\"stars\").add()\n\nschema.edgeLabel(\"rated\").connection(\"recipe\", \"reviewer\").connection(\"reviewer\", \"recipe\").add()\n\n\n" ],
+      "type" : "STRING",
+      "truncated" : false,
+      "duration" : 15,
+      "id" : "a5419295-8e9f-4a70-a815-188d5880d5f2"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
+  }, {
+    "id" : "4b5ada7a-413d-4456-ada6-7778835f4970",
+    "status" : "SUCCESS",
+    "code" : "schema.propertyKey('tester').Int().create()\nschema.propertyKey('foor').Text().create()\nschema.vertexLabel(\"test\").partitionKey(\"tester\").clusteringKey(\"foor\").create()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ null ],
+      "type" : "NULL",
+      "truncated" : false,
+      "duration" : 383,
+      "id" : "c490f5ba-c4d3-4854-a599-d9788ac62c1e"
+    },
+    "msg" : null,
+    "dataViewType" : null,
+    "viewSettings" : null
+  }, {
+    "id" : "326cf4e4-508e-40df-a1e0-26a4e43eb592",
+    "status" : "SUCCESS",
+    "code" : "schema.propertyKey('nationality').Text().create()\nschema.vertexLabel('author').properties('nationality').add()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ null ],
+      "type" : "NULL",
+      "truncated" : false,
+      "duration" : 329,
+      "id" : "a608ddef-e43d-4cf4-bb17-1bad045f2115"
+    },
+    "msg" : null,
+    "dataViewType" : null,
+    "viewSettings" : null
+  }, {
+    "id" : "f2b6ce62-5f1d-4113-9c63-3178118fd5e3",
+    "status" : "SUCCESS",
+    "code" : "schema.vertexLabel('author').describe()\n",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ "schema.vertexLabel(\"author\").properties(\"name\", \"nationality\").create()\nschema.vertexLabel(\"author\").index(\"byName\").secondary().by(\"name\").add()" ],
+      "type" : "STRING",
+      "truncated" : false,
+      "duration" : 39,
+      "id" : "d8c7b68a-51e1-4e61-af2c-c526346efd81"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
+  }, {
+    "id" : "432af196-b54a-4194-b601-b96afee4cf13",
+    "status" : "SUCCESS",
+    "code" : "g.V().has('author','name','Julia Child').property('nationality','American')",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ {
+        "id" : "author:772575:123:0",
+        "label" : "author",
+        "type" : "vertex",
+        "properties" : {
+          "nationality" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=772575, ~label=author, group_id=123}, local_id=00000000-0000-8030-0000-000000000000, ~type=nationality}",
+            "value" : "American"
+          } ],
+          "name" : [ {
+            "id" : "{out_vertex={member_id=0, community_id=772575, ~label=author, group_id=123}, local_id=00000000-0000-8012-0000-000000000000, ~type=name}",
+            "value" : "Julia Child"
+          } ]
+        }
+      } ],
+      "type" : "VERTEX",
+      "truncated" : false,
+      "duration" : 22,
+      "graph" : {
+        "vertices" : [ {
+          "id" : "author:772575:123:0",
+          "label" : "author",
+          "type" : "vertex",
+          "properties" : {
+            "nationality" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=772575, ~label=author, group_id=123}, local_id=00000000-0000-8030-0000-000000000000, ~type=nationality}",
+              "value" : "American"
+            } ],
+            "name" : [ {
+              "id" : "{out_vertex={member_id=0, community_id=772575, ~label=author, group_id=123}, local_id=00000000-0000-8012-0000-000000000000, ~type=name}",
+              "value" : "Julia Child"
+            } ]
+          }
+        } ],
+        "edges" : [ ]
+      },
+      "id" : "bce8c264-33e2-45cc-8b0d-2bc753c4d9f3"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
+  }, {
+    "id" : "aafc2224-c651-4270-9d1d-531082dedeff",
+    "status" : "ERROR",
+    "code" : "//schema.propertyKey('expiration_date').Timestamp().create()\n//schema.vertexLabel('FridgeItem').properties('name','expiration_date','amount').add()\nschema.edgeLabel('wasA').connection('ingredient','FridgeItem').single().create()",
+    "language" : "gremlin",
+    "result" : null,
+    "msg" : "org.apache.tinkerpop.gremlin.driver.exception.ResponseException: Edge labelled isA already exists",
+    "dataViewType" : "TABLE",
+    "viewSettings" : null
+  }, {
+    "id" : "104d608e-4a31-4549-acd9-2104a6990e0f",
+    "status" : "SUCCESS",
+    "code" : "schema.edgeLabel('isA').describe()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ "schema.edgeLabel(\"isA\").multiple().create()\nschema.edgeLabel(\"isA\").connection(\"ingredient\", \"FridgeItem\").connection(\"FridgeItem\", \"ingredient\").add()" ],
+      "type" : "STRING",
+      "truncated" : false,
+      "duration" : 104,
+      "id" : "909f8409-2a83-46e2-8532-c2d0c7361b62"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
+  }, {
+    "id" : "253ee027-3626-43c6-9365-6932d09fbb73",
+    "status" : null,
+    "code" : "",
+    "language" : "gremlin",
+    "result" : null,
+    "msg" : null,
+    "dataViewType" : null,
+    "viewSettings" : null
+  }, {
+    "id" : "14d8524a-99b6-497a-ae48-7ad3ac4e4292",
+    "status" : "SUCCESS",
+    "code" : "schema.vertexLabel('recipe').index('byRecipe').secondary().by('name').add()\nschema.vertexLabel('recipe').describe()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ "schema.vertexLabel(\"author\").properties(\"name\", \"nationality\").create()\nschema.vertexLabel(\"author\").index(\"byName\").secondary().by(\"name\").add()\nschema.vertexLabel(\"author\").index(\"byAuthor\").materialized().by(\"name\").add()" ],
+      "type" : "STRING",
+      "truncated" : false,
+      "duration" : 57,
+      "id" : "71490da8-88e6-40d2-b1b3-92338614821d"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
+  }, {
+    "id" : "721304ee-504c-460f-8a0c-3c8f614d351d",
+    "status" : "SUCCESS",
+    "code" : "// Generates all Recipe Toy Graph vertices and edges except Reviews\n\n// Script can be used only in Gremlin Console\n// For DataStax Studio, copy and paste entire script into a cell and run\n// script = new File('/Users/lorinapoland/CLONES/graph-examples/food/Gremlin/NEWgenerateRecipe.groovy').text; []\n// :> @script\n\n// Add all vertices and edges for Recipe\ng.V().drop().iterate()\n\n// author vertices\n// already created in the tutorial\njuliaChild = graph.addVertex(label, 'author', 'name','Julia Child', 'gender', 'F')\nsimoneBeck = graph.addVertex(label, 'author', 'name', 'Simone Beck', 'gender', 'F')\nlouisetteBertholie = graph.addVertex(label, 'author', 'name', 'Louisette Bertholie', 'gender', 'F')\npatriciaSimon = graph.addVertex(label, 'author', 'name', 'Patricia Simon', 'gender', 'F')\naliceWaters = graph.addVertex(label, 'author', 'name', 'Alice Waters', 'gender', 'F')\npatriciaCurtan = graph.addVertex(label, 'author', 'name', 'Patricia Curtan', 'gender', 'F')\nkelsieKerr = graph.addVertex(label, 'author', 'name', 'Kelsie Kerr', 'gender', 'F')\nfritzStreiff = graph.addVertex(label, 'author', 'name', 'Fritz Streiff', 'gender', 'M')\nemerilLagasse = graph.addVertex(label, 'author', 'name', 'Emeril Lagasse', 'gender', 'M')\njamesBeard = graph.addVertex(label, 'author', 'name', 'James Beard', 'gender', 'M')\n\n// book vertices\n// already created in the tutorial\nartOfFrenchCookingVolOne = graph.addVertex(label, 'book', 'name', 'The Art of French Cooking, Vol. 1', 'year', 1961)\nsimcasCuisine = graph.addVertex(label, 'book', 'name', \"Simca's Cuisine: 100 Classic French Recipes for Every Occasion\", 'year', 1972, 'ISBN', '0-394-40152-2')\nfrenchChefCookbook = graph.addVertex(label, 'book', 'name','The French Chef Cookbook', 'year', 1968, 'ISBN', '0-394-40135-2')\nartOfSimpleFood = graph.addVertex(label, 'book', 'name', 'The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution', 'year', 2007, 'ISBN', '0-307-33679-4')\n\n// recipe vertices\nbeefBourguignon = graph.addVertex(label, 'recipe', 'name', 'Beef Bourguignon', 'instructions', 'Braise the beef. Saute the onions and carrots. Add wine and cook in a dutch oven at 425 degrees for 1 hour.')\nratatouille = graph.addVertex(label, 'recipe', 'name', 'Rataouille', 'instructions', 'Peel and cut the egglant. Make sure you cut eggplant into lengthwise slices that are about 1-inch wmyIde, 3-inches long, and 3/8-inch thick')\nsaladeNicoise = graph.addVertex(label, 'recipe', 'name', 'Salade Nicoise', 'instructions', 'Take a salad bowl or platter and line it with lettuce leaves, shortly before serving. Drizzle some olive oil on the leaves and dust them with salt.')\nwildMushroomStroganoff = graph.addVertex(label, 'recipe', 'name', 'Wild Mushroom Stroganoff', 'instructions', 'Cook the egg noodles according to the package directions and keep warm. Heat 1 1/2 tablespoons of the oliveoil in a large saute pan over medium-high heat.')\nspicyMeatloaf = graph.addVertex(label, 'recipe', 'name', 'Spicy Meatloaf', 'instructions', 'Preheat the oven to 375 degrees F. Cook bacon in a large skillet over medium heat until very crisp and fat has rendered, 8-10 minutes.')\noystersRockefeller = graph.addVertex(label, 'recipe', 'name', 'Oysters Rockefeller', 'instructions', 'Saute the shallots, celery, herbs, and seasonings in 3 tablespoons of the butter for 3 minutes. Add the watercress and let it wilt.')\ncarrotSoup = graph.addVertex(label, 'recipe', 'name', 'Carrot Soup', 'instructions', 'In a heavy-bottomed pot, melt the butter. When it starts to foam, add the onions and thyme and cook over medium-low heat until tender, about 10 minutes.')\nroastPorkLoin = graph.addVertex(label, 'recipe', 'name', 'Roast Pork Loin', 'instructions', 'The day before, separate the meat from the ribs, stopping about 1 inch before the end of the bones. Season the pork liberally insmyIde and out with salt and pepper and refrigerate overnight.')\n\n// ingredients vertices\nbeef = graph.addVertex(label, 'ingredient', 'name', 'beef')\nonion = graph.addVertex(label, 'ingredient', 'name', 'onion')\nmashedGarlic = graph.addVertex(label, 'ingredient', 'name', 'mashed garlic')\nbutter = graph.addVertex(label, 'ingredient', 'name', 'butter')\ntomatoPaste = graph.addVertex(label, 'ingredient', 'name', 'tomato paste')\neggplant = graph.addVertex(label, 'ingredient', 'name', 'eggplant')\nzucchini = graph.addVertex(label, 'ingredient', 'name', 'zucchini')\noliveOil = graph.addVertex(label, 'ingredient', 'name', 'olive oil')\nyellowOnion = graph.addVertex(label, 'ingredient', 'name', 'yellow onion')\ngreenBean = graph.addVertex(label, 'ingredient', 'name', 'green beans')\ntuna = graph.addVertex(label, 'ingredient', 'name', 'tuna')\ntomato = graph.addVertex(label, 'ingredient', 'name', 'tomato')\nhardBoiledEgg = graph.addVertex(label, 'ingredient', 'name', 'hard-boiled egg')\neggNoodles = graph.addVertex(label, 'ingredient', 'name', 'egg noodles')\nmushroom = graph.addVertex(label, 'ingredient', 'name', 'mushrooms')\nbacon = graph.addVertex(label, 'ingredient', 'name', 'bacon')\ncelery = graph.addVertex(label, 'ingredient', 'name', 'celery')\ngreenBellPepper = graph.addVertex(label, 'ingredient', 'name', 'green bell pepper')\ngroundBeef = graph.addVertex(label, 'ingredient', 'name', 'ground beef')\nporkSausage = graph.addVertex(label, 'ingredient', 'name', 'pork sausage')\nshallot = graph.addVertex(label, 'ingredient', 'name', 'shallots')\nchervil = graph.addVertex(label, 'ingredient', 'name', 'chervil')\nfennel = graph.addVertex(label, 'ingredient', 'name', 'fennel')\nparsley = graph.addVertex(label, 'ingredient', 'name', 'parsley')\noyster = graph.addVertex(label, 'ingredient', 'name', 'oyster')\npernod = graph.addVertex(label, 'ingredient', 'name', 'Pernod')\nthyme = graph.addVertex(label, 'ingredient', 'name', 'thyme')\ncarrot = graph.addVertex(label, 'ingredient', 'name', 'carrots')\nchickenBroth = graph.addVertex(label, 'ingredient', 'name', 'chicken broth')\nporkLoin = graph.addVertex(label, 'ingredient', 'name', 'pork loin')\nredWine = graph.addVertex(label, 'ingredient', 'name', 'red wine')\n\n// meal vertices\nSaturdayFeast = graph.addVertex(label, 'meal', 'name', 'Saturday Feast', 'timestamp', Instant.parse('2015-11-30T00:00:00.00Z'), 'calories', 1000)\nEverydayDinner = graph.addVertex(label, 'meal', 'name', 'EverydayDinner', 'timestamp', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 600)\nJuliaDinner = graph.addVertex(label, 'meal', 'name', 'JuliaDinner', 'timestamp', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 900)\n\n// author-book edges\njuliaChild.addEdge('authored', artOfFrenchCookingVolOne)\nsimoneBeck.addEdge('authored', artOfFrenchCookingVolOne)\nlouisetteBertholie.addEdge('authored', artOfFrenchCookingVolOne)\nsimoneBeck.addEdge('authored',simcasCuisine)\npatriciaSimon.addEdge('authored',simcasCuisine)\njuliaChild.addEdge('authored', frenchChefCookbook)\naliceWaters.addEdge('authored', artOfSimpleFood)\npatriciaCurtan.addEdge('authored', artOfSimpleFood)\nkelsieKerr.addEdge('authored', artOfSimpleFood)\nfritzStreiff.addEdge('authored', artOfSimpleFood)\n\n// author - recipe edges\njuliaChild.addEdge('created', beefBourguignon, 'year', 1961)\njuliaChild.addEdge('created', ratatouille, 'year', 1965)\njuliaChild.addEdge('created', saladeNicoise, 'year', 1962)\nemerilLagasse.addEdge('created', wildMushroomStroganoff, 'year', 2003)\nemerilLagasse.addEdge('created', spicyMeatloaf, 'year', 2000)\naliceWaters.addEdge('created', carrotSoup, 'year', 1995)\naliceWaters.addEdge('created', roastPorkLoin, 'year', 1996)\njamesBeard.addEdge('created', oystersRockefeller, 'year', 1970)\n\n// recipe - ingredient edges\nbeefBourguignon.addEdge('includes', beef, 'amount', '2 lbs')\nbeefBourguignon.addEdge('includes', onion, 'amount', '1 sliced')\nbeefBourguignon.addEdge('includes', mashedGarlic, 'amount', '2 cloves')\nbeefBourguignon.addEdge('includes', butter, 'amount', '3.5 Tbsp')\nbeefBourguignon.addEdge('includes', tomatoPaste, 'amount', '1 Tbsp')\nratatouille.addEdge('includes', eggplant, 'amount', '1 lb')\nratatouille.addEdge('includes', zucchini, 'amount', '1 lb')\nratatouille.addEdge('includes', mashedGarlic, 'amount', '2 cloves')\nratatouille.addEdge('includes', oliveOil, 'amount', '4-6 Tbsp')\nratatouille.addEdge('includes', yellowOnion, 'amount', '1 1/2 cups or 1/2 lb thinly sliced')\nsaladeNicoise.addEdge('includes', oliveOil, 'amount', '2-3 Tbsp')\nsaladeNicoise.addEdge('includes', greenBean, 'amount', '1 1/2 lbs blanched, trimmed')\nsaladeNicoise.addEdge('includes', tuna, 'amount', '8-10 ozs oil-packed, drained and flaked')\nsaladeNicoise.addEdge('includes', tomato, 'amount', '3 or 4 red, peeled, quartered, cored, and seasoned')\nsaladeNicoise.addEdge('includes', hardBoiledEgg, 'amount', '8 halved lengthwise')\nwildMushroomStroganoff.addEdge('includes', eggNoodles, 'amount', '16 ozs wmyIde')\nwildMushroomStroganoff.addEdge('includes', mushroom, 'amount', '2 lbs wild or exotic, cleaned, stemmed, and sliced')\nwildMushroomStroganoff.addEdge('includes', yellowOnion, 'amount', '1 cup thinly sliced')\nspicyMeatloaf.addEdge('includes', bacon, 'amount', '3 ozs diced')\nspicyMeatloaf.addEdge('includes', onion, 'amount', '2 cups finely chopped')\nspicyMeatloaf.addEdge('includes', celery, 'amount', '2 cups finely chopped')\nspicyMeatloaf.addEdge('includes', greenBellPepper, 'amount', '1/4 cup finely chopped')\nspicyMeatloaf.addEdge('includes', porkSausage, 'amount', '3/4 lbs hot')\nspicyMeatloaf.addEdge('includes', groundBeef, 'amount', '1 1/2 lbs chuck')\noystersRockefeller.addEdge('includes', shallot, 'amount', '1/4 cup chopped')\noystersRockefeller.addEdge('includes', celery, 'amount', '1/4 cup chopped')\noystersRockefeller.addEdge('includes', chervil, 'amount', '1 tsp')\noystersRockefeller.addEdge('includes', fennel, 'amount', '1/3 cup chopped')\noystersRockefeller.addEdge('includes', parsley, 'amount', '1/3 cup chopped')\noystersRockefeller.addEdge('includes', oyster, 'amount', '2 dozen on the half shell')\noystersRockefeller.addEdge('includes', pernod, 'amount', '1/3 cup')\ncarrotSoup.addEdge('includes', butter, 'amount', '4 Tbsp')\ncarrotSoup.addEdge('includes', onion, 'amount', '2 medium sliced')\ncarrotSoup.addEdge('includes', thyme, 'amount', '1 sprig')\ncarrotSoup.addEdge('includes', carrot, 'amount', '2 1/2 lbs, peeled and sliced')\ncarrotSoup.addEdge('includes', chickenBroth, 'amount', '6 cups')\nroastPorkLoin.addEdge('includes', porkLoin, 'amount', '1 bone-in, 4-rib')\nroastPorkLoin.addEdge('includes', redWine, 'amount', '1/2 cup')\nroastPorkLoin.addEdge('includes', chickenBroth, 'amount', '1 cup')\n\n// book - recipe edges\nbeefBourguignon.addEdge('includedIn', artOfFrenchCookingVolOne)\n\n// meal - recipe edges\nbeefBourguignon.addEdge('includedIn', SaturdayFeast)\ncarrotSoup.addEdge('includedIn', SaturdayFeast)\noystersRockefeller.addEdge('includedIn', SaturdayFeast)\ncarrotSoup.addEdge('includedIn', EverydayDinner)\nroastPorkLoin.addEdge('includedIn', EverydayDinner)\nbeefBourguignon.addEdge('includedIn', JuliaDinner)\nsaladeNicoise.addEdge('includedIn', JuliaDinner)\n\n// meal - book edges\nEverydayDinner.addEdge('includedIn', artOfSimpleFood)\nSaturdayFeast.addEdge('includedIn', simcasCuisine)\nJuliaDinner.addEdge('includedIn', artOfFrenchCookingVolOne)\ng.V().has('author', 'name', 'Emeril Lagasse').out('created').values('name')",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ "Wild Mushroom Stroganoff", "Spicy Meatloaf" ],
+      "type" : "STRING",
+      "truncated" : false,
+      "duration" : 3349,
+      "id" : "e193c626-3278-49eb-a858-b8fd80311179"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
+  }, {
+    "id" : "1ded7ec6-ae97-4a81-8b23-f5f55342a20b",
+    "status" : "SUCCESS",
+    "code" : "g.V().has('author', 'name', 'Emeril Lagasse').out('created').values('name')",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ "Wild Mushroom Stroganoff", "Spicy Meatloaf" ],
+      "type" : "STRING",
+      "truncated" : false,
+      "duration" : 33,
+      "id" : "2d3a10ab-25aa-4589-aca0-05a5d167707c"
+    },
+    "msg" : null,
+    "dataViewType" : null,
+    "viewSettings" : null
+  }, {
+    "id" : "58c6f15e-6df9-464e-b558-e48ab78f8b86",
+    "status" : "SUCCESS",
+    "code" : "schema.traversal().V().valueMap(true)",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ {
+        "mode" : [ "Development" ],
+        "label" : "schema",
+        "id" : 0
+      }, {
+        "label" : "incident",
+        "id" : 143
+      }, {
+        "label" : "incident",
+        "id" : 147
+      }, {
+        "label" : "vertexIndex",
+        "id" : "32805",
+        "name" : [ "byName" ],
+        "type" : [ "Secondary" ]
+      }, {
+        "label" : "vertexIndex",
+        "id" : "32806",
+        "unique" : [ false ],
+        "name" : [ "byRecipe" ],
+        "type" : [ "Materialized" ]
+      }, {
+        "label" : "edgeLabel",
+        "id" : "32803",
+        "name" : [ "includedIn" ],
+        "directionality" : [ "Bidirectional" ],
+        "cardinality" : [ "Multiple" ]
+      }, {
+        "label" : "edgeLabel",
+        "id" : "32804",
+        "name" : [ "rated" ],
+        "directionality" : [ "Bidirectional" ],
+        "cardinality" : [ "Multiple" ]
+      }, {
+        "label" : "edgeLabel",
+        "id" : "32801",
+        "name" : [ "created" ],
+        "directionality" : [ "Bidirectional" ],
+        "cardinality" : [ "Multiple" ]
+      }, {
+        "label" : "edgeLabel",
+        "id" : "32802",
+        "name" : [ "includes" ],
+        "directionality" : [ "Bidirectional" ],
+        "cardinality" : [ "Multiple" ]
+      }, {
+        "label" : "incident",
+        "id" : 157
+      }, {
+        "label" : "edgeLabel",
+        "id" : "32800",
+        "name" : [ "authored" ],
+        "directionality" : [ "Bidirectional" ],
+        "cardinality" : [ "Multiple" ]
+      }, {
+        "label" : "vertexLabel",
+        "id" : "10",
+        "name" : [ "book" ]
+      }, {
+        "label" : "vertexLabel",
+        "id" : "11",
+        "name" : [ "meal" ]
+      }, {
+        "label" : "vertexLabel",
+        "id" : "12",
+        "name" : [ "reviewer" ]
+      }, {
+        "label" : "vertexLabel",
+        "id" : "13",
+        "name" : [ "FridgeSensor" ]
+      }, {
+        "label" : "vertexLabel",
+        "id" : "14",
+        "name" : [ "test" ]
+      }, {
+        "label" : "vertexLabel",
+        "id" : "15",
+        "name" : [ "FridgeItem" ]
+      }, {
+        "label" : "incident",
+        "id" : 167
+      }, {
+        "label" : "propertyKey",
+        "id" : "32790",
+        "dataType" : [ "Int" ],
+        "name" : [ "year" ],
+        "cardinality" : [ "Single" ]
+      }, {
+        "label" : "incident",
+        "id" : 171
+      }, {
+        "label" : "incident",
+        "id" : 175
+      }, {
+        "label" : "propertyKey",
+        "id" : "32797",
+        "dataType" : [ "Int" ],
+        "name" : [ "community_id" ],
+        "cardinality" : [ "Single" ]
+      }, {
+        "label" : "propertyKey",
+        "id" : "32798",
+        "dataType" : [ "Int" ],
+        "name" : [ "group_id" ],
+        "cardinality" : [ "Single" ]
+      }, {
+        "label" : "propertyKey",
+        "id" : "32795",
+        "dataType" : [ "Int" ],
+        "name" : [ "stars" ],
+        "cardinality" : [ "Single" ]
+      }, {
+        "label" : "propertyKey",
+        "id" : "32796",
+        "dataType" : [ "Text" ],
+        "name" : [ "comment" ],
+        "cardinality" : [ "Single" ]
+      }, {
+        "label" : "propertyKey",
+        "id" : "32793",
+        "dataType" : [ "Int" ],
+        "name" : [ "calories" ],
+        "cardinality" : [ "Single" ]
+      }, {
+        "label" : "propertyKey",
+        "id" : "32794",
+        "dataType" : [ "Text" ],
+        "name" : [ "amount" ],
+        "cardinality" : [ "Single" ]
+      }, {
+        "label" : "propertyKey",
+        "id" : "32791",
+        "dataType" : [ "Timestamp" ],
+        "name" : [ "timestamp" ],
+        "cardinality" : [ "Single" ]
+      }, {
+        "label" : "vertexLabel",
+        "id" : "7",
+        "name" : [ "author" ]
+      }, {
+        "label" : "propertyKey",
+        "id" : "32792",
+        "dataType" : [ "Text" ],
+        "name" : [ "ISBN" ],
+        "cardinality" : [ "Single" ]
+      }, {
+        "label" : "vertexLabel",
+        "id" : "8",
+        "name" : [ "recipe" ]
+      }, {
+        "label" : "vertexLabel",
+        "id" : "9",
+        "name" : [ "ingredient" ]
+      }, {
+        "label" : "incident",
+        "id" : 189
+      }, {
+        "label" : "propertyKey",
+        "id" : "32799",
+        "dataType" : [ "Smallint" ],
+        "name" : [ "member_id" ],
+        "cardinality" : [ "Single" ]
+      }, {
+        "label" : "incident",
+        "id" : 193
+      }, {
+        "label" : "incident",
+        "id" : 197
+      }, {
+        "label" : "propertyKey",
+        "id" : "32818",
+        "dataType" : [ "Timestamp" ],
+        "name" : [ "expiration_date" ],
+        "cardinality" : [ "Single" ]
+      }, {
+        "label" : "vertexIndex",
+        "id" : "32819",
+        "unique" : [ false ],
+        "name" : [ "byAuthor" ],
+        "type" : [ "Materialized" ]
+      }, {
+        "label" : "incident",
+        "id" : 201
+      }, {
+        "label" : "incident",
+        "id" : 205
+      }, {
+        "label" : "propertyKey",
+        "id" : "32786",
+        "dataType" : [ "Text" ],
+        "name" : [ "name" ],
+        "cardinality" : [ "Single" ]
+      }, {
+        "label" : "propertyKey",
+        "id" : "32787",
+        "dataType" : [ "Text" ],
+        "name" : [ "gender" ],
+        "cardinality" : [ "Single" ]
+      }, {
+        "label" : "propertyKey",
+        "id" : "32788",
+        "dataType" : [ "Text" ],
+        "name" : [ "instructions" ],
+        "cardinality" : [ "Single" ]
+      }, {
+        "label" : "propertyKey",
+        "id" : "32789",
+        "dataType" : [ "Text" ],
+        "name" : [ "category" ],
+        "cardinality" : [ "Single" ]
+      }, {
+        "label" : "incident",
+        "id" : 223
+      }, {
+        "label" : "incident",
+        "id" : 98
+      }, {
+        "label" : "vertexIndex",
+        "id" : "32809",
+        "unique" : [ false ],
+        "name" : [ "byReviewer" ],
+        "type" : [ "Materialized" ]
+      }, {
+        "label" : "incident",
+        "id" : 102
+      }, {
+        "label" : "vertexIndex",
+        "id" : "32808",
+        "unique" : [ false ],
+        "name" : [ "byIngredient" ],
+        "type" : [ "Materialized" ]
+      }, {
+        "label" : "incident",
+        "id" : 115
+      }, {
+        "label" : "incident",
+        "id" : 119
+      }, {
+        "label" : "propertyKey",
+        "id" : "32816",
+        "dataType" : [ "Text" ],
+        "name" : [ "nationality" ],
+        "cardinality" : [ "Single" ]
+      }, {
+        "label" : "edgeLabel",
+        "id" : "32817",
+        "name" : [ "isA" ],
+        "directionality" : [ "Bidirectional" ],
+        "cardinality" : [ "Multiple" ]
+      }, {
+        "label" : "propertyKey",
+        "id" : "32814",
+        "dataType" : [ "Int" ],
+        "name" : [ "tester" ],
+        "cardinality" : [ "Single" ]
+      }, {
+        "label" : "propertyKey",
+        "id" : "32815",
+        "dataType" : [ "Text" ],
+        "name" : [ "foor" ],
+        "cardinality" : [ "Single" ]
+      }, {
+        "label" : "propertyKey",
+        "id" : "32812",
+        "dataType" : [ "Uuid" ],
+        "name" : [ "sensor_id" ],
+        "cardinality" : [ "Single" ]
+      }, {
+        "label" : "propertyKey",
+        "id" : "32813",
+        "dataType" : [ "Int" ],
+        "name" : [ "city_id" ],
+        "cardinality" : [ "Single" ]
+      }, {
+        "label" : "edgeIndex",
+        "id" : "32810",
+        "name" : [ "ratedByStars" ],
+        "directionality" : [ "OUT" ]
+      } ],
+      "type" : "MAP",
+      "truncated" : false,
+      "duration" : 75,
+      "id" : "eed0fe3e-ef37-4807-a4d8-6741699e6b40"
+    },
+    "msg" : null,
+    "dataViewType" : null,
+    "viewSettings" : null
+  }, {
+    "id" : "3a967f63-0db7-4dc4-9403-7ad10b625d16",
+    "status" : "SUCCESS",
+    "code" : "schema.describe()",
+    "language" : "gremlin",
+    "result" : {
+      "value" : [ "schema.propertyKey(\"member_id\").Smallint().single().create()\nschema.propertyKey(\"instructions\").Text().single().create()\nschema.propertyKey(\"amount\").Text().single().create()\nschema.propertyKey(\"gender\").Text().single().create()\nschema.propertyKey(\"year\").Int().single().create()\nschema.propertyKey(\"tester\").Int().single().create()\nschema.propertyKey(\"calories\").Int().single().create()\nschema.propertyKey(\"stars\").Int().single().create()\nschema.propertyKey(\"expiration_date\").Timestamp().single().create()\nschema.propertyKey(\"sensor_id\").Uuid().single().create()\nschema.propertyKey(\"community_id\").Int().single().create()\nschema.propertyKey(\"ISBN\").Text().single().create()\nschema.propertyKey(\"nationality\").Text().single().create()\nschema.propertyKey(\"group_id\").Int().single().create()\nschema.propertyKey(\"name\").Text().single().create()\nschema.propertyKey(\"comment\").Text().single().create()\nschema.propertyKey(\"category\").Text().single().create()\nschema.propertyKey(\"foor\").Text().single().create()\nschema.propertyKey(\"timestamp\").Timestamp().single().create()\nschema.propertyKey(\"city_id\").Int().single().create()\nschema.edgeLabel(\"authored\").multiple().create()\nschema.edgeLabel(\"rated\").multiple().properties(\"stars\").create()\nschema.edgeLabel(\"includedIn\").multiple().create()\nschema.edgeLabel(\"created\").multiple().properties(\"year\").create()\nschema.edgeLabel(\"isA\").multiple().create()\nschema.edgeLabel(\"includes\").multiple().properties(\"amount\").create()\nschema.vertexLabel(\"meal\").properties(\"name\", \"timestamp\", \"calories\").create()\nschema.vertexLabel(\"ingredient\").properties(\"name\").create()\nschema.vertexLabel(\"ingredient\").index(\"byIngredient\").materialized().by(\"name\").add()\nschema.vertexLabel(\"test\").partitionKey(\"tester\").clusteringKey(\"foor\").create()\nschema.vertexLabel(\"FridgeSensor\").create()\nschema.vertexLabel(\"author\").properties(\"name\", \"gender\", \"nationality\").create()\nschema.vertexLabel(\"author\").index(\"byName\").secondary().by(\"name\").add()\nschema.vertexLabel(\"author\").index(\"byAuthor\").materialized().by(\"name\").add()\nschema.vertexLabel(\"FridgeItem\").properties(\"name\", \"expiration_date\", \"amount\").create()\nschema.vertexLabel(\"book\").properties(\"name\", \"year\", \"ISBN\").create()\nschema.vertexLabel(\"recipe\").properties(\"name\", \"instructions\").create()\nschema.vertexLabel(\"recipe\").index(\"byRecipe\").materialized().by(\"name\").add()\nschema.vertexLabel(\"reviewer\").properties(\"name\").create()\nschema.vertexLabel(\"reviewer\").index(\"byReviewer\").materialized().by(\"name\").add()\nschema.vertexLabel(\"reviewer\").index(\"ratedByStars\").outE(\"rated\").by(\"stars\").add()\nschema.edgeLabel(\"authored\").connection(\"author\", \"book\").connection(\"book\", \"author\").add()\nschema.edgeLabel(\"rated\").connection(\"recipe\", \"reviewer\").connection(\"reviewer\", \"recipe\").add()\nschema.edgeLabel(\"includedIn\").connection(\"meal\", \"recipe\").connection(\"meal\", \"book\").connection(\"book\", \"recipe\").connection(\"book\", \"meal\").connection(\"recipe\", \"book\").connection(\"recipe\", \"meal\").add()\nschema.edgeLabel(\"created\").connection(\"author\", \"recipe\").connection(\"recipe\", \"author\").add()\nschema.edgeLabel(\"isA\").connection(\"ingredient\", \"FridgeItem\").connection(\"FridgeItem\", \"ingredient\").add()\nschema.edgeLabel(\"includes\").connection(\"ingredient\", \"recipe\").connection(\"recipe\", \"ingredient\").add()" ],
+      "type" : "STRING",
+      "truncated" : false,
+      "duration" : 214,
+      "id" : "52a6faa7-ecc7-4864-a290-e758308a59e4"
+    },
+    "msg" : null,
+    "dataViewType" : "TABLE",
+    "viewSettings" : {
+      "CHART" : {
+        "xAxis" : null,
+        "yAxis" : null
+      }
+    }
   } ],
   "created" : "2016-03-22T20:01:48.441Z",
-  "lastUsed" : "2016-03-30T21:47:01.148Z"
+  "lastUsed" : "2016-04-06T23:20:50.739Z"
 }

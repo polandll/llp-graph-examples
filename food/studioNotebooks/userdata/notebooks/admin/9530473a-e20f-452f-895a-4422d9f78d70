@@ -734,7 +734,7 @@
   }, {
     "id" : "869ee65f-2413-4d5a-9d40-29f063b4bb8b",
     "status" : "SUCCESS",
-    "code" : "graph.schema().traversal().V().valueMap()",
+    "code" : "schema.traversal().V().valueMap()",
     "language" : "gremlin",
     "result" : {
       "value" : [ {
@@ -812,8 +812,8 @@
       } ],
       "type" : "MAP",
       "truncated" : false,
-      "duration" : 76,
-      "id" : "52bb970d-97f5-400b-8457-1a65110d9292"
+      "duration" : 4102,
+      "id" : "c9baa79f-5bdd-46f3-b613-7dc7294fa979"
     },
     "msg" : null,
     "dataViewType" : "RAW",
@@ -1368,5 +1368,5 @@
     }
   } ],
   "created" : "2016-02-23T19:15:17.845Z",
-  "lastUsed" : "2016-04-05T18:47:47.701Z"
+  "lastUsed" : "2016-04-05T23:10:38.274Z"
 }
