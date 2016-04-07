@@ -3539,7 +3539,16 @@
         "yAxis" : null
       }
     }
+  }, {
+    "id" : "bbaac87a-5c45-4071-b90e-684f911da8c1",
+    "status" : "ERROR",
+    "code" : "",
+    "language" : "gremlin",
+    "result" : null,
+    "msg" : "org.apache.tinkerpop.gremlin.driver.exception.ResponseException: No signature of method: com.datastax.bdp.graph.api.system.GraphSystem.createGraph() is applicable for argument types: (java.lang.String) values: [junk]",
+    "dataViewType" : null,
+    "viewSettings" : null
   } ],
   "created" : "2016-03-22T20:01:48.441Z",
-  "lastUsed" : "2016-04-06T23:20:50.739Z"
+  "lastUsed" : "2016-04-07T07:02:04.840Z"
 }

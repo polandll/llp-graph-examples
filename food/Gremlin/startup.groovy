@@ -6,6 +6,7 @@
 
 :remote connect tinkerpop.server resources/graph/gremlin-console/conf/remote-objects.yaml
 
+OLD SCHEMA:
 :> system.dropGraph('test')
 :> system.createGraph('test').ifNotExist().build()
 :remote config alias g test.g
@@ -16,4 +17,9 @@
 
 // dropping aliases
  :remote config alias reset
-
+ 
+ ---------------
+ NEW SCHEMA:
+system.graph('test').drop()
+:> system.graph('test').ifNotExist().create()
+:remote config alias g test.g

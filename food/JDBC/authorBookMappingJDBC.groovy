@@ -1,23 +1,26 @@
 // Use /Users/lorinapoland/CLONES/graph-examples/DataLoader/runDGL.sh to run this script
-// Set runDGL.sh parameters to CSV before running
+// Set runDGL.sh parameters to JDBC before running
+// Run runDGL.sh in /Users/lorinapoland/CLONES/dse-graph-loader
 
-/* SAMPLE INPUT
-author: 
-name: Julia Child gender: F
-book : 
-name: Simca's Cuisine: 100 Classic French Recipes for Every Occasion year:1972 ISBN: 0-394-40152-2
+/* SAMPLE INPUT - uses tabs
+author:
+name:Julia Child	gender:F
+book: 
+name:Simca's Cuisine: 100 Classic French Recipes for Every Occasion	year:1972	ISBN:0-394-40152-2
 authorBook: 
-bname: Simca's Cuisine: 100 Classic French Recipes for Every Occasion aname: Simone Beck
+bname:Simca's Cuisine: 100 Classic French Recipes for Every Occasion	aname:Simone Beck
  */
 
 // CONFIGURATION
 // Configures the data loader to create the schema
-config create_schema: true, load_threads: 3
+config create_schema: true, load_new: true, load_threads: 3
 
 // DATA INPUT
-// Define the data source as a database connection
+// Define the data input source (a file which can be specified via command line arguments)
+// inputfiledir is the directory for the input files that is given in the commandline
+// as the "-filename" option
 inputDatabase = '~/test'
-db = database connection: "jdbc:h2:" + inputDatabase, driver: "H2", user: "sa"
+db = Database.connection("jdbc:h2:" + inputDatabase).H2().user("sa")
 
 // Define multiple data inputs from the database source via SQL queries
 authorInput = db.query "SELECT * FROM AUTHOR";
@@ -25,28 +28,25 @@ bookInput = db.query "SELECT * FROM BOOK";
 authorBookInput = db.query "SELECT * FROM AUTHORBOOK";
 
 //Specifies what data source to load using which mapper (as defined inline)
-load from: authorInput, vertex: {
+  
+load(authorFile).asVertices {
     label "author"
     key "name"
-    isNew
 }
 
-load from: bookInput, vertex: {
+load(bookFile).asVertices {
     label "book"
     key "name"
-    isNew
 }
 
-load from: authorBookInput, edge: {
+load(authorBookFile).asEdges {
     label "authored"
     outV "aname", {
         label "author"
-        isKey "name"
-        exists
+        key "name"
     }
     inV "bname", {
         label "book"
-        isKey "name"
-        exists
+        key "name"
     }
 }

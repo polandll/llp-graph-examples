@@ -1,6 +1,8 @@
 // Use /Users/lorinapoland/CLONES/graph-examples/DataLoader/runDGL.sh to run this script
+// Set runDGL.sh parameters to REGEX before running
+// Run runDGL.sh in /Users/lorinapoland/CLONES/dse-graph-loader
 
-/* SAMPLE INPUT
+/* SAMPLE INPUT - uses tabs
 author:
 name:Julia Child	gender:F
 book: 
@@ -11,48 +13,39 @@ bname:Simca's Cuisine: 100 Classic French Recipes for Every Occasion	aname:Simon
 
 // CONFIGURATION
 // Configures the data loader to create the schema
-config create_schema: true, load_threads: 3
+config create_schema: true, load_new: true, load_threads: 3
 
 // DATA INPUT
-// Define the data input source 
-// inputfiledir is the directory for the input files that is given in the command line
+// Define the data input source (a file which can be specified via command line arguments)
+// inputfiledir is the directory for the input files that is given in the commandline
 // as the "-filename" option
-
 inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/REGEX/'
-authorFile = text name: inputfiledir + "authorREGEX.dat", 
-	regex: "name:(.*)\\sgender:([MF])", 
-	header: ['name', 'gender']
-bookFile = text name: inputfiledir + "bookREGEX.dat", 
-	regex: "name:(.*)\\tyear:([0-9]{4})\\tISBN:([0-9]{1}[-]{1}[0-9]{3}[-]{1}[0-9]{5}[-]{1}[0-9]{0,1})", 
-	header: ['name', 'year', 'ISBN']
-authorBookFile = text name: inputfiledir + "authorBookREGEX.dat", 
-	regex: "bname:(.*)\\taname:(.*)", 
-	header: ['bname', 'aname']
+authorFile = File.text(inputfiledir + "authorREGEX.dat").regex("name:(.*)\\tgender:([MF])").header('name', 'gender')
+bookFile = File.text(inputfiledir + "bookREGEX.dat").
+	regex("name:(.*)\\tyear:([0-9]{4})\\tISBN:([0-9]{1}[-]{1}[0-9]{3}[-]{1}[0-9]{5}[-]{1}[0-9]{0,1})").
+	header('name', 'year', 'ISBN')
+authorBookFile = File.text(inputfiledir + "authorBookREGEX.dat").regex("bname:(.*)\\taname:(.*)").header('bname', 'aname')
 
 //Specifies what data source to load using which mapper (as defined inline)
-load from: authorFile, vertex: {
+  
+load(authorFile).asVertices {
     label "author"
     key "name"
-    isNew
 }
 
-load from: bookFile, vertex: {
+load(bookFile).asVertices {
     label "book"
     key "name"
-	isNew
 }
 
-load from: authorBookFile, edge: {
+load(authorBookFile).asEdges {
     label "authored"
     outV "aname", {
         label "author"
-        isKey "name"
-        exists
+        key "name"
     }
     inV "bname", {
         label "book"
-        isKey "name"
-        exists
+        key "name"
     }
 }
-

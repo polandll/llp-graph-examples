@@ -1,4 +1,6 @@
 // Use /Users/lorinapoland/CLONES/graph-examples/DataLoader/runDGL.sh to run this script
+// Set runDGL.sh parameters to TEXT before running
+// Run runDGL.sh in /Users/lorinapoland/CLONES/dse-graph-loader
 
 /** SAMPLE INPUT
 author: Julia Child|F
@@ -8,41 +10,38 @@ authorBook: Simca's Cuisine: 100 Classic French Recipes for Every Occasion|Simon
 
 // CONFIGURATION
 // Configures the data loader to create the schema
-config create_schema: true, load_threads: 3
+config create_schema: true, load_new: true, load_threads: 3
 
 // DATA INPUT
-// Define the data input source 
+// Define the data input source (a file which can be specified via command line arguments)
 // inputfiledir is the directory for the input files that is given in the commandline
 // as the "-filename" option
 
 inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/TEXT/'
-authorFile = text name: inputfiledir + "author.dat", delimiter: "|", header: ['name', 'gender']
-bookFile = text name: inputfiledir + "book.dat", delimiter: "|", header: ['name', 'year', 'ISBN']
-authorBookFile = text name: inputfiledir + "authorBook.dat", delimiter: "|", header: ['bname', 'aname']
+authorFile = File.text(inputfiledir + "author.dat").delimiter("|").header('name', 'gender')
+bookFile = File.text(inputfiledir + "book.dat").delimiter("|").header('name', 'year', 'ISBN')
+authorBookFile = File.text(inputfiledir + "authorBook.dat").delimiter("|").header('bname', 'aname')
 
 //Specifies what data source to load using which mapper (as defined inline)
-load from: authorFile, vertex: {
+  
+load(authorFile).asVertices {
     label "author"
     key "name"
-    isNew
 }
 
-load from: bookFile, vertex: {
+load(bookFile).asVertices {
     label "book"
     key "name"
-    isNew
 }
 
-load from: authorBookFile, edge: {
+load(authorBookFile).asEdges {
     label "authored"
     outV "aname", {
         label "author"
-        isKey "name"
-        exists
+        key "name"
     }
     inV "bname", {
         label "book"
-        isKey "name"
-        exists
+        key "name"
     }
 }

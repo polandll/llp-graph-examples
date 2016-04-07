@@ -1,6 +1,6 @@
 // Use /Users/lorinapoland/CLONES/graph-examples/DataLoader/runDGL.sh to run this script
 // Set runDGL.sh parameters to TEXT before running
-// Add XFORM to the script and graph name
+// Add XFORM2 to the script and graph name
 // Run runDGL.sh in /Users/lorinapoland/CLONES/dse-graph-loader
 
 /** SAMPLE INPUT
@@ -20,7 +20,6 @@ config create_schema: true, load_new: true, load_threads: 3
 
 inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/TEXT/'
 authorFile = File.text(inputfiledir + "author.dat").delimiter("|").header('name', 'gender')
-authorFile = authorFile.transform { it['gender'] = it['gender'].toLowerCase(); it }
 bookFile = File.text(inputfiledir + "book.dat").delimiter("|").header('name', 'year', 'ISBN')
 authorBookFile = File.text(inputfiledir + "authorBook.dat").delimiter("|").header('bname', 'aname')
 
@@ -31,6 +30,8 @@ load(authorFile).asVertices {
     label "author"
     key "name"
 }
+
+authorFile = authorFile.transform { it['gender'] = it['gender'].toLowerCase(); it }
 
 load(bookFile).asVertices {
     label "book"

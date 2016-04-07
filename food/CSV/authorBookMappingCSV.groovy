@@ -1,5 +1,6 @@
 // Use /Users/lorinapoland/CLONES/graph-examples/DataLoader/runDGL.sh to run this script
 // Set runDGL.sh parameters to CSV before running
+// Run runDGL.sh in /Users/lorinapoland/CLONES/dse-graph-loader
 
 /* SAMPLE INPUT
 author: Julia Child|F
@@ -9,40 +10,37 @@ authorBook: Simca's Cuisine: 100 Classic French Recipes for Every Occasion|Simon
 
 // CONFIGURATION
 // Configures the data loader to create the schema
-config create_schema: true, load_threads: 3
+config create_schema: true, load_new: true, load_threads: 3
 
 // DATA INPUT
 // Define the data input source (a file which can be specified via command line arguments)
 // inputfiledir is the directory for the input files that is given in the commandline
 // as the "-filename" option
 inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/CSV/'
-authorFile = csv name: inputfiledir + "author.csv", delimiter: "|"
-bookFile = csv name: inputfiledir + "book.csv", delimiter: "|"
-authorBookFile = csv name: inputfiledir + "authorBook.csv", delimiter: "|"
+authorFile = File.csv(inputfiledir + "author.csv").delimiter('|')
+bookFile = File.csv(inputfiledir + "book.csv").delimiter('|')
+authorBookFile = File.csv(inputfiledir + "authorBook.csv").delimiter('|')
 
 //Specifies what data source to load using which mapper (as defined inline)
-load from: authorFile, vertex: {
+  
+load(authorFile).asVertices {
     label "author"
     key "name"
-    isNew
 }
 
-load from: bookFile, vertex: {
+load(bookFile).asVertices {
     label "book"
     key "name"
-    isNew
 }
 
-load from: authorBookFile, edge: {
+load(authorBookFile).asEdges {
     label "authored"
     outV "aname", {
         label "author"
-        isKey "name"
-        exists
+        key "name"
     }
     inV "bname", {
         label "book"
-        isKey "name"
-        exists
+        key "name"
     }
 }
