@@ -19,12 +19,12 @@ config create_schema: true, load_new: true, load_threads: 3
 // inputfiledir is the directory for the input files that is given in the commandline
 // as the "-filename" option
 inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/CSV/'
-fridgeItemFile = File.csv(inputfiledir + "fridgeItem.csv").delimiter('|')
+fridgeItemInput = File.csv(inputfiledir + "fridgeItem.csv").delimiter('|')
 
 
 //Specifies what data source to load using which mapper (as defined inline)
   
-load(fridgeItemFile).asVertices {
+load(fridgeItemInput).asVertices {
     label "fridgeItem"
     // need a transform to get a composite, like Ben's script
     // key sourceName: schemaName, sourceName2:schemaName2
@@ -35,7 +35,7 @@ load(fridgeItemFile).asVertices {
 Text from doc that I yanked until I fix this:
 Step in dseGraphLoaderTransforms.dita
 Composite keys may be specified in a loading statement.
-load(fridgeItemFile).asVertices {
+load(fridgeItemInputFile).asVertices {
     label "fridgeItem"
     key "city_id", "sensor_id"
 }

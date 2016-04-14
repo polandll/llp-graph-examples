@@ -17,23 +17,23 @@ config create_schema: true, load_new: true, load_threads: 3
 // inputfiledir is the directory for the input files that is given in the commandline
 // as the "-filename" option
 inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/CSV/'
-authorFile = File.csv(inputfiledir + "author.csv").delimiter('|')
-bookFile = File.csv(inputfiledir + "book.csv").delimiter('|')
-authorBookFile = File.csv(inputfiledir + "authorBook.csv").delimiter('|')
+authorInput = File.csv(inputfiledir + "author.csv").delimiter('|')
+bookInput = File.csv(inputfiledir + "book.csv").delimiter('|')
+authorBookInput = File.csv(inputfiledir + "authorBook.csv").delimiter('|')
 
 //Specifies what data source to load using which mapper (as defined inline)
   
-load(authorFile).asVertices {
+load(authorInput).asVertices {
     label "author"
     key "name"
 }
 
-load(bookFile).asVertices {
+load(bookInput).asVertices {
     label "book"
     key "name"
 }
 
-load(authorBookFile).asEdges {
+load(authorBookInput).asEdges {
     label "authored"
     outV "aname", {
         label "author"

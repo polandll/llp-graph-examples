@@ -18,7 +18,7 @@ schema.propertyKey('ISBN').Text().create()
 schema.propertyKey('calories').Int().create()
 schema.propertyKey('amount').Text().create()
 schema.propertyKey('stars').Int().create()
-schema.propertyKey('comment').Text().single()create() // single() is optional - default
+schema.propertyKey('comment').Text().single().create() // single() is optional - default
 // Example of multiple property
 // schema.propertyKey('nickname').Text().multiple().create();
 // Example meta-property added to property: 

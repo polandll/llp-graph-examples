@@ -20,25 +20,25 @@ config create_schema: true, load_new: true, load_threads: 3
 // inputfiledir is the directory for the input files that is given in the commandline
 // as the "-filename" option
 inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/REGEX/'
-authorFile = File.text(inputfiledir + "authorREGEX.dat").regex("name:(.*)\\tgender:([MF])").header('name', 'gender')
-bookFile = File.text(inputfiledir + "bookREGEX.dat").
+authorInput = File.text(inputfiledir + "authorREGEX.dat").regex("name:(.*)\\tgender:([MF])").header('name', 'gender')
+bookInput = File.text(inputfiledir + "bookREGEX.dat").
 	regex("name:(.*)\\tyear:([0-9]{4})\\tISBN:([0-9]{1}[-]{1}[0-9]{3}[-]{1}[0-9]{5}[-]{1}[0-9]{0,1})").
 	header('name', 'year', 'ISBN')
-authorBookFile = File.text(inputfiledir + "authorBookREGEX.dat").regex("bname:(.*)\\taname:(.*)").header('bname', 'aname')
+authorBookInput = File.text(inputfiledir + "authorBookREGEX.dat").regex("bname:(.*)\\taname:(.*)").header('bname', 'aname')
 
 //Specifies what data source to load using which mapper (as defined inline)
   
-load(authorFile).asVertices {
+load(authorInput).asVertices {
     label "author"
     key "name"
 }
 
-load(bookFile).asVertices {
+load(bookInput).asVertices {
     label "book"
     key "name"
 }
 
-load(authorBookFile).asEdges {
+load(authorBookInput).asEdges {
     label "authored"
     outV "aname", {
         label "author"

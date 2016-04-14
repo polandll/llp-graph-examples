@@ -19,26 +19,26 @@ config create_schema: true, load_new: true, load_threads: 3
 // as the "-filename" option
 
 inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/TEXT/'
-authorFile = File.text(inputfiledir + "author.dat").delimiter("|").header('name', 'gender')
-bookFile = File.text(inputfiledir + "book.dat").delimiter("|").header('name', 'year', 'ISBN')
-authorBookFile = File.text(inputfiledir + "authorBook.dat").delimiter("|").header('bname', 'aname')
+authorInput = File.text(inputfiledir + "author.dat").delimiter("|").header('name', 'gender')
+bookInput = File.text(inputfiledir + "book.dat").delimiter("|").header('name', 'year', 'ISBN')
+authorBookInput = File.text(inputfiledir + "authorBook.dat").delimiter("|").header('bname', 'aname')
 
 
 //Specifies what data source to load using which mapper (as defined inline)
   
-load(authorFile).asVertices {
+load(authorInput).asVertices {
     label "author"
     key "name"
 }
 
-authorFile = authorFile.transform { it['gender'] = it['gender'].toLowerCase(); it }
+authorInput = authorInput.transform { it['gender'] = it['gender'].toLowerCase(); it }
 
-load(bookFile).asVertices {
+load(bookInput).asVertices {
     label "book"
     key "name"
 }
 
-load(authorBookFile).asEdges {
+load(authorBookInput).asEdges {
     label "authored"
     outV "aname", {
         label "author"

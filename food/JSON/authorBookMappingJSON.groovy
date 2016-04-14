@@ -18,23 +18,23 @@ config create_schema: true, load_new: true, load_threads: 3
 // as the "-filename" option
 
 inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/JSON/'
-authorFile = File.json(inputfiledir + 'author.json')
-bookFile = File.json(inputfiledir + 'book.json')
-authorBookFile = File.json(inputfiledir + 'authorBook.json')
+authorInput = File.json(inputfiledir + 'author.json')
+bookInput = File.json(inputfiledir + 'book.json')
+authorBookInput = File.json(inputfiledir + 'authorBook.json')
 
 //Specifies what data source to load using which mapper (as defined inline)
   
-load(authorFile).asVertices {
+load(authorInput).asVertices {
     label "author"
     key "name"
 }
 
-load(bookFile).asVertices {
+load(bookInput).asVertices {
     label "book"
     key "name"
 }
 
-load(authorBookFile).asEdges {
+load(authorBookInput).asEdges {
     label "authored"
     outV "aname", {
         label "author"

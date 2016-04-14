@@ -1,3 +1,5 @@
+// DSP-9132
+
 /* Original data
 {
    patient_id1: "a",
@@ -19,6 +21,18 @@
    }
 }
 */
+
+hospital.csv
+patient_id_1,patient_id_2,hospital_id_1,hospital_id_2
+id1Value_pat,id2Value_pat,id1Value_hos,id2Value_hos
+hospitals.csv
+hospital
+hospital_id_1
+hospital_id_2
+patient.csv
+patient
+id1Value_pat
+id2Value_pat
 
 //Configures the data loader to create the schema
 config create_schema: true, load_new: true
