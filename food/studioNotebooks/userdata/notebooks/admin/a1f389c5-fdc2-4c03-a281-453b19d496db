@@ -8,6 +8,7 @@
     "status" : "SUCCESS",
     "code" : "Hello!\n==\n**Welcome to the DataStax Studio Tutorial Notebook.**\n\nFirst things first: If you have an error on the top of this screen then you need to configure your connection. You should take care of that first and come back here when you're ready.\n\nGot your connection all setup? Great! Lets get started with something simple to make sure things are working correctly.",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<h1>Hello!</h1>\n<p><strong>Welcome to the DataStax Studio Tutorial Notebook.</strong></p>\n<p>First things first: If you have an error on the top of this screen then you need to configure your connection. You should take care of that first and come back here when you're ready.</p>\n<p>Got your connection all setup? Great! Lets get started with something simple to make sure things are working correctly.</p>\n",
       "type" : "HTML",
@@ -27,6 +28,7 @@
     "status" : "SUCCESS",
     "code" : "We're going to need some data to play with. The next cell will take care of that. Don't worry too much about this code right now; you will get to that later. For now, just click the play button and when it succeeds, continue the next cell.",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<p>We're going to need some data to play with. The next cell will take care of that. Don't worry too much about this code right now; you will get to that later. For now, just click the play button and when it succeeds, continue the next cell.</p>\n",
       "type" : "HTML",
@@ -43,10 +45,17 @@
     }
   }, {
     "id" : "b77eb51e-dda4-49b6-bb2c-411fd5c2878b",
-    "status" : null,
+    "status" : "SUCCESS",
     "code" : "\n// Schema\nschema.vertexLabel('god').create();\nschema.vertexLabel('demigod').create();\nschema.vertexLabel('human').create();\nschema.vertexLabel('monster').create();\nschema.vertexLabel('location').create();\n\nschema.propertyKey('name').Text().create();\n\n// Indexes\nschema.vertexLabel('god').index('godByName').materialized().by('name').add()\nschema.vertexLabel('demigod').index('demigodByName').materialized().by('name').add()\nschema.vertexLabel('human').index('humanByName').materialized().by('name').add()\nschema.vertexLabel('monster').index('monsterByName').materialized().by('name').add()\nschema.vertexLabel('location').index('locationByName').materialized().by('name').add()\n\n// Instances - Vertices\nVertex saturn = graph.addVertex(T.label, \"titan\", \"name\", \"saturn\", \"age\", 10000);\nVertex sky = graph.addVertex(T.label, \"location\", \"name\", \"sky\");\nVertex sea = graph.addVertex(T.label, \"location\", \"name\", \"sea\");\nVertex jupiter = graph.addVertex(T.label, \"god\", \"name\", \"jupiter\", \"age\", 5000);\nVertex neptune = graph.addVertex(T.label, \"god\", \"name\", \"neptune\", \"age\", 4500);\nVertex hercules = graph.addVertex(T.label, \"demigod\", \"name\", \"hercules\", \"age\", 30);\nVertex alcmene = graph.addVertex(T.label, \"human\", \"name\", \"alcmene\", \"age\", 45);\nVertex pluto = graph.addVertex(T.label, \"god\", \"name\", \"pluto\", \"age\", 4000);\nVertex nemean = graph.addVertex(T.label, \"monster\", \"name\", \"nemean\");\nVertex hydra = graph.addVertex(T.label, \"monster\", \"name\", \"hydra\");\nVertex cerberus = graph.addVertex(T.label, \"monster\", \"name\", \"cerberus\");\nVertex tartarus = graph.addVertex(T.label, \"location\", \"name\", \"tartarus\");\n\n// Instances - Edges\njupiter.addEdge(\"father\", saturn);\njupiter.addEdge(\"lives\", sky, \"reason\", \"loves fresh breezes\");\njupiter.addEdge(\"brother\", neptune);\njupiter.addEdge(\"brother\", pluto);\n\nneptune.addEdge(\"lives\", sea).property(\"reason\", \"loves waves\");\nneptune.addEdge(\"brother\", jupiter);\nneptune.addEdge(\"brother\", pluto);\nneptune.addEdge(\"battled\", neptune).property(\"time\", java.time.Instant.ofEpochMilli(5));\n\nhercules.addEdge(\"father\", jupiter);\nhercules.addEdge(\"mother\", alcmene);\nhercules.addEdge(\"battled\", nemean, \"time\", java.time.Instant.ofEpochMilli(1), \"place\", \"POINT(38.1 23.7)\");\nhercules.addEdge(\"battled\", hydra, \"time\", java.time.Instant.ofEpochMilli(2), \"place\", \"POINT(37.7 23.9)\");\nhercules.addEdge(\"battled\", cerberus, \"time\", java.time.Instant.ofEpochMilli(12), \"place\", \"POINT(39 22)\");\n\npluto.addEdge(\"brother\", jupiter);\npluto.addEdge(\"brother\", neptune);\npluto.addEdge(\"lives\", tartarus, \"reason\", \"no fear of death\");\npluto.addEdge(\"pet\", cerberus);\n\ncerberus.addEdge(\"lives\", tartarus);\n\n\"success\"",
     "language" : "gremlin",
-    "result" : null,
+    "gremlinExecutionEngine" : null,
+    "result" : {
+      "value" : [ "success" ],
+      "type" : "STRING",
+      "truncated" : false,
+      "duration" : 7035,
+      "id" : "0eae6a2c-63f1-4a90-88c6-04d3979f50ec"
+    },
     "msg" : null,
     "dataViewType" : null,
     "viewSettings" : null
@@ -55,6 +64,7 @@
     "status" : "SUCCESS",
     "code" : "Let's take a quick look at our entire data set. Run the next cell. You will notice that you are presented with a table view by default. You can also take a look at the Raw/JSON view (all the way to the left). Poke around a little bit, and when you're ready, continue to the next cell where we try out the Graph View.",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<p>Let's take a quick look at our entire data set. Run the next cell. You will notice that you are presented with a table view by default. You can also take a look at the Raw/JSON view (all the way to the left). Poke around a little bit, and when you're ready, continue to the next cell where we try out the Graph View.</p>\n",
       "type" : "HTML",
@@ -74,6 +84,7 @@
     "status" : null,
     "code" : "g.V()",
     "language" : "gremlin",
+    "gremlinExecutionEngine" : null,
     "result" : null,
     "msg" : null,
     "dataViewType" : null,
@@ -83,6 +94,7 @@
     "status" : "SUCCESS",
     "code" : "The Graph View\n===\n\nLabel Templates\n---\nYou probably noticed in the previous example that the display labels for the Graph View were pretty cryptic. You can use templates to make this better. The templates use the moustache templating language. We've taken care of providing some examples for you in the next cell. Click on the settings button to see how we did it.\n\n\nQuick Tips\n---\n\n* You can zoom and pan.\n* You can double click the canvas to reset the view.\n* Properties are shown on mouseover.\n* You can select vertices and edges by clicking on them. Select multiple by holding the control/command⌘ key.\n* There is a full-screen option in the cell menu.\n* You can hide the code editor by clicking the eye in the cell menu. (In fact, we already hid the code for all these markdown cells.)\n\nFun interlude: Hide the editor, go full screen, and play around w/ the Graph view. MMMmmmm.\n",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<h1>The Graph View</h1>\n<h2>Label Templates</h2>\n<p>You probably noticed in the previous example that the display labels for the Graph View were pretty cryptic. You can use templates to make this better. The templates use the moustache templating language. We've taken care of providing some examples for you in the next cell. Click on the settings button to see how we did it.</p>\n<h2>Quick Tips</h2>\n<ul>\n<li>You can zoom and pan.</li>\n<li>You can double click the canvas to reset the view.</li>\n<li>Properties are shown on mouseover.</li>\n<li>You can select vertices and edges by clicking on them. Select multiple by holding the control/command⌘ key.</li>\n<li>There is a full-screen option in the cell menu.</li>\n<li>You can hide the code editor by clicking the eye in the cell menu. (In fact, we already hid the code for all these markdown cells.)</li>\n</ul>\n<p>Fun interlude: Hide the editor, go full screen, and play around w/ the Graph view. MMMmmmm.</p>\n",
       "type" : "HTML",
@@ -102,6 +114,7 @@
     "status" : "SUCCESS",
     "code" : "g.V()",
     "language" : "gremlin",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : [ {
         "id" : "demigod:379107:6:0",
@@ -652,6 +665,7 @@
     "status" : "SUCCESS",
     "code" : "***What do the colors mean?***\n\n**Vertices** are colored by community. **Edges** inherit color from their vertices. The communites are calculated using a community detection algorithm (Louvain, to be specific). In the future we'll have more options for applying color.\n",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<p><strong><em>What do the colors mean?</em></strong></p>\n<p><strong>Vertices</strong> are colored by community. <strong>Edges</strong> inherit color from their vertices. The communites are calculated using a community detection algorithm (Louvain, to be specific). In the future we'll have more options for applying color.</p>\n",
       "type" : "HTML",
@@ -671,6 +685,7 @@
     "status" : "SUCCESS",
     "code" : "Neighborhood Visualization\n--------------------------\nIt's pretty common to want to see the neighborhood for a single vertex. Check out the next cell where we take a look at Pluto's 1st degree neighborhood.",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<h2>Neighborhood Visualization</h2>\n<p>It's pretty common to want to see the neighborhood for a single vertex. Check out the next cell where we take a look at Pluto's 1st degree neighborhood.</p>\n",
       "type" : "HTML",
@@ -690,6 +705,7 @@
     "status" : "SUCCESS",
     "code" : "g.V().hasLabel('god').has('name', 'pluto').bothE()",
     "language" : "gremlin",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : [ {
         "id" : "{out_vertex={member_id=0, community_id=31823, ~label=god, group_id=7}, local_id=1ed29592-ede1-11e5-9db3-19a1a24a6b4c, in_vertex={member_id=0, community_id=31823, ~label=location, group_id=11}, ~type=lives}",
@@ -950,6 +966,7 @@
     "status" : "SUCCESS",
     "code" : "Sometimes it is more interesting to view a neighborhood with the ego vertex removed. After all, we know that vertex is connected to the others in the view. Plus this usually makes the community structure of the neighborhood graph more apparent. \n\nStudio makes this easy by automatically populating all shared edges for you. **You grab the vertices you're interested in, and the edges are populated in the Graph View automatically.**",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<p>Sometimes it is more interesting to view a neighborhood with the ego vertex removed. After all, we know that vertex is connected to the others in the view. Plus this usually makes the community structure of the neighborhood graph more apparent.</p>\n<p>Studio makes this easy by automatically populating all shared edges for you. <strong>You grab the vertices you're interested in, and the edges are populated in the Graph View automatically.</strong></p>\n",
       "type" : "HTML",
@@ -969,6 +986,7 @@
     "status" : "SUCCESS",
     "code" : "g.V().hasLabel('god').has('name', 'pluto').both().has('name', neq('pluto'))\n// Note:        The 2nd has filter --^ prevents the ego vertex from being emitted when traversing self-referencing edges",
     "language" : "gremlin",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : [ {
         "id" : "location:31823:11:0",
@@ -1182,6 +1200,7 @@
     "status" : "SUCCESS",
     "code" : "Paths and Subgraphs\n===\nIt is common to want to examine a subset of the graph based on a particular Edge Label, a set of Edge Labels, or a specific set of edges. In the following cell we take a look at the family tree of Hercules. This technique is useful for visualizing subgraphs of a particular type.\n\nThis same technique can be used to examine paths, or network walks. After all, a path is really just a subgraph when you include the vertices.\n\n*Note: As mentioned earlier, Studio will automatically populate all shared edges between vertices in a result. However, when you retrieve a subgraph, Studio assumes you grabed exactly what you want, and does not augment the result.*",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<h1>Paths and Subgraphs</h1>\n<p>It is common to want to examine a subset of the graph based on a particular Edge Label, a set of Edge Labels, or a specific set of edges. In the following cell we take a look at the family tree of Hercules. This technique is useful for visualizing subgraphs of a particular type.</p>\n<p>This same technique can be used to examine paths, or network walks. After all, a path is really just a subgraph when you include the vertices.</p>\n<p><em>Note: As mentioned earlier, Studio will automatically populate all shared edges between vertices in a result. However, when you retrieve a subgraph, Studio assumes you grabed exactly what you want, and does not augment the result.</em></p>\n",
       "type" : "HTML",
@@ -1201,6 +1220,7 @@
     "status" : "SUCCESS",
     "code" : "// \"Starting from the hercules vertex, repeatedly traverse mother and father edges. Store the mother and father edges in the subgraph named 'sg'. Lastly, emit the subgraph via cap() Step.\"\ng.V().hasLabel('demigod').has('name', 'hercules').repeat(outE('mother', 'father').subgraph('sg').otherV()).cap('sg')",
     "language" : "gremlin",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : [ {
         "vertices" : [ {
@@ -1335,6 +1355,7 @@
     "status" : "SUCCESS",
     "code" : "Syntax Validation\n=================\n\nStudio will automatcally detect syntax errors for you. This is demonstrated in the following cell. Syntax validation can also be disabled from the cell menu bar. ",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<h1>Syntax Validation</h1>\n<p>Studio will automatcally detect syntax errors for you. This is demonstrated in the following cell. Syntax validation can also be disabled from the cell menu bar.</p>\n",
       "type" : "HTML",
@@ -1354,6 +1375,7 @@
     "status" : null,
     "code" : "g.V.both()     // missing ()'s on V.\ng.V().has(123) // invalid argument type",
     "language" : "gremlin",
+    "gremlinExecutionEngine" : null,
     "result" : null,
     "msg" : null,
     "dataViewType" : null,
@@ -1363,6 +1385,7 @@
     "status" : "SUCCESS",
     "code" : "Content Assist\n==============\nLike most advanced editors, Studio provides content assist. If you're new to Gremlin then this can be really helpful. Position your cursor at the end of the following statement and press ctrl+spc to see some suggestions.",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<h1>Content Assist</h1>\n<p>Like most advanced editors, Studio provides content assist. If you're new to Gremlin then this can be really helpful. Position your cursor at the end of the following statement and press ctrl+spc to see some suggestions.</p>\n",
       "type" : "HTML",
@@ -1382,6 +1405,7 @@
     "status" : null,
     "code" : "g.V().both().\n",
     "language" : "gremlin",
+    "gremlinExecutionEngine" : null,
     "result" : null,
     "msg" : null,
     "dataViewType" : null,
@@ -1391,6 +1415,7 @@
     "status" : "SUCCESS",
     "code" : "Schema-Aware Content Assist\n---------------------------\nStudio also provides contextual \"schema aware\" content assist. In other words, Studio examines the schema and suggests Vertex/Edge Labels and Property Keys based on the underlying graph schema.\n\nPosition your cursor at the end of the following statements and press ctrl/cmd+spc to see the schema-driven suggestions.",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<h2>Schema-Aware Content Assist</h2>\n<p>Studio also provides contextual &ldquo;schema aware&rdquo; content assist. In other words, Studio examines the schema and suggests Vertex/Edge Labels and Property Keys based on the underlying graph schema.</p>\n<p>Position your cursor at the end of the following statements and press ctrl/cmd+spc to see the schema-driven suggestions.</p>\n",
       "type" : "HTML",
@@ -1410,6 +1435,7 @@
     "status" : null,
     "code" : "g.V().hasLabel(\ng.V().bothE(\n\n// Notice that in this example the Edge Labels are filtered to include only edges adjacent to demigod. How cool is that!?\ng.V().hasLabel('demigod').bothE(",
     "language" : "gremlin",
+    "gremlinExecutionEngine" : null,
     "result" : null,
     "msg" : null,
     "dataViewType" : null,
@@ -1426,6 +1452,7 @@
     "status" : "SUCCESS",
     "code" : "Schema View\n====\nWhile we're on the topic of the schema, lets check out the schema view! It shows you what's connected and how. The button is in the very top right corner of the notebook. Try it out.\n\nQuick tips:\n* Properties, indexes, TTL's, and partitions are shown on mouseover. The details panel can be pinned via click.\n* You can double-click a Vertex Label to check out it's adajencies in a hierarchical view. Double-click any blank cavas area to return to the normal view.\n* You can zoom and pan just like you can in the Graph View. Double-click the canvas to reset the view if things get too wild.",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<h1>Schema View</h1>\n<p>While we're on the topic of the schema, lets check out the schema view! It shows you what's connected and how. The button is in the very top right corner of the notebook. Try it out.</p>\n<p>Quick tips:</p>\n<ul>\n<li>Properties, indexes, TTL's, and partitions are shown on mouseover. The details panel can be pinned via click.</li>\n<li>You can double-click a Vertex Label to check out it's adajencies in a hierarchical view. Double-click any blank cavas area to return to the normal view.</li>\n<li>You can zoom and pan just like you can in the Graph View. Double-click the canvas to reset the view if things get too wild.</li>\n</ul>\n",
       "type" : "HTML",
@@ -1445,6 +1472,7 @@
     "status" : "SUCCESS",
     "code" : "Profiling\n=========\n\nGremlin provides the ability to profile traversals. Metrics are gathered for the duration taken by each step and the number of Traversers emitted by that step. This can be very useful for quickly spotting bottlenecks in a Traversal.\n\nQuick tips:\n* Each top-level row corresponds to a Step in the Traversal. Keep in mind that the Traversal may be optimized at this point. In this case you can see that *g.V().hasLabel('demigod').has('name', 'pluto')* has all been combined into a single step.\n* Mouse-over the duration bars to see the detailed metrics for that row.\n* Index utilization is one of the most critical aspects to a Traversals performance. Inspect this in the 'iterator-setup' rows. If that step leveraged an index then 'isFitted' will be true.\n",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<h1>Profiling</h1>\n<p>Gremlin provides the ability to profile traversals. Metrics are gathered for the duration taken by each step and the number of Traversers emitted by that step. This can be very useful for quickly spotting bottlenecks in a Traversal.</p>\n<p>Quick tips:</p>\n<ul>\n<li>Each top-level row corresponds to a Step in the Traversal. Keep in mind that the Traversal may be optimized at this point. In this case you can see that <em>g.V().hasLabel('demigod').has('name', 'pluto')</em> has all been combined into a single step.</li>\n<li>Mouse-over the duration bars to see the detailed metrics for that row.</li>\n<li>Index utilization is one of the most critical aspects to a Traversals performance. Inspect this in the 'iterator-setup' rows. If that step leveraged an index then 'isFitted' will be true.</li>\n</ul>\n",
       "type" : "HTML",
@@ -1464,6 +1492,7 @@
     "status" : "SUCCESS",
     "code" : "g.V().hasLabel('demigod').has('name', 'pluto').both().count().profile().cap(TraversalMetrics.METRICS_KEY)",
     "language" : "gremlin",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : [ {
         "dur" : 4.406305,
@@ -1548,6 +1577,7 @@
     "status" : "SUCCESS",
     "code" : "Charts\n===\n\nLets switch gears a little bit and do some charting. We went ahead and created an example for you in the next cell. We're using the Gremlin groupCount()-Step in this example. Charting and groupCount() are a very powerful combination. Take a look at the Raw View to see how the results translate into the bar chart.\n\nThe domain and range axis assignments are detected automatically for this particular result type.",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<h1>Charts</h1>\n<p>Lets switch gears a little bit and do some charting. We went ahead and created an example for you in the next cell. We're using the Gremlin groupCount()-Step in this example. Charting and groupCount() are a very powerful combination. Take a look at the Raw View to see how the results translate into the bar chart.</p>\n<p>The domain and range axis assignments are detected automatically for this particular result type.</p>\n",
       "type" : "HTML",
@@ -1567,6 +1597,7 @@
     "status" : "SUCCESS",
     "code" : "g.V().groupCount().by(label)",
     "language" : "gremlin",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : [ {
         "demigod" : 1,
@@ -1594,6 +1625,7 @@
     "status" : "SUCCESS",
     "code" : "**Now it's your turn.** Studio can chart a wide variety of data, but you typically need to specify the domain and range for the chart (i.e. how to map values onto axis and data series). In the next cell, click on the Bar Chart button and select 'NAME' for the x axis and 'AGE' for the y axis.",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<p><strong>Now it's your turn.</strong> Studio can chart a wide variety of data, but you typically need to specify the domain and range for the chart (i.e. how to map values onto axis and data series). In the next cell, click on the Bar Chart button and select 'NAME' for the x axis and 'AGE' for the y axis.</p>\n",
       "type" : "HTML",
@@ -1613,6 +1645,7 @@
     "status" : "SUCCESS",
     "code" : "g.V()",
     "language" : "gremlin",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : [ {
         "id" : "demigod:379107:6:0",
@@ -2093,6 +2126,7 @@
     "status" : "SUCCESS",
     "code" : "Let's try something even more interesting. In the next cell we are charting the degree distribution for the entire graph.\n\nSome things to keep in mind:\n\n* This can be an expensive operation on large graphs. If you have DSE Analytics and a large dataset then this type of operation would be best executed using Spark/OLAP.\n* We're sampling the result in the following cell to make things manageable in the confines of the browser. This makes no difference for our example dataset, but it will come in handy when you start analyzing larger graphs.\n\n*(Note: We want to sample 5K values from the Group Count Map. As such, the sample step is used in conjuction w/ the 'local' option. Without 'local' we would be sampling the first 5K Maps, which is not what we want in this case.)*\n",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<p>Let's try something even more interesting. In the next cell we are charting the degree distribution for the entire graph.</p>\n<p>Some things to keep in mind:</p>\n<ul>\n<li>This can be an expensive operation on large graphs. If you have DSE Analytics and a large dataset then this type of operation would be best executed using Spark/OLAP.</li>\n<li>We're sampling the result in the following cell to make things manageable in the confines of the browser. This makes no difference for our example dataset, but it will come in handy when you start analyzing larger graphs.</li>\n</ul>\n<p><em>(Note: We want to sample 5K values from the Group Count Map. As such, the sample step is used in conjuction w/ the 'local' option. Without 'local' we would be sampling the first 5K Maps, which is not what we want in this case.)</em></p>\n",
       "type" : "HTML",
@@ -2112,6 +2146,7 @@
     "status" : "SUCCESS",
     "code" : "g.V().groupCount().by(bothE().count()).sample(local, 5000)",
     "language" : "gremlin",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : [ {
         "1" : 6,
@@ -2139,6 +2174,7 @@
     "status" : "SUCCESS",
     "code" : "Keyboard Shortcuts\n==\nStudio provides many keyboard shortcuts. You can see them all via the Help ? Menu in the top right of this notebook. \n\nQuick hint: shift+enter to execute :)",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<h1>Keyboard Shortcuts</h1>\n<p>Studio provides many keyboard shortcuts. You can see them all via the Help ? Menu in the top right of this notebook.</p>\n<p>Quick hint: shift+enter to execute :)</p>\n",
       "type" : "HTML",
@@ -2158,6 +2194,7 @@
     "status" : "SUCCESS",
     "code" : "A quick but important note on iteration!\n=========================\n\nThis tutorial is meant to introduce the features of DataStax Studio. It is not a primer on Gremlin. However, there is one common gotcha that you should be aware of when working with Gremlin in Studio, and that is the subtlty of \"Automatic Iteration\".\n\n**Let's start with a pop quiz.**\nWhat do you think the result of the next cell will be? Think about your answer and then run the cell.",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<h1>A quick but important note on iteration!</h1>\n<p>This tutorial is meant to introduce the features of DataStax Studio. It is not a primer on Gremlin. However, there is one common gotcha that you should be aware of when working with Gremlin in Studio, and that is the subtlty of &ldquo;Automatic Iteration&rdquo;.</p>\n<p><strong>Let's start with a pop quiz.</strong>\n<br  />What do you think the result of the next cell will be? Think about your answer and then run the cell.</p>\n",
       "type" : "HTML",
@@ -2177,6 +2214,7 @@
     "status" : null,
     "code" : "g.V().drop();\ng.V().count()",
     "language" : "gremlin",
+    "gremlinExecutionEngine" : null,
     "result" : null,
     "msg" : null,
     "dataViewType" : null,
@@ -2186,6 +2224,7 @@
     "status" : "SUCCESS",
     "code" : "If you were expecting 0, don't feel bad. This is a common gotcha.\n\nHere is what you need to know:\n* The executor will automatically inspect the result of the final statement in each cell, and if that result is an Iterator or Iterable, then it is iterated by the executor and entries are returned sequentially.\n* Gremlin Traversals implement Iterator and are thus iterated by the executor, but ***only when they are the last statement***.\n* If you want to iterate a Traversal manually then simply finish the Traversal with the .iterate() Step.\n\nLet's take a look at one more example just to re-enforce this idea. We'll start with something very simple...",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<p>If you were expecting 0, don't feel bad. This is a common gotcha.</p>\n<p>Here is what you need to know:</p>\n<ul>\n<li>The executor will automatically inspect the result of the final statement in each cell, and if that result is an Iterator or Iterable, then it is iterated by the executor and entries are returned sequentially.</li>\n<li>Gremlin Traversals implement Iterator and are thus iterated by the executor, but <strong><em>only when they are the last statement</em></strong>.</li>\n<li>If you want to iterate a Traversal manually then simply finish the Traversal with the .iterate() Step.</li>\n</ul>\n<p>Let's take a look at one more example just to re-enforce this idea. We'll start with something very simple&hellip;</p>\n",
       "type" : "HTML",
@@ -2205,6 +2244,7 @@
     "status" : "SUCCESS",
     "code" : "g.V().values('name')",
     "language" : "gremlin",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : [ "hercules", "saturn", "tartarus", "sky", "sea", "alcmene", "jupiter", "pluto", "neptune", "nemean", "hydra", "cerberus" ],
       "type" : "STRING",
@@ -2220,6 +2260,7 @@
     "status" : "SUCCESS",
     "code" : "Based on the previous cell, you might think that assigning a statement like this to a variable would give you a Collection of names, but as shown below, this is in fact not the case. The following cell provides some insight into what is actually happening.",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<p>Based on the previous cell, you might think that assigning a statement like this to a variable would give you a Collection of names, but as shown below, this is in fact not the case. The following cell provides some insight into what is actually happening.</p>\n",
       "type" : "HTML",
@@ -2239,6 +2280,7 @@
     "status" : "SUCCESS",
     "code" : "def traversal = g.V().values('name')\ntraversal.class.getName()",
     "language" : "gremlin",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : [ "org.apache.tinkerpop.gremlin.process.traversal.dsl.graph.DefaultGraphTraversal" ],
       "type" : "STRING",
@@ -2262,6 +2304,7 @@
     "status" : "SUCCESS",
     "code" : "**All the first statement does is build a Traversal (which as we said before, is really just an Iterator) and assigns it to the variable 'traversal'**. For the sake of completeness, here is how you would actually get a Collection of the names.",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<p><strong>All the first statement does is build a Traversal (which as we said before, is really just an Iterator) and assigns it to the variable 'traversal'</strong>. For the sake of completeness, here is how you would actually get a Collection of the names.</p>\n",
       "type" : "HTML",
@@ -2281,12 +2324,13 @@
     "status" : "SUCCESS",
     "code" : "def names = g.V().values('name').store('names').cap('names').next()",
     "language" : "gremlin",
+    "gremlinExecutionEngine" : null,
     "result" : {
-      "value" : [ "hercules", "saturn", "tartarus", "sky", "sea", "alcmene", "jupiter", "pluto", "neptune", "nemean", "hydra", "cerberus" ],
+      "value" : [ "hercules", "saturn", "sky", "tartarus", "sea", "alcmene", "neptune", "jupiter", "pluto", "hydra", "nemean", "cerberus" ],
       "type" : "STRING",
       "truncated" : false,
-      "duration" : 0,
-      "id" : "5cfe2b85-6086-479d-b6d3-7fb0e2a05e5e"
+      "duration" : 82,
+      "id" : "3e2d3fa4-1e3e-470f-86b2-d142abccc081"
     },
     "msg" : null,
     "dataViewType" : "RAW",
@@ -2301,6 +2345,7 @@
     "status" : "SUCCESS",
     "code" : "(and just in case you were wondering...)",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<p>(and just in case you were wondering&hellip;)</p>\n",
       "type" : "HTML",
@@ -2320,12 +2365,13 @@
     "status" : "SUCCESS",
     "code" : "names instanceof Collection",
     "language" : "gremlin",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : [ true ],
       "type" : "MISC",
       "truncated" : false,
-      "duration" : 0,
-      "id" : "35977d19-f467-4bfa-8c43-e4c6e675901c"
+      "duration" : 38,
+      "id" : "34bc3a2e-a93e-4c62-8a26-b9807bfb47a3"
     },
     "msg" : null,
     "dataViewType" : "RAW",
@@ -2340,6 +2386,7 @@
     "status" : "SUCCESS",
     "code" : "The Notebook Session\n====================\n\nDid you notice in the previous example that we defined the variable 'names' in one cell and used it in the next? Each notebook has a Session that stores the variables you create. So feel free to break your ideas up into multiple cells however you like.\n\nKeep in mind that these sessions do expire after 24 hours or when the server-side C* node shuts down.",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<h1>The Notebook Session</h1>\n<p>Did you notice in the previous example that we defined the variable 'names' in one cell and used it in the next? Each notebook has a Session that stores the variables you create. So feel free to break your ideas up into multiple cells however you like.</p>\n<p>Keep in mind that these sessions do expire after 24 hours or when the server-side C* node shuts down.</p>\n",
       "type" : "HTML",
@@ -2359,6 +2406,7 @@
     "status" : "SUCCESS",
     "code" : "Thank You!!!\n============\n\n**That's all for now. We here at DataStax hope you enjoy using Studio. Best of luck!**\n",
     "language" : "markdown",
+    "gremlinExecutionEngine" : null,
     "result" : {
       "value" : "<h1>Thank You!!!</h1>\n<p><strong>That's all for now. We here at DataStax hope you enjoy using Studio. Best of luck!</strong></p>\n",
       "type" : "HTML",
@@ -2375,5 +2423,5 @@
     }
   } ],
   "created" : "2016-02-26T23:01:42.260Z",
-  "lastUsed" : "2016-04-05T12:24:39.338Z"
+  "lastUsed" : "2016-04-19T04:33:59.478Z"
 }
