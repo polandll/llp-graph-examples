@@ -63,8 +63,8 @@ schema.vertexLabel('reviewer').index('byReviewer').materialized().by('name').add
 // Edge Index
 schema.vertexLabel('reviewer').index('ratedByStars').outE('rated').by('stars').add()
 
-// Example of property index using meta-property 'livedIn': 
-// schema().vertexLabel('author').index('byLocation').property('country').by('livedIn').add()
+// Property index using meta-property 'livedIn': 
+schema.vertexLabel('author').index('byLocation').property('country').by('livedIn').add()
 
 // Schema description
 // Use to check that the schema is built as desired
