@@ -8,7 +8,7 @@
     	
 // Property Keys 
 // Check for previous creation of property key with ifNotExists() 
-schema.propertyKey('name').Text().ifNotExists().create() 
+schema.propertyKey('name').Text().ifNotExists().create()        
 schema.propertyKey('gender').Text().create()
 schema.propertyKey('instructions').Text().create()
 schema.propertyKey('category').Text().create()
@@ -18,12 +18,16 @@ schema.propertyKey('ISBN').Text().create()
 schema.propertyKey('calories').Int().create()
 schema.propertyKey('amount').Text().create()
 schema.propertyKey('stars').Int().create()
-schema.propertyKey('comment').Text().single().create() // single() is optional - default
-// Example of multiple property
-// schema.propertyKey('nickname').Text().multiple().create();
-// Example meta-property added to property: 
-// schema.propertyKey('livedIn').Text().create()
-// schema.propertyKey('country').Text().properties('livedIn').create()
+// single() is optional, as it is the default
+schema.propertyKey('comment').Text().single().create()
+// Example of a multiple property that can have several values
+// Next 4 lines define two properties, then create a meta-property 'livedIn' on 'country'  
+// A meta-property is a property of a property
+// EX: 'livedIn': '1999-2005' 'country': 'Belgium'     
+// schema.propertyKey('nickname').Text().multiple().create()    
+// schema.propertyKey('country').Text().create()                        
+// schema.propertyKey('livedIn').Text().create()                        
+// schema.propertyKey('country').Text().properties('livedIn').create()  
     		
 // Vertex Labels
 schema.vertexLabel('author').ifNotExists().create()
