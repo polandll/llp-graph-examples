@@ -1,14 +1,13 @@
 // Generates review vertices and edges for Recipe Toy Graph
 
-// script = new File('/Users/lorinapoland/CLONES/graph-examples/food/Gremlin/generateReviews.groovy').text; []
-// :> @script
+// :load /Users/lorinapoland/CLONES/graph-examples/food/Gremlin/generateReviews.groovy
 
 // reviewer vertices
-Vertex johnDoe = graph.addVertex(label, 'reviewer', 'name','John Doe')
-Vertex johnSmith = graph.addVertex(label, 'reviewer', John Smith')
-Vertex janeDoe = graph.addVertex(label, 'reviewer', 'name','Jane Doe')
-Vertex sharonSmith = graph.addVertex(label, 'reviewer', 'name','Sharon Smith')
-Vertex betsyJones = graph.addVertex(label, 'reviewer', 'name','Betsy Jones')
+johnDoe = graph.addVertex(label, 'reviewer', 'name','John Doe')
+johnSmith = graph.addVertex(label, 'reviewer', 'name', 'John Smith')
+janeDoe = graph.addVertex(label, 'reviewer', 'name','Jane Doe')
+sharonSmith = graph.addVertex(label, 'reviewer', 'name','Sharon Smith')
+betsyJones = graph.addVertex(label, 'reviewer', 'name','Betsy Jones')
 
 beefBourguignon = g.V().has('recipe', 'name','Beef Bourguignon').tryNext().orElseGet {graph.addVertex(label, 'recipe', 'name', 'Beef Bourguignon')}
 spicyMeatLoaf = g.V().has('recipe', 'name','Spicy Meatloaf').tryNext().orElseGet {graph.addVertex(label, 'recipe', 'name', 'Spicy Meatloaf')}

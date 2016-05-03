@@ -12,6 +12,8 @@ LDR=/Users/lorinapoland/CLONES/dse-graph-loader/bin/graphloader
 TYPE=CSV
 DRYRUN_SETTING=false
 INPUTFILEDIR=/Users/lorinapoland/CLONES/graph-examples/food/$TYPE/
+#SCRIPTNAME='authorBookMapping'$TYPE'.groovy'
+#GRAPHNAME=$TYPE'TEST'
 SCRIPTNAME='fridgeItemMappingCOMPKEY.groovy'
 GRAPHNAME=$TYPE'COMPKEYTEST'
 $LDR $INPUTFILEDIR/$SCRIPTNAME -filename INPUTFILEDIR -graph $GRAPHNAME -address localhost -dryrun DRYRUN_SETTING

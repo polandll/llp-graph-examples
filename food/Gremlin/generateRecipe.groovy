@@ -2,8 +2,8 @@
 
 // Script can be used only in Gremlin Console
 // For DataStax Studio, copy and paste entire script into a cell and run
-// script = new File('/Users/lorinapoland/CLONES/graph-examples/food/Gremlin/generateRecipe.groovy').text; []
-// :> @script
+// :load /Users/lorinapoland/CLONES/graph-examples/food/Gremlin/generateRecipe.groovy
+
 
 // Add all vertices and edges for Recipe
 g.V().drop().iterate()
