@@ -1,5 +1,4 @@
 // Generates review vertices and edges for Recipe Toy Graph
-
 // :load /Users/lorinapoland/CLONES/graph-examples/food/Gremlin/generateReviews.groovy
 
 // reviewer vertices

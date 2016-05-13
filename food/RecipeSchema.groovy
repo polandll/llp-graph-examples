@@ -2,9 +2,9 @@
 
 // To run in Studio, copy and paste all lines to a cell and run.
 
-// To run in Gremlin console, use the next two lines:
-// script = new File('/Users/lorinapoland/CLONES/graph-examples/food/NEWRecipeSchema.groovy').text; []
-// :> @script
+// To run in Gremlin console, use the load command
+// :load /Users/lorinapoland/CLONES/graph-examples/food/NEWRecipeSchema.groovy
+
     	
 // Property Keys 
 // Check for previous creation of property key with ifNotExists() 
