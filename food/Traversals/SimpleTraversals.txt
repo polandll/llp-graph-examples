@@ -15,6 +15,16 @@ gremlin> g.V().hasLabel('reviewer').values()
 ==>Jane Doe
 ==>John Doe
 
+// What did John Doe have to say in his recipe reviews?
+gremlin> g.V().has('reviewer', 'name','John Doe').outE('rated').values('comment')
+==>Pretty tasty!
+==>Really spicy - be careful!
+
+//Which recipes did John Doe review?
+gremlin> g.V().has('reviewer', 'name','John Doe').outE('rated').inV().values('name')
+==>Beef Bourguignon
+==>Spicy Meatloaf
+
 // GET THE VALUEMAP FOR EACH EDGE THAT HAS MORE THAN 3 STARS
 gremlin> g.E().hasLabel('rated').has('stars', gt(3)).valueMap()
 ==>[stars:4, timestamp:2014-01-23]
@@ -79,38 +89,66 @@ gremlin> g.V().hasLabel('reviewer').as('reviewer','starCount').
 // get the schema with datatypes
 graph.schema().traversal().V().valueMap(true)
 // partial output
-==>[id:32786, dataType:[java.lang.String], name:[mealTitle], label:propertyKey, cardinality:[Single]]
-==>[id:32787, dataType:[java.lang.String], name:[mCreateDate], label:propertyKey, cardinality:[Single]]
-==>[id:32784, dataType:[java.lang.String], name:[amount], label:propertyKey, cardinality:[Single]]
-==>[id:32785, name:[includedIn], directionality:[Bidirectional], label:edgeLabel, cardinality:[Multiple]]
-==>[id:32782, dataType:[java.lang.Integer], name:[rCreateDate], label:propertyKey, cardinality:[Single]]
-==>[id:32783, name:[includes], directionality:[Bidirectional], label:edgeLabel, cardinality:[Multiple]]
-==>[id:32780, name:[authored], directionality:[Bidirectional], label:edgeLabel, cardinality:[Multiple]]
-==>[id:32781, name:[created], directionality:[Bidirectional], label:edgeLabel, cardinality:[Multiple]]
+==>{mode=[Development], id=0, label=schema}
+==>{name=[recipe], id=22, label=vertexLabel}
+==>{name=[ingredient], id=23, label=vertexLabel}
+==>{name=[book], id=24, label=vertexLabel}
+==>{name=[meal], id=25, label=vertexLabel}
+==>{name=[reviewer], id=26, label=vertexLabel}
+==>{name=[byName], id=32919, type=[Secondary], label=vertexIndex}
+==>{name=[includedIn], id=32917, directionality=[Bidirectional], cardinality=[Multiple], label=edgeLabel}
+==>{name=[rated], id=32918, directionality=[Bidirectional], cardinality=[Multiple], label=edgeLabel}
+==>{id=135, label=incident}
+==>{id=139, label=incident}
+==>{id=143, label=incident}
+==>{dataType=[Timestamp], name=[timestamp], id=32904, cardinality=[Single], label=propertyKey}
+==>{id=88, label=incident}
+==>{dataType=[Text], name=[ISBN], id=32905, cardinality=[Single], label=propertyKey}
+==>{dataType=[Text], name=[category], id=32902, cardinality=[Single], label=propertyKey}
+==>{name=[byLocation], id=32924, label=propertyIndex}
+==>{dataType=[Int], name=[year], id=32903, cardinality=[Single], label=propertyKey}
+==>{name=[ratedByStars], id=32925, directionality=[OUT], label=edgeIndex}
+==>{dataType=[Text], name=[gender], id=32900, cardinality=[Single], label=propertyKey}
+==>{unique=[false], name=[byIngredient], id=32922, type=[Materialized], label=vertexIndex}
+==>{dataType=[Text], name=[instructions], id=32901, cardinality=[Single], label=propertyKey}
+==>{unique=[false], name=[byReviewer], id=32923, type=[Materialized], label=vertexIndex}
+==>{unique=[false], name=[byRecipe], id=32920, type=[Materialized], label=vertexIndex}
+==>{unique=[false], name=[byMeal], id=32921, type=[Materialized], label=vertexIndex}
+==>{id=160, label=incident}
+==>{dataType=[Int], name=[stars], id=32908, cardinality=[Single], label=propertyKey}
+==>{dataType=[Text], name=[comment], id=32909, cardinality=[Single], label=propertyKey}
+==>{dataType=[Int], name=[calories], id=32906, cardinality=[Single], label=propertyKey}
+==>{dataType=[Text], name=[blah], id=32929, cardinality=[Single], label=propertyKey}
+==>{dataType=[Text], name=[amount], id=32907, cardinality=[Single], label=propertyKey}
+==>{id=113, label=incident}
+==>{id=117, label=incident}
+==>{name=[created], id=32915, directionality=[Bidirectional], cardinality=[Multiple], label=edgeLabel}
+==>{name=[includes], id=32916, directionality=[Bidirectional], cardinality=[Multiple], label=edgeLabel}
+==>{dataType=[Bigint], name=[member_id], id=32913, cardinality=[Single], label=propertyKey}
+==>{name=[authored], id=32914, directionality=[Bidirectional], cardinality=[Multiple], label=edgeLabel}
+==>{dataType=[Text], name=[country], id=32911, cardinality=[Multiple], label=propertyKey}
+==>{dataType=[Int], name=[community_id], id=32912, cardinality=[Single], label=propertyKey}
+==>{dataType=[Text], name=[livedIn], id=32910, cardinality=[Single], label=propertyKey}
+==>{dataType=[Text], name=[name], id=32899, cardinality=[Single], label=propertyKey}
+==>{name=[author], id=21, label=vertexLabel}
 
 **************************
 NOT ADDED TO EAP DOC YET
 **************************
-
-// THIS IS THE ACTUAL ONE! What did John Doe have to say?
-gremlin> :> g.V().has('reviewer', 'name','John Doe').outE('rated').values('comment')
-==>Pretty tasty!
-==>Really spicy - be careful!
-
-gremlin> :> g.V().has('reviewer', 'name','John Doe').outE('rated').inV().values('name')
-==>Beef Bourguignon
-==>Spicy Meatloaf
-
-gremlin> :> g.V().has('reviewer').as('reviewer','starCount', 'recipe').
-  select('reviewer','starCount','recipe').by('name').by(outE('rated').
-  values('stars').mean()).by(out('recipe').values('name'))
+  
+WORKS!!!
+g.V().hasLabel('reviewer').as('reviewer','starCount').out().as('recipe').
+select('reviewer','starCount','recipe').
+  by('name').
+  by(outE('rated').values('stars').mean()).
+  by(values('name'))
 
 // RECIPES THAT CONTAIN BEEF
-gremlin> :> g.V().hasLabel('recipe').out().has('iName','beef').in().hasLabel('recipe').values('name')
+gremlin> g.V().hasLabel('recipe').out().has('name','beef').in().hasLabel('recipe').values('name')
 ==>Beef Bourguignon
 
 // RECIPES THAT CONTAIN EITHER BEEF OR CARROTS
-gremlin> :> g.V().hasLabel('recipe').out().has('iName',within('beef','carrots')).in().hasLabel('recipe').values('name')
+gremlin> g.V().hasLabel('recipe').out().has('name',within('beef','carrots')).in().hasLabel('recipe').values('name')
 ==>Beef Bourguignon
 ==>Carrot Soup
 
@@ -161,7 +199,8 @@ gremlin> :> g.V().hasLabel('ingredient').has('name',within('beef','carrots')).in
 ==>Beef Bourguignon
 ==>Carrot Soup
 
-gremlin> :> g.V().hasLabel('recipe').in().has('name','Julia Child').count().profile().cap(TraversalMetrics.METRICS_KEY)
+USED IN graphOLTPvsOLAP.dita
+gremlin> g.V().hasLabel('recipe').in().has('name','Julia Child').count().profile()
 ==>Traversal Metrics
 Step                                                               Count  Traversers       Time (ms)    % Dur
 =============================================================================================================
