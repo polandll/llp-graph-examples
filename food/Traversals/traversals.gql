@@ -427,12 +427,3 @@ created("software") → out("created").
                       hasLabel("software")
 are()               → identity()
 named()             → values("name")
-
-
- ADDING AN INDEX AFTER SCHEMA IS CREATED
- script8 = """
- 766  def schema = graph.schema()
- 767  VertexLabel author = schema.vertexLabel('author')
- 768  def byAuthor = author.buildVertexIndex('byAuthor').materialized().byPropertyKey('name').add()
- 769  """
- 770  :> @script8

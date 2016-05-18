@@ -131,17 +131,36 @@ graph.schema().traversal().V().valueMap(true)
 ==>{dataType=[Text], name=[livedIn], id=32910, cardinality=[Single], label=propertyKey}
 ==>{dataType=[Text], name=[name], id=32899, cardinality=[Single], label=propertyKey}
 ==>{name=[author], id=21, label=vertexLabel}
-
-**************************
-NOT ADDED TO EAP DOC YET
-**************************
   
-WORKS!!!
-g.V().hasLabel('reviewer').as('reviewer','starCount').out().as('recipe').
-select('reviewer','starCount','recipe').
+// What star rating did a reviewer give a recipe?
+g.V().hasLabel('reviewer').as('reviewer','rating').out().as('recipe').
+select('reviewer','rating','recipe').
   by('name').
-  by(outE('rated').values('stars').mean()).
+  by(outE('rated').values('stars')).
   by(values('name'))
+  
+==>{reviewer=John Doe, starCount=5, recipe=Beef Bourguignon}
+==>{reviewer=John Doe, starCount=5, recipe=Spicy Meatloaf}
+==>{reviewer=John Smith, starCount=4, recipe=Beef Bourguignon}
+==>{reviewer=Jane Doe, starCount=5, recipe=Beef Bourguignon}
+==>{reviewer=Jane Doe, starCount=5, recipe=Carrot Soup}
+==>{reviewer=Sharon Smith, starCount=3, recipe=Beef Bourguignon}
+==>{reviewer=Sharon Smith, starCount=3, recipe=Spicy Meatloaf}
+
+// For each recipe reviewed, get the number of reviews and the mean star rating for the recipe
+g.V().hasLabel('recipe').as('recipe','numberOfReviews','meanRating').
+  select('recipe','numberOfReviews','meanRating').
+    by('name').
+    by(inE('rated').count()).
+    by(inE('rated').values('stars').mean())
+==>{recipe=Beef Bourguignon, numberOfReviews=4, meanRating=4.25}
+==>{recipe=Wild Mushroom Stroganoff, numberOfReviews=0, meanRating=NaN}
+==>{recipe=Spicy Meatloaf, numberOfReviews=2, meanRating=3.5}
+==>{recipe=Rataouille, numberOfReviews=0, meanRating=NaN}
+==>{recipe=Salade Nicoise, numberOfReviews=0, meanRating=NaN}
+==>{recipe=Roast Pork Loin, numberOfReviews=0, meanRating=NaN}
+==>{recipe=Oysters Rockefeller, numberOfReviews=0, meanRating=NaN}
+==>{recipe=Carrot Soup, numberOfReviews=1, meanRating=5.0}
 
 // RECIPES THAT CONTAIN BEEF
 gremlin> g.V().hasLabel('recipe').out().has('name','beef').in().hasLabel('recipe').values('name')
@@ -152,7 +171,19 @@ gremlin> g.V().hasLabel('recipe').out().has('name',within('beef','carrots')).in(
 ==>Beef Bourguignon
 ==>Carrot Soup
 
-gremlin> :> g.V().group().by(label).by('name')
+// GET ALL INGREDIENTS USED IN A PARTICULAR RECIPE
+g.V().match(
+  __.as('a').hasLabel('ingredient'),
+  __.as('a').in('includes').has('name','Beef Bourguignon')).
+select('a').by('name')
+==>tomato paste
+==>beef
+==>onion
+==>mashed garlic
+==>butter
+
+// Group all vertices by label and name
+g.V().group().by(label).by('name')
 ==>[meal:[JuliaDinner, Saturday Feast, EverydayDinner], ingredient:[olive oil, chicken broth, 
 eggplant, pork sausage, green bell pepper, yellow onion, celery, hard-boiled egg, shallots, 
 zucchini, butter, green beans, mashed garlic, onion, mushrooms, bacon, parsley, oyster, 
@@ -166,7 +197,47 @@ Stroganoff, Roast Pork Loin, Spicy Meatloaf, Rataouille, Beef Bourguignon, Oyste
 Rockefeller, Salade Nicoise, Carrot Soup], reviewer:[Sharon Smith, John Smith, Jane Doe, 
 Betsy Jones, John Doe]]
 
-gremlin> :> g.V().hasLabel('author').as('a','b').select('a','b').by('name').by(outE('authored').count())
+// Group all books by year and name
+g.V().hasLabel('book').group().by('year').by('name')
+==>{1968=[The French Chef Cookbook, The French Chef Cookbook], 
+1972=[Simca's Cuisine: 100 Classic French Recipes for Every Occasion, Simca's Cuisine: 100 
+Classic French Recipes for Every Occasion], 2007=[The Art of Simple Food: Notes, Lessons, 
+and Recipes from a Delicious Revolution, The Art of Simple Food: Notes, Lessons, and Recipes 
+from a Delicious Revolution], 1961=[The Art of French Cooking, Vol. 1, The Art of French 
+Cooking, Vol. 1]}
+
+gremlin> g.V().hasLabel('author').as('author').out().properties('year').as('year').select('author','year').by('name').by().limit(2)
+==>{author=Julia Child, year=vp[year->1961]}
+==>{author=Julia Child, year=vp[year->1968]}
+
+gremlin> g.V().hasLabel('author').as('author').local(out().properties('year').as('year').limit(2)).select('author','year').by('name').by()
+==>{author=Julia Child, year=vp[year->1961]}
+==>{author=Julia Child, year=vp[year->1968]}
+==>{author=Simone Beck, year=vp[year->1961]}
+==>{author=Simone Beck, year=vp[year->1972]}
+==>{author=Louisette Bertholie, year=vp[year->1961]}
+==>{author=Patricia Simon, year=vp[year->1972]}
+==>{author=Alice Waters, year=vp[year->2007]}
+==>{author=Patricia Curtan, year=vp[year->2007]}
+==>{author=Kelsie Kerr, year=vp[year->2007]}
+==>{author=Fritz Streiff, year=vp[year->2007]}
+==>{author=Julia Child, year=vp[year->1961]}
+==>{author=Julia Child, year=vp[year->1968]}
+==>{author=Simone Beck, year=vp[year->1961]}
+==>{author=Simone Beck, year=vp[year->1972]}
+==>{author=Louisette Bertholie, year=vp[year->1961]}
+==>{author=Patricia Simon, year=vp[year->1972]}
+==>{author=Alice Waters, year=vp[year->2007]}
+==>{author=Patricia Curtan, year=vp[year->2007]}
+==>{author=Kelsie Kerr, year=vp[year->2007]}
+==>{author=Fritz Streiff, year=vp[year->2007]}
+
+**************************
+NOT ADDED TO EAP DOC YET
+**************************
+
+// How many books has each author written?
+gremlin> g.V().hasLabel('author').as('a','b').select('a','b').by('name').by(outE('authored').count())
 ==>[a:Julia Child, b:2]
 ==>[a:Patricia Curtan, b:1]
 ==>[a:Fritz Streiff, b:1]
@@ -178,24 +249,25 @@ gremlin> :> g.V().hasLabel('author').as('a','b').select('a','b').by('name').by(o
 ==>[a:Louisette Bertholie, b:1]
 ==>[a:Emeril Lagasse, b:0]
 
-gremlin>  :> g.V().hasLabel('author').as('a','wrote').select('a','wrote').by('name').by(outE('authored').count())
-==>[a:James Beard, wrote:0]
-==>[a:Simone Beck, wrote:2]
-==>[a:Julia Child, wrote:2]
-==>[a:Emeril Lagasse, wrote:0]
-==>[a:Patricia Simon, wrote:1]
-==>[a:Louisette Bertholie, wrote:1]
-==>[a:Kelsie Kerr, wrote:1]
-==>[a:Alice Waters, wrote:1]
-==>[a:Fritz Streiff, wrote:1]
-==>[a:Patricia Curtan, wrote:1]
+// How many books has each author written? (uses more descriptive labels for display)
+gremlin>  g.V().hasLabel('author').as('author','wrote').select('author','wrote').by('name').by(outE('authored').count())
+==>{author=Julia Child, wrote=2}
+==>{author=Simone Beck, wrote=2}
+==>{author=Louisette Bertholie, wrote=1}
+==>{author=Patricia Simon, wrote=1}
+==>{author=Alice Waters, wrote=1}
+==>{author=Patricia Curtan, wrote=1}
+==>{author=Kelsie Kerr, wrote=1}
+==>{author=Fritz Streiff, wrote=1}
+==>{author=Emeril Lagasse, wrote=0}
+==>{author=James Beard, wrote=0}
 
 // How many recipes has Julia Child written?
-gremlin> :> g.V().hasLabel('recipe').in().has('name','Julia Child').count()
-==>1
+gremlin> g.V().hasLabel('recipe').in().has('name','Julia Child').count()
+==>3
 
 // CLEANER VERSION OF LAST TRAVERSAL
-gremlin> :> g.V().hasLabel('ingredient').has('name',within('beef','carrots')).in().hasLabel('recipe').values('name')
+gremlin> g.V().hasLabel('ingredient').has('name',within('beef','carrots')).in().hasLabel('recipe').values('name')
 ==>Beef Bourguignon
 ==>Carrot Soup
 
