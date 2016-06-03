@@ -644,6 +644,8 @@ g.V().has('recipe', 'instructions', Search.tokenRegex('Broil.*')).as('a').
 // EXACT MATCH
 g.V().has('author', 'name', 'Julia Child')
 
+******* PUT IN NEW INDEXING ************
+
 ***********************
 * END USING INDEX     *
 ***********************

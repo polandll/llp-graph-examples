@@ -1,6 +1,8 @@
 // Generates all vertices and edges for the Recipe Toy Graph
 // Add all vertices and edges for Recipe Toy Graph
 
+// Script can be used only in Gremlin Console
+// For DataStax Studio, copy and paste entire script into a cell and run
 // :load /Users/lorinapoland/CLONES/graph-examples/food/Gremlin/generateAll.groovy
 
 // Clear all data and reload

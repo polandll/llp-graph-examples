@@ -22,4 +22,4 @@ sharonSmith.addEdge('rated', spicyMeatLoaf, 'timestamp',Instant.parse('2014-07-2
 janeDoe.addEdge('rated', carrotSoup, 'timestamp', Instant.parse('2015-12-30T00:00:00.00Z'), 'stars', 5, 'comment', 'Loved this soup! Yummy vegetarian!')
 
 // Traversal to find reviews with stars of 4 or greater and a ratedDate more recent than
-// :> g.E().hasLabel('rated').has('stars',gte(4)).has('timestamp', gte(Instant.parse('2015-12-31T00:00:00.00Z'))).valueMap()
+// g.E().hasLabel('rated').has('stars',gte(4)).has('timestamp', gte(Instant.parse('2015-12-31T00:00:00.00Z'))).valueMap()
