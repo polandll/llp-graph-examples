@@ -1,0 +1,44 @@
+{
+  "name":"amy",
+  "age":28,
+  "social":"222-22-2222",
+  "knows":[
+    "john",
+    "frank"
+  ],
+  "works":{
+    "org":{
+      "label":"organization",
+      "name":"xcorp"
+    },
+    "time":2009
+  },
+  "record": [
+    {
+      "type" : "promotion",
+      "name" : "Director of Engineering",
+      "time" : 2013
+    }
+  ],
+  "skills":[
+    "NoSQL",
+    "Cassandra",
+    "Hadoop"
+  ]
+}
+{
+  "name":"amy",
+  "age":28,
+  "social":"222-22-2222",
+  "knows":[
+    "john",
+    "frank"
+  ],
+  "works":{
+    "org":{
+      "label":"organization",
+      "name":"xcorp"
+    },
+    "time":2009
+  }
+}
