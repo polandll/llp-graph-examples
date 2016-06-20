@@ -7,17 +7,17 @@ source = Graph.file(filename).gryo()
 //Specifies what data source to load using which mapper
 load(source.vertices().withVertexId()).asVertices {
     labelField "~label"
-    key "name", "name"
+    key "~id", "id"
 }
 
 load(source.edges().withVertexId()).asEdges {
     labelField "~label"
     outV "outV", {
         labelField "~label"
-        key "name", "name"
+        key "~id", "id"
     }
     inV "inV", {
         labelField "~label"
-        key "name", "name"
+        key "~id", "id"
     }
-
+}

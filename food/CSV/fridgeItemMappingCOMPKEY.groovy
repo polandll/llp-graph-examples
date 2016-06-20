@@ -4,15 +4,13 @@
 // Run runDGL.sh in /Users/lorinapoland/CLONES/dse-graph-loader
 
 /* SAMPLE INPUT
-city_id|sensor_id|item
-SantaCruz|100|asparagus
-Sacramento|256|ham
-Sacramento|257|eggs
+city_id|sensor_id|fridgeItem
+santaCruz|93c4ec9b-68ff-455e-8668-1056ebc3689f|asparagus
  */
 
 // CONFIGURATION
 // Configures the data loader to create the schema
-config create_schema: true, load_new: true, load_threads: 3
+config create_schema: false, load_new: true
 
 // DATA INPUT
 // Define the data input source (a file which can be specified via command line arguments)
@@ -21,21 +19,9 @@ config create_schema: true, load_new: true, load_threads: 3
 inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/CSV/'
 fridgeItemInput = File.csv(inputfiledir + "fridgeItem.csv").delimiter('|')
 
-
 //Specifies what data source to load using which mapper (as defined inline)
   
 load(fridgeItemInput).asVertices {
-    label "fridgeItem"
-    // need a transform to get a composite, like Ben's script
-    // key sourceName: schemaName, sourceName2:schemaName2
-    key city_id:"city_id", sensor_id:"sensor_id"
-}
-
-----------
-Text from doc that I yanked until I fix this:
-Step in dseGraphLoaderTransforms.dita
-Composite keys may be specified in a loading statement.
-load(fridgeItemInputFile).asVertices {
-    label "fridgeItem"
+    label "FridgeSensor"
     key "city_id", "sensor_id"
 }

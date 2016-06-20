@@ -81,6 +81,7 @@ graph.addVertex(label, 'FridgeSensor', 'name', 'jones1', 'city_id', 100, 'sensor
 graph.addVertex(label, 'FridgeSensor', 'name', 'smith1', 'city_id', 100, 'sensor_id', '61deada0-3bb2-4d6d-a606-a44d963f03b5', 'location', Geo.point(-115.655068, 35.163427))
 graph.addVertex(label, 'author','name', 'Jamie Oliver', 'nickname', 'Jimmy', 'gender', 'M')
 
+graph.tx().commit()
 
 // query traversals
 // INT

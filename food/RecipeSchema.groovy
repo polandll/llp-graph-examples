@@ -38,11 +38,12 @@ schema.vertexLabel('book').properties('name','year').create()
 schema.vertexLabel('meal').create()
 schema.vertexLabel('reviewer').create()
 // Example of custom vertex id:
-schema.propertyKey('city_id').Int().create()
+schema.propertyKey('fridgeItem').Text().create()
+schema.propertyKey('city_id').Text().create()
 schema.propertyKey('sensor_id').Uuid().create()
 schema.propertyKey('location').Point().create()
 schema.vertexLabel('FridgeSensor').partitionKey('city_id').clusteringKey('sensor_id').create()
-schema.vertexLabel('FridgeSensor').properties('location').add()
+schema.vertexLabel('FridgeSensor').properties('fridgeItem', 'location').add()
 
 // Edge Labels
 schema.edgeLabel('authored').ifNotExists().create()
@@ -70,6 +71,8 @@ schema.vertexLabel('FridgeSensor').index('search').search().by('location').ifNot
 
 // Edge Index
 schema.vertexLabel('reviewer').index('ratedByStars').outE('rated').by('stars').add()
+schema.vertexLabel('reviewer').index('ratedByTimestamp').outE('rated').by('timestamp').add()
+schema.vertexLabel('reviewer').index('ratedByComments').outE('rated').by('comment').add()
 
 // Property index using meta-property 'livedIn':
 schema.vertexLabel('author').index('byLocation').property('country').by('livedIn').add()
