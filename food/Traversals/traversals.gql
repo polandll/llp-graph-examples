@@ -302,17 +302,17 @@ g.V().has('name','Julia Child').repeat(out()).times(3).valueMap()
 g.V().as("a").out().as("b","c").path()
 // WHAT IS THE PATH TRAVERSAL OF THE GIVEN TRAVERSAL?
 // INGREDIENT -> RECIPE -> BOOK
-g.V().has('ingredient', 'name',within('beef','carrots')).in('includes').as('Recipe')
-	.out().hasLabel('book').as('Book').
+g.V().has('ingredient', 'name',within('beef','carrots')).in('includes').as('Recipe').
+	out().hasLabel('book').as('Book').
 	select('Book','Recipe').
 		by('name').by('name').path()
-==>[v[{member_id=0, community_id=278744, ~label=ingredient, group_id=24}], 
-	v[{member_id=0, community_id=278744, ~label=recipe, group_id=17}], 
-	v[{member_id=0, community_id=278744, ~label=book, group_id=13}], 
+==>[v[{~label=ingredient, member_id=2, community_id=1442590464}], 
+	v[{~label=recipe, member_id=2, community_id=473764096}], 
+	v[{~label=book, member_id=0, community_id=568859392}], 
 	{Book=The Art of French Cooking, Vol. 1, Recipe=Beef Bourguignon}]
-==>[v[{member_id=0, community_id=278744, ~label=ingredient, group_id=51}], 
-	v[{member_id=0, community_id=278744, ~label=recipe, group_id=2}], 
-	v[{member_id=0, community_id=278744, ~label=book, group_id=16}], 
+==>[v[{~label=ingredient, member_id=1, community_id=684566272}], 
+	v[{~label=recipe, member_id=0, community_id=1462084224}], 
+	v[{~label=book, member_id=1, community_id=1620680576}], 
 	{Book=The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution, Recipe=Carrot Soup}]
 
 // What is the tree that emanates from a book?	
@@ -373,8 +373,64 @@ by(out("knows").count())
 /* information from the graph				*/
 ----------------------------------------------------------
 
-// WRITE THIS ONE
-g.V().repeat(groupCount("m").out()).times(30).cap("m")
+// WHAT DOES THIS ONE MEAN?
+g.V().repeat(groupCount("m").out()).times(4).cap("m")
+==>{v[{~label=ingredient, member_id=0, community_id=1317776640}]=5, 
+v[{~label=ingredient, member_id=2, community_id=2089732736}]=3, 
+v[{~label=author, member_id=0, community_id=1247462272}]=1, 
+v[{~label=recipe, member_id=2, community_id=473764096}]=2, 
+v[{~label=ingredient, member_id=1, community_id=1245449856}]=3, 
+v[{~label=ingredient, member_id=0, community_id=1317139328}]=3, 
+v[{~label=recipe, member_id=3, community_id=1476505856}]=2, 
+v[{~label=ingredient, member_id=3, community_id=645970304}]=3, 
+v[{~label=author, member_id=1, community_id=1957363328}]=1, 
+v[{~label=ingredient, member_id=2, community_id=1479653760}]=3, 
+v[{~label=author, member_id=0, community_id=1034199936}]=1, 
+v[{~label=book, member_id=0, community_id=126004352}]=10, 
+v[{~label=ingredient, member_id=4, community_id=1353535872}]=3, 
+v[{~label=recipe, member_id=0, community_id=921065344}]=2, 
+v[{~label=meal, member_id=1, community_id=49445120}]=5, 
+v[{~label=ingredient, member_id=2, community_id=1756292608}]=3, 
+v[{~label=ingredient, member_id=4, community_id=1453788288}]=3, 
+v[{~label=recipe, member_id=2, community_id=815739008}]=2, 
+v[{~label=ingredient, member_id=4, community_id=1591539456}]=3, 
+v[{~label=author, member_id=1, community_id=204499456}]=1, 
+v[{~label=ingredient, member_id=0, community_id=2082975232}]=3, 
+v[{~label=ingredient, member_id=2, community_id=1160133760}]=3, 
+v[{~label=author, member_id=0, community_id=8404224}]=1, 
+v[{~label=ingredient, member_id=4, community_id=1355985664}]=5, 
+v[{~label=book, member_id=1, community_id=1917309696}]=2, 
+v[{~label=ingredient, member_id=0, community_id=1800032896}]=3, 
+v[{~label=recipe, member_id=2, community_id=877239296}]=2, 
+v[{~label=meal, member_id=3, community_id=408493696}]=5, 
+v[{~label=ingredient, member_id=3, community_id=676226048}]=3, 
+v[{~label=ingredient, member_id=1, community_id=684566272}]=3, 
+v[{~label=ingredient, member_id=2, community_id=1442590464}]=3, 
+v[{~label=author, member_id=0, community_id=504834048}]=1, 
+v[{~label=ingredient, member_id=3, community_id=1920784896}]=3, 
+v[{~label=ingredient, member_id=1, community_id=88266880}]=3, 
+v[{~label=ingredient, member_id=3, community_id=1590033664}]=5, 
+v[{~label=author, member_id=0, community_id=359465216}]=1, 
+v[{~label=ingredient, member_id=3, community_id=58345088}]=3, 
+v[{~label=author, member_id=0, community_id=719887360}]=1, 
+v[{~label=ingredient, member_id=0, community_id=1819456768}]=5, 
+v[{~label=ingredient, member_id=1, community_id=1391581312}]=3, 
+v[{~label=recipe, member_id=0, community_id=1462084224}]=2, 
+v[{~label=ingredient, member_id=1, community_id=745523072}]=7, 
+v[{~label=ingredient, member_id=2, community_id=669949824}]=3, 
+v[{~label=ingredient, member_id=1, community_id=887650944}]=3, 
+v[{~label=book, member_id=0, community_id=568859392}]=13, 
+v[{~label=ingredient, member_id=2, community_id=6696832}]=5, 
+v[{~label=ingredient, member_id=3, community_id=887528832}]=3, 
+v[{~label=ingredient, member_id=1, community_id=1885419008}]=3, 
+v[{~label=ingredient, member_id=1, community_id=1096839040}]=5, 
+v[{~label=author, member_id=0, community_id=1223858560}]=1, 
+v[{~label=author, member_id=0, community_id=835463808}]=1, 
+v[{~label=recipe, member_id=1, community_id=758174464}]=2, 
+v[{~label=book, member_id=1, community_id=1620680576}]=12, 
+v[{~label=ingredient, member_id=2, community_id=43078016}]=3, 
+v[{~label=recipe, member_id=1, community_id=799572864}]=2, 
+v[{~label=meal, member_id=1, community_id=1611367808}]=7}
 
 ----------------------------------------------------------
 /* MUTATING TRAVERSAL:					*/
