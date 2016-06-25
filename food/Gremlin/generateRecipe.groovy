@@ -70,9 +70,11 @@ porkLoin = graph.addVertex(label, 'ingredient', 'name', 'pork loin')
 redWine = graph.addVertex(label, 'ingredient', 'name', 'red wine')
 
 // meal vertices
-SaturdayFeast = graph.addVertex(label, 'meal', 'name', 'Saturday Feast', 'timestamp', Instant.parse('2015-11-30T00:00:00.00Z'), 'calories', 1000)
-EverydayDinner = graph.addVertex(label, 'meal', 'name', 'EverydayDinner', 'timestamp', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 600)
-JuliaDinner = graph.addVertex(label, 'meal', 'name', 'JuliaDinner', 'timestamp', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 900)
+// This is old style, but timestamps seem fixed
+// SaturdayFeast = graph.addVertex(label, 'meal', 'name', 'Saturday Feast', 'timestamp', Instant.parse('2015-11-30T00:00:00.00Z'), 'calories', 1000)
+SaturdayFeast = graph.addVertex(label, 'meal', 'name', 'Saturday Feast', 'timestamp', '2015-11-30'), 'calories', 1000)
+EverydayDinner = graph.addVertex(label, 'meal', 'name', 'EverydayDinner', 'timestamp', '2016-01-14'), 'calories', 600)
+JuliaDinner = graph.addVertex(label, 'meal', 'name', 'JuliaDinner', 'timestamp', '2016-01-14'), 'calories', 900)
 
 // author-book edges
 juliaChild.addEdge('authored', artOfFrenchCookingVolOne)
