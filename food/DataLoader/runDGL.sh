@@ -8,14 +8,16 @@
 # to loading
 
 #LDR=/Users/lorinapoland/CLONES/dse-graph-loader/target/dse-graph-loader-0.1.0-SNAPSHOT-uberjar.jar
-LDR=/Users/lorinapoland/CLONES/dse-graph-loader-0.1.4-SNAPSHOT/graphloader
-TYPE=CSV
-DRYRUN_SETTING=true
-INPUTFILEDIR=/Users/lorinapoland/CLONES/graph-examples/food/$TYPE/
+#LDR=/Users/lorinapoland/CLONES/dse-graph-loader-0.1.4-SNAPSHOT/graphloader
+LDR=/Users/lorinapoland/CLONES/dse-graph-loader-5.0.0-RC1-SNAPSHOT/graphloader
+TYPE=JSON
+DRYRUN_SETTING=false
+#INPUTFILEDIR=/Users/lorinapoland/CLONES/graph-examples/food/$TYPE/
 #SCRIPTNAME='authorBookMapping'$TYPE'.groovy'
-#GRAPHNAME=$TYPE'TEST'
-#SCRIPTNAME='fridgeItemMappingCOMPKEY.groovy'
-#GRAPHNAME=$TYPE'COMPKEYTEST'
-SCRIPTNAME='reviewersRatingsMappingCSV.groovy'
-GRAPHNAME='bleck'
+#GRAPHNAME='test'$TYPE
+INPUTFILEDIR=/Users/lorinapoland/CLONES/graph-examples/food/CSV/
+SCRIPTNAME='fridgeItemMappingCOMPKEY.groovy'
+GRAPHNAME='testCOMPKEY'
+#SCRIPTNAME='reviewersRatingsMappingCSV.groovy'
+#GRAPHNAME='bleck'
 $LDR $INPUTFILEDIR/$SCRIPTNAME -filename INPUTFILEDIR -graph $GRAPHNAME -address localhost -dryrun DRYRUN_SETTING

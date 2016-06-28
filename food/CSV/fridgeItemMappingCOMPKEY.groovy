@@ -18,10 +18,36 @@ config create_schema: false, load_new: true
 // as the "-filename" option
 inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/CSV/'
 fridgeItemInput = File.csv(inputfiledir + "fridgeItem.csv").delimiter('|')
+ingredInput = File.csv(inputfiledir + "ingredients.csv").delimiter('|')
+the_edges = File.csv(inputfiledir + "fridgeItemEdges.csv").delimiter('|')
+
+the_edges = the_edges.transform {
+    it['FridgeSensor'] = [
+            'city_id' : it['city_id'],
+            'sensor_id' : it['sensor_id'] ];
+    it
+}
 
 //Specifies what data source to load using which mapper (as defined inline)
   
+load(ingredInput).asVertices {
+label "ingredient"
+    key "name"
+}
+
 load(fridgeItemInput).asVertices {
     label "FridgeSensor"
-    key "city_id", "sensor_id"
+    key city_id: "city_id", sensor_id: "sensor_id"
+}
+
+load(the_edges).asEdges  {
+    label "linked"
+    outV "ingredient", {
+        label "ingredient"
+        key "name"
+    }
+    inV "FridgeSensor", {
+        label "FridgeSensor"
+        key city_id:"city_id", sensor_id:"sensor_id"
+    }
 }

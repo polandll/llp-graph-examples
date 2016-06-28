@@ -10,7 +10,7 @@ authorBook: {"name":"The Art of French Cooking, Vol. 1","author":"Julia Child"}
 
 // CONFIGURATION
 // Configures the data loader to create the schema
-config create_schema: true, load_new: true, load_threads: 3
+config create_schema: false, load_new: true
 
 // DATA INPUT
 // Define the data input source (a file which can be specified via command line arguments)

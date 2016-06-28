@@ -1,4 +1,4 @@
-city_id|sensor_id|fridgeItem
+city_id|sensor_id|name
 santaCruz|93c4ec9b-68ff-455e-8668-1056ebc3689f|asparagus
 sacramento|9c23b683-1de2-4c97-a26a-277b3733732a|ham
 sacramento|eff4a8af-2b0d-4ba9-a063-c170130e2d84|eggs
