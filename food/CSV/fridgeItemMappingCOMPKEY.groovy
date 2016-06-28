@@ -10,7 +10,8 @@ santaCruz|93c4ec9b-68ff-455e-8668-1056ebc3689f|asparagus
 
 // CONFIGURATION
 // Configures the data loader to create the schema
-config create_schema: false, load_new: true
+//config create_schema: false, load_new: true
+config load_new: true, dryrun: true, schema_output: '/tmp/loader_output.txt'
 
 // DATA INPUT
 // Define the data input source (a file which can be specified via command line arguments)
@@ -25,6 +26,8 @@ the_edges = the_edges.transform {
     it['FridgeSensor'] = [
             'city_id' : it['city_id'],
             'sensor_id' : it['sensor_id'] ];
+    it['ingredient'] = [
+	    'name' : it['name'] ];
     it
 }
 
