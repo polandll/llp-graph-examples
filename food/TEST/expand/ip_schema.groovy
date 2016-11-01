@@ -1,0 +1,8 @@
+schema.propertyKey('id').Text().single().create()
+schema.propertyKey('timestamp').Bigint().create()
+schema.propertyKey('source').Text().create()
+schema.propertyKey('country').Text().create()
+schema.vertexLabel('SWID').partitionKey('id').create()
+schema.vertexLabel('IP').properties('id', 'country').create()
+schema.edgeLabel('seenAt').properties('timestamp','source').connection('SWID','IP').create()
+schema.vertexLabel('IP').index('byId').materialized().by('id').add()

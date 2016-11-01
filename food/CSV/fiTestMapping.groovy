@@ -11,7 +11,7 @@ santaCruz|93c4ec9b-68ff-455e-8668-1056ebc3689f|asparagus
 // CONFIGURATION
 // Configures the data loader to create the schema
 //config create_schema: false, load_new: true
-config load_new: true, dryrun: false, preparation: true, create_schema: true, schema_output: '/tmp/loader_output.txt'
+//config load_new: true, dryrun: false, preparation: true, create_schema: true, schema_output: '/tmp/loader_output.txt'
 
 // DATA INPUT
 // Define the data input source (a file which can be specified via command line arguments)
@@ -40,7 +40,7 @@ label "ingredient"
 
 load(fridgeItemInput).asVertices {
     label "FridgeSensor"
-    key city_id: "city_id", sensor_id: "sensor_id"
+    key "city_id", "sensor_id"
 }
 
 load(the_edges).asEdges  {
@@ -51,6 +51,6 @@ load(the_edges).asEdges  {
     }
     inV "FridgeSensor", {
         label "FridgeSensor"
-        key city_id:"city_id", sensor_id:"sensor_id"
+        key "city_id", "sensor_id"
     }
 }
