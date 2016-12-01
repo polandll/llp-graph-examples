@@ -46,11 +46,11 @@ schema.vertexLabel('FridgeSensor').partitionKey('city_id').clusteringKey('sensor
 schema.vertexLabel('FridgeSensor').properties('fridgeItem', 'location').add()
 
 // Edge Labels
-schema.edgeLabel('authored').ifNotExists().create()
-schema.edgeLabel('created').create()
-schema.edgeLabel('includes').create()
-schema.edgeLabel('includedIn').create()
-schema.edgeLabel('rated').connection('reviewer','recipe').create()
+schema.edgeLabel('authored').connection('author','book').ifNotExists().create()
+schema.edgeLabel('created').connection('author','recipe').create()
+schema.edgeLabel('includes').connection('recipe','ingredient').create()
+schema.edgeLabel('includedIn').connection('recipe','book').connection('recipe','meal').create()
+schema.edgeLabel('rated').properties('stars').connection('reviewer','recipe').create()
 
 // Vertex Indexes
 // Secondary

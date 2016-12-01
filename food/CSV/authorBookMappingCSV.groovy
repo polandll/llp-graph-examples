@@ -10,7 +10,7 @@ authorBook: Simca's Cuisine: 100 Classic French Recipes for Every Occasion|Simon
 
 // CONFIGURATION
 // Configures the data loader to create the schema
-config create_schema: true, load_new: true, load_threads: 3
+config create_schema: true, load_new: true, load_vertex_threads: 3
 
 // DATA INPUT
 // Define the data input source (a file which can be specified via command line arguments)

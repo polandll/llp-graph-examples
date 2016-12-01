@@ -6,8 +6,8 @@ config create_schema: true
 // load_new for no existing data 
 config load_new: true
 
-// load threads example
-config load_threads: 3
+// load_vertex_threads example
+config load_vertex_threads: 3
 
 // multiple config on single line
 config load_new: true, dryrun: true, schema_output: /tmp/loader_output.txt
@@ -49,7 +49,7 @@ authorBook: Simca's Cuisine: 100 Classic French Recipes for Every Occasion|Simon
 
 // CONFIGURATION
 // Configures the data loader to create the schema
-config create_schema: true, load_new: true, load_threads: 3
+config create_schema: true, load_new: true, load_vertex_threads: 3
 
 // DATA INPUT
 // Define the data input source (a file which can be specified via command line arguments)
@@ -96,7 +96,7 @@ authorBook: {"name":"The Art of French Cooking, Vol. 1","author":"Julia Child"}
 
 // CONFIGURATION
 // Configures the data loader to create the schema
-config create_schema: true, load_new: true, load_threads: 3
+config create_schema: true, load_new: true, load_vertex_threads: 3
 
 // DATA INPUT
 // Define the data input source (a file which can be specified via command line arguments)
@@ -144,7 +144,7 @@ authorBook: Simca's Cuisine: 100 Classic French Recipes for Every Occasion|Simon
 
 // CONFIGURATION
 // Configures the data loader to create the schema
-config create_schema: true, load_new: true, load_threads: 3
+config create_schema: true, load_new: true, load_vertex_threads: 3
 
 // DATA INPUT
 // Define the data input source (a file which can be specified via command line arguments)
@@ -195,7 +195,7 @@ bname:Simca's Cuisine: 100 Classic French Recipes for Every Occasion	aname:Simon
 
 // CONFIGURATION
 // Configures the data loader to create the schema
-config create_schema: true, load_new: true, load_threads: 3
+config create_schema: true, load_new: true, load_vertex_threads: 3
 
 // DATA INPUT
 // Define the data input source (a file which can be specified via command line arguments)
@@ -247,7 +247,7 @@ bname:Simca's Cuisine: 100 Classic French Recipes for Every Occasion	aname:Simon
 
 // CONFIGURATION
 // Configures the data loader to create the schema
-config create_schema: true, load_new: true, load_threads: 3
+config create_schema: true, load_new: true, load_vertex_threads: 3
 
 // DATA INPUT
 // Define the data input source (a database connection and SQL statements for data selection)
@@ -474,6 +474,6 @@ $ graphloader ./scripts/csv2Vertex.groovy -filename MyUsers.csv -graph csvTest -
 $ java -Xmx10g -jar dse-graph-loader.jar
 
 // CONFIGURATION
-// Configures the data loader to create the schema and set load_threads to 3
-config load_new: true, load_threads: 3
+// Configures the data loader to create the schema and set load_vertex_threads to 3
+config load_new: true, load_vertex_threads: 3
 

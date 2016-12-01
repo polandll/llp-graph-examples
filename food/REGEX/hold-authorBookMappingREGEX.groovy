@@ -1,5 +1,5 @@
 // Use /Users/lorinapoland/CLONES/graph-examples/DataLoader/runDGL.sh to run this script
-// Set runDGL.sh parameters to JDBC before running
+// Set runDGL.sh parameters to REGEX before running
 // Run runDGL.sh in /Users/lorinapoland/CLONES/dse-graph-loader
 
 /* SAMPLE INPUT - uses tabs
@@ -16,15 +16,15 @@ bname:Simca's Cuisine: 100 Classic French Recipes for Every Occasion	aname:Simon
 config create_schema: true, load_new: true, load_vertex_threads: 3
 
 // DATA INPUT
-// Define the data input source (a database connection and SQL statements for data selection)
-// inputDatabase is the database name
-inputDatabase = '~/test'
-db = Database.connection("jdbc:h2:" + inputDatabase).H2().user("sa")
-
-// Define multiple data inputs from the database source via SQL queries
-authorInput = db.query "SELECT * FROM AUTHOR";
-bookInput = db.query "SELECT * FROM BOOK";
-authorBookInput = db.query "SELECT * FROM AUTHORBOOK";
+// Define the data input source (a file which can be specified via command line arguments)
+// inputfiledir is the directory for the input files that is given in the commandline
+// as the "-filename" option
+inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/REGEX/'
+authorInput = File.text(inputfiledir + "authorREGEX.dat").regex("name:(.*)\\tgender:([MF])").header('name', 'gender')
+bookInput = File.text(inputfiledir + "bookREGEX.dat").
+	regex("name:(.*)\\tyear:([0-9]{4})\\tISBN:([0-9]{1}[-]{1}[0-9]{3}[-]{1}[0-9]{5}[-]{1}[0-9]{0,1})").
+	header('name', 'year', 'ISBN')
+authorBookInput = File.text(inputfiledir + "authorBookREGEX.dat").regex("bname:(.*)\\taname:(.*)").header('bname', 'aname')
 
 //Specifies what data source to load using which mapper (as defined inline)
   
