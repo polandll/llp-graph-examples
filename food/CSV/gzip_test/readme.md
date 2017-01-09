@@ -1,5 +1,5 @@
 # CSV Examples
 ## Gzip example
-* [Mapping script] (gzipMappingCSV.groovy)
+* [Mapping script] (gzipMapping.groovy)
 * [graphloader script] (runDGL.sh)
 * [recipes.csv.gz] (gzip file)
