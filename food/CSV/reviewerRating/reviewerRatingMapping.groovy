@@ -1,6 +1,5 @@
-// Use /Users/lorinapoland/CLONES/graph-examples/DataLoader/runDGL.sh to run this script
-// Set runDGL.sh parameters to CSV before running
-// Run runDGL.sh in /Users/lorinapoland/CLONES/dse-graph-loader
+// Input reviewers and ratings and link to recipes
+// Run runDGL.sh
 
 /* SAMPLE INPUT
 reviewer: John Doe
@@ -10,13 +9,13 @@ reviewerRating :John Doe|Beef Bourguignon|2014-01-01|5|comment
 
 // CONFIGURATION
 // Configures the data loader to create the schema
-config create_schema: false, load_new: false
+config preparation: true, create_schema: true, load_new: false
 
 // DATA INPUT
 // Define the data input source (a file which can be specified via command line arguments)
 // inputfiledir is the directory for the input files that is given in the commandline
 // as the "-filename" option
-inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/CSV/'
+inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/CSV/reviewerRating/'
 // This next file is not required if the reviewers already exist
 reviewerInput = File.csv(inputfiledir + "reviewers.csv.gz").gzip().delimiter('|')
 // This next file is not required if the recipes already exist
@@ -29,7 +28,6 @@ reviewerRatingInput = File.csv(inputfiledir + "reviewerRatings.csv.gz").gzip().d
 load(reviewerInput).asVertices {
     label "reviewer"
     key "name"
-    isNew
 }
 
 load(recipeInput).asVertices {

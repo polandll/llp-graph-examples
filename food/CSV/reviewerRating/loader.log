@@ -1,0 +1,403 @@
+2017-01-09 12:11:27 DEBUG Executable:64 - Setting cluster builder: com.datastax.dsegraphloader.api.ClusterBuilder@42eca56e
+2017-01-09 12:11:28 DEBUG SystemProperties:32 - com.datastax.driver.NEW_NODE_DELAY_SECONDS is undefined, using default value 1
+2017-01-09 12:11:28 DEBUG SystemProperties:32 - com.datastax.driver.NON_BLOCKING_EXECUTOR_SIZE is undefined, using default value 8
+2017-01-09 12:11:28 DEBUG SystemProperties:32 - com.datastax.driver.NOTIF_LOCK_TIMEOUT_SECONDS is undefined, using default value 60
+2017-01-09 12:11:28 DEBUG Cluster:1360 - Starting new cluster with contact points [localhost/127.0.0.1:9042]
+2017-01-09 12:11:28 DEBUG InternalLoggerFactory:71 - Using SLF4J as the default logging framework
+2017-01-09 12:11:28 DEBUG PlatformDependent0:76 - java.nio.Buffer.address: available
+2017-01-09 12:11:28 DEBUG PlatformDependent0:76 - sun.misc.Unsafe.theUnsafe: available
+2017-01-09 12:11:28 DEBUG PlatformDependent0:71 - sun.misc.Unsafe.copyMemory: available
+2017-01-09 12:11:28 DEBUG PlatformDependent0:76 - java.nio.Bits.unaligned: true
+2017-01-09 12:11:28 DEBUG PlatformDependent:76 - Java version: 8
+2017-01-09 12:11:28 DEBUG PlatformDependent:76 - -Dio.netty.noUnsafe: false
+2017-01-09 12:11:28 DEBUG PlatformDependent:76 - sun.misc.Unsafe: available
+2017-01-09 12:11:28 DEBUG PlatformDependent:76 - -Dio.netty.noJavassist: false
+2017-01-09 12:11:28 DEBUG PlatformDependent:71 - Javassist: unavailable
+2017-01-09 12:11:28 DEBUG PlatformDependent:71 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2017-01-09 12:11:28 DEBUG PlatformDependent:76 - -Dio.netty.tmpdir: /var/folders/kt/8gksd2k94rd4f2x_8y4snnz40000gn/T (java.io.tmpdir)
+2017-01-09 12:11:28 DEBUG PlatformDependent:76 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2017-01-09 12:11:28 DEBUG PlatformDependent:76 - -Dio.netty.noPreferDirect: false
+2017-01-09 12:11:28 DEBUG SystemProperties:48 - com.datastax.driver.FORCE_NIO is undefined, using default value false
+2017-01-09 12:11:28 WARN  NettyUtil:73 - Found Netty's native epoll transport, but not running on linux-based operating system. Using NIO instead.
+2017-01-09 12:11:28 DEBUG MultithreadEventLoopGroup:76 - -Dio.netty.eventLoopThreads: 16
+2017-01-09 12:11:28 DEBUG NioEventLoop:76 - -Dio.netty.noKeySetOptimization: false
+2017-01-09 12:11:28 DEBUG NioEventLoop:76 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2017-01-09 12:11:28 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.level: simple
+2017-01-09 12:11:28 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.maxRecords: 4
+2017-01-09 12:11:28 DEBUG SystemProperties:48 - com.datastax.driver.EXTENDED_PEER_CHECK is undefined, using default value true
+2017-01-09 12:11:28 DEBUG STATES:88 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 1
+2017-01-09 12:11:28 DEBUG SystemProperties:48 - com.datastax.driver.DISABLE_COALESCING is undefined, using default value false
+2017-01-09 12:11:28 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numHeapArenas: 16
+2017-01-09 12:11:28 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numDirectArenas: 16
+2017-01-09 12:11:28 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.pageSize: 8192
+2017-01-09 12:11:28 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxOrder: 11
+2017-01-09 12:11:28 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.chunkSize: 16777216
+2017-01-09 12:11:28 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.tinyCacheSize: 512
+2017-01-09 12:11:28 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.smallCacheSize: 256
+2017-01-09 12:11:28 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.normalCacheSize: 64
+2017-01-09 12:11:28 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2017-01-09 12:11:28 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2017-01-09 12:11:28 DEBUG ThreadLocalRandom:71 - -Dio.netty.initialSeedUniquifier: 0xdfb6b3c4e9a63f5f (took 7 ms)
+2017-01-09 12:11:28 DEBUG ByteBufUtil:76 - -Dio.netty.allocator.type: unpooled
+2017-01-09 12:11:28 DEBUG ByteBufUtil:76 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2017-01-09 12:11:28 DEBUG ByteBufUtil:76 - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2017-01-09 12:11:28 DEBUG Connection:160 - Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Connection established, initializing transport
+2017-01-09 12:11:28 DEBUG Recycler:76 - -Dio.netty.recycler.maxCapacity.default: 262144
+2017-01-09 12:11:28 DEBUG AbstractByteBuf:81 - -Dio.netty.buffer.bytebuf.checkAccessible: true
+2017-01-09 12:11:28 DEBUG STATES:307 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Transport initialized, connection ready
+2017-01-09 12:11:28 DEBUG ControlConnection:534 - [Control connection] Refreshing node list and token map
+2017-01-09 12:11:28 DEBUG ControlConnection:272 - [Control connection] Refreshing schema
+2017-01-09 12:11:28 DEBUG ControlConnection:534 - [Control connection] Refreshing node list and token map
+2017-01-09 12:11:28 DEBUG ReplicationStrategy$NetworkTopologyStrategy:123 - Computing token to replica map for keyspace: testREGtest_system.
+2017-01-09 12:11:28 DEBUG ReplicationStrategy$NetworkTopologyStrategy:211 - Token to replica map computation for keyspace testREGtest_system completed in 1 milliseconds
+2017-01-09 12:11:28 DEBUG ReplicationStrategy$NetworkTopologyStrategy:123 - Computing token to replica map for keyspace: gizmo.
+2017-01-09 12:11:28 WARN  ReplicationStrategy$NetworkTopologyStrategy:198 - Error while computing token map for keyspace gizmo with datacenter dc1: could not achieve replication factor 3 (found 0 replicas only), check your keyspace replication settings.
+2017-01-09 12:11:28 DEBUG ReplicationStrategy$NetworkTopologyStrategy:211 - Token to replica map computation for keyspace gizmo completed in 1 milliseconds
+2017-01-09 12:11:28 DEBUG STATES:183 - [Control connection] established to localhost/127.0.0.1:9042
+2017-01-09 12:11:28 INFO  DCAwareRoundRobinPolicy:95 - Using data-center name 'SearchGraph' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+2017-01-09 12:11:28 INFO  Cluster:1485 - New Cassandra host localhost/127.0.0.1:9042 added
+2017-01-09 12:11:28 WARN  ClusterBuilder:215 - Found node running unsupported version: 5.0.4, IP: localhost/127.0.0.1
+2017-01-09 12:11:28 DEBUG SystemProperties:48 - com.datastax.driver.CHECK_IO_DEADLOCKS is undefined, using default value true
+2017-01-09 12:11:28 DEBUG STATES:88 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 2
+2017-01-09 12:11:28 DEBUG Connection:160 - Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Connection established, initializing transport
+2017-01-09 12:11:28 DEBUG STATES:307 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Transport initialized, connection ready
+2017-01-09 12:11:28 DEBUG HostConnectionPool:153 - Created connection pool to host localhost/127.0.0.1:9042 (1 connections needed, 1 successfully opened)
+2017-01-09 12:11:28 DEBUG Session:368 - Added connection pool for localhost/127.0.0.1:9042
+2017-01-09 12:11:29 DEBUG Cluster:2300 - Received event EVENT CREATED KEYSPACE testreviewerRating, scheduling delivery
+2017-01-09 12:11:29 DEBUG Cluster:2300 - Received event EVENT CREATED KEYSPACE testreviewerRating_system, scheduling delivery
+2017-01-09 12:11:29 DEBUG Cluster:2300 - Received event EVENT CREATED KEYSPACE testreviewerRating_pvt, scheduling delivery
+2017-01-09 12:11:29 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testreviewerRating_system.dseg_variables, scheduling delivery
+2017-01-09 12:11:29 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testreviewerRating_system.shared_data, scheduling delivery
+2017-01-09 12:11:30 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testreviewerRating_system.shared_data_versions, scheduling delivery
+2017-01-09 12:11:30 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testreviewerRating.id_allocation, scheduling delivery
+2017-01-09 12:11:30 DEBUG Cluster:2300 - Received event EVENT UPDATED TABLE testreviewerRating_system.shared_data, scheduling delivery
+2017-01-09 12:11:31 DEBUG Cluster:2300 - Received event EVENT UPDATED TABLE dse_system.shared_data, scheduling delivery
+2017-01-09 12:11:31 DEBUG Cluster:2300 - Received event EVENT UPDATED TABLE dse_system.shared_data, scheduling delivery
+2017-01-09 12:11:31 DEBUG GroovyScriptExecutor:102 - Complete loading script: 
+[1	]  // Input reviewers and ratings and link to recipes
+[2	]  // Run runDGL.sh
+[3	]  
+[4	]  /* SAMPLE INPUT
+[5	]  reviewer: John Doe
+[6	]  recipe: Beef Bourguignon
+[7	]  reviewerRating :John Doe|Beef Bourguignon|2014-01-01|5|comment
+[8	]   */
+[9	]  
+[10	]  // CONFIGURATION
+[11	]  // Configures the data loader to create the schema
+[12	]  config preparation: true, create_schema: true, load_new: false
+[13	]  
+[14	]  // DATA INPUT
+[15	]  // Define the data input source (a file which can be specified via command line arguments)
+[16	]  // inputfiledir is the directory for the input files that is given in the commandline
+[17	]  // as the "-filename" option
+[18	]  inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/CSV/reviewerRating/'
+[19	]  // This next file is not required if the reviewers already exist
+[20	]  reviewerInput = File.csv(inputfiledir + "reviewers.csv.gz").gzip().delimiter('|')
+[21	]  // This next file is not required if the recipes already exist
+[22	]  recipeInput = File.csv(inputfiledir +"recipes.csv.gz").gzip().delimiter('|')
+[23	]  // This is the file that is used to create the edges with edge properties
+[24	]  reviewerRatingInput = File.csv(inputfiledir + "reviewerRatings.csv.gz").gzip().delimiter('|')
+[25	]  
+[26	]  //Specifies what data source to load using which mapper (as defined inline)
+[27	]  
+[28	]  load(reviewerInput).asVertices {
+[29	]      label "reviewer"
+[30	]      key "name"
+[31	]  }
+[32	]  
+[33	]  load(recipeInput).asVertices {
+[34	]      label "recipe"
+[35	]      key "name"
+[36	]  }
+[37	]  
+[38	]  load(reviewerRatingInput).asEdges {
+[39	]      label "rated"
+[40	]      outV "rev_name", {
+[41	]          label "reviewer"
+[42	]          key "name"
+[43	]      }
+[44	]      inV "recipe_name", {
+[45	]          label "recipe"
+[46	]          key "name"
+[47	]      }
+[48	]     // properties are automatically added from the file, using the header line as property keys
+[49	]  }
+
+2017-01-09 12:11:31 DEBUG STATES:88 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 3
+2017-01-09 12:11:31 DEBUG Connection:160 - Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=false] Connection established, initializing transport
+2017-01-09 12:11:31 DEBUG STATES:307 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=false] Transport initialized, connection ready
+2017-01-09 12:11:31 DEBUG HostConnectionPool:153 - Created connection pool to host localhost/127.0.0.1:9042 (1 connections needed, 1 successfully opened)
+2017-01-09 12:11:31 DEBUG Session:368 - Added connection pool for localhost/127.0.0.1:9042
+2017-01-09 12:11:31 INFO  DataLoaderImpl:193 - Initializing tasks with [1] read threads and [1] loader threads
+2017-01-09 12:11:31 INFO  DataLoaderImpl:164 - Scheduling [reviewers.csv] for reading
+2017-01-09 12:11:31 INFO  DataLoaderImpl:164 - Scheduling [recipes.csv] for reading
+2017-01-09 12:11:31 INFO  DataLoaderImpl:164 - Scheduling [reviewerRatings.csv] for reading
+2017-01-09 12:11:31 WARN  DataLoaderImpl:242 - The following schema elements will be added. It is STRONGLY advised to create schema elements explicitly prior to data loading.
+2017-01-09 12:11:31 INFO  DataLoaderImpl:244 - Adding schema element: propertyKey[name]:String
+2017-01-09 12:11:31 INFO  DataLoaderImpl:244 - Adding schema element: propertyKey[comment]:String
+2017-01-09 12:11:31 INFO  DataLoaderImpl:244 - Adding schema element: propertyKey[stars]:String
+2017-01-09 12:11:31 INFO  DataLoaderImpl:244 - Adding schema element: propertyKey[timestamp]:String
+2017-01-09 12:11:31 INFO  DataLoaderImpl:244 - Adding schema element: vertexLabel[recipe]
+2017-01-09 12:11:31 INFO  DataLoaderImpl:244 - Adding schema element: vertexLabel[reviewer]
+2017-01-09 12:11:31 INFO  DataLoaderImpl:244 - Adding schema element: edgeLabel[rated]
+2017-01-09 12:11:31 WARN  DataLoaderImpl:248 - The following indexes will be added. It is STRONGLY advised to create indexes explicitly prior to data loading.
+2017-01-09 12:11:31 INFO  DataLoaderImpl:250 - Adding index: vertexLabel[reviewer][name]
+2017-01-09 12:11:31 INFO  DataLoaderImpl:250 - Adding index: vertexLabel[recipe][name]
+2017-01-09 12:11:31 INFO  DataLoaderImpl:254 - The following schema registrations will be added.
+2017-01-09 12:11:31 INFO  DataLoaderImpl:256 - Adding schema registration: edgeLabel[rated] hasIncidence(propertyKey[comment]:String)
+2017-01-09 12:11:31 INFO  DataLoaderImpl:256 - Adding schema registration: vertexLabel[recipe] hasIncidence(propertyKey[name]:String)
+2017-01-09 12:11:31 INFO  DataLoaderImpl:256 - Adding schema registration: edgeLabel[rated] hasIncidence(propertyKey[timestamp]:String)
+2017-01-09 12:11:31 INFO  DataLoaderImpl:256 - Adding schema registration: edgeLabel[rated] hasIncidence(propertyKey[stars]:String)
+2017-01-09 12:11:31 INFO  DataLoaderImpl:256 - Adding schema registration: vertexLabel[reviewer] hasIncidence(propertyKey[name]:String)
+2017-01-09 12:11:31 INFO  DataLoaderImpl:256 - Adding schema registration: vertexLabel[reviewer] hasIncidence(edgeLabel[rated]) vertexLabel[recipe]
+2017-01-09 12:11:31 INFO  DataLoaderImpl:259 - Sum of loading statistics: LoadStatistic.Record[presentVertexCount=0,maybeVertexCount=27,absentVertexCount=0,edgeCount=7,vertexPropertyCount=27,elementPropertyCount=20]
+2017-01-09 12:11:31 INFO  DataLoaderImpl:261 - Max load for weight [VERTEX (Sum of vertex counts)]: LoadStatistic.Record[presentVertexCount=0,maybeVertexCount=14,absentVertexCount=0,edgeCount=7,vertexPropertyCount=14,elementPropertyCount=20]
+2017-01-09 12:11:31 INFO  DataLoaderImpl:261 - Max load for weight [TOTAL (Sum of vertex, edge, and vertex-property counts)]: LoadStatistic.Record[presentVertexCount=0,maybeVertexCount=14,absentVertexCount=0,edgeCount=7,vertexPropertyCount=14,elementPropertyCount=20]
+2017-01-09 12:11:32 DEBUG ControlConnection:300 - [Control connection] Refreshing schema for everything.null (null)
+2017-01-09 12:11:32 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testreviewerRating.recipe_p, scheduling delivery
+2017-01-09 12:11:32 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testreviewerRating.recipe_e, scheduling delivery
+2017-01-09 12:11:32 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testreviewerRating.reviewer_p, scheduling delivery
+2017-01-09 12:11:32 DEBUG Reporter:69 - Input queue [reviewerRatings.csv] throughput is [7.808843831339393] items/s
+2017-01-09 12:11:32 DEBUG Reporter:69 - Input queue [reviewers.csv] throughput is [5.416697316145647] items/s
+2017-01-09 12:11:32 DEBUG Reporter:69 - Input queue [recipes.csv] throughput is [8.898084634227653] items/s
+2017-01-09 12:11:32 DEBUG Reporter:120 - query times 3: p50 2645.0µs, p80 2645.0µs, p90 2645.0µs, p95 2645.0µs, p99 2645.0µs, p99.9 2645.0µs, p99.99 2645.0µs
+2017-01-09 12:11:32 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testreviewerRating.reviewer_e, scheduling delivery
+2017-01-09 12:11:33 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testreviewerRating.recipe_p_byname, scheduling delivery
+2017-01-09 12:11:33 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testreviewerRating.reviewer_p_byname, scheduling delivery
+2017-01-09 12:11:33 DEBUG ControlConnection:534 - [Control connection] Refreshing node list and token map
+2017-01-09 12:11:33 DEBUG ReplicationStrategy$NetworkTopologyStrategy:123 - Computing token to replica map for keyspace: testREGtest_system.
+2017-01-09 12:11:33 DEBUG ReplicationStrategy$NetworkTopologyStrategy:211 - Token to replica map computation for keyspace testREGtest_system completed in 0 milliseconds
+2017-01-09 12:11:33 DEBUG ReplicationStrategy$NetworkTopologyStrategy:123 - Computing token to replica map for keyspace: gizmo.
+2017-01-09 12:11:33 WARN  ReplicationStrategy$NetworkTopologyStrategy:198 - Error while computing token map for keyspace gizmo with datacenter dc1: could not achieve replication factor 3 (found 0 replicas only), check your keyspace replication settings.
+2017-01-09 12:11:33 DEBUG ReplicationStrategy$NetworkTopologyStrategy:211 - Token to replica map computation for keyspace gizmo completed in 0 milliseconds
+2017-01-09 12:11:33 DEBUG Cluster:2300 - Received event EVENT UPDATED TABLE testreviewerRating_system.shared_data, scheduling delivery
+2017-01-09 12:11:33 DEBUG Cluster:2300 - Received event EVENT UPDATED TABLE testreviewerRating_system.shared_data, scheduling delivery
+2017-01-09 12:11:33 INFO  DataLoaderImpl:286 - The following schema changes were executed:
+schema.propertyKey('name').Text().single().create()
+schema.propertyKey('comment').Text().single().create()
+schema.propertyKey('stars').Text().single().create()
+schema.propertyKey('timestamp').Text().single().create()
+schema.vertexLabel('recipe').properties('name').create()
+schema.vertexLabel('reviewer').properties('name').create()
+schema.edgeLabel('rated').properties('comment', 'timestamp', 'stars').connection('reviewer', 'recipe').create()
+schema.vertexLabel('reviewer').index('byname').materialized().by('name').add()
+schema.vertexLabel('recipe').index('byname').materialized().by('name').add()
+
+2017-01-09 12:11:33 DEBUG GraphJsonUtils:63 - JSR 310 found on the classpath, registering serializers for java.time temporal types
+2017-01-09 12:11:33 DEBUG GraphJsonUtils:69 - Tinkerpop API found on the classpath, registering Tinkerpop serializers
+2017-01-09 12:11:33 DEBUG Reporter:120 - query times 4: p50 2695.0µs, p80 2695.0µs, p90 2695.0µs, p95 2695.0µs, p99 2695.0µs, p99.9 2695.0µs, p99.99 2695.0µs
+2017-01-09 12:11:33 INFO  DataLoaderImpl:334 - Looking for vertexes in the following loads [reviewers.csv, recipes.csv, reviewerRatings.csv]
+2017-01-09 12:11:33 INFO  DataLoaderImpl:193 - Initializing tasks with [1] read threads and [1] loader threads
+2017-01-09 12:11:33 INFO  DataLoaderImpl:164 - Scheduling [reviewers.csv] for reading
+2017-01-09 12:11:34 INFO  DataLoaderImpl:164 - Scheduling [recipes.csv] for reading
+2017-01-09 12:11:34 INFO  DataLoaderImpl:164 - Scheduling [reviewerRatings.csv] for reading
+2017-01-09 12:11:34 INFO  DataLoaderImpl:347 - Looking for relations in the following loads [reviewers.csv, recipes.csv, reviewerRatings.csv]
+2017-01-09 12:11:34 INFO  DataLoaderImpl:193 - Initializing tasks with [1] read threads and [1] loader threads
+2017-01-09 12:11:34 INFO  DataLoaderImpl:164 - Scheduling [reviewers.csv] for reading
+2017-01-09 12:11:34 INFO  DataLoaderImpl:164 - Scheduling [recipes.csv] for reading
+2017-01-09 12:11:34 INFO  DataLoaderImpl:164 - Scheduling [reviewerRatings.csv] for reading
+2017-01-09 12:11:34 DEBUG Cluster:1582 - Shutting down
+2017-01-09 12:11:34 DEBUG Connection:629 - Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=true] closing connection
+2017-01-09 12:11:34 DEBUG STATES:96 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=true] closed, remaining = 2
+2017-01-09 12:11:34 DEBUG Connection:629 - Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=true] closing connection
+2017-01-09 12:11:34 DEBUG STATES:96 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=true] closed, remaining = 1
+2017-01-09 12:11:34 DEBUG Connection:629 - Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=true] closing connection
+2017-01-09 12:11:34 DEBUG STATES:96 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=true] closed, remaining = 0
+2017-01-09 12:11:34 DEBUG Reporter:69 - Input queue [reviewerRatings.csv] throughput is [9.468613330965134] items/s
+2017-01-09 12:11:34 DEBUG Reporter:69 - Input queue [reviewers.csv] throughput is [6.730256979262017] items/s
+2017-01-09 12:11:34 DEBUG Reporter:69 - Input queue [recipes.csv] throughput is [10.79577981739327] items/s
+2017-01-09 12:11:34 DEBUG Reporter:75 - Promoted 14 vertices to the persistent cache in 6ms avg put time: 0.42857142857142855ms
+2017-01-09 12:11:34 DEBUG Reporter:120 - query times 4: p50 6172.0µs, p80 6172.0µs, p90 6172.0µs, p95 6172.0µs, p99 6172.0µs, p99.9 6172.0µs, p99.99 6172.0µs
+2017-01-09 12:11:34 DEBUG Reporter:120 - cache lookups 54: p50 4.0µs, p80 4.0µs, p90 4.0µs, p95 4.0µs, p99 4.0µs, p99.9 4.0µs, p99.99 4.0µs
+2017-01-09 12:11:34 INFO  Reporter:92 - ADD Request for 14 vertices 7 edges 0 properties 0 anonymous
+2017-01-09 12:11:34 INFO  Reporter:97 - Current total additions: 14 vertices 7 edges 0 properties 0 anonymous
+2017-01-09 12:11:34 INFO  Reporter:99 - 21 total elements written
+2017-01-09 12:11:37 DEBUG PoolThreadCache:81 - Freed 27 thread-local buffer(s) from thread: cluster1-nio-worker-0
+2017-01-09 12:11:37 DEBUG PoolThreadCache:81 - Freed 7 thread-local buffer(s) from thread: cluster1-nio-worker-1
+2017-01-09 12:11:37 DEBUG PoolThreadCache:81 - Freed 13 thread-local buffer(s) from thread: cluster1-nio-worker-2
+2017-01-09 12:16:00 DEBUG Executable:64 - Setting cluster builder: com.datastax.dsegraphloader.api.ClusterBuilder@42eca56e
+2017-01-09 12:16:00 DEBUG SystemProperties:32 - com.datastax.driver.NEW_NODE_DELAY_SECONDS is undefined, using default value 1
+2017-01-09 12:16:00 DEBUG SystemProperties:32 - com.datastax.driver.NON_BLOCKING_EXECUTOR_SIZE is undefined, using default value 8
+2017-01-09 12:16:00 DEBUG SystemProperties:32 - com.datastax.driver.NOTIF_LOCK_TIMEOUT_SECONDS is undefined, using default value 60
+2017-01-09 12:16:00 DEBUG Cluster:1360 - Starting new cluster with contact points [localhost/127.0.0.1:9042]
+2017-01-09 12:16:00 DEBUG InternalLoggerFactory:71 - Using SLF4J as the default logging framework
+2017-01-09 12:16:00 DEBUG PlatformDependent0:76 - java.nio.Buffer.address: available
+2017-01-09 12:16:00 DEBUG PlatformDependent0:76 - sun.misc.Unsafe.theUnsafe: available
+2017-01-09 12:16:00 DEBUG PlatformDependent0:71 - sun.misc.Unsafe.copyMemory: available
+2017-01-09 12:16:00 DEBUG PlatformDependent0:76 - java.nio.Bits.unaligned: true
+2017-01-09 12:16:00 DEBUG PlatformDependent:76 - Java version: 8
+2017-01-09 12:16:00 DEBUG PlatformDependent:76 - -Dio.netty.noUnsafe: false
+2017-01-09 12:16:00 DEBUG PlatformDependent:76 - sun.misc.Unsafe: available
+2017-01-09 12:16:00 DEBUG PlatformDependent:76 - -Dio.netty.noJavassist: false
+2017-01-09 12:16:00 DEBUG PlatformDependent:71 - Javassist: unavailable
+2017-01-09 12:16:00 DEBUG PlatformDependent:71 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2017-01-09 12:16:00 DEBUG PlatformDependent:76 - -Dio.netty.tmpdir: /var/folders/kt/8gksd2k94rd4f2x_8y4snnz40000gn/T (java.io.tmpdir)
+2017-01-09 12:16:00 DEBUG PlatformDependent:76 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2017-01-09 12:16:00 DEBUG PlatformDependent:76 - -Dio.netty.noPreferDirect: false
+2017-01-09 12:16:00 DEBUG SystemProperties:48 - com.datastax.driver.FORCE_NIO is undefined, using default value false
+2017-01-09 12:16:00 WARN  NettyUtil:73 - Found Netty's native epoll transport, but not running on linux-based operating system. Using NIO instead.
+2017-01-09 12:16:00 DEBUG MultithreadEventLoopGroup:76 - -Dio.netty.eventLoopThreads: 16
+2017-01-09 12:16:00 DEBUG NioEventLoop:76 - -Dio.netty.noKeySetOptimization: false
+2017-01-09 12:16:00 DEBUG NioEventLoop:76 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2017-01-09 12:16:00 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.level: simple
+2017-01-09 12:16:00 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.maxRecords: 4
+2017-01-09 12:16:00 DEBUG SystemProperties:48 - com.datastax.driver.EXTENDED_PEER_CHECK is undefined, using default value true
+2017-01-09 12:16:00 DEBUG STATES:88 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 1
+2017-01-09 12:16:00 DEBUG SystemProperties:48 - com.datastax.driver.DISABLE_COALESCING is undefined, using default value false
+2017-01-09 12:16:00 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numHeapArenas: 16
+2017-01-09 12:16:00 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numDirectArenas: 16
+2017-01-09 12:16:00 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.pageSize: 8192
+2017-01-09 12:16:00 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxOrder: 11
+2017-01-09 12:16:00 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.chunkSize: 16777216
+2017-01-09 12:16:00 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.tinyCacheSize: 512
+2017-01-09 12:16:00 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.smallCacheSize: 256
+2017-01-09 12:16:00 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.normalCacheSize: 64
+2017-01-09 12:16:00 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2017-01-09 12:16:00 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2017-01-09 12:16:00 DEBUG ThreadLocalRandom:71 - -Dio.netty.initialSeedUniquifier: 0x44cc2e70b70ce4c1 (took 9 ms)
+2017-01-09 12:16:00 DEBUG ByteBufUtil:76 - -Dio.netty.allocator.type: unpooled
+2017-01-09 12:16:00 DEBUG ByteBufUtil:76 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2017-01-09 12:16:00 DEBUG ByteBufUtil:76 - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2017-01-09 12:16:00 DEBUG Connection:160 - Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Connection established, initializing transport
+2017-01-09 12:16:00 DEBUG Recycler:76 - -Dio.netty.recycler.maxCapacity.default: 262144
+2017-01-09 12:16:00 DEBUG AbstractByteBuf:81 - -Dio.netty.buffer.bytebuf.checkAccessible: true
+2017-01-09 12:16:00 DEBUG STATES:307 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Transport initialized, connection ready
+2017-01-09 12:16:00 DEBUG ControlConnection:534 - [Control connection] Refreshing node list and token map
+2017-01-09 12:16:00 DEBUG ControlConnection:272 - [Control connection] Refreshing schema
+2017-01-09 12:16:01 DEBUG ControlConnection:534 - [Control connection] Refreshing node list and token map
+2017-01-09 12:16:01 DEBUG ReplicationStrategy$NetworkTopologyStrategy:123 - Computing token to replica map for keyspace: testREGtest_system.
+2017-01-09 12:16:01 DEBUG ReplicationStrategy$NetworkTopologyStrategy:211 - Token to replica map computation for keyspace testREGtest_system completed in 0 milliseconds
+2017-01-09 12:16:01 DEBUG ReplicationStrategy$NetworkTopologyStrategy:123 - Computing token to replica map for keyspace: gizmo.
+2017-01-09 12:16:01 WARN  ReplicationStrategy$NetworkTopologyStrategy:198 - Error while computing token map for keyspace gizmo with datacenter dc1: could not achieve replication factor 3 (found 0 replicas only), check your keyspace replication settings.
+2017-01-09 12:16:01 DEBUG ReplicationStrategy$NetworkTopologyStrategy:211 - Token to replica map computation for keyspace gizmo completed in 0 milliseconds
+2017-01-09 12:16:01 DEBUG STATES:183 - [Control connection] established to localhost/127.0.0.1:9042
+2017-01-09 12:16:01 INFO  DCAwareRoundRobinPolicy:95 - Using data-center name 'SearchGraph' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+2017-01-09 12:16:01 INFO  Cluster:1485 - New Cassandra host localhost/127.0.0.1:9042 added
+2017-01-09 12:16:01 WARN  ClusterBuilder:215 - Found node running unsupported version: 5.0.4, IP: localhost/127.0.0.1
+2017-01-09 12:16:01 DEBUG SystemProperties:48 - com.datastax.driver.CHECK_IO_DEADLOCKS is undefined, using default value true
+2017-01-09 12:16:01 DEBUG STATES:88 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 2
+2017-01-09 12:16:01 DEBUG Connection:160 - Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Connection established, initializing transport
+2017-01-09 12:16:01 DEBUG STATES:307 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Transport initialized, connection ready
+2017-01-09 12:16:01 DEBUG HostConnectionPool:153 - Created connection pool to host localhost/127.0.0.1:9042 (1 connections needed, 1 successfully opened)
+2017-01-09 12:16:01 DEBUG Session:368 - Added connection pool for localhost/127.0.0.1:9042
+2017-01-09 12:16:01 DEBUG GroovyScriptExecutor:102 - Complete loading script: 
+[1	]  // Input reviewers and ratings and link to recipes
+[2	]  // Run runDGL.sh
+[3	]  
+[4	]  /* SAMPLE INPUT
+[5	]  reviewer: John Doe
+[6	]  recipe: Beef Bourguignon
+[7	]  reviewerRating :John Doe|Beef Bourguignon|2014-01-01|5|comment
+[8	]   */
+[9	]  
+[10	]  // CONFIGURATION
+[11	]  // Configures the data loader to create the schema
+[12	]  config preparation: true, create_schema: true, load_new: false
+[13	]  
+[14	]  // DATA INPUT
+[15	]  // Define the data input source (a file which can be specified via command line arguments)
+[16	]  // inputfiledir is the directory for the input files that is given in the commandline
+[17	]  // as the "-filename" option
+[18	]  inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/CSV/reviewerRating/'
+[19	]  // This next file is not required if the reviewers already exist
+[20	]  reviewerInput = File.csv(inputfiledir + "reviewers.csv.gz").gzip().delimiter('|')
+[21	]  // This next file is not required if the recipes already exist
+[22	]  recipeInput = File.csv(inputfiledir +"recipes.csv.gz").gzip().delimiter('|')
+[23	]  // This is the file that is used to create the edges with edge properties
+[24	]  reviewerRatingInput = File.csv(inputfiledir + "reviewerRatings.csv.gz").gzip().delimiter('|')
+[25	]  
+[26	]  //Specifies what data source to load using which mapper (as defined inline)
+[27	]  
+[28	]  load(reviewerInput).asVertices {
+[29	]      label "reviewer"
+[30	]      key "name"
+[31	]  }
+[32	]  
+[33	]  load(recipeInput).asVertices {
+[34	]      label "recipe"
+[35	]      key "name"
+[36	]  }
+[37	]  
+[38	]  load(reviewerRatingInput).asEdges {
+[39	]      label "rated"
+[40	]      outV "rev_name", {
+[41	]          label "reviewer"
+[42	]          key "name"
+[43	]      }
+[44	]      inV "recipe_name", {
+[45	]          label "recipe"
+[46	]          key "name"
+[47	]      }
+[48	]     // properties are automatically added from the file, using the header line as property keys
+[49	]  }
+
+2017-01-09 12:16:01 DEBUG STATES:88 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 3
+2017-01-09 12:16:01 DEBUG Connection:160 - Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=false] Connection established, initializing transport
+2017-01-09 12:16:01 DEBUG STATES:307 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=false] Transport initialized, connection ready
+2017-01-09 12:16:01 DEBUG HostConnectionPool:153 - Created connection pool to host localhost/127.0.0.1:9042 (1 connections needed, 1 successfully opened)
+2017-01-09 12:16:01 DEBUG Session:368 - Added connection pool for localhost/127.0.0.1:9042
+2017-01-09 12:16:01 DEBUG GraphJsonUtils:63 - JSR 310 found on the classpath, registering serializers for java.time temporal types
+2017-01-09 12:16:01 DEBUG GraphJsonUtils:69 - Tinkerpop API found on the classpath, registering Tinkerpop serializers
+2017-01-09 12:16:01 INFO  DataLoaderImpl:193 - Initializing tasks with [1] read threads and [1] loader threads
+2017-01-09 12:16:01 INFO  DataLoaderImpl:164 - Scheduling [reviewers.csv] for reading
+2017-01-09 12:16:01 INFO  DataLoaderImpl:164 - Scheduling [recipes.csv] for reading
+2017-01-09 12:16:01 INFO  DataLoaderImpl:164 - Scheduling [reviewerRatings.csv] for reading
+2017-01-09 12:16:01 INFO  DataLoaderImpl:254 - The following schema registrations will be added.
+2017-01-09 12:16:01 INFO  DataLoaderImpl:256 - Adding schema registration: vertexLabel[reviewer] hasIncidence(propertyKey[name])
+2017-01-09 12:16:01 INFO  DataLoaderImpl:256 - Adding schema registration: edgeLabel[rated] hasIncidence(propertyKey[comment])
+2017-01-09 12:16:01 INFO  DataLoaderImpl:256 - Adding schema registration: edgeLabel[rated] hasIncidence(propertyKey[timestamp])
+2017-01-09 12:16:01 INFO  DataLoaderImpl:256 - Adding schema registration: vertexLabel[reviewer] hasIncidence(edgeLabel[rated]) vertexLabel[recipe]
+2017-01-09 12:16:01 INFO  DataLoaderImpl:256 - Adding schema registration: edgeLabel[rated] hasIncidence(propertyKey[stars])
+2017-01-09 12:16:01 INFO  DataLoaderImpl:256 - Adding schema registration: vertexLabel[recipe] hasIncidence(propertyKey[name])
+2017-01-09 12:16:01 INFO  DataLoaderImpl:259 - Sum of loading statistics: LoadStatistic.Record[presentVertexCount=0,maybeVertexCount=27,absentVertexCount=0,edgeCount=7,vertexPropertyCount=27,elementPropertyCount=20]
+2017-01-09 12:16:01 INFO  DataLoaderImpl:261 - Max load for weight [VERTEX (Sum of vertex counts)]: LoadStatistic.Record[presentVertexCount=0,maybeVertexCount=14,absentVertexCount=0,edgeCount=7,vertexPropertyCount=14,elementPropertyCount=20]
+2017-01-09 12:16:01 INFO  DataLoaderImpl:261 - Max load for weight [TOTAL (Sum of vertex, edge, and vertex-property counts)]: LoadStatistic.Record[presentVertexCount=0,maybeVertexCount=14,absentVertexCount=0,edgeCount=7,vertexPropertyCount=14,elementPropertyCount=20]
+2017-01-09 12:16:02 DEBUG Cluster:2300 - Received event EVENT UPDATED TABLE testreviewerRating_system.shared_data, scheduling delivery
+2017-01-09 12:16:02 DEBUG Cluster:2300 - Received event EVENT UPDATED TABLE testreviewerRating_system.shared_data, scheduling delivery
+2017-01-09 12:16:02 INFO  DataLoaderImpl:286 - The following schema changes were executed:
+schema.vertexLabel('reviewer').properties('name').add()
+schema.edgeLabel('rated').properties('comment').add()
+schema.edgeLabel('rated').properties('timestamp').add()
+schema.edgeLabel('rated').connection('reviewer', 'recipe').add()
+schema.edgeLabel('rated').properties('stars').add()
+schema.vertexLabel('recipe').properties('name').add()
+
+2017-01-09 12:16:02 INFO  DataLoaderImpl:334 - Looking for vertexes in the following loads [reviewers.csv, recipes.csv, reviewerRatings.csv]
+2017-01-09 12:16:02 INFO  DataLoaderImpl:193 - Initializing tasks with [1] read threads and [1] loader threads
+2017-01-09 12:16:02 INFO  DataLoaderImpl:164 - Scheduling [reviewers.csv] for reading
+2017-01-09 12:16:02 INFO  DataLoaderImpl:164 - Scheduling [recipes.csv] for reading
+2017-01-09 12:16:02 DEBUG Reporter:69 - Input queue [reviewerRatings.csv] throughput is [9.73656605018931] items/s
+2017-01-09 12:16:02 DEBUG Reporter:69 - Input queue [reviewers.csv] throughput is [18.548626030002882] items/s
+2017-01-09 12:16:02 DEBUG Reporter:69 - Input queue [recipes.csv] throughput is [162.926963345262] items/s
+2017-01-09 12:16:02 DEBUG Reporter:75 - Promoted 5 vertices to the persistent cache in 5ms avg put time: 1.0ms
+2017-01-09 12:16:02 DEBUG Reporter:120 - query times 8: p50 2141.0µs, p80 2141.0µs, p90 2141.0µs, p95 2141.0µs, p99 2141.0µs, p99.9 2141.0µs, p99.99 2141.0µs
+2017-01-09 12:16:02 DEBUG Reporter:120 - cache lookups 13: p50 5.0µs, p80 5.0µs, p90 5.0µs, p95 5.0µs, p99 5.0µs, p99.9 5.0µs, p99.99 5.0µs
+2017-01-09 12:16:02 INFO  Reporter:92 - ADD Request for 13 vertices 0 edges 0 properties 0 anonymous
+2017-01-09 12:16:02 INFO  Reporter:97 - Current total additions: 13 vertices 0 edges 0 properties 0 anonymous
+2017-01-09 12:16:02 INFO  Reporter:99 - 13 total elements written
+2017-01-09 12:16:02 INFO  DataLoaderImpl:164 - Scheduling [reviewerRatings.csv] for reading
+2017-01-09 12:16:02 INFO  DataLoaderImpl:347 - Looking for relations in the following loads [reviewers.csv, recipes.csv, reviewerRatings.csv]
+2017-01-09 12:16:02 INFO  DataLoaderImpl:193 - Initializing tasks with [1] read threads and [1] loader threads
+2017-01-09 12:16:02 INFO  DataLoaderImpl:164 - Scheduling [reviewers.csv] for reading
+2017-01-09 12:16:02 INFO  DataLoaderImpl:164 - Scheduling [recipes.csv] for reading
+2017-01-09 12:16:02 INFO  DataLoaderImpl:164 - Scheduling [reviewerRatings.csv] for reading
+2017-01-09 12:16:03 DEBUG Cluster:1582 - Shutting down
+2017-01-09 12:16:03 DEBUG Connection:629 - Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=true] closing connection
+2017-01-09 12:16:03 DEBUG STATES:96 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=true] closed, remaining = 2
+2017-01-09 12:16:03 DEBUG Connection:629 - Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=true] closing connection
+2017-01-09 12:16:03 DEBUG STATES:96 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=true] closed, remaining = 1
+2017-01-09 12:16:03 DEBUG Connection:629 - Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=true] closing connection
+2017-01-09 12:16:03 DEBUG STATES:96 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=true] closed, remaining = 0
+2017-01-09 12:16:03 DEBUG Reporter:69 - Input queue [reviewerRatings.csv] throughput is [8.239367447658966] items/s
+2017-01-09 12:16:03 DEBUG Reporter:69 - Input queue [reviewers.csv] throughput is [5.858818323003879] items/s
+2017-01-09 12:16:03 DEBUG Reporter:69 - Input queue [recipes.csv] throughput is [9.396664630632612] items/s
+2017-01-09 12:16:03 DEBUG Reporter:75 - Promoted 9 vertices to the persistent cache in 3ms avg put time: 0.3333333333333333ms
+2017-01-09 12:16:03 DEBUG Reporter:120 - query times 3: p50 11299.0µs, p80 11299.0µs, p90 11299.0µs, p95 11299.0µs, p99 11299.0µs, p99.9 11299.0µs, p99.99 11299.0µs
+2017-01-09 12:16:03 DEBUG Reporter:120 - cache lookups 41: p50 6.0µs, p80 6.0µs, p90 6.0µs, p95 6.0µs, p99 6.0µs, p99.9 6.0µs, p99.99 6.0µs
+2017-01-09 12:16:03 INFO  Reporter:92 - ADD Request for 1 vertices 7 edges 0 properties 0 anonymous
+2017-01-09 12:16:03 INFO  Reporter:97 - Current total additions: 14 vertices 7 edges 0 properties 0 anonymous
+2017-01-09 12:16:03 INFO  Reporter:99 - 21 total elements written
+2017-01-09 12:16:05 DEBUG PoolThreadCache:81 - Freed 25 thread-local buffer(s) from thread: cluster1-nio-worker-0
+2017-01-09 12:16:05 DEBUG PoolThreadCache:81 - Freed 7 thread-local buffer(s) from thread: cluster1-nio-worker-1
+2017-01-09 12:16:05 DEBUG PoolThreadCache:81 - Freed 13 thread-local buffer(s) from thread: cluster1-nio-worker-2

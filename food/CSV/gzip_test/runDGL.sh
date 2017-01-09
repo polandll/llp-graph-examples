@@ -12,9 +12,9 @@
 VERSION=dse-graph-loader-5.0.5
 LDR=/Users/lorinapoland/CLONES/$VERSION/graphloader
 TYPE=CSV
-INPUTEXAMPLE='authorBook'
+INPUTEXAMPLE='gzip_test'
 INPUTBASEDIR='/Users/lorinapoland/CLONES/graph-examples/food'
 INPUTFILEDIR=$INPUTBASEDIR/$TYPE/$INPUTEXAMPLE
-SCRIPTNAME='authorBookMapping'$TYPE'.groovy'
+SCRIPTNAME='gzipMapping.groovy'
 GRAPHNAME='test'$INPUTEXAMPLE
 $LDR $INPUTFILEDIR/$SCRIPTNAME -graph $GRAPHNAME -address localhost
