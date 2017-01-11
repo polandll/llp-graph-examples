@@ -15,12 +15,12 @@ recipeInput = Graph.file(inputfiledir + 'recipeTG.json').graphson()
 
 //Specifies what data source to load using which mapper (as defined inline)
   
-load(recipeInput.vertices().withVertexId()).asVertices {
+load(recipeInput.vertices()).asVertices {
     labelField "~label"
     key "~id", "id"
 }
 
-load(recipeInput.edges().withVertexId()).asEdges {
+load(recipeInput.edges()).asEdges {
     labelField "~label"
     outV "outV", {
         labelField "~label"
