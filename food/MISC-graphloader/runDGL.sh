@@ -7,14 +7,17 @@
 # GRAPHNAME defines the name of the graph used for loading. It does not have to exist prior 
 # to loading
 
-LDR=/Users/lorinapoland/CLONES/dse-graph-loader-5.0.4-SNAPSHOT/graphloader
+VERSION=dse-graph-loader-5.0.5
+LDR=/Users/lorinapoland/CLONES/$VERSION/graphloader
 TYPE=CSV
-OPTIONS="-dryrun true -preparation true -create_schema true -load_new true -schema_output loader_output.txt"
-#DRYRUN_SETTING=true
+OPTIONS=$DRYRUN $PREP $CREATE_SCHEMA $LOAD_NEW $SCHEMA_OUTPUT
+DRYRUN='-dryrun true'
+PREP='-preparation true'
+CREATE_SCHEMA='-create_schema true'
+LOAD_NEW='-load_new true'
+SCHEMA_OUTPUT='-schema_output loader_output.txt'
 INPUTFILEDIR=/Users/lorinapoland/CLONES/graph-examples/food/$TYPE/
-#SCRIPTNAME='authorBookMapping'$TYPE'.groovy'
-SCRIPTNAME='fiTestMapping.groovy'
-#GRAPHNAME='test'$TYPE
-GRAPHNAME='test_fi'
+SCRIPTNAME='authorBookMapping'$TYPE'.groovy'
+GRAPHNAME='test'$TYPE
 #$LDR $INPUTFILEDIR/$SCRIPTNAME -filename INPUTFILEDIR -graph $GRAPHNAME -address localhost -dryrun DRYRUN_SETTING
 $LDR $INPUTFILEDIR/$SCRIPTNAME -graph $GRAPHNAME -address localhost $OPTIONS

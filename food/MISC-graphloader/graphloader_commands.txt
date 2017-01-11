@@ -1,0 +1,100 @@
+ 6014  bin/graphloader '/Users/lorinapoland/CLONES/graph-examples/food/$TYPE/authorBookMappingCSV.groovy' -graph 'CSVTEST' -address localhost -dryrun false
+ 6018  bin/graphloader /Users/lorinapoland/CLONES/graph-examples/food/CSV/authorBookMappingCSV.groovy -graph CSVTEST -address localhost -dryrun false
+ 6019  bin/graphloader ./scripts/csv2Vertex.groovy -address localhost
+ 6030  bin/graphloader ./scripts/csv2Vertex.groovy -address localhost -graph junk
+ 6038  bin/graphloader '/Users/lorinapoland/CLONES/graph-examples/food/$TYPE/authorBookMappingCSV.groovy' -graph 'CSVTEST' -address localhost -dryrun true
+ 6045  bin/graphloader /Users/lorinapoland/CLONES/graph-examples/food/CSV/authorBookMappingCSV.groovy -graph junk -address localhost -filename '/Users/lorinapoland/CLONES/graph-examples/food/CSV/'
+ 6063  bin/graphloader /Users/lorinapoland/CLONES/graph-examples/food/CSV/authorBookMappingCSV.groovy -graph test9 -address localhost -filename '/Users/lorinapoland/CLONES/graph-examples/food/CSV/'
+ 6066  bin/graphloader ./scripts/csv2Vertex.groovy -filename User.csv -graph csvTest -address 127.0.0.1
+ 6246  ./graphloader /Users/lorinapoland/CLONES/graph-examples/food/CSV/authorBookMappingCSV.groovy -graph blah2 -address localhost
+ 6248  ./graphloader /Users/lorinapoland/CLONES/graph-examples/food/CSV/authorBookMappingCSV.groovy -graph blah3 -address localhost
+ 6253  ./graphloader mappingMovie.groovy -graph blah4 -address localhost
+ 6261  ./graphloader mappingType.groovy -graph blah5 -address localhost
+ 6262  ./graphloader mappingType.groovy -graph blah6 -address localhost
+ 6273  ./graphloader mappingGryo.groovy -filename northwind.kryo -graph blah8 -address localhost
+ 6276  ./graphloader mappingGryo.groovy -filename recipe.gryo -graph blah9 -address localhost
+ 6279  ./graphloader mappingGryo.groovy -filename old_recipe.gryo -graph blah9 -address localhost
+ 6283  ./graphloader mappingGryo.groovy -filename /tmp/recipe.gryo -graph blah9 -address localhost
+ 6287  ./graphloader mappingGryo.groovy -filename recipe.kryo -graph blah9 -address localhost
+ 6290  ./graphloader authorBookMapping.groovy  -graph blah11 -address localhost
+ 6291  ./graphloader authorBookMappingTEXT.groovy  -graph blah11 -address localhost
+ 6295  ./graphloader authorBookMappingTEXT.groovy  -graph blah12 -address localhost
+ 6301  ./graphloader mappingVertProp.groovy -graph blah7 -address localhost
+ 6303  ./graphloader mappingGryo.groovy -filename recipe2.gryo -graph blah10 -address localhost
+ 6306  ./graphloader mappingGryo.groovy -filename recipe.gryo -graph blah10 -address localhost
+ 6309  ./graphloader mappingExtGryo.groovy -filename recipe.gryo -graph blah10 -address localhost
+ 6315  ./graphloader mappingVertProp.groovy -filename recipe.json -graph blah2 -address localhost
+ 6324  ./graphloader mappingVertProp.groovy -filename reviewer.json -graph blah2 -address localhost
+ 6325  ./graphloader mappingVertProp.groovy -filename reviewer.json -graph blah3 -address localhost
+ 6326  ./graphloader mappingVertProp.groovy -filename reviewer.json -graph blah4 -address localhost
+ 6328  ./graphloader mappingVertProp.groovy -filename reviewer.dat -graph blah2 -address localhost
+ 6330  ./graphloader mappingVertPropJSON.groovy -graph blah5 -address localhost
+ 6333  ./graphloader mappingVertPropJSON.groovy -graph blah6 -address localhost
+ 6361  ./graphloader amy_mapping.groovy -filename amy.json -type json -graph blah7 -address localhost
+ 6373  ./graphloader amy_mapping.groovy -graph blah7 -address localhost
+ 6374  ./graphloader amy_mapping.groovy -filename amy.json -graph blah7 -address localhost
+ 6380  ./graphloader mappingGryo.groovy -graph blah8 -address localhost
+ 6390  ./graphloader amy_mapping.groovy -filename amy2.json -graph blah7 -address localhost
+ 7081  ./graphloader ~/CLONES/graph-examples/food/CSV/reviewersRatingsMappingCSV.groovy -graph bleck -address localhost -dryrun true
+ 7087  ./graphloader /Users/lorinapoland/CLONES/graph-examples/food/CSV/reviewersRatingsMappingCSV.groovy -graph bleck -address localhost -dryrun true
+ 7116  ./bin/graphloader /Users/lorinapoland/CLONES/graph-examples/food/CSV/reviewersRatingsMappingCSV.groovy -graph test_edges -address localhost
+ 7217  bin/graphloader ~/CLONES/graph-examples/food/CSV/revRatMappingCSVnew_exist.groovy -graph test_new -address localhost
+ 7245  graphloader ~/CLONES/graph-examples/food/CSV/revRatMappingCSVnew_exist.groovy -graph test_new -address localhost
+ 7248  graphloader ~/CLONES/graph-examples/food/CSV/testMapping.groovy -graph test_new -address localhost
+ 7269  graphloader ~/CLONES/graph-examples/food/GraphML/recipeMappingGRAPHML.groovy -graph test_xml -address localhost 
+ 7273  graphloader ~/CLONES/graph-examples/food/GraphSON/recipeMappingGRAPHSON.groovy -graph test_gml -address localhost
+ 7277  graphloader ~/CLONES/graph-examples/food/CSV/fridgeItemMappingCOMPKEY.groovy -graph test_new -address localhost
+ 7484  bin/graphloader recipeMappingGryo.groovy -graph testGryo -address localhost -dryrun true
+ 7485  graphloader recipeMappingGryo.groovy -graph testGryo -address localhost -dryrun true
+ 7486  graphloader recipeMappingGRYO_DSEG.groovy -graph testGryo -address localhost -dryrun true
+ 7487  graphloader ~/CLONES/graph-examples/food/Gryo/recipeMappingGRYO_DSEG.groovy -graph testGryo -address localhost -dryrun true
+ 7640  graphloader ~/CLONES/graph-examples/food/Gryo/recipeMappingGRYO_DSEG.groovy -graph testGryo -address localhost
+ 7641  graphloader ~/CLONES/graph-examples/food/Gryo/recipeMappingGRYO_DSEG.groovy -graph test_gryo -address localhost
+ 7642  graphloader ~/CLONES/graph-examples/food/Gryo/recipeMappingGRYO_TG.groovy -graph test_gryo -address localhost
+ 7645  graphloader ~/CLONES/graph-examples/food/GRYO/recipeMappingGRYO_TG.groovy -graph test_gryo -address localhost
+ 7647  graphloader ~/CLONES/graph-examples/food/GRYO/recipeMappingGRYO_DSEG.groovy -graph test_gryo -address localhost
+ 8657  graphloader my_scripts/github_events_mapping_script.groovy -graph repl4 -address localhost -dryrun false
+ 8659  graphloader my_scripts/github_events_mapping_script.groovy -graph repl4 -address localhost -dryrun false -create_schema true
+ 8660  graphloader my_scripts/github_events_mapping_script.groovy -graph repl4 -address localhost -dryrun true
+ 8661  graphloader my_scripts/github_events_mapping_script.groovy -graph repl4 -address localhost -dryrun true -create_schema true -preparation true
+ 8662  graphloader my_scripts/github_events_mapping_script.groovy -graph repl4 -address localhost -dryrun true -create_schema true -preparation true -schema_output github_event_schema.groovy
+ 8666  graphloader my_scripts/github_events_mapping_script.groovy -graph repl4 -address localhost -dryrun false -create_schema true -preparation true -schema_output github_event_schema.groovy
+ 8667  graphloader my_scripts/github_events_mapping_script.groovy -graph repl4 -address localhost -dryrun false -create_schema true -preparation true -schema_output my_scripts/github_event_schema.groovy
+ 8668  graphloader my_scripts/github_events_mapping_script.groovy -graph repl5 -address localhost -dryrun false -create_schema true -preparation true -schema_output my_scripts/github_event_schema.groovy
+ 8669  graphloader my_scripts/github_events_mapping_script.groovy -label type -address localhost -graph repl5 -dryrun true
+ 8688  graphloader ~/CLONES/graph-examples/food/MISC-graphloader/mappingId.groovy -address localhost -graph repl5 -dryrun true
+ 8706  graphloader ~/CLONES/graph-examples/food/TEST/mappingId.groovy -address localhost -graph repl5 -dryrun true
+ 8742  graphloader ~/CLONES/graph-examples/food/TEST/mappingIsNew.groovy -address localhost -graph repl5 -dryrun true
+ 8832  graphloader ~/CLONES/graph-examples/food/CSV/fridgeItemMappingCOMPKEY.groovy -graph test_new -address localhost -dryrun true
+ 8835  graphloader ~/CLONES/graph-examples/food/CSV/fridgeItemMappingCOMPKEY.groovy -graph test_new -address localhost -dryrun false
+ 8838  graphloader ~/CLONES/graph-examples/food/CSV/fiMapping.groovy -graph test_fi -address localhost -dryrun false
+ 8839  graphloader ~/CLONES/graph-examples/food/CSV/fiTestMapping.groovy -graph test_fi -address localhost -dryrun false
+ 8950  ./graphloader neo4j_mapping.groovy -address localhost -graph testNeo4j
+ 8957  ./graphloader ~/CLONES/dse-graph-loader-5.0.4-SNAPSHOT/neo4j_mapping.groovy -address localhost -graph testNeo4j
+ 8961  graphloader ~/CLONES/graph-examples/food/TEST/expand/ip_mapping.groovy -graph expand -address localhost
+ 8965  graphloader ~/CLONES/graph-examples/food/TEST/expand/ip_mapping.groovy -graph expand -address localhost 
+ 8969  ./graphloader neo4j_mapping.groovy -address localhost -graph testnel4j
+ 8986  ./graphloader ./neo4j_mapping.groovy -address localhost -graph testneo4j
+ 8988  graphloader ~/CLONES/graph-examples/food/CSV/fiTestMapping.groovy -graph test_fi -address localhost -dryrun true -schema_output schema.txt
+ 9011  ./graphloader_new ./neo4j_mapping.groovy -address localhost -graph testneo4j
+ 9021  ./graphloader neo4j_mapping.groovy -address localhost -graph testneo4j
+ 9030  ./graphloader neo4j_map_test.groovy -address localhost -graph neotest2
+ 9053  ./graphloader neo4j_map_test.groovy -address localhost -graph testneo2
+ 9063  ./graphloader ~/CLONES/graph-examples/food/TEST/expand/ip_mapping.groovy -graph expand -address localhost
+ 9071  ./graphloader ~/CLONES/graph-examples/food/TEST/expand/filter_map.groovy -graph filter -address localhost
+ 9087  ./graphloader ~/CLONES/graph-examples/food/TEXT/authorBookMappingCSV.groovy -graph testExists -address localhost
+ 9088  ./graphloader ~/CLONES/graph-examples/food/TEST/authorBookMappingCSV.groovy -graph testExists -address localhost
+ 9468  ./graphloader ~/CLONES/graph-examples/food/TEST/authorBookMappingCSV.groovy -graph testSOF -address localhost
+ 9477  ./graphloader ~/CLONES/graph-examples/food/REGEX/authorBookMappingREGEX.groovy -graph testREGtest -address localhost
+ 9732  ./graphloader ~/CLONES/graph-examples/food/MISC-graphloader/mappingLabelField.groovy -graph LF -address localhost
+ 9733  ./graphloader ~/CLONES/graph-examples/food/MISC-graphloader/mappingLabelLF.groovy -graph LF -address localhost
+ 9734  ./graphloader ~/CLONES/graph-examples/food/MISC-graphloader/mappingLabelLFcsv.groovy -graph LFcsv -address localhost
+ 9738  ./graphloader ~/CLONES/graph-examples/food/MISC-graphloader/mappingLFcsv.groovy -graph LFcsv -address localhost
+ 9754  ./graphloader ~/CLONES/graph-examples/food/MISC-graphloader/mappingLFallcsv.groovy -graph LFallODcsv -address localhost
+10309  ./graphloader_orig neo4j_map_test.groovy -address localhost -graph neotest
+10310  ./graphloader neo4j_map_test.groovy -address localhost -graph neotest
+10515  ./graphloader neo4j_mapping.groovy -address localhost -graph neo4test
+10540  ./graphloader ~/CLONES/graph-examples/food/TEST/neo4j_mapping.groovy -address localhost -graph neo4jtest
+10550  ./graphloader scripts/neo4j/neo4j_mapping.groovy -address localhost -graph neo4jdb
+10567  ./graphloader /Users/lorinapoland/CLONES/graph-examples/food/TEST/new_neo4j_mapping.groovy -address localhost -graph neo4jdb2
+10989  ./graphloader ~/CLONES/graph-examples/food/MISC-graphloader/mappingFIcsv.groovy -address localhost -graph testJose

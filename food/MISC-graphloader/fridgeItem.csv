@@ -1,0 +1,7 @@
+city_id|sensor_id|fridgeItem
+santaCruz|93c4ec9b-68ff-455e-8668-1056ebc3689f|asparagus
+sacramento|9c23b683-1de2-4c97-a26a-277b3733732a|ham
+sacramento|eff4a8af-2b0d-4ba9-a063-c170130e2d84|eggs
+santaCruz|b6c20c89-06d5-4f3c-9424-030c35a00dff|beef
+davis|ad7a68bc-31b4-4a2d-a109-9867eae3cce3|beef
+davis|9c23b683-1de2-4c97-a26a-277b3733732a|chicken
