@@ -1,0 +1,583 @@
+2017-01-11 11:52:39 DEBUG Executable:64 - Setting cluster builder: com.datastax.dsegraphloader.api.ClusterBuilder@42eca56e
+2017-01-11 11:52:39 DEBUG SystemProperties:32 - com.datastax.driver.NEW_NODE_DELAY_SECONDS is undefined, using default value 1
+2017-01-11 11:52:39 DEBUG SystemProperties:32 - com.datastax.driver.NON_BLOCKING_EXECUTOR_SIZE is undefined, using default value 8
+2017-01-11 11:52:39 DEBUG SystemProperties:32 - com.datastax.driver.NOTIF_LOCK_TIMEOUT_SECONDS is undefined, using default value 60
+2017-01-11 11:52:40 DEBUG Cluster:1360 - Starting new cluster with contact points [localhost/127.0.0.1:9042]
+2017-01-11 11:52:40 DEBUG InternalLoggerFactory:71 - Using SLF4J as the default logging framework
+2017-01-11 11:52:40 DEBUG PlatformDependent0:76 - java.nio.Buffer.address: available
+2017-01-11 11:52:40 DEBUG PlatformDependent0:76 - sun.misc.Unsafe.theUnsafe: available
+2017-01-11 11:52:40 DEBUG PlatformDependent0:71 - sun.misc.Unsafe.copyMemory: available
+2017-01-11 11:52:40 DEBUG PlatformDependent0:76 - java.nio.Bits.unaligned: true
+2017-01-11 11:52:40 DEBUG PlatformDependent:76 - Java version: 8
+2017-01-11 11:52:40 DEBUG PlatformDependent:76 - -Dio.netty.noUnsafe: false
+2017-01-11 11:52:40 DEBUG PlatformDependent:76 - sun.misc.Unsafe: available
+2017-01-11 11:52:40 DEBUG PlatformDependent:76 - -Dio.netty.noJavassist: false
+2017-01-11 11:52:40 DEBUG PlatformDependent:71 - Javassist: unavailable
+2017-01-11 11:52:40 DEBUG PlatformDependent:71 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2017-01-11 11:52:40 DEBUG PlatformDependent:76 - -Dio.netty.tmpdir: /var/folders/kt/8gksd2k94rd4f2x_8y4snnz40000gn/T (java.io.tmpdir)
+2017-01-11 11:52:40 DEBUG PlatformDependent:76 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2017-01-11 11:52:40 DEBUG PlatformDependent:76 - -Dio.netty.noPreferDirect: false
+2017-01-11 11:52:40 DEBUG SystemProperties:48 - com.datastax.driver.FORCE_NIO is undefined, using default value false
+2017-01-11 11:52:40 WARN  NettyUtil:73 - Found Netty's native epoll transport, but not running on linux-based operating system. Using NIO instead.
+2017-01-11 11:52:40 DEBUG MultithreadEventLoopGroup:76 - -Dio.netty.eventLoopThreads: 16
+2017-01-11 11:52:40 DEBUG NioEventLoop:76 - -Dio.netty.noKeySetOptimization: false
+2017-01-11 11:52:40 DEBUG NioEventLoop:76 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2017-01-11 11:52:40 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.level: simple
+2017-01-11 11:52:40 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.maxRecords: 4
+2017-01-11 11:52:40 DEBUG SystemProperties:48 - com.datastax.driver.EXTENDED_PEER_CHECK is undefined, using default value true
+2017-01-11 11:52:40 DEBUG STATES:88 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 1
+2017-01-11 11:52:40 DEBUG SystemProperties:48 - com.datastax.driver.DISABLE_COALESCING is undefined, using default value false
+2017-01-11 11:52:40 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numHeapArenas: 16
+2017-01-11 11:52:40 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numDirectArenas: 16
+2017-01-11 11:52:40 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.pageSize: 8192
+2017-01-11 11:52:40 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxOrder: 11
+2017-01-11 11:52:40 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.chunkSize: 16777216
+2017-01-11 11:52:40 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.tinyCacheSize: 512
+2017-01-11 11:52:40 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.smallCacheSize: 256
+2017-01-11 11:52:40 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.normalCacheSize: 64
+2017-01-11 11:52:40 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2017-01-11 11:52:40 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2017-01-11 11:52:40 DEBUG ThreadLocalRandom:71 - -Dio.netty.initialSeedUniquifier: 0xc9a50c95ec6f2e4c (took 7 ms)
+2017-01-11 11:52:40 DEBUG ByteBufUtil:76 - -Dio.netty.allocator.type: unpooled
+2017-01-11 11:52:40 DEBUG ByteBufUtil:76 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2017-01-11 11:52:40 DEBUG ByteBufUtil:76 - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2017-01-11 11:52:40 DEBUG Connection:160 - Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Connection established, initializing transport
+2017-01-11 11:52:40 DEBUG Recycler:76 - -Dio.netty.recycler.maxCapacity.default: 262144
+2017-01-11 11:52:40 DEBUG AbstractByteBuf:81 - -Dio.netty.buffer.bytebuf.checkAccessible: true
+2017-01-11 11:52:40 DEBUG STATES:307 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Transport initialized, connection ready
+2017-01-11 11:52:40 DEBUG ControlConnection:534 - [Control connection] Refreshing node list and token map
+2017-01-11 11:52:40 DEBUG ControlConnection:272 - [Control connection] Refreshing schema
+2017-01-11 11:52:40 DEBUG ControlConnection:534 - [Control connection] Refreshing node list and token map
+2017-01-11 11:52:40 DEBUG ReplicationStrategy$NetworkTopologyStrategy:123 - Computing token to replica map for keyspace: STUDIO_TUTORIAL_GRAPH_system.
+2017-01-11 11:52:40 DEBUG ReplicationStrategy$NetworkTopologyStrategy:211 - Token to replica map computation for keyspace STUDIO_TUTORIAL_GRAPH_system completed in 0 milliseconds
+2017-01-11 11:52:40 DEBUG STATES:183 - [Control connection] established to localhost/127.0.0.1:9042
+2017-01-11 11:52:40 INFO  DCAwareRoundRobinPolicy:95 - Using data-center name 'SearchGraph' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+2017-01-11 11:52:40 INFO  Cluster:1485 - New Cassandra host localhost/127.0.0.1:9042 added
+2017-01-11 11:52:40 DEBUG SystemProperties:48 - com.datastax.driver.CHECK_IO_DEADLOCKS is undefined, using default value true
+2017-01-11 11:52:40 DEBUG STATES:88 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 2
+2017-01-11 11:52:40 DEBUG Connection:160 - Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Connection established, initializing transport
+2017-01-11 11:52:40 DEBUG STATES:307 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Transport initialized, connection ready
+2017-01-11 11:52:40 DEBUG HostConnectionPool:153 - Created connection pool to host localhost/127.0.0.1:9042 (1 connections needed, 1 successfully opened)
+2017-01-11 11:52:40 DEBUG Session:368 - Added connection pool for localhost/127.0.0.1:9042
+2017-01-11 11:52:40 DEBUG Cluster:2300 - Received event EVENT CREATED KEYSPACE testexistsIsNew, scheduling delivery
+2017-01-11 11:52:40 DEBUG Cluster:2300 - Received event EVENT CREATED KEYSPACE testexistsIsNew_system, scheduling delivery
+2017-01-11 11:52:40 DEBUG Cluster:2300 - Received event EVENT CREATED KEYSPACE testexistsIsNew_pvt, scheduling delivery
+2017-01-11 11:52:40 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testexistsIsNew_system.dseg_variables, scheduling delivery
+2017-01-11 11:52:40 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testexistsIsNew_system.shared_data, scheduling delivery
+2017-01-11 11:52:40 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testexistsIsNew_system.shared_data_versions, scheduling delivery
+2017-01-11 11:52:41 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testexistsIsNew.id_allocation, scheduling delivery
+2017-01-11 11:52:41 DEBUG Cluster:2300 - Received event EVENT UPDATED TABLE testexistsIsNew_system.shared_data, scheduling delivery
+2017-01-11 11:52:41 DEBUG Cluster:2300 - Received event EVENT UPDATED TABLE dse_system.shared_data, scheduling delivery
+2017-01-11 11:52:41 DEBUG Cluster:2300 - Received event EVENT UPDATED TABLE dse_system.shared_data, scheduling delivery
+2017-01-11 11:52:41 ERROR Executable:173 - Encountered error while loading
+java.lang.IllegalArgumentException: File does not exist or cannot be read: /Users/lorinapoland/CLONES/graph-examples/food/CSV/existsIsNew/authorBookMappingexistsIsNew.groovy
+	at com.google.common.base.Preconditions.checkArgument(Preconditions.java:145)
+	at com.datastax.dsegraphloader.cli.GroovyScriptExecutor.evaluate(GroovyScriptExecutor.java:75)
+	at com.datastax.dsegraphloader.cli.Executable.execute(Executable.java:72)
+	at com.datastax.dsegraphloader.cli.Executable.main(Executable.java:171)
+2017-01-11 11:53:02 DEBUG Executable:64 - Setting cluster builder: com.datastax.dsegraphloader.api.ClusterBuilder@42eca56e
+2017-01-11 11:53:02 DEBUG SystemProperties:32 - com.datastax.driver.NEW_NODE_DELAY_SECONDS is undefined, using default value 1
+2017-01-11 11:53:02 DEBUG SystemProperties:32 - com.datastax.driver.NON_BLOCKING_EXECUTOR_SIZE is undefined, using default value 8
+2017-01-11 11:53:02 DEBUG SystemProperties:32 - com.datastax.driver.NOTIF_LOCK_TIMEOUT_SECONDS is undefined, using default value 60
+2017-01-11 11:53:02 DEBUG Cluster:1360 - Starting new cluster with contact points [localhost/127.0.0.1:9042]
+2017-01-11 11:53:02 DEBUG InternalLoggerFactory:71 - Using SLF4J as the default logging framework
+2017-01-11 11:53:02 DEBUG PlatformDependent0:76 - java.nio.Buffer.address: available
+2017-01-11 11:53:02 DEBUG PlatformDependent0:76 - sun.misc.Unsafe.theUnsafe: available
+2017-01-11 11:53:02 DEBUG PlatformDependent0:71 - sun.misc.Unsafe.copyMemory: available
+2017-01-11 11:53:02 DEBUG PlatformDependent0:76 - java.nio.Bits.unaligned: true
+2017-01-11 11:53:02 DEBUG PlatformDependent:76 - Java version: 8
+2017-01-11 11:53:02 DEBUG PlatformDependent:76 - -Dio.netty.noUnsafe: false
+2017-01-11 11:53:02 DEBUG PlatformDependent:76 - sun.misc.Unsafe: available
+2017-01-11 11:53:02 DEBUG PlatformDependent:76 - -Dio.netty.noJavassist: false
+2017-01-11 11:53:02 DEBUG PlatformDependent:71 - Javassist: unavailable
+2017-01-11 11:53:02 DEBUG PlatformDependent:71 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2017-01-11 11:53:02 DEBUG PlatformDependent:76 - -Dio.netty.tmpdir: /var/folders/kt/8gksd2k94rd4f2x_8y4snnz40000gn/T (java.io.tmpdir)
+2017-01-11 11:53:02 DEBUG PlatformDependent:76 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2017-01-11 11:53:02 DEBUG PlatformDependent:76 - -Dio.netty.noPreferDirect: false
+2017-01-11 11:53:02 DEBUG SystemProperties:48 - com.datastax.driver.FORCE_NIO is undefined, using default value false
+2017-01-11 11:53:02 WARN  NettyUtil:73 - Found Netty's native epoll transport, but not running on linux-based operating system. Using NIO instead.
+2017-01-11 11:53:02 DEBUG MultithreadEventLoopGroup:76 - -Dio.netty.eventLoopThreads: 16
+2017-01-11 11:53:02 DEBUG NioEventLoop:76 - -Dio.netty.noKeySetOptimization: false
+2017-01-11 11:53:02 DEBUG NioEventLoop:76 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2017-01-11 11:53:02 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.level: simple
+2017-01-11 11:53:02 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.maxRecords: 4
+2017-01-11 11:53:02 DEBUG SystemProperties:48 - com.datastax.driver.EXTENDED_PEER_CHECK is undefined, using default value true
+2017-01-11 11:53:02 DEBUG STATES:88 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 1
+2017-01-11 11:53:02 DEBUG SystemProperties:48 - com.datastax.driver.DISABLE_COALESCING is undefined, using default value false
+2017-01-11 11:53:02 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numHeapArenas: 16
+2017-01-11 11:53:02 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numDirectArenas: 16
+2017-01-11 11:53:02 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.pageSize: 8192
+2017-01-11 11:53:02 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxOrder: 11
+2017-01-11 11:53:02 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.chunkSize: 16777216
+2017-01-11 11:53:02 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.tinyCacheSize: 512
+2017-01-11 11:53:02 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.smallCacheSize: 256
+2017-01-11 11:53:02 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.normalCacheSize: 64
+2017-01-11 11:53:02 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2017-01-11 11:53:02 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2017-01-11 11:53:02 DEBUG ThreadLocalRandom:71 - -Dio.netty.initialSeedUniquifier: 0x2b1f7f08ff761c23 (took 6 ms)
+2017-01-11 11:53:02 DEBUG ByteBufUtil:76 - -Dio.netty.allocator.type: unpooled
+2017-01-11 11:53:02 DEBUG ByteBufUtil:76 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2017-01-11 11:53:02 DEBUG ByteBufUtil:76 - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2017-01-11 11:53:02 DEBUG Connection:160 - Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Connection established, initializing transport
+2017-01-11 11:53:03 DEBUG Recycler:76 - -Dio.netty.recycler.maxCapacity.default: 262144
+2017-01-11 11:53:03 DEBUG AbstractByteBuf:81 - -Dio.netty.buffer.bytebuf.checkAccessible: true
+2017-01-11 11:53:03 DEBUG STATES:307 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Transport initialized, connection ready
+2017-01-11 11:53:03 DEBUG ControlConnection:534 - [Control connection] Refreshing node list and token map
+2017-01-11 11:53:03 DEBUG ControlConnection:272 - [Control connection] Refreshing schema
+2017-01-11 11:53:03 DEBUG ControlConnection:534 - [Control connection] Refreshing node list and token map
+2017-01-11 11:53:03 DEBUG ReplicationStrategy$NetworkTopologyStrategy:123 - Computing token to replica map for keyspace: testexistsIsNew_system.
+2017-01-11 11:53:03 DEBUG ReplicationStrategy$NetworkTopologyStrategy:211 - Token to replica map computation for keyspace testexistsIsNew_system completed in 0 milliseconds
+2017-01-11 11:53:03 DEBUG STATES:183 - [Control connection] established to localhost/127.0.0.1:9042
+2017-01-11 11:53:03 INFO  DCAwareRoundRobinPolicy:95 - Using data-center name 'SearchGraph' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+2017-01-11 11:53:03 INFO  Cluster:1485 - New Cassandra host localhost/127.0.0.1:9042 added
+2017-01-11 11:53:03 DEBUG SystemProperties:48 - com.datastax.driver.CHECK_IO_DEADLOCKS is undefined, using default value true
+2017-01-11 11:53:03 DEBUG STATES:88 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 2
+2017-01-11 11:53:03 DEBUG Connection:160 - Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Connection established, initializing transport
+2017-01-11 11:53:03 DEBUG STATES:307 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Transport initialized, connection ready
+2017-01-11 11:53:03 DEBUG HostConnectionPool:153 - Created connection pool to host localhost/127.0.0.1:9042 (1 connections needed, 1 successfully opened)
+2017-01-11 11:53:03 DEBUG Session:368 - Added connection pool for localhost/127.0.0.1:9042
+2017-01-11 11:53:03 ERROR Executable:173 - Encountered error while loading
+java.lang.IllegalArgumentException: File does not exist or cannot be read: /Users/lorinapoland/CLONES/graph-examples/food/CSV/existsIsNew/authorBookMappingexistsIsNew.groovy
+	at com.google.common.base.Preconditions.checkArgument(Preconditions.java:145)
+	at com.datastax.dsegraphloader.cli.GroovyScriptExecutor.evaluate(GroovyScriptExecutor.java:75)
+	at com.datastax.dsegraphloader.cli.Executable.execute(Executable.java:72)
+	at com.datastax.dsegraphloader.cli.Executable.main(Executable.java:171)
+2017-01-11 11:54:16 DEBUG Executable:64 - Setting cluster builder: com.datastax.dsegraphloader.api.ClusterBuilder@42eca56e
+2017-01-11 11:54:16 DEBUG SystemProperties:32 - com.datastax.driver.NEW_NODE_DELAY_SECONDS is undefined, using default value 1
+2017-01-11 11:54:16 DEBUG SystemProperties:32 - com.datastax.driver.NON_BLOCKING_EXECUTOR_SIZE is undefined, using default value 8
+2017-01-11 11:54:16 DEBUG SystemProperties:32 - com.datastax.driver.NOTIF_LOCK_TIMEOUT_SECONDS is undefined, using default value 60
+2017-01-11 11:54:16 DEBUG Cluster:1360 - Starting new cluster with contact points [localhost/127.0.0.1:9042]
+2017-01-11 11:54:16 DEBUG InternalLoggerFactory:71 - Using SLF4J as the default logging framework
+2017-01-11 11:54:16 DEBUG PlatformDependent0:76 - java.nio.Buffer.address: available
+2017-01-11 11:54:16 DEBUG PlatformDependent0:76 - sun.misc.Unsafe.theUnsafe: available
+2017-01-11 11:54:16 DEBUG PlatformDependent0:71 - sun.misc.Unsafe.copyMemory: available
+2017-01-11 11:54:16 DEBUG PlatformDependent0:76 - java.nio.Bits.unaligned: true
+2017-01-11 11:54:16 DEBUG PlatformDependent:76 - Java version: 8
+2017-01-11 11:54:16 DEBUG PlatformDependent:76 - -Dio.netty.noUnsafe: false
+2017-01-11 11:54:16 DEBUG PlatformDependent:76 - sun.misc.Unsafe: available
+2017-01-11 11:54:16 DEBUG PlatformDependent:76 - -Dio.netty.noJavassist: false
+2017-01-11 11:54:16 DEBUG PlatformDependent:71 - Javassist: unavailable
+2017-01-11 11:54:16 DEBUG PlatformDependent:71 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2017-01-11 11:54:16 DEBUG PlatformDependent:76 - -Dio.netty.tmpdir: /var/folders/kt/8gksd2k94rd4f2x_8y4snnz40000gn/T (java.io.tmpdir)
+2017-01-11 11:54:16 DEBUG PlatformDependent:76 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2017-01-11 11:54:16 DEBUG PlatformDependent:76 - -Dio.netty.noPreferDirect: false
+2017-01-11 11:54:16 DEBUG SystemProperties:48 - com.datastax.driver.FORCE_NIO is undefined, using default value false
+2017-01-11 11:54:16 WARN  NettyUtil:73 - Found Netty's native epoll transport, but not running on linux-based operating system. Using NIO instead.
+2017-01-11 11:54:16 DEBUG MultithreadEventLoopGroup:76 - -Dio.netty.eventLoopThreads: 16
+2017-01-11 11:54:16 DEBUG NioEventLoop:76 - -Dio.netty.noKeySetOptimization: false
+2017-01-11 11:54:16 DEBUG NioEventLoop:76 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2017-01-11 11:54:16 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.level: simple
+2017-01-11 11:54:16 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.maxRecords: 4
+2017-01-11 11:54:16 DEBUG SystemProperties:48 - com.datastax.driver.EXTENDED_PEER_CHECK is undefined, using default value true
+2017-01-11 11:54:16 DEBUG STATES:88 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 1
+2017-01-11 11:54:16 DEBUG SystemProperties:48 - com.datastax.driver.DISABLE_COALESCING is undefined, using default value false
+2017-01-11 11:54:16 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numHeapArenas: 16
+2017-01-11 11:54:16 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numDirectArenas: 16
+2017-01-11 11:54:16 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.pageSize: 8192
+2017-01-11 11:54:16 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxOrder: 11
+2017-01-11 11:54:16 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.chunkSize: 16777216
+2017-01-11 11:54:16 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.tinyCacheSize: 512
+2017-01-11 11:54:16 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.smallCacheSize: 256
+2017-01-11 11:54:16 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.normalCacheSize: 64
+2017-01-11 11:54:16 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2017-01-11 11:54:16 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2017-01-11 11:54:16 DEBUG ThreadLocalRandom:71 - -Dio.netty.initialSeedUniquifier: 0xde5117d687770b8c (took 6 ms)
+2017-01-11 11:54:16 DEBUG ByteBufUtil:76 - -Dio.netty.allocator.type: unpooled
+2017-01-11 11:54:16 DEBUG ByteBufUtil:76 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2017-01-11 11:54:16 DEBUG ByteBufUtil:76 - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2017-01-11 11:54:16 DEBUG Connection:160 - Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Connection established, initializing transport
+2017-01-11 11:54:16 DEBUG Recycler:76 - -Dio.netty.recycler.maxCapacity.default: 262144
+2017-01-11 11:54:16 DEBUG AbstractByteBuf:81 - -Dio.netty.buffer.bytebuf.checkAccessible: true
+2017-01-11 11:54:16 DEBUG STATES:307 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Transport initialized, connection ready
+2017-01-11 11:54:16 DEBUG ControlConnection:534 - [Control connection] Refreshing node list and token map
+2017-01-11 11:54:16 DEBUG ControlConnection:272 - [Control connection] Refreshing schema
+2017-01-11 11:54:16 DEBUG ControlConnection:534 - [Control connection] Refreshing node list and token map
+2017-01-11 11:54:16 DEBUG ReplicationStrategy$NetworkTopologyStrategy:123 - Computing token to replica map for keyspace: testexistsIsNew_system.
+2017-01-11 11:54:16 DEBUG ReplicationStrategy$NetworkTopologyStrategy:211 - Token to replica map computation for keyspace testexistsIsNew_system completed in 1 milliseconds
+2017-01-11 11:54:16 DEBUG STATES:183 - [Control connection] established to localhost/127.0.0.1:9042
+2017-01-11 11:54:16 INFO  DCAwareRoundRobinPolicy:95 - Using data-center name 'SearchGraph' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+2017-01-11 11:54:16 INFO  Cluster:1485 - New Cassandra host localhost/127.0.0.1:9042 added
+2017-01-11 11:54:16 DEBUG SystemProperties:48 - com.datastax.driver.CHECK_IO_DEADLOCKS is undefined, using default value true
+2017-01-11 11:54:16 DEBUG STATES:88 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 2
+2017-01-11 11:54:16 DEBUG Connection:160 - Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Connection established, initializing transport
+2017-01-11 11:54:16 DEBUG STATES:307 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Transport initialized, connection ready
+2017-01-11 11:54:16 DEBUG HostConnectionPool:153 - Created connection pool to host localhost/127.0.0.1:9042 (1 connections needed, 1 successfully opened)
+2017-01-11 11:54:16 DEBUG Session:368 - Added connection pool for localhost/127.0.0.1:9042
+2017-01-11 11:54:16 DEBUG Cluster:2300 - Received event EVENT CREATED KEYSPACE testExistsIsNew, scheduling delivery
+2017-01-11 11:54:16 DEBUG Cluster:2300 - Received event EVENT CREATED KEYSPACE testExistsIsNew_system, scheduling delivery
+2017-01-11 11:54:16 DEBUG Cluster:2300 - Received event EVENT CREATED KEYSPACE testExistsIsNew_pvt, scheduling delivery
+2017-01-11 11:54:16 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testExistsIsNew_system.dseg_variables, scheduling delivery
+2017-01-11 11:54:16 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testExistsIsNew_system.shared_data, scheduling delivery
+2017-01-11 11:54:16 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testExistsIsNew_system.shared_data_versions, scheduling delivery
+2017-01-11 11:54:16 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testExistsIsNew.id_allocation, scheduling delivery
+2017-01-11 11:54:17 DEBUG Cluster:2300 - Received event EVENT UPDATED TABLE testExistsIsNew_system.shared_data, scheduling delivery
+2017-01-11 11:54:17 DEBUG Cluster:2300 - Received event EVENT UPDATED TABLE dse_system.shared_data, scheduling delivery
+2017-01-11 11:54:17 DEBUG Cluster:2300 - Received event EVENT UPDATED TABLE dse_system.shared_data, scheduling delivery
+2017-01-11 11:54:17 ERROR Executable:173 - Encountered error while loading
+java.lang.IllegalArgumentException: File does not exist or cannot be read: /Users/lorinapoland/CLONES/graph-examples/food/MISC-GRAPHLOADER/CSV/ExistsIsNew/authorBookMappingExistsIsNew.groovy
+	at com.google.common.base.Preconditions.checkArgument(Preconditions.java:145)
+	at com.datastax.dsegraphloader.cli.GroovyScriptExecutor.evaluate(GroovyScriptExecutor.java:75)
+	at com.datastax.dsegraphloader.cli.Executable.execute(Executable.java:72)
+	at com.datastax.dsegraphloader.cli.Executable.main(Executable.java:171)
+2017-01-11 11:54:49 DEBUG Executable:64 - Setting cluster builder: com.datastax.dsegraphloader.api.ClusterBuilder@42eca56e
+2017-01-11 11:54:49 DEBUG SystemProperties:32 - com.datastax.driver.NEW_NODE_DELAY_SECONDS is undefined, using default value 1
+2017-01-11 11:54:49 DEBUG SystemProperties:32 - com.datastax.driver.NON_BLOCKING_EXECUTOR_SIZE is undefined, using default value 8
+2017-01-11 11:54:49 DEBUG SystemProperties:32 - com.datastax.driver.NOTIF_LOCK_TIMEOUT_SECONDS is undefined, using default value 60
+2017-01-11 11:54:49 DEBUG Cluster:1360 - Starting new cluster with contact points [localhost/127.0.0.1:9042]
+2017-01-11 11:54:49 DEBUG InternalLoggerFactory:71 - Using SLF4J as the default logging framework
+2017-01-11 11:54:49 DEBUG PlatformDependent0:76 - java.nio.Buffer.address: available
+2017-01-11 11:54:49 DEBUG PlatformDependent0:76 - sun.misc.Unsafe.theUnsafe: available
+2017-01-11 11:54:49 DEBUG PlatformDependent0:71 - sun.misc.Unsafe.copyMemory: available
+2017-01-11 11:54:49 DEBUG PlatformDependent0:76 - java.nio.Bits.unaligned: true
+2017-01-11 11:54:49 DEBUG PlatformDependent:76 - Java version: 8
+2017-01-11 11:54:49 DEBUG PlatformDependent:76 - -Dio.netty.noUnsafe: false
+2017-01-11 11:54:49 DEBUG PlatformDependent:76 - sun.misc.Unsafe: available
+2017-01-11 11:54:49 DEBUG PlatformDependent:76 - -Dio.netty.noJavassist: false
+2017-01-11 11:54:49 DEBUG PlatformDependent:71 - Javassist: unavailable
+2017-01-11 11:54:49 DEBUG PlatformDependent:71 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2017-01-11 11:54:49 DEBUG PlatformDependent:76 - -Dio.netty.tmpdir: /var/folders/kt/8gksd2k94rd4f2x_8y4snnz40000gn/T (java.io.tmpdir)
+2017-01-11 11:54:49 DEBUG PlatformDependent:76 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2017-01-11 11:54:49 DEBUG PlatformDependent:76 - -Dio.netty.noPreferDirect: false
+2017-01-11 11:54:49 DEBUG SystemProperties:48 - com.datastax.driver.FORCE_NIO is undefined, using default value false
+2017-01-11 11:54:49 WARN  NettyUtil:73 - Found Netty's native epoll transport, but not running on linux-based operating system. Using NIO instead.
+2017-01-11 11:54:49 DEBUG MultithreadEventLoopGroup:76 - -Dio.netty.eventLoopThreads: 16
+2017-01-11 11:54:49 DEBUG NioEventLoop:76 - -Dio.netty.noKeySetOptimization: false
+2017-01-11 11:54:49 DEBUG NioEventLoop:76 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2017-01-11 11:54:49 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.level: simple
+2017-01-11 11:54:49 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.maxRecords: 4
+2017-01-11 11:54:49 DEBUG SystemProperties:48 - com.datastax.driver.EXTENDED_PEER_CHECK is undefined, using default value true
+2017-01-11 11:54:49 DEBUG STATES:88 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 1
+2017-01-11 11:54:49 DEBUG SystemProperties:48 - com.datastax.driver.DISABLE_COALESCING is undefined, using default value false
+2017-01-11 11:54:49 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numHeapArenas: 16
+2017-01-11 11:54:49 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numDirectArenas: 16
+2017-01-11 11:54:49 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.pageSize: 8192
+2017-01-11 11:54:49 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxOrder: 11
+2017-01-11 11:54:49 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.chunkSize: 16777216
+2017-01-11 11:54:49 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.tinyCacheSize: 512
+2017-01-11 11:54:49 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.smallCacheSize: 256
+2017-01-11 11:54:49 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.normalCacheSize: 64
+2017-01-11 11:54:49 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2017-01-11 11:54:49 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2017-01-11 11:54:49 DEBUG ThreadLocalRandom:71 - -Dio.netty.initialSeedUniquifier: 0xad79ceb6965c0ce5 (took 6 ms)
+2017-01-11 11:54:49 DEBUG ByteBufUtil:76 - -Dio.netty.allocator.type: unpooled
+2017-01-11 11:54:49 DEBUG ByteBufUtil:76 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2017-01-11 11:54:49 DEBUG ByteBufUtil:76 - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2017-01-11 11:54:49 DEBUG Connection:160 - Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Connection established, initializing transport
+2017-01-11 11:54:49 DEBUG Recycler:76 - -Dio.netty.recycler.maxCapacity.default: 262144
+2017-01-11 11:54:49 DEBUG AbstractByteBuf:81 - -Dio.netty.buffer.bytebuf.checkAccessible: true
+2017-01-11 11:54:49 DEBUG STATES:307 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Transport initialized, connection ready
+2017-01-11 11:54:49 DEBUG ControlConnection:534 - [Control connection] Refreshing node list and token map
+2017-01-11 11:54:49 DEBUG ControlConnection:272 - [Control connection] Refreshing schema
+2017-01-11 11:54:49 DEBUG ControlConnection:534 - [Control connection] Refreshing node list and token map
+2017-01-11 11:54:49 DEBUG ReplicationStrategy$NetworkTopologyStrategy:123 - Computing token to replica map for keyspace: testedgeProperty.
+2017-01-11 11:54:49 DEBUG ReplicationStrategy$NetworkTopologyStrategy:211 - Token to replica map computation for keyspace testedgeProperty completed in 0 milliseconds
+2017-01-11 11:54:49 DEBUG STATES:183 - [Control connection] established to localhost/127.0.0.1:9042
+2017-01-11 11:54:49 INFO  DCAwareRoundRobinPolicy:95 - Using data-center name 'SearchGraph' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+2017-01-11 11:54:49 INFO  Cluster:1485 - New Cassandra host localhost/127.0.0.1:9042 added
+2017-01-11 11:54:49 DEBUG SystemProperties:48 - com.datastax.driver.CHECK_IO_DEADLOCKS is undefined, using default value true
+2017-01-11 11:54:49 DEBUG STATES:88 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 2
+2017-01-11 11:54:49 DEBUG Connection:160 - Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Connection established, initializing transport
+2017-01-11 11:54:49 DEBUG STATES:307 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Transport initialized, connection ready
+2017-01-11 11:54:49 DEBUG HostConnectionPool:153 - Created connection pool to host localhost/127.0.0.1:9042 (1 connections needed, 1 successfully opened)
+2017-01-11 11:54:49 DEBUG Session:368 - Added connection pool for localhost/127.0.0.1:9042
+2017-01-11 11:54:49 DEBUG GroovyScriptExecutor:102 - Complete loading script: 
+[1	]  // Run runDGL.sh
+[2	]  
+[3	]  /* SAMPLE INPUT
+[4	]  author: Julia Child|F
+[5	]  book : Simca's Cuisine: 100 Classic French Recipes for Every Occasion|1972|0-394-40152-2
+[6	]  authorBook: Simca's Cuisine: 100 Classic French Recipes for Every Occasion|Simone Beck
+[7	]   */
+[8	]  
+[9	]  // CONFIGURATION
+[10	]  // Configures the data loader to create the schema
+[11	]  config create_schema: true
+[12	]  
+[13	]  // DATA INPUT
+[14	]  // Define the data input source (a file which can be specified via command line arguments)
+[15	]  // inputfiledir is the directory for the input files that is given in the commandline
+[16	]  // as the "-filename" option
+[17	]  inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/CSV/authorBook/'
+[18	]  authorInput = File.csv(inputfiledir + "author.csv").delimiter('|')
+[19	]  bookInput = File.csv(inputfiledir + "book.csv").delimiter('|')
+[20	]  authorBookInput = File.csv(inputfiledir + "authorBook.csv").delimiter('|')
+[21	]  
+[22	]  //Specifies what data source to load using which mapper (as defined inline)
+[23	]    
+[24	]  load(authorInput).asVertices {
+[25	]      isNew()
+[26	]      label "author"
+[27	]      key "name"
+[28	]  }
+[29	]  
+[30	]  load(bookInput).asVertices {
+[31	]      isNew()
+[32	]      label "book"
+[33	]      key "name"
+[34	]  }
+[35	]  
+[36	]  load(authorBookInput).asEdges {
+[37	]      label "authored"
+[38	]      outV "aname", { exists()
+[39	]          label "author"
+[40	]          key "name"
+[41	]      }
+[42	]      inV "bname", { exists()
+[43	]          label "book"
+[44	]          key "name"
+[45	]      }
+[46	]  }
+
+2017-01-11 11:54:50 DEBUG STATES:88 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 3
+2017-01-11 11:54:50 DEBUG Connection:160 - Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=false] Connection established, initializing transport
+2017-01-11 11:54:50 DEBUG STATES:307 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=false] Transport initialized, connection ready
+2017-01-11 11:54:50 DEBUG HostConnectionPool:153 - Created connection pool to host localhost/127.0.0.1:9042 (1 connections needed, 1 successfully opened)
+2017-01-11 11:54:50 DEBUG Session:368 - Added connection pool for localhost/127.0.0.1:9042
+2017-01-11 11:54:50 INFO  DataLoaderImpl:193 - Initializing tasks with [1] read threads and [1] loader threads
+2017-01-11 11:54:50 INFO  DataLoaderImpl:164 - Scheduling [author] for reading
+2017-01-11 11:54:50 INFO  DataLoaderImpl:164 - Scheduling [book] for reading
+2017-01-11 11:54:50 INFO  DataLoaderImpl:164 - Scheduling [authorBook] for reading
+2017-01-11 11:54:50 WARN  DataLoaderImpl:242 - The following schema elements will be added. It is STRONGLY advised to create schema elements explicitly prior to data loading.
+2017-01-11 11:54:50 INFO  DataLoaderImpl:244 - Adding schema element: propertyKey[gender]:String
+2017-01-11 11:54:50 INFO  DataLoaderImpl:244 - Adding schema element: propertyKey[ISBN]:String
+2017-01-11 11:54:50 INFO  DataLoaderImpl:244 - Adding schema element: propertyKey[year]:String
+2017-01-11 11:54:50 INFO  DataLoaderImpl:244 - Adding schema element: propertyKey[name]:String
+2017-01-11 11:54:50 INFO  DataLoaderImpl:244 - Adding schema element: vertexLabel[author]
+2017-01-11 11:54:50 INFO  DataLoaderImpl:244 - Adding schema element: vertexLabel[book]
+2017-01-11 11:54:50 INFO  DataLoaderImpl:244 - Adding schema element: edgeLabel[authored]
+2017-01-11 11:54:50 WARN  DataLoaderImpl:248 - The following indexes will be added. It is STRONGLY advised to create indexes explicitly prior to data loading.
+2017-01-11 11:54:50 INFO  DataLoaderImpl:250 - Adding index: vertexLabel[author][name]
+2017-01-11 11:54:50 INFO  DataLoaderImpl:250 - Adding index: vertexLabel[book][name]
+2017-01-11 11:54:50 INFO  DataLoaderImpl:254 - The following schema registrations will be added.
+2017-01-11 11:54:50 INFO  DataLoaderImpl:256 - Adding schema registration: vertexLabel[book] hasIncidence(propertyKey[ISBN]:String)
+2017-01-11 11:54:50 INFO  DataLoaderImpl:256 - Adding schema registration: vertexLabel[book] hasIncidence(propertyKey[year]:String)
+2017-01-11 11:54:50 INFO  DataLoaderImpl:256 - Adding schema registration: vertexLabel[author] hasIncidence(propertyKey[gender]:String)
+2017-01-11 11:54:50 INFO  DataLoaderImpl:256 - Adding schema registration: vertexLabel[author] hasIncidence(edgeLabel[authored]) vertexLabel[book]
+2017-01-11 11:54:50 INFO  DataLoaderImpl:256 - Adding schema registration: vertexLabel[author] hasIncidence(propertyKey[name]:String)
+2017-01-11 11:54:50 INFO  DataLoaderImpl:256 - Adding schema registration: vertexLabel[book] hasIncidence(propertyKey[name]:String)
+2017-01-11 11:54:50 INFO  DataLoaderImpl:259 - Sum of loading statistics: LoadStatistic.Record[presentVertexCount=20,maybeVertexCount=0,absentVertexCount=14,edgeCount=10,vertexPropertyCount=52,elementPropertyCount=0]
+2017-01-11 11:54:50 INFO  DataLoaderImpl:261 - Max load for weight [VERTEX (Sum of vertex counts)]: LoadStatistic.Record[presentVertexCount=20,maybeVertexCount=0,absentVertexCount=0,edgeCount=10,vertexPropertyCount=20,elementPropertyCount=0]
+2017-01-11 11:54:50 INFO  DataLoaderImpl:261 - Max load for weight [TOTAL (Sum of vertex, edge, and vertex-property counts)]: LoadStatistic.Record[presentVertexCount=20,maybeVertexCount=0,absentVertexCount=0,edgeCount=10,vertexPropertyCount=20,elementPropertyCount=0]
+2017-01-11 11:54:50 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testExistsIsNew.author_p, scheduling delivery
+2017-01-11 11:54:50 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testExistsIsNew.author_e, scheduling delivery
+2017-01-11 11:54:50 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testExistsIsNew.book_p, scheduling delivery
+2017-01-11 11:54:50 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testExistsIsNew.book_e, scheduling delivery
+2017-01-11 11:54:50 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testExistsIsNew.author_p_byname, scheduling delivery
+2017-01-11 11:54:50 DEBUG Cluster:2300 - Received event EVENT CREATED TABLE testExistsIsNew.book_p_byname, scheduling delivery
+2017-01-11 11:54:50 DEBUG Cluster:2300 - Received event EVENT UPDATED TABLE testExistsIsNew_system.shared_data, scheduling delivery
+2017-01-11 11:54:51 DEBUG Cluster:2300 - Received event EVENT UPDATED TABLE testExistsIsNew_system.shared_data, scheduling delivery
+2017-01-11 11:54:51 INFO  DataLoaderImpl:286 - The following schema changes were executed:
+schema.propertyKey('gender').Text().single().create()
+schema.propertyKey('ISBN').Text().single().create()
+schema.propertyKey('year').Text().single().create()
+schema.propertyKey('name').Text().single().create()
+schema.vertexLabel('author').properties('gender', 'name').create()
+schema.vertexLabel('book').properties('ISBN', 'year', 'name').create()
+schema.edgeLabel('authored').connection('author', 'book').create()
+schema.vertexLabel('author').index('byname').materialized().by('name').add()
+schema.vertexLabel('book').index('byname').materialized().by('name').add()
+
+2017-01-11 11:54:51 DEBUG Reporter:69 - Input queue [author] throughput is [10.464806203211452] items/s
+2017-01-11 11:54:51 DEBUG Reporter:69 - Input queue [book] throughput is [4.266684493443371] items/s
+2017-01-11 11:54:51 DEBUG Reporter:69 - Input queue [authorBook] throughput is [10.679253331468365] items/s
+2017-01-11 11:54:51 DEBUG GraphJsonUtils:63 - JSR 310 found on the classpath, registering serializers for java.time temporal types
+2017-01-11 11:54:51 DEBUG GraphJsonUtils:69 - Tinkerpop API found on the classpath, registering Tinkerpop serializers
+2017-01-11 11:54:51 DEBUG Reporter:120 - query times 5: p50 1609.0µs, p80 1609.0µs, p90 1609.0µs, p95 1609.0µs, p99 1609.0µs, p99.9 1609.0µs, p99.99 1609.0µs
+2017-01-11 11:54:51 INFO  DataLoaderImpl:334 - Looking for vertexes in the following loads [author, book, authorBook]
+2017-01-11 11:54:51 INFO  DataLoaderImpl:193 - Initializing tasks with [1] read threads and [1] loader threads
+2017-01-11 11:54:51 INFO  DataLoaderImpl:164 - Scheduling [author] for reading
+2017-01-11 11:54:51 INFO  DataLoaderImpl:164 - Scheduling [book] for reading
+2017-01-11 11:54:51 INFO  DataLoaderImpl:164 - Scheduling [authorBook] for reading
+2017-01-11 11:54:51 INFO  DataLoaderImpl:347 - Looking for relations in the following loads [author, book, authorBook]
+2017-01-11 11:54:51 INFO  DataLoaderImpl:193 - Initializing tasks with [1] read threads and [1] loader threads
+2017-01-11 11:54:51 INFO  DataLoaderImpl:164 - Scheduling [author] for reading
+2017-01-11 11:54:51 INFO  DataLoaderImpl:164 - Scheduling [book] for reading
+2017-01-11 11:54:51 INFO  DataLoaderImpl:164 - Scheduling [authorBook] for reading
+2017-01-11 11:54:51 DEBUG Cluster:1582 - Shutting down
+2017-01-11 11:54:51 DEBUG Connection:629 - Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=true] closing connection
+2017-01-11 11:54:51 DEBUG STATES:96 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=true] closed, remaining = 2
+2017-01-11 11:54:51 DEBUG Connection:629 - Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=true] closing connection
+2017-01-11 11:54:51 DEBUG STATES:96 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=true] closed, remaining = 1
+2017-01-11 11:54:51 DEBUG Connection:629 - Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=true] closing connection
+2017-01-11 11:54:51 DEBUG STATES:96 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=true] closed, remaining = 0
+2017-01-11 11:54:52 DEBUG Reporter:69 - Input queue [author] throughput is [14.035470882728617] items/s
+2017-01-11 11:54:52 DEBUG Reporter:69 - Input queue [book] throughput is [5.881789318715004] items/s
+2017-01-11 11:54:52 DEBUG Reporter:69 - Input queue [authorBook] throughput is [14.898968870374542] items/s
+2017-01-11 11:54:52 DEBUG Reporter:75 - Promoted 14 vertices to the persistent cache in 7ms avg put time: 0.5ms
+2017-01-11 11:54:52 DEBUG Reporter:120 - query times 7: p50 1961.0µs, p80 1961.0µs, p90 1961.0µs, p95 1961.0µs, p99 1961.0µs, p99.9 1961.0µs, p99.99 1961.0µs
+2017-01-11 11:54:52 DEBUG Reporter:120 - cache lookups 68: p50 4.0µs, p80 4.0µs, p90 4.0µs, p95 4.0µs, p99 4.0µs, p99.9 4.0µs, p99.99 4.0µs
+2017-01-11 11:54:52 INFO  Reporter:92 - ADD Request for 14 vertices 10 edges 18 properties 0 anonymous
+2017-01-11 11:54:52 INFO  Reporter:97 - Current total additions: 14 vertices 10 edges 18 properties 0 anonymous
+2017-01-11 11:54:52 INFO  Reporter:99 - 42 total elements written
+2017-01-11 11:54:54 DEBUG PoolThreadCache:81 - Freed 26 thread-local buffer(s) from thread: cluster1-nio-worker-0
+2017-01-11 11:54:54 DEBUG PoolThreadCache:81 - Freed 6 thread-local buffer(s) from thread: cluster1-nio-worker-1
+2017-01-11 11:54:54 DEBUG PoolThreadCache:81 - Freed 13 thread-local buffer(s) from thread: cluster1-nio-worker-2
+2017-01-11 11:56:57 DEBUG Executable:64 - Setting cluster builder: com.datastax.dsegraphloader.api.ClusterBuilder@42eca56e
+2017-01-11 11:56:57 DEBUG SystemProperties:32 - com.datastax.driver.NEW_NODE_DELAY_SECONDS is undefined, using default value 1
+2017-01-11 11:56:57 DEBUG SystemProperties:32 - com.datastax.driver.NON_BLOCKING_EXECUTOR_SIZE is undefined, using default value 8
+2017-01-11 11:56:57 DEBUG SystemProperties:32 - com.datastax.driver.NOTIF_LOCK_TIMEOUT_SECONDS is undefined, using default value 60
+2017-01-11 11:56:57 DEBUG Cluster:1360 - Starting new cluster with contact points [localhost/127.0.0.1:9042]
+2017-01-11 11:56:57 DEBUG InternalLoggerFactory:71 - Using SLF4J as the default logging framework
+2017-01-11 11:56:57 DEBUG PlatformDependent0:76 - java.nio.Buffer.address: available
+2017-01-11 11:56:57 DEBUG PlatformDependent0:76 - sun.misc.Unsafe.theUnsafe: available
+2017-01-11 11:56:57 DEBUG PlatformDependent0:71 - sun.misc.Unsafe.copyMemory: available
+2017-01-11 11:56:57 DEBUG PlatformDependent0:76 - java.nio.Bits.unaligned: true
+2017-01-11 11:56:57 DEBUG PlatformDependent:76 - Java version: 8
+2017-01-11 11:56:57 DEBUG PlatformDependent:76 - -Dio.netty.noUnsafe: false
+2017-01-11 11:56:57 DEBUG PlatformDependent:76 - sun.misc.Unsafe: available
+2017-01-11 11:56:57 DEBUG PlatformDependent:76 - -Dio.netty.noJavassist: false
+2017-01-11 11:56:57 DEBUG PlatformDependent:71 - Javassist: unavailable
+2017-01-11 11:56:57 DEBUG PlatformDependent:71 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2017-01-11 11:56:57 DEBUG PlatformDependent:76 - -Dio.netty.tmpdir: /var/folders/kt/8gksd2k94rd4f2x_8y4snnz40000gn/T (java.io.tmpdir)
+2017-01-11 11:56:57 DEBUG PlatformDependent:76 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2017-01-11 11:56:57 DEBUG PlatformDependent:76 - -Dio.netty.noPreferDirect: false
+2017-01-11 11:56:57 DEBUG SystemProperties:48 - com.datastax.driver.FORCE_NIO is undefined, using default value false
+2017-01-11 11:56:57 WARN  NettyUtil:73 - Found Netty's native epoll transport, but not running on linux-based operating system. Using NIO instead.
+2017-01-11 11:56:57 DEBUG MultithreadEventLoopGroup:76 - -Dio.netty.eventLoopThreads: 16
+2017-01-11 11:56:57 DEBUG NioEventLoop:76 - -Dio.netty.noKeySetOptimization: false
+2017-01-11 11:56:57 DEBUG NioEventLoop:76 - -Dio.netty.selectorAutoRebuildThreshold: 512
+2017-01-11 11:56:57 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.level: simple
+2017-01-11 11:56:57 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.maxRecords: 4
+2017-01-11 11:56:57 DEBUG SystemProperties:48 - com.datastax.driver.EXTENDED_PEER_CHECK is undefined, using default value true
+2017-01-11 11:56:57 DEBUG STATES:88 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 1
+2017-01-11 11:56:57 DEBUG SystemProperties:48 - com.datastax.driver.DISABLE_COALESCING is undefined, using default value false
+2017-01-11 11:56:57 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numHeapArenas: 16
+2017-01-11 11:56:57 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numDirectArenas: 16
+2017-01-11 11:56:57 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.pageSize: 8192
+2017-01-11 11:56:57 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxOrder: 11
+2017-01-11 11:56:57 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.chunkSize: 16777216
+2017-01-11 11:56:57 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.tinyCacheSize: 512
+2017-01-11 11:56:57 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.smallCacheSize: 256
+2017-01-11 11:56:57 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.normalCacheSize: 64
+2017-01-11 11:56:57 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2017-01-11 11:56:57 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2017-01-11 11:56:57 DEBUG ThreadLocalRandom:71 - -Dio.netty.initialSeedUniquifier: 0x116bb6b7ed26a92a (took 6 ms)
+2017-01-11 11:56:57 DEBUG ByteBufUtil:76 - -Dio.netty.allocator.type: unpooled
+2017-01-11 11:56:57 DEBUG ByteBufUtil:76 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2017-01-11 11:56:57 DEBUG ByteBufUtil:76 - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2017-01-11 11:56:58 DEBUG Connection:160 - Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Connection established, initializing transport
+2017-01-11 11:56:58 DEBUG Recycler:76 - -Dio.netty.recycler.maxCapacity.default: 262144
+2017-01-11 11:56:58 DEBUG AbstractByteBuf:81 - -Dio.netty.buffer.bytebuf.checkAccessible: true
+2017-01-11 11:56:58 DEBUG STATES:307 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Transport initialized, connection ready
+2017-01-11 11:56:58 DEBUG ControlConnection:534 - [Control connection] Refreshing node list and token map
+2017-01-11 11:56:58 DEBUG ControlConnection:272 - [Control connection] Refreshing schema
+2017-01-11 11:56:58 DEBUG ControlConnection:534 - [Control connection] Refreshing node list and token map
+2017-01-11 11:56:58 DEBUG ReplicationStrategy$NetworkTopologyStrategy:123 - Computing token to replica map for keyspace: testexistsIsNew_system.
+2017-01-11 11:56:58 DEBUG ReplicationStrategy$NetworkTopologyStrategy:211 - Token to replica map computation for keyspace testexistsIsNew_system completed in 0 milliseconds
+2017-01-11 11:56:58 DEBUG STATES:183 - [Control connection] established to localhost/127.0.0.1:9042
+2017-01-11 11:56:58 INFO  DCAwareRoundRobinPolicy:95 - Using data-center name 'SearchGraph' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+2017-01-11 11:56:58 INFO  Cluster:1485 - New Cassandra host localhost/127.0.0.1:9042 added
+2017-01-11 11:56:58 DEBUG SystemProperties:48 - com.datastax.driver.CHECK_IO_DEADLOCKS is undefined, using default value true
+2017-01-11 11:56:58 DEBUG STATES:88 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 2
+2017-01-11 11:56:58 DEBUG Connection:160 - Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Connection established, initializing transport
+2017-01-11 11:56:58 DEBUG STATES:307 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Transport initialized, connection ready
+2017-01-11 11:56:58 DEBUG HostConnectionPool:153 - Created connection pool to host localhost/127.0.0.1:9042 (1 connections needed, 1 successfully opened)
+2017-01-11 11:56:58 DEBUG Session:368 - Added connection pool for localhost/127.0.0.1:9042
+2017-01-11 11:56:58 DEBUG GroovyScriptExecutor:102 - Complete loading script: 
+[1	]  // Run runDGL.sh
+[2	]  
+[3	]  /* SAMPLE INPUT
+[4	]  author: Julia Child|F
+[5	]  book : Simca's Cuisine: 100 Classic French Recipes for Every Occasion|1972|0-394-40152-2
+[6	]  authorBook: Simca's Cuisine: 100 Classic French Recipes for Every Occasion|Simone Beck
+[7	]   */
+[8	]  
+[9	]  // CONFIGURATION
+[10	]  // Configures the data loader to create the schema
+[11	]  config create_schema: true
+[12	]  
+[13	]  // DATA INPUT
+[14	]  // Define the data input source (a file which can be specified via command line arguments)
+[15	]  // inputfiledir is the directory for the input files that is given in the commandline
+[16	]  // as the "-filename" option
+[17	]  inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/CSV/authorBook/'
+[18	]  authorInput = File.csv(inputfiledir + "author.csv").delimiter('|')
+[19	]  bookInput = File.csv(inputfiledir + "book.csv").delimiter('|')
+[20	]  authorBookInput = File.csv(inputfiledir + "authorBook.csv").delimiter('|')
+[21	]  
+[22	]  //Specifies what data source to load using which mapper (as defined inline)
+[23	]    
+[24	]  load(authorInput).asVertices {
+[25	]      isNew()
+[26	]      label "author"
+[27	]      key "name"
+[28	]  }
+[29	]  
+[30	]  load(bookInput).asVertices {
+[31	]      isNew()
+[32	]      label "book"
+[33	]      key "name"
+[34	]  }
+[35	]  
+[36	]  load(authorBookInput).asEdges {
+[37	]      label "authored"
+[38	]      outV "aname", { exists()
+[39	]          label "author"
+[40	]          key "name"
+[41	]      }
+[42	]      inV "bname", { exists()
+[43	]          label "book"
+[44	]          key "name"
+[45	]      }
+[46	]  }
+
+2017-01-11 11:56:58 DEBUG STATES:88 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 3
+2017-01-11 11:56:58 DEBUG Connection:160 - Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=false] Connection established, initializing transport
+2017-01-11 11:56:58 DEBUG STATES:307 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=false] Transport initialized, connection ready
+2017-01-11 11:56:58 DEBUG HostConnectionPool:153 - Created connection pool to host localhost/127.0.0.1:9042 (1 connections needed, 1 successfully opened)
+2017-01-11 11:56:58 DEBUG Session:368 - Added connection pool for localhost/127.0.0.1:9042
+2017-01-11 11:56:58 DEBUG GraphJsonUtils:63 - JSR 310 found on the classpath, registering serializers for java.time temporal types
+2017-01-11 11:56:58 DEBUG GraphJsonUtils:69 - Tinkerpop API found on the classpath, registering Tinkerpop serializers
+2017-01-11 11:56:58 INFO  DataLoaderImpl:193 - Initializing tasks with [1] read threads and [1] loader threads
+2017-01-11 11:56:58 INFO  DataLoaderImpl:164 - Scheduling [author] for reading
+2017-01-11 11:56:58 INFO  DataLoaderImpl:164 - Scheduling [book] for reading
+2017-01-11 11:56:58 INFO  DataLoaderImpl:164 - Scheduling [authorBook] for reading
+2017-01-11 11:56:58 INFO  DataLoaderImpl:254 - The following schema registrations will be added.
+2017-01-11 11:56:58 INFO  DataLoaderImpl:256 - Adding schema registration: vertexLabel[book] hasIncidence(propertyKey[name])
+2017-01-11 11:56:58 INFO  DataLoaderImpl:256 - Adding schema registration: vertexLabel[author] hasIncidence(edgeLabel[authored]) vertexLabel[book]
+2017-01-11 11:56:58 INFO  DataLoaderImpl:256 - Adding schema registration: vertexLabel[book] hasIncidence(propertyKey[year])
+2017-01-11 11:56:58 INFO  DataLoaderImpl:256 - Adding schema registration: vertexLabel[author] hasIncidence(propertyKey[name])
+2017-01-11 11:56:58 INFO  DataLoaderImpl:256 - Adding schema registration: vertexLabel[author] hasIncidence(propertyKey[gender])
+2017-01-11 11:56:58 INFO  DataLoaderImpl:256 - Adding schema registration: vertexLabel[book] hasIncidence(propertyKey[ISBN])
+2017-01-11 11:56:59 INFO  DataLoaderImpl:259 - Sum of loading statistics: LoadStatistic.Record[presentVertexCount=20,maybeVertexCount=0,absentVertexCount=14,edgeCount=10,vertexPropertyCount=52,elementPropertyCount=0]
+2017-01-11 11:56:59 INFO  DataLoaderImpl:261 - Max load for weight [VERTEX (Sum of vertex counts)]: LoadStatistic.Record[presentVertexCount=20,maybeVertexCount=0,absentVertexCount=0,edgeCount=10,vertexPropertyCount=20,elementPropertyCount=0]
+2017-01-11 11:56:59 INFO  DataLoaderImpl:261 - Max load for weight [TOTAL (Sum of vertex, edge, and vertex-property counts)]: LoadStatistic.Record[presentVertexCount=20,maybeVertexCount=0,absentVertexCount=0,edgeCount=10,vertexPropertyCount=20,elementPropertyCount=0]
+2017-01-11 11:56:59 DEBUG Cluster:2300 - Received event EVENT UPDATED TABLE testExistsIsNew_system.shared_data, scheduling delivery
+2017-01-11 11:56:59 DEBUG Cluster:2300 - Received event EVENT UPDATED TABLE testExistsIsNew_system.shared_data, scheduling delivery
+2017-01-11 11:56:59 INFO  DataLoaderImpl:286 - The following schema changes were executed:
+schema.vertexLabel('book').properties('name').add()
+schema.edgeLabel('authored').connection('author', 'book').add()
+schema.vertexLabel('book').properties('year').add()
+schema.vertexLabel('author').properties('name').add()
+schema.vertexLabel('author').properties('gender').add()
+schema.vertexLabel('book').properties('ISBN').add()
+
+2017-01-11 11:56:59 INFO  DataLoaderImpl:334 - Looking for vertexes in the following loads [author, book, authorBook]
+2017-01-11 11:56:59 INFO  DataLoaderImpl:193 - Initializing tasks with [1] read threads and [1] loader threads
+2017-01-11 11:56:59 INFO  DataLoaderImpl:164 - Scheduling [author] for reading
+2017-01-11 11:56:59 INFO  DataLoaderImpl:164 - Scheduling [book] for reading
+2017-01-11 11:56:59 INFO  DataLoaderImpl:164 - Scheduling [authorBook] for reading
+2017-01-11 11:56:59 INFO  DataLoaderImpl:347 - Looking for relations in the following loads [author, book, authorBook]
+2017-01-11 11:56:59 INFO  DataLoaderImpl:193 - Initializing tasks with [1] read threads and [1] loader threads
+2017-01-11 11:56:59 INFO  DataLoaderImpl:164 - Scheduling [author] for reading
+2017-01-11 11:56:59 INFO  DataLoaderImpl:164 - Scheduling [book] for reading
+2017-01-11 11:56:59 INFO  DataLoaderImpl:164 - Scheduling [authorBook] for reading
+2017-01-11 11:56:59 DEBUG Cluster:1582 - Shutting down
+2017-01-11 11:56:59 DEBUG Connection:629 - Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=true] closing connection
+2017-01-11 11:56:59 DEBUG STATES:96 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=true] closed, remaining = 2
+2017-01-11 11:56:59 DEBUG Connection:629 - Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=true] closing connection
+2017-01-11 11:56:59 DEBUG STATES:96 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=true] closed, remaining = 1
+2017-01-11 11:56:59 DEBUG Connection:629 - Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=true] closing connection
+2017-01-11 11:56:59 DEBUG STATES:96 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=true] closed, remaining = 0
+2017-01-11 11:56:59 DEBUG Reporter:69 - Input queue [author] throughput is [24.188992019812062] items/s
+2017-01-11 11:56:59 DEBUG Reporter:69 - Input queue [book] throughput is [10.394507255477805] items/s
+2017-01-11 11:56:59 DEBUG Reporter:69 - Input queue [authorBook] throughput is [26.378000530203085] items/s
+2017-01-11 11:56:59 DEBUG Reporter:75 - Promoted 14 vertices to the persistent cache in 6ms avg put time: 0.42857142857142855ms
+2017-01-11 11:56:59 DEBUG Reporter:120 - query times 12: p50 1877.0µs, p80 1877.0µs, p90 1877.0µs, p95 1877.0µs, p99 1877.0µs, p99.9 1877.0µs, p99.99 1877.0µs
+2017-01-11 11:56:59 DEBUG Reporter:120 - cache lookups 68: p50 4.0µs, p80 4.0µs, p90 4.0µs, p95 4.0µs, p99 4.0µs, p99.9 4.0µs, p99.99 4.0µs
+2017-01-11 11:56:59 INFO  Reporter:92 - ADD Request for 14 vertices 10 edges 18 properties 0 anonymous
+2017-01-11 11:56:59 INFO  Reporter:97 - Current total additions: 14 vertices 10 edges 18 properties 0 anonymous
+2017-01-11 11:56:59 INFO  Reporter:99 - 42 total elements written
+2017-01-11 11:57:02 DEBUG PoolThreadCache:81 - Freed 25 thread-local buffer(s) from thread: cluster1-nio-worker-0
+2017-01-11 11:57:02 DEBUG PoolThreadCache:81 - Freed 6 thread-local buffer(s) from thread: cluster1-nio-worker-1
+2017-01-11 11:57:02 DEBUG PoolThreadCache:81 - Freed 13 thread-local buffer(s) from thread: cluster1-nio-worker-2
