@@ -31,4 +31,3 @@ load(recipeInput.edges().withVertexId()).asEdges {
         key "~id", "id"
     }
 }
-
