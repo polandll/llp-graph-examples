@@ -3,12 +3,7 @@
 schema.propertyKey('id').Text().ifNotExists().create()
 schema.propertyKey('name').Text().ifNotExists().create()
 schema.propertyKey('gender').Text().ifNotExists().create()
-schema.propertyKey('year').Date().create()
-schema.propertyKey('time').Time().create()
 // VERTEX LABELS
-schema.vertexLabel('person').properties('name', 'gender').ifNotExists().create()
-// EDGE LABELS
-schema.edgeLabel('born').connection('person','person').ifNotExists().create()
-schema.edgeLabel('born').properties('year', 'time').add()
+schema.vertexLabel('person').properties('id', 'name', 'gender').ifNotExists().create()
 // INDEXES
-schema.vertexLabel('person').index('byName').secondary().by('name').add()
+schema.vertexLabel("person").index("byid").materialized().by("id").add()

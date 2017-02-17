@@ -1,6 +1,7 @@
-## Simple CSV example using authors and books
-* [Mapping script] (personDateTimeMapping.groovy)
+## Simple read from multiple files in a directory example
+* [Mapping script] (dirSourceMap.groovy)
 * [schema] (schema.groovy)
 * [graphloader script] (runDGL.sh)
-* [person.csv] (person.csv)
-* [personEdges.csv - edges] (personEdges.csv)
+* [data] (data)
+** [person.csv] (person.csv)
+** [person2.csv] (person2.csv)
