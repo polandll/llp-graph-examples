@@ -3,5 +3,5 @@
 * [schema] (schema.groovy)
 * [graphloader script] (runDGL.sh)
 * [data] (data)
-** [person.csv] (person.csv)
-** [person2.csv] (person2.csv)
+    * [data/person.csv] (person.csv)
+    * [data/person2.csv] (person2.csv)
