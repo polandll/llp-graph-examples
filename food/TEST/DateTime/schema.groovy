@@ -7,6 +7,7 @@ schema.propertyKey('time').Time().create()
 // VERTEX LABELS
 schema.vertexLabel('person').properties('name', 'gender').ifNotExists().create()
 // EDGE LABELS
-schema.edgeLabel('born').connection('person','person').properties('year','time').ifNotExists().create()
+schema.edgeLabel('born').connection('person','person').ifNotExists().create()
+schema.edgeLabel('born').properties('year', 'time').add()
 // INDEXES
 schema.vertexLabel('person').index('byName').secondary().by('name').add()

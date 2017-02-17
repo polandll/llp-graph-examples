@@ -11,10 +11,9 @@
 
 VERSION=dse-graph-loader-5.1.0-SNAPSHOT
 LDR=/home/automaton/$VERSION/graphloader
-TYPE=CSV
-INPUTEXAMPLE='personDateTime'
-INPUTBASEDIR='/home/automaton/graph-examples/food'
-INPUTFILEDIR=$INPUTBASEDIR/TEST/DateTime/
-SCRIPTNAME='personDateTimeMapping.groovy'
-GRAPHNAME='test'$INPUTEXAMPLE
+INPUTEXAMPLE='header'
+INPUTBASEDIR='/home/automaton/graph-examples/food/TEST'
+INPUTFILEDIR=$INPUTBASEDIR/$INPUTEXAMPLE
+SCRIPTNAME='headertabMap.groovy'
+GRAPHNAME='test'$INPUTEXAMPLE'tab'
 $LDR $INPUTFILEDIR/$SCRIPTNAME -graph $GRAPHNAME -address localhost
