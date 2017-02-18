@@ -11,10 +11,9 @@
 
 VERSION=dse-graph-loader-5.1.0-SNAPSHOT
 LDR=/home/automaton/$VERSION/graphloader
-TYPE=TEXT
-INPUTEXAMPLE='author-tab'
-INPUTBASEDIR='/home/automaton/graph-examples/food'
-INPUTFILEDIR=$INPUTBASEDIR/$TYPE
-SCRIPTNAME='author-tabMapping.groovy'
-GRAPHNAME='testauthortab'
+INPUTEXAMPLE='dateTime'
+INPUTBASEDIR='/home/automaton/graph-examples/food/TEST'
+INPUTFILEDIR=$INPUTBASEDIR/$INPUTEXAMPLE/
+SCRIPTNAME=$INPUTEXAMPLE'Map.groovy'
+GRAPHNAME='test'$INPUTEXAMPLE
 $LDR $INPUTFILEDIR/$SCRIPTNAME -graph $GRAPHNAME -address localhost
