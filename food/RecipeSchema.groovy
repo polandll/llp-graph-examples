@@ -34,22 +34,22 @@ schema.vertexLabel('author').properties('name','gender','nickname').ifNotExists(
 // Example of creating vertex label with properties
 schema.vertexLabel('recipe').properties('name','instructions').create()
 schema.vertexLabel('ingredient').create()
-schema.vertexLabel('book').properties('name','year').create()
-schema.vertexLabel('meal').create()
+schema.vertexLabel('book').properties('name','year','ISBN').create()
+schema.vertexLabel('meal').properties('timestamp', 'calories').create()
 schema.vertexLabel('reviewer').create()
 // Example of custom vertex id:
 schema.propertyKey('fridgeItem').Text().create()
 schema.propertyKey('city_id').Text().create()
 schema.propertyKey('sensor_id').Uuid().create()
-schema.propertyKey('location').Point().create()
+schema.propertyKey('location').Point().withGeoBounds().create()
 schema.vertexLabel('FridgeSensor').partitionKey('city_id').clusteringKey('sensor_id').create()
 schema.vertexLabel('FridgeSensor').properties('fridgeItem', 'location').add()
 
 // Edge Labels
 schema.edgeLabel('authored').connection('author','book').ifNotExists().create()
-schema.edgeLabel('created').connection('author','recipe').create()
-schema.edgeLabel('includes').connection('recipe','ingredient').create()
-schema.edgeLabel('includedIn').connection('recipe','book').connection('recipe','meal').create()
+schema.edgeLabel('created').properties('year').connection('author','recipe').create()
+schema.edgeLabel('includes').properties('amount').connection('recipe','ingredient').create()
+schema.edgeLabel('includedIn').connection('recipe','book').connection('recipe','meal').connection('meal', 'book').create()
 schema.edgeLabel('rated').properties('stars').connection('reviewer','recipe').create()
 
 // Vertex Indexes
@@ -78,7 +78,7 @@ schema.vertexLabel('reviewer').index('ratedByComments').outE('rated').by('commen
 schema.vertexLabel('author').index('byLocation').property('country').by('livedIn').add()
 
 // commit the transaction
-graph.tx().commit()
+//graph.tx().commit()
 
 // Schema description
 // Use to check that the schema is built as desired

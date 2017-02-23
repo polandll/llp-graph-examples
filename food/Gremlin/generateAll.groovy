@@ -73,6 +73,12 @@ g.V().drop().iterate()
  porkLoin = graph.addVertex(label, 'ingredient', 'name', 'pork loin')
  redWine = graph.addVertex(label, 'ingredient', 'name', 'red wine')
 
+// meal vertices
+
+SaturdayFeast = graph.addVertex(label, 'meal', 'name', 'Saturday Feast', 'timestamp', Instant.parse('2015-11-30T00:00:00.00Z'), 'calories', 1000)
+EverydayDinner = graph.addVertex(label, 'meal', 'name', 'EverydayDinner', 'timestamp', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 600)
+JuliaDinner = graph.addVertex(label, 'meal', 'name', 'JuliaDinner', 'timestamp', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 900)
+
 // author-book edges
 
 juliaChild.addEdge('authored', artOfFrenchCookingVolOne)
@@ -139,34 +145,28 @@ roastPorkLoin.addEdge('includes', porkLoin, 'amount', '1 bone-in, 4-rib')
 roastPorkLoin.addEdge('includes', redWine, 'amount', '1/2 cup')
 roastPorkLoin.addEdge('includes', chickenBroth, 'amount', '1 cup')
 
-// book - recipe edges
+// recipe - book edges
 
 beefBourguignon.addEdge('includedIn', artOfFrenchCookingVolOne)
 saladeNicoise.addEdge('includedIn', artOfFrenchCookingVolOne)
 carrotSoup.addEdge('includedIn', artOfSimpleFood)
 roastPorkLoin.addEdge('includedIn', artOfSimpleFood)
 
-// meal vertices
+// recipe - meal edges
 
-SaturdayFeast = graph.addVertex(label, 'meal', 'name', 'Saturday Feast', 'timestamp', Instant.parse('2015-11-30T00:00:00.00Z'), 'calories', 1000)
-EverydayDinner = graph.addVertex(label, 'meal', 'name', 'EverydayDinner', 'timestamp', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 600)
-JuliaDinner = graph.addVertex(label, 'meal', 'name', 'JuliaDinner', 'timestamp', Instant.parse('2016-01-14T00:00:00.00Z'), 'calories', 900)
-
-// meal - recipe edges
-
-SaturdayFeast.addEdge('includedIn', beefBourguignon)
-SaturdayFeast.addEdge('includedIn', carrotSoup)
-SaturdayFeast.addEdge('includedIn', oystersRockefeller)
-EverydayDinner.addEdge('includedIn', carrotSoup)
-EverydayDinner.addEdge('includedIn', roastPorkLoin)
-JuliaDinner.addEdge('includedIn', beefBourguignon)
-JuliaDinner.addEdge('includedIn', saladeNicoise)
+beefBourguignon.addEdge('includedIn', SaturdayFeast)
+carrotSoup.addEdge('includedIn', SaturdayFeast)
+oystersRockefeller.addEdge('includedIn', SaturdayFeast)
+carrotSoup.addEdge('includedIn', EverydayDinner)
+roastPorkLoin.addEdge('includedIn', EverydayDinner)
+beefBourguignon.addEdge('includedIn', JuliaDinner)
+saladeNicoise.addEdge('includedIn', JuliaDinner)
 
 // meal - book edges
 
-artOfSimpleFood.addEdge('includedIn', EverydayDinner)
-simcasCuisine.addEdge('includedIn', SaturdayFeast)
-artOfFrenchCookingVolOne.addEdge('includedIn', JuliaDinner)
+EverydayDinner.addEdge('includedIn', artOfSimpleFood)
+SaturdayFeast.addEdge('includedIn', simcasCuisine)
+JuliaDinner.addEdge('includedIn',artOfFrenchCookingVolOne)
 
 // reviewer vertices
 
