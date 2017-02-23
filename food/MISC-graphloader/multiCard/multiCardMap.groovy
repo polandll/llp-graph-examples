@@ -1,5 +1,8 @@
 /* SAMPLE INPUT
-authorCity: Julia Child|Paris|1960
+authorCity: 
+author|city|dateStart|dateEnd
+i
+Julia Child|Paris|1961-01-01|1967-02-10
  */
 
 // CONFIGURATION
@@ -9,8 +12,8 @@ config dryrun: false, preparation: true, create_schema: true, load_new: true, sc
 // DATA INPUT
 // Define the data input source (a file which can be specified via command line arguments)
 // inputfiledir is the directory for the input files
-inputfiledir = '/home/automaton/graph-examples/food/TEST/multiCard/'
-//inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/Test/authorCity/'
+//inputfiledir = '/home/automaton/graph-examples/food/TEST/multiCard/'
+inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/Test/multiCard/'
 authorCityInput = File.csv(inputfiledir + "authorCity.csv").delimiter('|')
 
 //Specifies what data source to load using which mapper (as defined inline)
