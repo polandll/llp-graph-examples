@@ -1,30 +1,34 @@
 // Cartesian example
-// NO SEARCH INDEX
+// WITH SEARCH INDEX
 
-//system.graph('cartesian').create()
-:remote config alias g cartesian.g
+system.graph('cartesianSearch').create()
+:remote config alias g cartesianSearch.g
 schema.config().option('graph.allow_scan').set('true')
 
-// Create a point
 schema.propertyKey('name').Text().create()
 schema.propertyKey('point').Point().withBounds(-3,-3,3,3).create()
 schema.vertexLabel('location').properties('name','point').create()
+schema.propertyKey('line').Linestring().withBounds(-3,-3,3,3).create()
+schema.vertexLabel('lineLocation').properties('name','line').create()
+schema.propertyKey('polygon').Polygon().withBounds(-3,-3,3,3).create()
+schema.vertexLabel('polyLocation').properties('name','polygon').create()
+//SEARCH INDEX ONLY WORKS FOR POINT AND LINESTRING
+schema.vertexLabel('location').index('search').search().by('point').add()
+schema.vertexLabel('lineLocation').index('search').search().by('line').add()
+
+//Create points
 graph.addVertex(label,'location','name','p1','point',Geo.point(1,1))
 graph.addVertex(label,'location','name','p2','point',Geo.point(-1,1))
 graph.addVertex(label,'location','name','p3','point',Geo.point(-2,-2))
 graph.addVertex(label,'location','name','p4','point',Geo.point(2,2))
 
-// Create a linestring
-schema.propertyKey('line').Linestring().withBounds(-3,-3,3,3).create()
-schema.vertexLabel('lineLocation').properties('name','line').create()
+// Create linestrings
 graph.addVertex(label, 'lineLocation', 'name', 'l1', 'line', "LINESTRING(0 0, 1 1)")
 graph.addVertex(label, 'lineLocation', 'name', 'l2', 'line', "LINESTRING(0 0, -1 1)")
 graph.addVertex(label, 'lineLocation', 'name', 'l3', 'line', "LINESTRING(0 0, -2 -2)")
 graph.addVertex(label, 'lineLocation', 'name', 'l4', 'line', "LINESTRING(0 0, 2 -2)")
 
-// Create a polygon
-schema.propertyKey('polygon').Polygon().withBounds(-3,-3,3,3).create()
-schema.vertexLabel('polyLocation').properties('name','polygon').create()
+// Create polygons
 graph.addVertex(label, 'polyLocation','name', 'g1', 'polygon',Geo.polygon(0,0,1,1,0,1,0,0))
 graph.addVertex(label, 'polyLocation','name', 'g2', 'polygon',Geo.polygon(0,0,0,1,-1,1,0,0))
 graph.addVertex(label, 'polyLocation','name', 'g3', 'polygon',Geo.polygon(0,0,-2,0,-2,-2,0,0))
