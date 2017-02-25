@@ -1,8 +1,8 @@
 // Cartesian example
 // NO SEARCH INDEX
 
-system.graph('cartesian').create()
-:remote config alias g cartesian.g
+system.graph('cartesiannewGeo').create()
+:remote config alias g cartesiannewGeo.g
 schema.config().option('graph.allow_scan').set('true')
 
 // Create a point
@@ -33,26 +33,26 @@ graph.addVertex(label, 'polyLocation','name', 'g4', 'polygon',Geo.polygon(0,0,2,
 // Test point
 g.V().hasLabel('location').valueMap()
 // Test that no points are inside distance from (0,0) to slightly less than (1,1)
-g.V().has('location', 'point', Geo.inside(Geo.distance(0.0, 0.0, 1))).values()
+g.V().has('location', 'point', Geo.inside(Geo.point(0.0, 0.0), 1, Geo.Unit.DEGREES)).values('name')
 // Test that two closer points are inside distance from (0,0) to slightly more than (1,1) - squareroot of 2
-g.V().has('location', 'point', Geo.inside(Geo.distance(0.0, 0.0, 1.415))).values()
+g.V().has('location', 'point', Geo.inside(Geo.point(0.0, 0.0), 1.415, Geo.Unit.DEGREES)).values('name')
 // Test that all four points are inside distance from (0,0) to slightly more than (-2,-2) - squareroot of 8
-g.V().has('location', 'point', Geo.inside(Geo.distance(0.0, 0.0, 2.829))).values()
+g.V().has('location', 'point', Geo.inside(Geo.point(0.0, 0.0), 2.829, Geo.Unit.DEGREES)).values('name')
 
 // Test linestring
 g.V().hasLabel('lineLocation').valueMap()
 // Test that no linestrings are inside distance from (0,0) to slightly less than (1,1)
-g.V().has('lineLocation', 'line', Geo.inside(Geo.distance(0.0, 0.0, 1))).values()
+g.V().has('lineLocation', 'line', Geo.inside(Geo.point(0.0, 0.0), 1, Geo.Unit.DEGREES)).values('name')
 // Test that two closer lines are inside distance from (0,0) to slightly more than (1,1) - squareroot of 2
-g.V().has('lineLocation', 'line', Geo.inside(Geo.distance(0.0, 0.0, 1.415))).values()
+g.V().has('lineLocation', 'line', Geo.inside(Geo.point(0.0, 0.0), 1.415, Geo.Unit.DEGREES)).values('name')
 // Test that all four lines are inside distance from (0,0) to slightly more than (-2,-2) - squareroot of 8
-g.V().has('lineLocation', 'line', Geo.inside(Geo.distance(0.0, 0.0, 2.829))).values()
+g.V().has('lineLocation', 'line', Geo.inside(Geo.point(0.0, 0.0), 2.829, Geo.Unit.DEGREES)).values('name')
 
 // Test polygon
 g.V().hasLabel('polyLocation').valueMap()
 // Test that no polygons are inside distance from (0,0) to slightly less than (1,1)
-g.V().has('polyLocation', 'polygon', Geo.inside(Geo.distance(0.0, 0.0, 1))).values()
+g.V().has('polyLocation', 'polygon', Geo.inside(Geo.point(0.0, 0.0), 1, Geo.Unit.DEGREES)).values('name')
 // Test that two closer polygons are inside distance from (0,0) to slightly more than (1,1) - squareroot of 2
-g.V().has('polyLocation', 'polygon', Geo.inside(Geo.distance(0.0, 0.0, 1.415))).values()
+g.V().has('polyLocation', 'polygon', Geo.inside(Geo.point(0.0, 0.0), 1.415, Geo.Unit.DEGREES)).values('name')
 // Test that all four polygons are inside distance from (0,0) to slightly more than (-2,-2) - squareroot of 8
-g.V().has('polyLocation', 'polygon', Geo.inside(Geo.distance(0.0, 0.0, 2.829))).values()
+g.V().has('polyLocation', 'polygon', Geo.inside(Geo.point(0.0, 0.0), 2.829, Geo.Unit.DEGREES)).values('name')
