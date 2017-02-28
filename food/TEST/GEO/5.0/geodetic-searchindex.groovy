@@ -1,5 +1,5 @@
 // Geodetic example
-// NO SEARCH INDEX
+// WITH SEARCH INDEX
 
 system.graph('geodeticSearch').create()
 :remote config alias g geodeticSearch.g
