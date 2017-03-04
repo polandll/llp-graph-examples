@@ -2,8 +2,8 @@
 // PROPERTIES
 schema.propertyKey('name').Text().ifNotExists().create()
 schema.propertyKey('gender').Text().ifNotExists().create()
-schema.propertyKey('year').Date().create()
-schema.propertyKey('time').Time().create()
+schema.propertyKey('year').Date().ifNotExists().create()
+schema.propertyKey('time').Time().ifNotExists().create()
 // VERTEX LABELS
 schema.vertexLabel('person').properties('name', 'gender').ifNotExists().create()
 // EDGE LABELS
