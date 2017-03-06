@@ -1,7 +1,7 @@
 // Cartesian example
 // NO SEARCH INDEX
 
-//system.graph('cartesian').create()
+system.graph('cartesian').create()
 :remote config alias g cartesian.g
 schema.config().option('graph.allow_scan').set('true')
 
