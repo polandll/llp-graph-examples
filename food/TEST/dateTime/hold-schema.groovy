@@ -1,0 +1,8 @@
+schema.propertyKey("year").Date().single().create()
+schema.propertyKey("time").Time().single().create()
+schema.propertyKey("gender").Text().single().create()
+schema.propertyKey("name").Text().single().create()
+schema.edgeLabel("born").multiple().properties("year", "time").create()
+schema.vertexLabel("person").properties("name", "gender").create()
+schema.vertexLabel("person").index("byName").secondary().by("name").add()
+schema.edgeLabel("born").connection("person", "person").add()
