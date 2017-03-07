@@ -1,7 +1,9 @@
 import com.esri.core.geometry.ogc.OGCGeometry;
 import com.esri.core.geometry.ogc.OGCLineString;
 
-schema.config().option('graph.schema_mode').set('Production')
+system.graph('ogc').create()
+:remote config alias g ogc.g
+//schema.config().option('graph.schema_mode').set('Production')
 schema.config().option('graph.allow_scan').set('true')
 
 // Property Keys
