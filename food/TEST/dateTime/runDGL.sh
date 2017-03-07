@@ -16,4 +16,5 @@ INPUTBASEDIR='/home/automaton/graph-examples/food/TEST'
 INPUTFILEDIR=$INPUTBASEDIR/$INPUTEXAMPLE/
 SCRIPTNAME=$INPUTEXAMPLE'Map.groovy'
 GRAPHNAME='test'$INPUTEXAMPLE
+cat schema.groovy | dse gremlin-console
 $LDR $INPUTFILEDIR/$SCRIPTNAME -graph $GRAPHNAME -address localhost
