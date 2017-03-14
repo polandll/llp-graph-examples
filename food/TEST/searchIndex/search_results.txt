@@ -1,0 +1,34 @@
+gremlin> :remote config alias g DSEQuickStart.g
+==>g=DSEQuickStart.g
+gremlin> schema.config().option('graph.allow_scan').set('true')
+==>null
+gremlin>
+gremlin> g.V().hasLabel('recipe').has('name', Search.prefix('R')).values('name')
+==>Roast Pork Loin
+==>Rataouille
+gremlin> g.V().hasLabel('recipe').has('name', Search.regex('.*ee.*')).values('name')
+==>Beef Bourguignon
+gremlin> g.V().hasLabel('recipe').has('name', eq('Carrot Soup')).values('name')
+==>Carrot Soup
+gremlin> g.V().hasLabel('recipe').has('name', eq('Carrot')).valueMap()
+gremlin> g.V().hasLabel('recipe').has('name', neq('Carrot')).values('name')
+==>Beef Bourguignon
+==>Roast Pork Loin
+==>Rataouille
+==>Salade Nicoise
+==>Wild Mushroom Stroganoff
+==>Spicy Meatloaf
+==>Oysters Rockefeller
+==>Carrot Soup
+gremlin> g.V().has('recipe','instructions', Search.token('Saute')).values('name')
+==>Beef Bourguignon
+==>Wild Mushroom Stroganoff
+==>Oysters Rockefeller
+gremlin> g.V().hasLabel('recipe').has('instructions', Search.tokenPrefix('Sea')).values('name','instructions')
+==>Roast Pork Loin
+==>The day before, separate the meat from the ribs, stopping about 1 inch before the end of the bones. Season the pork liberally inside and out with salt and pepper and refrigerate overnight.
+==>Oysters Rockefeller
+==>Saute the shallots, celery, herbs, and seasonings in 3 tablespoons of the butter for 3 minutes. Add the watercress and let it wilt.
+gremlin> g.V().hasLabel('recipe').has('instructions', Search.tokenRegex('.*sea.*in.*')).values('name','instructions')
+==>Oysters Rockefeller
+==>Saute the shallots, celery, herbs, and seasonings in 3 tablespoons of the butter for 3 minutes. Add the watercress and let it wilt.
