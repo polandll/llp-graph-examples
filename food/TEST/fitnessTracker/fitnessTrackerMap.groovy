@@ -11,7 +11,7 @@ config create_schema: false, load_new: true
 // inputfiledir is the directory for the input files that is given in the commandline
 // as the "-filename" option
 
-inputfiledir = '/home/automaton/graph-examples/food/TEST/fitnessTracker/'
+inputfiledir = '/home/automaton/graph-examples/food/TEST/fitnessTracker/data'
 users = File.csv(inputfiledir + "users.csv").delimiter('|')
 knows = File.csv(inputfiledir + "knows.csv").delimiter('|')
 items = File.csv(inputfiledir + "items.csv").delimiter('|')
