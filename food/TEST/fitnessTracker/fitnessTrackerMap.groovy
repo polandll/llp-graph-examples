@@ -14,6 +14,7 @@ config create_schema: true, load_new: true
 inputfiledir = '/home/automaton/graph-examples/food/TEST/fitnessTracker/'
 users = File.csv(inputfiledir + "users.csv").delimiter('|')
 knows = File.csv(inputfiledir + "knows.csv").delimiter('|')
+items = File.csv(inputfiledir + "items.csv").delimiter('|')
 meals = File.csv(inputfiledir + "meals.csv").delimiter('|')
 
 //Specifies what data source to load using which mapper (as defined inline)
@@ -23,9 +24,16 @@ load(users).asVertices {
     key "name"
 }
 
+load(items).asVertices {
+    label "item"
+    key "item"
+}
+
 load(meals).asVertices {
     label "meal"
-    key "type" "mealDate" // NEED TO COMPOSITE THESE TWO COLUMNS
+    // The vertexLabel schema for meal includes two keys:
+    // partition key: type and clustering key: mealDate 
+    key type: "type", mealDate: "mealDate"
     ignore user, item, amount, macro
 }
 
@@ -46,5 +54,3 @@ load(knows).asEdges {
         key "name"
     }
 }
-
-load(
