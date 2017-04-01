@@ -1,0 +1,35 @@
+{
+"schemaGraph":{ 
+"vertices": [
+{"id":"44","label":"meal","type":"vertex","properties":{"indexes":[{"id":2,"value":{"bymealId":{"name":"bymealId","type":"Materialized","props":{"mealId":{"name":"mealId"}}}}}],"idProps":[{"id":0,"value":{"member_id":{"type":"Bigint"},"community_id":{"type":"Int"}}}],"props":[{"id":1,"value":{"mealId":{"type":"Int","cardinality":"Single"},"type":{"type":"Text","cardinality":"Single"},"mealDate":{"type":"Date","cardinality":"Single"}}}]}},
+{"id":"42","label":"user","type":"vertex","properties":{"indexes":[{"id":5,"value":{"byname":{"name":"byname","type":"Materialized","props":{"name":{"name":"name"}}}}}],"idProps":[{"id":3,"value":{"member_id":{"type":"Bigint"},"community_id":{"type":"Int"}}}],"props":[{"id":4,"value":{"calGoal":{"type":"Int","cardinality":"Single"},"gender":{"type":"Text","cardinality":"Single"},"name":{"type":"Text","cardinality":"Single"},"macroGoal":{"type":"Text","cardinality":"Single"}}}]}},
+{"id":"43","label":"item","type":"vertex","properties":{"indexes":[{"id":8,"value":{"byname":{"name":"byname","type":"Materialized","props":{"name":{"name":"name"}}}}}],"idProps":[{"id":6,"value":{"member_id":{"type":"Bigint"},"community_id":{"type":"Int"}}}],"props":[{"id":7,"value":{"servingAmt":{"type":"Text","cardinality":"Single"},"macro":{"type":"Text","cardinality":"Single"},"name":{"type":"Text","cardinality":"Single"},"calories":{"type":"Int","cardinality":"Single"}}}]}}
+], 
+"edges": [
+{"id":9,"label":"knows","type":"edge","inVLabel":"user","outVLabel":"user","inV":"42","outV":"42","properties":{"cardinality":"Multiple","since":"Text"}},
+{"id":10,"label":"ate","type":"edge","inVLabel":"meal","outVLabel":"user","inV":"44","outV":"42","properties":{"cardinality":"Multiple"}},
+{"id":11,"label":"includes","type":"edge","inVLabel":"meal","outVLabel":"item","inV":"44","outV":"43","properties":{"numServings":"Int","cardinality":"Multiple"}}
+]
+},
+"edges": [
+{"id":"33028","label":"edgeLabel","type":"vertex","properties":{"name":[{"id":53,"value":"includes"}],"directionality":[{"id":52,"value":"Bidirectional"}],"cardinality":[{"id":51,"value":"Multiple"}]}},
+{"id":"33029","label":"edgeLabel","type":"vertex","properties":{"name":[{"id":46,"value":"ate"}],"directionality":[{"id":45,"value":"Bidirectional"}],"cardinality":[{"id":44,"value":"Multiple"}]}},
+{"id":"33027","label":"edgeLabel","type":"vertex","properties":{"name":[{"id":49,"value":"knows"}],"directionality":[{"id":48,"value":"Bidirectional"}],"cardinality":[{"id":47,"value":"Multiple"}]}}
+],
+"propertyDefs": [
+{"id":"33017","label":"propertyKey","type":"vertex","properties":{"dataType":[{"id":43,"value":"Text"}],"name":[{"id":42,"value":"servingAmt"}],"cardinality":[{"id":41,"value":"Single"}]}},
+{"id":"33018","label":"propertyKey","type":"vertex","properties":{"dataType":[{"id":16,"value":"Text"}],"name":[{"id":15,"value":"macro"}],"cardinality":[{"id":14,"value":"Single"}]}},
+{"id":"33015","label":"propertyKey","type":"vertex","properties":{"dataType":[{"id":37,"value":"Int"}],"name":[{"id":36,"value":"calGoal"}],"cardinality":[{"id":35,"value":"Single"}]}},
+{"id":"33016","label":"propertyKey","type":"vertex","properties":{"dataType":[{"id":10,"value":"Text"}],"name":[{"id":9,"value":"macroGoal"}],"cardinality":[{"id":8,"value":"Single"}]}},
+{"id":"33013","label":"propertyKey","type":"vertex","properties":{"dataType":[{"id":25,"value":"Text"}],"name":[{"id":24,"value":"name"}],"cardinality":[{"id":23,"value":"Single"}]}},
+{"id":"33014","label":"propertyKey","type":"vertex","properties":{"dataType":[{"id":40,"value":"Text"}],"name":[{"id":39,"value":"gender"}],"cardinality":[{"id":38,"value":"Single"}]}},
+{"id":"33019","label":"propertyKey","type":"vertex","properties":{"dataType":[{"id":7,"value":"Int"}],"name":[{"id":6,"value":"calories"}],"cardinality":[{"id":5,"value":"Single"}]}},
+{"id":"33020","label":"propertyKey","type":"vertex","properties":{"dataType":[{"id":34,"value":"Text"}],"name":[{"id":33,"value":"type"}],"cardinality":[{"id":32,"value":"Single"}]}},
+{"id":"33021","label":"propertyKey","type":"vertex","properties":{"dataType":[{"id":22,"value":"Int"}],"name":[{"id":21,"value":"mealId"}],"cardinality":[{"id":20,"value":"Single"}]}},
+{"id":"33026","label":"propertyKey","type":"vertex","properties":{"dataType":[{"id":19,"value":"Bigint"}],"name":[{"id":18,"value":"member_id"}],"cardinality":[{"id":17,"value":"Single"}]}},
+{"id":"33024","label":"propertyKey","type":"vertex","properties":{"dataType":[{"id":28,"value":"Int"}],"name":[{"id":27,"value":"numServings"}],"cardinality":[{"id":26,"value":"Single"}]}},
+{"id":"33025","label":"propertyKey","type":"vertex","properties":{"dataType":[{"id":13,"value":"Int"}],"name":[{"id":12,"value":"community_id"}],"cardinality":[{"id":11,"value":"Single"}]}},
+{"id":"33022","label":"propertyKey","type":"vertex","properties":{"dataType":[{"id":31,"value":"Date"}],"name":[{"id":30,"value":"mealDate"}],"cardinality":[{"id":29,"value":"Single"}]}},
+{"id":"33023","label":"propertyKey","type":"vertex","properties":{"dataType":[{"id":4,"value":"Text"}],"name":[{"id":3,"value":"since"}],"cardinality":[{"id":2,"value":"Single"}]}}
+]
+}
