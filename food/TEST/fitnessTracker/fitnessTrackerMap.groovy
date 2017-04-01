@@ -18,7 +18,6 @@ items = File.csv(inputfiledir + "items.csv").delimiter('|')
 meals = File.csv(inputfiledir + "meals.csv").delimiter('|')
 
 //Specifies what data source to load using which mapper (as defined inline)
-/*  
 load(users).asVertices {
     label "user"
     key "name"
