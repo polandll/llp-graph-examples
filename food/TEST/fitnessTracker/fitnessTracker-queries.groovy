@@ -16,3 +16,14 @@ g.V().has('user','name','Lori').
 g.V().has('user','name','Lori').as('a').
 out('knows').out('ate').as('b').
 addE('ate').from('a').to('b')
+
+// What did lunch include on 2017-03-31?
+g.V().has('user','name','Lori').
+out('ate').has('mealDate','2017-03-31').
+in('includes').values('name')
+
+// How many calories was that lunch?
+g.V().has('user','name','Lori').
+out('ate').has('mealDate','2017-03-31').
+in('includes').values('calories').
+sum()
