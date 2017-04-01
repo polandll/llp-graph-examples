@@ -27,7 +27,7 @@ load(items).asVertices {
     label "item"
     key "name"
 }
-
+/*
 load(meals).asVertices {
     label "meal"
     // The vertexLabel schema for meal includes two keys:
@@ -35,7 +35,7 @@ load(meals).asVertices {
     key type: "type", mealDate: "mealDate"
     ignore name
 }
-
+*/
 load(knows).asEdges {
     label "knows"
     outV "u1", {
