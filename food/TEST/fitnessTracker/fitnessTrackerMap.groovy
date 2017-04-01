@@ -1,5 +1,5 @@
 /** SAMPLE INPUT
-See user.csv, knows.csv, meals.csv
+See users.csv, knows.csv, items.csv, meals.csv
 **/
 
 // CONFIGURATION
@@ -25,7 +25,7 @@ load(users).asVertices {
 
 load(items).asVertices {
     label "item"
-    key "item"
+    key "name"
 }
 
 load(meals).asVertices {
@@ -33,13 +33,7 @@ load(meals).asVertices {
     // The vertexLabel schema for meal includes two keys:
     // partition key: type and clustering key: mealDate 
     key type: "type", mealDate: "mealDate"
-    ignore user, item, amount, macro
-}
-
-load(meals).asVertices {
-    label "item"
-    key "item"
-    ignore user, type, mealDate
+    ignore name
 }
 
 load(knows).asEdges {
