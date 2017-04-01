@@ -1,3 +1,4 @@
-name|type|mealDate|item|numServings
-Lori|lunch|2017-03-31|taco|1
-Lori|lunch|2017-03-31|iced tea|2
+mealId|type|mealDate|item|numServings|name
+100|lunch|2017-03-31|taco|1|Lori
+100|lunch|2017-03-31|iced tea|2|Lori
+101|lunch|2017-03-30|taco|2|Lisa
