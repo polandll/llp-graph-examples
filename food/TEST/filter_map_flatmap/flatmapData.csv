@@ -1,4 +1,4 @@
-name|cuisine
-Beef Bourguignon|English::French
-Nicoise Salade|French
-Wild Mushroom Stroganoff|American::English
+recipeId|name|cuisine
+1|Beef Bourguignon|English::French
+2|Nicoise Salade|French
+3|Wild Mushroom Stroganoff|American::English
