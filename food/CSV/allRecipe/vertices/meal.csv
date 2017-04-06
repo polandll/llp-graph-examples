@@ -1,0 +1,5 @@
+// meal vertices
+name|timestamp|calories
+Saturday Feast|2015-11-30T00:00:00.00Z|1000
+Everyday Dinner|2016-01-14T00:00:00.00Z|600
+Julia Dinner|2016-01-14T00:00:00.00Z|900
