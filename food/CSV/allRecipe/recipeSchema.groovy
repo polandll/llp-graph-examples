@@ -45,10 +45,13 @@ schema.vertexLabel('FridgeSensor').properties('fridgeItem', 'location').add()
 
 // Edge Labels
 schema.edgeLabel('authored').connection('author','book').ifNotExists().create()
-schema.edgeLabel('created').properties('year').connection('author','recipe').create()
-schema.edgeLabel('includes').properties('amount').connection('recipe','ingredient').create()
+schema.edgeLabel('created').connection('author','recipe').create()
+schema.edgeLabel('created').properties('year').add()
+schema.edgeLabel('includes').connection('recipe','ingredient').create()
+schema.edgeLabel('includes').properties('amount').add()
 schema.edgeLabel('includedIn').connection('recipe','book').connection('recipe','meal').connection('meal', 'book').create()
-schema.edgeLabel('rated').properties('stars').connection('reviewer','recipe').create()
+schema.edgeLabel('rated').connection('reviewer','recipe').create()
+schema.edgeLabel('rated').properties('stars','timestamp','comment').add()
 
 // Vertex Indexes
 // Secondary
@@ -74,9 +77,6 @@ schema.vertexLabel('reviewer').index('ratedByComments').outE('rated').by('commen
 
 // Property index using meta-property 'livedIn':
 schema.vertexLabel('author').index('byLocation').property('country').by('livedIn').add()
-
-// commit the transaction
-//graph.tx().commit()
 
 // Schema description
 // Use to check that the schema is built as desired
