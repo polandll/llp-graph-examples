@@ -14,13 +14,13 @@ mealInput = File.csv(inputfiledir + "vertices/meal.csv").delimiter('|')
 recipeInput = File.csv(inputfiledir + "vertices/recipe.csv").delimiter('|')
 reviewerInput = File.csv(inputfiledir + "vertices/reviewer.csv").delimiter('|')
 
-authorBookInput = File.csv(inputfiledir + "edges/authorBookAuthored.csv").delimiter('|')
-authorRecipeInput = File.csv(inputfiledir + "edges/authorRecipeCreated.csv").delimiter('|')
-mealBookInput = File.csv(inputfiledir + "edges/mealBookIncludedIn.csv").delimiter('|')
-recipeBookInput = File.csv(inputfiledir + "edges/recipeBookIncludedIn.csv").delimiter('|')
-recipeIngredientInput = File.csv(inputfiledir + "edges/recipeIngredientIncludes.csv").delimiter('|')
-recipeMealInput = File.csv(inputfiledir + "edges/recipeMealIncludedIn.csv").delimiter('|')    
-reviewerRecipeInput = File.csv(inputfiledir + "edges/reviewerRecipeRated.csv").delimiter('|')
+authorBookInput = File.csv(inputfiledir + "edges/authorBookAuthored.csv").delimiter('|').header('aname','bname')
+authorRecipeInput = File.csv(inputfiledir + "edges/authorRecipeCreated.csv").delimiter('|').header('aname','rname')
+mealBookInput = File.csv(inputfiledir + "edges/mealBookIncludedIn.csv").delimiter('|').header('mname','bname')
+recipeBookInput = File.csv(inputfiledir + "edges/recipeBookIncludedIn.csv").delimiter('|').header('rname','bname')
+recipeIngredientInput = File.csv(inputfiledir + "edges/recipeIngredientIncludes.csv").delimiter('|').header('rname','iname','amount')
+recipeMealInput = File.csv(inputfiledir + "edges/recipeMealIncludedIn.csv").delimiter('|').header('rname','mname')
+reviewerRecipeInput = File.csv(inputfiledir + "edges/reviewerRecipeRated.csv").delimiter('|').header('name','rname','stars','timestamp','comment')
 
 //Specifies what data source to load using which mapper (as defined inline)
   
@@ -70,11 +70,11 @@ load(authorRecipeInput).asEdges {
     label "created"
     outV "aname", {
         label "author"
-        key "aname"
+        key "name"
     }
     inV "rname", {
         label "recipe"
-        key "rname"
+        key "name"
     }
 }
 

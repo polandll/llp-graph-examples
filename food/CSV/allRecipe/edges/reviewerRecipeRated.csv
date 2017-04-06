@@ -1,8 +1,8 @@
-name|rname|timestamp|stars|comment
-John Doe|Beef Bourguignon|2014-01-01T00:00:00.00Z|5|Pretty tasty!
-John Smith|Beef Bourguignon|2014-01-23T00:00:00.00Z|4|
-Jane Doe|Beef Bourguignon|2014-02-01T00:00:00.00Z|5|Yummy!
-Sharon Smith|Beef Bourguignon|2015-01-01T00:00:00.00Z|3|It was okay.
-John Doe|Spicy Meatloaf|2015-12-31T00:00:00.00Z|4|Really spicy - be careful!
-Sharon Smith|Spicy Meatloaf|2014-07-23T00:00:00.00Z|3|Too spicy for me. Use less garlic.
-Jane Doe|Carrot Soup|2015-12-30T00:00:00.00Z|5|Loved this soup! Yummy vegetarian!
+name|rname|stars|timestamp|comment
+Jane Doe|Carrot Soup|5|2015-12-12T00:25:00.000Z|Loved this soup! Yummy vegetarian!
+Jane Doe|Beef Bourguignon|5|2014-02-01T00:00:00.000Z|Yummy!
+Sharon Smith|Spicy Meatloaf|3|2014-07-07T00:00:00.000Z|Too spicy for me. Use less garlic.
+John Doe|Beef Bourguignon|5|2014-01-01T06:10:00.000Z|Pretty tasty!
+John Smith|Beef Bourguignon|4|2014-01-01T07:00:00.000Z|Nothing to say.
+Sharon Smith|Beef Bourguignon|3|2015-01-02T10:10:10.000Z|It was okay.
+John Doe|Spicy Meatloaf|4|2015-12-10T05:04:06.123Z|Really spicy - be careful!

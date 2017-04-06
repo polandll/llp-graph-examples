@@ -57,6 +57,8 @@ schema.edgeLabel('rated').properties('stars','timestamp','comment').add()
 // Secondary
 schema.vertexLabel('author').index('byName').secondary().by('name').add()
 // Materialized
+schema.vertexLabel('author').index('byname').materialized().by('name').add()
+schema.vertexLabel('book').index('byname').materialized().by('name').add()
 schema.vertexLabel('recipe').index('byRecipe').materialized().by('name').add()
 schema.vertexLabel('meal').index('byMeal').materialized().by('name').add()
 schema.vertexLabel('ingredient').index('byIngredient').materialized().by('name').add()
