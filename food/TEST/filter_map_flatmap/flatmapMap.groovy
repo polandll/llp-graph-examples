@@ -1,6 +1,6 @@
 /** SAMPLE INPUT
-recipeId|name|cuisine
-001|Beef Bourguignon|English::French
+name|cuisine
+Beef Bourguignon|English::French
 **/
 
 // CONFIGURATION
@@ -15,13 +15,12 @@ config create_schema: false, load_new: true
 inputfiledir = '/home/automaton/graph-examples/food/TEST/filter_map_flatmap/'
 recipes = File.csv(inputfiledir + "flatmapData.csv").delimiter('|')
 def recipesCuisine = recipes.flatMap {
-  def recipeId = it["recipeId"];
   def name = it["name"];
   it["cuisine"].split("::").
-  collect { it = [ 'recipeId': recipeId, 'name': name, 'cuisine': it ] }
+  collect { it = [ 'name': name, 'cuisine': it ] }
 }
 //Specifies what data source to load using which mapper (as defined inline)
 load(recipesCuisine).asVertices {
     label "recipe"
-    key recipeId: "recipeId", cuisine: "cuisine"
+    key name: "name", cuisine: "cuisine"
 }
