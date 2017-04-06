@@ -12,9 +12,10 @@ config create_schema: false, load_new: true
 // inputfiledir is the directory for the input files that is given in the commandline
 // as the "-filename" option
 
-inputfiledir = '/home/automaton/graph-examples/food/TEST/filter_map_flatMap/'
+inputfiledir = '/home/automaton/graph-examples/food/TEST/filter_map_flatmap/'
 recipes = File.csv(inputfiledir + "flatmapData.csv").delimiter('|')
 def recipesCuisine = recipes.flatMap {
+  def name = it["name"];
   it["cuisine"].split("::").
   collect { it = [ 'name': name, 'cuisine': it ] }
 }
@@ -23,26 +24,3 @@ load(recipesCuisine).asVertices {
     label "recipe"
     key "name"
 }
-
-//load(items).asVertices {
-//    label "item"
-//    key "name"
-//}
-
-//load(meals).asEdges {
-//    label "includes"
-//    outV "item", {
-//	label "item"
-//	key "name"
-//        exists()
-//    }
-//    inV "mealId", {
-//	label "meal"
-//	key type: "type", mealDate: "mealDate"
-//        key "mealId"
-//        exists()
-//    }
-//    ignore "name"
-//    ignore "type"
-//    ignore "mealDate"
-//}
