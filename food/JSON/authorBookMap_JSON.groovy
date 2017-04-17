@@ -1,7 +1,3 @@
-// Use /Users/lorinapoland/CLONES/graph-examples/DataLoader/runDGL.sh to run this script
-// Set runDGL.sh parameters to JSON before running
-// Run runDGL.sh in /Users/lorinapoland/CLONES/dse-graph-loader
-
 /* SAMPLE INPUT
 author: {"author_name":"Julia Child","gender":"F"}
 book : {"name":"The Art of French Cooking, Vol. 1","year":"1961","ISBN":"none"}
@@ -17,10 +13,10 @@ config create_schema: false, load_new: true
 // inputfiledir is the directory for the input files that is given in the commandline
 // as the "-filename" option
 
-inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/JSON/'
-authorInput = File.json(inputfiledir + 'author.json')
-bookInput = File.json(inputfiledir + 'book.json')
-authorBookInput = File.json(inputfiledir + 'authorBook.json')
+inputfiledir = '/Users/lorinapoland/CLONES/graph-examples/food/JSON/data/'
+authorInput = File.json(inputfiledir + 'vertices/author.json')
+bookInput = File.json(inputfiledir + 'vertices/book.json')
+authorBookInput = File.json(inputfiledir + 'edges/authorBook.json')
 
 //Specifies what data source to load using which mapper (as defined inline)
   
