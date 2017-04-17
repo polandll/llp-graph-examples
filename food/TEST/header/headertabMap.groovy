@@ -35,9 +35,6 @@ input4 = File.text(inputfiledir + "input4t.txt").delimiter(',')
 // HEADER IN FILE
 input8 = File.text(inputfiledir + "input4t.txt").delimiter(',').header('name','age')
 
-input9 = File.csv(inputfiledir + "preppedInput.csv").delimiter(',')
-input10 = File.csv(inputfiledir + "preppedInput.csv").delimiter(',').header('name','age')
-
 //Specifies what data source to load using which mapper (as defined inline)
 /*  
 // DOES NOT WORK 
