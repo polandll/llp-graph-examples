@@ -11,7 +11,7 @@
 
 VERSION=dse-graph-loader-5.1.0-SNAPSHOT
 LDR=/home/automaton/$VERSION/graphloader
-INPUTEXAMPLE='header'
+INPUTEXAMPLE='Header'
 INPUTBASEDIR='/home/automaton/graph-examples/food/TEST'
 INPUTFILEDIR=$INPUTBASEDIR/$INPUTEXAMPLE
 SCRIPTNAME='headerMap.groovy'

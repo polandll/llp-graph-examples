@@ -1,0 +1,15 @@
+system.graph('testHeaderTab').ifNotExists().create()
+:remote config alias g testHeaderTab.g
+schema.clear()
+schema.config().option('graph.allow_scan').set('true')
+
+schema.propertyKey('name').Text().ifNotExists().create()
+schema.propertyKey('age').Int().ifNotExists().create()
+schema.vertexLabel('person1').properties('name','age').ifNotExists().create()
+schema.vertexLabel('person2').properties('name','age').ifNotExists().create()
+schema.vertexLabel('person3').properties('name','age').ifNotExists().create()
+schema.vertexLabel('person4').properties('name','age').ifNotExists().create()
+schema.vertexLabel('person5').properties('name','age').ifNotExists().create()
+schema.vertexLabel('person6').properties('name','age').ifNotExists().create()
+schema.vertexLabel('person7').properties('name','age').ifNotExists().create()
+schema.vertexLabel('person8').properties('name','age').ifNotExists().create()
