@@ -1,0 +1,11 @@
+system.graph('mapTest').ifNotExists().create()
+:remote config alias g mapTest.g
+schema.clear()
+schema.config().option('graph.allow_scan').set('true')
+
+schema.propertyKey('name').Text().ifNotExists().create()
+schema.propertyKey('gender').Text().ifNotExists().create()
+schema.propertyKey('age').Int().ifNotExists().create()
+
+schema.vertexLabel('chef').properties('name','gender','age').create()
+schema.vertexLabel('chef').index('byname').materialized().by('name').add()
