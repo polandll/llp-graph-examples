@@ -90,9 +90,3 @@ load(input10).asVertices {
     key "name"
 }
 */
-
-// TESTER
-load(input4).asVertices {
-    label "person4"
-    key "name"
-}
