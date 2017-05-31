@@ -6,7 +6,8 @@
 // PARIS TO TOYKO: 138 DEGREES; 137.969225 CART; 9713 KM; 6035 MI; 9,713,000 M
 
 :remote config alias g geodeticSearch51.g
-schema.config().option('graph.allow_scan').set('true')
+//schema.config().option('graph.allow_scan').set('true')
+schema.config().option('graph.allow_scan').set('false')
 
 // Test point
 // DEGREES

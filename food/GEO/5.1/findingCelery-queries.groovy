@@ -1,7 +1,8 @@
 import com.esri.core.geometry.ogc.OGCGeometry;
 
 :remote config alias g findingCelery.g
-schema.config().option('graph.allow_scan').set('true')
+//schema.config().option('graph.allow_scan').set('true')
+schema.config().option('graph.allow_scan').set('false')
 graph.schema().config().option('graph.traversal_sources.g.restrict_lambda').set(false)
 
 // DISTANCE FROM PAUL'S HOME TO EACH STORE
