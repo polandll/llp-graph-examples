@@ -9,12 +9,14 @@
 //schema.config().option('graph.allow_scan').set('true')
 schema.config().option('graph.allow_scan').set('false')
 
+// WILL NOT WORK WITHOUT FULL SCAN
+//g.V().hasLabel('location').valueMap()
+
 // Test point
 // Find a single point
 g.V().has('location','point', Geo.inside(Geo.point(2.352222, 48.856614), 0, Geo.Unit.METERS))
 
 // DEGREES
-g.V().hasLabel('location').valueMap()
 // Test that Paris is inside distance from Paris to 1 degree of radius
 g.V().has('location', 'point', Geo.inside(Geo.point(2.352222, 48.856614), 1, Geo.Unit.DEGREES)).values('name')
 // Test that Paris is inside distance from Paris to London (works for searchindex, not for non-index)

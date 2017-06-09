@@ -41,7 +41,11 @@ graph.addVertex(label, 'polyLocation','name', 'DublinAachenTokyo', 'polygon',Geo
 // PARIS TO TOYKO: 86.3 DEGREES; 9713 KM; 6035 MI; 9,713,000 M
 
 // Test point
-g.V().hasLabel('location').valueMap()
+// THIS WILL NOT WORK WITHOUT FULLL SCAN
+//g.V().hasLabel('location').valueMap()
+
+// CHECK FOR SINGLE POINT
+g.V().has('location','point', Geo.inside(Geo.point(2.352222, 48.856614), 0, Geo.Unit.METERS))
 // Test that no points are inside distance from (0,0) to 1 degree of radius
 g.V().has('location', 'point', Geo.inside(Geo.point(2.352222, 48.856614), 1, Geo.Unit.DEGREES)).values('name')
 // Test that Paris and London are inside distance from Paris to London
@@ -64,7 +68,9 @@ g.V().has('location', 'point', Geo.inside(Geo.point(2.352222, 48.856614), 212, G
 g.V().has('location', 'point', Geo.inside(Geo.point(2.352222, 48.856614), 10, Geo.Unit.METERS)).values('name')
 
 // Test linestring
-g.V().hasLabel('lineLocation').valueMap()
+// THIS WILL NOT WORK WITHOUT FULLL SCAN
+//g.V().hasLabel('lineLocation').valueMap()
+
 // Test that no linestrings are inside distance from Paris to 1 degree of radius
 g.V().has('lineLocation', 'line', Geo.inside(Geo.point(2.352222, 48.856614), 1, Geo.Unit.DEGREES)).values('name')
 // Test that line between Paris and London are inside distance from Paris to London
