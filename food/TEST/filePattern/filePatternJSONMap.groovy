@@ -10,7 +10,7 @@ config dryrun: false, preparation: true, create_schema: true, load_new: true, sc
 // Define the data input source (a file which can be specified via command line arguments)
 // inputfiledir is the directory for the input files
 
-inputfiledir = '/home/automaton/graph-examples/food/TEST/file_pattern/data_json'
+inputfiledir = '/home/automaton/graph-examples/food/TEST/filePattern/data_json'
 personInput = File.directory(inputfiledir).fileMatches("author*.json")
 
 //Specifies what data source to load using which mapper (as defined inline)

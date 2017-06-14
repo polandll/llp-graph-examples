@@ -9,14 +9,14 @@
 # GRAPHNAME defines the name of the graph loaded. 
 #   It does not have to exist prior to loading.
 
-VERSION=dse-graph-loader-5.1.0-SNAPSHOT
+VERSION=dse-graph-loader-5.1.2-SNAPSHOT
 LDR=/home/automaton/$VERSION/graphloader
 TYPE=CSV
-INPUTEXAMPLE='dirSource'
-INPUTBASEDIR='/home/automaton/graph-examples/food'
-INPUTFILEDIR=$INPUTBASEDIR/MISC-graphloader/$INPUTEXAMPLE
+INPUTEXAMPLE='filePattern'
+INPUTBASEDIR='/home/automaton/graph-examples/food/TEST'
+INPUTFILEDIR=$INPUTBASEDIR/$INPUTEXAMPLE/
 echo $INPUTFILEDIR
 SCRIPTNAME=$INPUTEXAMPLE'Map.groovy'
 echo $SCRIPTNAME
-GRAPHNAME='test'$INPUTEXAMPLE
+GRAPHNAME='testFilePat'
 $LDR $INPUTFILEDIR/$SCRIPTNAME -graph $GRAPHNAME -address localhost

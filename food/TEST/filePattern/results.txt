@@ -1,0 +1,49 @@
+
+         \,,,/
+         (o o)
+-----oOOo-(3)-oOOo-----
+
+         \,,,/
+         (o o)
+-----oOOo-(3)-oOOo-----
+plugin activated: tinkerpop.tinkergraph
+plugin activated: tinkerpop.server
+plugin activated: tinkerpop.utilities
+gremlin> :remote config alias g testFilePatJSON.g
+==>g=testFilePatJSON.g
+gremlin> schema.config().option('graph.allow_scan').set('true')
+==>null
+gremlin> 
+gremlin> g.V().valueMap()
+==>{gender=[F], name=[Julia Child]}
+==>{gender=[F], name=[Simone Beck]}
+==>{gender=[F], name=[Louisette Bertholie]}
+==>{gender=[F], name=[Patricia Simon]}
+==>{gender=[F], name=[Alice Waters]}
+==>{gender=[F], name=[Patricia Curtan]}
+==>{gender=[F], name=[Kelsie Kerr]}
+==>{gender=[M], name=[Fritz Streiff]}
+==>{gender=[M], name=[Emeril Lagasse]}
+==>{gender=[M], name=[James Beard]}
+gremlin> 
+         \,,,/
+         (o o)
+-----oOOo-(3)-oOOo-----
+plugin activated: tinkerpop.tinkergraph
+plugin activated: tinkerpop.server
+plugin activated: tinkerpop.utilities
+gremlin> //:remote config alias g testFilePatJSON.g
+==>null
+gremlin> :remote config alias g testFilePat.g
+==>g=testFilePat.g
+gremlin> schema.config().option('graph.allow_scan').set('true')
+==>null
+gremlin> 
+gremlin> g.V().valueMap()
+==>{gender=[F], name=[Julia Child], id=[001]}
+==>{gender=[F], name=[Simone Beck], id=[003]}
+==>{gender=[F], name=[Louisette Bertholie], id=[005]}
+==>{gender=[F], name=[JCMom], id=[002]}
+==>{gender=[F], name=[SBMom], id=[004]}
+==>{gender=[F], name=[LBMom], id=[006]}
+gremlin> 

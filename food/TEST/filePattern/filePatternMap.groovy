@@ -1,5 +1,6 @@
 /* SAMPLE INPUT
-{"name":"Julia Child","gender":"F"}
+id|name|gender
+001|Julia Child|F
 */
 
 // CONFIGURATION
@@ -10,8 +11,8 @@ config dryrun: false, preparation: true, create_schema: true, load_new: true, sc
 // Define the data input source (a file which can be specified via command line arguments)
 // inputfiledir is the directory for the input files
 
-inputfiledir = '/home/automaton/graph-examples/food/MISC-graphloader/dirSource/data_json'
-personInput = File.directory(inputfiledir)
+inputfiledir = '/home/automaton/graph-examples/food/TEST/filePattern/data'
+personInput = File.directory(inputfiledir).fileMatches("person*.csv").delimiter('|').header('id','name','gender')
 
 //Specifies what data source to load using which mapper (as defined inline)
   
