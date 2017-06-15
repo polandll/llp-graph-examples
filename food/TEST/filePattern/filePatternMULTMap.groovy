@@ -1,9 +1,6 @@
 /* SAMPLE INPUT
-CSV:
 id|name|gender
 001|Julia Child|F
-JSON:
-{"name":"Julia Child","gender":"F"}
 */
 
 // CONFIGURATION
@@ -14,13 +11,12 @@ config dryrun: false, preparation: true, create_schema: false, load_new: true, s
 // Define the data input source (a file which can be specified via command line arguments)
 // inputfiledir is the directory for the input files
 
-inputfiledir = '/home/automaton/graph-examples/food/TEST/filePattern'
-inputfileCSV = inputfiledir+'/data'
-personInput = File.directory(inputfileCSV).fileMatches("person*.csv").delimiter('|').header('id','name','gender')
+inputfiledir = '/home/automaton/graph-examples/food/TEST/filePattern/data'
+personInput = File.directory(inputfiledir).fileMatches("{person*,badOne}.csv").delimiter('|').header('id','name','gender')
 
 //Specifies what data source to load using which mapper (as defined inline)
   
 load(personInput).asVertices {
-    label "author"
+    label "person"
     key "name"
 }

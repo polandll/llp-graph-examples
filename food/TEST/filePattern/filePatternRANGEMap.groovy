@@ -5,7 +5,7 @@ id|name|gender
 
 // CONFIGURATION
 // Configures the data loader to create the schema
-config dryrun: false, preparation: true, create_schema: true, load_new: true, schema_output: 'loader_output.txt'
+config dryrun: false, preparation: true, create_schema: false, load_new: true, schema_output: 'loader_output.txt'
 
 // DATA INPUT
 // Define the data input source (a file which can be specified via command line arguments)
@@ -17,6 +17,6 @@ personInput = File.directory(inputfiledir).fileMatches("person[1-9].csv").delimi
 //Specifies what data source to load using which mapper (as defined inline)
   
 load(personInput).asVertices {
-    label "author"
+    label "person"
     key "name"
 }

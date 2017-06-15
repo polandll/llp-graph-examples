@@ -12,6 +12,7 @@ schema.propertyKey('gender').Text().ifNotExists().create()
 schema.vertexLabel('person').properties('id', 'name', 'gender').ifNotExists().create()
 // INDEXES
 schema.vertexLabel("person").index("byid").materialized().by("id").add()
+schema.vertexLabel("person").index("byname").materialized().by("name").add()
 
 // JSON
 system.graph('testFilePatJSON').ifNotExists().create()
@@ -27,6 +28,7 @@ schema.propertyKey('gender').Text().ifNotExists().create()
 schema.vertexLabel('person').properties('id', 'name', 'gender').ifNotExists().create()
 // INDEXES
 schema.vertexLabel("person").index("byid").materialized().by("id").add()
+schema.vertexLabel("person").index("byname").materialized().by("name").add()
 
 // MATCH MULTIPLE FILENAME PATTERNS
 system.graph('testFilePatMULT').ifNotExists().create()
@@ -42,6 +44,7 @@ schema.propertyKey('gender').Text().ifNotExists().create()
 schema.vertexLabel('person').properties('id', 'name', 'gender').ifNotExists().create()
 // INDEXES
 schema.vertexLabel("person").index("byid").materialized().by("id").add()
+schema.vertexLabel("person").index("byname").materialized().by("name").add()
 
 // MATCH RANGE PATTERN
 system.graph('testFilePatRANGE').ifNotExists().create()
@@ -57,3 +60,4 @@ schema.propertyKey('gender').Text().ifNotExists().create()
 schema.vertexLabel('person').properties('id', 'name', 'gender').ifNotExists().create()
 // INDEXES
 schema.vertexLabel("person").index("byid").materialized().by("id").add()
+schema.vertexLabel("person").index("byname").materialized().by("name").add()
