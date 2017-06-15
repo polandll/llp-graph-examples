@@ -1,7 +1,7 @@
 //system.graph('testFilePatJSON').ifNotExists().create()
 //:remote config alias g testFilePatJSON.g
-system.graph('testFilePat').ifNotExists().create()
-:remote config alias g testFilePat.g
+system.graph('testFilePatMod2').ifNotExists().create()
+:remote config alias g testFilePatMod2.g
 schema.config().option('graph.allow_scan').set('true')
 
 // SCHEMA
