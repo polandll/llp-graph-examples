@@ -1,0 +1,1 @@
+~/dse-graph-loader-5.1.2-SNAPSHOT/graphloader -address localhost -graph syntheticGraph syntheticGraphMap.groovy -no_vertices 10 -no_properties_per_vertex 20 -no_edges_per_vertex 10000
