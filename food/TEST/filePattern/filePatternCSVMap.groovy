@@ -22,3 +22,7 @@ load(personInput).asVertices {
     label "person"
     key "name"
 }
+
+/* RESULT:
+   person1.csv and person2.csv will be loaded, but not badOne.csv
+*/

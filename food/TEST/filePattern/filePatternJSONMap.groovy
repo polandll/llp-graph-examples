@@ -19,3 +19,7 @@ load(personInput).asVertices {
     label "person"
     key "name"
 }
+
+/* RESULT:
+   person1.json and person2.json will be loaded, but not badOne.json
+*/

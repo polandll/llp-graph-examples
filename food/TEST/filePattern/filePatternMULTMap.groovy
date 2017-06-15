@@ -20,3 +20,7 @@ load(personInput).asVertices {
     label "person"
     key "name"
 }
+
+/* RESULT:
+   person1.csv, person2.csv and badOne.csv will all be loaded
+*/
