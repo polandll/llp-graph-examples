@@ -1,0 +1,5 @@
+name|line
+l1|LINESTRING(0 0, 1 1)
+l2|LINESTRING(0 0, -1 1)
+l3|LINESTRING(0 0, -2 -2)
+l4|LINESTRING(0 0, 2 -2)

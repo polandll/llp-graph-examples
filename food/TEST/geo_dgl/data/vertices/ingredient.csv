@@ -1,0 +1,27 @@
+name
+celery
+milk
+bok choy
+steak
+carrots
+pork chops
+
+// person - home edges
+pam.addEdge('livesIn', home1);
+les.addEdge('livesIn', home1);
+paul.addEdge('livesIn',home3);
+victoria.addEdge('livesIn',home3);
+terri.addEdge('livesIn',home2);
+
+// store - ingredient edges
+store1.addEdge('isStockedWith', milk);
+store1.addEdge('isStockedWith', bokChoy);
+store1.addEdge('isStockedWith', steak);
+store1.addEdge('isStockedWith', celery);
+store2.addEdge('isStockedWith', steak);
+store2.addEdge('isStockedWith', carrots);
+store2.addEdge('isStockedWith', porkChops);
+store2.addEdge('isStockedWith', celery);
+store3.addEdge('isStockedWith', milk);
+store3.addEdge('isStockedWith', carrots);
+store3.addEdge('isStockedWith', celery);
