@@ -9,9 +9,9 @@ config dryrun: false, preparation: true, create_schema: false, load_new: true, s
 // Define the data input source (a file which can be specified via command line arguments)
 // inputfiledir is the directory for the input files
 inputfiledir = '/home/automaton/graph-examples/food/TEST/geo_dgl/'
-ptsInput = File.csv(inputfiledir + "data/vertices/cart_pts.csv").delimiter('|')
-linesInput = File.csv(inputfiledir + "data/vertices/cart_lines.csv").delimiter('|')
-polysInput = File.csv(inputfiledir + "data/vertices/cart_polys.csv").delimiter('|')
+ptsInput = File.csv(inputfiledir + "data/vertices/place.csv").delimiter('|')
+//linesInput = File.csv(inputfiledir + "data/vertices/cart_lines.csv").delimiter('|')
+//polysInput = File.csv(inputfiledir + "data/vertices/cart_polys.csv").delimiter('|')
 
 import com.datastax.driver.dse.geometry.Point
 ptsInput = ptsInput.transform {
@@ -25,7 +25,7 @@ load(ptsInput).asVertices {
     key "name"
 }
 
-load(linesInput).asVertices {
+/*load(linesInput).asVertices {
     label "lineLocation"
     key "name"
 }
@@ -33,4 +33,4 @@ load(linesInput).asVertices {
 load(polysInput).asVertices {
     label "polyLocation"
     key "name"
-}
+}*/
