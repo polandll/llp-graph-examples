@@ -1,7 +1,7 @@
 // Cartesian example
 
-system.graph('cartData').ifNotExists().create()
-:remote config alias g cartData.g
+system.graph('cartSIData').ifNotExists().create()
+:remote config alias g cartSIData.g
 schema.config().option('graph.allow_scan').set('true')
 schema.config().option('graph.traversal_sources.g.restrict_lambda').set('false')
 
@@ -14,6 +14,6 @@ schema.vertexLabel('lineLocation').properties('name','line').create()
 schema.propertyKey('polygon').Polygon().withBounds(-3,-3,3,3).create()
 schema.vertexLabel('polyLocation').properties('name','polygon').create()
 
-schema.vertexLabel('polyLocation').index('byname').materialized().by('name').add()
-schema.vertexLabel('location').index('byname').materialized().by('name').add()
-schema.vertexLabel('lineLocation').index('byname').materialized().by('name').add()
+schema.vertexLabel('location').index(''search').search().by('name').by('point').add()
+schema.vertexLabel('lineLocation').index('search').search().by('name').by('line').add()
+schema.vertexLabel('polyLocation').index('search).search().by('name').by('polygon').add()
