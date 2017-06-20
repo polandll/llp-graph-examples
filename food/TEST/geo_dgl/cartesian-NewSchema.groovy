@@ -3,7 +3,7 @@
 system.graph('cartesianData').ifNotExists().create()
 :remote config alias g cartesianData.g
 schema.config().option('graph.allow_scan').set('true')
-schema.config().option('graph.restrict_lambda').set('false')
+schema.config().option('graph.traversal_sources.g.restrict_lambda').set('false')
 
 //SCHEMA
 schema.propertyKey('name').Text().create()
