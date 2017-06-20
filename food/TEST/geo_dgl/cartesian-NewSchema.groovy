@@ -12,3 +12,7 @@ schema.propertyKey('line').Linestring().withBounds(-3,-3,3,3).create()
 schema.vertexLabel('lineLocation').properties('name','line').create()
 schema.propertyKey('polygon').Polygon().withBounds(-3,-3,3,3).create()
 schema.vertexLabel('polyLocation').properties('name','polygon').create()
+
+schema.vertexLabel('polyLocation').index('byname').materialized().by('name').add()
+schema.vertexLabel('location').index('byname').materialized().by('name').add()
+schema.vertexLabel('lineLocation').index('byname').materialized().by('name').add()

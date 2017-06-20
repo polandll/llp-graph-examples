@@ -8,7 +8,7 @@ config dryrun: false, preparation: true, create_schema: false, load_new: true, s
 // DATA INPUT
 // Define the data input source (a file which can be specified via command line arguments)
 // inputfiledir is the directory for the input files
-inputfiledir = '/home/automaton/graph-examples/food/TEST/GEO/5.1/'
+inputfiledir = '/home/automaton/graph-examples/food/TEST/geo_dgl/'
 ptsInput = File.csv(inputfiledir + "data/vertices/cart_pts.csv").delimiter('|')
 linesInput = File.csv(inputfiledir + "data/vertices/cart_lines.csv").delimiter('|')
 polysInput = File.csv(inputfiledir + "data/vertices/cart_polys.csv").delimiter('|')
