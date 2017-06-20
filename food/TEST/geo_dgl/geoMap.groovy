@@ -13,16 +13,16 @@ ptsInput = File.csv(inputfiledir + "data/vertices/place.csv").delimiter('|')
 //linesInput = File.csv(inputfiledir + "data/vertices/cart_lines.csv").delimiter('|')
 //polysInput = File.csv(inputfiledir + "data/vertices/cart_polys.csv").delimiter('|')
 
-import com.datastax.driver.dse.geometry.Point
-ptsInput = ptsInput.transform {
-  it['geo'] = Point.fromWellKnownText(it['geo']);
-}
-
 //Specifies what data source to load using which mapper (as defined inline)
   
 load(ptsInput).asVertices {
     label "location"
     key "name"
+}
+
+import com.datastax.driver.dse.geometry.Point
+ptsInput = ptsInput.transform {
+  it['geo'] = Point.fromWellKnownText(it['geo']);
 }
 
 /*load(linesInput).asVertices {
