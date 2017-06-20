@@ -42,4 +42,5 @@ g.V().has('polyLocation', 'polygon', Geo.inside(Geo.point(0, 0), 1.415)).valueMa
 g.V().has('polyLocation', 'polygon', Geo.inside(Geo.point(0, 0), 2.829)).valueMap()
 
 // Test point within polygon
+// This should fail with NO SEARCH INDEX
  g.V().has('location', 'point', Geo.inside(Geo.polygon(0.0,0.0,2.0,0.0,2.0,2.0,0.0,0.0))).valueMap()
