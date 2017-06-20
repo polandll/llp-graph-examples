@@ -1,4 +1,6 @@
 /* SAMPLE INPUT
+protein|fat
+1.3|0.4
 */
 
 // CONFIGURATION
@@ -9,23 +11,11 @@ config dryrun: false, preparation: true, create_schema: false, load_new: true, s
 // Define the data input source (a file which can be specified via command line arguments)
 // inputfiledir is the directory for the input files
 inputfiledir = '/home/automaton/graph-examples/food/TEST/GEO/5.1/'
-ptsInput = File.csv(inputfiledir + "data/vertices/cart_pts.csv").delimiter('|')
-linesInput = File.csv(inputfiledir + "data/vertices/cart_lines.csv").delimiter('|')
-polysInput = File.csv(inputfiledir + "data/vertices/cart_polys.csv").delimiter('|')
+dataInput = File.csv(inputfiledir + "proteinCarb.csv").delimiter('|')
 
 //Specifies what data source to load using which mapper (as defined inline)
   
-load(ptsInput).asVertices {
-    label "location"
-    key "name"
-}
-
-load(linesInput).asVertices {
-    label "lineLocation"
-    key "name"
-}
-
-load(polysInput).asVertices {
-    label "polyLocation"
+load(dataInput).asVertices {
+    label "data"
     key "name"
 }
