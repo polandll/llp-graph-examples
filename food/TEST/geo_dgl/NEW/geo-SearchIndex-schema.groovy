@@ -1,7 +1,7 @@
-// Cartesian example - NO SEARCH INDEX
+// Cartesian example - SEARCH INDEX
 
-system.graph('geoData').ifNotExists().create()
-:remote config alias g geoData.g
+system.graph('geoSIData').ifNotExists().create()
+:remote config alias g geoSIData.g
 schema.config().option('graph.allow_scan').set('true')
 schema.config().option('graph.traversal_sources.g.restrict_lambda').set('false')
 
@@ -15,6 +15,7 @@ schema.propertyKey('polygon').Polygon().withGeoBounds().create()
 schema.vertexLabel('polyLocation').properties('name','polygon').create()
 
 schema.vertexLabel('location').index('byname').materialized().by('name').add()
-schema.vertexLabel('location').index('bypoint').materialized().by('point').add()
 schema.vertexLabel('lineLocation').index('byname').materialized().by('name').add()
 schema.vertexLabel('polyLocation').index('byname').materialized().by('name').add()
+schema.vertexLabel('location').index('search').search().by('point').add()
+schema.vertexLabel('location').index('search').search().by('line').add()

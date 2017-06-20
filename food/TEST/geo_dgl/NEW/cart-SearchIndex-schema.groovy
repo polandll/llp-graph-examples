@@ -1,4 +1,4 @@
-// Cartesian example
+// Cartesian example - SEARCH INDEX
 
 system.graph('cartSIData').ifNotExists().create()
 :remote config alias g cartSIData.g
