@@ -15,7 +15,7 @@ polysInput = File.csv(inputfiledir + "data/vertices/cart_polys.csv").delimiter('
 
 import com.datastax.driver.dse.geometry.Point
 ptsInput = ptsInput.transform {
-  it['point'] = Point.fromWellKnownText(it['point']);
+  it['geo'] = Point.fromWellKnownText(it['geo']);
 }
 
 //Specifies what data source to load using which mapper (as defined inline)
