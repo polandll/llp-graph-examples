@@ -6,7 +6,7 @@
 // PARIS TO TOYKO: 138 DEGREES; 137.969225 CART; 9713 KM; 6035 MI; 9,713,000 M
 
 :remote config alias g geoData.g
-schema.config().option('graph.allow_scan').set('true')
+schema.config().option('graph.allow_scan').set('false')
 
 // WILL NOT WORK WITHOUT FULL SCAN
 //g.V().hasLabel('location').valueMap()
@@ -57,7 +57,8 @@ g.V().has('location', 'point', Geo.inside(Geo.point(2.352222, 48.856614), 485, G
 g.V().has('location', 'point', Geo.inside(Geo.point(2.352222, 48.856614), 6035, Geo.Unit.MILES)).values('name')
 
 // Test linestring
-g.V().hasLabel('lineLocation').valueMap()
+//g.V().hasLabel('lineLocation').valueMap()
+
 // Test that no linestrings are inside distance from Paris to 1 degree of radius
 g.V().has('lineLocation', 'line', Geo.inside(Geo.point(2.352222, 48.856614), 1, Geo.Unit.DEGREES)).values('name')
 // Test that line between Paris and London are inside distance from Paris to London
@@ -68,7 +69,8 @@ g.V().has('lineLocation', 'line', Geo.inside(Geo.point(2.352222, 48.856614), 4.2
 g.V().has('lineLocation', 'line', Geo.inside(Geo.point(2.352222, 48.856614), 9.8, Geo.Unit.DEGREES)).values('name')
 
 // Test polygon
-g.V().hasLabel('polyLocation').valueMap()
+//g.V().hasLabel('polyLocation').valueMap()
+
 // Test that no polygons are inside distance from Paris to 1 degree of radius
 g.V().has('polyLocation', 'polygon', Geo.inside(Geo.point(2.352222, 48.856614), 1, Geo.Unit.DEGREES)).values('name')
 // Test that ParisLondonDublin and LondonDublinAachen polygons are inside distance from Paris to Dublin

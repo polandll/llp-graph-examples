@@ -1,10 +1,10 @@
 // Cartesian example - SEARCH INDEX
 
 :remote config alias g cartSIData.g
-schema.config().option('graph.allow_scan').set('true')
+schema.config().option('graph.allow_scan').set('false')
 
 // Print all points first
-g.V().hasLabel('location').valueMap()
+//g.V().hasLabel('location').valueMap()
 
 // Test point with circle (centerpoint and radius) for a variety of centerpoint/radius settings:
 
@@ -18,7 +18,7 @@ g.V().has('location', 'point', Geo.inside(Geo.point(0, 0), 1.415)).valueMap()
 g.V().has('location', 'point', Geo.inside(Geo.point(0, 0), 2.829)).valueMap()
 
 // Print all linestrings first
-g.V().hasLabel('lineLocation').valueMap()
+//g.V().hasLabel('lineLocation').valueMap()
 
 // Test linestring with circle (centerpoint and radius) for a variety of centerpoint/radius settings:
 
@@ -30,7 +30,7 @@ g.V().has('lineLocation', 'line', Geo.inside(Geo.point(0, 0), 1.415)).valueMap()
 g.V().has('lineLocation', 'line', Geo.inside(Geo.point(0, 0), 2.829)).valueMap()
 
 // Print all polygons first
-g.V().hasLabel('polyLocation').valueMap()
+//g.V().hasLabel('polyLocation').valueMap()
 
 // Test polygon with circle (centerpoint and radius) for a variety of centerpoint/radius settings:
 

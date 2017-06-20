@@ -57,7 +57,8 @@ g.V().has('location', 'point', Geo.inside(Geo.point(2.352222, 48.856614), 485, G
 g.V().has('location', 'point', Geo.inside(Geo.point(2.352222, 48.856614), 6035, Geo.Unit.MILES)).values('name')
 
 // Test linestring
-g.V().hasLabel('lineLocation').valueMap()
+//g.V().hasLabel('lineLocation').valueMap()
+
 // Test that no linestrings are inside distance from Paris to 1 degree of radius
 g.V().has('lineLocation', 'line', Geo.inside(Geo.point(2.352222, 48.856614), 1, Geo.Unit.DEGREES)).values('name')
 // Test that line between Paris and London are inside distance from Paris to London
@@ -68,7 +69,8 @@ g.V().has('lineLocation', 'line', Geo.inside(Geo.point(2.352222, 48.856614), 4.2
 g.V().has('lineLocation', 'line', Geo.inside(Geo.point(2.352222, 48.856614), 9.8, Geo.Unit.DEGREES)).values('name')
 
 // Test polygon
-g.V().hasLabel('polyLocation').valueMap()
+//g.V().hasLabel('polyLocation').valueMap()
+
 // Test that no polygons are inside distance from Paris to 1 degree of radius
 g.V().has('polyLocation', 'polygon', Geo.inside(Geo.point(2.352222, 48.856614), 1, Geo.Unit.DEGREES)).values('name')
 // Test that ParisLondonDublin and LondonDublinAachen polygons are inside distance from Paris to Dublin
