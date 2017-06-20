@@ -1,5 +1,5 @@
 name|polygon
-g1|Geo.polygon(0,0,1,1,0,1,0,0)
-g2|Geo.polygon(0,0,0,1,-1,1,0,0)
-g3|Geo.polygon(0,0,-2,0,-2,-2,0,0)
-g4|Geo.polygon(0,0,2,0,2,-2,0,0)
+g1|POLYGON((0 0,1 1,0 1,0 0))
+g2|POLYGON((0 0,0 1,-1 1,0 0))
+g3|POLYGON((0 0,-2 0,-2 -2,0 0))
+g4|POLYGON((0 0,2 0,2 -2,0 0))

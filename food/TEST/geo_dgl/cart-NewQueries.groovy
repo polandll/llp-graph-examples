@@ -1,8 +1,7 @@
 // Cartesian example - NO SEARCH INDEX
 
-:remote config alias g cartesianData.g
-//schema.config().option('graph.allow_scan').set('true')
-schema.config().option('graph.allow_scan').set('false')
+:remote config alias g cartData.g
+schema.config().option('graph.allow_scan').set('true')
 
 // Find a single point
 g.V().has('location','point', Geo.inside(Geo.point(0, 0), 0, Geo.Unit.METERS))

@@ -1,7 +1,7 @@
 // Cartesian example
 
-system.graph('cartesianData').ifNotExists().create()
-:remote config alias g cartesianData.g
+system.graph('cartData').ifNotExists().create()
+:remote config alias g cartData.g
 schema.config().option('graph.allow_scan').set('true')
 schema.config().option('graph.traversal_sources.g.restrict_lambda').set('false')
 

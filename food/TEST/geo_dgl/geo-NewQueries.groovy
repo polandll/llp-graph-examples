@@ -1,20 +1,21 @@
-// Cartesian example -  NO SEARCH INDEX
+// Geodetic example -  NO SEARCH INDEX
 // DISTANCES
 // PARIS TO LONDON: 3.7 DEGREES; 3.629973 CART; 344 KM; 214 MI; 344,000 M
 // PARIS TO AACHEN: 4.2 DEGREES; 4.196052 CART; 343 KM; 213 MI; 343,000 M
 // PARIS TO DUBLIN: 9.8 DEGREES; 9.714138 CART; 781 KM; 485 MI; 781,000 M
 // PARIS TO TOYKO: 138 DEGREES; 137.969225 CART; 9713 KM; 6035 MI; 9,713,000 M
 
-:remote config alias g cartesian51.g
-//schema.config().option('graph.allow_scan').set('true')
-schema.config().option('graph.allow_scan').set('false')
+:remote config alias g geoData.g
+schema.config().option('graph.allow_scan').set('true')
+
+// WILL NOT WORK WITHOUT FULL SCAN
+//g.V().hasLabel('location').valueMap()
 
 // Test point
 // Find a single point
 g.V().has('location','point', Geo.inside(Geo.point(2.352222, 48.856614), 0, Geo.Unit.METERS))
 
 // DEGREES
-g.V().hasLabel('location').valueMap()
 // Test that Paris is inside distance from Paris to 1 degree of radius
 g.V().has('location', 'point', Geo.inside(Geo.point(2.352222, 48.856614), 1, Geo.Unit.DEGREES)).values('name')
 // Test that Paris is inside distance from Paris to London (works for searchindex, not for non-index)

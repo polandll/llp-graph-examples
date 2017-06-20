@@ -1,6 +1,6 @@
-name|geo
-p0|POINT(0.5, 0.5)
-p1|POINT(1, 1)
-p2|POINT(-1, 1)
-p3|POINT(-2, -2)
-p4|POINT(2, 2)
+name|point
+p0|POINT(0.5 0.5)
+p1|POINT(1 1)
+p2|POINT(-1 1)
+p3|POINT(-2 -2)
+p4|POINT(2 2)

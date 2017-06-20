@@ -1,0 +1,73 @@
+2017-06-20 02:18:01 DEBUG Executable:82 - Setting cluster builder: com.datastax.dsegraphloader.api.ClusterBuilder@2173f6d9
+2017-06-20 02:18:01 DEBUG SystemProperties:23 - com.datastax.driver.NEW_NODE_DELAY_SECONDS is undefined, using default value 1
+2017-06-20 02:18:01 DEBUG SystemProperties:23 - com.datastax.driver.NOTIF_LOCK_TIMEOUT_SECONDS is undefined, using default value 60
+2017-06-20 02:18:01 DEBUG SystemProperties:39 - com.datastax.driver.USE_NATIVE_CLOCK is undefined, using default value true
+2017-06-20 02:18:01 INFO  ClockFactory:43 - Using native clock to generate timestamps.
+2017-06-20 02:18:01 DEBUG SystemProperties:23 - com.datastax.driver.NON_BLOCKING_EXECUTOR_SIZE is undefined, using default value 2
+2017-06-20 02:18:01 DEBUG Cluster:1397 - Starting new cluster with contact points [localhost/127.0.0.1:9042]
+2017-06-20 02:18:01 DEBUG InternalLoggerFactory:71 - Using SLF4J as the default logging framework
+2017-06-20 02:18:01 DEBUG PlatformDependent0:76 - java.nio.Buffer.address: available
+2017-06-20 02:18:01 DEBUG PlatformDependent0:76 - sun.misc.Unsafe.theUnsafe: available
+2017-06-20 02:18:01 DEBUG PlatformDependent0:71 - sun.misc.Unsafe.copyMemory: available
+2017-06-20 02:18:01 DEBUG PlatformDependent0:76 - java.nio.Bits.unaligned: true
+2017-06-20 02:18:01 DEBUG PlatformDependent0:76 - java.nio.DirectByteBuffer.<init>(long, int): available
+2017-06-20 02:18:01 DEBUG PlatformDependent:76 - Java version: 8
+2017-06-20 02:18:01 DEBUG PlatformDependent:76 - -Dio.netty.noUnsafe: false
+2017-06-20 02:18:01 DEBUG PlatformDependent:76 - sun.misc.Unsafe: available
+2017-06-20 02:18:01 DEBUG PlatformDependent:76 - -Dio.netty.noJavassist: false
+2017-06-20 02:18:01 DEBUG PlatformDependent:71 - Javassist: unavailable
+2017-06-20 02:18:01 DEBUG PlatformDependent:71 - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2017-06-20 02:18:01 DEBUG PlatformDependent:76 - -Dio.netty.tmpdir: /tmp
+2017-06-20 02:18:01 DEBUG PlatformDependent:76 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2017-06-20 02:18:01 DEBUG PlatformDependent:76 - -Dio.netty.noPreferDirect: false
+2017-06-20 02:18:01 DEBUG PlatformDependent:76 - io.netty.maxDirectMemory: 2005925888 bytes
+2017-06-20 02:18:01 DEBUG SystemProperties:39 - com.datastax.driver.FORCE_NIO is undefined, using default value false
+2017-06-20 02:18:01 DEBUG NativeLibraryLoader:71 - -Dio.netty.tmpdir: /tmp
+2017-06-20 02:18:01 DEBUG NativeLibraryLoader:71 - -Dio.netty.native.workdir: /tmp (io.netty.tmpdir)
+2017-06-20 02:18:01 INFO  NettyUtil:70 - Found Netty's native epoll transport in the classpath, using it
+2017-06-20 02:18:01 DEBUG MultithreadEventLoopGroup:76 - -Dio.netty.eventLoopThreads: 4
+2017-06-20 02:18:01 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.level: simple
+2017-06-20 02:18:01 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.maxRecords: 4
+2017-06-20 02:18:01 DEBUG SystemProperties:39 - com.datastax.driver.EXTENDED_PEER_CHECK is undefined, using default value true
+2017-06-20 02:18:01 DEBUG STATES:79 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 1
+2017-06-20 02:18:01 DEBUG SystemProperties:39 - com.datastax.driver.DISABLE_COALESCING is undefined, using default value false
+2017-06-20 02:18:01 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numHeapArenas: 4
+2017-06-20 02:18:01 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numDirectArenas: 4
+2017-06-20 02:18:01 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.pageSize: 8192
+2017-06-20 02:18:01 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxOrder: 11
+2017-06-20 02:18:01 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.chunkSize: 16777216
+2017-06-20 02:18:01 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.tinyCacheSize: 512
+2017-06-20 02:18:01 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.smallCacheSize: 256
+2017-06-20 02:18:01 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.normalCacheSize: 64
+2017-06-20 02:18:01 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2017-06-20 02:18:01 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2017-06-20 02:18:01 DEBUG ThreadLocalRandom:71 - -Dio.netty.initialSeedUniquifier: 0x56a7556aeaed24cc (took 0 ms)
+2017-06-20 02:18:01 DEBUG ByteBufUtil:76 - -Dio.netty.allocator.type: unpooled
+2017-06-20 02:18:01 DEBUG ByteBufUtil:76 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2017-06-20 02:18:01 DEBUG ByteBufUtil:76 - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2017-06-20 02:18:01 DEBUG Connection:159 - Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Connection established, initializing transport
+2017-06-20 02:18:01 DEBUG Recycler:76 - -Dio.netty.recycler.maxCapacity.default: 262144
+2017-06-20 02:18:01 DEBUG Recycler:76 - -Dio.netty.recycler.linkCapacity: 16
+2017-06-20 02:18:01 DEBUG AbstractByteBuf:81 - -Dio.netty.buffer.bytebuf.checkAccessible: true
+2017-06-20 02:18:01 DEBUG SystemProperties:23 - com.datastax.driver.NATIVE_TRANSPORT_MAX_FRAME_SIZE_IN_MB is undefined, using default value 256
+2017-06-20 02:18:01 DEBUG STATES:311 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Transport initialized, connection ready
+2017-06-20 02:18:01 DEBUG ControlConnection:532 - [Control connection] Refreshing node list and token map
+2017-06-20 02:18:01 DEBUG ControlConnection:266 - [Control connection] Refreshing schema
+2017-06-20 02:18:02 DEBUG ReplicationStrategy$NetworkTopologyStrategy:114 - Computing token to replica map for keyspace: testFilePatMULT_system.
+2017-06-20 02:18:02 DEBUG ReplicationStrategy$NetworkTopologyStrategy:202 - Token to replica map computation for keyspace testFilePatMULT_system completed in 0 milliseconds
+2017-06-20 02:18:02 DEBUG STATES:174 - [Control connection] established to localhost/127.0.0.1:9042
+2017-06-20 02:18:02 INFO  DCAwareRoundRobinPolicy:86 - Using data-center name 'SearchGraph' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+2017-06-20 02:18:02 INFO  Cluster:1549 - New Cassandra host localhost/127.0.0.1:9042 added
+2017-06-20 02:18:02 DEBUG SystemProperties:39 - com.datastax.driver.CHECK_IO_DEADLOCKS is undefined, using default value true
+2017-06-20 02:18:02 DEBUG STATES:79 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 2
+2017-06-20 02:18:02 DEBUG Connection:159 - Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Connection established, initializing transport
+2017-06-20 02:18:02 DEBUG STATES:311 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Transport initialized, connection ready
+2017-06-20 02:18:02 DEBUG HostConnectionPool:143 - Created connection pool to host localhost/127.0.0.1:9042 (1 connections needed, 1 successfully opened)
+2017-06-20 02:18:02 DEBUG Session:385 - Added connection pool for localhost/127.0.0.1:9042
+2017-06-20 02:18:02 ERROR Executable:205 - Encountered error while loading
+java.lang.IllegalArgumentException: File does not exist or cannot be read: cartMap.groovy
+	at com.google.common.base.Preconditions.checkArgument(Preconditions.java:145)
+	at com.datastax.dsegraphloader.cli.GroovyScriptExecutor.evaluate(GroovyScriptExecutor.java:91)
+	at com.datastax.dsegraphloader.cli.Executable.execute(Executable.java:90)
+	at com.datastax.dsegraphloader.cli.Executable.execute(Executable.java:52)
+	at com.datastax.dsegraphloader.cli.Executable.main(Executable.java:203)
