@@ -1,0 +1,4 @@
+name|polygon
+ParisLondonDublin|Geo.polygon(2.352222, 48.856614, -0.127758, 51.507351, -6.26031, 53.349805)
+LondonDublinAachen|Geo.polygon(-0.127758, 51.507351, -6.26031, 53.349805, 6.083887, 50.775346)
+DublinAachenTokyo|Geo.polygon(-6.26031, 53.349805, 6.083887, 50.775346, 139.691706, 35.689487)
