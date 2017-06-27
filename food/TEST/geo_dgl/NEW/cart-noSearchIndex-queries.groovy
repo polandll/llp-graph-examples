@@ -1,4 +1,5 @@
 // Cartesian example - NO SEARCH INDEX
+// ALL THE QUERIES SHOULD FAIL
 
 :remote config alias g cartData.g
 schema.config().option('graph.allow_scan').set('false')

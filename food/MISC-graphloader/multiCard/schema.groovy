@@ -1,3 +1,7 @@
+system.graph('multiCardrepeat').ifNotExists().create()
+:remote config alias g multiCardrepeat.g
+schema.config().option('graph.allow_scan').set('true')
+
 // SCHEMA
 // PROPERTIES
 schema.propertyKey('author').Text().single().create()

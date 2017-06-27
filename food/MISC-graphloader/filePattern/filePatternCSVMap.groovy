@@ -12,7 +12,7 @@ config dryrun: false, preparation: true, create_schema: false, load_new: true, s
 // Define the data input source (a file which can be specified via command line arguments)
 // inputfiledir is the directory for the input files
 
-inputfiledir = '/home/automaton/graph-examples/food/TEST/filePattern'
+inputfiledir = '/home/automaton/graph-examples/food/MISC-graphloader/filePattern'
 inputfileCSV = inputfiledir+'/data'
 personInput = File.directory(inputfileCSV).fileMatches("person*.csv").delimiter('|').header('id','name','gender')
 
