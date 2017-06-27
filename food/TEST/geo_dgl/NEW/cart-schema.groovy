@@ -20,4 +20,4 @@ schema.vertexLabel('polyLocation').index('byname').materialized().by('name').add
 
 schema.vertexLabel('location').index('search').search().by('point').add()
 schema.vertexLabel('lineLocation').index('search').search().by('line').add()
-schema.vertexLabel('polyLocation').index('search).search().by('polygon').add()
+// polygons cannot be indexed with search indexes
