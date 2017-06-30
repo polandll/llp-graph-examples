@@ -1,0 +1,4 @@
+API for USDA Food Composition:
+https://ndb.nal.usda.gov/ndb/doc/index
+
+*** NEED to figure out how to extract calories for a meal and put it in the meal ****

@@ -1,5 +1,5 @@
-system.graph('testfitnessTracker').ifNotExists().create()
-:remote config alias g testfitnessTracker.g
+system.graph('ftWithId').ifNotExists().create()
+:remote config alias g ftWithId.g
 schema.clear()
 schema.config().option('graph.allow_scan').set('true')
 
@@ -20,8 +20,8 @@ schema.propertyKey('since').Text().single().ifNotExists().create()
 schema.propertyKey('numServings').Int().single().ifNotExists().create()
 
 // VERTEX LABELS
-schema.vertexLabel('person').properties('name', 'gender', 'calGoal', 'macroGoal').ifNotExists().create()
-schema.vertexLabel('item').properties('name', 'servingAmt', 'macro', 'calories').ifNotExists().create()
+schema.vertexLabel('person').properties('userId', 'name', 'gender', 'calGoal', 'macroGoal').ifNotExists().create()
+schema.vertexLabel('item').properties('itemId','name', 'servingAmt', 'macro', 'calories').ifNotExists().create()
 schema.vertexLabel('meal').properties('mealId', 'type', 'mealDate').ifNotExists().create()
 
 // EDGE LABELS
@@ -32,8 +32,9 @@ schema.edgeLabel("includes").connection("item", "meal").add()
 schema.edgeLabel("ate").multiple().ifNotExists().create()
 schema.edgeLabel("ate").connection("person", "meal").add()
 
-
 // INDEXES
 schema.vertexLabel('person').index('byname').materialized().by('name').add()
 schema.vertexLabel('item').index('byname').materialized().by('name').add()
 schema.vertexLabel('meal').index('bymealId').materialized().by('mealId').add()
+schema.vertexLabel('person').index('byUserId').materialized().by('userId').add()
+schema.vertexLabel('item').index('byItemId').materialized().by('itemId').add()

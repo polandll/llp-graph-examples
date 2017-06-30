@@ -11,7 +11,7 @@ config create_schema: false, load_new: true
 // inputfiledir is the directory for the input files that is given in the commandline
 // as the "-filename" option
 
-inputfiledir = '/home/automaton/graph-examples/food/TEST/fitnessTracker/data/'
+inputfiledir = '/home/automaton/graph-examples/food/TEST/fitnessTracker/NEW_WITH_ID/data/'
 users = File.csv(inputfiledir + "vertices/" + "users.csv").delimiter('|')
 items = File.csv(inputfiledir + "vertices/" + "items.csv").delimiter('|')
 meals = File.csv(inputfiledir + "vertices/" + "meals.csv").delimiter('|')
@@ -62,7 +62,7 @@ load(meals_users).asEdges {
     label "ate"
     outV "name", {
         label "user"
-        key "name"
+        key "userId"
         exists()
     }
     inV "mealId", {
