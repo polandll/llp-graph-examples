@@ -20,7 +20,7 @@ meals_users = File.csv(inputfiledir + "edges/" + "meals_users.csv").delimiter('|
 
 //Specifies what data source to load using which mapper (as defined inline)
 load(users).asVertices {
-    label "user"
+    label "person"
     key "name"
 }
 
@@ -61,7 +61,7 @@ load(meals).asEdges {
 load(meals_users).asEdges {
     label "ate"
     outV "name", {
-        label "user"
+        label "person"
         key "userId"
         exists()
     }
@@ -76,12 +76,12 @@ load(meals_users).asEdges {
 load(knows).asEdges {
     label "knows"
     outV "u1", {
-        label "user"
+        label "person"
         key "name"
 	exists()
     }
     inV "u2", {
-        label "user"
+        label "person"
         key "name"
 	exists()
     }
