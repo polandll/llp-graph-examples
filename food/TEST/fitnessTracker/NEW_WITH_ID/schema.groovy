@@ -21,7 +21,11 @@ schema.propertyKey('numServings').Int().single().create()
 
 // VERTEX LABELS
 schema.vertexLabel('person').ifNotExists().create()
-schema.vertexLabel('person').properties('userId', 'name', 'gender', 'calGoal', 'macroGoal').add()
+schema.vertexLabel('person').properties('userId').add()
+schema.vertexLabel('person').properties('name').add()
+schema.vertexLabel('person').properties('gender').add()
+schema.vertexLabel('person').properties('calGoal').add()
+schema.vertexLabel('person').properties('macroGoal').add()
 schema.vertexLabel('item').properties('itemId','name', 'servingAmt', 'macro', 'calories').ifNotExists().create()
 schema.vertexLabel('meal').properties('mealId', 'type', 'mealDate').ifNotExists().create()
 
