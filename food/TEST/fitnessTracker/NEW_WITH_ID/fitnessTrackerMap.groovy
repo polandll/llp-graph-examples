@@ -60,12 +60,12 @@ load(meals).asEdges {
 
 load(meals_users).asEdges {
     label "ate"
-    outV "name", {
+    outV "person", {
         label "person"
         key "userId"
         exists()
     }
-    inV "mealId", {
+    inV "meal", {
         label "meal"
 //      key type: "type", mealDate: "mealDate"
         key "mealId"
@@ -77,12 +77,12 @@ load(knows).asEdges {
     label "knows"
     outV "u1", {
         label "person"
-        key "itemId"
+        key "userId"
 	exists()
     }
     inV "u2", {
         label "person"
-        key "itemId"
+        key "userId"
 	exists()
     }
 }
