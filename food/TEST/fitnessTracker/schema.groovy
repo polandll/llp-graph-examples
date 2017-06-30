@@ -4,10 +4,10 @@ schema.clear()
 schema.config().option('graph.allow_scan').set('true')
 
 // PROPERTIES
-schema.propertyKey('userId').Int().ifNotExists().single().create()
+schema.propertyKey('userId').Int().single().ifNotExists().create()
 schema.propertyKey('mealId').Int().single().ifNotExists().create()
-schema.propertyKey('itemId').Int().ifNotExists().single().create()
-schema.propertyKey('name').Text().ifNotExists().single().create()
+schema.propertyKey('itemId').Int().single().ifNotExists().create()
+schema.propertyKey('name').Text().single().ifNotExists().create()
 schema.propertyKey('gender').Text().single().ifNotExists().create()
 schema.propertyKey('calGoal').Int().single().ifNotExists().create()
 schema.propertyKey('macroGoal').Text().single().ifNotExists().create()
