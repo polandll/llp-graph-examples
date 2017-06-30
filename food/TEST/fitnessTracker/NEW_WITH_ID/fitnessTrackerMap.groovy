@@ -47,7 +47,7 @@ load(meals).asEdges {
 	key "itemId"
         exists()
     }
-    inV "mealId", {
+    inV "meal", {
 	label "meal"
 //	key type: "type", mealDate: "mealDate"
         key "mealId"
