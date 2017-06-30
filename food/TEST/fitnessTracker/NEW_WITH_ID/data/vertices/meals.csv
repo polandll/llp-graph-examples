@@ -1,5 +1,5 @@
-mealId|type|mealDate|item|numServings|name
-3001|lunch|2017-03-31|taco|1|Lori
-3001|lunch|2017-03-31|burrito|1|Lori
-3001|lunch|2017-03-31|iced tea|2|Lori
-3002|lunch|2017-03-30|taco|2|Lisa
+mealId|type|mealDate|itemId|numServings|userId
+3001|lunch|2017-03-31|2001|1|1001
+3001|lunch|2017-03-31|2002|1|1001
+3001|lunch|2017-03-31|2003|2|1001
+3002|lunch|2017-03-30|2001|2|1002

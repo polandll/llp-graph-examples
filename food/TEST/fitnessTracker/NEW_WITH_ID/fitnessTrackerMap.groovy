@@ -35,8 +35,8 @@ load(meals).asVertices {
     // partition key: type and clustering key: mealDate 
     //key type: "type", mealDate: "mealDate"
     key "mealId"
-    ignore "name"
-    ignore "item"
+    ignore "userId"
+    ignore "itemId"
     ignore "numServings"
 }
 
@@ -53,7 +53,7 @@ load(meals).asEdges {
         key "mealId"
         exists()
     }
-    ignore "name"
+    ignore "userId"
     ignore "type"
     ignore "mealDate"
 }
