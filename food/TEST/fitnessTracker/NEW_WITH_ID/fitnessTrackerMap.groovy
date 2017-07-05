@@ -23,3 +23,8 @@ load(users).asVertices {
     label "person"
     key userId: "userId", name: "name"
 }
+
+load(items).asVertices {
+    label "item"
+    key itemId: "itemId", name: "name"
+}
