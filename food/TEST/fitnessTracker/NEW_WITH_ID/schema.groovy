@@ -22,8 +22,8 @@ schema.propertyKey('numServings').Int().single().create()
 // VERTEX LABELS
 schema.vertexLabel('person').partitionKey('name','userId').create()
 schema.vertexLabel('person').properties('gender','calGoal','macroGoal').add()
-schema.vertexLabel('item').create()
-schema.vertexLabel('item').properties('itemId','name', 'servingAmt', 'macro', 'calories').add()
+schema.vertexLabel('item').partitionKey('itemId','name').create()
+schema.vertexLabel('item').properties('servingAmt', 'macro', 'calories').add()
 schema.vertexLabel('meal').create()
 schema.vertexLabel('meal').properties('mealId', 'type', 'mealDate').add()
 
@@ -38,8 +38,8 @@ schema.edgeLabel('ate').multiple().create()
 schema.edgeLabel('ate').connection('person', 'meal').add()
 
 // INDEXES
-schema.vertexLabel('person').index('byname').materialized().by('name').add()
-schema.vertexLabel('item').index('byname').materialized().by('name').add()
+//schema.vertexLabel('person').index('byname').materialized().by('name').add()
+//schema.vertexLabel('item').index('byname').materialized().by('name').add()
 schema.vertexLabel('meal').index('bymealId').materialized().by('mealId').add()
-schema.vertexLabel('person').index('byUserId').materialized().by('userId').add()
-schema.vertexLabel('item').index('byItemId').materialized().by('itemId').add()
+//schema.vertexLabel('person').index('byUserId').materialized().by('userId').add()
+//schema.vertexLabel('item').index('byItemId').materialized().by('itemId').add()
