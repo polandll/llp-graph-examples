@@ -1,4 +1,4 @@
-:remote config alias g testfitnessTracker.g
+:remote config alias g ftWithId.g
 schema.config().option('graph.allow_scan').set('true')
 
 // Get all the graph vertices and edges
