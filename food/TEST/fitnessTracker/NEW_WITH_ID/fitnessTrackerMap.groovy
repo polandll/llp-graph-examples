@@ -32,4 +32,7 @@ load(items).asVertices {
 load(meals).asVertices {
     label "meal"
     key mealId: "mealId", mealDate: "mealDate"
+    ignore "userId"
+    ignore "itemId"
+    ignore "numServings"
 }
