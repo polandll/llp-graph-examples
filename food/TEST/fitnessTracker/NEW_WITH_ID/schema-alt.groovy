@@ -1,5 +1,5 @@
-system.graph('ftWithId-alt').ifNotExists().create()
-:remote config alias g ftWithId-alt.g
+system.graph('ftWithId_alt').ifNotExists().create()
+:remote config alias g ftWithId_alt.g
 schema.clear()
 schema.config().option('graph.allow_scan').set('true')
 
