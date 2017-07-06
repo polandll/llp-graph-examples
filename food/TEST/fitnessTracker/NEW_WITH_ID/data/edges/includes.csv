@@ -1,5 +1,2 @@
 mealId|itemId|numServings
-3001|2001|1
-3001|2002|1
-3001|2003|2
-3002|2001|2
+{~label=meal, mealDate=2017-03-30, mealId=3002}|{~label=item, itemId=2003, name=iced tea}|1
