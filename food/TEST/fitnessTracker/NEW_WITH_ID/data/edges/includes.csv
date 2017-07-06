@@ -1,2 +1,2 @@
-mealId|itemId|numServings
+meal|item|numServings
 {~label=meal, mealDate=2017-03-30, mealId=3002}|{~label=item, itemId=2003, name=iced tea}|1
