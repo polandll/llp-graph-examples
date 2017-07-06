@@ -51,12 +51,12 @@ load(includes).asEdges {
 
 load(meals_users).asEdges {
     label "ate"
-    outV "userId", {
+    inV "userId", {
         label "person"
         key "userId"
         exists()
     }
-    inV "mealId", {
+    outV "mealId", {
         label "meal"
         key "mealId"
         exists()
