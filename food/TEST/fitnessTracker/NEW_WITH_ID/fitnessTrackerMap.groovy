@@ -42,12 +42,12 @@ load(includes).asEdges {
     label "includes"
     outV "item", {
 	label "item"
-        key id
+        key itemId
 	exists()
     }
     inV "meal", {
 	label "meal"
-	key id
+	key mealId
 	exists()
     }
 }
