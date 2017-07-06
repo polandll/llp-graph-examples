@@ -41,14 +41,13 @@ load(meals).asEdges {
     label "includes"
     outV "item", {
 	label "item"
-        key "itemId"
+        key itemId: "itemId", name: "name"
 	exists()
     }
     inV "meal", {
 	label "meal"
-	key "mealId"
+	key mealId: "mealId", mealDate: "mealDate"
 	exists()
     }
     ignore "userId"
-    ignore "mealDate"
 }
