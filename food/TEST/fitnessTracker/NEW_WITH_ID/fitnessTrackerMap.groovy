@@ -33,19 +33,16 @@ load(items).asVertices {
 load(meals).asVertices {
     label "meal"
     key "mealId"
-    ignore "userId"
-    ignore "itemId"
-    ignore "numServings"
 }
 
 load(includes).asEdges {
     label "includes"
-    outV "item", {
+    outV "itemId", {
 	label "item"
         key "itemId"
 	exists()
     }
-    inV "meal", {
+    inV "mealId", {
 	label "meal"
 	key "mealId"
 	exists()
