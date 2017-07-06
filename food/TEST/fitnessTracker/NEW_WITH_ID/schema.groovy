@@ -33,7 +33,7 @@ schema.edgeLabel('knows').properties('since').add()
 schema.edgeLabel('knows').connection('person', 'person').add()
 schema.edgeLabel('includes').multiple().create()
 schema.edgeLabel('includes').properties('numServings').add()
-schema.edgeLabel('includes').connection('item', 'meal').add()
+schema.edgeLabel('includes').connection('meal','item').add()
 schema.edgeLabel('ate').multiple().create()
 schema.edgeLabel('ate').connection('person', 'meal').add()
 

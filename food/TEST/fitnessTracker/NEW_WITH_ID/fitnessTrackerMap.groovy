@@ -37,12 +37,12 @@ load(meals).asVertices {
 
 load(includes).asEdges {
     label "includes"
-    outV "itemId", {
+    inV "itemId", {
 	label "item"
         key "itemId"
 	exists()
     }
-    inV "mealId", {
+    outV "mealId", {
 	label "meal"
 	key "mealId"
 	exists()
@@ -51,12 +51,12 @@ load(includes).asEdges {
 
 load(ate).asEdges {
     label "ate"
-    outV "mealId", {
+    inV "mealId", {
         label "meal"
         key "mealId"
         exists()
     }
-    inV "userId", {
+    outV "userId", {
         label "person"
         key "userId"
         exists()
