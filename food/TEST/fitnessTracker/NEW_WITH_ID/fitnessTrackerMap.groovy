@@ -22,17 +22,17 @@ meals_users = File.csv(inputfiledir + "edges/" + "meals_users.csv").delimiter('|
 //Specifies what data source to load using which mapper (as defined inline)
 load(users).asVertices {
     label "person"
-    key userId: "userId", name: "name"
+    key "userId"
 }
 
 load(items).asVertices {
     label "item"
-    key itemId: "itemId", name: "name"
+    key "itemId"
 }
 
 load(meals).asVertices {
     label "meal"
-    key mealId: "mealId", mealDate: "mealDate"
+    key "mealId"
     ignore "userId"
     ignore "itemId"
     ignore "numServings"
@@ -42,12 +42,12 @@ load(includes).asEdges {
     label "includes"
     outV "item", {
 	label "item"
-        key itemId
+        key "itemId"
 	exists()
     }
     inV "meal", {
 	label "meal"
-	key mealId
+	key "mealId"
 	exists()
     }
 }
