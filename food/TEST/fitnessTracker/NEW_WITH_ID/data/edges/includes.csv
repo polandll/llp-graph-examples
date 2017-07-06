@@ -1,4 +1,4 @@
-meal|item|numServings
+mealId|itemId|numServings
 3001|2001|1
 3001|2002|1
 3001|2003|2
