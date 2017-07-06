@@ -2,12 +2,12 @@
 schema.config().option('graph.allow_scan').set('false')
 
 // Get all the graph vertices and edges
-g.V()
-g.E()
+//g.V()
+//g.E()
 
 // Get values 
-g.V().valueMap()
-g.E().valueMap()
+//g.V().valueMap()
+//g.E().valueMap()
 
 // What is the food that two people ate that was in common? Here the answer is that Lori and Lisa both had a taco.
 g.V().has('person','name','Lori').
