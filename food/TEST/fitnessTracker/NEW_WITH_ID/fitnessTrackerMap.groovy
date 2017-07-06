@@ -15,6 +15,7 @@ inputfiledir = '/home/automaton/graph-examples/food/TEST/fitnessTracker/NEW_WITH
 users = File.csv(inputfiledir + "vertices/" + "users.csv").delimiter('|')
 items = File.csv(inputfiledir + "vertices/" + "items.csv").delimiter('|')
 meals = File.csv(inputfiledir + "vertices/" + "meals.csv").delimiter('|')
+includes = File.csv(inputfiledir + "edges/" + "includes.csv").delimiter('|')
 knows = File.csv(inputfiledir + "edges/" + "knows.csv").delimiter('|')
 meals_users = File.csv(inputfiledir + "edges/" + "meals_users.csv").delimiter('|')
 
@@ -37,7 +38,7 @@ load(meals).asVertices {
     ignore "numServings"
 }
 
-load(meals).asEdges {
+load(includes).asEdges {
     label "includes"
     outV "item", {
 	label "item"
@@ -49,5 +50,4 @@ load(meals).asEdges {
 	key mealId: "mealId", mealDate: "mealDate"
 	exists()
     }
-    ignore "userId"
 }

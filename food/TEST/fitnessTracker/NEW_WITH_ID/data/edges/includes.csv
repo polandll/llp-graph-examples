@@ -1,0 +1,5 @@
+mealId|mealDate|itemId|name|numServings
+3001|2017-03-31|2001|taco|1
+3001|2017-03-31|2002|burrito|1
+3001|2017-03-31|2003|iced tea|2
+3002|2017-03-30|2001|taco|2
