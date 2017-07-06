@@ -48,3 +48,45 @@ load(includes).asEdges {
 	exists()
     }
 }
+
+load(includes).asEdges {
+    label "includes"
+    outV "itemId", {
+        label "item"
+        key "itemId"
+        exists()
+    }
+    inV "mealId", {
+        label "meal"
+        key "mealId"
+        exists()
+    }
+}
+
+load(meals_users).asEdges {
+    label "ate"
+    outV "person", {
+        label "person"
+        key "userId"
+        exists()
+    }
+    inV "meal", {
+        label "meal"
+        key "mealId"
+        exists()
+    }
+}
+
+load(knows).asEdges {
+    label "knows"
+    outV "u1", {
+        label "person"
+        key "userId"
+    exists()
+    }
+    inV "u2", {
+        label "person"
+        key "userId"
+    exists()
+    }
+}
