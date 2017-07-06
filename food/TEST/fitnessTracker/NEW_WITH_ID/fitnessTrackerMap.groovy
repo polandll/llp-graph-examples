@@ -49,28 +49,14 @@ load(includes).asEdges {
     }
 }
 
-load(includes).asEdges {
-    label "includes"
-    outV "itemId", {
-        label "item"
-        key "itemId"
-        exists()
-    }
-    inV "mealId", {
-        label "meal"
-        key "mealId"
-        exists()
-    }
-}
-
 load(meals_users).asEdges {
     label "ate"
-    outV "person", {
+    outV "userId", {
         label "person"
         key "userId"
         exists()
     }
-    inV "meal", {
+    inV "mealId", {
         label "meal"
         key "mealId"
         exists()
