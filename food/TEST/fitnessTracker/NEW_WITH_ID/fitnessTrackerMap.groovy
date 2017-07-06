@@ -28,3 +28,8 @@ load(items).asVertices {
     label "item"
     key itemId: "itemId", name: "name"
 }
+
+load(meals).asVertices {
+    label "meal"
+    key mealId: "mealId", mealDate: "mealDate"
+}
