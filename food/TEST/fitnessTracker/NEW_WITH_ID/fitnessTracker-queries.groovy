@@ -1,5 +1,5 @@
 :remote config alias g ftWithId.g
-schema.config().option('graph.allow_scan').set('true')
+schema.config().option('graph.allow_scan').set('false')
 
 // Get all the graph vertices and edges
 g.V()
