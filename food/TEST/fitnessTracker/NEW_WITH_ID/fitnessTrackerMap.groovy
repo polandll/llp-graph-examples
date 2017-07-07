@@ -1,5 +1,5 @@
 /** SAMPLE INPUT
-See users.csv, knows.csv, items.csv, meals.csv
+See files in inputdir/vertices and inputdir/edges
 **/
 
 // CONFIGURATION
@@ -7,17 +7,15 @@ See users.csv, knows.csv, items.csv, meals.csv
 config create_schema: false, load_new: true
 
 // DATA INPUT
-// Define the data input source (a file which can be specified via command line arguments)
-// inputfiledir is the directory for the input files that is given in the commandline
-// as the "-filename" option
+// Define the data input source using inputdir is the directory for the 
+// input files that is specified in the config file
 
-inputfiledir = '/home/automaton/graph-examples/food/TEST/fitnessTracker/NEW_WITH_ID/data/'
-users = File.csv(inputfiledir + "vertices/" + "users.csv").delimiter('|')
-items = File.csv(inputfiledir + "vertices/" + "items.csv").delimiter('|')
-meals = File.csv(inputfiledir + "vertices/" + "meals.csv").delimiter('|')
-includes = File.csv(inputfiledir + "edges/" + "includes.csv").delimiter('|')
-knows = File.csv(inputfiledir + "edges/" + "knows.csv").delimiter('|')
-ate = File.csv(inputfiledir + "edges/" + "ate.csv").delimiter('|')
+users = File.csv(inputdir + "vertices/" + "users.csv").delimiter(delimiter)
+items = File.csv(inputdir + "vertices/" + "items.csv").delimiter(delimiter)
+meals = File.csv(inputdir + "vertices/" + "meals.csv").delimiter(delimiter)
+includes = File.csv(inputdir + "edges/" + "includes.csv").delimiter(delimiter)
+knows = File.csv(inputdir + "edges/" + "knows.csv").delimiter(delimiter)
+ate = File.csv(inputdir + "edges/" + "ate.csv").delimiter(delimiter)
 
 //Specifies what data source to load using which mapper (as defined inline)
 load(users).asVertices {
