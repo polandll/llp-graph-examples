@@ -11,9 +11,9 @@
 
 VERSION=dse-graph-loader-5.1.0-SNAPSHOT
 LDR=/home/automaton/$VERSION/graphloader
-INPUTEXAMPLE='fitnessTracker'
+INPUTEXAMPLE='fitnessTracker/NEW_WITH_ID'
 INPUTBASEDIR='/home/automaton/graph-examples/food/TEST'
 INPUTFILEDIR=$INPUTBASEDIR/$INPUTEXAMPLE
 SCRIPTNAME='fitnessTrackerMap.groovy'
-GRAPHNAME='test'$INPUTEXAMPLE
+GRAPHNAME='ftWithId'
 $LDR $INPUTFILEDIR/$SCRIPTNAME -graph $GRAPHNAME -address localhost
