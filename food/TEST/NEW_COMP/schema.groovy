@@ -34,8 +34,8 @@ schema.propertyKey('nickname').Text().multiple().create()
 schema.propertyKey('gender').Text().single().create()
 schema.propertyKey('calGoal').Int().single().create()
 schema.propertyKey('macroGoal').Text().single().create()
-schema.propertyKey('startYear).Int().create()   // meta-property
-schema.propertyKey('endYear).Int().create()   // meta-property
+schema.propertyKey('startYear').Int().create()   // meta-property
+schema.propertyKey('endYear').Int().create()   // meta-property
 schema.propertyKey('country').Text().multiple().properties('startYear','endYear').create()
 schema.propertyKey('publishYear').Int().single().create()
 schema.propertyKey('ISBN').Text().single().create()
