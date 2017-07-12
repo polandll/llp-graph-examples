@@ -96,8 +96,8 @@ schema.vertexLabel('store').partitionKey('storeId').create()
 schema.vertexLabel('store').properties('name','address').add()
 schema.vertexLabel('location').partitionKey('locId').create()
 schema.vertexLabel('location').properties('geoPoint').add()
-schema.vertexLabel('fridgeSensor').partitionKey(('cityId','sensorId')).create()
-schema.vertexLabel('fridgeSensor').properties('name').add()
+schema.vertexLabel('fridge_sensor').partitionKey('cityId','sensorId').create()
+schema.vertexLabel('fridge_sensor').properties('name').add()
 
 // ********
 // EDGE LABELS
