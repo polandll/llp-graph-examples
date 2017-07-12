@@ -51,7 +51,7 @@ schema.propertyKey('geoPoint').Point().withGeoBounds().create()
 schema.propertyKey('address').Text().single().create()
 
 // EDGE PROPERTIES
-schema.propertyKey('numServings').Int().single().create()
+schema.propertyKey('numServ').Int().single().create()
 schema.propertyKey('since').Text().single().create()
 schema.propertyKey('mealDate').Date().single().create()
 schema.propertyKey('useDate').Date().single().create()
