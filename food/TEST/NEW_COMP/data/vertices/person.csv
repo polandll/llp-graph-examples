@@ -1,14 +1,14 @@
 personId|name|nickname|gender|calGoal|macroGoal
-001|Julia Child|null|F|null|null
-002|Simone Beck|null|F|null|null
-003|Louisette Bertholie|null|F|null|null
-004|Patricia Simon|Pat|F|null|null
-005|Alice Waters|null|F|null|null
-006|Patricia Curtan|Pattie|F|null|null
-007|Kelsie Kerr|null|F|null|null
-008|Fritz Streiff|null|M|null|null
-009|Emeril Lagasse|null|M|null|null
-010|James Beard|null|M|null|null
+001|Julia Child|null|F||
+002|Simone Beck|null|F||
+003|Louisette Bertholie|null|F||
+004|Patricia Simon|Pat|F||
+005|Alice Waters|null|F||
+006|Patricia Curtan|Pattie|F||
+007|Kelsie Kerr|null|F||
+008|Fritz Streiff|null|M||
+009|Emeril Lagasse|null|M||
+010|James Beard|null|M||
 011|John Doe|John|M|1750|10:30:60
 012|John Smith|John|M|1800|30:20:50
 013|Jane Doe|Jane|F|1500|50:15:35
