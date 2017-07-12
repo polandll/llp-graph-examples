@@ -49,6 +49,7 @@ schema.propertyKey('macro').Text().single().create()
 schema.propertyKey('calories').Int().single().create()
 schema.propertyKey('geoPoint').Point().withGeoBounds().create()
 schema.propertyKey('address').Text().single().create()
+schema.propertyKey('amount').Text().single().create()
 
 // EDGE PROPERTIES
 schema.propertyKey('numServ').Int().single().create()
