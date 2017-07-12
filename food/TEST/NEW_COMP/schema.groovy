@@ -86,17 +86,17 @@ schema.vertexLabel('meal_item').properties('name','servingAmt', 'macro', 'calori
 schema.vertexLabel('meal').partitionKey('mealId').create()
 schema.vertexLabel('meal').properties('type').add()
 schema.vertexLabel('ingredient').partitionKey('ingredId').create()
-schema.vertexLabel('ingredient').properties('name').create()
+schema.vertexLabel('ingredient').properties('name').add()
 schema.vertexLabel('recipe').partitionKey('recipeId').create()
-schema.vertexLabel('recipe').properties('name','cuisine','instructions','notes').create()
+schema.vertexLabel('recipe').properties('name','cuisine','instructions','notes').add()
 schema.vertexLabel('home').partitionKey('homeId').create()
-schema.vertexLabel('home').properties('name','address').create()
+schema.vertexLabel('home').properties('name','address').add()
 schema.vertexLabel('store').partitionKey('storeId').create()
-schema.vertexLabel('store').properties('name','address').create()
+schema.vertexLabel('store').properties('name','address').add()
 schema.vertexLabel('location').partitionKey('locId').create()
-schema.vertexLabel('location').properties('geoPoint').create()
+schema.vertexLabel('location').properties('geoPoint').add()
 schema.vertexLabel('fridgeSensor').partitionKey(('cityId','sensorId')).create()
-schema.vertexLabel('fridgeSensor').properties('name').create()
+schema.vertexLabel('fridgeSensor').properties('name').add()
 
 // ********
 // EDGE LABELS
