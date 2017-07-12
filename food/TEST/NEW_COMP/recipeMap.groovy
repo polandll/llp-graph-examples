@@ -10,6 +10,7 @@ config create_schema: false, load_new: true
 // Define the data input source using inputdir is the directory for the 
 // input files that is specified in the config file
 
+inputdir = "/home/automaton/graph-examples/food/TEST/NEW_COMP/data/"
 // *** REPLACE ALL vertices/ files with File.directory? ***
 person = File.csv(inputdir + "vertices/" + "person.csv").delimiter(delimiter)
 personCountry = File.csv(inputdir + "vertices/" + "personCountry.csv").delimiter(delimiter)

@@ -136,7 +136,7 @@ schema.edgeLabel('reviewed').multiple().create()
 schema.edgeLabel('reviewed').properties('time','year','stars','comment').add()
 schema.edgeLabel('reviewed').connection('person', 'recipe').add()
 schema.edgeLabel('authored').multiple().create()
-schema.edgeLabel('authoried').connection('person', 'book').add()
+schema.edgeLabel('authored').connection('person', 'book').add()
 schema.edgeLabel('contains').multiple().ttl(60800).create()
 schema.edgeLabel('contains').properties('expireDate').add()
 schema.edgeLabel('contains').connection('fridge_sensor', 'ingredient').add()
@@ -166,10 +166,9 @@ schema.vertexLabel('recipe').index('search').search().
   by('instructions').by('name').by('cuisine').add()
 schema.vertexLabel('book').index('search').search().
   by('name').by('publishYear').add()
-schema.vertexLabel('location').index('search').search().by('point').add()
-schema.vertexLabel('location').index('search').search().
-  by('point').withError(0.000009,0.0).ifNotExists().add()
-schema.vertexLabel('store').index('search').search().by('name').by('location').add()
+schema.vertexLabel('location').index('search').search().by('geoPoint').withError(0.000009,0.0).add()
+schema.vertexLabel('store').index('search').search().by('name').add()
+schema.vertexLabel('home').index('search').search().by('name').add()
 
 // ********
 // EDGE INDEX
@@ -181,16 +180,16 @@ schema.vertexLabel('store').index('search').search().by('name').by('location').a
 //    add()
 // ********
 
-schema.vertexLabel('recipe').index('byStars').inE('rated').
+schema.vertexLabel('recipe').index('byStars').inE('reviewed').
   by('stars').ifNotExists().add()
-schema.vertexLabel('person').index('ratedByStars').outE('rated').
+schema.vertexLabel('person').index('ratedByStars').outE('reviewed').
   by('stars').ifNotExists().add()
-schema.vertexLabel('person').index('ratedByDate').outE('rated').
+schema.vertexLabel('person').index('ratedByDate').outE('reviewed').
   by('year').ifNotExists().add()
-schema.vertexLabel('person').index('ratedByComments').outE('rated').
+schema.vertexLabel('person').index('ratedByComments').outE('reviewed').
   by('comment').ifNotExists().add()
 schema.vertexLabel('recipe').index('byPersonOrRecipe').bothE('created').
-  by('publishYear').ifNotExists().add()
+  by('createDate').ifNotExists().add()
 
 // ********
 // PROPERTY INDEX using meta-property 'livedIn'
@@ -202,5 +201,5 @@ schema.vertexLabel('recipe').index('byPersonOrRecipe').bothE('created').
 //    add()
 // ********
 
-schema.vertexLabel('author').index('byStartYear').
+schema.vertexLabel('person').index('byStartYear').
   property('country').by('startYear').ifNotExists().add()
