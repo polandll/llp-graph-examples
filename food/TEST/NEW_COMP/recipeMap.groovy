@@ -34,7 +34,7 @@ includedIn_meal_book = File.csv(inputdir + "edges/" + "includedIn_meal_book.csv"
 includedIn_recipe_book = File.csv(inputdir + "edges/" + "includedIn_recipe_book.csv").delimiter(delimiter)
 includedIn_recipe_meal = File.csv(inputdir + "edges/" + "includedIn_recipe_meal.csv").delimiter(delimiter)
 includes = File.csv(inputdir + "edges/" + "includes.csv").delimiter(delimiter)
-//isLocatedAt_fridge_sensor = File.csv(inputdir + "edges/" + "isLocatedAt_fridge_sensor.csv").delimiter(delimiter)
+isLocatedAt_fridge_sensor = File.csv(inputdir + "edges/" + "isLocatedAt_fridge_sensor.csv").delimiter(delimiter)
 isLocatedAt_home = File.csv(inputdir + "edges/" + "isLocatedAt_home.csv").delimiter(delimiter)
 isLocatedAt_store = File.csv(inputdir + "edges/" + "isLocatedAt_store.csv").delimiter(delimiter)
 isStockedWith = File.csv(inputdir + "edges/" + "isStockedWith.csv").delimiter(delimiter)
@@ -239,7 +239,7 @@ load(includes).asEdges {
         exists()
     }
 }
-/*
+
 load(isLocatedAt_fridge_sensor).asEdges {
     label "isLocatedAt"
     outV "fridge_sensor", {
@@ -253,7 +253,7 @@ load(isLocatedAt_fridge_sensor).asEdges {
         exists()
     }
 }
-*/
+
 
 load(isLocatedAt_home).asEdges {
     label "isLocatedAt"
