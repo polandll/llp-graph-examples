@@ -88,10 +88,12 @@ load(store).asVertices {
     key "storeId"
 }
 
+
 load(fridge_sensor).asVertices {
     label "fridge_sensor"
     key cityId: "cityId", sensorId: "sensorId"
 }
+
 
 load(location).asVertices {
     label "location"
@@ -240,6 +242,7 @@ load(includes).asEdges {
     }
 }
 
+/*
 load(isLocatedAt_fridge_sensor).asEdges {
     label "isLocatedAt"
     outV "fridge_sensor", {
@@ -253,7 +256,7 @@ load(isLocatedAt_fridge_sensor).asEdges {
         exists()
     }
 }
-
+*/
 
 load(isLocatedAt_home).asEdges {
     label "isLocatedAt"
