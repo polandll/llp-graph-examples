@@ -6,7 +6,7 @@ schema.config().option('graph.allow_scan').set('true')
 g.V().count()
 
 // Check all the edges
-// Should be 57 
+// Should be 81 
 g.E().count()
 
 // person
@@ -32,3 +32,5 @@ g.V().hasLabel('ingredient').valueMap()
 
 // ate
 g.V().hasLabel('person').as('person').out().hasLabel('meal').as('meal').inE('ate').as('mealDate').select('person','meal','mealDate').by('name').by('mealId').by('mealDate')
+// contains
+g.V().hasLabel('fridge_sensor').as('sensor').out().hasLabel('ingredient').as('ingred').inE('contains').as('expireDate').select('sensor','ingred','expireDate').by('cityId').by('name').by('expireDate')

@@ -146,7 +146,7 @@ schema.edgeLabel('isStockedWith').connection('store','ingredient').add()
 schema.edgeLabel('isLocatedAt').multiple().create()
 schema.edgeLabel('isLocatedAt').connection('home','location').add()
 schema.edgeLabel('isLocatedAt').connection('store','location').add()
-schema.edgeLabel('isLocatedAt').connection('fridge_sensor','location').add()
+schema.edgeLabel('isLocatedAt').connection('fridge_sensor','home').add()
 
 // ********
 // VERTEX INDEX
