@@ -12,7 +12,7 @@ config create_schema: false, load_new: true
 
 // *** REPLACE ALL vertices/ files with File.directory? ***
 person = File.csv(inputdir + "vertices/" + "person.csv").delimiter(delimiter)
-//personCountry = File.csv(inputdir + "vertices/" + "personCountry.csv").delimiter(delimiter)
+personCountry = File.json(inputdir + "vertices/" + "personCountry.json")
 recipe = File.csv(inputdir + "vertices/" + "recipe.csv").delimiter(delimiter)
 book = File.csv(inputdir + "vertices/" + "book.csv").delimiter(delimiter)
 meal = File.csv(inputdir + "vertices/" + "meal.csv").delimiter(delimiter)
@@ -46,13 +46,16 @@ load(person).asVertices {
     label "person"
     key "personId"
 }
-/*
+
 load(personCountry).asVertices {
     label "person"
     key "personId"
+    vertexProperty "country", {
+      value "value"
     exists()
+   }
 }
-*/
+
 load(recipe).asVertices {
     label "recipe"
     key "recipeId"

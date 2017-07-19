@@ -1,4 +1,4 @@
-personId|country|startDate|endDate
+personId|country|startYear|endYear
 001|USA|1930|1949
 001|France|1950|1960
 001|USA|1961|1972
@@ -10,6 +10,6 @@ personId|country|startDate|endDate
 006|Belgium|1957|1966
 007|USA|1959|2017
 008|Germany|1940|1970
-008|USA|1971|1970
+008|USA|1971|2017
 009|USA|1962|2017
 010|UK|1940|1981

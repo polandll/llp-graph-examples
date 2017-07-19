@@ -206,4 +206,6 @@ schema.vertexLabel('recipe').index('byPersonOrRecipe').bothE('created').
 // ********
 
 schema.vertexLabel('person').index('byStartYear').
-  property('country').by('startYear').ifNotExists().add()
+  property('country').by('startYear').add()
+schema.vertexLabel('person').index('byEndYear').
+  property('country').by('endYear').add()
