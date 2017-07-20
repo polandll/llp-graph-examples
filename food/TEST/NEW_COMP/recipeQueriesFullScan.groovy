@@ -6,7 +6,7 @@ schema.config().option('graph.allow_scan').set('true')
 g.V().count()
 
 // Check all the edges
-// Should be 81 
+// Should be 104 
 g.E().count()
 
 // person
