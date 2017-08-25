@@ -166,11 +166,14 @@ load(contains).asEdges {
         label "fridge_sensor"
         key cityId: "cityId", sensorId: "sensorId"
         exists()
+        ignore "ingredId"
     }
     inV {
         label "ingredient"
         key "ingredId"
         exists()
+        ignore "cityId"
+	ignore "sensorId"
     }
 }
 
