@@ -11,12 +11,12 @@ source = com.datastax.dsegraphloader.api.Graph.file("/Users/lorinapoland/Documen
 //Specifies what data source to load using which mapper
 
 //Specifies what data source to load using which mapper
-load(source.vertices().withVertexId()).asVertices {
+load(source.vertices()).asVertices {
     labelField "~label"
     key "~id", "id"
 }
 
-load(source.edges().withVertexId()).asEdges {
+load(source.edges()).asEdges {
     labelField "~label"
     outV "outV", {
         labelField "~label"
