@@ -27,14 +27,15 @@ location = File.csv(inputdir + "vertices/" + "location.csv").delimiter(delimiter
 // *** REPLACE ALL edges/ files with File.directory? ***
 ate = File.csv(inputdir + "edges/" + "ate.csv").delimiter(delimiter)
 authored = File.csv(inputdir + "edges/" + "authored.csv").delimiter(delimiter)
-contains = File.json(inputdir + "edges/" + "contains.json")
+contains = File.csv(inputdir + "edges/" + "contains.csv").delimiter(delimiter)
+//contains = File.json(inputdir + "edges/" + "contains.json")
 created = File.csv(inputdir + "edges/" + "created.csv").delimiter(delimiter)
 includedIn_ingredient_recipe = File.csv(inputdir + "edges/" + "includedIn_ingredient_recipe.csv").delimiter(delimiter)
 includedIn_meal_book = File.csv(inputdir + "edges/" + "includedIn_meal_book.csv").delimiter(delimiter)
 includedIn_recipe_book = File.csv(inputdir + "edges/" + "includedIn_recipe_book.csv").delimiter(delimiter)
 includedIn_recipe_meal = File.csv(inputdir + "edges/" + "includedIn_recipe_meal.csv").delimiter(delimiter)
 includes = File.csv(inputdir + "edges/" + "includes.csv").delimiter(delimiter)
-isLocatedAt_fridge_sensor = File.json(inputdir + "edges/" + "isLocatedAt_fridge_sensor.csv")
+isLocatedAt_fridge_sensor = File.csv(inputdir + "edges/" + "isLocatedAt_fridge_sensor.csv").delimiter(delimiter)
 //isLocatedAt_fridge_sensor = File.json(inputdir + "edges/" + "isLocatedAt_fridge_sensor.json")
 isLocatedAt_home = File.csv(inputdir + "edges/" + "isLocatedAt_home.csv").delimiter(delimiter)
 isLocatedAt_store = File.csv(inputdir + "edges/" + "isLocatedAt_store.csv").delimiter(delimiter)
@@ -167,6 +168,7 @@ load(contains).asEdges {
         key cityId: "cityId", sensorId: "sensorId"
         exists()
         ignore "ingredId"
+        ignore "expireDate"
     }
     inV {
         label "ingredient"
@@ -174,7 +176,11 @@ load(contains).asEdges {
         exists()
         ignore "cityId"
 	ignore "sensorId"
+        ignore "expireDate"
     }
+    ignore "cityId"
+    ignore "sensorId"
+    ignore "ingredId"
 }
 
 load(created).asEdges {
@@ -263,16 +269,22 @@ load(includes).asEdges {
 
 load(isLocatedAt_fridge_sensor).asEdges {
     label "isLocatedAt"
-    outV "sensor", {
+    outV {
         label "fridge_sensor"
         key cityId: "cityId", sensorId: "sensorId"
         exists()
+        ignore "homeId"
     }
-    inV "homeId", {
+    inV {
         label "home"
         key "homeId"
         exists()
+        ignore "cityId"
+        ignore "sensorId"
     }
+    ignore "cityId"
+    ignore "sensorId"
+    ignore "homeId"
 }
 
 load(isLocatedAt_home).asEdges {
