@@ -62,9 +62,8 @@ load(personCountry).asVertices {
     key "personId"
     vertexProperty "country", {
       value "startDate"
-      value "endDate"
+/*      value "endDate"*/
    }
-    exists()
 }
 
 load(recipe).asVertices {
