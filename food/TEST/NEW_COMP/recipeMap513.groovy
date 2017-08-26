@@ -129,6 +129,7 @@ location_cartesian = location_cartesian.transform {
   it['geoPoint'] = Point.fromWellKnownText(it['geoPoint']);
 }
 */
+
 load(ate).asEdges {
     label "ate"
     outV "personId", {
@@ -157,7 +158,8 @@ load(authored).asEdges {
     }
 }
 
-/*load(contains).asEdges {
+/* METHOD FOR JSON IN DSE 5.1.2 and previous
+load(contains).asEdges {
     label "contains"
     outV "sensor", {
         label "fridge_sensor"
@@ -276,6 +278,21 @@ load(includes).asEdges {
         exists()
     }
 }
+
+/* METHOD FOR JSON IN DSE 5.1.2 and previous
+load(isLocatedAt_fridge_sensor).asEdges {
+    label "isLocatedAt"
+    outV "sensor", {
+        label "fridge_sensor"
+        key cityId: "cityId", sensorId: "sensorId"
+        exists()
+    }
+    inV "homeId", {
+        label "home"
+        key "homeId"
+        exists()
+    }
+} */
 
 load(isLocatedAt_fridge_sensor).asEdges {
     label "isLocatedAt"
