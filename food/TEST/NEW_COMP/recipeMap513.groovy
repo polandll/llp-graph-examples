@@ -55,6 +55,7 @@ personCountry = personCountry.transform {
     "startYear": it.remove("startYear"),
     "endYear": it.remove("endYear") ]
   it["country"] = [country1]
+}
 
 load(personCountry).asVertices {
     label "person"
