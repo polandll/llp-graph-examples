@@ -1,5 +1,5 @@
-system.graph('newComp513').ifNotExists().create()
-:remote config alias g newComp513.g
+system.graph('newComp513meta').ifNotExists().create()
+:remote config alias g newComp513meta.g
 schema.clear()
 schema.config().option('graph.allow_scan').set('true')
 
