@@ -1,4 +1,4 @@
 The meta-properties are loaded with JSON, because it doesn't seem possible to do with CSV right now. Perhaps some transformation could be used for that?
 
 The edges to/from fridge_sensor are loaded with JSON, because it doesn't seem possible to use a composite key with inV()/outV in the edge map currently.
--- This is sort of related to DGL-254, although not exactly the same issue (this is composite key consisting of 2 fields as opposed to non-primary key field).
+-- DGL-258 fixed this - recipeMap513.groovy shows the "new" way of doing this.
