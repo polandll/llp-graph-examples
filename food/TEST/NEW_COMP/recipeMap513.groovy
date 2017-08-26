@@ -63,7 +63,7 @@ load(personCountry).asVertices {
     label "person"
     key "personId"
     vertexProperty "country", {
-      value "country"
+      value "value"
    }
    exists()
 }
