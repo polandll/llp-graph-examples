@@ -52,7 +52,7 @@ load(person).asVertices {
 
 personCountry = personCountry.transform {
   country1 = [
-    "country": it.remove("country"),
+    "value": it.remove("value"),
     "startYear": it.remove("startYear"),
     "endYear": it.remove("endYear") ]
   it["country"] = [country1]
@@ -64,6 +64,7 @@ load(personCountry).asVertices {
     vertexProperty "country", {
       value "country"
    }
+   exists()
 }
 
 load(recipe).asVertices {
