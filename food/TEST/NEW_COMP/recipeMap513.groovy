@@ -52,6 +52,7 @@ load(person).asVertices {
 
 personCountry = personCountry.transform {
   country1 = [
+    "country": it.remove("country"),
     "startYear": it.remove("startYear"),
     "endYear": it.remove("endYear") ]
   it["country"] = [country1]
@@ -61,8 +62,7 @@ load(personCountry).asVertices {
     label "person"
     key "personId"
     vertexProperty "country", {
-      value "startDate"
-/*      value "endDate"*/
+      value "country"
    }
 }
 
