@@ -1,3 +1,8 @@
+system.graph('newMultiMetaCSV').ifNotExists().create()
+:remote config alias g newMultiMetaCSV.g
+schema.clear()
+schema.config().option('graph.allow_scan').set('true')
+
 // PROPERTY KEYS
 schema.propertyKey('badge').Text().multiple().create()
 schema.propertyKey('gender').Text().single().create()
