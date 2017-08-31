@@ -1,9 +1,9 @@
 // MySQL Database
 // Connect at http://localhost:3306/
 
-drop database if exists jdbcexample;
-create database jdbcexample;
-use `jdbcexample`;
+drop database if exists jdbcmysql;
+create database jdbcmysql;
+use `jdbcmysql`;
 
 //drop table author;
 //drop table book;
