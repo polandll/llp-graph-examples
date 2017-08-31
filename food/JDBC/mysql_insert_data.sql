@@ -1,7 +1,7 @@
 // MySQL Database
 // Connect at http://localhost:3306/
 
-use `jdbcexample`;
+use `jdbcmysql`;
 
 insert into author values('Julia Child','F');
 insert into author values('Simone Beck','F');
