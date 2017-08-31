@@ -1,0 +1,4 @@
+load data local infile '~/graph-examples/food/JDBC/data/authors.csv'
+into table fraud.author
+fields terminated by '|' escaped by ''
+ignore 1 lines;
