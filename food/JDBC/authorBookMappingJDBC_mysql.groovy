@@ -1,8 +1,4 @@
-// Use /Users/lorinapoland/CLONES/graph-examples/DataLoader/runDGL.sh to run this script
-// Set runDGL.sh parameters to JDBC before running
-// Run runDGL.sh in /Users/lorinapoland/CLONES/dse-graph-loader
-
-/* SAMPLE INPUT - uses tabs
+/* SAMPLE INPUT 
 author:
 name:Julia Child	gender:F
 book: 
@@ -13,13 +9,13 @@ bname:Simca's Cuisine: 100 Classic French Recipes for Every Occasion	aname:Simon
 
 // CONFIGURATION
 // Configures the data loader to create the schema
-config create_schema: true, load_new: true, load_vertex_threads: 3
+config create_schema: false, load_new: true, load_vertex_threads: 3
 
 // DATA INPUT
 // Define the data input source (a database connection and SQL statements for data selection)
 // inputDatabase is the database name
-inputDatabase = 'localhost/sample'
-db = Database.connection('jdbc:mysql://' + inputDatabase).user('root').password('foo').MySQL()
+//inputDatabase = 'localhost/jdbcmysql'
+db = Database.connection('jdbc:mysql://localhost/jdbcmysql').user('lorinapoland').password('1234').MySQL()
 
 // Define multiple data inputs from the database source via SQL queries
 authorInput = db.query "SELECT * FROM AUTHOR";
