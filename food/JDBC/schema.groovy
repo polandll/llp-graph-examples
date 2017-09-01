@@ -7,8 +7,6 @@ schema.propertyKey('name').Text().create()
 schema.propertyKey('gender').Text().create()
 schema.propertyKey('year').Int().create()
 schema.propertyKey('isbn').Text().create()
-schema.propertyKey('bname').Text().create()
-schema.propertyKey('aname').Text().create()
 
 schema.vertexLabel('author').properties('name', 'gender').create()
 schema.vertexLabel('book').properties('name','year','isbn').create()

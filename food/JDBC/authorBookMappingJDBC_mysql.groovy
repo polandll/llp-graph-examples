@@ -9,18 +9,18 @@ bname:Simca's Cuisine: 100 Classic French Recipes for Every Occasion	aname:Simon
 
 // CONFIGURATION
 // Configures the data loader to create the schema
-config create_schema: false, load_new: true, load_vertex_threads: 3
+config create_schema: false, load_new: true
 
 // DATA INPUT
 // Define the data input source (a database connection and SQL statements for data selection)
 // inputDatabase is the database name
 //inputDatabase = 'localhost/jdbcmysql'
-db = Database.connection('jdbc:mysql://localhost/jdbcmysql').user('lorinapoland').password('1234').MySQL()
+db = Database.connection('jdbc:mysql://localhost/jdbcmysql').user('root').password('1234').MySQL()
 
 // Define multiple data inputs from the database source via SQL queries
-authorInput = db.query "SELECT * FROM AUTHOR";
-bookInput = db.query "SELECT * FROM BOOK";
-authorBookInput = db.query "SELECT * FROM AUTHORBOOK";
+authorInput = db.query "select * from author";
+bookInput = db.query "select * from book";
+authorBookInput = db.query "select * from authorbook";
 
 //Specifies what data source to load using which mapper (as defined inline)
   
