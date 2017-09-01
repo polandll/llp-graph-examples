@@ -12,3 +12,6 @@ schema.vertexLabel('author').properties('name', 'gender').create()
 schema.vertexLabel('book').properties('name','year','isbn').create()
 
 schema.edgeLabel('authored').connection('author','book').ifNotExists().create()
+
+schema.vertexLabel('book').index('byname').materialized().by('name').add()
+schema.vertexLabel('author').index('byname').materialized().by('name').add()
