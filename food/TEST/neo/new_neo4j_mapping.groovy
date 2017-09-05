@@ -15,8 +15,6 @@ config.setProperty("gremlin.neo4j.conf.cache_type", "none");
 source = Graph.neo4jFromConfig(config)
 
 //Specifies what data source to load using which mapper
-
-//Specifies what data source to load using which mapper
 load(source.vertices()).asVertices {
     labelField "~label"
     key "~id", "id"

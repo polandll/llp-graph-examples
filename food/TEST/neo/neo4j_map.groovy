@@ -9,8 +9,6 @@ config create_schema: true
 source = com.datastax.dsegraphloader.api.Graph.file("/Users/lorinapoland/Documents/Neo4j/default.graphdb/")
 
 //Specifies what data source to load using which mapper
-
-//Specifies what data source to load using which mapper
 load(source.vertices()).asVertices {
     labelField "~label"
     key "~id", "id"
