@@ -1,0 +1,18 @@
+-- vertex label for single-key vertex id: partitionKey('bookId') for vertexLabel('book')
+-- vertex label for multiple-key vertex id: partitionKey('cuisine', 'recipeId') for vertexLabel('recipe')
+-- vertex label for composite-key vertex id: partitionKey('stateId', 'cityId').clusteringKey('sensorId') for vertexLabel('fridgeSensor')
+
+-- multiple cardinality edge label: edgeLabel('ate')
+
+-- single cardinality property key: propertyKey('name')
+-- multiple cardinality property key: propertyKey('badge'), WITH
+    single cardinality meta-property: since
+-- multiple cardinality property key: propertyKey('country') WITH
+    multiple cardinality meta-property: startYear, endYear
+
+EDGES:
+person - authored (singleCard) -> book (S-K id) 
+ingredient (S-K id?) - includedIn (singleCard) -> recipe (M-K id)
+fridgeSensor (C-K id) - isLocatedAt (multiCard) -> home (S-K id?) [can have more than one fridge in a home]
+
+ingredient - what vertex id for this vertex label? Adding 'category' could allow for bucketing
