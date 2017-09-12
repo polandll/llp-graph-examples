@@ -1,3 +1,19 @@
+partitionKey: something known about data community
+clusteringKey: uniqueness
+
+use UUID for single-key vertex id if there is no compelling reason to use anything else
+multiple-key vertex id - bucketing
+  Comcast - region/subregion, macId (this shards supernode)
+  Another way to deal with this is use region/subregion as properties on a vertex, but don't create edges; 
+  pull property, get vertex from property (supernode with no edges)
+composite-key vertex id is not good for data locality (do I mean multiple-key perhaps?)
+
+GeneByGene - groups by families
+Intuit - creating communities (friends? families?)
+
+celebrities - you can be friends with a celebrity, but a celebrity cannot be friends with you; otherwise, supernode problems
+
+
 -- vertex label for single-key vertex id: partitionKey('bookId') for vertexLabel('book')
 -- vertex label for multiple-key vertex id: partitionKey('cuisine', 'recipeId') for vertexLabel('recipe')
 -- vertex label for composite-key vertex id: partitionKey('stateId', 'cityId').clusteringKey('sensorId') for vertexLabel('fridgeSensor')
