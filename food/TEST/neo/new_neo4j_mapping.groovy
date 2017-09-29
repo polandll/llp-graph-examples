@@ -7,12 +7,14 @@ config create_schema: true
 
 //Defines the data input source (a file which is specified via command line arguments)
 Configuration config = new BaseConfiguration();
-config.setProperty(Neo4jGraph.CONFIG_DIRECTORY, "/Users/lorinapoland/Documents/Neo4j/default.graphdb/");
+config.setProperty(Neo4jGraph.CONFIG_DIRECTORY, "/Users/lorinapoland/Documents/Neo4j/person.graphdb/");
 config.<Boolean>setProperty(Neo4jGraph.CONFIG_META_PROPERTIES, true);
 config.<Boolean>setProperty(Neo4jGraph.CONFIG_MULTI_PROPERTIES, true);
 config.setProperty("gremlin.neo4j.conf.cache_type", "none");
 
 source = Graph.neo4jFromConfig(config)
+
+//Specifies what data source to load using which mapper
 
 //Specifies what data source to load using which mapper
 load(source.vertices()).asVertices {
