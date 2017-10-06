@@ -25,12 +25,12 @@ g.V().hasLabel('home').valueMap()
 g.V().hasLabel('store').valueMap()
 // location
 g.V().hasLabel('location').valueMap()
-// fridge_sensor
-g.V().hasLabel('fridge_sensor').valueMap()
+// fridgeSensor
+g.V().hasLabel('fridgeSensor').valueMap()
 // ingredient
 g.V().hasLabel('ingredient').valueMap()
 
 // ate
 g.V().hasLabel('person').as('person').out().hasLabel('meal').as('meal').inE('ate').as('mealDate').select('person','meal','mealDate').by('name').by('mealId').by('mealDate')
 // contains
-g.V().hasLabel('fridge_sensor').as('sensor').out().hasLabel('ingredient').as('ingred').inE('contains').as('expireDate').select('sensor','ingred','expireDate').by('cityId').by('name').by('expireDate')
+g.V().hasLabel('fridgeSensor').as('sensor').out().hasLabel('ingredient').as('ingred').inE('contains').as('expireDate').select('sensor','ingred','expireDate').by('cityId').by('name').by('expireDate')
