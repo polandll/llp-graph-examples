@@ -20,7 +20,7 @@ meal_item = File.csv(inputdir + "vertices/" + "meal_item.csv").delimiter(delimit
 ingredient = File.csv(inputdir + "vertices/" + "ingredient.csv").delimiter(delimiter)
 home = File.csv(inputdir + "vertices/" + "home.csv").delimiter(delimiter)
 store = File.csv(inputdir + "vertices/" + "store.csv").delimiter(delimiter)
-fridge_sensor = File.csv(inputdir + "vertices/" + "fridge_sensor.csv").delimiter(delimiter)
+fridgeSensor = File.csv(inputdir + "vertices/" + "fridgeSensor.csv").delimiter(delimiter)
 location = File.csv(inputdir + "vertices/" + "location.csv").delimiter(delimiter)
 //location_cartesian = File.csv(inputdir + "vertices/" + "location_cartesian.csv").delimiter(delimiter)
 
@@ -34,7 +34,7 @@ includedIn_meal_book = File.csv(inputdir + "edges/" + "includedIn_meal_book.csv"
 includedIn_recipe_book = File.csv(inputdir + "edges/" + "includedIn_recipe_book.csv").delimiter(delimiter)
 includedIn_recipe_meal = File.csv(inputdir + "edges/" + "includedIn_recipe_meal.csv").delimiter(delimiter)
 includes = File.csv(inputdir + "edges/" + "includes.csv").delimiter(delimiter)
-isLocatedAt_fridge_sensor = File.json(inputdir + "edges/" + "isLocatedAt_fridge_sensor.json")
+isLocatedAt_fridgeSensor = File.json(inputdir + "edges/" + "isLocatedAt_fridgeSensor.json")
 isLocatedAt_home = File.csv(inputdir + "edges/" + "isLocatedAt_home.csv").delimiter(delimiter)
 isLocatedAt_store = File.csv(inputdir + "edges/" + "isLocatedAt_store.csv").delimiter(delimiter)
 isStockedWith = File.csv(inputdir + "edges/" + "isStockedWith.csv").delimiter(delimiter)
@@ -48,11 +48,11 @@ load(person).asVertices {
 }
 
 load(personCountry).asVertices {
-    label "person"
-    key "personId"
-    vertexProperty "country", {
-      value "value"
-    exists()
+   label "person"
+   key "personId"
+   vertexProperty "country", {
+     value "value"
+   exists()
    }
 }
 
@@ -92,8 +92,8 @@ load(store).asVertices {
 }
 
 
-load(fridge_sensor).asVertices {
-    label "fridge_sensor"
+load(fridgeSensor).asVertices {
+    label "fridgeSensor"
     key cityId: "cityId", sensorId: "sensorId"
 }
 
@@ -150,7 +150,7 @@ load(authored).asEdges {
 load(contains).asEdges {
     label "contains"
     outV "sensor", {
-        label "fridge_sensor"
+        label "fridgeSensor"
         key cityId: "cityId", sensorId: "sensorId"
         exists()
     }
@@ -245,10 +245,10 @@ load(includes).asEdges {
     }
 }
 
-load(isLocatedAt_fridge_sensor).asEdges {
+load(isLocatedAt_fridgeSensor).asEdges {
     label "isLocatedAt"
     outV "sensor", {
-        label "fridge_sensor"
+        label "fridgeSensor"
         key cityId: "cityId", sensorId: "sensorId"
         exists()
     }
