@@ -7,117 +7,117 @@
 ---------------------------------
 
 // CONNECT TO GREMLIN SERVER
-gremlin> :remote connect tinkerpop.server resources/graph/gremlin-console/conf/remote-objects.yaml
-==>Connected - localhost/127.0.0.1:8182
+:remote connect tinkerpop.server resources/graph/gremlin-console/conf/remote-objects.yaml
+// RESULTS:Connected - localhost/127.0.0.1:8182
 
 // CREATE GRAPH "TEST"
-gremlin> :> system.graph('test').ifNotExists().create()
-==>null
+system.graph('test').ifNotExists().create()
+// RESULTS:null
 
 // CONFIG GRAPH TRAVERSAL g TO ALIAS test.g
-gremlin> :remote config alias g test.g
-==>g=test.g
+:remote config alias g test.g
+// RESULTS:g=test.g
 
 // CONFIG TIMEOUT TO MAXIMUM VALUE
-gremlin> :remote config timeout max
-==>Set remote timeout to 2147483647ms
+:remote config timeout max
+// RESULTS:Set remote timeout to 2147483647ms
 
 // CHECK THAT NO VERTICES EXIST
 // BAD TO DO FOR LARGE GRAPHS!!
-gremlin> g.V().count()
+g.V().count()
 =>0
 
 // ENTER AUTHOR VERTEX
-gremlin> juliaChild = graph.addVertex(label,'author', 'name','Julia Child', 'gender','F')
-==>v[{member_id=1, community_id=184435, ~label=author}]
+juliaChild = graph.addVertex(label,'author', 'name','Julia Child', 'gender','F')
+// RESULTS:v[{member_id=1, community_id=184435, ~label=author}]
 
 // CHECK THAT ONE VERTEX NOW EXISTS
-gremlin> g.V().count()
+ g.V().count()
 =>1
 
 // GET VALUEMAP
-gremlin> g.V().valueMap()
-==>[gender:[F], name:[Julia Child], id:[1]]
+ g.V().valueMap()
+// RESULTS:[gender:[F], name:[Julia Child], id:[1]]
 
 // SHOW USE OF VALUES FOR ONE PROPERTY
-gremlin> g.V().values('name')
-==>Julia Child
+ g.V().values('name')
+// RESULTS:Julia Child
 
 // ENTER BOOK VERTEX
-gremlin> artOfFrenchCookingVolOne = graph.addVertex(label, 'book','name', 'The Art of French Cooking, Vol. 1', 'year', 1961)
-==>v[{member_id=2, community_id=264788, ~label=book}]
+ artOfFrenchCookingVolOne = graph.addVertex(label, 'book','name', 'The Art of French Cooking, Vol. 1', 'year', 1961)
+// RESULTS:v[{member_id=2, community_id=264788, ~label=book}]
 
 // GET ALL BOOKS - THERE IS CURRENTLY ONLY ONE
-gremlin> g.V().hasLabel('book').values('name')
-==>The Art of French Cooking, Vol. 1
+ g.V().hasLabel('book').values('name')
+// RESULTS:The Art of French Cooking, Vol. 1
 
 // ENTER AUTHOR-BOOK EDGE
-gremlin> juliaChild.addEdge('authored', artOfFrenchCookingVolOne)
-==>e[{out_vertex={member_id=1, community_id=184435, ~label=author}, local_id=312468c0-b99a-11e5-bdeb-e778035ca1a5, 
+ juliaChild.addEdge('authored', artOfFrenchCookingVolOne)
+// RESULTS:e[{out_vertex={member_id=1, community_id=184435, ~label=author}, local_id=312468c0-b99a-11e5-bdeb-e778035ca1a5, 
 in_vertex={member_id=2, community_id=113313, ~label=book}, ~type=authored}][{member_id=2, community_id=184435, 
 ~label=author}-authored->{member_id=2, community_id=113313, ~label=book}]
 
 // CHECK THAT EDGE IS CREATED USING COUNT
-gremlin> g.E().count()
-==>1
+ g.E().count()
+// RESULTS:1
 ----------
 // LOAD A SCRIPT TO ADD MORE VERTICES AND EDGES
-gremlin> :load /tmp/generateRecipe.groovy'
+ :load /tmp/generateRecipe.groovy'
 
 // GET VERTEX FOR PARTICULAR AUTHOR
-gremlin> g.V().has('name','Julia Child')
-==>v[{member_id=1, community_id=184435, ~label=author}]
+ g.V().has('name','Julia Child')
+// RESULTS:v[{member_id=1, community_id=184435, ~label=author}]
 
 // GET EDGES FROM PARTICULAR AUTHOR VERTEX
-gremlin> g.V().has('name','Julia Child').outE('authored')
-==>e[{out_vertex={member_id=0, community_id=966350, ~label=author, group_id=3}, local_id=1c947f80-ba67-11e5-bdeb-e778035ca1a5, in_vertex={member_id=0, community_id=966350, ~label=book, group_id=14}, ~type=authored}][{member_id=0, community_id=966350, ~label=author, group_id=3}-authored->{member_id=0, community_id=966350, ~label=book, group_id=14}]
-==>e[{out_vertex={member_id=0, community_id=184435, ~label=author, group_id=4}, local_id=c41d5980-ba61-11e5-bdeb-e778035ca1a5, in_vertex={member_id=0, community_id=966350, ~label=book, group_id=1}, ~type=authored}][{member_id=0, community_id=184435, ~label=author, group_id=4}-authored->{member_id=0, community_id=966350, ~label=book, group_id=1}]
+ g.V().has('name','Julia Child').outE('authored')
+// RESULTS:e[{out_vertex={member_id=0, community_id=966350, ~label=author, group_id=3}, local_id=1c947f80-ba67-11e5-bdeb-e778035ca1a5, in_vertex={member_id=0, community_id=966350, ~label=book, group_id=14}, ~type=authored}][{member_id=0, community_id=966350, ~label=author, group_id=3}-authored->{member_id=0, community_id=966350, ~label=book, group_id=14}]
+// RESULTS:e[{out_vertex={member_id=0, community_id=184435, ~label=author, group_id=4}, local_id=c41d5980-ba61-11e5-bdeb-e778035ca1a5, in_vertex={member_id=0, community_id=966350, ~label=book, group_id=1}, ~type=authored}][{member_id=0, community_id=184435, ~label=author, group_id=4}-authored->{member_id=0, community_id=966350, ~label=book, group_id=1}]
 
 // GET BOOK TITLES FOR ALL AUTHORS
 // Note duplication for multiple authors
-gremlin> :> g.V().outE('authored').inV().values('name')
-==>The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
-==>The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
-==>Simca's Cuisine: 100 Classic French Recipes for Every Occasion
-==>The Art of French Cooking, Vol. 1
-==>The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
-==>The Art of French Cooking, Vol. 1
-==>Simca's Cuisine: 100 Classic French Recipes for Every Occasion
-==>The Art of French Cooking, Vol. 1
-==>The French Chef Cookbook
+  g.V().outE('authored').inV().values('name')
+// RESULTS:The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
+// RESULTS:The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
+// RESULTS:Simca's Cuisine: 100 Classic French Recipes for Every Occasion
+// RESULTS:The Art of French Cooking, Vol. 1
+// RESULTS:The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
+// RESULTS:The Art of French Cooking, Vol. 1
+// RESULTS:Simca's Cuisine: 100 Classic French Recipes for Every Occasion
+// RESULTS:The Art of French Cooking, Vol. 1
+// RESULTS:The French Chef Cookbook
 
 // DEDUPLICATE THE LAST LISTING
-gremlin> :> g.V().outE('authored').inV().values('name').dedup()
-==>Simca's Cuisine: 100 Classic French Recipes for Every Occasion
-==>The Art of French Cooking, Vol. 1
-==>The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
-==>The French Chef Cookbook
+  g.V().outE('authored').inV().values('name').dedup()
+// RESULTS:Simca's Cuisine: 100 Classic French Recipes for Every Occasion
+// RESULTS:The Art of French Cooking, Vol. 1
+// RESULTS:The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution
+// RESULTS:The French Chef Cookbook
 
 // GET BOOK TITLES FOR PARTICULAR AUTHOR
 // Uses outE() and inV() which is overkill - edge information is not needed, just passed through
-gremlin> :> g.V().has('name','Julia Child').outE('authored').inV().values('name')
-==>The Art of French Cooking, Vol. 1
-==>The French Chef Cookbook
+  g.V().has('name','Julia Child').outE('authored').inV().values('name')
+// RESULTS:The Art of French Cooking, Vol. 1
+// RESULTS:The French Chef Cookbook
 
 // GET BOOK TITLES FOR PARTICULAR AUTHOR
 // Use out() which gets next vertex
-gremlin> :> g.V().has('name','Julia Child').out('authored').values('name')
-==>The Art of French Cooking, Vol. 1
-==>The French Chef Cookbook
+  g.V().has('name','Julia Child').out('authored').values('name')
+// RESULTS:The Art of French Cooking, Vol. 1
+// RESULTS:The French Chef Cookbook
 
 // GET BOOK TITLES FOR PARTICULAR AUTHOR WITH A PUBLISH DATE GREATER THAN 1967
- gremlin> :> g.V().has('name','Julia Child').out('authored').has('year', gt(1967)).values('name')
-==>The French Chef Cookbook
+   g.V().has('name','Julia Child').out('authored').has('year', gt(1967)).values('name')
+// RESULTS:The French Chef Cookbook
 
 // FOR EACH VERTEX LABEL, GET THE NUMBER OF VERTICES
-gremlin> :> g.V().label().groupCount()
-==>[ingredient:31, author:10, book:4, recipe:8]
+  g.V().label().groupCount()
+// RESULTS:[ingredient:31, author:10, book:4, recipe:8]
 
 // WRITE THE DATA TO A GRYO FILE
-gremlin> :> graph.io(gryo()).writeGraph("/home/ubuntu/recipe.gryo")
-==>NULL
+  graph.io(gryo()).writeGraph("/home/ubuntu/recipe.gryo")
+// RESULTS:NULL
 
 // LOAD DATA USING GRYO
-gremlin> :> graph.io(gryo()).readGraph("/home/ubuntu/recipe.gryo")
-==>NULL
+  graph.io(gryo()).readGraph("/home/ubuntu/recipe.gryo")
+// RESULTS:NULL
 
