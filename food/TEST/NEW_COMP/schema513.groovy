@@ -188,6 +188,7 @@ schema.vertexLabel('book').index('search').search().
 schema.vertexLabel('location').index('search').search().by('geoPoint').withError(0.000009,0.0).add()
 schema.vertexLabel('store').index('search').search().by('name').add()
 schema.vertexLabel('home').index('search').search().by('name').add()
+schema.vertexLabel('fridgeSensor').index('search').search().by('cityId').by('sensorId').by('name').add()
 
 // ********
 // EDGE INDEX
