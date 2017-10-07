@@ -1,0 +1,171 @@
+:remote config alias g newComp.g
+schema.config().option('graph.allow_scan').set('true')
+
+//****** ADDED TO QUERY/TRAVERSAL PAGES
+
+// Generates review vertices and edges for Recipe Toy Graph
+:load /tmp/generateReviews.groovy
+
+// GET A COUNT OF REVIEWS
+//OLD g.V().hasLabel('reviewer').count()
+g.V().hasLabel('recipe').in('reviewed').count()
+
+// GET THE VALUES FOR ALL REVIEWERS TO CHECK
+//OLD g.V().hasLabel('reviewer').values()
+g.V().hasLabel('person').out('reviewed').values('name')
+
+// What did John Doe have to say in his recipe reviews?
+//OLD g.V().has('reviewer', 'name','John Doe').outE('rated').values('comment')
+g.V().has('person', 'name','John Doe').outE('reviewed').values('comment')
+
+//Which recipes did John Doe review?
+//OLD g.V().has('reviewer', 'name','John Doe').outE('rated').inV().values('name')
+g.V().has('person', 'name','John Doe').outE('reviewed').inV().values('name')
+
+// GET THE VALUEMAP FOR EACH EDGE THAT HAS MORE THAN 3 STARS
+//OLD g.E().hasLabel('rated').has('stars', gt(3)).valueMap()
+g.E().hasLabel('reviewed').has('stars', gt(3)).valueMap()
+
+// GET THE RECIPES THAT HAVE A RATING HIGHER THAN 3 STARS
+//OLD g.E().hasLabel('rated').has('stars', gt(3)).inV().values('name')
+g.E().hasLabel('reviewed').has('stars', gt(3)).inV().values('name')
+
+// GET THE VALUEMAP FOR EACH EDGE THAT HAS MORE THAN 3 STARS AND A RATED DATE GREATER THAN JAN 1, 2015
+//OLD g.E().hasLabel('rated').has('stars',gte(4)).has('timestamp', gte(Instant.parse('2015-01-01T00:00:00.00Z'))).valueMap()
+g.E().hasLabel('reviewed').has('stars',gte(4)).has('timestamp', gte(Instant.parse('2015-01-01T00:00:00.00Z'))).valueMap()
+
+// MEAN STARS
+g.E().hasLabel('rated').values('stars').mean()
+
+// FIND  THE MAX NUMBER OF RECIPE REVIEWS BY A SINGLE REVIEWER
+g.V().hasLabel('reviewer').map(outE('rated').count()).max()
+
+g.V().hasLabel('reviewer').as('reviewer','starCount').
+  select('reviewer','starCount').
+    by('name').
+    by(outE('rated').values('stars').mean())
+
+g.V().hasLabel('reviewer').as('reviewer','starCount').
+  select('reviewer','starCount').
+    by('name').
+    by(outE('rated').values('stars').mean()).
+  order().by(select('starCount'), decr)
+
+g.V().hasLabel('reviewer').as('reviewer','starCount').
+  select('reviewer','starCount').
+    by('name').
+    by(coalesce(outE('rated').values('stars'),constant(0)).mean()).
+  order().by(select('starCount'), decr)
+
+// get the schema with datatypes
+graph.schema().traversal().V().valueMap(true)
+  
+// What star rating did a reviewer give a recipe?
+g.V().hasLabel('reviewer').as('reviewer','rating').out().as('recipe').
+select('reviewer','rating','recipe').
+  by('name').
+  by(outE('rated').values('stars')).
+  by(values('name'))
+
+// For each recipe reviewed, get the number of reviews and the mean star rating for the recipe
+g.V().hasLabel('recipe').as('recipe','numberOfReviews','meanRating').
+  select('recipe','numberOfReviews','meanRating').
+    by('name').
+    by(inE('rated').count()).
+    by(inE('rated').values('stars').mean())
+
+// RECIPES THAT CONTAIN BEEF
+g.V().hasLabel('recipe').out().has('name','beef').in().hasLabel('recipe').values('name')
+
+// RECIPES THAT CONTAIN EITHER BEEF OR CARROTS
+g.V().hasLabel('recipe').out().has('name',within('beef','carrots')).in().hasLabel('recipe').values('name')
+
+// GET ALL INGREDIENTS USED IN A PARTICULAR RECIPE
+g.V().match(
+  __.as('a').hasLabel('ingredient'),
+  __.as('a').in('includes').has('name','Beef Bourguignon')).
+select('a').by('name')
+
+// Group all vertices by label and name
+g.V().group().by(label).by('name')
+
+// Group all books by year and name
+g.V().hasLabel('book').group().by('year').by('name')
+
+g.V().hasLabel('author').as('author').out().properties('year').as('year').select('author','year').by('name').by().limit(2)
+
+g.V().hasLabel('author').as('author').local(out().properties('year').as('year').limit(2)).select('author','year').by('name').by()
+
+**************************
+NOT ADDED TO EAP DOC YET
+**************************
+
+// How many books has each author written?
+g.V().hasLabel('author').as('a','b').select('a','b').by('name').by(outE('authored').count())
+
+// How many books has each author written? (uses more descriptive labels for display)
+ g.V().hasLabel('author').as('author','wrote').select('author','wrote').by('name').by(outE('authored').count())
+
+// How many recipes has Julia Child written?
+g.V().hasLabel('recipe').in().has('name','Julia Child').count()
+
+// CLEANER VERSION OF LAST TRAVERSAL
+g.V().hasLabel('ingredient').has('name',within('beef','carrots')).in().hasLabel('recipe').values('name')
+
+USED IN graphOLTPvsOLAP.dita
+g.V().hasLabel('recipe').in().has('name','Julia Child').count().profile()
+
+*** 
+IDEA: categories for recipes
+separate vertex type?
+****
+
+
+*** DONE ABOVE WITH AUTHORS AND BOOKS
+// For each category vertex, emit a map of its name and the number of movies it represents.
+// Both a vertex type category and an edge label category - this is from movie lens
+g.V().hasLabel('category').as('a','b').
+ select('a','b').
+    by('name').
+    by(inE('category').count())
+***************
+    
+// For each movie, emit a map of its name and average rating. Sort maps in decr. order by avg rating. Top 10 only
+g.V().hasLabel('movie').as('a','b').
+ select('a','b').
+    by('name').
+    by(inE('rated').values('stars').mean()).
+  order().by(select('b'), decr).
+  limit(10)
+  
+  actually needs to be this to fix empty stars value:
+  
+ g.V().hasLabel('movie').as('a','b').
+  select('a','b').
+    by('name').
+    by(coalesce(
+      inE('rated').values('stars'), constant()).mean()).
+  order().by(select('b'), decr).
+  limit(10) 
+  
+  // For each movie with at least 11 ratings emit a map of its name and avg rating. sort maps in decr order by avg rating. Top 10 only
+  g.V().hasLabel('movie').as('a','b').
+    where(inE('rated').count().is(gt(10))).
+    select('a','b').
+      by('name').
+      by(inE('rated').values('stars').mean()).
+    order().by(select('b'), decr).
+    limit(10)
+    
+    // Which programmers like Die Hard and what other movies do they like? Group and count the movies by their name.
+    // Sort group count map in decr order by count. Clip map to top 10 and stream out map's entries
+    
+  g.V().has('movie','name','Die Hard').as('a').
+    inE('rated').has('stars',5).outV().
+      where(out('occupation').has('name','programmer')).
+    outE('rated').has('stars',5).inV(). 
+      where(neq('a')).
+    groupCount().by('name').
+      order(local).by(valueDecr).
+      limit(local,10).
+      unfold()   // this puts each movie on its own line
