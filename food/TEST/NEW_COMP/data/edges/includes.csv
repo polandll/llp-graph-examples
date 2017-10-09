@@ -1,5 +1,5 @@
-mealId|itemId|numServ
-4001|5001|1
-4001|5002|1
-4001|5003|2
-4002|5001|2
+type|mealId|itemId|numServ
+lunch|4001|5001|1
+lunch|4001|5002|1
+lunch|4001|5003|2
+lunch|4002|5001|2

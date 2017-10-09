@@ -80,7 +80,7 @@ load(book).asVertices {
 
 load(meal).asVertices {
     label "meal"
-    key "mealId"
+    key type: "type", mealId: "mealId"
 }
 
 load(meal_item).asVertices {
@@ -105,7 +105,7 @@ load(store).asVertices {
 
 load(fridgeSensor).asVertices {
     label "fridgeSensor"
-    key cityId: "cityId", sensorId: "sensorId"
+    key stateId: "stateId", cityId: "cityId", sensorId: "sensorId"
 }
 
 load(location).asVertices {
@@ -136,11 +136,16 @@ load(ate).asEdges {
         label "person"
         key "personId"
         exists()
+	ignore "type"
+	ignore "mealId"
+	ignore "mealDate"
     }
     inV "mealId", {
         label "meal"
-        key "mealId"
+        key type: "type", mealId: "mealId"
         exists()
+	ignore "personId"
+	ignore "mealDate"
     }
 }
 
@@ -177,7 +182,7 @@ load(contains).asEdges {
     label "contains"
     outV {
         label "fridgeSensor"
-        key cityId: "cityId", sensorId: "sensorId"
+        key stateId: "stateId" , cityId: "cityId", sensorId: "sensorId"
         exists()
         ignore "ingredId"
         ignore "expireDate"
@@ -186,10 +191,12 @@ load(contains).asEdges {
         label "ingredient"
         key "ingredId"
         exists()
+	ignore "stateId"
         ignore "cityId"
 	ignore "sensorId"
         ignore "expireDate"
     }
+    ignore "stateId"
     ignore "cityId"
     ignore "sensorId"
     ignore "ingredId"
@@ -227,13 +234,16 @@ load(includedIn_meal_book).asEdges {
     label "includedIn"
     outV "mealId", {
         label "meal"
-        key "mealId"
+        key type: "type", mealId: "mealId"
         exists()
+ 	ignore "bookId"
     }
     inV "bookId", {
         label "book"
         key "bookId"
         exists()
+	ignore "mealId"
+	ignore "type"
     }
 }
 
@@ -260,7 +270,7 @@ load(includedIn_recipe_meal).asEdges {
     }
     inV "mealId", {
         label "meal"
-        key "mealId"
+        key type: "type", mealId: "mealId"
         exists()
     }
 }
@@ -269,13 +279,18 @@ load(includes).asEdges {
     label "includes"
     outV "mealId", {
         label "meal"
-        key "mealId"
+        key type: "type", mealId: "mealId"
         exists()
+	ignore "itemId"
+	ignore "numServ"
     }
     inV "itemId", {
         label "meal_item"
         key "itemId"
         exists()
+	ignore "type"
+	ignore "mealId"
+	ignore "numServ"
     }
 }
 
@@ -298,7 +313,7 @@ load(isLocatedAt_fridgeSensor).asEdges {
     label "isLocatedAt"
     outV {
         label "fridgeSensor"
-        key cityId: "cityId", sensorId: "sensorId"
+        key stateId: "stateId", cityId: "cityId", sensorId: "sensorId"
         exists()
         ignore "homeId"
     }
@@ -306,9 +321,11 @@ load(isLocatedAt_fridgeSensor).asEdges {
         label "home"
         key "homeId"
         exists()
+        ignore "stateId"
         ignore "cityId"
         ignore "sensorId"
     }
+    ignore "stateId"
     ignore "cityId"
     ignore "sensorId"
     ignore "homeId"

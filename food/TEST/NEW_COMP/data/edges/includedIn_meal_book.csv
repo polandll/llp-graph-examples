@@ -1,4 +1,4 @@
-mealId|bookId
-4007|1001
-4008|1004
-4005|1003
+type|mealId|bookId
+dinner|4007|1001
+dinner|4008|1004
+breakfast|4005|1003

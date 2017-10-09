@@ -1,0 +1,830 @@
+2017-10-09 19:32:04 DEBUG ScriptConfiguration:124 - Complete maps script: 
+maps.add([name: "inputdir",    type: String,  defaultValue: "/home/automaton/graph-examples/food/TEST/NEW_COMP/data/",    description: "The input directory to load data from"]) 
+maps.add([name: "label",       type: String,  defaultValue: "",        description: "The label of the vertex to be populated with CSV data. If left blank (or default) the name of the input file is used as the vertex label name."]) 
+maps.add([name: "key",         type: String,  defaultValue: "",        description: "The name of the column which contains the unique identifiers for the vertex records."]) 
+maps.add([name: "compress",    type: String,  defaultValue: "none",        description: "The compression of the CSV file (none, gzip, xzip)."]) 
+maps.add([name: "delimiter",   type: String,  defaultValue: "|",           description: "The delimter of the CSV file"]) 
+
+2017-10-09 19:32:04 INFO  Executable:74 - Setting configuration address=localhost
+2017-10-09 19:32:04 INFO  Executable:74 - Setting configuration graph=newComp513
+2017-10-09 19:32:04 DEBUG Executable:86 - Setting cluster builder: com.datastax.dsegraphloader.api.ClusterBuilder@78691363
+2017-10-09 19:32:04 DEBUG GuavaCompatibility:247 - Error while checking existence of method Futures.transformAsync
+java.lang.NoSuchMethodException: com.google.common.util.concurrent.Futures.transformAsync(com.google.common.util.concurrent.ListenableFuture, com.google.common.util.concurrent.AsyncFunction)
+	at java.lang.Class.getMethod(Class.java:1786)
+	at com.datastax.driver.core.GuavaCompatibility.methodExists(GuavaCompatibility.java:244)
+	at com.datastax.driver.core.GuavaCompatibility.isGuava_19_0_OrHigher(GuavaCompatibility.java:216)
+	at com.datastax.driver.core.GuavaCompatibility.selectImplementation(GuavaCompatibility.java:122)
+	at com.datastax.driver.core.GuavaCompatibility.<clinit>(GuavaCompatibility.java:43)
+	at com.datastax.driver.core.Cluster.<clinit>(Cluster.java:59)
+	at com.datastax.dsegraphloader.api.ClusterBuilder.configuredBuilder(ClusterBuilder.java:267)
+	at com.datastax.dsegraphloader.api.ClusterBuilder.build(ClusterBuilder.java:188)
+	at com.datastax.dsegraphloader.api.DataLoader.connect(DataLoader.java:117)
+	at com.datastax.dsegraphloader.cli.Executable.execute(Executable.java:88)
+	at com.datastax.dsegraphloader.cli.Executable.execute(Executable.java:47)
+	at com.datastax.dsegraphloader.cli.Executable.main(Executable.java:133)
+2017-10-09 19:32:04 INFO  GuavaCompatibility:126 - Detected Guava < 19 in the classpath, using legacy compatibility layer
+2017-10-09 19:32:04 DEBUG SystemProperties:23 - com.datastax.driver.NEW_NODE_DELAY_SECONDS is undefined, using default value 1
+2017-10-09 19:32:04 DEBUG SystemProperties:23 - com.datastax.driver.NOTIF_LOCK_TIMEOUT_SECONDS is undefined, using default value 60
+2017-10-09 19:32:04 DEBUG SystemProperties:39 - com.datastax.driver.USE_NATIVE_CLOCK is undefined, using default value true
+2017-10-09 19:32:05 INFO  ClockFactory:43 - Using native clock to generate timestamps.
+2017-10-09 19:32:05 DEBUG SystemProperties:23 - com.datastax.driver.NON_BLOCKING_EXECUTOR_SIZE is undefined, using default value 2
+2017-10-09 19:32:05 DEBUG Cluster:1407 - Starting new cluster with contact points [localhost/127.0.0.1:9042]
+2017-10-09 19:32:05 DEBUG InternalLoggerFactory:71 - Using SLF4J as the default logging framework
+2017-10-09 19:32:05 DEBUG PlatformDependent0:76 - -Dio.netty.noUnsafe: false
+2017-10-09 19:32:05 DEBUG PlatformDependent0:71 - sun.misc.Unsafe.theUnsafe: available
+2017-10-09 19:32:05 DEBUG PlatformDependent0:71 - sun.misc.Unsafe.copyMemory: available
+2017-10-09 19:32:05 DEBUG PlatformDependent0:71 - java.nio.Buffer.address: available
+2017-10-09 19:32:05 DEBUG PlatformDependent0:71 - direct buffer constructor: available
+2017-10-09 19:32:05 DEBUG PlatformDependent0:76 - java.nio.Bits.unaligned: available, true
+2017-10-09 19:32:05 DEBUG PlatformDependent0:91 - jdk.internal.misc.Unsafe.allocateUninitializedArray(int): unavailable
+java.lang.ClassNotFoundException: jdk.internal.misc.Unsafe
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:331)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at io.netty.util.internal.PlatformDependent0$6.run(PlatformDependent0.java:290)
+	at java.security.AccessController.doPrivileged(Native Method)
+	at io.netty.util.internal.PlatformDependent0.<clinit>(PlatformDependent0.java:283)
+	at io.netty.util.internal.PlatformDependent.getSystemClassLoader(PlatformDependent.java:641)
+	at io.netty.util.internal.PlatformDependent.isAndroid0(PlatformDependent.java:665)
+	at io.netty.util.internal.PlatformDependent.<clinit>(PlatformDependent.java:65)
+	at io.netty.util.Signal.<clinit>(Signal.java:31)
+	at io.netty.util.concurrent.DefaultPromise.<clinit>(DefaultPromise.java:43)
+	at io.netty.util.concurrent.GlobalEventExecutor.<init>(GlobalEventExecutor.java:44)
+	at io.netty.util.concurrent.GlobalEventExecutor.<clinit>(GlobalEventExecutor.java:41)
+	at com.datastax.driver.core.Connection$Factory.<init>(Connection.java:745)
+	at com.datastax.driver.core.Cluster$Manager.init(Cluster.java:1437)
+	at com.datastax.driver.core.Cluster.getMetadata(Cluster.java:390)
+	at com.datastax.driver.core.DelegatingCluster.getMetadata(DelegatingCluster.java:82)
+	at com.datastax.dsegraphloader.api.ClusterBuilder.build(ClusterBuilder.java:193)
+	at com.datastax.dsegraphloader.api.DataLoader.connect(DataLoader.java:117)
+	at com.datastax.dsegraphloader.cli.Executable.execute(Executable.java:88)
+	at com.datastax.dsegraphloader.cli.Executable.execute(Executable.java:47)
+	at com.datastax.dsegraphloader.cli.Executable.main(Executable.java:133)
+2017-10-09 19:32:05 DEBUG PlatformDependent0:76 - java.nio.DirectByteBuffer.<init>(long, int): available
+2017-10-09 19:32:05 DEBUG PlatformDependent:76 - Java version: 8
+2017-10-09 19:32:05 DEBUG PlatformDependent:76 - sun.misc.Unsafe: available
+2017-10-09 19:32:05 DEBUG PlatformDependent:76 - -Dio.netty.tmpdir: /tmp
+2017-10-09 19:32:05 DEBUG PlatformDependent:76 - -Dio.netty.bitMode: 64 (sun.arch.data.model)
+2017-10-09 19:32:05 DEBUG PlatformDependent:76 - -Dio.netty.noPreferDirect: false
+2017-10-09 19:32:05 DEBUG PlatformDependent:76 - -Dio.netty.maxDirectMemory: 2005925888 bytes
+2017-10-09 19:32:05 DEBUG PlatformDependent:76 - -Dio.netty.uninitializedArrayAllocationThreshold: -1
+2017-10-09 19:32:05 DEBUG CleanerJava6:71 - java.nio.ByteBuffer.cleaner(): available
+2017-10-09 19:32:05 DEBUG SystemProperties:39 - com.datastax.driver.FORCE_NIO is undefined, using default value false
+2017-10-09 19:32:05 DEBUG NativeLibraryLoader:71 - -Dio.netty.tmpdir: /tmp
+2017-10-09 19:32:05 DEBUG NativeLibraryLoader:71 - -Dio.netty.native.workdir: /tmp (io.netty.tmpdir)
+2017-10-09 19:32:05 DEBUG NetUtil:86 - Loopback interface: lo (lo, 0:0:0:0:0:0:0:1%lo)
+2017-10-09 19:32:05 DEBUG NetUtil:81 - /proc/sys/net/core/somaxconn: 128
+2017-10-09 19:32:05 INFO  NettyUtil:70 - Found Netty's native epoll transport in the classpath, using it
+2017-10-09 19:32:05 DEBUG MultithreadEventLoopGroup:76 - -Dio.netty.eventLoopThreads: 4
+2017-10-09 19:32:05 DEBUG PlatformDependent:71 - org.jctools-core.MpscChunkedArrayQueue: available
+2017-10-09 19:32:05 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.level: simple
+2017-10-09 19:32:05 DEBUG ResourceLeakDetector:81 - -Dio.netty.leakDetection.maxRecords: 4
+2017-10-09 19:32:05 DEBUG ResourceLeakDetectorFactory:76 - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@39ac0c0a
+2017-10-09 19:32:05 DEBUG SystemProperties:39 - com.datastax.driver.EXTENDED_PEER_CHECK is undefined, using default value true
+2017-10-09 19:32:05 DEBUG STATES:79 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 1
+2017-10-09 19:32:05 DEBUG SystemProperties:39 - com.datastax.driver.DISABLE_COALESCING is undefined, using default value false
+2017-10-09 19:32:05 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numHeapArenas: 4
+2017-10-09 19:32:05 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.numDirectArenas: 4
+2017-10-09 19:32:05 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.pageSize: 8192
+2017-10-09 19:32:05 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxOrder: 11
+2017-10-09 19:32:05 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.chunkSize: 16777216
+2017-10-09 19:32:05 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.tinyCacheSize: 512
+2017-10-09 19:32:05 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.smallCacheSize: 256
+2017-10-09 19:32:05 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.normalCacheSize: 64
+2017-10-09 19:32:05 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2017-10-09 19:32:05 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.cacheTrimInterval: 8192
+2017-10-09 19:32:05 DEBUG PooledByteBufAllocator:76 - -Dio.netty.allocator.useCacheForAllThreads: true
+2017-10-09 19:32:05 DEBUG ByteBufUtil:76 - -Dio.netty.allocator.type: unpooled
+2017-10-09 19:32:05 DEBUG ByteBufUtil:76 - -Dio.netty.threadLocalDirectBufferSize: 65536
+2017-10-09 19:32:05 DEBUG ByteBufUtil:76 - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2017-10-09 19:32:05 DEBUG Connection:158 - Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Connection established, initializing transport
+2017-10-09 19:32:05 DEBUG Recycler:76 - -Dio.netty.recycler.maxCapacity.default: 32768
+2017-10-09 19:32:05 DEBUG Recycler:76 - -Dio.netty.recycler.maxSharedCapacityFactor: 2
+2017-10-09 19:32:05 DEBUG Recycler:76 - -Dio.netty.recycler.linkCapacity: 16
+2017-10-09 19:32:05 DEBUG Recycler:76 - -Dio.netty.recycler.ratio: 8
+2017-10-09 19:32:05 DEBUG AbstractByteBuf:81 - -Dio.netty.buffer.bytebuf.checkAccessible: true
+2017-10-09 19:32:05 DEBUG ResourceLeakDetectorFactory:76 - Loaded default ResourceLeakDetector: io.netty.util.ResourceLeakDetector@a8f2ae0
+2017-10-09 19:32:05 DEBUG SystemProperties:23 - com.datastax.driver.NATIVE_TRANSPORT_MAX_FRAME_SIZE_IN_MB is undefined, using default value 256
+2017-10-09 19:32:05 DEBUG STATES:310 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=false] Transport initialized, connection ready
+2017-10-09 19:32:05 DEBUG ControlConnection:532 - [Control connection] Refreshing node list and token map
+2017-10-09 19:32:05 DEBUG ControlConnection:266 - [Control connection] Refreshing schema
+2017-10-09 19:32:05 DEBUG ReplicationStrategy$NetworkTopologyStrategy:114 - Computing token to replica map for keyspace: DSE_GRAPH_QUICKSTART.
+2017-10-09 19:32:05 DEBUG ReplicationStrategy$NetworkTopologyStrategy:202 - Token to replica map computation for keyspace DSE_GRAPH_QUICKSTART completed in 0 milliseconds
+2017-10-09 19:32:05 DEBUG STATES:174 - [Control connection] established to localhost/127.0.0.1:9042
+2017-10-09 19:32:05 INFO  DCAwareRoundRobinPolicy:86 - Using data-center name 'SearchGraph' for DCAwareRoundRobinPolicy (if this is incorrect, please provide the correct datacenter name with DCAwareRoundRobinPolicy constructor)
+2017-10-09 19:32:05 INFO  Cluster:1559 - New Cassandra host localhost/127.0.0.1:9042 added
+2017-10-09 19:32:05 DEBUG SystemProperties:39 - com.datastax.driver.CHECK_IO_DEADLOCKS is undefined, using default value true
+2017-10-09 19:32:05 DEBUG STATES:79 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 2
+2017-10-09 19:32:05 DEBUG Connection:158 - Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Connection established, initializing transport
+2017-10-09 19:32:05 DEBUG STATES:310 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=false] Transport initialized, connection ready
+2017-10-09 19:32:05 DEBUG HostConnectionPool:143 - Created connection pool to host localhost/127.0.0.1:9042 (1 connections needed, 1 successfully opened)
+2017-10-09 19:32:05 DEBUG Session:395 - Added connection pool for localhost/127.0.0.1:9042
+2017-10-09 19:32:05 WARN  SimpleGraphStatement:132 - GraphSON1 is being used for a graph query, however it is recommended to switch to GraphSON2 when executing a graph query to maintain type information in requests and responses to the DSE Graph server. Enabling GraphSON2 can be done via the DseCluster's GraphOptions, see https://goo.gl/EAUBUv for more information.
+2017-10-09 19:32:06 DEBUG GroovyScriptExecutor:118 - Complete loading script: 
+[1	]  /** SAMPLE INPUT
+[2	]  See files in inputdir/vertices and inputdir/edges
+[3	]  **/
+[4	]  
+[5	]  // CONFIGURATION
+[6	]  // Configures the data loader to create the schema
+[7	]  config create_schema: false, load_new: true
+[8	]  
+[9	]  // DATA INPUT
+[10	]  // Define the data input source using inputdir is the directory for the 
+[11	]  // input files that is specified in the config file
+[12	]  
+[13	]  // *** REPLACE ALL vertices/ files with File.directory? ***
+[14	]  person = File.csv(inputdir + "vertices/" + "person.csv").delimiter(delimiter)
+[15	]  personCountry = File.csv(inputdir + "vertices/" + "personCountry.csv").delimiter(delimiter)
+[16	]  //dse5.1.2 and earlier: personCountry = File.json(inputdir + "vertices/" + "personCountry.json")
+[17	]  recipe = File.csv(inputdir + "vertices/" + "recipe.csv").delimiter(delimiter)
+[18	]  book = File.csv(inputdir + "vertices/" + "book.csv").delimiter(delimiter)
+[19	]  meal = File.csv(inputdir + "vertices/" + "meal.csv").delimiter(delimiter)
+[20	]  meal_item = File.csv(inputdir + "vertices/" + "meal_item.csv").delimiter(delimiter)
+[21	]  ingredient = File.csv(inputdir + "vertices/" + "ingredient.csv").delimiter(delimiter)
+[22	]  home = File.csv(inputdir + "vertices/" + "home.csv").delimiter(delimiter)
+[23	]  store = File.csv(inputdir + "vertices/" + "store.csv").delimiter(delimiter)
+[24	]  fridgeSensor = File.csv(inputdir + "vertices/" + "fridgeSensor.csv").delimiter(delimiter)
+[25	]  location = File.csv(inputdir + "vertices/" + "location.csv").delimiter(delimiter)
+[26	]  //location_cartesian = File.csv(inputdir + "vertices/" + "location_cartesian.csv").delimiter(delimiter)
+[27	]  
+[28	]  // *** REPLACE ALL edges/ files with File.directory? ***
+[29	]  ate = File.csv(inputdir + "edges/" + "ate.csv").delimiter(delimiter)
+[30	]  authored = File.csv(inputdir + "edges/" + "authored.csv").delimiter(delimiter)
+[31	]  contains = File.csv(inputdir + "edges/" + "contains.csv").delimiter(delimiter)
+[32	]  //dse5.1.2 and earlier: contains = File.json(inputdir + "edges/" + "contains.json")
+[33	]  created = File.csv(inputdir + "edges/" + "created.csv").delimiter(delimiter)
+[34	]  includedIn_ingredient_recipe = File.csv(inputdir + "edges/" + "includedIn_ingredient_recipe.csv").delimiter(delimiter)
+[35	]  includedIn_meal_book = File.csv(inputdir + "edges/" + "includedIn_meal_book.csv").delimiter(delimiter)
+[36	]  includedIn_recipe_book = File.csv(inputdir + "edges/" + "includedIn_recipe_book.csv").delimiter(delimiter)
+[37	]  includedIn_recipe_meal = File.csv(inputdir + "edges/" + "includedIn_recipe_meal.csv").delimiter(delimiter)
+[38	]  includes = File.csv(inputdir + "edges/" + "includes.csv").delimiter(delimiter)
+[39	]  isLocatedAt_fridgeSensor = File.csv(inputdir + "edges/" + "isLocatedAt_fridgeSensor.csv").delimiter(delimiter)
+[40	]  //dse5.1.2 and earlier: isLocatedAt_fridgeSensor = File.json(inputdir + "edges/" + "isLocatedAt_fridgeSensor.json")
+[41	]  isLocatedAt_home = File.csv(inputdir + "edges/" + "isLocatedAt_home.csv").delimiter(delimiter)
+[42	]  isLocatedAt_store = File.csv(inputdir + "edges/" + "isLocatedAt_store.csv").delimiter(delimiter)
+[43	]  isStockedWith = File.csv(inputdir + "edges/" + "isStockedWith.csv").delimiter(delimiter)
+[44	]  knows = File.csv(inputdir + "edges/" + "knows.csv").delimiter(delimiter)
+[45	]  reviewed = File.csv(inputdir + "edges/" + "reviewed.csv").delimiter(delimiter)
+[46	]  
+[47	]  //Specifies what data source to load using which mapper (as defined inline)
+[48	]  load(person).asVertices {
+[49	]      label "person"
+[50	]      key "personId"
+[51	]  }
+[52	]  
+[53	]  personCountry = personCountry.transform {
+[54	]    country1 = [
+[55	]      "value": it.remove("value"),
+[56	]      "startYear": it.remove("startYear"),
+[57	]      "endYear": it.remove("endYear") ]
+[58	]    it["country"] = [country1]
+[59	]    it
+[60	]  }
+[61	]  
+[62	]  load(personCountry).asVertices {
+[63	]      label "person"
+[64	]      key "personId"
+[65	]      vertexProperty "country", {
+[66	]        value "value"
+[67	]     }
+[68	]     exists()
+[69	]  }
+[70	]  
+[71	]  load(recipe).asVertices {
+[72	]      label "recipe"
+[73	]      key "recipeId"
+[74	]  }
+[75	]  
+[76	]  load(book).asVertices {
+[77	]      label "book"
+[78	]      key "bookId"
+[79	]  }
+[80	]  
+[81	]  load(meal).asVertices {
+[82	]      label "meal"
+[83	]      key type: "type", mealId: "mealId"
+[84	]  }
+[85	]  
+[86	]  load(meal_item).asVertices {
+[87	]      label "meal_item"
+[88	]      key "itemId"
+[89	]  }
+[90	]  
+[91	]  load(ingredient).asVertices {
+[92	]      label "ingredient"
+[93	]      key "ingredId"
+[94	]  }
+[95	]  
+[96	]  load(home).asVertices {
+[97	]      label "home"
+[98	]      key "homeId"
+[99	]  }
+[100	]  
+[101	]  load(store).asVertices {
+[102	]      label "store"
+[103	]      key "storeId"
+[104	]  }
+[105	]  
+[106	]  load(fridgeSensor).asVertices {
+[107	]      label "fridgeSensor"
+[108	]      key stateId: "stateId", cityId: "cityId", sensorId: "sensorId"
+[109	]  }
+[110	]  
+[111	]  load(location).asVertices {
+[112	]      label "location"
+[113	]      key "locId"
+[114	]  }
+[115	]  
+[116	]  import com.datastax.driver.dse.geometry.Point
+[117	]  location = location.transform {
+[118	]    it['geoPoint'] = Point.fromWellKnownText(it['geoPoint']);
+[119	]  }
+[120	]  
+[121	]  /*
+[122	]  load(location_cartesian).asVertices {
+[123	]      label "location"
+[124	]      key "locId"
+[125	]  }
+[126	]  
+[127	]  import com.datastax.driver.dse.geometry.Point
+[128	]  location_cartesian = location_cartesian.transform {
+[129	]    it['geoPoint'] = Point.fromWellKnownText(it['geoPoint']);
+[130	]  }
+[131	]  */
+[132	]  
+[133	]  load(ate).asEdges {
+[134	]      label "ate"
+[135	]      outV "personId", {
+[136	]          label "person"
+[137	]          key "personId"
+[138	]          exists()
+[139	]  	ignore "type"
+[140	]  	ignore "mealId"
+[141	]  	ignore "mealDate"
+[142	]      }
+[143	]      inV "mealId", {
+[144	]          label "meal"
+[145	]          key type: "type", mealId: "mealId"
+[146	]          exists()
+[147	]  	ignore "personId"
+[148	]  	ignore "mealDate"
+[149	]      }
+[150	]  }
+[151	]  
+[152	]  load(authored).asEdges {
+[153	]      label "authored"
+[154	]      outV "personId", {
+[155	]          label "person"
+[156	]          key "personId"
+[157	]          exists()
+[158	]      }
+[159	]      inV "bookId", {
+[160	]          label "book"
+[161	]          key "bookId"
+[162	]          exists()
+[163	]      }
+[164	]  }
+[165	]  
+[166	]  /* METHOD FOR JSON IN DSE 5.1.2 and previous
+[167	]  load(contains).asEdges {
+[168	]      label "contains"
+[169	]      outV "sensor", {
+[170	]          label "fridgeSensor"
+[171	]          key cityId: "cityId", sensorId: "sensorId"
+[172	]          exists()
+[173	]      }
+[174	]      inV "ingredId", {
+[175	]          label "ingredient"
+[176	]          key "ingredId"
+[177	]          exists()
+[178	]      }
+[179	]  }*/
+[180	]  
+[181	]  load(contains).asEdges {
+[182	]      label "contains"
+[183	]      outV {
+[184	]          label "fridgeSensor"
+[185	]          key stateId: "stateId" , cityId: "cityId", sensorId: "sensorId"
+[186	]          exists()
+[187	]          ignore "ingredId"
+[188	]          ignore "expireDate"
+[189	]      }
+[190	]      inV {
+[191	]          label "ingredient"
+[192	]          key "ingredId"
+[193	]          exists()
+[194	]  	ignore "stateId"
+[195	]          ignore "cityId"
+[196	]  	ignore "sensorId"
+[197	]          ignore "expireDate"
+[198	]      }
+[199	]      ignore "stateId"
+[200	]      ignore "cityId"
+[201	]      ignore "sensorId"
+[202	]      ignore "ingredId"
+[203	]  }
+[204	]  
+[205	]  load(created).asEdges {
+[206	]      label "created"
+[207	]      outV "personId", {
+[208	]          label "person"
+[209	]          key "personId"
+[210	]          exists()
+[211	]      }
+[212	]      inV "recipeId", {
+[213	]          label "recipe"
+[214	]          key "recipeId"
+[215	]          exists()
+[216	]      }
+[217	]  }
+[218	]  
+[219	]  load(includedIn_ingredient_recipe).asEdges {
+[220	]      label "includedIn"
+[221	]      outV "ingredId", {
+[222	]          label "ingredient"
+[223	]          key "ingredId"
+[224	]          exists()
+[225	]      }
+[226	]      inV "recipeId", {
+[227	]          label "recipe"
+[228	]          key "recipeId"
+[229	]          exists()
+[230	]      }
+[231	]  }
+[232	]  
+[233	]  load(includedIn_meal_book).asEdges {
+[234	]      label "includedIn"
+[235	]      outV "mealId", {
+[236	]          label "meal"
+[237	]          key type: "type", mealId: "mealId"
+[238	]          exists()
+[239	]   	ignore "bookId"
+[240	]      }
+[241	]      inV "bookId", {
+[242	]          label "book"
+[243	]          key "bookId"
+[244	]          exists()
+[245	]  	ignore "mealId"
+[246	]  	ignore "type"
+[247	]      }
+[248	]  }
+[249	]  
+[250	]  load(includedIn_recipe_book).asEdges {
+[251	]      label "includedIn"
+[252	]      outV "recipeId", {
+[253	]          label "recipe"
+[254	]          key "recipeId"
+[255	]          exists()
+[256	]      }
+[257	]      inV "bookId", {
+[258	]          label "book"
+[259	]          key "bookId"
+[260	]          exists()
+[261	]      }
+[262	]  }
+[263	]  
+[264	]  load(includedIn_recipe_meal).asEdges {
+[265	]      label "includedIn"
+[266	]      outV "recipeId", {
+[267	]          label "recipe"
+[268	]          key "recipeId"
+[269	]          exists()
+[270	]      }
+[271	]      inV "mealId", {
+[272	]          label "meal"
+[273	]          key type: "type", mealId: "mealId"
+[274	]          exists()
+[275	]      }
+[276	]  }
+[277	]  
+[278	]  load(includes).asEdges {
+[279	]      label "includes"
+[280	]      outV "mealId", {
+[281	]          label "meal"
+[282	]          key type: "type", mealId: "mealId"
+[283	]          exists()
+[284	]  	ignore "itemId"
+[285	]  	ignore "numServ"
+[286	]      }
+[287	]      inV "itemId", {
+[288	]          label "meal_item"
+[289	]          key "itemId"
+[290	]          exists()
+[291	]  	ignore "type"
+[292	]  	ignore "mealId"
+[293	]  	ignore "numServ"
+[294	]      }
+[295	]  }
+[296	]  
+[297	]  /* METHOD FOR JSON IN DSE 5.1.2 and previous
+[298	]  load(isLocatedAt_fridgeSensor).asEdges {
+[299	]      label "isLocatedAt"
+[300	]      outV "sensor", {
+[301	]          label "fridgeSensor"
+[302	]          key cityId: "cityId", sensorId: "sensorId"
+[303	]          exists()
+[304	]      }
+[305	]      inV "homeId", {
+[306	]          label "home"
+[307	]          key "homeId"
+[308	]          exists()
+[309	]      }
+[310	]  } */
+[311	]  
+[312	]  load(isLocatedAt_fridgeSensor).asEdges {
+[313	]      label "isLocatedAt"
+[314	]      outV {
+[315	]          label "fridgeSensor"
+[316	]          key stateId: "stateId", cityId: "cityId", sensorId: "sensorId"
+[317	]          exists()
+[318	]          ignore "homeId"
+[319	]      }
+[320	]      inV {
+[321	]          label "home"
+[322	]          key "homeId"
+[323	]          exists()
+[324	]          ignore "stateId"
+[325	]          ignore "cityId"
+[326	]          ignore "sensorId"
+[327	]      }
+[328	]      ignore "stateId"
+[329	]      ignore "cityId"
+[330	]      ignore "sensorId"
+[331	]      ignore "homeId"
+[332	]  }
+[333	]  
+[334	]  load(isLocatedAt_home).asEdges {
+[335	]      label "isLocatedAt"
+[336	]      outV "homeId", {
+[337	]          label "home"
+[338	]          key "homeId"
+[339	]          exists()
+[340	]      }
+[341	]      inV "locId", {
+[342	]          label "location"
+[343	]          key "locId"
+[344	]          exists()
+[345	]      }
+[346	]  }
+[347	]  
+[348	]  load(isLocatedAt_store).asEdges {
+[349	]      label "isLocatedAt"
+[350	]      outV "storeId", {
+[351	]          label "store"
+[352	]          key "storeId"
+[353	]          exists()
+[354	]      }
+[355	]      inV "locId", {
+[356	]          label "location"
+[357	]          key "locId"
+[358	]          exists()
+[359	]      }
+[360	]  }
+[361	]  
+[362	]  load(isStockedWith).asEdges {
+[363	]      label "isStockedWith"
+[364	]      outV "storeId", {
+[365	]          label "store"
+[366	]          key "storeId"
+[367	]          exists()
+[368	]      }
+[369	]      inV "ingredId", {
+[370	]          label "ingredient"
+[371	]          key "ingredId"
+[372	]          exists()
+[373	]      }
+[374	]  }
+[375	]  
+[376	]  load(knows).asEdges {
+[377	]      label "knows"
+[378	]      outV "u1", {
+[379	]          label "person"
+[380	]          key "personId"
+[381	]      exists()
+[382	]      }
+[383	]      inV "u2", {
+[384	]          label "person"
+[385	]          key "personId"
+[386	]      exists()
+[387	]      }
+[388	]  }
+[389	]  
+[390	]  load(reviewed).asEdges {
+[391	]      label "reviewed"
+[392	]      outV "personId", {
+[393	]          label "person"
+[394	]          key "personId"
+[395	]      exists()
+[396	]      }
+[397	]      inV "recipeId", {
+[398	]          label "recipe"
+[399	]          key "recipeId"
+[400	]      exists()
+[401	]      }
+[402	]  }
+
+2017-10-09 19:32:06 WARN  Executable:110 - As of DGL 6.0, transformation functions will be deprecated. Please consider pre-processing your data using external tools instead. You can safely ignore this warning if you're not using any of the transformation functions in your scripts.
+2017-10-09 19:32:06 WARN  Executable:116 - Schema discovery and preparation is deprecated. Starting with DGL version 6.x. it will no longer be supported.
+2017-10-09 19:32:06 DEBUG STATES:79 - [localhost/127.0.0.1:9042] preparing to open 1 new connections, total = 3
+2017-10-09 19:32:06 DEBUG Connection:158 - Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=false] Connection established, initializing transport
+2017-10-09 19:32:06 DEBUG STATES:310 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=false] Transport initialized, connection ready
+2017-10-09 19:32:06 DEBUG HostConnectionPool:143 - Created connection pool to host localhost/127.0.0.1:9042 (1 connections needed, 1 successfully opened)
+2017-10-09 19:32:06 DEBUG Session:395 - Added connection pool for localhost/127.0.0.1:9042
+2017-10-09 19:32:06 DEBUG GraphJsonUtils:70 - JSR 310 found on the classpath, registering serializers for java.time temporal types
+2017-10-09 19:32:06 INFO  DataLoaderImpl:242 - Initializing tasks with [1] read threads and [1] loader threads
+2017-10-09 19:32:06 INFO  DataLoaderImpl:243 - Initializing tasks with [6] edge loading threads and [1] vertex loading threads
+2017-10-09 19:32:06 INFO  DataLoaderImpl:213 - Scheduling [person] for reading
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [personCountry] for reading
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [recipe] for reading
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [book] for reading
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [meal] for reading
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [meal_item] for reading
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [ingredient] for reading
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [home] for reading
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [store] for reading
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [fridgeSensor] for reading
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [location] for reading
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [ate] for reading
+2017-10-09 19:32:07 ERROR DataLoaderImpl:720 - Could not load record [{mealId=4001, personId=011, type=lunch, mealDate=2017-07-11}] on load [ate] for source record [CSVRecord [comment=null, mapping={personId=0, type=1, mealId=2, mealDate=3}, recordNumber=1, values=[011, lunch, 4001, 2017-07-11]]]
+java.lang.IllegalArgumentException: [On field 'mealId'] Expected a single property key for vertex key but found: {type=type, mealId=mealId}
+	at com.datastax.dsegraphloader.impl.mapping.LoadingCustomizer$DefaultImpl.error(LoadingCustomizer.java:46)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.verify(ElementImportImpl.java:146)
+	at com.datastax.dsegraphloader.impl.mapping.VertexImportImpl.loadSingleFrom(VertexImportImpl.java:83)
+	at com.datastax.dsegraphloader.impl.mapping.EdgeImportImpl.loadSingleFrom(EdgeImportImpl.java:70)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.loadFrom(ElementImportImpl.java:93)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:621)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$DelegatingLoaderCallable.run(DataLoaderImpl.java:530)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-10-09 19:32:07 ERROR DataLoaderImpl:720 - Could not load record [{mealId=4002, personId=012, type=lunch, mealDate=2017-07-11}] on load [ate] for source record [CSVRecord [comment=null, mapping={personId=0, type=1, mealId=2, mealDate=3}, recordNumber=2, values=[012, lunch, 4002, 2017-07-11]]]
+java.lang.IllegalArgumentException: [On field 'mealId'] Expected a single property key for vertex key but found: {type=type, mealId=mealId}
+	at com.datastax.dsegraphloader.impl.mapping.LoadingCustomizer$DefaultImpl.error(LoadingCustomizer.java:46)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.verify(ElementImportImpl.java:146)
+	at com.datastax.dsegraphloader.impl.mapping.VertexImportImpl.loadSingleFrom(VertexImportImpl.java:83)
+	at com.datastax.dsegraphloader.impl.mapping.EdgeImportImpl.loadSingleFrom(EdgeImportImpl.java:70)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.loadFrom(ElementImportImpl.java:93)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:621)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$DelegatingLoaderCallable.run(DataLoaderImpl.java:530)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-10-09 19:32:07 ERROR DataLoaderImpl:720 - Could not load record [{mealId=4007, personId=012, type=dinner, mealDate=2017-07-11}] on load [ate] for source record [CSVRecord [comment=null, mapping={personId=0, type=1, mealId=2, mealDate=3}, recordNumber=3, values=[012, dinner, 4007, 2017-07-11]]]
+java.lang.IllegalArgumentException: [On field 'mealId'] Expected a single property key for vertex key but found: {type=type, mealId=mealId}
+	at com.datastax.dsegraphloader.impl.mapping.LoadingCustomizer$DefaultImpl.error(LoadingCustomizer.java:46)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.verify(ElementImportImpl.java:146)
+	at com.datastax.dsegraphloader.impl.mapping.VertexImportImpl.loadSingleFrom(VertexImportImpl.java:83)
+	at com.datastax.dsegraphloader.impl.mapping.EdgeImportImpl.loadSingleFrom(EdgeImportImpl.java:70)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.loadFrom(ElementImportImpl.java:93)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:621)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$DelegatingLoaderCallable.run(DataLoaderImpl.java:530)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-10-09 19:32:07 ERROR DataLoaderImpl:720 - Could not load record [{mealId=4001, personId=013, type=lunch, mealDate=2017-07-10}] on load [ate] for source record [CSVRecord [comment=null, mapping={personId=0, type=1, mealId=2, mealDate=3}, recordNumber=4, values=[013, lunch, 4001, 2017-07-10]]]
+java.lang.IllegalArgumentException: [On field 'mealId'] Expected a single property key for vertex key but found: {type=type, mealId=mealId}
+	at com.datastax.dsegraphloader.impl.mapping.LoadingCustomizer$DefaultImpl.error(LoadingCustomizer.java:46)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.verify(ElementImportImpl.java:146)
+	at com.datastax.dsegraphloader.impl.mapping.VertexImportImpl.loadSingleFrom(VertexImportImpl.java:83)
+	at com.datastax.dsegraphloader.impl.mapping.EdgeImportImpl.loadSingleFrom(EdgeImportImpl.java:70)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.loadFrom(ElementImportImpl.java:93)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:621)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$DelegatingLoaderCallable.run(DataLoaderImpl.java:530)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [authored] for reading
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [contains] for reading
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [created] for reading
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [includedIn_ingredient_recipe] for reading
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [includedIn_meal_book] for reading
+2017-10-09 19:32:07 ERROR DataLoaderImpl:720 - Could not load record [{mealId=4007, type=dinner, bookId=1001}] on load [includedIn_meal_book] for source record [CSVRecord [comment=null, mapping={type=0, mealId=1, bookId=2}, recordNumber=1, values=[dinner, 4007, 1001]]]
+java.lang.IllegalArgumentException: [On field 'mealId'] Expected a single property key for vertex key but found: {type=type, mealId=mealId}
+	at com.datastax.dsegraphloader.impl.mapping.LoadingCustomizer$DefaultImpl.error(LoadingCustomizer.java:46)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.verify(ElementImportImpl.java:146)
+	at com.datastax.dsegraphloader.impl.mapping.VertexImportImpl.loadSingleFrom(VertexImportImpl.java:83)
+	at com.datastax.dsegraphloader.impl.mapping.EdgeImportImpl.loadSingleFrom(EdgeImportImpl.java:63)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.loadFrom(ElementImportImpl.java:93)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:621)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$DelegatingLoaderCallable.run(DataLoaderImpl.java:530)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-10-09 19:32:07 ERROR DataLoaderImpl:720 - Could not load record [{mealId=4008, type=dinner, bookId=1004}] on load [includedIn_meal_book] for source record [CSVRecord [comment=null, mapping={type=0, mealId=1, bookId=2}, recordNumber=2, values=[dinner, 4008, 1004]]]
+java.lang.IllegalArgumentException: [On field 'mealId'] Expected a single property key for vertex key but found: {type=type, mealId=mealId}
+	at com.datastax.dsegraphloader.impl.mapping.LoadingCustomizer$DefaultImpl.error(LoadingCustomizer.java:46)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.verify(ElementImportImpl.java:146)
+	at com.datastax.dsegraphloader.impl.mapping.VertexImportImpl.loadSingleFrom(VertexImportImpl.java:83)
+	at com.datastax.dsegraphloader.impl.mapping.EdgeImportImpl.loadSingleFrom(EdgeImportImpl.java:63)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.loadFrom(ElementImportImpl.java:93)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:621)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$DelegatingLoaderCallable.run(DataLoaderImpl.java:530)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-10-09 19:32:07 ERROR DataLoaderImpl:720 - Could not load record [{mealId=4005, type=breakfast, bookId=1003}] on load [includedIn_meal_book] for source record [CSVRecord [comment=null, mapping={type=0, mealId=1, bookId=2}, recordNumber=3, values=[breakfast, 4005, 1003]]]
+java.lang.IllegalArgumentException: [On field 'mealId'] Expected a single property key for vertex key but found: {type=type, mealId=mealId}
+	at com.datastax.dsegraphloader.impl.mapping.LoadingCustomizer$DefaultImpl.error(LoadingCustomizer.java:46)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.verify(ElementImportImpl.java:146)
+	at com.datastax.dsegraphloader.impl.mapping.VertexImportImpl.loadSingleFrom(VertexImportImpl.java:83)
+	at com.datastax.dsegraphloader.impl.mapping.EdgeImportImpl.loadSingleFrom(EdgeImportImpl.java:63)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.loadFrom(ElementImportImpl.java:93)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:621)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$DelegatingLoaderCallable.run(DataLoaderImpl.java:530)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [includedIn_recipe_book] for reading
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [includedIn_recipe_meal] for reading
+2017-10-09 19:32:07 ERROR DataLoaderImpl:720 - Could not load record [{mealId=4008, type=dinner, recipeId=2004}] on load [includedIn_recipe_meal] for source record [CSVRecord [comment=null, mapping={recipeId=0, type=1, mealId=2}, recordNumber=1, values=[2004, dinner, 4008]]]
+java.lang.IllegalArgumentException: [On field 'mealId'] Expected a single property key for vertex key but found: {type=type, mealId=mealId}
+	at com.datastax.dsegraphloader.impl.mapping.LoadingCustomizer$DefaultImpl.error(LoadingCustomizer.java:46)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.verify(ElementImportImpl.java:146)
+	at com.datastax.dsegraphloader.impl.mapping.VertexImportImpl.loadSingleFrom(VertexImportImpl.java:83)
+	at com.datastax.dsegraphloader.impl.mapping.EdgeImportImpl.loadSingleFrom(EdgeImportImpl.java:70)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.loadFrom(ElementImportImpl.java:93)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:621)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$DelegatingLoaderCallable.run(DataLoaderImpl.java:530)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-10-09 19:32:07 ERROR DataLoaderImpl:720 - Could not load record [{mealId=4008, type=dinner, recipeId=2007}] on load [includedIn_recipe_meal] for source record [CSVRecord [comment=null, mapping={recipeId=0, type=1, mealId=2}, recordNumber=2, values=[2007, dinner, 4008]]]
+java.lang.IllegalArgumentException: [On field 'mealId'] Expected a single property key for vertex key but found: {type=type, mealId=mealId}
+	at com.datastax.dsegraphloader.impl.mapping.LoadingCustomizer$DefaultImpl.error(LoadingCustomizer.java:46)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.verify(ElementImportImpl.java:146)
+	at com.datastax.dsegraphloader.impl.mapping.VertexImportImpl.loadSingleFrom(VertexImportImpl.java:83)
+	at com.datastax.dsegraphloader.impl.mapping.EdgeImportImpl.loadSingleFrom(EdgeImportImpl.java:70)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.loadFrom(ElementImportImpl.java:93)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:621)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$DelegatingLoaderCallable.run(DataLoaderImpl.java:530)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-10-09 19:32:07 ERROR DataLoaderImpl:720 - Could not load record [{mealId=4007, type=dinner, recipeId=2006}] on load [includedIn_recipe_meal] for source record [CSVRecord [comment=null, mapping={recipeId=0, type=1, mealId=2}, recordNumber=3, values=[2006, dinner, 4007]]]
+java.lang.IllegalArgumentException: [On field 'mealId'] Expected a single property key for vertex key but found: {type=type, mealId=mealId}
+	at com.datastax.dsegraphloader.impl.mapping.LoadingCustomizer$DefaultImpl.error(LoadingCustomizer.java:46)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.verify(ElementImportImpl.java:146)
+	at com.datastax.dsegraphloader.impl.mapping.VertexImportImpl.loadSingleFrom(VertexImportImpl.java:83)
+	at com.datastax.dsegraphloader.impl.mapping.EdgeImportImpl.loadSingleFrom(EdgeImportImpl.java:70)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.loadFrom(ElementImportImpl.java:93)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:621)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$DelegatingLoaderCallable.run(DataLoaderImpl.java:530)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-10-09 19:32:07 ERROR DataLoaderImpl:720 - Could not load record [{mealId=4007, type=dinner, recipeId=2002}] on load [includedIn_recipe_meal] for source record [CSVRecord [comment=null, mapping={recipeId=0, type=1, mealId=2}, recordNumber=4, values=[2002, dinner, 4007]]]
+java.lang.IllegalArgumentException: [On field 'mealId'] Expected a single property key for vertex key but found: {type=type, mealId=mealId}
+	at com.datastax.dsegraphloader.impl.mapping.LoadingCustomizer$DefaultImpl.error(LoadingCustomizer.java:46)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.verify(ElementImportImpl.java:146)
+	at com.datastax.dsegraphloader.impl.mapping.VertexImportImpl.loadSingleFrom(VertexImportImpl.java:83)
+	at com.datastax.dsegraphloader.impl.mapping.EdgeImportImpl.loadSingleFrom(EdgeImportImpl.java:70)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.loadFrom(ElementImportImpl.java:93)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:621)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$DelegatingLoaderCallable.run(DataLoaderImpl.java:530)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-10-09 19:32:07 ERROR DataLoaderImpl:720 - Could not load record [{mealId=4004, type=lunch, recipeId=2003}] on load [includedIn_recipe_meal] for source record [CSVRecord [comment=null, mapping={recipeId=0, type=1, mealId=2}, recordNumber=5, values=[2003, lunch, 4004]]]
+java.lang.IllegalArgumentException: [On field 'mealId'] Expected a single property key for vertex key but found: {type=type, mealId=mealId}
+	at com.datastax.dsegraphloader.impl.mapping.LoadingCustomizer$DefaultImpl.error(LoadingCustomizer.java:46)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.verify(ElementImportImpl.java:146)
+	at com.datastax.dsegraphloader.impl.mapping.VertexImportImpl.loadSingleFrom(VertexImportImpl.java:83)
+	at com.datastax.dsegraphloader.impl.mapping.EdgeImportImpl.loadSingleFrom(EdgeImportImpl.java:70)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.loadFrom(ElementImportImpl.java:93)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:621)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$DelegatingLoaderCallable.run(DataLoaderImpl.java:530)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [includes] for reading
+2017-10-09 19:32:07 ERROR DataLoaderImpl:720 - Could not load record [{itemId=5001, mealId=4001, numServ=1, type=lunch}] on load [includes] for source record [CSVRecord [comment=null, mapping={type=0, mealId=1, itemId=2, numServ=3}, recordNumber=1, values=[lunch, 4001, 5001, 1]]]
+java.lang.IllegalArgumentException: [On field 'mealId'] Expected a single property key for vertex key but found: {type=type, mealId=mealId}
+	at com.datastax.dsegraphloader.impl.mapping.LoadingCustomizer$DefaultImpl.error(LoadingCustomizer.java:46)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.verify(ElementImportImpl.java:146)
+	at com.datastax.dsegraphloader.impl.mapping.VertexImportImpl.loadSingleFrom(VertexImportImpl.java:83)
+	at com.datastax.dsegraphloader.impl.mapping.EdgeImportImpl.loadSingleFrom(EdgeImportImpl.java:63)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.loadFrom(ElementImportImpl.java:93)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:621)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$DelegatingLoaderCallable.run(DataLoaderImpl.java:530)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-10-09 19:32:07 ERROR DataLoaderImpl:720 - Could not load record [{itemId=5002, mealId=4001, numServ=1, type=lunch}] on load [includes] for source record [CSVRecord [comment=null, mapping={type=0, mealId=1, itemId=2, numServ=3}, recordNumber=2, values=[lunch, 4001, 5002, 1]]]
+java.lang.IllegalArgumentException: [On field 'mealId'] Expected a single property key for vertex key but found: {type=type, mealId=mealId}
+	at com.datastax.dsegraphloader.impl.mapping.LoadingCustomizer$DefaultImpl.error(LoadingCustomizer.java:46)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.verify(ElementImportImpl.java:146)
+	at com.datastax.dsegraphloader.impl.mapping.VertexImportImpl.loadSingleFrom(VertexImportImpl.java:83)
+	at com.datastax.dsegraphloader.impl.mapping.EdgeImportImpl.loadSingleFrom(EdgeImportImpl.java:63)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.loadFrom(ElementImportImpl.java:93)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:621)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$DelegatingLoaderCallable.run(DataLoaderImpl.java:530)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-10-09 19:32:07 ERROR DataLoaderImpl:720 - Could not load record [{itemId=5003, mealId=4001, numServ=2, type=lunch}] on load [includes] for source record [CSVRecord [comment=null, mapping={type=0, mealId=1, itemId=2, numServ=3}, recordNumber=3, values=[lunch, 4001, 5003, 2]]]
+java.lang.IllegalArgumentException: [On field 'mealId'] Expected a single property key for vertex key but found: {type=type, mealId=mealId}
+	at com.datastax.dsegraphloader.impl.mapping.LoadingCustomizer$DefaultImpl.error(LoadingCustomizer.java:46)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.verify(ElementImportImpl.java:146)
+	at com.datastax.dsegraphloader.impl.mapping.VertexImportImpl.loadSingleFrom(VertexImportImpl.java:83)
+	at com.datastax.dsegraphloader.impl.mapping.EdgeImportImpl.loadSingleFrom(EdgeImportImpl.java:63)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.loadFrom(ElementImportImpl.java:93)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:621)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$DelegatingLoaderCallable.run(DataLoaderImpl.java:530)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-10-09 19:32:07 ERROR DataLoaderImpl:720 - Could not load record [{itemId=5001, mealId=4002, numServ=2, type=lunch}] on load [includes] for source record [CSVRecord [comment=null, mapping={type=0, mealId=1, itemId=2, numServ=3}, recordNumber=4, values=[lunch, 4002, 5001, 2]]]
+java.lang.IllegalArgumentException: [On field 'mealId'] Expected a single property key for vertex key but found: {type=type, mealId=mealId}
+	at com.datastax.dsegraphloader.impl.mapping.LoadingCustomizer$DefaultImpl.error(LoadingCustomizer.java:46)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.verify(ElementImportImpl.java:146)
+	at com.datastax.dsegraphloader.impl.mapping.VertexImportImpl.loadSingleFrom(VertexImportImpl.java:83)
+	at com.datastax.dsegraphloader.impl.mapping.EdgeImportImpl.loadSingleFrom(EdgeImportImpl.java:63)
+	at com.datastax.dsegraphloader.impl.mapping.ElementImportImpl.loadFrom(ElementImportImpl.java:93)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$LoaderCallable.call(DataLoaderImpl.java:621)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl$DelegatingLoaderCallable.run(DataLoaderImpl.java:530)
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511)
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at java.lang.Thread.run(Thread.java:745)
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [isLocatedAt_fridgeSensor] for reading
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [isLocatedAt_home] for reading
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [isLocatedAt_store] for reading
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [isStockedWith] for reading
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [knows] for reading
+2017-10-09 19:32:07 INFO  DataLoaderImpl:213 - Scheduling [reviewed] for reading
+2017-10-09 19:32:07 DEBUG Cluster:1664 - Shutting down
+2017-10-09 19:32:07 DEBUG Connection:683 - Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=true] closing connection
+2017-10-09 19:32:07 DEBUG STATES:87 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-1, inFlight=0, closed=true] closed, remaining = 2
+2017-10-09 19:32:07 DEBUG Connection:683 - Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=true] closing connection
+2017-10-09 19:32:07 DEBUG STATES:87 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-2, inFlight=0, closed=true] closed, remaining = 1
+2017-10-09 19:32:07 DEBUG Connection:683 - Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=true] closing connection
+2017-10-09 19:32:07 DEBUG STATES:87 - [localhost/127.0.0.1:9042] Connection[localhost/127.0.0.1:9042-3, inFlight=0, closed=true] closed, remaining = 0
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [authored] throughput is [18.507868576831946] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [includedIn_ingredient_recipe] throughput is [74.58893835257523] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [isLocatedAt_store] throughput is [5.973044843231465] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [book] throughput is [6.971281226627744] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [recipe] throughput is [13.749851890462583] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [isLocatedAt_fridgeSensor] throughput is [13.83699871607675] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [fridgeSensor] throughput is [16.14559851017889] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [ate] throughput is [7.272125603498932] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [includedIn_recipe_book] throughput is [7.760599189189283] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [reviewed] throughput is [14.083728214916984] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [knows] throughput is [12.014281159757543] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [meal_item] throughput is [5.262760925603515] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [ingredient] throughput is [54.487690179703286] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [created] throughput is [15.113946175058663] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [isStockedWith] throughput is [45.73983492923131] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [includes] throughput is [7.831315392939667] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [store] throughput is [5.357075625843753] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [home] throughput is [5.318857973891722] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [meal] throughput is [13.933068569036761] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [contains] throughput is [33.39399098248333] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [includedIn_meal_book] throughput is [5.7704043030120316] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [isLocatedAt_home] throughput is [5.932428253998743] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [person] throughput is [22.965037063043667] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [includedIn_recipe_meal] throughput is [9.687363664887462] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [personCountry] throughput is [22.861133795252556] items/s
+2017-10-09 19:32:07 DEBUG Reporter:69 - Input queue [location] throughput is [26.98329105033637] items/s
+2017-10-09 19:32:07 DEBUG Reporter:120 - query times 6: p50 2116.0µs, p80 2116.0µs, p90 2116.0µs, p95 2116.0µs, p99 2116.0µs, p99.9 2116.0µs, p99.99 2116.0µs
+2017-10-09 19:32:09 DEBUG PoolThreadCache:81 - Freed 18 thread-local buffer(s) from thread: cluster1-nio-worker-0
+2017-10-09 19:32:09 DEBUG PoolThreadCache:81 - Freed 6 thread-local buffer(s) from thread: cluster1-nio-worker-2
+2017-10-09 19:32:09 ERROR Executable:135 - Encountered error while loading
+com.datastax.dsegraphloader.exception.LoadingException: There were exceptions in the preparation phase, and the loader is configured to abort on load, check the log for details
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderImpl.execute(DataLoaderImpl.java:290)
+	at com.datastax.dsegraphloader.impl.loader.DataLoaderBuilder.execute(DataLoaderBuilder.java:111)
+	at com.datastax.dsegraphloader.cli.Executable.execute(Executable.java:119)
+	at com.datastax.dsegraphloader.cli.Executable.execute(Executable.java:47)
+	at com.datastax.dsegraphloader.cli.Executable.main(Executable.java:133)
