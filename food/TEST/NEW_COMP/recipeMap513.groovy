@@ -132,34 +132,37 @@ location_cartesian = location_cartesian.transform {
 
 load(ate).asEdges {
     label "ate"
-    outV "personId", {
+    outV {
+        exists()
         label "person"
         key "personId"
-        exists()
 	ignore "type"
 	ignore "mealId"
 	ignore "mealDate"
     }
-    inV "mealId", {
+    inV {
+        exists()
         label "meal"
         key type: "type", mealId: "mealId"
-        exists()
 	ignore "personId"
 	ignore "mealDate"
     }
+    ignore "personId"
+    ignore "type"
+    ignore "mealId"
 }
 
 load(authored).asEdges {
     label "authored"
-    outV "personId", {
+    outV {
+        exists()
         label "person"
         key "personId"
-        exists()
     }
-    inV "bookId", {
+    inV {
+        exists()
         label "book"
         key "bookId"
-        exists()
     }
 }
 
@@ -181,16 +184,16 @@ load(contains).asEdges {
 load(contains).asEdges {
     label "contains"
     outV {
+        exists()
         label "fridgeSensor"
         key stateId: "stateId" , cityId: "cityId", sensorId: "sensorId"
-        exists()
         ignore "ingredId"
         ignore "expireDate"
     }
     inV {
+        exists()
         label "ingredient"
         key "ingredId"
-        exists()
 	ignore "stateId"
         ignore "cityId"
 	ignore "sensorId"
@@ -204,94 +207,110 @@ load(contains).asEdges {
 
 load(created).asEdges {
     label "created"
-    outV "personId", {
+    outV {
+        exists()
         label "person"
         key "personId"
-        exists()
     }
-    inV "recipeId", {
+    inV {
+        exists()
         label "recipe"
         key "recipeId"
-        exists()
     }
 }
 
 load(includedIn_ingredient_recipe).asEdges {
     label "includedIn"
-    outV "ingredId", {
+    outV {
+        exists()
         label "ingredient"
         key "ingredId"
-        exists()
     }
-    inV "recipeId", {
+    inV {
+        exists()
         label "recipe"
         key "recipeId"
-        exists()
     }
 }
 
 load(includedIn_meal_book).asEdges {
     label "includedIn"
-    outV "mealId", {
+    outV {
+        exists()
         label "meal"
         key type: "type", mealId: "mealId"
-        exists()
  	ignore "bookId"
     }
-    inV "bookId", {
+    inV {
+        exists()
         label "book"
         key "bookId"
-        exists()
 	ignore "mealId"
 	ignore "type"
     }
+    ignore "bookId"
+    ignore "type"
+    ignore "mealId"
 }
 
 load(includedIn_recipe_book).asEdges {
     label "includedIn"
-    outV "recipeId", {
+    outV {
+        exists()
         label "recipe"
         key "recipeId"
-        exists()
+	ignore "bookId"
     }
-    inV "bookId", {
+    inV {
+        exists()
         label "book"
         key "bookId"
-        exists()
+	ignore "recipeId"
     }
+    ignore "recipeId"
+    ignore "bookId"
 }
 
 load(includedIn_recipe_meal).asEdges {
     label "includedIn"
-    outV "recipeId", {
+    outV {
+        exists()
         label "recipe"
         key "recipeId"
-        exists()
+	ignore "type"
+	ignore "mealId"
     }
-    inV "mealId", {
+    inV {
+        exists()
         label "meal"
         key type: "type", mealId: "mealId"
-        exists()
+	ignore "recipeId"
     }
+    ignore "type"
+    ignore "mealId"
+    ignore "recipeId"
 }
 
 load(includes).asEdges {
     label "includes"
-    outV "mealId", {
+    outV {
+        exists()
         label "meal"
         key type: "type", mealId: "mealId"
-        exists()
 	ignore "itemId"
 	ignore "numServ"
     }
-    inV "itemId", {
+    inV {
+        exists()
         label "meal_item"
         key "itemId"
-        exists()
 	ignore "type"
 	ignore "mealId"
 	ignore "numServ"
     }
+    ignore "type:
+    ignore "mealId"
+    ignore "itemId"
 }
 
 /* METHOD FOR JSON IN DSE 5.1.2 and previous
@@ -312,15 +331,15 @@ load(isLocatedAt_fridgeSensor).asEdges {
 load(isLocatedAt_fridgeSensor).asEdges {
     label "isLocatedAt"
     outV {
+        exists()
         label "fridgeSensor"
         key stateId: "stateId", cityId: "cityId", sensorId: "sensorId"
-        exists()
         ignore "homeId"
     }
     inV {
+        exists()
         label "home"
         key "homeId"
-        exists()
         ignore "stateId"
         ignore "cityId"
         ignore "sensorId"
@@ -333,70 +352,95 @@ load(isLocatedAt_fridgeSensor).asEdges {
 
 load(isLocatedAt_home).asEdges {
     label "isLocatedAt"
-    outV "homeId", {
+    outV {
+        exists()
         label "home"
         key "homeId"
-        exists()
+	ignore "locId"
     }
-    inV "locId", {
+    inV {
+        exists()
         label "location"
         key "locId"
-        exists()
+	ignore "homeId"
     }
+    ignore "homeId"
+    ignore "locId"
 }
 
 load(isLocatedAt_store).asEdges {
     label "isLocatedAt"
-    outV "storeId", {
+    outV {
+        exists()
         label "store"
         key "storeId"
-        exists()
+	ignore "locId"
     }
-    inV "locId", {
+    inV {
+        exists()
         label "location"
         key "locId"
-        exists()
+	ignore "storeId"
     }
+    ignore "storeId"
+    ignore "locId"
 }
 
 load(isStockedWith).asEdges {
     label "isStockedWith"
-    outV "storeId", {
+    outV {
+        exists()
         label "store"
         key "storeId"
-        exists()
+    	ignore "ingredId"
     }
-    inV "ingredId", {
+    inV {
+        exists()
         label "ingredient"
         key "ingredId"
-        exists()
+    	ignore "storeId"
     }
+    ignore "storeId"
+    ignore "ingredId"
 }
 
 load(knows).asEdges {
     label "knows"
     outV "u1", {
+    	exists()
         label "person"
         key "personId"
-    exists()
     }
     inV "u2", {
+    	exists()
         label "person"
         key "personId"
-    exists()
     }
+    ignore "personId"
 }
 
 load(reviewed).asEdges {
     label "reviewed"
-    outV "personId", {
+    outV {
+    	exists()
         label "person"
         key "personId"
-    exists()
+	ignore "recipeId"
+	ignore "stars"
+	ignore "time"
+	ignore "year"
+	ignore "comment"
     }
-    inV "recipeId", {
+    inV {
+    	exists()
         label "recipe"
         key "recipeId"
-    exists()
+	ignore "personId"
+	ignore "stars"
+	ignore "time"
+	ignore "year"
+	ignore "comment"
     }
+    ignore "recipeId"
+    ignore "personId"
 }
