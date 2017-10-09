@@ -65,7 +65,6 @@ schema.propertyKey('country').Text().multiple().properties('startYear','endYear'
 
 // EDGE PROPERTIES
 schema.propertyKey('numServ').Int().single().create()
-schema.propertyKey('since').Text().single().create()
 schema.propertyKey('mealDate').Date().single().create()
 schema.propertyKey('useDate').Date().single().create()
 schema.propertyKey('createDate').Date().single().create()
@@ -112,7 +111,7 @@ schema.vertexLabel('location').properties('name', 'geoPoint').add()
 schema.vertexLabel('recipe').partitionKey('cuisine', 'recipeId').create()
 schema.vertexLabel('recipe').properties('name','instructions','notes').add()
 // COMPOSITE KEY VERTEX ID
-schema.vertexLabel('fridgeSensor').partitionKey('stateId', cityId').clusteringKey('sensorId').create()
+schema.vertexLabel('fridgeSensor').partitionKey('stateId', 'cityId').clusteringKey('sensorId').create()
 schema.vertexLabel('fridgeSensor').properties('name').add()
 
 // ********

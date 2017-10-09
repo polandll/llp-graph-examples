@@ -35,7 +35,8 @@ g.E().hasLabel('reviewed').has('stars', gt(3)).inV().values('name')
 g.E().hasLabel('reviewed').has('stars',gte(4)).has('timestamp', gte(Instant.parse('2015-01-01T00:00:00.00Z'))).valueMap()
 
 // MEAN STARS
-g.E().hasLabel('rated').values('stars').mean()
+//OLD g.E().hasLabel('rated').values('stars').mean()
+g.E().hasLabel('reviewed').values('stars').mean()
 
 // FIND  THE MAX NUMBER OF RECIPE REVIEWS BY A SINGLE REVIEWER
 g.V().hasLabel('reviewer').map(outE('rated').count()).max()
