@@ -65,7 +65,6 @@ schema.propertyKey('country').Text().multiple().properties('startYear','endYear'
 
 // EDGE PROPERTIES
 schema.propertyKey('numServ').Int().single().create()
-schema.propertyKey('since').Text().single().create()
 schema.propertyKey('mealDate').Date().single().create()
 schema.propertyKey('useDate').Date().single().create()
 schema.propertyKey('createDate').Date().single().create()
