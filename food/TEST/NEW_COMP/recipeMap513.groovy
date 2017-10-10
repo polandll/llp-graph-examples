@@ -213,12 +213,18 @@ load(created).asEdges {
         exists()
         label "person"
         key "personId"
+	ignore "recipeId"
+	ignore "createDate"
     }
     inV {
         exists()
         label "recipe"
         key "recipeId"
+	ignore "personId"
+	ignore "createDate"
     }
+    ignore "personId"
+    ignore "recipeId"
 }
 
 load(includedIn_ingredient_recipe).asEdges {
