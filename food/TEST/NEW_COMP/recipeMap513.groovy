@@ -308,7 +308,7 @@ load(includes).asEdges {
 	ignore "mealId"
 	ignore "numServ"
     }
-    ignore "type:
+    ignore "type"
     ignore "mealId"
     ignore "itemId"
 }
