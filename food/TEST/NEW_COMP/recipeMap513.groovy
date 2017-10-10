@@ -158,11 +158,13 @@ load(authored).asEdges {
         exists()
         label "person"
         key "personId"
+	ignore "bookId"
     }
     inV {
         exists()
         label "book"
         key "bookId"
+	ignore "personId"
     }
     ignore "personId"
     ignore "bookId"
