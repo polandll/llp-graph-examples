@@ -227,12 +227,18 @@ load(includedIn_ingredient_recipe).asEdges {
         exists()
         label "ingredient"
         key "ingredId"
+	ignore "recipeId"
+	ignore "amount"
     }
     inV {
         exists()
         label "recipe"
         key "recipeId"
+	ignore "ingredId"
+	ignore "amount"
     }
+    ignore "recipeId"
+    ignore "ingredId"
 }
 
 load(includedIn_meal_book).asEdges {
