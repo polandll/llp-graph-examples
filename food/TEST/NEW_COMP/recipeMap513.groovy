@@ -164,6 +164,8 @@ load(authored).asEdges {
         label "book"
         key "bookId"
     }
+    ignore "personId"
+    ignore "bookId"
 }
 
 /* METHOD FOR JSON IN DSE 5.1.2 and previous
@@ -393,12 +395,14 @@ load(isStockedWith).asEdges {
         label "store"
         key "storeId"
     	ignore "ingredId"
+	ignore "expireDate"
     }
     inV {
         exists()
         label "ingredient"
         key "ingredId"
     	ignore "storeId"
+	ignore "expireDate"
     }
     ignore "storeId"
     ignore "ingredId"
