@@ -158,11 +158,13 @@ load(authored).asEdges {
         exists()
         label "person"
         key "personId"
+	ignore "bookId"
     }
     inV {
         exists()
         label "book"
         key "bookId"
+	ignore "personId"
     }
     ignore "personId"
     ignore "bookId"
@@ -213,12 +215,18 @@ load(created).asEdges {
         exists()
         label "person"
         key "personId"
+	ignore "recipeId"
+	ignore "createDate"
     }
     inV {
         exists()
         label "recipe"
         key "recipeId"
+	ignore "personId"
+	ignore "createDate"
     }
+    ignore "personId"
+    ignore "recipeId"
 }
 
 load(includedIn_ingredient_recipe).asEdges {
@@ -227,12 +235,18 @@ load(includedIn_ingredient_recipe).asEdges {
         exists()
         label "ingredient"
         key "ingredId"
+	ignore "recipeId"
+	ignore "amount"
     }
     inV {
         exists()
         label "recipe"
         key "recipeId"
+	ignore "ingredId"
+	ignore "amount"
     }
+    ignore "recipeId"
+    ignore "ingredId"
 }
 
 load(includedIn_meal_book).asEdges {
