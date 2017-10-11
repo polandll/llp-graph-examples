@@ -48,6 +48,7 @@ reviewed = File.csv(inputdir + "edges/" + "reviewed.csv").delimiter(delimiter)
 load(person).asVertices {
     label "person"
     key "personId"
+    property "CALORIES", "calGoal"
 }
 
 personCountry = personCountry.transform {

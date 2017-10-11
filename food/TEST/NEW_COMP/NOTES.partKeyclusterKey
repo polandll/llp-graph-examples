@@ -26,6 +26,10 @@ celebrities - you can be friends with a celebrity, but a celebrity cannot be fri
 -- multiple cardinality property key: propertyKey('country') WITH
     multiple cardinality meta-property: startYear, endYear
 
+PROPERTY:
+to demonstrate difference in csv column name and graph property name:
+property "CALORIES", "calGoal" in loading person.csv
+
 EDGES:
 person - authored (singleCard) -> book (S-K id) 
 ingredient (S-K id?) - includedIn (singleCard) -> recipe (M-K id)
