@@ -1,4 +1,4 @@
-ingredId|recipeId|amount
+recipeId|ingredId|amount
 2001|3001|2 lbs
 2001|3002|1 sliced
 2001|3003|2 cloves
