@@ -1,8 +1,8 @@
-:remote config alias g newComp.g
+:remote config alias g newComp513.g
 schema.config().option('graph.allow_scan').set('true')
 
 // Check all the vertices
-// Should be 96 
+// Should be 99 
 g.V().count()
 
 // Check all the edges
