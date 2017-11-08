@@ -12,8 +12,7 @@ config create_schema: false, load_new: true
 
 // *** REPLACE ALL vertices/ files with File.directory? ***
 person = File.csv(inputdir + "vertices/" + "person.csv").delimiter(delimiter)
-personCountry = File.csv(inputdir + "vertices/" + "personCountry.csv").delimiter(delimiter)
-//personCountry = File.json(inputdir + "vertices/" + "personCountry.json")
+personCountry = File.json(inputdir + "vertices/" + "personCountry.json")
 recipe = File.csv(inputdir + "vertices/" + "recipe.csv").delimiter(delimiter)
 book = File.csv(inputdir + "vertices/" + "book.csv").delimiter(delimiter)
 meal = File.csv(inputdir + "vertices/" + "meal.csv").delimiter(delimiter)
@@ -21,23 +20,21 @@ meal_item = File.csv(inputdir + "vertices/" + "meal_item.csv").delimiter(delimit
 ingredient = File.csv(inputdir + "vertices/" + "ingredient.csv").delimiter(delimiter)
 home = File.csv(inputdir + "vertices/" + "home.csv").delimiter(delimiter)
 store = File.csv(inputdir + "vertices/" + "store.csv").delimiter(delimiter)
-fridge_sensor = File.csv(inputdir + "vertices/" + "fridge_sensor.csv").delimiter(delimiter)
+fridgeSensor = File.csv(inputdir + "vertices/" + "fridgeSensor.csv").delimiter(delimiter)
 location = File.csv(inputdir + "vertices/" + "location.csv").delimiter(delimiter)
 //location_cartesian = File.csv(inputdir + "vertices/" + "location_cartesian.csv").delimiter(delimiter)
 
 // *** REPLACE ALL edges/ files with File.directory? ***
 ate = File.csv(inputdir + "edges/" + "ate.csv").delimiter(delimiter)
 authored = File.csv(inputdir + "edges/" + "authored.csv").delimiter(delimiter)
-contains = File.csv(inputdir + "edges/" + "contains.csv").delimiter(delimiter)
-//contains = File.json(inputdir + "edges/" + "contains.json")
+contains = File.json(inputdir + "edges/" + "contains.json")
 created = File.csv(inputdir + "edges/" + "created.csv").delimiter(delimiter)
 includedIn_ingredient_recipe = File.csv(inputdir + "edges/" + "includedIn_ingredient_recipe.csv").delimiter(delimiter)
 includedIn_meal_book = File.csv(inputdir + "edges/" + "includedIn_meal_book.csv").delimiter(delimiter)
 includedIn_recipe_book = File.csv(inputdir + "edges/" + "includedIn_recipe_book.csv").delimiter(delimiter)
 includedIn_recipe_meal = File.csv(inputdir + "edges/" + "includedIn_recipe_meal.csv").delimiter(delimiter)
 includes = File.csv(inputdir + "edges/" + "includes.csv").delimiter(delimiter)
-isLocatedAt_fridge_sensor = File.csv(inputdir + "edges/" + "isLocatedAt_fridge_sensor.csv").delimiter(delimiter)
-//isLocatedAt_fridge_sensor = File.json(inputdir + "edges/" + "isLocatedAt_fridge_sensor.json")
+isLocatedAt_fridgeSensor = File.json(inputdir + "edges/" + "isLocatedAt_fridgeSensor.json")
 isLocatedAt_home = File.csv(inputdir + "edges/" + "isLocatedAt_home.csv").delimiter(delimiter)
 isLocatedAt_store = File.csv(inputdir + "edges/" + "isLocatedAt_store.csv").delimiter(delimiter)
 isStockedWith = File.csv(inputdir + "edges/" + "isStockedWith.csv").delimiter(delimiter)
@@ -50,22 +47,13 @@ load(person).asVertices {
     key "personId"
 }
 
-personCountry = personCountry.transform {
-  country1 = [
-    "value": it.remove("value"),
-    "startYear": it.remove("startYear"),
-    "endYear": it.remove("endYear") ]
-  it["country"] = [country1]
-  it
-}
-
 load(personCountry).asVertices {
-    label "person"
-    key "personId"
-    vertexProperty "country", {
-      value "value"
-   }
+   label "person"
+   key "personId"
+   vertexProperty "country", {
+     value "value"
    exists()
+   }
 }
 
 load(recipe).asVertices {
@@ -103,10 +91,12 @@ load(store).asVertices {
     key "storeId"
 }
 
-load(fridge_sensor).asVertices {
-    label "fridge_sensor"
+
+load(fridgeSensor).asVertices {
+    label "fridgeSensor"
     key cityId: "cityId", sensorId: "sensorId"
 }
+
 
 load(location).asVertices {
     label "location"
@@ -129,7 +119,6 @@ location_cartesian = location_cartesian.transform {
   it['geoPoint'] = Point.fromWellKnownText(it['geoPoint']);
 }
 */
-
 load(ate).asEdges {
     label "ate"
     outV "personId", {
@@ -158,11 +147,10 @@ load(authored).asEdges {
     }
 }
 
-/* METHOD FOR JSON IN DSE 5.1.2 and previous
 load(contains).asEdges {
     label "contains"
     outV "sensor", {
-        label "fridge_sensor"
+        label "fridgeSensor"
         key cityId: "cityId", sensorId: "sensorId"
         exists()
     }
@@ -171,28 +159,6 @@ load(contains).asEdges {
         key "ingredId"
         exists()
     }
-}*/
-
-load(contains).asEdges {
-    label "contains"
-    outV {
-        label "fridge_sensor"
-        key cityId: "cityId", sensorId: "sensorId"
-        exists()
-        ignore "ingredId"
-        ignore "expireDate"
-    }
-    inV {
-        label "ingredient"
-        key "ingredId"
-        exists()
-        ignore "cityId"
-	ignore "sensorId"
-        ignore "expireDate"
-    }
-    ignore "cityId"
-    ignore "sensorId"
-    ignore "ingredId"
 }
 
 load(created).asEdges {
@@ -279,11 +245,10 @@ load(includes).asEdges {
     }
 }
 
-/* METHOD FOR JSON IN DSE 5.1.2 and previous
-load(isLocatedAt_fridge_sensor).asEdges {
+load(isLocatedAt_fridgeSensor).asEdges {
     label "isLocatedAt"
     outV "sensor", {
-        label "fridge_sensor"
+        label "fridgeSensor"
         key cityId: "cityId", sensorId: "sensorId"
         exists()
     }
@@ -292,26 +257,6 @@ load(isLocatedAt_fridge_sensor).asEdges {
         key "homeId"
         exists()
     }
-} */
-
-load(isLocatedAt_fridge_sensor).asEdges {
-    label "isLocatedAt"
-    outV {
-        label "fridge_sensor"
-        key cityId: "cityId", sensorId: "sensorId"
-        exists()
-        ignore "homeId"
-    }
-    inV {
-        label "home"
-        key "homeId"
-        exists()
-        ignore "cityId"
-        ignore "sensorId"
-    }
-    ignore "cityId"
-    ignore "sensorId"
-    ignore "homeId"
 }
 
 load(isLocatedAt_home).asEdges {

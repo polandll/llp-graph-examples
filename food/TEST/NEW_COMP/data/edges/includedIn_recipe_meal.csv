@@ -1,6 +1,6 @@
-recipeId|mealId
-2004|4008
-2007|4008
-2006|4007
-2002|4007
-2003|4004
+recipeId|type|mealId
+2004|dinner|4008
+2007|dinner|4008
+2006|dinner|4007
+2002|dinner|4007
+2003|lunch|4004
