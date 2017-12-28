@@ -16,8 +16,8 @@ celebrities - you can be friends with a celebrity, but a celebrity cannot be fri
 VERTEX LABELS
 ---------------------------
 -- vertex label for single-key vertex id: partitionKey('bookId') for vertexLabel('book')
-** PROBABABLY NOT ** -- vertex label for multiple-key vertex id: partitionKey('type', 'mealId') for vertexLabel('meal')
-** PROBABLY NOT ** -- vertex label for composite-key vertex id: partitionKey('recipeId').clusteringKey('cuisine') for vertexLabel('recipe')
+-- vertex label for multiple-key vertex id: 
+-- vertex label for composite-key vertex id: 
 -- vertex label for composite-key, multiple-key vertex id: partitionKey('stateId', 'cityId').clusteringKey('sensorId') for vertexLabel('fridgeSensor')
 
 ---------------------------
