@@ -12,12 +12,17 @@ GeneByGene - groups by families
 Intuit - creating communities (friends? families?)
 
 celebrities - you can be friends with a celebrity, but a celebrity cannot be friends with you; otherwise, supernode problems
-
-
+---------------------------
+VERTEX LABELS
+---------------------------
 -- vertex label for single-key vertex id: partitionKey('bookId') for vertexLabel('book')
--- vertex label for multiple-key vertex id: partitionKey('stateId', 'cityId').clusteringKey('sensorId') for vertexLabel('fridgeSensor')
--- vertex label for composite-key vertex id: partitionKey('recipeId').clusteringKey('cuisine') for vertexLabel('recipe')
+** PROBABABLY NOT ** -- vertex label for multiple-key vertex id: partitionKey('type', 'mealId') for vertexLabel('meal')
+** PROBABLY NOT ** -- vertex label for composite-key vertex id: partitionKey('recipeId').clusteringKey('cuisine') for vertexLabel('recipe')
+-- vertex label for composite-key, multiple-key vertex id: partitionKey('stateId', 'cityId').clusteringKey('sensorId') for vertexLabel('fridgeSensor')
 
+---------------------------
+CARDINALITY
+---------------------------
 -- multiple cardinality edge label: edgeLabel('ate')
 
 -- single cardinality property key: propertyKey('name')
@@ -25,6 +30,23 @@ celebrities - you can be friends with a celebrity, but a celebrity cannot be fri
     single cardinality meta-property: since
 -- multiple cardinality property key: propertyKey('country') WITH
     multiple cardinality meta-property: startYear, endYear
+
+---------------------------
+INDEXES
+---------------------------
+MV -> usually one element; high cardinality/high selectivity
+2i -> number of elements in the low thousands (max); low cardinality/low selectivity
+Search -> used for large amounts of elements and/or to cover multiple fields / properties; wide range of cardinality, uses search predicates 
+DK: I think DSE will always use the index with the highest (expected) selectivity
+
+Vertex index (MV): schema.vertexLabel('person').index('byName').materialized().by('name').add()
+Vertex index (2i): ** MAYBE ** schema.vertexLabel('meal').index('byType').secondary().by('type').add()
+Vertex index (search): schema.vertexLabel('recipe').index('search').search().by('instructions').by('name').by('cuisine').add()
+
+Property index (MV): schema.vertexLabel('person').index('byStartYear').property('country').by('startYear').add()
+
+Edge index (MV): schema.vertexLabel('recipe').index('byStars').inE('reviewed').by('stars').ifNotExists().add()
+
 
 PROPERTY:
 to demonstrate difference in csv column name and graph property name:
