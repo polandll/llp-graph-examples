@@ -15,10 +15,15 @@ celebrities - you can be friends with a celebrity, but a celebrity cannot be fri
 ---------------------------
 VERTEX LABELS
 ---------------------------
--- vertex label for single-key vertex id: partitionKey('bookId') for vertexLabel('book')
--- vertex label for multiple-key vertex id: 
--- vertex label for composite-key vertex id: 
--- vertex label for composite-key, multiple-key vertex id: partitionKey('stateId', 'cityId').clusteringKey('sensorId') for vertexLabel('fridgeSensor')
+-- *single-key vertex id vertex label: partitionKey('bookId') for vertexLabel('book')
+  --- partition distribution of vertices is random; traversing closely connected vertices will require data from multiple nodes
+-- multiple-key vertex id vertex label: ***MAYBE*** partitionKey('type','mealId')
+  --- partition distribution of vertices is random, although keys are hasked together; traversing closely connected vertices will require data from multiple nodes
+  --- provides uniqueness if an individual field isn't enough to ID uniqueness
+-- *composite-key vertex id vertex label: ***MAYBE*** partitionKey('cuisine').clusteringKey('recipeId') 
+-- *multiple-key, composite-key vertex id vertex label: partitionKey('stateId', 'cityId').clusteringKey('sensorId') for vertexLabel('fridgeSensor')
+  --- partition distribution of vertices is still random, but will be placed in same node if the hash is the same; clustering provides the uniqueness while
+         ensuring that traversing closely connected vertices will be on the same nodes (data locality is achieved)
 
 ---------------------------
 CARDINALITY
