@@ -93,6 +93,13 @@ schema.propertyKey('comment').Text().single().create()
 
 // SINGLE-KEY VERTEX ID
 schema.vertexLabel('person').partitionKey('personId').create()
+// ********* NEED TO ADD BADGE TO PERSON !!! USED FOR REVIEWS *********** 
+// ==>{badge=[Silver Badge, Gold Badge], gender=[F], name=[Jane Doe]}
+// ==>{badge=[Gold Badge], gender=[M], name=[Jon Doe]}
+// gremlin> g.V().properties('badge').valueMap()
+// ==>{since=2005}
+// ==>{since=2011}
+// ==>{since=2012}
 schema.vertexLabel('person').properties('name','nickname','gender','calGoal','macroGoal','country').add()
 schema.vertexLabel('book').partitionKey('bookId').create()
 schema.vertexLabel('book').properties('name','publishYear','ISBN','bookDiscount').add()
