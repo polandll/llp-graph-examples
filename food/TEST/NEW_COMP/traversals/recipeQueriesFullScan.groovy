@@ -1,4 +1,4 @@
-:remote config alias g newComp513.g
+:remote config alias g newComp.g
 schema.config().option('graph.allow_scan').set('true')
 
 // Check all the vertices
