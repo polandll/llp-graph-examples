@@ -1,5 +1,5 @@
-system.graph('bleck').ifNotExists().create()
-:remote config alias g bleck.g
+system.graph('newComp').ifNotExists().create()
+:remote config alias g newComp.g
 schema.clear()
 schema.config().option('graph.allow_scan').set('true')
 
@@ -207,7 +207,7 @@ schema.vertexLabel('fridgeSensor').index('search').search().by('cityId').by('sen
 // ********
 
 schema.vertexLabel('recipe').index('byStars').inE('reviewed').
-  by('stars').secondary().ifNotExists().add()
+  by('stars').ifNotExists().add()
 schema.vertexLabel('person').index('ratedByStars').outE('reviewed').
   by('stars').ifNotExists().add()
 schema.vertexLabel('person').index('ratedByDate').outE('reviewed').
