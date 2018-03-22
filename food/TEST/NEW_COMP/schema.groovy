@@ -36,6 +36,7 @@ schema.propertyKey('storeId').Int().single().create()
 schema.propertyKey('locId').Text().single().create()
 schema.propertyKey('stateId').Int().single().create()
 schema.propertyKey('cityId').Int().single().create()
+schema.propertyKey('zipcodeId').Int().single().create()
 schema.propertyKey('sensorId').Int().single().create()
 schema.propertyKey('name').Text().single().create()
 schema.propertyKey('gender').Text().single().create()
@@ -118,7 +119,7 @@ schema.vertexLabel('recipe').properties('name','cuisine', 'instructions','notes'
 // MULTIPLE-KEY VERTEX ID
 schema.vertexLabel('meal').partitionKey('type', 'mealId').create()
 // COMPOSITE KEY VERTEX ID
-schema.vertexLabel('fridgeSensor').partitionKey('stateId', 'cityId').clusteringKey('sensorId').create()
+schema.vertexLabel('fridgeSensor').partitionKey('stateId', 'cityId', 'zipcodeId').clusteringKey('sensorId').create()
 schema.vertexLabel('fridgeSensor').properties('name').add()
 
 // ********
