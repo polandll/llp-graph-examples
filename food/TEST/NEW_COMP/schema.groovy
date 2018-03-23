@@ -208,7 +208,7 @@ schema.vertexLabel('fridgeSensor').index('search').search().by('cityId').by('sen
 // ********
 
 schema.vertexLabel('recipe').index('byStars').inE('reviewed').
-  by('stars').secondary().ifNotExists().add()
+  by('stars').ifNotExists().add()
 schema.vertexLabel('person').index('ratedByStars').outE('reviewed').
   by('stars').ifNotExists().add()
 schema.vertexLabel('person').index('ratedByDate').outE('reviewed').
