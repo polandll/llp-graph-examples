@@ -1,0 +1,14 @@
+{ "personId":1, "country": {"value":"USA", "startYear":1930, "endYear":1949 } } 
+{ "personId":1, "country": {"value":"France", "startYear":1950, "endYear":1960 } } 
+{ "personId":1, "country": {"value":"USA", "startYear":1961, "endYear":1972 } } 
+{ "personId":2, "country": {"value":"France", "startYear":1958, "endYear":1968 } } 
+{ "personId":3, "country": {"value":"France", "startYear":1940, "endYear":1980 } } 
+{ "personId":4, "country": {"value":"USA", "startYear":1955, "endYear":2017 } } 
+{ "personId":5, "country": {"value":"USA", "startYear":1955, "endYear":2017 } } 
+{ "personId":6, "country": {"value":"USA", "startYear":1948, "endYear":1956 } } 
+{ "personId":6, "country": {"value":"Belgium", "startYear":1957, "endYear":1966 } } 
+{ "personId":7, "country": {"value":"USA", "startYear":1959, "endYear":2017 } } 
+{ "personId":8, "country": {"value":"Germany", "startYear":1940, "endYear":1970 } } 
+{ "personId":8, "country": {"value":"USA", "startYear":1971, "endYear":2017 } } 
+{ "personId":9, "country": {"value":"USA", "startYear":1962, "endYear":2017 } } 
+{ "personId":10, "country": {"value":"UK", "startYear":1940, "endYear":1981 } } 

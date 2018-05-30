@@ -1,0 +1,23 @@
+:remote config alias g newComp.g
+schema.config().option('graph.allow_scan').set('true')
+
+// OLAP query
+g.V().hasLabel('recipe').in().has('person', 'name','Julia Child').count()
+g.V().hasLabel('recipe').in().has('person', 'name','Julia Child').count().profile()
+// Better OLAP query
+// Note that the in() specifies the edgeLabel so that the number of 
+// initial items checked it less
+g.V().in('created').has('person', 'name','Julia Child').count()
+g.V().in('created').has('person', 'name','Julia Child').count().profile()
+// OLTP query
+// NEED TO INDEX AUTHOR IN ORDER TO MAKE THIS OLTP - IT IS NOT CURRENTLY INDEXED
+g.V().has('person', 'name', 'Julia Child').outE('created').count()
+g.V().has('person','name','Julia Child').outE('created').count().profile()
+
+//ANOTHER EXAMPLE
+//OLAP query
+g.V().out('includes').has('name','beef').in('includes').values('name')
+g.V().out('includes').has('name','beef').in('includes').values('name').profile()
+//OLTP query
+g.V().has('ingredient', 'name', 'beef').in('includes').values('name')
+g.V().has('ingredient', 'name', 'beef').in('includes').values('name').profile()
