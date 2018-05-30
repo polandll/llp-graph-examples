@@ -1,33 +1,36 @@
-// TRAVERSAL EXAMPLES
+ TRAVERSAL EXAMPLES
 
 ------------------------------------------------------
 /* SIMPLE TRAVERSAL:                                */
 /* traverses through a series of traversal steps    */
 ------------------------------------------------------
 
-// How many recipes exist in the database?
-// How many recipes has Julia Child written?
-// Which recipes list beef as an ingredient?
-// Which recipes list beef or carrots as ingredients?
-// Which cookbooks list Julia Child as an author?
-// Which cookbooks were published in 1968?
-// Which cookbooks did Julia Child write after 1968?
-// What cookbooks have recipes that list beef or carrots as ingredients, order by title?
-// What are the recipes included in the cookbooks that list beef or carrots as ingredients?
+ How many recipes exist in the database?
+ How many recipes has Julia Child written?
+ Which recipes list beef as an ingredient?
+ Which recipes list beef or carrots as ingredients?
+ Which cookbooks list Julia Child as an author?
+ Which cookbooks were published in 1968?
+ Which cookbooks did Julia Child write after 1968?
+ What cookbooks have recipes that list beef or carrots as ingredients, order by title?
+ What are the recipes included in the cookbooks that list beef or carrots as ingredients?
 
-// How many reviewers have reviewed Beef Bourguignon?
-// What did reviewers say about Beef Bourguignon?
-// What reviewers rated Beef Bourguignon in the last 15 days?
-// Which reviewers who rated Beef Bourguignon with 5 stars rated other recipes?
-// What other recipes did reviewers who rated Beef Bourguignon with 5 stars also rate with 5 stars?
-// Which reviewers who rated Beef Bourguignon have also rated other recipes, and what are the recipes?
-// Which meals list Beef Bourguignon as an item?
+ How many reviewers have reviewed Beef Bourguignon?
+ What did reviewers say about Beef Bourguignon?
+ What reviewers rated Beef Bourguignon in the last 15 days?
+ Which reviewers who rated Beef Bourguignon with 5 stars rated other recipes?
+ What other recipes did reviewers who rated Beef Bourguignon with 5 stars also rate with 
+	5 stars?
+ Which reviewers who rated Beef Bourguignon have also rated other recipes, and what are 
+	the recipes?
+ Which meals list Beef Bourguignon as an item?
 
-// Which meals have a calorie count of 900 calories or less? 
-// Which meals have a calorie count of 900 calories or less (limit the output to 10 meal names)? 
+ Which meals have a calorie count of 900 calories or less? 
+ Which meals have a calorie count of 900 calories or less (limit the output to 10 meal 
+	names)? 
 
-// WHAT IS THE PATH TRAVERSAL OF THE GIVEN TRAVERSAL?
-// INGREDIENT -> RECIPE -> BOOK
-// What is the tree that emanates from a book?	
-// What is the tree that emanates from a recipe?
-// What are all the outgoing tree branches for a recipe?
+ WHAT IS THE PATH TRAVERSAL OF THE GIVEN TRAVERSAL?
+ INGREDIENT -> RECIPE -> BOOK
+ What is the tree that emanates from a book?	
+ What is the tree that emanates from a recipe?
+ What are all the outgoing tree branches for a recipe?
