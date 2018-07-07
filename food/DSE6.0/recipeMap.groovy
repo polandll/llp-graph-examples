@@ -104,10 +104,10 @@ load(store).asVertices {
     key "storeId"
 }
 
-load(fridgeSensor).asVertices {
+/*load(fridgeSensor).asVertices {
     label "fridgeSensor"
-    key stateId: "stateId", cityId: "cityId", zipcodeId: "zipcodeId", sensorId: "sensorId"
-}
+    key stateId: "stateId", cityId: "cityId", zipcodeId: "zipcodeId"
+}*/
 
 load(location).asVertices {
     label "location"
@@ -186,12 +186,12 @@ load(contains).asEdges {
     }
 }*/
 
-load(contains).asEdges {
+/*load(contains).asEdges {
     label "contains"
     outV {
         exists()
         label "fridgeSensor"
-        key stateId: "stateId" , cityId: "cityId", zipcodeId: "zipcodeId, sensorId: "sensorId"
+        key stateId: "stateId" , cityId: "cityId", zipcodeId: "zipcodeId"
         ignore "ingredId"
         ignore "expireDate"
     }
@@ -201,14 +201,16 @@ load(contains).asEdges {
         key "ingredId"
 	ignore "stateId"
         ignore "cityId"
+	ignore "zipcodeId"
 	ignore "sensorId"
         ignore "expireDate"
     }
     ignore "stateId"
     ignore "cityId"
+    ignore "zipcodeId"
     ignore "sensorId"
     ignore "ingredId"
-}
+}*/
 
 load(created).asEdges {
     label "created"
@@ -345,12 +347,12 @@ load(isLocatedAt_fridgeSensor).asEdges {
     }
 } */
 
-load(isLocatedAt_fridgeSensor).asEdges {
+/* load(isLocatedAt_fridgeSensor).asEdges {
     label "isLocatedAt"
     outV {
         exists()
         label "fridgeSensor"
-        key stateId: "stateId", cityId: "cityId", zipcodeId: "zipcodeId", sensorId: "sensorId"
+        key stateId: "stateId", cityId: "cityId", zipcodeId: "zipcodeId"
         ignore "homeId"
     }
     inV {
@@ -359,13 +361,15 @@ load(isLocatedAt_fridgeSensor).asEdges {
         key "homeId"
         ignore "stateId"
         ignore "cityId"
+        ignore "zipcodeId"
         ignore "sensorId"
     }
     ignore "stateId"
     ignore "cityId"
+    ignore "zipcodeId"
     ignore "sensorId"
     ignore "homeId"
-}
+}*/
 
 load(isLocatedAt_home).asEdges {
     label "isLocatedAt"
