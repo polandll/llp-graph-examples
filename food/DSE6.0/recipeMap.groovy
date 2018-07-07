@@ -106,7 +106,7 @@ load(store).asVertices {
 
 load(fridgeSensor).asVertices {
     label "fridgeSensor"
-    key stateId: "stateId", cityId: "cityId", sensorId: "sensorId"
+    key stateId: "stateId", cityId: "cityId", zipcodeId: "zipcodeId", sensorId: "sensorId"
 }
 
 load(location).asVertices {
@@ -191,7 +191,7 @@ load(contains).asEdges {
     outV {
         exists()
         label "fridgeSensor"
-        key stateId: "stateId" , cityId: "cityId", sensorId: "sensorId"
+        key stateId: "stateId" , cityId: "cityId", zipcodeId: "zipcodeId, sensorId: "sensorId"
         ignore "ingredId"
         ignore "expireDate"
     }
@@ -350,7 +350,7 @@ load(isLocatedAt_fridgeSensor).asEdges {
     outV {
         exists()
         label "fridgeSensor"
-        key stateId: "stateId", cityId: "cityId", sensorId: "sensorId"
+        key stateId: "stateId", cityId: "cityId", zipcodeId: "zipcodeId", sensorId: "sensorId"
         ignore "homeId"
     }
     inV {
