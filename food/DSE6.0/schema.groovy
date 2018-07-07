@@ -1,5 +1,5 @@
-system.graph('bleck').ifNotExists().create()
-:remote config alias g bleck.g
+system.graph('dse60').ifNotExists().create()
+:remote config alias g dse60.g
 schema.clear()
 schema.config().option('graph.allow_scan').set('true')
 
