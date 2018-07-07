@@ -1,4 +1,4 @@
-:remote config alias g newComp.g
+:remote config alias g dse60.g
 schema.config().option('graph.allow_scan').set('true')
 
 // IS THIS STILL REQUIRED?
