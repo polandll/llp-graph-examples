@@ -1,6 +1,7 @@
-system.graph('dse60').ifNotExists().create()
-:remote config alias g dse60.g
+system.graph('dse51').ifNotExists().create()
+:remote config alias g dse51.g
 schema.clear()
+schema.config().option('graph.schema_mode').set('Development')
 schema.config().option('graph.allow_scan').set('true')
 
 // ********
@@ -20,7 +21,7 @@ schema.config().option('graph.allow_scan').set('true')
 //    [ ttl ].
 //    [ properties(metadata_property) ].
 //    [ ifNotExists() ].
-//    [ create() | add() | describe() | exists() | drop() ]
+//    [ create() | add() | describe() | exists() ]
 // DEFAULT IS SINGLE CARDINALITY
 // ********
 

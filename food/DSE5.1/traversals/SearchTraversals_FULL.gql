@@ -1,0 +1,64 @@
+:remote config alias g dse60.g
+schema.config().option('graph.allow_scan').set('true')
+
+-------------------------------------------------
+REGEX
+------------------------------------------------
+gremlin> g.V().hasLabel('author').has('name', Search.regex('julia')).valueMap()
+nothing
+
+gremlin> g.V().hasLabel('author').has('name', Search.regex('Julia')).valueMap()
+nothing
+
+gremlin> g.V().hasLabel('author').has('name', Search.regex('Julia Child')).valueMap()
+==>{gender=[F], name=[Julia Child]}
+
+gremlin> g.V().hasLabel('author').has('name', Search.regex('julia child')).valueMap()
+nothing
+
+gremlin> g.V().hasLabel('author').has('name', Search.regex('.*uli.*')).valueMap()
+==>{gender=[F], name=[Julia Child]}
+-------------------------------------------------
+PREFIX
+-------------------------------------------------
+gremlin> g.V().hasLabel('author').has('name', Search.prefix('J')).valueMap()
+==>{gender=[F], name=[Julia Child]}
+==>{gender=[M], name=[James Beard]}
+
+gremlin> g.V().hasLabel('author').has('name', Search.prefix('Ju')).valueMap()
+==>{gender=[F], name=[Julia Child]}
+
+gremlin> g.V().hasLabel('author').has('name', Search.prefix('ju')).valueMap()
+nothing
+-------------------------------------------------
+TOKEN
+-------------------------------------------------
+
+gremlin> g.V().hasLabel('author').has('name', Search.token('Julia')).valueMap()
+==>{gender=[F], name=[Julia Child]}
+
+gremlin> g.V().hasLabel('author').has('name', Search.token('julia')).valueMap()
+==>{gender=[F], name=[Julia Child]}
+
+gremlin> g.V().hasLabel('author').has('name', Search.token('julia c')).valueMap()
+==>{gender=[F], name=[Julia Child]}
+-------------------------------------------------
+TOKEN REGEX
+-------------------------------------------------
+gremlin> g.V().hasLabel('author').has('name', Search.tokenRegex('.*uli.*')).valueMap()
+==>{gender=[F], name=[Julia Child]}
+
+gremlin> g.V().hasLabel('author').has('name', Search.tokenRegex('.*uLi.*')).valueMap()
+nothing
+-------------------------------------------------
+TOKEN PREFIX
+-------------------------------------------------
+gremlin> g.V().hasLabel('author').has('name', Search.tokenPrefix('juli')).valueMap()
+==>{gender=[F], name=[Julia Child]}
+
+gremlin> g.V().hasLabel('author').has('name', Search.tokenPrefix('Juli')).valueMap()
+==>{gender=[F], name=[Julia Child]}
+
+gremlin> g.V().hasLabel('author').has('name',Search.tokenPrefix('Juli.*')).valueMap()
+nothing
+-------------------------------------------------
