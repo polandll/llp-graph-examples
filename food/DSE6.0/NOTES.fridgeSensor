@@ -1,6 +1,0 @@
-1. What do I have in my fridge?
-2. What recipes can I make with fridge contents?
-3. What fridge items will expired in the next day/week?
-
-
-********** NEED TO ADD zipcode or street to partitionKey, in order to avoid supernodes, per J.B. *************
