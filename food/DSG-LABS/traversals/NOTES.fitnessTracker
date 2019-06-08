@@ -1,6 +1,0 @@
-1. Add an item to a meal [meal exists?]
-2. Remove an item from a meal
-3. Get calories for a meal [sum of the item calories]
-4. Get macros for a mean [sum of the item macros] - would need to create macros as carb-fat-protein, rather than hardcoded as macro now.
-5. Copy a friend's meal.
-6. Show items in a meal.
