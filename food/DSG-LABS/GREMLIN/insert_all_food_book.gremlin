@@ -1,0 +1,62 @@
+// book vertices
+g.addV('book')
+   .property('book_id',1001)
+   .property('name','The Art of French Cooking, Vol. 1')
+   .property('publish_year',1961)
+   .iterate();
+g.addV('book')
+   .property('book_id', 1002)
+   .property('name',"Simca's Cuisine: 100 Classic French Recipes for Every Occasion")
+   .property('publish_year', 1972)
+   .property('isbn', '0-394-40152-2')
+   .iterate();
+g.addV('book')
+   .property('book_id', 1003)
+   .property('name','The French Chef Cookbook')
+   .property('publish_year', 1968)
+   .property('isbn', '0-394-40135-2')
+   .iterate();
+g.addV('book')
+   .property('book_id', 1004)
+   .property('name', 'The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution')
+   .property('publish_year', 2007)
+   .property('isbn', '0-307-33679-4')
+   .iterate();
+
+/* Use the data model with all authors in book VL or not?
+
+g.addV('book')
+  .property('book_id',1001)
+  .property('name',"The Art of French Cooking, Vol. 1")
+  .property('publish_year', 1961)
+  .property('category', setOf(Text).create('French', 'American'))
+  .property('authors', Arrays.asList(typeOf('fullname').create('BECK', 'Simone'), typeOf('fullname').create('CHILD', 'Julia')))
+  .iterate();
+
+g.addV('book')
+  .property('book_id',1002)
+  .property('name',"Simca's Cuisine: 100 Classic French Recipes for Every Occasion")
+  .property('isbn', '0-394-40152-2')
+  .property('publish_year', 1972)
+  .property('category', setOf(Text).create('French', 'American'))
+  .property('authors', Arrays.asList(typeOf('fullname').create('BECK', 'Simone')))
+  .iterate();
+
+g.addV('book')
+  .property('book_id',1003)
+  .property('name','The French Chef Cookbook')
+  .property('isbn', '0-394-40135-2')
+  .property('publish_year', 1968)
+  .property('category', setOf(Text).create('French'))
+  .property('authors', Arrays.asList(typeOf('fullname').create('CHILD', 'Julia')))
+  .iterate();
+
+g.addV('book')
+  .property('book_id', 1004)
+  .property('name','The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution')
+  .property('isbn', '0-307-33679-4')
+  .property('publish_year', 2007)
+  .property('category', setOf(Text).create('American', 'Healthy'))
+  .property('authors', Arrays.asList(typeOf('fullname').create('WATERS', 'Alice'), typeOf('fullname').create('CURTAN', 'Patricia'), typeOf('fullname').create('KERR', 'Kelsie'), typeOf('fullname').create('STREIFF', 'Fritz')))
+  .iterate();
+*/
