@@ -1,7 +1,0 @@
-{"sensor": { "cityId":"100", "sensorId":"001"}, "homeId":"9001"}
-{"sensor": { "cityId":"100", "sensorId":"002"}, "homeId":"9002"}
-{"sensor": { "cityId":"100", "sensorId":"003"}, "homeId":"9003"}
-{"sensor": { "cityId":"100", "sensorId":"004"}, "homeId":"9001"}
-{"sensor": { "cityId":"200", "sensorId":"001"}, "homeId":"9002"}
-{"sensor": { "cityId":"200", "sensorId":"002"}, "homeId":"9003"}
-{"sensor": { "cityId":"200", "sensorId":"003"}, "homeId":"9001"}
