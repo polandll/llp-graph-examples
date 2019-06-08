@@ -1,0 +1,1 @@
+ALTER TABLE food.person WITHOUT VERTEX LABEL "personX"

@@ -1,0 +1,65 @@
+partitionKey: something known about data community
+clusteringKey: uniqueness
+
+use UUID for single-key vertex id if there is no compelling reason to use anything else
+multiple-key vertex id - bucketing
+  Comcast - region/subregion, macId (this shards supernode)
+  Another way to deal with this is use region/subregion as properties on a vertex, but don't create edges; 
+  pull property, get vertex from property (supernode with no edges)
+composite-key vertex id is not good for data locality (do I mean multiple-key perhaps?)
+
+ - groups by families
+ - creating communities (friends? families?)
+
+celebrities - you can be friends with a celebrity, but a celebrity cannot be friends with you; otherwise, supernode problems
+---------------------------
+VERTEX LABELS
+---------------------------
+-- *single-key vertex id vertex label: partitionKey('bookId') for vertexLabel('book')
+  --- partition distribution of vertices is random; traversing closely connected vertices will require data from multiple nodes
+-- multiple-key vertex id vertex label: ***MAYBE*** partitionKey('type','mealId')
+  --- partition distribution of vertices is random, although keys are hasked together; traversing closely connected vertices will require data from multiple nodes
+  --- provides uniqueness if an individual field isn't enough to ID uniqueness
+-- *composite-key vertex id vertex label: ***MAYBE*** partitionKey('cuisine').clusteringKey('recipeId') 
+-- *multiple-key, composite-key vertex id vertex label: partitionKey('stateId', 'cityId').clusteringKey('sensorId') for vertexLabel('fridgeSensor')
+  --- partition distribution of vertices is still random, but will be placed in same node if the hash is the same; clustering provides the uniqueness while
+         ensuring that traversing closely connected vertices will be on the same nodes (data locality is achieved)
+
+---------------------------
+CARDINALITY
+---------------------------
+-- multiple cardinality edge label: edgeLabel('ate')
+
+-- single cardinality property key: propertyKey('name')
+-- multiple cardinality property key: propertyKey('badge'), WITH
+    single cardinality meta-property: since
+-- multiple cardinality property key: propertyKey('country') WITH
+    multiple cardinality meta-property: startYear, endYear
+
+---------------------------
+INDEXES
+---------------------------
+MV -> usually one element; high cardinality/high selectivity
+2i -> number of elements in the low thousands (max); low cardinality/low selectivity
+Search -> used for large amounts of elements and/or to cover multiple fields / properties; wide range of cardinality, uses search predicates 
+DK: I think DSE will always use the index with the highest (expected) selectivity
+
+Vertex index (MV): schema.vertexLabel('person').index('byName').materialized().by('name').add()
+Vertex index (2i): ** MAYBE ** schema.vertexLabel('meal').index('byType').secondary().by('type').add()
+Vertex index (search): schema.vertexLabel('recipe').index('search').search().by('instructions').by('name').by('cuisine').add()
+
+Property index (MV): schema.vertexLabel('person').index('byStartYear').property('country').by('startYear').add()
+
+Edge index (MV): schema.vertexLabel('recipe').index('byStars').inE('reviewed').by('stars').ifNotExists().add()
+
+
+PROPERTY:
+to demonstrate difference in csv column name and graph property name:
+property "CALORIES", "calGoal" in loading person.csv
+
+EDGES:
+person - authored (singleCard) -> book (S-K id) 
+ingredient (S-K id?) - includedIn (singleCard) -> recipe (M-K id)
+fridgeSensor (C-K id) - isLocatedAt (multiCard) -> home (S-K id?) [can have more than one fridge in a home]
+
+ingredient - what vertex id for this vertex label? Adding 'category' could allow for bucketing

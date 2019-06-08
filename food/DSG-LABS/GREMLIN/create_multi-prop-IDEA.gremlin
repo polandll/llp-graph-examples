@@ -1,0 +1,10 @@
+// May need to switch country to  country_residence, a UDT
+// Then countries_lived_in to a list of UDTs - will illustrate multi-property
+/*
+schema.vertexLabel('country_residence')
+  .partitionBy('country', Text)
+  .clusterBy('start_date', Date)
+  .clusterBy('end_date', Date)
+  .property('flag', Int, Static)
+  .create()
+*/

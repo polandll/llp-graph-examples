@@ -1,0 +1,3 @@
+// WORKS FOR BOTH NATIVE AND LEGACY
+
+system.graphs()

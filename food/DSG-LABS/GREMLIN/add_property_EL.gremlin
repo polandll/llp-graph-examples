@@ -1,0 +1,15 @@
+// SIMPLE VERSION
+
+schema.edgeLabel('authored')
+    .addProperty('one', Int)
+    .addProperty('two', Int)
+    .alter()
+
+// EXPANDED VERSION
+// ****** CHANGE THIS
+schema.edgeLabel('authored')
+    .from('person')
+    .to('book')
+    .addProperty('one', Int)
+    .addProperty('two', Int)
+    .alter()

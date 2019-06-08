@@ -1,0 +1,15 @@
+// ************ FIX THIS!
+// all fields need to be fixed
+
+schema.edgeLabel('authored')
+    .from('person')
+    .to('book')
+    .partitionBy(OUT, 'name', 'person_name')
+    .partitionBy(OUT, 'age', 'person_age')
+    .partitionBy('creation_date', Text)
+    .clusterBy(OUT, 'year', 'person_year')
+    .clusterBy(IN, 'name', 'software_name')
+    .clusterBy(IN, 'year', 'software_year')
+    .clusterBy(IN, 'license', 'software_license')
+    .clusterBy('creation_year', Int, Desc)
+    .create()

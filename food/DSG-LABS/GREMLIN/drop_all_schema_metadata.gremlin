@@ -1,0 +1,2 @@
+// This will drop all the vertex/edge labels but keep the underlying tables.
+schema.dropMetadata()

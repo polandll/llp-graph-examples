@@ -1,0 +1,71 @@
+// MATERIALIZED VIEW INDEX
+
+schema.vertexLabel('person')
+  .materializedView('person_by_name')
+  .ifNotExists()
+  .partitionBy('name')
+  .create()
+
+schema.vertexLabel('meal')
+  .materializedView('meal_by_type')
+  .ifNotExists()
+  .partitionBy('type')
+  .create()
+
+schema.vertexLabel('ingredient')
+  .materializedView('ingredient_by_name')
+  .ifNotExists()
+  .partitionBy('name')
+  .create()
+
+// NEED SECONDARY INDEX
+
+// Use IndexFor().analyze() to create a good example based on a collection
+
+// SEARCH INDEX
+// ************* NEED TO MAKE SOME OF THESE asString() and asText() examples
+// ************* DO I NEED AN asStringAndText() example? NO, NOT USED IN NGDG?
+// ************* IT LOOKS LIKE INDEXFOR() WILL NOT PICK THESE PREDICATES - CHECK THAT
+
+schema.vertexLabel('recipe')
+  .searchIndex()
+  .ifNotExists()
+// by name, by cuisine can be asText, asString?
+  .by('instructions')
+  .by('name')
+  .by('cuisine')
+  .create()
+
+schema.vertexLabel('book')
+  .searchIndex()
+  .ifNotExists()
+  .by('name')
+  .by('publishYear')
+  .create()
+
+schema.vertexLabel('location')
+  .searchIndex()
+  .ifNotExists()
+  .by('geoPoint')
+  .create()
+
+schema.vertexLabel('store')
+  .searchIndex()
+  .ifNotExists()
+  .by('name')
+  .create()
+
+schema.vertexLabel('home')
+  .searchIndex()
+  .ifNotExists()
+  .by('name')
+  .create()
+
+schema.vertexLabel('fridgeSensor')
+  .searchIndex()
+  .ifNotExists()
+  .by('cityId')
+  .by('sensorId')
+  .by('name')
+  .create()
+

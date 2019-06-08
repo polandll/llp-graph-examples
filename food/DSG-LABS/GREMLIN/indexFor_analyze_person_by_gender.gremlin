@@ -1,0 +1,1 @@
+schema.indexFor(g.V().has('person','gender','F').in()).analyze()

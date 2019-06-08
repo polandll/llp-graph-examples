@@ -1,0 +1,5 @@
+// Create a vertex label from an existing CQL table
+
+schema.vertexLabel('recipe')
+  .fromExistingTable('recipe_table')
+  .create()

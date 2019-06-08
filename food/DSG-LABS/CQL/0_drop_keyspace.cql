@@ -1,0 +1,1 @@
+DROP KEYSPACE food_cql IF EXISTS;

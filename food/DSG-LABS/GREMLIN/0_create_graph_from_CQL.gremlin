@@ -1,0 +1,6 @@
+// Note that the graph will have the same name as the existing keyspace name
+
+system.graph('food')
+   .fromExistingKeyspace()
+   .nativeEngine()
+   .create()

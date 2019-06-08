@@ -1,0 +1,7 @@
+// Describe all vertex labels (VLs)
+schema.vertexLabel().describe()
+
+// Examine details for a particular VL using Gremlin
+schema.vertexLabel('person').describe()
+
+

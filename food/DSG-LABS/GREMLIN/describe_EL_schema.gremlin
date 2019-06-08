@@ -1,0 +1,9 @@
+// Describe all edge labels (ELs)
+schema.edgeLabel().describe()
+
+// Examine details for a particular EL using Gremlin
+schema.edgeLabel('authored').describe()
+
+// Examine an EL, narrowed with the from/to information using Gremlin
+schema.edgeLabel('authored').from('person').to('book').describe()
+

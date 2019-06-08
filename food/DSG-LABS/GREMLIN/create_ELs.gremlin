@@ -1,0 +1,106 @@
+// ********
+// EDGE LABELS
+// ********
+// SYNTAX:
+//schema.edgeLabel('edgeLabel')
+//    	[ .ifNotExists() ]
+//	.from('vertexLabel').to('vertexLabel')
+// 	[ .property(propertyName, propertyType) ]
+//    	[ .create() | .describe() | .addProperty(propertyName, propertyType).alter() ]
+// ********
+
+// NEED TO ADD DSP-18625
+//  .tableName('createdTable')
+
+
+// person_authored_book
+schema.edgeLabel('authored')
+  .ifNotExists()
+  .from('person').to('book')
+  .create()
+
+// person_ate_meal
+schema.edgeLabel('ate')
+  .ifNotExists()
+  .from('person').to('meal')
+  .property('meal_date', Date)
+  .create()
+
+// person_knows_person
+schema.edgeLabel('knows')
+  .ifNotExists()
+  .from('person').to('person')
+  .property('since', Date)
+  .create()
+
+// meal_includes_mealItem
+schema.edgeLabel('includes')
+  .ifNotExists()
+  .from('meal').to('meal_item')
+  .property('num_serv', Int)
+  .create()
+
+// recipe_includedIn_meal
+schema.edgeLabel('includedIn')
+  .ifNotExists()
+  .from('recipe').to('meal')
+  .property('amount', Text)
+  .create()
+// recipe_includedIn_meal
+schema.edgeLabel('includedIn')
+  .ifNotExists()
+  .from('recipe').to('book')
+  .create()
+
+// person_created_recipe
+schema.edgeLabel('created')
+  .ifNotExists()
+  .from('person').to('recipe')
+  .property('create_date', Date)
+  .create()
+
+// person_reviewed_recipe
+schema.edgeLabel('reviewed')
+  .ifNotExists()
+  .from('person').to('recipe')
+  .property('time', Time)
+  .property('year', Int)
+  .property('stars', Int)
+  .property('comment', Text)
+  .create()
+
+// fridgeSensor_contains_ingredient
+schema.edgeLabel('contains')
+  .ifNotExists()
+  .from('fridge_sensor').to('ingredient')
+  .property('expire_date', Date)
+//  .ttl(60800)
+  .create()
+
+
+// store_isStockedWith_ingredient
+schema.edgeLabel('isStockedWith')
+  .ifNotExists()
+  .from('store').to('ingredient')
+  .property('expire_date', Date)
+  .ttl(60800)
+  .create()
+
+// home_isLocatedAt_location
+schema.edgeLabel('isLocatedAt')
+  .ifNotExists()
+  .from('home').to('location')
+  .create()
+
+// store_isLocatedAt_location
+schema.edgeLabel('isLocatedAt')
+  .ifNotExists()
+  .from('store').to('location')
+  .create()
+
+//fridgeSensor_isLocatedAt_location
+schema.edgeLabel('isLocatedAt')
+  .ifNotExists()
+  .from('fridge_sensor').to('location')
+  .create()
+

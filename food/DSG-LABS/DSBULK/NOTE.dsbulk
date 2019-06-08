@@ -1,0 +1,9 @@
+dsbulk includes new stuff for NGDG? need to look for that
+
+
+Long Option	Short Option	Comments
+--schema.graph	-g	Alias for schema.keyspace (-k). Should be a valid keyspace with Native graph engine enabled.
+--schema.vertex	-v	Alias for schema.table (-t), should be a valid table with vertex label.
+--schema.edge	-e	If present, then fromVertex and toVertex must also be present; schema.table should not be present; a table with edge label named <from-vertex>_<edge-label-name>_<to-vertex> must exist.
+--schema.fromVertex	-from	 
+--schema.toVertex	-to

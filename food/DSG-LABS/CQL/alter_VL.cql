@@ -1,0 +1,1 @@
+ALTER TABLE food.person RENAME VERTEX LABEL TO "personX"

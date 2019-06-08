@@ -1,0 +1,2 @@
+==>Creating the following indexes:
+schema.vertexLabel('person').materializedView('person_by_gender').ifNotExists().partitionBy('gender').clusterBy('lastname', Asc).clusterBy('id', Asc).create()

@@ -1,0 +1,4 @@
+schema.vertexLabel('person')
+    .dropProperty('one', Int)
+    .dropProperty('two', Int)
+    .alter()

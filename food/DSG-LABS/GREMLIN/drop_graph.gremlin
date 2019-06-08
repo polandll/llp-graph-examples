@@ -1,0 +1,5 @@
+// THIS COMMAND APPLIES TO BOTH NATIVE AND LEGACY GRAPHS
+
+system.graph('food')
+  .ifExists()
+  .drop()

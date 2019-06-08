@@ -1,0 +1,12 @@
+// ******* FIX THIS!
+
+schema.edgeLabel('authored')
+    .fromExistingTable('authored_table')
+    .from('person')
+    .mappingProperty('person_name')
+    .mappingProperty('ssn')
+    .mappingProperty('age')
+    .to('book')
+    .mappingProperty('book_name')
+    .mappingProperty('isbn')
+    .create()

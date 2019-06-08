@@ -1,0 +1,3 @@
+NOTES:
+
+Make shell scripts that run create graph, make schema, and add data for EACH type: Gremlin, CQL as Graph, CQL conversion to Graph

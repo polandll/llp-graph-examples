@@ -1,0 +1,4 @@
+schema.vertexLabel('person')
+    .materializedView('person_by_gender')
+    .ifNotExists()
+    .create()
