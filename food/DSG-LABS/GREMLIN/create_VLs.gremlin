@@ -1,3 +1,5 @@
+:remote config alias g food.g
+
 // VERTEX LABELS
 // ********
 // SYNTAX:
@@ -20,96 +22,97 @@
 //  .tableName('personTable')
 
 
-schema.vertexLabel('person')
-  .partitionBy('person_id', Uuid)
-  .property('name', Text)
-  .property('gender', Text)
-  .property('nickname', setOf(Text))
-  .property('cal_goal', Int)
-  .property('macro_goal', listOf(Int))
-  .property('country', listOf(tupleOf(Text, Int, Int)))
-  .property('badge', mapOf(Text, Int))
-  .create()
+schema.vertexLabel('person').
+  partitionBy('person_id', Uuid).
+  property('name', Text).
+  property('gender', Text).
+  property('nickname', setOf(Text)).
+  property('cal_goal', Int).
+  property('macro_goal', listOf(Int)).
+  property('country', listOf(tupleOf(Text, Int, Int))).
+  property('badge', mapOf(Text, Int)).
+  create()
 
 // book_discount was a property in the old data model that had a ttl; it has been deleted
 // but could be included as another vertex label; however, without the ttl, it is not interesting
 // I don't really want a list of authors attached as a property, DO I??? The edges will provide that info.
-schema.vertexLabel('book')
-  .partitionBy('book_id', Int)
-  .property('name', Text)
-  .property('authors', listOf(frozen(typeOf('fullname'))))
-  .property('publish_year', Int)
-  .property('isbn', Text)
-  .property('category', setOf(Text))
-  .create()
+schema.vertexLabel('book').
+  partitionBy('book_id', Int).
+  property('name', Text).
+  property('authors', listOf(frozen(typeOf('fullname')))).
+  property('publish_year', Int).
+  property('isbn', Text).
+  property('category', setOf(Text)).
+  create()
 
 // Going to create vertexLabel recipe through converting a CQL table to a VL
 // Although the notebook shows creating a table for recipe with CQL, then converting,
 // this is the Gremlin schema to make the recipe vertex label
-//schema.vertexLabel('recipe')
-//  .partitionBy('recipe_id', Int)
-//  .property('name', Text)
-//  .property('cuisine', setOf(Text))
-//  .property('instructions', Text)
-//  .property('notes', Text)
-//  .create()
+//schema.vertexLabel('recipe').
+//  partitionBy('recipe_id', Int).
+//  property('name', Text).
+//  property('cuisine', setOf(Text)).
+//  property('instructions', Text).
+//  property('notes', Text).
+//  create()
  
-schema.vertexLabel('meal_item')
-  .partitionBy('item_id', Int)
-  .property('name', Text)
-  .property('serv_amt', Text)
-  .property('macro', Text)
-  .property('calories', Int)
-  .create()
+schema.vertexLabel('meal_item').
+  partitionBy('item_id', Int).
+  property('name', Text).
+  property('serv_amt', Text).
+  property('macro', Text).
+  property('calories', Int).
+  create()
 
-schema.vertexLabel('ingredient')
-  .partitionBy('ingred_id', Int)
-  .property('name', Text)
-  .create()
+schema.vertexLabel('ingredient').
+  partitionBy('ingred_id', Int).
+  property('name', Text).
+  create()
 
-schema.vertexLabel('home')
-  .partitionBy('home_id', Int)
-  .property('name', Text)
-  //.property('address', Text)
-  .property('address', frozen(typeOf('address')))
-  .create()
+schema.vertexLabel('home').
+  partitionBy('home_id', Int).
+  property('name', Text).
+  //property('address', Text).
+  property('address', frozen(typeOf('address'))).
+  create()
 
-schema.vertexLabel('store')
-  .partitionBy('store_id', Int)
-  .property('name', Text)
-  .property('address', Text)
+schema.vertexLabel('store').
+  partitionBy('store_id', Int).
+  property('name', Text).
+  property('address', Text).
+  create()
 
 
 // MULTIPLE-KEY VERTEX ID
 
-schema.vertexLabel('meal')
-  .partitionBy('type', Text)
-  .partitionBy( 'meal_id', Int)
-  .create()
+schema.vertexLabel('meal').
+  partitionBy('type', Text).
+  partitionBy( 'meal_id', Int).
+  create()
 
 // COMPOSITE KEY VERTEX ID
 
-schema.vertexLabel('fridge_sensor')
-  .partitionBy('state_id', Int)
-  .partitionBy('city_id', Int)
-  .partitionBy('zipcode_id', Int)
-  .clusterBy('sensor_id', Int)
-  .property('name', Text)
-  .create()
+schema.vertexLabel('fridge_sensor').
+  partitionBy('state_id', Int).
+  partitionBy('city_id', Int).
+  partitionBy('zipcode_id', Int).
+  clusterBy('sensor_id', Int).
+  property('name', Text).
+  create()
 
 // GEOSPATIAL
 
-schema.vertexLabel('location')
-  .partitionBy('loc_id', Int)
-  .property('name', Text)
-  .property('loc_details', frozen(typeOf('location_details'))
-  .property('geo_point',Point)
-  .create()
+schema.vertexLabel('location').
+  partitionBy('loc_id', Int).
+  property('name', Text).
+  property('loc_details', frozen(typeOf('location_details')).
+  property('geo_point',Point).
+  create()
 
 // STATIC COLUMN
 
-schema.vertexLabel('flag')
-  .partitionBy('country_id', Int)
-  .clusterBy('country', Text)
-  .property('flag', Text, STATIC)
-  .create()
+schema.vertexLabel('flag').
+  partitionBy('country_id', Int).
+  clusterBy('country', Text).
+  property('flag', Text, STATIC).
+  create()

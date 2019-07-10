@@ -1,3 +1,5 @@
+:remote config alias g food.g
+
 // Describe all edge labels (ELs)
 schema.edgeLabel().describe()
 

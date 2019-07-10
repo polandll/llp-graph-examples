@@ -1,4 +1,5 @@
 :remote config alias g food.g 
+
 // Create user-defined types (UDTs) with Gremlin
 
 // USER-DEFINED TYPE
