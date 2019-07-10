@@ -1,7 +1,7 @@
 :remote config alias g food.g
 
 // Describe all edge labels (ELs)
-schema.edgeLabel().describe()
+schema.edgeLabels().describe()
 
 // Examine details for a particular EL using Gremlin
 schema.edgeLabel('authored').describe()

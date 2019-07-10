@@ -1,9 +1,17 @@
 :remote config alias g food.g 
 
 // Create user-defined types (UDTs) with Gremlin
+/ VERTEX LABELS
+// ********
+// SYNTAX:
+// schema.type('typename')
+//    [ .ifNotExists() ]
+//    [ .property(property, propertyType) ]
+//    [ .create() | .describe() ]
 
 // USER-DEFINED TYPE
 schema.type('address').
+  ifNotExists().
   property('address1', Text).
   property('address2', Text).
   property('city_code', Text).
@@ -11,12 +19,14 @@ schema.type('address').
   create()
 
 schema.type('fullname').
+  ifNotExists().
   property('firstname', Text).
   property('lastname', Text).
   create()
 
 //Using a nested user defined type via typeOf:
 schema.type('location_details').
+  ifNotExists().
   property('loc_address', frozen(typeOf('address'))).
   property('telephone', listOf(Text)).
   create()

@@ -23,6 +23,7 @@
 
 
 schema.vertexLabel('person').
+  ifNotExists().
   partitionBy('person_id', Uuid).
   property('name', Text).
   property('gender', Text).
@@ -37,6 +38,7 @@ schema.vertexLabel('person').
 // but could be included as another vertex label; however, without the ttl, it is not interesting
 // I don't really want a list of authors attached as a property, DO I??? The edges will provide that info.
 schema.vertexLabel('book').
+  ifNotExists().
   partitionBy('book_id', Int).
   property('name', Text).
   property('authors', listOf(frozen(typeOf('fullname')))).
@@ -48,15 +50,17 @@ schema.vertexLabel('book').
 // Going to create vertexLabel recipe through converting a CQL table to a VL
 // Although the notebook shows creating a table for recipe with CQL, then converting,
 // this is the Gremlin schema to make the recipe vertex label
-//schema.vertexLabel('recipe').
-//  partitionBy('recipe_id', Int).
-//  property('name', Text).
-//  property('cuisine', setOf(Text)).
-//  property('instructions', Text).
-//  property('notes', Text).
-//  create()
+schema.vertexLabel('recipe').
+  ifNotExists().
+  partitionBy('recipe_id', Int).
+  property('name', Text).
+  property('cuisine', setOf(Text)).
+  property('instructions', Text).
+  property('notes', Text).
+  create()
  
 schema.vertexLabel('meal_item').
+  ifNotExists().
   partitionBy('item_id', Int).
   property('name', Text).
   property('serv_amt', Text).
@@ -65,11 +69,13 @@ schema.vertexLabel('meal_item').
   create()
 
 schema.vertexLabel('ingredient').
+  ifNotExists().
   partitionBy('ingred_id', Int).
   property('name', Text).
   create()
 
 schema.vertexLabel('home').
+  ifNotExists().
   partitionBy('home_id', Int).
   property('name', Text).
   //property('address', Text).
@@ -77,6 +83,7 @@ schema.vertexLabel('home').
   create()
 
 schema.vertexLabel('store').
+  ifNotExists().
   partitionBy('store_id', Int).
   property('name', Text).
   property('address', Text).
@@ -86,6 +93,7 @@ schema.vertexLabel('store').
 // MULTIPLE-KEY VERTEX ID
 
 schema.vertexLabel('meal').
+  ifNotExists().
   partitionBy('type', Text).
   partitionBy( 'meal_id', Int).
   create()
@@ -93,6 +101,7 @@ schema.vertexLabel('meal').
 // COMPOSITE KEY VERTEX ID
 
 schema.vertexLabel('fridge_sensor').
+  ifNotExists().
   partitionBy('state_id', Int).
   partitionBy('city_id', Int).
   partitionBy('zipcode_id', Int).
@@ -103,6 +112,7 @@ schema.vertexLabel('fridge_sensor').
 // GEOSPATIAL
 
 schema.vertexLabel('location').
+  ifNotExists().
   partitionBy('loc_id', Int).
   property('name', Text).
   property('loc_details', frozen(typeOf('location_details')).
@@ -112,6 +122,7 @@ schema.vertexLabel('location').
 // STATIC COLUMN
 
 schema.vertexLabel('flag').
+  ifNotExists().
   partitionBy('country_id', Int).
   clusterBy('country', Text).
   property('flag', Text, STATIC).
