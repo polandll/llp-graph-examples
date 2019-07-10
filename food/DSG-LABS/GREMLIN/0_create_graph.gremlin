@@ -1,10 +1,10 @@
 // Replace DC_NAME with the name of the cluster
 // My current cluster DC_NAME=SearchGraphAnalytics
 
-system.graph('food')
-  .ifNotExists()
+system.graph('food').
+  ifNotExists().
   // withReplication not required for SimpleStrategy
-//  .withReplication("{'class': 'NetworkTopologyStrategy', 'DC_NAME': 1}")
-// ADDRESS THE DURABLE WRITES THING!!!
-// .andDurableWrites(false) not recommended
-  .create()
+//  withReplication("{'class': 'NetworkTopologyStrategy', 'DC_NAME': 1}").
+// ADDRESS THE DURABLE WRITES THING!!! NOT RECOMMENDED
+// andDurableWrites(false).
+  create()
