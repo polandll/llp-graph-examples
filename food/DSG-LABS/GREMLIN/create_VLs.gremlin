@@ -12,7 +12,7 @@
 // SINGLE PARTITION KEY Vertex Labels
 
 // macro_goal is a list of carbohydrate, protein, fat
-// country is a list of tuple of country, start date, end date; replacement for a meta-property in legacy graph
+// country is a list of tuple of country, start date, end date; replacement for a meta-property in classic graph
 // Also, country demonstrates multi-property, being a list of countries and dates lived in
 // badge is level:year, such as gold:2015, expert:2019, or sous-chef:2009 (mainly expect to use for reviewers)
 

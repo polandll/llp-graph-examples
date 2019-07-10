@@ -1,4 +1,5 @@
 // MATERIALIZED VIEW INDEX
+// for predicates that are not search-specific or specific to CQL collections
 
 schema.vertexLabel('person').
   materializedView('person_by_name').
@@ -20,10 +21,24 @@ schema.vertexLabel('ingredient').
   create()
 
 // NEED SECONDARY INDEX
+// for specific predicates (e.g. contains(x) / containsKey(x) / containsValue(x) / entryEq(x, y)) against CQL collections (Lists/Sets/Maps)
 
 // Use IndexFor().analyze() to create a good example based on a collection
 
+schema.indexFor(g.V().has("cuisine", contains('French'))).analyze()
+
+// Traversal requires that the following indexes are created:
+
+schema.vertexLabel('recipe').
+  secondaryIndex('recipe_2i_by_cuisine').
+  ifNotExists().
+  by('cuisine').
+  indexValues().
+  create()
+
 // SEARCH INDEX
+// for specific predicates (e.g. token / regex / phrase / neq / ...) that can only be fulfilled by a search index
+
 // ************* NEED TO MAKE SOME OF THESE asString() and asText() examples
 // ************* DO I NEED AN asStringAndText() example? NO, NOT USED IN NGDG?
 // ************* IT LOOKS LIKE INDEXFOR() WILL NOT PICK THESE PREDICATES - CHECK THAT
