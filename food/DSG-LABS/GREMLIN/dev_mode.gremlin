@@ -1,0 +1,3 @@
+// dev mode is for development exploration
+
+dev.V().hasLabel('person').has('name', 'Julia CHILD')
