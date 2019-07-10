@@ -1,20 +1,20 @@
 // Create user-defined types (UDTs) with Gremlin
 
 // USER-DEFINED TYPE
-schema.type('address')
-  .property('address1', Text)
-  .property('address2', Text)
-  .property('city_code', Text)
-  .property('zip_code', Text)
-  .create()
+schema.type('address').
+  property('address1', Text).
+  property('address2', Text).
+  property('city_code', Text).
+  property('zip_code', Text).
+  create()
 
-schema.type('fullname')
-  .property('firstname', Text)
-  .property('lastname', Text)
-  .create()
+schema.type('fullname').
+  property('firstname', Text).
+  property('lastname', Text).
+  create()
 
 //Using a nested user defined type via typeOf:
-schema.type('location_details')
-  .property('loc_address', frozen(typeOf('address')))
-  .property('telephone', listOf(Text))
-  .create()
+schema.type('location_details').
+  property('loc_address', frozen(typeOf('address'))).
+  property('telephone', listOf(Text)).
+  create()
