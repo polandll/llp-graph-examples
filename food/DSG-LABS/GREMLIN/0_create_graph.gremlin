@@ -4,7 +4,7 @@
 system.graph('food')
   .ifNotExists()
   // withReplication not required for SimpleStrategy
-  .withReplication("{'class': 'NetworkTopologyStrategy', 'DC_NAME': 1}")
+//  .withReplication("{'class': 'NetworkTopologyStrategy', 'DC_NAME': 1}")
 // ADDRESS THE DURABLE WRITES THING!!!
 // .andDurableWrites(false) not recommended
   .create()
