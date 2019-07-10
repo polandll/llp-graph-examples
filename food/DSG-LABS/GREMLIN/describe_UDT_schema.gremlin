@@ -1,3 +1,5 @@
+:remote config alias g food.g
+
 // Describe all UDTs
 schema.types().describe()
 
