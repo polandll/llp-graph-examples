@@ -1,1 +1,3 @@
-system.graph('cleanup').ifNotExists().create()
+system.graph('cleanup').
+  ifNotExists().
+  create()
