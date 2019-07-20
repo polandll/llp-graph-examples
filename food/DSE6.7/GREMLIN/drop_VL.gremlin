@@ -1,3 +1,5 @@
+:remote config alias g food.g
+
 schema.vertexLabel('person')
   .ifExists()
   .drop()

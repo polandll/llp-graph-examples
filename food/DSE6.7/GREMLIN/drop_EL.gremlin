@@ -1,3 +1,5 @@
+:remote config alias g food.g
+
 schema.edgeLabel('authored')
   .ifExists()
   .drop()

@@ -1,2 +1,4 @@
+:remote config alias g food.g
+
 schema.propertyKey("name").
   describe()

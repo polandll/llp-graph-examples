@@ -1,2 +1,4 @@
+:remote config alias g food.g
+
 schema.propertyKey('one').drop()
 schema.propertyKey('two').drop()
