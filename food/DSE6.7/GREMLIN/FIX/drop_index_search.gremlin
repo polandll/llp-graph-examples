@@ -1,0 +1,13 @@
+// SIMPLE VERSION
+
+schema.vertexLabel('person')
+    .searchIndex()
+    .drop()
+
+// EXPANDED VERSION
+
+schema.edgeLabel('authored')
+    .from('person')
+    .to('book')
+    .searchIndex()
+    .drop()

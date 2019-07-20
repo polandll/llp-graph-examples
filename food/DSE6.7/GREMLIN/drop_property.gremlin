@@ -1,0 +1,2 @@
+schema.propertyKey('one').drop()
+schema.propertyKey('two').drop()

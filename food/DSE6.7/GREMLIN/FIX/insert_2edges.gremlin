@@ -1,0 +1,15 @@
+// INSERT two EDGEs between a person and a book using Gremlin
+// Again, note the use of the Traversal API
+
+g.V().has('person', 'person_id', UUID.fromString("adb8744c-d015-4d78-918a-d7f062c59e8f")).as('a')
+  .V().has('book', 'book_id', 1002).as('b')
+  .addE('authored').from('a').to('b')
+  .iterate();
+
+g.V().has('person', 'person_id', UUID.fromString("bb6d7af7-f674-4de7-8b4c-c0fdcdaa5cca")).as('a')
+  .V().has('book', 'book_id', 1003).as('b')
+  .addE('authored').from('a').to('b')
+  .iterate();
+  
+// NOTE with NGDG, g.E() is a perfectly valid query!
+g.E().hasLabel('authored')

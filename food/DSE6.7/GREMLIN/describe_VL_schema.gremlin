@@ -1,0 +1,6 @@
+:remote config alias g food.g
+
+// Examine details for a particular VL using Gremlin
+schema.vertexLabel('person').describe()
+
+

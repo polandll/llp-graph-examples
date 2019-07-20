@@ -1,0 +1,9 @@
+system.graph('food').
+  ifNotExists().
+  create()
+
+:remote config alias g food.g
+
+schema.config().
+  option('graph.allow_scan').
+  set('true')

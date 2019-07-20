@@ -1,0 +1,3 @@
+schema.vertexLabel('book').
+  properties('name','publishYear','ISBN','bookDiscount').
+  add()

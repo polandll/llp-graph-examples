@@ -1,0 +1,5 @@
+// dev mode is for development exploration
+
+schema.config().
+  option("graph.schema_mode").
+  set("Development")

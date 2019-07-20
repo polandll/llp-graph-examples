@@ -1,0 +1,4 @@
+:remote config alias g food.g
+
+// Examine details for a particular EL using Gremlin
+schema.edgeLabel('authored').describe()

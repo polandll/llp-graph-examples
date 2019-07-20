@@ -1,0 +1,6 @@
+schema.edgeLabel('authored')
+    .from('person')
+    .to('book')
+    .materializedView('???')
+    .ifExists()
+    .drop()

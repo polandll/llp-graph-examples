@@ -1,0 +1,3 @@
+// Describe all the schema using Gremlin
+
+schema.describe()

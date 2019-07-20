@@ -1,0 +1,7 @@
+schema.indexFor(g.V().hasLabel('person').has('name', Search.regex('Julia')).valueMap()).analyze()
+schema.indexFor(g.V().hasLabel('person').has('name', Search.regex('julia')).valueMap()).analyze()
+schema.indexFor(g.V().hasLabel('person').has('name', Search.regex('Julia Child')).valueMap()).analyze()
+schema.indexFor(g.V().hasLabel('person').has('name', Search.regex('julia child')).valueMap()).analyze()
+schema.indexFor(g.V().hasLabel('person').has('name', Search.regex('.*uli.*')).valueMap()).analyze()
+
+

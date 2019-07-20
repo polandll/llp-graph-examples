@@ -1,0 +1,4 @@
+schema.vertexLabel('person')
+    .secondaryIndex('???')
+    .ifExists()
+    .drop()
