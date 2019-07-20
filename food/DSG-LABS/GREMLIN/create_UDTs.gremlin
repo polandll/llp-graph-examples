@@ -1,7 +1,7 @@
 :remote config alias g food.g 
 
 // Create user-defined types (UDTs) with Gremlin
-/ VERTEX LABELS
+// VERTEX LABELS
 // ********
 // SYNTAX:
 // schema.type('typename')
