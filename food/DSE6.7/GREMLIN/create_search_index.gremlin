@@ -1,0 +1,14 @@
+// Create search indexes
+
+schema.vertexLabel('recipe').
+   index('search').
+   search().
+      by('name').asText().
+      by('instructions').asString().
+   ifNotExists().
+   add()
+
+// Geospatial
+schema.vertexLabel('location').index('search').search().by('geo_point').add()
+// FOR FUTURE EXAMPLE
+//schema.vertexLabel('lineLocation').index('search').search().by('line').add()

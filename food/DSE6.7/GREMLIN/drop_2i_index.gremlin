@@ -1,0 +1,5 @@
+// Drop 2i index
+
+schema.vertexLabel('recipe').
+   index('byRecipe').
+   drop()

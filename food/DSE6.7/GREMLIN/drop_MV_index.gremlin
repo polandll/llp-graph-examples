@@ -1,0 +1,5 @@
+// Drop MV index
+
+schema.vertexLabel('person').
+   index('byName').
+   drop()
