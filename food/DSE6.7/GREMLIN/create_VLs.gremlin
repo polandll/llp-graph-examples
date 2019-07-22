@@ -17,7 +17,7 @@
 // ********
 
 // SINGLE-KEY VERTEX ID
-schema.vertexLabel('person').partitionKey('personId').create()
+schema.vertexLabel('person').partitionKey('person_id').create()
 // ********* NEED TO ADD BADGE TO PERSON !!! USED FOR REVIEWS ***********
 // ==>{badge=[Silver Badge, Gold Badge], gender=[F], name=[Jane Doe]}
 // ==>{badge=[Gold Badge], gender=[M], name=[Jon Doe]}
@@ -25,24 +25,24 @@ schema.vertexLabel('person').partitionKey('personId').create()
 // ==>{since=2005}
 // ==>{since=2011}
 // ==>{since=2012}
-schema.vertexLabel('person').properties('name','nickname','gender','calGoal','macroGoal','country').add()
-schema.vertexLabel('book').partitionKey('bookId').create()
-schema.vertexLabel('book').properties('name','publishYear','ISBN','bookDiscount').add()
-schema.vertexLabel('meal_item').partitionKey('itemId').create()
-schema.vertexLabel('meal_item').properties('name','servAmt', 'macro', 'calories').add()
-schema.vertexLabel('ingredient').partitionKey('ingredId').create()
+schema.vertexLabel('person').properties('name','nickname','gender','cal_goal','macro_goal','country').add()
+schema.vertexLabel('book').partitionKey('book_id').create()
+schema.vertexLabel('book').properties('name','publish_year','isbn','category').add()
+schema.vertexLabel('meal_item').partitionKey('item_id').create()
+schema.vertexLabel('meal_item').properties('name','serv_amt', 'macro', 'calories').add()
+schema.vertexLabel('ingredient').partitionKey('ingred_id').create()
 schema.vertexLabel('ingredient').properties('name').add()
-schema.vertexLabel('home').partitionKey('homeId').create()
+schema.vertexLabel('home').partitionKey('home_id').create()
 schema.vertexLabel('home').properties('name','address').add()
-schema.vertexLabel('store').partitionKey('storeId').create()
+schema.vertexLabel('store').partitionKey('store_id').create()
 schema.vertexLabel('store').properties('name','address').add()
-schema.vertexLabel('recipe').partitionKey('recipeId').create()
+schema.vertexLabel('recipe').partitionKey('recipe_id').create()
 schema.vertexLabel('recipe').properties('name','cuisine', 'instructions','notes').add()
 // GEOSPATIAL
-schema.vertexLabel('location').partitionKey('locId').create()
-schema.vertexLabel('location').properties('name', 'geoPoint').add()
+schema.vertexLabel('location').partitionKey('loc_id').create()
+schema.vertexLabel('location').properties('name', 'geo_point').add()
 // MULTIPLE-KEY VERTEX ID
-schema.vertexLabel('meal').partitionKey('type', 'mealId').create()
+schema.vertexLabel('meal').partitionKey('type', 'meal_id').create()
 // COMPOSITE KEY VERTEX ID
-schema.vertexLabel('fridgeSensor').partitionKey('stateId', 'cityId', 'zipcodeId').clusteringKey('sensorId').create()
+schema.vertexLabel('fridgeSensor').partitionKey('state_id', 'city_id', 'zipcode_id').clusteringKey('sensor_id').create()
 schema.vertexLabel('fridgeSensor').properties('name').add()
