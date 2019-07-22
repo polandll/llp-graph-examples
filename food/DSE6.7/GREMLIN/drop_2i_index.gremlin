@@ -2,4 +2,5 @@
 
 schema.vertexLabel('recipe').
    index('byRecipe').
+   ifExists().
    drop()

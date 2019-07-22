@@ -1,0 +1,8 @@
+// Drop search index
+
+schema.vertexLabel('recipe').
+   index('search').
+   search().
+   properties('instructions').
+   ifExists().
+   drop()
