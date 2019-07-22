@@ -1,5 +1,5 @@
 :remote config alias g food.g
 
 schema.vertexLabel('book').
-  properties('name','publishYear','ISBN','bookDiscount').
+  properties('name','publish_year','isbn','book_discount').
   add()

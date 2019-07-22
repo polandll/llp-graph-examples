@@ -1,5 +1,5 @@
 :remote config alias g food.g
 
-system.graph('food')
-  .ifExists()
-  .drop()
+system.graph('food').
+  ifExists().
+  drop()
