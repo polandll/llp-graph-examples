@@ -1,0 +1,7 @@
+// Create secondary index
+
+schema.vertexLabel('recipe').
+   index('byRecipe').
+   secondary().
+      by('name').
+   add()

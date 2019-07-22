@@ -4,4 +4,5 @@ schema.vertexLabel('person').
    index('byStartYear').
    property('country').
       by('start_year').
+   ifNotExists().
    add()
