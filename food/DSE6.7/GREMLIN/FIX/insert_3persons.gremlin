@@ -12,7 +12,9 @@ g.addV('person').
 g.addV('person').
   property('person_id', UUID.fromString("adb8744c-d015-4d78-918a-d7f062c59e8f")).
   property('name', 'Simone BECK').
-  property('gender','F').property('nickname', setOf(Text).create('Simca', 'Simone')).
+  property('gender','F').
+  property('nickname','Simca').
+  property('nickname','Simone').
   iterate();
 g.addV('person').
   property('person_id', UUID.fromString("888ad970-0efc-4e2c-b234-b6a71c30efb5")).
