@@ -1,6 +1,6 @@
 :remote config alias g food.g
 // meal to recipe edges
-// The with('allow-filtering') is a shortcut to add the data without an index, but to make queries on these edges, and index will be required.
+// The is a shortcut to add the data without an index, but to make queries on these edges, and index will be required.
 
 g.V().has('recipe', 'recipe_id', 2001).as('a').
    V().has('meal', 'meal_id', 4001).as('b').
@@ -12,12 +12,12 @@ g.V().has('recipe', 'recipe_id', 2003).as('a').
    addE('includedIn').from('a').to('b').
    iterate();
    
-g.with('allow-filtering').V().has('recipe', 'recipe_id', 2007).as('a').
+g.V().has('recipe', 'recipe_id', 2007).as('a').
    V().has('meal', 'meal_id', 4004).as('b').
    addE('includedIn').from('a').to('b').
    iterate();
    
-g.with('allow-filtering').V().has('recipe', 'recipe_id', 2008).as('a').
+g.V().has('recipe', 'recipe_id', 2008).as('a').
    V().has('meal', 'meal_id', 4004).as('b').
    addE('includedIn').from('a').to('b').
    iterate();
