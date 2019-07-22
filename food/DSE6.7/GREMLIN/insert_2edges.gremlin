@@ -13,5 +13,5 @@ g.V().has('person', 'person_id', UUID.fromString("bb6d7af7-f674-4de7-8b4c-c0fdcd
   addE('authored').from('a').to('b').
   iterate();
   
-// NOTE with NGDG, g.E() is a perfectly valid query!
+// This is generally NOT a good practice, unless the graph is really small
 g.E().hasLabel('authored')
