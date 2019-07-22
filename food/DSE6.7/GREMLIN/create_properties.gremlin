@@ -60,7 +60,7 @@ schema.propertyKey('badge').Text().multiple().properties('since').create()
 // MULTIPLE CARDINALITY PROPERTY KEY WITH MULTIPLE CARDINALITY META-PROPERTY
 schema.propertyKey('start_year').Int().multiple().create()   // meta-property
 schema.propertyKey('end_year').Int().multiple().create()   // meta-property
-schema.propertyKey('country').Text().multiple().properties('startYear','endYear').create()
+schema.propertyKey('country').Text().multiple().properties('start_year','end_year').create()
 
 // EDGE PROPERTIES
 schema.propertyKey('num_serv').Int().single().create()
