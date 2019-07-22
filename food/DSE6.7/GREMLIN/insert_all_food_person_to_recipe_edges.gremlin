@@ -1,3 +1,5 @@
+:remote config alias g food.g
+
 // person to recipe edges
 
 g.V().has('person', 'person_id', UUID.fromString("bb6d7af7-f674-4de7-8b4c-c0fdcdaa5cca")).as('a').

@@ -1,3 +1,5 @@
+:remote config alias g food.g
+
 // recipe vertices
 g.addV('recipe').
    property('recipe_id', 2001).

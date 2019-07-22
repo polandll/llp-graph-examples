@@ -1,4 +1,7 @@
-// book vertices.
+:remote config alias g food.g
+
+// book vertices
+
 g.addV('book').
    property('book_id',1001).
    property('name','The Art of French Cooking, Vol. 1').

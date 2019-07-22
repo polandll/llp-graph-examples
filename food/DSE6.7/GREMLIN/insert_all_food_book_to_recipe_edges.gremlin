@@ -1,3 +1,5 @@
+:remote config alias g food.g
+
 // book to recipe edges
 
 g.V().has('recipe', 'recipe_id', 2001).as('a').

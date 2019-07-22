@@ -1,3 +1,5 @@
+:remote config alias g food.g
+
 // Create MV index for property
 
 schema.vertexLabel('person').
