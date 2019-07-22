@@ -22,7 +22,7 @@
 // ********
 
 // SINGLE CARDINALITY PROPERTY KEY
-schema.propertyKey('person_id').Int().single().create()
+schema.propertyKey('person_id').UUID().single().create()
 schema.propertyKey('meal_id').Int().single().create()
 schema.propertyKey('item_id').Int().single().create()
 schema.propertyKey('recipe_id').Int().single().create()
