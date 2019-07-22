@@ -1,0 +1,7 @@
+// Create MV index for property
+
+schema.vertexLabel('person').
+   index('byStartYear').
+   property('country').
+      by('start_year').
+   add()

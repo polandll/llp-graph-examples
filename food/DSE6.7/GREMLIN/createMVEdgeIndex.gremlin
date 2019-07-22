@@ -1,0 +1,8 @@
+// Create MV edge index
+
+schema.vertexLabel('person').
+   index('ratedByStars').
+   outE('reviewed').
+      by('stars').
+   ifNotExists().
+   add()

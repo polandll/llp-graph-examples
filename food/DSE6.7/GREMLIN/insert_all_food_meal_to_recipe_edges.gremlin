@@ -1,0 +1,22 @@
+// meal to recipe edges
+// The with('allow-filtering') is a shortcut to add the data without an index, but to make queries on these edges, and index will be required.
+
+g.with('allow-filtering').V().has('recipe', 'recipe_id', 2001).as('a').
+   V().has('meal', 'meal_id', 4001).as('b').
+   addE('includedIn').from('a').to('b').
+   iterate();
+
+g.with('allow-filtering').V().has('recipe', 'recipe_id', 2003).as('a').
+   V().has('meal', 'meal_id', 4001).as('b').
+   addE('includedIn').from('a').to('b').
+   iterate();
+   
+g.with('allow-filtering').V().has('recipe', 'recipe_id', 2007).as('a').
+   V().has('meal', 'meal_id', 4004).as('b').
+   addE('includedIn').from('a').to('b').
+   iterate();
+   
+g.with('allow-filtering').V().has('recipe', 'recipe_id', 2008).as('a').
+   V().has('meal', 'meal_id', 4004).as('b').
+   addE('includedIn').from('a').to('b').
+   iterate();

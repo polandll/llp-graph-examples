@@ -1,0 +1,17 @@
+/*// meal to book edges
+
+g.V().has('meal', 'meal_id', 4007).as('a').
+   V().has('book', 'book_id', 1001).as('b').
+   addE('includedIn').from('a').to('b').
+   iterate();
+   
+g.V().has('meal', 'meal_id', 4008).as('a').
+   V().has('book', 'book_id', 1004).as('b').
+   addE('includedIn').from('a').to('b').
+   iterate();
+   
+g.V().has('meal', 'meal_id', 4005).as('a').
+   V().has('book', 'book_id', 1003).as('b').
+   addE('includedIn').from('a').to('b').
+   iterate();
+   */
