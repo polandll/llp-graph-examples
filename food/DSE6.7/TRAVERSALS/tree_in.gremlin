@@ -1,0 +1,1 @@
+g.V().hasLabel('book').in().tree().by('name').next()

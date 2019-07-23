@@ -1,0 +1,4 @@
+// THIS IS BROKEN NOW THAT author/reviewer are the same, person
+g.V().choose(label()).
+  option('person', out('created').count()).
+  option('person', out('reviewed').count())

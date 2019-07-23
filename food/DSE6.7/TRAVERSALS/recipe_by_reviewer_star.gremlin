@@ -1,0 +1,6 @@
+g.V().hasLabel('person').as('person','rating').
+   out().as('recipe').
+   select('person','rating','recipe').
+      by('name').
+      by(outE('reviewed').values('stars')).
+      by(values('name'))

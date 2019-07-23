@@ -1,0 +1,4 @@
+g.V().hasLabel('person').as('person','starCount').
+  select('person','starCount').
+    by('name').
+    by(outE('reviewed').values('stars').mean())

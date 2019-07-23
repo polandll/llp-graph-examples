@@ -1,0 +1,4 @@
+g.V().match(
+  __.as('a').hasLabel('ingredient'),
+  __.as('a').in('includes').has('name','Beef Bourguignon')).
+select('a').by('name')

@@ -1,0 +1,1 @@
+g.V().hasLabel('book').group().by('year').by('name')

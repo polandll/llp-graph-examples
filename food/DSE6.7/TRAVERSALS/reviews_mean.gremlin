@@ -1,0 +1,1 @@
+g.E().hasLabel('reviewed').values('stars').mean()

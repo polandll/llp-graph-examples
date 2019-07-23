@@ -1,0 +1,1 @@
+g.V().has('book', 'publish_year', inside(1960, 1970)).valueMap()

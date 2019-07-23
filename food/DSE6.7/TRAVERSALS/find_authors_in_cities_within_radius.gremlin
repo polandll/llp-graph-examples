@@ -1,0 +1,8 @@
+// Order by name, not by distance from location point given
+g.V().has('place', 'location', Geo.inside(Geo.point(74.0,40.5),50,Geo.Unit.DEGREES)).
+order().by('name').
+as('Location').
+in().as('Author').
+select('Location','Author').
+by('name').
+by('name')

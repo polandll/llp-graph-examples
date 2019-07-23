@@ -1,0 +1,5 @@
+g.V().hasLabel('person').as('person').
+  local(out().properties('year').as('year').limit(2)).
+  select('person','year').
+    by('name').
+    by()

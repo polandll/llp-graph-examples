@@ -1,0 +1,6 @@
+ g.V().hasLabel('person').as('person','starCount').
+   select('person','starCount').
+      by('name').
+      by(coalesce(outE('reviewed').values('stars'),constant(0)).mean()).
+   order().
+      by(select('starCount'), decr)

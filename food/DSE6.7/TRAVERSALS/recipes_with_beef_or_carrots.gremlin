@@ -1,0 +1,4 @@
+g.V().hasLabel('recipe').
+   out().has('name',within('beef','carrots')).
+   in().hasLabel('recipe').
+   values('name')
