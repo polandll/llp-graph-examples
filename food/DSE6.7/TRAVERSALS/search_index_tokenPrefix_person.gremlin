@@ -1,0 +1,5 @@
+:remote config alias g food.g
+
+// This was a traversal that is analyzed with indexFor in DS Graph
+
+g.V().hasLabel('person').has('name', Search.tokenRegex('.*uli.*')).valueMap()
