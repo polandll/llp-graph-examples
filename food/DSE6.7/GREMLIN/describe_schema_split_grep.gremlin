@@ -1,0 +1,4 @@
+// This is used in QuickStart
+// NEED TO CHECK IF STILL NEEDED, AND FOR WHICH VERSIONS
+
+schema.describe().split('\n').grep(~/.*vertexLabel.*/)

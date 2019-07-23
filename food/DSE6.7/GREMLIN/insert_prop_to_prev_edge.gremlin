@@ -1,0 +1,4 @@
+g.V().has('person','name','Julia CHILD')
+    .outE('created')
+    .has('create_date', '1956-01-10')
+    .property('create_date', '1956-09-09')

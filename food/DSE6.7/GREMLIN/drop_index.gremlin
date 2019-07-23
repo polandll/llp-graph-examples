@@ -1,0 +1,1 @@
+schema.vertexLabel('meal').index('byMeal').drop()

@@ -1,0 +1,1 @@
+schema.vertexLabel('author').index('search').search().properties('nick_name').drop()

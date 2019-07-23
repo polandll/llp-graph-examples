@@ -1,0 +1,1 @@
+schema.propertyKey('point').Point().withGeoBounds().create()

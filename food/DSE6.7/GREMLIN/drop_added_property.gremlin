@@ -1,0 +1,4 @@
+// Used in QuickStart
+
+schema.propertyKey('nonsenseToDrop').drop()
+schema.describe().split('\n').grep(~/.*nonsenseToDrop.*/)

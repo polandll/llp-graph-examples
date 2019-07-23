@@ -1,0 +1,1 @@
+schema.propertyKey('book_discount').Text().ttl(604800).create()

@@ -1,0 +1,1 @@
+schema.propertyKey('line').Linestring().withGeoBounds().create()

@@ -1,0 +1,2 @@
+jamieOliver = g.V().has('person', 'name', 'Jamie OLIVER').next()
+jamieOliver.property('gender', 'M').property('nick_name', 'jimmy')
