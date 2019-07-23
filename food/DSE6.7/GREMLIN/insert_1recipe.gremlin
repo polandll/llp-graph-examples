@@ -1,5 +1,3 @@
-:remote config alias g food.g 
-
 g.addV('recipe').
   property('recipe_id',3001).
   property('name',"Beef Bourguignon").

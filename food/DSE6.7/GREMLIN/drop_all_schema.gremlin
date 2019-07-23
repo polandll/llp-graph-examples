@@ -1,4 +1,2 @@
-:remote config alias g food.g
-
 // To drop all schema with Gremlin
 schema.drop()

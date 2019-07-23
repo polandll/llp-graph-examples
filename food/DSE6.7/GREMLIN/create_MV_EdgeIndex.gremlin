@@ -1,5 +1,3 @@
-:remote config alias g food.g 
-
 // Create MV edge index
 
 schema.vertexLabel('person').

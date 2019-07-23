@@ -1,4 +1,3 @@
-:remote config alias g food.g
 // meal to recipe edges
 // The is a shortcut to add the data without an index, but to make queries on these edges, and index will be required.
 

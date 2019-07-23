@@ -1,5 +1,3 @@
-:remote config alias g food.g
-
 // Add three book vertices and display using Gremlin
 
 g.addV('book').

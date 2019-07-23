@@ -1,5 +1,3 @@
-:remote config alias g food.g
-
 /*// meal to book edges
 
 g.V().has('meal', 'meal_id', 4007).as('a').

@@ -1,5 +1,3 @@
-:remote config alias g food.g
-
 // INSERT two EDGEs between a person and a book using Gremlin
 // Again, note the use of the Traversal API
 

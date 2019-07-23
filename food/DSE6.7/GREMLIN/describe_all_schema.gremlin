@@ -1,5 +1,3 @@
-:remote config alias g food.g
-
 // Describe all the schema using Gremlin
 
 schema.describe()
