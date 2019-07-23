@@ -1,0 +1,4 @@
+g.V().hasLabel('author').has('name', fuzzy('James Beard', 0)).values('name')
+g.V().hasLabel('author').has('name', fuzzy('James Beard', 1)).values('name')
+g.V().hasLabel('author').has('name', fuzzy('Jmase Beard', 2)).values('name')
+

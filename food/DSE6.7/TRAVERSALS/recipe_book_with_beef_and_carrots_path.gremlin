@@ -1,0 +1,9 @@
+// Used in Query anatomy
+
+g.V().hasLabel('ingredient').has('name',within('beef','carrots')).
+   in().as('Recipe').
+   out().hasLabel('book').as('Book').
+   select('Book','Recipe').
+      by('name').
+      by('name').
+   path()

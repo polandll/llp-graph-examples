@@ -1,0 +1,3 @@
+schema.vertexLabel('person').index('search').search().
+            by('name').asString().
+            by('nick_name').ifNotExists().add()

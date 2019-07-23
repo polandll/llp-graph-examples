@@ -1,0 +1,1 @@
+g.V().hasId(['~label':'fridgeSensor', 'state_id':31, 'city_id':100, 'sensor_id':1]).valueMap()

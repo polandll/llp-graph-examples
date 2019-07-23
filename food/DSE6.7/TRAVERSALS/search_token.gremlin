@@ -1,0 +1,1 @@
+g.V().has('recipe','instructions', token('Saute')).values('name')

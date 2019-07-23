@@ -1,0 +1,4 @@
+// This is not a good query to run on a large graph
+// Used in Graph QuickStart
+
+g.E().hasLabel('authored')

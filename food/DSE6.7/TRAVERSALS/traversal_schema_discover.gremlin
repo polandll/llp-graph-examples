@@ -1,0 +1,3 @@
+// Used in Discovering properties
+
+schema.traversal().V().valueMap()

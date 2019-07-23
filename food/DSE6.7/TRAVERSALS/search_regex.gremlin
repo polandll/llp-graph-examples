@@ -1,0 +1,1 @@
+g.V().hasLabel('recipe').has('name', regex('.*ee.*')).values('name')

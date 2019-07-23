@@ -1,0 +1,2 @@
+Distance d = Geo.point(-110,30),20, Geo.Unit.DEGREES)
+g.V().hasLabel('FridgeSensor').has('location', Geo.inside(d)).values('name')

@@ -1,0 +1,3 @@
+// Used in Discovering properties
+
+graph.schema().traversal().V().valueMap(true)

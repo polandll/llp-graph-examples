@@ -1,0 +1,1 @@
+g.V().hasLabel('recipe').has('name', tokenFuzzy('Wlid',1)).values('name')

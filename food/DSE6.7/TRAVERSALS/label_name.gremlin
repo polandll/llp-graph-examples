@@ -1,0 +1,4 @@
+// This is not a particularly good query to run, esp. on a large graph
+// Used in Graph QuickStart
+
+g.V().values('name')

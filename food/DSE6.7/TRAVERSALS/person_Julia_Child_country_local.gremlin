@@ -1,0 +1,7 @@
+g.V().has('person', 'name','Julia CHILD').as('person').
+   local(properties('country').
+      has('start_year', 1961)).value().as('country').
+   select('person','country').
+      by('name').
+      by().
+   profile()

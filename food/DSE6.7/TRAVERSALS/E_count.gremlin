@@ -1,0 +1,4 @@
+// This is not a good query to run in OLTP on a large graph, better done in OLAP
+// Used in Graph QuickStart
+
+g.E().count()

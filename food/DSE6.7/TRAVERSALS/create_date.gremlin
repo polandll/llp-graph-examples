@@ -1,0 +1,3 @@
+// Used in Indexing
+
+g.V().has('person', 'name', 'Julia Child').outE('created').has('create_date', gt(1960-01-01)) 
