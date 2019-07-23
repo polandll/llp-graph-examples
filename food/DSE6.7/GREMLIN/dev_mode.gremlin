@@ -1,7 +1,11 @@
 :remote config alias g food.g
 
 // dev mode is for development exploration
+// full scans are also set to true
 
 schema.config().
   option("graph.schema_mode").
   set("Development")
+schema.config().
+  option('graph.allow_scan').
+  set('true')
