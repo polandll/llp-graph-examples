@@ -1,3 +1,5 @@
+// GET BOOK TITLES FOR PARTICULAR PERSON
+// Use out() which gets next vertex
 // Used in Graph QuickStart
 
-g.V().has('name','Julia Child').out('authored').values('name')
+g.V().has('name','Julia CHILD').out('authored').values('name')

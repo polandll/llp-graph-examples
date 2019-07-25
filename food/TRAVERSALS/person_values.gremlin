@@ -1,0 +1,5 @@
+// SHOW USE OF VALUES FOR ONE PROPERTY
+// limit is used to get just one value back
+// BAD TO DO FOR LARGE GRAPHS WITHOUT LIMIT
+
+g.V().hasLabel('person').values('name').limit(1)

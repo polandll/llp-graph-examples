@@ -1,0 +1,4 @@
+// LOAD A SCRIPT TO ADD MORE VERTICES AND EDGES
+
+:load '/tmp/generateRecipe.groovy'
+

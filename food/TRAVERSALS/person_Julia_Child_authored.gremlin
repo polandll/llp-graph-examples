@@ -1,3 +1,4 @@
+// GET EDGES FROM PARTICULAR PERSON VERTEX
 // Used in Graph QuickStart
 
-g.V().has('name','Julia Child').outE('authored')
+g.V().has('name','Julia CHILD').outE('authored')

@@ -1,3 +1,4 @@
+// GET BOOK TITLES FOR PARTICULAR AUTHOR WITH A PUBLISH DATE GREATER THAN 1967
 // Used in Graph QuickStart
 
-g.V().has('name','Julia Child').out('authored').has('publish_year', gt(1967)).values('name')
+g.V().has('name','Julia CHILD').out('authored').has('publish_year', gt(1967)).values('name')

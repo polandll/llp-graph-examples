@@ -1,3 +1,5 @@
+// GET BOOK TITLES FOR ALL PERSONS
+// Note duplication for multiple authors
 // Used in Graph QuickStart
 
 g.V().outE('authored').inV().values('name')

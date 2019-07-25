@@ -4,7 +4,7 @@
 
 g.V().hasLabel('person').has('name', Search.regex('Julia')).valueMap()
 g.V().hasLabel('person').has('name', Search.regex('julia')).valueMap()
-g.V().hasLabel('person').has('name', Search.regex('Julia Child')).valueMap()
+g.V().hasLabel('person').has('name', Search.regex('Julia CHILD')).valueMap()
 g.V().hasLabel('person').has('name', Search.regex('julia child')).valueMap()
 g.V().hasLabel('person').has('name', Search.regex('.*uli.*')).valueMap()
 

@@ -1,0 +1,3 @@
+// BAD TO DO FOR LARGE GRAPHS in OLTP, unless the query is narrowed with a has() statement
+
+g.V().valueMap()

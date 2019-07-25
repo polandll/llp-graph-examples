@@ -1,3 +1,5 @@
+// GET BOOK TITLES FOR PARTICULAR PERSON
+// Uses outE() and inV() which is overkill - edge information is not needed, just passed through
 // Used in Graph QuickStart
 
-g.V().has('name','Julia Child').outE('authored').inV().values('name')
+g.V().has('name','Julia CHILD').outE('authored').inV().values('name')

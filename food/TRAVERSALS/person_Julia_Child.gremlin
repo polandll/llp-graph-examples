@@ -1,3 +1,4 @@
+// GET VERTEX FOR PARTICULAR PERSON
 // Used in Graph QuickStart
 
-g.V().has('person', 'name', 'Julia Child')
+g.V().has('person', 'name', 'Julia CHILD')
