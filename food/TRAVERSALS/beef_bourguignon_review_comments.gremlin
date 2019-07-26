@@ -1,0 +1,5 @@
+// What did reviewers say about Beef Bourguignon?
+
+g.V().has('recipe', 'name', 'Beef Bourguignon').
+   inE('reviewed').
+   values('comment')

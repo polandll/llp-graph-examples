@@ -1,3 +1,5 @@
+// For each recipe reviewed, get the number of reviews and the mean star rating for the recipe
+
 g.V().hasLabel('recipe').as('recipe','numberOfReviews','meanRating').
    select('recipe','numberOfReviews','meanRating').
      by('name').

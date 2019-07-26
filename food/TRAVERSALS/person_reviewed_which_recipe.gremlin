@@ -1,1 +1,3 @@
+// Which recipes did John Doe review?
+
 g.V().has('person', 'name','John DOE').outE('reviewed').inV().values('name')

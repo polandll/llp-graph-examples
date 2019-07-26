@@ -1,1 +1,3 @@
+// GET THE VALUEMAP FOR EACH EDGE THAT HAS MORE THAN 3 STARS AND A RATED DATE GREATER THAN JAN 1, 2015
+
 g.E().hasLabel('reviewed').has('stars',gte(4)).has('create_date', gte(Instant.parse('2015-01-01T00:00:00.00Z'))).valueMap()

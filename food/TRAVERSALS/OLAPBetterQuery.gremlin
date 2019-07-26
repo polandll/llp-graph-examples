@@ -1,0 +1,7 @@
+// Better OLAP query
+// Note that the in() specifies the edgeLabel so that the number of
+// initial items checked it less
+//Used in OLAP vs OLTP
+
+g.V().in('created').has('person', 'name','Julia CHILD').count()
+g.V().in('created').has('person', 'name','Julia CHILD').count().profile()

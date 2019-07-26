@@ -1,0 +1,6 @@
+// OLTP query
+// NEED TO INDEX AUTHOR IN ORDER TO MAKE THIS OLTP - IT IS NOT CURRENTLY INDEXED
+// Used in OLAP vs OLTP
+
+g.V().has('person', 'name', 'Julia CHILD').outE('created').count()
+g.V().has('person','name','Julia CHILD').outE('created').count().profile()

@@ -1,0 +1,4 @@
+// Which cookbooks were published in 1968?
+// OLTP
+
+g.V().has('book', 'publish_year',1968).values('name')

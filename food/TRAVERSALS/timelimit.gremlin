@@ -1,0 +1,6 @@
+// TimeLimit of 2 ms for the traversal
+
+g.V().has('recipe', 'name', 'Beef Bourguignon').
+   inE('reviewed').
+   values('comment').
+   timeLimit(2)

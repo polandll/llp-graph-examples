@@ -1,0 +1,5 @@
+// OLAP query
+// Used in OLAP vs OLTP
+
+g.V().hasLabel('recipe').in().has('person', 'name','Julia CHILD').count()
+g.V().hasLabel('recipe').in().has('person', 'name','Julia CHILD').count().profile()

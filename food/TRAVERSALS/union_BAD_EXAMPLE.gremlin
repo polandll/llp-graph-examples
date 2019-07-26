@@ -1,0 +1,8 @@
+// THIS EXAMPLE USES UNION, BUT THIS IS A BAD EXAMPLE OF USING union()
+//union() is slower and has no explicit order
+
+g.V().out('includes').
+   union(has('name','beef'),has('name','carrots')).
+   in('includes').
+   out('includedIn').
+   values('name')

@@ -1,3 +1,4 @@
+// FOR EACH VERTEX LABEL, GET THE NUMBER OF VERTICES
 // Used in Graph QuickStart
 
 g.V().label().groupCount()

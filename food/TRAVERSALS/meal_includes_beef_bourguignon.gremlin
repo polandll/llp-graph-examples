@@ -1,0 +1,6 @@
+// Which meals list Beef Bourguignon as an item?
+// NEEDS TESTING - OLD QUERY
+
+g.V().hasLabel('recipe', 'name','Beef Bourguignon').
+   in('includedIn').
+   values('name')

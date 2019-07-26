@@ -1,1 +1,3 @@
-g.E().hasLabel('reivewed').has('stars', gt(3)).inV().values('name')
+// Get the recipes that have a review higher than 3 stars
+
+g.E().hasLabel('reviewed').has('stars', gt(3)).inV().values('name')

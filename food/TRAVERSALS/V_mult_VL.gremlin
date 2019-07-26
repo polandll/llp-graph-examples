@@ -1,0 +1,3 @@
+// Using multiple vertex labels in a search
+
+g.V().hasLabel('person', 'recipe').valueMap()

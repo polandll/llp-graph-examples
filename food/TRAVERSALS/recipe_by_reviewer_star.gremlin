@@ -1,3 +1,5 @@
+// What star rating did a reviewer give a recipe?
+
 g.V().hasLabel('person').as('person','rating').
    out().as('recipe').
    select('person','rating','recipe').

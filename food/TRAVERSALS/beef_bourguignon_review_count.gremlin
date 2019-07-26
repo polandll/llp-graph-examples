@@ -1,0 +1,5 @@
+// How many reviewers have reviewed Beef Bourguignon?
+
+g.V().has('recipe', 'name','Beef Bourguignon').
+   in('reviewed').
+   count()

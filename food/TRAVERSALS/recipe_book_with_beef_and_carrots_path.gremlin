@@ -1,3 +1,5 @@
+// WHAT IS THE PATH TRAVERSAL OF THE GIVEN TRAVERSAL?
+// INGREDIENT -> RECIPE -> BOOK
 // Used in Query anatomy
 
 g.V().hasLabel('ingredient').has('name',within('beef','carrots')).

@@ -1,1 +1,4 @@
+// Return the names of the vertices 2 outgoing steps from the vertex named "Julia CHILD".
+// This will likely include cookbooks, meals, reviewers, and ingredients
+
 g.V().has('name','Julia CHILD').repeat(out()).times(2).valueMap()

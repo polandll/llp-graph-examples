@@ -1,0 +1,13 @@
+// How many books has each author written?
+
+g.V().hasLabel('person').as('a','b').
+   select('a','b').
+      by('name').
+      by(outE('authored').count())
+
+// How many books has each author written? (uses more descriptive labels for display)
+
+ g.V().hasLabel('person').as('author','wrote').
+   select('author','wrote').
+      by('name').
+      by(outE('authored').count())

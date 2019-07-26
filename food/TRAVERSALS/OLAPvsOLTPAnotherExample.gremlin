@@ -1,0 +1,8 @@
+//ANOTHER EXAMPLE
+// Used in OLAP vs OLTP
+//OLAP query
+g.V().out('includes').has('name','beef').in('includes').values('name')
+g.V().out('includes').has('name','beef').in('includes').values('name').profile()
+//OLTP query
+g.V().has('ingredient', 'name', 'beef').in('includes').values('name')
+g.V().has('ingredient', 'name', 'beef').in('includes').values('name').profile()

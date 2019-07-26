@@ -1,0 +1,6 @@
+// Which meals have a calorie count of 900 calories or less?
+
+g.V().has('meal', 'calories', lte(900)).values('name')
+
+// limit to 10
+g.V().has('meal', 'calories', lte(900)).values('name').limit(10)

@@ -1,1 +1,3 @@
+// Get the valueMap for each edge that has more than 3 stars
+
 g.E().hasLabel('reviewed').has('stars', gt(3)).valueMap()

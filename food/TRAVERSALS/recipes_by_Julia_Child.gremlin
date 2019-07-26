@@ -1,0 +1,3 @@
+// How many recipes has Julia Child written?
+
+g.V().hasLabel('recipe').in().has('name','Julia CHILD').count()

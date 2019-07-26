@@ -1,0 +1,133 @@
+// For each movie, emit a map of its name and average rating. Sort maps in decr. order by avg rating. Top 10 only
+g.V().hasLabel('movie').as('a','b').
+ select('a','b').
+    by('name').
+    by(inE('rated').values('stars').mean()).
+  order().by(select('b'), decr).
+  limit(10)
+
+  actually needs to be this to fix empty stars value:
+
+ g.V().hasLabel('movie').as('a','b').
+  select('a','b').
+    by('name').
+    by(coalesce(
+      inE('rated').values('stars'), constant()).mean()).
+  order().by(select('b'), decr).
+  limit(10)
+
+  // For each movie with at least 11 ratings emit a map of its name and avg rating. sort maps in decr order by avg rating. Top 10 only
+  g.V().hasLabel('movie').as('a','b').
+    where(inE('rated').count().is(gt(10))).
+    select('a','b').
+      by('name').
+      by(inE('rated').values('stars').mean()).
+    order().by(select('b'), decr).
+    limit(10)
+
+ // Which programmers like Die Hard and what other movies do they like? Group and count the movies by their name.
+    // Sort group count map in decr order by count. Clip map to top 10 and stream out map's entries
+
+  g.V().has('movie','name','Die Hard').as('a').
+    inE('rated').has('stars',5).outV().
+      where(out('occupation').has('name','programmer')).
+    outE('rated').has('stars',5).inV().
+      where(neq('a')).
+    groupCount().by('name').
+      order(local).by(valueDecr).
+      limit(local,10).
+      unfold()   // this puts each movie on its own line
+
+//--------- PROBLEMS ---------------
+
+// What reviewers rated Beef Bourguignon in the last 15 days?
+//*******************
+//*******************
+// ************************* SEE DANIEL'S COMMENTS ******
+// https://gist.github.com/dkuppitz/505fe9a6c79f6edf20ae
+// NOT SURE HOW TO DO "last 15 days" -- now()-15 is a placeholder
+// Don't need to include "hasLabel('recipe')" because reviewers only have edges to recipes
+g.V().hasLabel('reviewer').outE().has('reviewDate',lt(now()-15)).outV().has('recipeTitle','Beef Bourguignon')
+
+// Which reviewers who rated Beef Bourguignon with 5 stars rated other recipes?
+// NEED HELP WITH THIS ONE -- probably another type of TRAVERSAL
+//********************
+//********************
+
+// HERE IS SOMETHING TO CHEW ON
+//********************
+//********************
+// What other recipes did reviewers who rated Beef Bourguignon with 5 stars also rate with 5 stars?
+// Group and count the recipes by their name.
+g.V().has('recipe', 'name', 'Beef Bourguignon').as('a').
+  inE('rated').has('stars',5).outV().outE('rated').has('stars',5).
+  inV().where(neq('a')).groupCount().by('name')
+==>[Carrot Soup:1]
+
+//VARIANT
+// Sort group count map in decreasing order by count. Clip map to top 10 and stream out map's entries.
+g.V().has('recipe', 'name', 'Beef Bourguignon').as('a').
+  inE('rated').has('stars',gte(3)).outV().outE('rated').has('stars',gte(3)).
+  inV().where(neq('a')).groupCount().by('name').order(local).by(valueDecr).
+  limit(local,10).unfold()
+==>Spicy Meatloaf=2
+==>Carrot Soup=1
+
+
+// Which reviewers who rated Beef Bourguignon have also rated other recipes, and what are the recipes?
+//********************
+//********************
+// HOW DO I GET THE NAMES TO PRINT???
+g.V().has('recipe', 'name', 'Beef Bourguignon').
+        in().hasLabel('reviewer').as('a').
+        out().values('name').as('b').
+        select('a','b')
+==>[a:v[{member_id=0, community_id=278744, ~label=reviewer, group_id=1}], b:Carrot Soup]
+==>[a:v[{member_id=0, community_id=278744, ~label=reviewer, group_id=1}], b:Beef Bourguignon]
+==>[a:v[{member_id=0, community_id=278744, ~label=reviewer, group_id=58}], b:Beef Bourguignon]
+==>[a:v[{member_id=0, community_id=278744, ~label=reviewer, group_id=58}], b:Spicy Meatloaf]
+==>[a:v[{member_id=0, community_id=278744, ~label=reviewer, group_id=59}], b:Beef Bourguignon]
+==>[a:v[{member_id=0, community_id=278744, ~label=reviewer, group_id=60}], b:Beef Bourguignon]
+==>[a:v[{member_id=0, community_id=278744, ~label=reviewer, group_id=60}], b:Spicy Meatloaf]
+
+// --------------
+
+----------------------------------------------------------
+/* MUTATING TRAVERSAL:                                  */
+/* mutates the graph                                    */
+----------------------------------------------------------
+
+// adds an inverse edge isAuthoredBy for every authored edge
+g.V().as('a').out('authored').addE('isAuthoredBy').to('a')
+// removes the original created edge
+g.V().outE('authored').drop()
+// These two actions can be done in a single query:
+// g.V().as('a').outE('authored').sideEffect(inV().addE('isAuthoredBy').to('a')).drop()
+
+// ----------------
+
+----------------------------------------------------------
+/* DOMAIN SPECIFIC TRAVERSAL:                           */
+/* creating traversals using domain-specific language   */
+/* maps to Gremlin steps                                */
+----------------------------------------------------------
+
+//FOR RECIPE TOY GRAPH
+g.people().named("marko").
+ who().know(well).people().
+ who().created("software").
+ are().named()
+
+Each one of these steps would be the composite or 1 or more
+Gremlin steps.
+
+g.people()          → g.V().hasLabel('person')
+named('marko')      → has('name','marko')
+who()               → identity()
+know(well)          → outE("knows").
+                      has("weight",gt(0.75)).
+                      inV()
+created("software") → out("created").
+                      hasLabel("software")
+are()               → identity()
+named()             → values("name")

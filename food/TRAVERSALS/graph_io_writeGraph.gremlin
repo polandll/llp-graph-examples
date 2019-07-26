@@ -1,0 +1,4 @@
+// WRITE THE DATA TO A GRYO FILE
+// Used in Graph QuickStart
+
+graph.io(gryo()).writeGraph("/tmp/recipe.gryo")
