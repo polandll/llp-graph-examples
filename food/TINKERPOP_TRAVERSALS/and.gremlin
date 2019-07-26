@@ -1,0 +1,6 @@
+/ BAD
+//g.V().hasLabel('person').where(outE('created').and().outE('authored')).values('name')
+// GOOD
+g.V().hasLabel('person').
+   and(outE('created'), outE('authored')).
+   values('name')

@@ -1,0 +1,15 @@
+// aggregate()
+// sideEffect
+//g.V().hasLabel('person')
+//g.V().has('person', 'name', 'John Doe').out('knows')
+//g.V().has('person', 'name', 'John Doe').out('knows').aggregate('x')
+//g.V().has('person', 'name', 'John Doe').out('knows').aggregate('x').out('knows') 
+//g.V().has('person', 'name', 'John Doe').out('knows').aggregate('x').in('knows').out('knows').valueMap('name', 'gender')
+
+// Find friends of John Doe's friends that are not friends of John Doe
+
+g.V().has('person', 'name', 'John Doe').
+   out('knows').
+   aggregate('x').
+   in('knows').out('knows').
+   where(without('x'))

@@ -1,0 +1,5 @@
+// general step
+// alternate: g.V().hasLabel('book').filter(has('publish_year', lt(1969)))
+
+g.V().hasLabel('book').
+   filter(__.in('includedIn').hasLabel('recipe'))

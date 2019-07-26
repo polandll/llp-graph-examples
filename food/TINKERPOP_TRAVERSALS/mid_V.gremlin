@@ -1,0 +1,11 @@
+// graph step V()
+// including mid-traversal
+// create a new user
+//g.addV('person').property('personId', 26).property('name','Jim Walsh').property('gender', 'M')
+
+// use a mid-traversal V() step to create a new edge between two people
+
+g.V().has('person', 'name', 'Jim WALSH').as('jim').
+    V().has('person', 'name', 'Sharon SMITH').as('sharon').
+    addE('knows').from('jim').to('sharon').
+      property('since', 1980)

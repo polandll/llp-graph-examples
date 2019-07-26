@@ -1,0 +1,4 @@
+g.V().hasLabel('person').
+   out('knows').
+   values('name').
+   fold()

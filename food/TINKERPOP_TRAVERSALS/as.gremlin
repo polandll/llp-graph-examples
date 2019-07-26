@@ -1,0 +1,4 @@
+g.V().hasLabel('person').as('PERSON').
+  out('created').as('RECIPE').
+  select('PERSON','RECIPE').
+    by('name')

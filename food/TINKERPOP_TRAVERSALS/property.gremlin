@@ -1,0 +1,12 @@
+g.addV('person').
+   property('person_id', 17).
+   property('name','Jamie OLIVER').
+   next()
+g.V().has('person', 'name', 'Jamie OLIVER').
+   property('gender', 'M').
+   property('nickname', 'jimmy')
+
+// user-supplied property ID
+
+g.addV("person").
+   property("withSuppliedId", "propValue", T.id, UUID.fromString("341f9950-997c-11e7-9579-7f50358d3f8d"))

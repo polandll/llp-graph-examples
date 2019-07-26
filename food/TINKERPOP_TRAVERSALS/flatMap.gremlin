@@ -1,0 +1,6 @@
+// general step
+// DUMB EXAMPLE:
+//g.V().hasLabel('location').flatMap(groupCount().by('geoPoint'))
+// BETTER EXAMPLE
+g.V().hasLabel('book').
+   flatMap(__.in('includedIn').hasLabel('recipe').limit(3))

@@ -1,0 +1,5 @@
+g.V().has('person','name','Julia Child').as('a').
+   out('created').as('b').
+   in('created').as('c').
+   cyclicPath().
+   path()

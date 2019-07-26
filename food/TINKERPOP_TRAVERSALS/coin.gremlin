@@ -1,0 +1,4 @@
+// Get a random coin toss with the stated odds (like "here are the ingredients you must use")
+// g.V().hasLabel('ingredient').coin(0)
+g.V().hasLabel('ingredient').coin(0.1)
+//g.V().hasLabel('ingredient').coin(1.0)

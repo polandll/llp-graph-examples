@@ -1,0 +1,12 @@
+// DUMB EXAMPLE
+g.V().hasLabel('person').out().barrier(2).out()
+// BETTER EXAMPLE
+g.V().has('book','book_id',1004).
+  in('includedIn').
+  in('includedIn').
+  groupCount('x').
+    by('name').
+  barrier().
+  project('a','b').
+    by('name').
+    by(select('x'))

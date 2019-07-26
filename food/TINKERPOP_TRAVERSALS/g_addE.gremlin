@@ -1,0 +1,10 @@
+// FIX
+
+johnDoe = g.V().has('name','John DOE').next()
+stephenSmith = g.V().has('name','Stephen SMITH').next()
+g.V(stephenSmith).addE('knows').to(johnDoe)
+
+// user-supplied edge ID
+g.V().has("person_id",2 ).as("from")
+  .V().has("person_id", 1)
+  .addE("knows").property(T.id, UUID.fromString("341f9950-997c-11e7-9579-7f50358d3f8d")).from("from")

@@ -1,0 +1,4 @@
+g.addV('person').
+   property('person_id', UUID.fromString('a010c28b-8181-41b5-b539-07013a48c152').
+   property('name','Stephen SMITH').
+   property('gender', 'M')

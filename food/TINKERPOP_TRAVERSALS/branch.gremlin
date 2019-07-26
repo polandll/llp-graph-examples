@@ -1,0 +1,8 @@
+g.V().hasLabel('ingredient').as('ingredient').
+  branch(inE('contains').filter(outV().has('state_id',31).has('city_id',200)).count()).
+    option(0L, constant('unavailable')).
+    option(1L, constant('time to reorder')).
+    option(none, constant('available')).as('status').
+  select('ingredient','status').
+    by('name').
+    by()

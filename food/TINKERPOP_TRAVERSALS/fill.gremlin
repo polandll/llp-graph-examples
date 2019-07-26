@@ -1,0 +1,2 @@
+results = []
+g.V().out('authored').fill(results)

@@ -1,0 +1,5 @@
+g.V().hasLabel('recipe').as('recipe','numberOfReviews','meanRating').
+  select('recipe','numberOfReviews','meanRating').
+    by('name').
+    by(inE('reviewed').count()).
+    by(inE('reviewed').values('stars').mean())

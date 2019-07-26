@@ -1,0 +1,4 @@
+// several examples 
+g.V().outE().drop() 
+g.V().properties('name').drop()
+g.V().drop()

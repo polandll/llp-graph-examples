@@ -1,0 +1,5 @@
+// Find all the ingredients used in Julia Child's recipes
+g.V().has('person','name','Julia CHILD').
+  out('created').
+  in('includedIn').dedup().
+  values('name')

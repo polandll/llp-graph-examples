@@ -1,0 +1,7 @@
+/ reused group() query
+g.V().not(hasLabel('fridgeSensor').
+      or().hasLabel('meal')).
+   group().
+      by(label).
+      by('name').
+   explain()

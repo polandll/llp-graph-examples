@@ -1,0 +1,8 @@
+g.V().hasLabel('store').as('store').
+  V().hasLabel('ingredient').as('ingredient').
+  choose(where(__.in('isStockedWith').as('store')),
+           constant('Y'), constant('N')).as('in stock').
+  select('store','ingredient','in stock').
+    by('name').
+    by('name').
+    by()
