@@ -1,6 +1,6 @@
 // This will drop the vertex label person but keep the underlying table 
 // and also remove the label from any associated edge tables.
 
-schema.vertexLabel('person')
-    .dropMetadata()
-
+schema.vertexLabel('person').
+   ifExists().
+   dropMetadata()

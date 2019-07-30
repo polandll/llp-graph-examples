@@ -1,5 +1,5 @@
 // Drop user-defined types (UDTs) with Gremlin
 
-schema.type('address').drop()
-schema.type('fullname').drop()
-schema.type('location_details').drop()
+schema.type('address').ifExists().drop()
+schema.type('fullname').ifExists().drop()
+schema.type('location_details').ifExists().drop()
