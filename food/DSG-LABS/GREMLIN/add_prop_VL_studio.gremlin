@@ -1,0 +1,6 @@
+// Add two properties that have to do with fitness tracking
+
+schema.vertexLabel('person').
+  addProperty('cal_goal', Int).
+  addProperty('macro_goal', listOf(Int)).
+  alter()
