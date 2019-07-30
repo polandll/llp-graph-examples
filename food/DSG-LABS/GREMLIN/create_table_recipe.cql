@@ -8,6 +8,13 @@ WITH REPLICATION = {
 
 USE food;
 
+CREATE KEYSPACE IF NOT EXISTS food
+WITH REPLICATION = {
+   'class' : 'SimpleStrategy',
+   'replication_factor' : 1 };
+
+USE food;
+
 CREATE TABLE food.recipe_table (
    recipe_id int,
    name text,
