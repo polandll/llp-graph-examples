@@ -1,0 +1,1 @@
+DESCRIBE KEYSPACE food_cql;
