@@ -1,6 +1,6 @@
-USE food_cql;
+USE food_cql_conversion;
 
-CREATE TABLE IF NOT EXISTS food_cql.book ( 
+CREATE TABLE IF NOT EXISTS food_cql_conversion.book ( 
    book_id int, 
    name text,
    authors list<frozen<fullname>>,
@@ -8,4 +8,4 @@ CREATE TABLE IF NOT EXISTS food_cql.book (
    isbn text,
    category set<text>,
    PRIMARY KEY (name, book_id)
-) WITH CLUSTERING ORDER BY (book_id ASC) AND VERTEX LABEL;
+) WITH CLUSTERING ORDER BY (book_id ASC);

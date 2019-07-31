@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS food_cql.person ( 
+CREATE TABLE IF NOT EXISTS food_cql_conversion.person ( 
    person_id UUID, 
    name text, 
    gender text,
@@ -7,4 +7,4 @@ CREATE TABLE IF NOT EXISTS food_cql.person (
    macro_goal list<int>,
    badge map<text, int>,
    PRIMARY KEY (name, person_id)
-) WITH CLUSTERING ORDER BY (person_id ASC) AND VERTEX LABEL;
+) WITH CLUSTERING ORDER BY (person_id ASC);

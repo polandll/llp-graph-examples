@@ -1,4 +1,8 @@
-INSERT INTO food.book (name,id,authors,publishYear,isbn,category) VALUES (
+USE food_cql_conversion;
+
+// Insert book data using CQL:
+
+INSERT INTO food_cql_conversion.book (name,book_id,authors,publish_year,isbn,category) VALUES (
   'The French Chef Cookbook',
   1003,
   [{lastname:'CHILD',firstname:'Julia'}],
@@ -7,7 +11,7 @@ INSERT INTO food.book (name,id,authors,publishYear,isbn,category) VALUES (
   {'French'}
 );
 
-INSERT INTO food.book (name,id,authors,publishYear,isbn,category) VALUES (
+INSERT INTO food_cql_conversion.book (name,book_id,authors,publish_year,isbn,category) VALUES (
   $$Simca's Cuisine: 100 Classic French Recipes for Every Occasion$$,
   1002,
   [{lastname:'BECK',firstname:'Simone'}],
