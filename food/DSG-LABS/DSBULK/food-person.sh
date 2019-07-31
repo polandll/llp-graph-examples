@@ -8,4 +8,4 @@
 
 repoDir="/home/automaton/graph-examples/food/DATA/CQL_CSV"
 
-dsbulk load -url $repoDir/person.csv -k food -t person -h localhost -header true
+dsbulk load --schema.keyspace food_cql --schema.table person -url $repoDir/person.csv -delim '|' -header true --schema.allowMissingFields true
