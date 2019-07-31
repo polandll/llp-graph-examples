@@ -1,10 +1,13 @@
-CREATE TABLE food_cql_conversion.person_authored_book (
-    person_name text,
+USE food_cql;
+
+// Create edge label table using CQL
+
+CREATE TABLE IF NOT EXISTS food_cql.person_authored_book (
     person_id UUID,
-    book_name text,
+    person_name text,
     book_id int,
-    PRIMARY KEY ((person_name, person_id), book_name, book_id)
-) WITH CLUSTERING ORDER BY (book_name ASC, book_id ASC)
-    AND EDGE LABEL authored 
-      FROM person(name, person_id) 
-      TO book(name, book_id);
+    book_name text,
+    PRIMARY KEY ( (person_name, person_id) , book_name, book_id)
+) WITH EDGE LABEL person_authored_book
+      FROM person(person_name, person_id)
+      TO book(book_name, book_id);

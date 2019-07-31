@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS food.person ( 
+CREATE TABLE IF NOT EXISTS food_cql.person ( 
    person_id UUID, 
    name text, 
    gender text,
