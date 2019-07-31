@@ -1,1 +1,3 @@
-dsbulk load -url /home/automaton/DATA/CQL_CSV/person.csv -k food -t person -h localhost -header true
+repoDir="/home/automaton/graph-examples/food/DATA/CQL_CSV
+
+dsbulk load -url $repoDir/person.csv -k food -t person -h localhost -header true
