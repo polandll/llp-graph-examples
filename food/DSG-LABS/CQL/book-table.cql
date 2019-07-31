@@ -1,8 +1,11 @@
-CREATE TABLE IF NOT EXISTS food.book ( 
-   bookid int, 
+USE food_cql;
+
+CREATE TABLE IF NOT EXISTS food_cql.book ( 
+   book_id int, 
    name text,
    authors list<frozen<fullname>>,
-   publishYear int,
+   publish_year int,
    isbn text,
    category set<text>,
-   PRIMARY KEY (name, bookid));
+   PRIMARY KEY (name, book_id)
+) WITH CLUSTERING ORDER BY (book_id ASC) AND VERTEX LABEL;

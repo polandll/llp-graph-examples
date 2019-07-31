@@ -1,9 +1,10 @@
 CREATE TABLE IF NOT EXISTS food.person ( 
-   personid UUID, 
-   lastname text, 
-   firstname text,
+   person_id UUID, 
+   name text, 
    gender text,
    nickname set<text>,
-   calgoal int,
-   macrogoal list<int>,
-   PRIMARY KEY (lastname, personid));
+   cal_goal int,
+   macro_goal list<int>,
+   badge map<text, int>,
+   PRIMARY KEY (name, person_id)
+) WITH CLUSTERING ORDER BY (person_id ASC) AND VERTEX LABEL;
