@@ -1,0 +1,3 @@
+// Examine the book vertex data for using Gremlin:
+
+g.V().hasLabel('book')
