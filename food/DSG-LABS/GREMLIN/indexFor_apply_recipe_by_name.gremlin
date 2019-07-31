@@ -1,0 +1,1 @@
+schema.indexFor(g.V().has('recipe','name','Beef Bourguignon').in()).apply()
