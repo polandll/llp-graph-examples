@@ -1,0 +1,1595 @@
+// Replace DC_NAME with the name of the cluster
+// My current cluster DC_NAME=SearchGraphAnalytics
+
+system.graph('food').
+  ifNotExists().
+//  withReplication not required for SimpleStrategy
+//  withReplication("{'class': 'NetworkTopologyStrategy', 'DC_NAME': 1}").
+// ADDRESS THE DURABLE WRITES THING!!! NOT RECOMMENDED
+// andDurableWrites(false).
+  create()
+// Note that the graph will have the same name as the existing keyspace name
+
+system.graph('food')
+   .fromExistingKeyspace()
+   .create()
+// Replace DC_NAME with cluster name
+
+system.graph('test').
+    replication("{'class' : 'NetworkTopologyStrategy', 'DC_NAME' : 1 }").
+    systemReplication("{'class' : 'NetworkTopologyStrategy', 'DC_NAME' : 1 }").
+    option('graph.schema_mode').
+    set('Production').
+    engine(Classic).
+    create()
+schema.vertexLabel('person')
+    .materializedView('person_by_gender')
+    .ifNotExists()
+    .create()
+// Add two properties that have to do with fitness tracking
+
+schema.vertexLabel('person').
+  addProperty('cal_goal', Int).
+  addProperty('macro_goal', listOf(Int)).
+  alter()
+// SIMPLE VERSION
+
+schema.edgeLabel('authored')
+    .addProperty('one', Int)
+    .addProperty('two', Int)
+    .alter()
+
+// EXPANDED VERSION
+// ****** CHANGE THIS
+schema.edgeLabel('authored')
+    .from('person')
+    .to('book')
+    .addProperty('one', Int)
+    .addProperty('two', Int)
+    .alter()
+schema.vertexLabel('person').
+    addProperty('one', Int).
+    addProperty('two', Int).
+    alter()
+// Convert an existing non-graph keyspace into a core engine graph
+
+system.graph("nongraph_ks").
+    fromExistingKeyspace().
+    create()
+// ********
+// EDGE LABELS
+// ********
+// SYNTAX:
+//schema.edgeLabel('edgeLabel')
+//    	[ .ifNotExists() ]
+//	.from('vertexLabel').to('vertexLabel')
+// 	[ .property(propertyName, propertyType) ]
+//    	[ .create() | .describe() | .addProperty(propertyName, propertyType).alter() ]
+// ********
+
+// NEED TO ADD DSP-18625
+//  .tableName('createdTable')
+
+
+// person_authored_book
+schema.edgeLabel('authored').
+  ifNotExists().
+  from('person').to('book').
+  create()
+
+// person_ate_meal
+schema.edgeLabel('ate').
+  ifNotExists().
+  from('person').to('meal').
+  property('meal_date', Date).
+  create()
+
+// person_knows_person
+schema.edgeLabel('knows').
+  ifNotExists().
+  from('person').to('person').
+  property('since', Date).
+  create()
+
+// meal_includes_mealItem
+schema.edgeLabel('includes').
+  ifNotExists().
+  from('meal').to('meal_item').
+  property('num_serv', Int).
+  create()
+
+// recipe_includedIn_meal
+schema.edgeLabel('includedIn').
+  ifNotExists().
+  from('recipe').to('meal').
+  property('amount', Text).
+  create()
+
+// recipe_includedIn_book_
+schema.edgeLabel('includedIn').
+  ifNotExists().
+  from('recipe').to('book').
+  create()
+
+// person_created_recipe
+schema.edgeLabel('created').
+  ifNotExists().
+  from('person').to('recipe').
+  property('create_date', Date).
+  create()
+
+// person_reviewed_recipe
+schema.edgeLabel('reviewed').
+  ifNotExists().
+  from('person').to('recipe').
+  property('time', Time).
+  property('year', Int).
+  property('stars', Int).
+  property('comment', Text).
+  create()
+
+// fridgeSensor_contains_ingredient
+schema.edgeLabel('contains').
+  ifNotExists().
+  from('fridge_sensor').to('ingredient').
+  property('expire_date', Date).
+//  ttl(60800).
+  create()
+
+
+// store_isStockedWith_ingredient
+schema.edgeLabel('isStockedWith').
+  ifNotExists().
+  from('store').to('ingredient').
+  property('expire_date', Date).
+//  ttl(60800).
+  create()
+
+// home_isLocatedAt_location
+schema.edgeLabel('isLocatedAt').
+  ifNotExists().
+  from('home').to('location').
+  create()
+
+// store_isLocatedAt_location
+schema.edgeLabel('isLocatedAt').
+  ifNotExists().
+  from('store').to('location').
+  create()
+
+//fridgeSensor_isLocatedAt_location
+schema.edgeLabel('isLocatedAt').
+  ifNotExists().
+  from('fridge_sensor').to('location').
+  create()
+
+// ******* FIX THIS!
+
+schema.edgeLabel('authored')
+    .fromExistingTable('authored_table')
+    .from('person')
+    .mappingProperty('person_name')
+    .mappingProperty('ssn')
+    .mappingProperty('age')
+    .to('book')
+    .mappingProperty('book_name')
+    .mappingProperty('isbn')
+    .create()
+// ************ FIX THIS!
+// all fields need to be fixed
+
+schema.edgeLabel('authored')
+    .from('person')
+    .to('book')
+    .partitionBy(OUT, 'name', 'person_name')
+    .partitionBy(OUT, 'age', 'person_age')
+    .partitionBy('creation_date', Text)
+    .clusterBy(OUT, 'year', 'person_year')
+    .clusterBy(IN, 'name', 'software_name')
+    .clusterBy(IN, 'year', 'software_year')
+    .clusterBy(IN, 'license', 'software_license')
+    .clusterBy('creation_year', Int, Desc)
+    .create()
+// Create user-defined types (UDTs) with Gremlin
+// VERTEX LABELS
+// ********
+// SYNTAX:
+// schema.type('typename')
+//    [ .ifNotExists() ]
+//    [ .property(property, propertyType) ]
+//    [ .create() | .describe() ]
+
+// USER-DEFINED TYPE
+schema.type('address').
+  ifNotExists().
+  property('address1', Text).
+  property('address2', Text).
+  property('city_code', Text).
+  property('zip_code', Text).
+  create()
+
+schema.type('fullname').
+  ifNotExists().
+  property('firstname', Text).
+  property('lastname', Text).
+  create()
+
+//Using a nested user defined type via typeOf:
+schema.type('location_details').
+  ifNotExists().
+  property('loc_address', frozen(typeOf('address'))).
+  property('telephone', listOf(Text)).
+  create()
+// VERTEX LABELS
+// ********
+// SYNTAX:
+// schema.vertexLabel('vertexLabel')
+//    [ .ifNotExists() ]
+//    .partitionBy(propertyKey, propertyKeyType) [ ... ]
+//    [ .clusterBy(propertyKey, propertyKeyType) ... ]
+//    [ .property(property, propertyType) ]
+//    [ .create() | .describe() | .addProperty(propertyKey, propertyKeyType).alter() ]
+
+ 
+// SINGLE PARTITION KEY Vertex Labels
+
+// macro_goal is a list of carbohydrate, protein, fat
+// country is a list of tuple of country, start date, end date; replacement for a meta-property in classic graph
+// Also, country demonstrates multi-property, being a list of countries and dates lived in
+// badge is level:year, such as gold:2015, expert:2019, or sous-chef:2009 (mainly expect to use for reviewers)
+
+// NEED TO ADD NEW FEATURE DSP_18625
+//  .tableName('personTable')
+
+
+schema.vertexLabel('person').
+  ifNotExists().
+  partitionBy('person_id', Uuid).
+  property('name', Text).
+  property('gender', Text).
+  property('nickname', setOf(Text)).
+  property('cal_goal', Int).
+  property('macro_goal', listOf(Int)).
+  property('country', listOf(tupleOf(Text, Int, Int))).
+  property('badge', mapOf(Text, Int)).
+  create()
+
+// book_discount was a property in the old data model that had a ttl; it has been deleted
+// but could be included as another vertex label; however, without the ttl, it is not interesting
+// I don't really want a list of authors attached as a property, DO I??? The edges will provide that info.
+schema.vertexLabel('book').
+  ifNotExists().
+  partitionBy('book_id', Int).
+  property('name', Text).
+  property('authors', listOf(frozen(typeOf('fullname')))).
+  property('publish_year', Int).
+  property('isbn', Text).
+  property('category', setOf(Text)).
+  create()
+
+// Going to create vertexLabel recipe through converting a CQL table to a VL
+// Although the notebook shows creating a table for recipe with CQL, then converting,
+// this is the Gremlin schema to make the recipe vertex label
+schema.vertexLabel('recipe').
+  ifNotExists().
+  partitionBy('recipe_id', Int).
+  property('name', Text).
+  property('cuisine', setOf(Text)).
+  property('instructions', Text).
+  property('notes', Text).
+  create()
+ 
+schema.vertexLabel('meal_item').
+  ifNotExists().
+  partitionBy('item_id', Int).
+  property('name', Text).
+  property('serv_amt', Text).
+  property('macro', Text).
+  property('calories', Int).
+  create()
+
+schema.vertexLabel('ingredient').
+  ifNotExists().
+  partitionBy('ingred_id', Int).
+  property('name', Text).
+  create()
+
+schema.vertexLabel('home').
+  ifNotExists().
+  partitionBy('home_id', Int).
+  property('name', Text).
+  //property('address', Text).
+  property('address', frozen(typeOf('address'))).
+  create()
+
+schema.vertexLabel('store').
+  ifNotExists().
+  partitionBy('store_id', Int).
+  property('name', Text).
+  property('address', Text).
+  create()
+
+
+// MULTIPLE-KEY VERTEX ID
+
+schema.vertexLabel('meal').
+  ifNotExists().
+  partitionBy('type', Text).
+  partitionBy( 'meal_id', Int).
+  create()
+
+// COMPOSITE KEY VERTEX ID
+
+schema.vertexLabel('fridge_sensor').
+  ifNotExists().
+  partitionBy('state_id', Int).
+  partitionBy('city_id', Int).
+  partitionBy('zipcode_id', Int).
+  clusterBy('sensor_id', Int).
+  property('name', Text).
+  create()
+
+// GEOSPATIAL
+
+schema.vertexLabel('location').
+  ifNotExists().
+  partitionBy('loc_id', Int).
+  property('name', Text).
+  property('loc_details', frozen(typeOf('location_details')).
+  property('geo_point',Point).
+  create()
+
+// STATIC COLUMN
+
+schema.vertexLabel('flag').
+  ifNotExists().
+  partitionBy('country_id', Int).
+  clusterBy('country', Text).
+  property('flag', Text, STATIC).
+  create()
+// Create a vertex label from an existing CQL table
+
+schema.vertexLabel('recipe').
+  fromExistingTable('recipe_table').
+  create()
+//***** fix partitionBy and clusterBy? IN,OUT
+// edge label index
+
+schema.edgeLabel('includes').
+  from('recipe').to('ingredient').
+  materializedView('recipe__includes__ingredient_by_ingredient_ingred_id').
+  ifNotExists().
+  partitionBy('ingredient_ingred_id').
+  clusterBy('recipe_recipe_id', Asc).
+  create()
+
+
+// inverse()
+schema.edgeLabel('authored').
+    from('person').to('book').
+    materializedView('person_book_inv').
+    ifNotExists().
+    inverse().
+    create()
+// MATERIALIZED VIEW INDEX
+// for predicates that are not search-specific or specific to CQL collections
+
+schema.vertexLabel('person').
+  materializedView('person_by_name').
+  ifNotExists().
+  partitionBy('name').
+  create()
+
+schema.vertexLabel('meal').
+  materializedView('meal_by_type').
+  ifNotExists().
+  partitionBy('type').
+  waitForIndex().
+  create()
+
+schema.vertexLabel('ingredient').
+  materializedView('ingredient_by_name').
+  ifNotExists().
+  partitionBy('name').
+  create()
+
+// NEED SECONDARY INDEX
+// for specific predicates (e.g. contains(x) / containsKey(x) / containsValue(x) / entryEq(x, y)) against CQL collections (Lists/Sets/Maps)
+
+// Use IndexFor().analyze() to create a good example based on a collection
+
+schema.indexFor(g.V().has("cuisine", contains('French'))).analyze()
+
+// Traversal requires that the following indexes are created:
+
+schema.vertexLabel('recipe').
+  secondaryIndex('recipe_2i_by_cuisine').
+  ifNotExists().
+  by('cuisine').
+  indexValues().
+  create()
+
+// SEARCH INDEX
+// for specific predicates (e.g. token / regex / phrase / neq / ...) that can only be fulfilled by a search index
+
+// ************* NEED TO MAKE SOME OF THESE asString() and asText() examples
+// ************* DO I NEED AN asStringAndText() example? NO, NOT USED IN NGDG?
+// ************* IT LOOKS LIKE INDEXFOR() WILL NOT PICK THESE PREDICATES - CHECK THAT
+
+schema.vertexLabel('recipe').
+  searchIndex().
+  ifNotExists().
+// by name, by cuisine can be asText, asString?
+  by('instructions').
+  by('name').
+  by('cuisine').
+  waitForIndex(30).
+  create()
+
+schema.vertexLabel('book').
+  searchIndex().
+  ifNotExists().
+  by('name').
+  by('publishYear').  
+  create()
+
+schema.vertexLabel('location').
+  searchIndex().
+  ifNotExists().
+  by('geoPoint').
+  create()
+
+schema.vertexLabel('store').
+  searchIndex().
+  ifNotExists().
+  by('name').
+  create()
+
+schema.vertexLabel('home').
+  searchIndex().
+  ifNotExists().
+  by('name').
+  create()
+
+schema.vertexLabel('fridgeSensor').
+  searchIndex().
+  ifNotExists().
+  by('cityId').
+  by('sensorId').
+  by('name').
+  create()
+
+// May need to switch country to  country_residence, a UDT
+// Then countries_lived_in to a list of UDTs - will illustrate multi-property
+/*
+schema.vertexLabel('country_residence')
+  .partitionBy('country', Text)
+  .clusterBy('start_date', Date)
+  .clusterBy('end_date', Date)
+  .property('flag', Int, Static)
+  .create()
+*/
+// Assume we have the following existing non-vertex label table.
+// Create a CQL table that can be converted into a vertex label
+
+CREATE KEYSPACE IF NOT EXISTS food
+WITH REPLICATION = {
+   'class' : 'SimpleStrategy',
+   'replication_factor' : 1 };
+
+USE food;
+
+CREATE TABLE food.recipe_table (
+   recipe_id int,
+   name text,
+   cuisine set<text>,
+   instructions text,
+   notes text,
+   PRIMARY KEY (recipe_id));
+// Describe all edge labels (ELs)
+schema.edgeLabels().describe()
+
+// Examine details for a particular EL using Gremlin
+schema.edgeLabel('authored').describe()
+
+// Examine an EL, narrowed with the from/to information using Gremlin
+schema.edgeLabel('authored').from('person').to('book').describe()
+
+// Describe all UDTs
+schema.types().describe()
+
+// Examine details for a particular UDT using Gremlin
+schema.type('address').describe()
+
+
+// Describe all vertex labels (VLs)
+schema.vertexLabels().describe()
+
+// Examine details for a particular VL using Gremlin
+schema.vertexLabel('person').describe()
+
+
+// Describe all the schema using Gremlin
+
+schema.describe()
+// dev mode is for development exploration
+
+dev.V().hasLabel('person').has('name', 'Julia CHILD')
+schema.edgeLabel('authored').
+  ifExists().
+  drop()
+// This will drop the edge label authored but keep the underlying table. 
+// Please note that this will drop all connections where this particular label is being used.
+schema.edgeLabel('authored').
+    ifExists().
+    dropMetadata()
+
+// Drop user-defined types (UDTs) with Gremlin
+
+schema.type('address').ifExists().drop()
+schema.type('fullname').ifExists().drop()
+schema.type('location_details').ifExists().drop()
+schema.vertexLabel('person').
+  ifExists().
+  drop()
+schema.vertexLabel('book').
+  ifExists().
+  drop()
+// This will drop the vertex label person but keep the underlying table 
+// and also remove the label from any associated edge tables.
+
+schema.vertexLabel('person').
+   ifExists().
+   dropMetadata()
+// To drop all schema with Gremlin
+schema.drop()
+// This will drop all the vertex/edge labels but keep the underlying tables.
+schema.dropMetadata()
+// THIS COMMAND APPLIES TO BOTH NATIVE AND LEGACY GRAPHS
+
+system.graph('food').
+  ifExists().
+  drop()
+schema.edgeLabel('reviewed').
+  from('person').
+  to('recipe').
+  secondaryIndex('review_by_date').
+  ifExists().
+  drop()
+schema.vertexLabel('person')
+    .secondaryIndex('???')
+    .ifExists()
+    .drop()
+schema.edgeLabel('authored')
+    .from('person')
+    .to('book')
+    .materializedView('???')
+    .ifExists()
+    .drop()
+schema.vertexLabel('person')
+    .materializedView('person_by_gender')
+    .ifExists()
+    .drop()
+// SIMPLE VERSION
+
+schema.vertexLabel('person')
+    .searchIndex()
+    .drop()
+
+// EXPANDED VERSION
+
+schema.edgeLabel('authored')
+    .from('person')
+    .to('book')
+    .searchIndex()
+    .drop()
+// SIMPLE VERSION
+
+schema.edgeLabel('authored')
+    .dropProperty('one')
+    .dropProperty('two')
+    .alter()
+
+// EXPANDED VERSION
+
+schema.edgeLabel('authored')
+    .from('person')
+    .to('software')
+    .dropProperty('one')
+    .dropProperty('two')
+    .alter()
+schema.vertexLabel('person')
+    .dropProperty('one', Int)
+    .dropProperty('two', Int)
+    .alter()
+schema.type('fullname').drop()
+schema.indexFor(g.V().hasLabel('person').has('name', Search.tokenRegex('.*uli.*')).valueMap()).analyze()
+schema.indexFor(g.V().has('person','gender','F').in()).analyze()
+==>Traversal requires that the following indices are created:
+schema.vertexLabel('person').materializedView('person_by_gender').ifNotExists().partitionBy('gender').clusterBy('lastname', Asc).clusterBy('id', Asc).create()
+schema.indexFor(g.V().hasLabel('person').has('name', Search.regex('Julia')).valueMap()).analyze()
+schema.indexFor(g.V().hasLabel('person').has('name', Search.regex('julia')).valueMap()).analyze()
+schema.indexFor(g.V().hasLabel('person').has('name', Search.regex('Julia Child')).valueMap()).analyze()
+schema.indexFor(g.V().hasLabel('person').has('name', Search.regex('julia child')).valueMap()).analyze()
+schema.indexFor(g.V().hasLabel('person').has('name', Search.regex('.*uli.*')).valueMap()).analyze()
+
+
+schema.indexFor(g.V().has('recipe','name','Beef Bourguignon').in()).analyze()
+schema.indexFor(g.V().has('person','gender','F').in()).apply()
+==>Creating the following indexes:
+schema.vertexLabel('person').materializedView('person_by_gender').ifNotExists().partitionBy('gender').clusterBy('lastname', Asc).clusterBy('id', Asc).create()
+schema.indexFor(g.V().has('recipe','name','Beef Bourguignon').in()).apply()
+g.addV('recipe').
+  property('recipe_id',3001).
+  property('name',"Beef Bourguignon").
+  property('cuisine', setOf(Text).create('French')).
+  iterate();
+
+g.V().hasLabel('recipe')
+// INSERT two EDGEs between a person and a book using Gremlin
+// Again, note the use of the Traversal API
+
+g.V().has('person', 'person_id', UUID.fromString("adb8744c-d015-4d78-918a-d7f062c59e8f")).as('a').
+  V().has('book', 'book_id', 1002).as('b').
+  addE('authored').from('a').to('b').
+  iterate();
+
+g.V().has('person', 'person_id', UUID.fromString("bb6d7af7-f674-4de7-8b4c-c0fdcdaa5cca")).as('a').
+  V().has('book', 'book_id', 1003).as('b').
+  addE('authored').from('a').to('b').
+  iterate();
+  
+// NOTE with NGDG, g.E() is a perfectly valid query!
+g.E().hasLabel('authored')
+// Add three book vertices and display using Gremlin
+
+g.addV('book').
+  property('book_id',1001).
+  property('name',"The Art of French Cooking, Vol. 1").
+  property('publish_year', 1961).
+  property('category', setOf(Text).create('French', 'American')).
+  property('authors', Arrays.asList(typeOf('fullname').create('BECK', 'Simone'), typeOf('fullname').create('CHILD', 'Julia'))).
+  iterate();
+
+g.addV('book').
+  property('book_id',1002).
+  property('name',"Simca's Cuisine: 100 Classic French Recipes for Every Occasion").
+  property('isbn', '0-394-40152-2').
+  property('publish_year', 1972).
+  property('category', setOf(Text).create('French', 'American')).
+  property('authors', Arrays.asList(typeOf('fullname').create('BECK', 'Simone'))).
+  iterate();
+  
+g.addV('book').
+  property('book_id',1003).
+  property('name','The French Chef Cookbook').
+  property('isbn', '0-394-40135-2').
+  property('publish_year', 1968).
+  property('category', setOf(Text).create('French')).
+  property('authors', Arrays.asList(typeOf('fullname').create('CHILD', 'Julia'))).
+  iterate();
+
+// Show all currently inserted books
+g.V().hasLabel('book')
+// Add three person vertices and display using Gremlin
+// Note the use of the Traversal API; the Graph API has been eliminated for DataStax Graph
+
+g.addV('person').
+// changing to "bb6d..." as UUID
+  property('person_id', UUID.fromString("bb6d7af7-f674-4de7-8b4c-c0fdcdaa5cca")).
+  property('name', 'Julia CHILD').
+  property('gender','F').
+  iterate();
+g.addV('person').
+  property('person_id', UUID.fromString("adb8744c-d015-4d78-918a-d7f062c59e8f")).
+  property('name', 'Simone BECK').
+  property('gender','F').property('nickname', setOf(Text).create('Simca', 'Simone')).
+  iterate();
+g.addV('person').
+  property('person_id', UUID.fromString("888ad970-0efc-4e2c-b234-b6a71c30efb5")).
+  property('name', 'Fritz STREIFF').
+  property('gender','M').
+  iterate();
+
+g.V().hasLabel('person')
+// book vertices
+g.addV('book')
+   .property('book_id',1001)
+   .property('name','The Art of French Cooking, Vol. 1')
+   .property('publish_year',1961)
+   .iterate();
+g.addV('book')
+   .property('book_id', 1002)
+   .property('name',"Simca's Cuisine: 100 Classic French Recipes for Every Occasion")
+   .property('publish_year', 1972)
+   .property('isbn', '0-394-40152-2')
+   .iterate();
+g.addV('book')
+   .property('book_id', 1003)
+   .property('name','The French Chef Cookbook')
+   .property('publish_year', 1968)
+   .property('isbn', '0-394-40135-2')
+   .iterate();
+g.addV('book')
+   .property('book_id', 1004)
+   .property('name', 'The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution')
+   .property('publish_year', 2007)
+   .property('isbn', '0-307-33679-4')
+   .iterate();
+
+/* Use the data model with all authors in book VL or not?
+
+g.addV('book')
+  .property('book_id',1001)
+  .property('name',"The Art of French Cooking, Vol. 1")
+  .property('publish_year', 1961)
+  .property('category', setOf(Text).create('French', 'American'))
+  .property('authors', Arrays.asList(typeOf('fullname').create('BECK', 'Simone'), typeOf('fullname').create('CHILD', 'Julia')))
+  .iterate();
+
+g.addV('book')
+  .property('book_id',1002)
+  .property('name',"Simca's Cuisine: 100 Classic French Recipes for Every Occasion")
+  .property('isbn', '0-394-40152-2')
+  .property('publish_year', 1972)
+  .property('category', setOf(Text).create('French', 'American'))
+  .property('authors', Arrays.asList(typeOf('fullname').create('BECK', 'Simone')))
+  .iterate();
+
+g.addV('book')
+  .property('book_id',1003)
+  .property('name','The French Chef Cookbook')
+  .property('isbn', '0-394-40135-2')
+  .property('publish_year', 1968)
+  .property('category', setOf(Text).create('French'))
+  .property('authors', Arrays.asList(typeOf('fullname').create('CHILD', 'Julia')))
+  .iterate();
+
+g.addV('book')
+  .property('book_id', 1004)
+  .property('name','The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution')
+  .property('isbn', '0-307-33679-4')
+  .property('publish_year', 2007)
+  .property('category', setOf(Text).create('American', 'Healthy'))
+  .property('authors', Arrays.asList(typeOf('fullname').create('WATERS', 'Alice'), typeOf('fullname').create('CURTAN', 'Patricia'), typeOf('fullname').create('KERR', 'Kelsie'), typeOf('fullname').create('STREIFF', 'Fritz')))
+  .iterate();
+*/
+// book to recipe edges
+
+g.V().has('recipe', 'recipe_id', 2001).as('a')
+   .V().has('book', 'book_id', 1001).as('b')
+   .addE('includedIn').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2003).as('a')
+   .V().has('book', 'book_id', 1001).as('b')
+   .addE('includedIn').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2007).as('a')
+   .V().has('book', 'book_id', 1004).as('b')
+   .addE('includedIn').from('a').to('b')
+   .iterate()
+// ingredients vertices
+g.addV('ingredient')
+  .property('ingred_id', 3001)
+  .property('name', 'beef')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3002)
+  .property('name', 'onion')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3003)
+  .property('name', 'mashed garlic')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3004)
+  .property('name', 'butter')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3005)
+  .property('name', 'tomato paste')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3006)
+  .property('name', 'eggplant')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3007)
+  .property('name', 'zucchini')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3008)
+  .property('name', 'olive oil')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3009)
+  .property('name', 'yellow onion')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3010)
+  .property('name', 'green beans')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3011)
+  .property('name', 'tuna')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3012)
+  .property('name', 'tomato')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3013)
+  .property('name', 'hard-boiled egg')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3014)
+  .property('name', 'egg noodles')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3015)
+  .property('name', 'mushrooms')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3016)
+  .property('name', 'bacon')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3017)
+  .property('name', 'celery')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3018)
+  .property('name', 'green bell pepper')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3019)
+  .property('name', 'ground beef')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3020)
+  .property('name', 'pork sausage')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3021)
+  .property('name', 'shallots')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3022)
+  .property('name', 'chervil')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3023)
+  .property('name', 'fennel')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3024)
+  .property('name', 'parsley')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3025)
+  .property('name', 'oyster')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3026)
+  .property('name', 'Pernod')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3027)
+  .property('name', 'thyme')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3028)
+  .property('name', 'carrots')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3029)
+  .property('name', 'chicken broth')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3030)
+  .property('name', 'pork loin')
+   .iterate()
+g.addV('ingredient')
+  .property('ingred_id', 3031)
+  .property('name', 'red wine')
+   .iterate()
+// meal vertices
+g.addV('meal')
+   .property('meal_id', 4001)
+   .property('type', 'lunch')
+   .iterate()
+g.addV('meal')
+   .property('meal_id', 4002)
+   .property('type', 'lunch')
+   .iterate()
+g.addV('meal')
+   .property('meal_id', 4003)
+   .property('type', 'lunch')
+   .iterate()
+g.addV('meal')
+   .property('meal_id', 4004)
+   .property('type', 'lunch')
+   .iterate()
+g.addV('meal')
+   .property('meal_id', 4005)
+   .property('type', 'breakfast')
+   .iterate()
+g.addV('meal')
+   .property('meal_id', 4006)
+   .property('type', 'snack')
+   .iterate()
+g.addV('meal')
+   .property('meal_id', 4007)
+   .property('type', 'dinner')
+   .iterate()
+g.addV('meal')
+   .property('meal_id', 4008)
+   .property('type', 'dinner')
+   .iterate()
+/*// meal to book edges
+
+g.V().has('meal', 'meal_id', 4007).as('a')
+   .V().has('book', 'book_id', 1001).as('b')
+   .addE('includedIn').from('a').to('b')
+   .iterate()
+   
+g.V().has('meal', 'meal_id', 4008).as('a')
+   .V().has('book', 'book_id', 1004).as('b')
+   .addE('includedIn').from('a').to('b')
+   .iterate()
+   
+g.V().has('meal', 'meal_id', 4005).as('a')
+   .V().has('book', 'book_id', 1003).as('b')
+   .addE('includedIn').from('a').to('b')
+   .iterate()
+   */
+// meal to recipe edges
+// The with('allow-filtering') is a shortcut to add the data without an index, but to make queries on these edges, and index will be required.
+
+g.with('allow-filtering').V().has('recipe', 'recipe_id', 2001).as('a')
+   .V().has('meal', 'meal_id', 4001).as('b')
+   .addE('includedIn').from('a').to('b')
+   .iterate()
+
+g.with('allow-filtering').V().has('recipe', 'recipe_id', 2003).as('a')
+   .V().has('meal', 'meal_id', 4001).as('b')
+   .addE('includedIn').from('a').to('b')
+   .iterate()
+   
+g.with('allow-filtering').V().has('recipe', 'recipe_id', 2007).as('a')
+   .V().has('meal', 'meal_id', 4004).as('b')
+   .addE('includedIn').from('a').to('b')
+   .iterate()
+   
+g.with('allow-filtering').V().has('recipe', 'recipe_id', 2008).as('a')
+   .V().has('meal', 'meal_id', 4004).as('b')
+   .addE('includedIn').from('a').to('b')
+   .iterate()
+// person vertices
+g.addV('person')
+  .property('person_id', UUID.fromString("bb6d7af7-f674-4de7-8b4c-c0fdcdaa5cca"))
+  .property('name', 'Julia CHILD')
+  .property('gender','F')
+  .iterate();
+g.addV('person')
+  .property('person_id', UUID.fromString("adb8744c-d015-4d78-918a-d7f062c59e8f"))
+  .property('name', 'Simone BECK')
+  .property('gender','F')
+  .property('nickname', setOf(Text).create('Simca', 'Simone'))
+  .iterate();
+g.addV('person')
+  .property('person_id', UUID.fromString("888ad970-0efc-4e2c-b234-b6a71c30efb5"))
+  .property('name', 'Fritz STREIFF')
+  .property('gender','M')
+  .iterate();
+g.addV('person')
+  .property('person_id', UUID.fromString("f092107c-0c5c-47e7-917c-c82c7fc2a2493"))
+  .property('name', 'Louisette BERTHOLIE')
+  .property('gender','F')
+  .iterate();
+g.addV('person')
+  .property('person_id', UUID.fromString("ef811281-f954-4fd6-ace0-bf67d057771a"))
+  .property('name', 'Patricia SIMON')
+  .property('gender','F')
+  .property('nickname', setOf(Text).create('Pat'))
+  .iterate();
+g.addV('person')
+  .property('person_id', UUID.fromString("d45c76bc-6f93-4d0e-9d9f-33298dae0524"))
+  .property('name', 'Alice WATERS')
+  .property('gender','F')
+  .iterate();
+g.addV('person')
+  .property('person_id', UUID.fromString("7f969e16-b81e-4fcd-87c5-1911abbed132"))
+  .property('name', 'Patricia CURTAN')
+  .property('gender','F')
+  .property('nickname', setOf(Text).create('Pattie'))
+  .iterate();
+g.addV('person')
+  .property('person_id', UUID.fromString("01e22ca6-da10-4cf7-8903-9b7e30c25805"))
+  .property('name', 'Kelsie KERR')
+  .property('gender','F')
+  .iterate();
+g.addV('person')
+  .property('person_id', UUID.fromString("ad58b8bd-033f-48ee-8f3b-a84f9c24e7de"))
+  .property('name', 'Emeril LAGASSE')
+  .property('gender','M')
+  .iterate();
+g.addV('person')
+  .property('person_id', UUID.fromString("4ce9caf1-25b8-468e-a983-69bad20c017a"))
+  .property('name', 'James BEARD')
+  .property('gender','M')
+  .property('nickname', setOf(Text).create('Jim', 'Jimmy'))
+  .iterate();
+// reviewer vertices
+
+g.addV('person')
+  .property('person_id', UUID.fromString("46ad98ac-f5c9-4411-815a-f81b3b667921"))
+  .property('name', 'John DOE')
+  .property('gender','M')
+  .iterate();
+  g.addV('person')
+  .property('person_id', UUID.fromString("4954d71d-f78c-4a6d-9c4a-f40903edbf3c"))
+  .property('name', 'John Smith')
+  .property('gender','M')
+  .iterate();
+  g.addV('person')
+  .property('person_id', UUID.fromString("6c09f656-5aef-46df-97f9-e7f984c9a3d9"))
+  .property('name', 'Jane DOE')
+  .property('gender','F')
+  .iterate();
+  g.addV('person')
+  .property('person_id', UUID.fromString("daa02698-df4f-4436-8855-941774f4c3e0"))
+  .property('name', 'Sharon SMITH')
+  .property('gender','F')
+  .iterate();
+  g.addV('person')
+  .property('person_id', UUID.fromString("6bda1b37-fe96-42bd-a2db-682073d10c37"))
+  .property('name', 'Betsy JONES')
+  .property('gender','F')
+  .iterate();
+// person to book edges
+
+g.V().has('person', 'person_id', UUID.fromString("bb6d7af7-f674-4de7-8b4c-c0fdcdaa5cca")).as('a')
+    .V().has('book', 'book_id', 1001).as('b')
+    .addE('authored').from('a').to('b')
+    .iterate();
+    
+g.V().has('person', 'person_id', UUID.fromString("adb8744c-d015-4d78-918a-d7f062c59e8f")).as('a')
+    .V().has('book', 'book_id', 1001).as('b')
+    .addE('authored').from('a').to('b')
+    .iterate();
+    
+g.V().has('person', 'person_id', UUID.fromString("f092107c-0c5c-47e7-917c-c82c7fc2a249")).as('a')
+    .V().has('book', 'book_id', 1001).as('b')
+    .addE('authored').from('a').to('b')
+    .iterate();
+    
+g.V().has('person', 'person_id', UUID.fromString("adb8744c-d015-4d78-918a-d7f062c59e8f")).as('a')
+  .V().has('book', 'book_id', 1002).as('b')
+  .addE('authored').from('a').to('b')
+  .iterate();
+  
+g.V().has('person', 'person_id', UUID.fromString("ef811281-f954-4fd6-ace0-bf67d057771a")).as('a')
+  .V().has('book', 'book_id', 1002).as('b')
+  .addE('authored').from('a').to('b')
+  .iterate();
+  
+g.V().has('person', 'person_id', UUID.fromString("bb6d7af7-f674-4de7-8b4c-c0fdcdaa5cca")).as('a')
+  .V().has('book', 'book_id', 1003).as('b')
+  .addE('authored').from('a').to('b')
+  .iterate();
+  
+g.V().has('person', 'person_id', UUID.fromString("d45c76bc-6f93-4d0e-9d9f-33298dae0524")).as('a')
+  .V().has('book', 'book_id', 1004).as('b')
+  .addE('authored').from('a').to('b')
+  .iterate();
+  
+g.V().has('person', 'person_id', UUID.fromString("7f969e16-b81e-4fcd-87c5-1911abbed132")).as('a')
+  .V().has('book', 'book_id', 1004).as('b')
+  .addE('authored').from('a').to('b')
+  .iterate();
+  
+g.V().has('person', 'person_id', UUID.fromString("01e22ca6-da10-4cf7-8903-9b7e30c25805")).as('a')
+  .V().has('book', 'book_id', 1004).as('b')
+  .addE('authored').from('a').to('b')
+  .iterate();
+  
+g.V().has('person', 'person_id', UUID.fromString("888ad970-0efc-4e2c-b234-b6a71c30efb5")).as('a')
+  .V().has('book', 'book_id', 1004).as('b')
+  .addE('authored').from('a').to('b')
+  .iterate();
+// person to recipe edges
+
+g.V().has('person', 'person_id', UUID.fromString("bb6d7af7-f674-4de7-8b4c-c0fdcdaa5cca")).as('a')
+   .V().has('recipe', 'recipe_id', 2001).as('b')
+   .addE('created').property('create_date', '1961-01-01' as LocalDate).from('a').to('b')
+   .iterate()
+   
+g.V().has('person', 'person_id', UUID.fromString("bb6d7af7-f674-4de7-8b4c-c0fdcdaa5cca")).as('a')
+   .V().has('recipe', 'recipe_id', 2001).as('b')
+   .addE('created').property('create_date', '1961-01-01' as LocalDate).from('a').to('b')
+   .iterate()
+   
+g.V().has('person', 'person_id', UUID.fromString("bb6d7af7-f674-4de7-8b4c-c0fdcdaa5cca")).as('a')
+   .V().has('recipe', 'recipe_id', 2002).as('b')
+   .addE('created').property('create_date', '1965-02-02' as LocalDate).from('a').to('b')
+   .iterate()
+   
+g.V().has('person', 'person_id', UUID.fromString("bb6d7af7-f674-4de7-8b4c-c0fdcdaa5cca")).as('a')
+   .V().has('recipe', 'recipe_id', 2003).as('b')
+   .addE('created').property('create_date', '1962-03-03' as LocalDate).from('a').to('b')
+   .iterate()
+   
+g.V().has('person', 'person_id', UUID.fromString("ad58b8bd-033f-48ee-8f3b-a84f9c24e7de")).as('a')
+   .V().has('recipe', 'recipe_id', 2004).as('b')
+   .addE('created').property('create_date', '2003-04-04' as LocalDate).from('a').to('b')
+   .iterate()
+
+g.V().has('person', 'person_id', UUID.fromString("ad58b8bd-033f-48ee-8f3b-a84f9c24e7de")).as('a')
+   .V().has('recipe', 'recipe_id', 2005).as('b')
+   .addE('created').property('create_date', '2000-05-05' as LocalDate).from('a').to('b')
+   .iterate()
+
+g.V().has('person', 'person_id', UUID.fromString("d45c76bc-6f93-4d0e-9d9f-33298dae0524")).as('a')
+   .V().has('recipe', 'recipe_id', 2007).as('b')
+   .addE('created').property('create_date', '1995-06-06' as LocalDate).from('a').to('b')
+   .iterate()
+   
+g.V().has('person', 'person_id', UUID.fromString("d45c76bc-6f93-4d0e-9d9f-33298dae0524")).as('a')
+   .V().has('recipe', 'recipe_id', 2008).as('b')
+   .addE('created').property('create_date', '1996-07-07' as LocalDate).from('a').to('b')
+   .iterate()
+   
+g.V().has('person', 'person_id', UUID.fromString("4ce9caf1-25b8-468e-a983-69bad20c017a")).as('a')
+   .V().has('recipe', 'recipe_id', 2006).as('b')
+   .addE('created').property('create_date', '1970-01-01' as LocalDate).from('a').to('b')
+   .iterate()
+// person_reviewed_recipe
+
+g.V().has('person', 'person_id', UUID.fromString("46ad98ac-f5c9-4411-815a-f81b3b667921")).as('a')
+   .V().has('recipe', 'recipe_id', 2001).as('b')
+   .addE('reviewed')
+   .property('time', '12:00:00' as LocalTime)
+   .property('year', '2014-01-01' as LocalDate)
+   .property('stars', 5)
+   .property('comment', 'Pretty tasty!')
+   .from('a').to('b')
+   .iterate()
+   
+g.V().has('person', 'person_id', UUID.fromString("4954d71d-f78c-4a6d-9c4a-f40903edbf3c")).as('a')
+   .V().has('recipe', 'recipe_id', 2001).as('b')
+   .addE('reviewed')
+   .property('time', '12:00:00' as LocalTime)
+   .property('year', '2014-01-23' as LocalDate)
+   .property('stars', 4)
+   .from('a').to('b')
+   .iterate()
+   
+g.V().has('person', 'person_id', UUID.fromString("6c09f656-5aef-46df-97f9-e7f984c9a3d9")).as('a')
+   .V().has('recipe', 'recipe_id', 2001).as('b')
+   .addE('reviewed')
+   .property('time', '12:00:00' as LocalTime)
+   .property('year', '2014-02-01' as LocalDate)
+   .property('stars', 5)
+   .property('comment', 'Yummy!')
+   .from('a').to('b')
+   .iterate()
+   
+g.V().has('person', 'person_id', UUID.fromString("daa02698-df4f-4436-8855-941774f4c3e0")).as('a')
+   .V().has('recipe', 'recipe_id', 2001).as('b')
+   .addE('reviewed')
+   .property('time', '12:00:00' as LocalTime)
+   .property('year', '2015-12-31' as LocalDate)
+   .property('stars', 3)
+   .property('comment', 'It was okay.')
+   .from('a').to('b')
+   .iterate()
+   
+g.V().has('person', 'person_id', UUID.fromString("46ad98ac-f5c9-4411-815a-f81b3b667921")).as('a')
+   .V().has('recipe', 'recipe_id', 2005).as('b')
+   .addE('reviewed')
+   .property('time', '12:00:00' as LocalTime)
+   .property('year', '2015-12-31' as LocalDate)
+   .property('stars', 4)
+   .property('comment', 'Really spicy - be careful!')
+   .from('a').to('b')
+   .iterate()
+   
+g.V().has('person', 'person_id', UUID.fromString("daa02698-df4f-4436-8855-941774f4c3e0")).as('a')
+   .V().has('recipe', 'recipe_id', 2005).as('b')
+   .addE('reviewed')
+   .property('time', '12:00:00' as LocalTime)
+   .property('year', '2014-07-23' as LocalDate)
+   .property('stars', 3)
+   .property('comment', 'Too spicy for me. Use less garlic.')
+   .from('a').to('b')
+   .iterate()
+   
+g.V().has('person', 'person_id', UUID.fromString("6c09f656-5aef-46df-97f9-e7f984c9a3d9")).as('a')
+   .V().has('recipe', 'recipe_id', 2007).as('b')
+   .addE('reviewed')
+   .property('time', '12:00:00' as LocalTime)
+   .property('year', '2015-12-30' as LocalDate)
+   .property('stars', 5)
+   .property('comment', 'Loved this soup! Yummy vegetarian!')
+   .from('a').to('b')
+   .iterate()
+// recipe vertices
+g.addV('recipe')
+   .property('recipe_id', 2001)
+   .property('name', 'Beef Bourguignon')
+   .property('cuisine', setOf(Text).create('French', 'entree', 'beef'))
+   .property('instructions', 'Braise the beef. Saute the onions and carrots. Add wine and cook in a dutch oven at 425 degrees for 1 hour.')
+   .property('notes', 'Takes a long time to make.')
+   .iterate()
+   
+g.addV('recipe')
+   .property('recipe_id', 2002)
+   .property('name', 'Rataouille')
+   .property('instructions', 'Peel and cut the egglant. Make sure you cut eggplant into lengthwise slices that are about 1-inch wmyIde, 3-inches long, and 3/8-inch thick')
+   .property('notes', "I've made this 13 times.")
+   .iterate()
+g.addV('recipe')
+   .property('recipe_id', 2003)
+   .property('name', 'Salade Nicoise')
+   .property('instructions', 'Take a salad bowl or platter and line it with lettuce leaves, shortly before serving. Drizzle some olive oil on the leaves and dust them with salt.')
+   .property('notes', '')
+   .iterate()
+g.addV('recipe')
+   .property('recipe_id', 2004)
+   .property('name', 'Wild Mushroom Stroganoff')
+   .property('instructions', 'Cook the egg noodles according to the package directions and keep warm. Heat 1 1/2 tablespoons of the oliveoil in a large saute pan over medium-high heat.')
+   .property('notes', 'Good for Jan and Bill.')
+   .iterate()
+g.addV('recipe')
+   .property('recipe_id', 2005)
+   .property('name', 'Spicy Meatloaf')
+   .property('instructions', 'Preheat the oven to 375 degrees F. Cook bacon in a large skillet over medium heat until very crisp and fat has rendered, 8-10 minutes.')
+   .property('notes', ' ')
+   .iterate()
+g.addV('recipe')
+   .property('recipe_id', 2006) 
+   .property('name', 'Oysters Rockefeller')
+   .property('instructions', 'Saute the shallots, celery, herbs, and seasonings in 3 tablespoons of the butter for 3 minutes. Add the watercress and let it wilt.')
+   .property('notes', ' ')
+   .iterate()
+g.addV('recipe')
+   .property('recipe_id', 2007)
+   .property('name', 'Carrot Soup') 
+   .property('instructions', 'In a heavy-bottomed pot, melt the butter. When it starts to foam, add the onions and thyme and cook over medium-low heat until tender, about 10 minutes.')
+   .property('notes', 'Quick and easy.')
+   .iterate()
+g.addV('recipe')
+   .property('recipe_id', 2008)
+   .property('name', 'Roast Pork Loin')
+   .property('instructions', 'The day before, separate the meat from the ribs, stopping about 1 inch before the end of the bones. Season the pork liberally inside and out with salt and pepper and refrigerate overnight.')
+   .property('notes', 'Love this one!')
+   .iterate()
+// recipe to ingredient edges
+
+g.V().has('recipe', 'recipe_id', 2001).as('a')
+   .V().has('ingredient', 'ingred_id', 3001).as('b')
+   .addE('includes').property('amount', '2 lbs').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2001).as('a')
+   .V().has('ingredient', 'ingred_id', 3002).as('b')
+   .addE('includes').property('amount', '1 sliced').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2001).as('a')
+   .V().has('ingredient', 'ingred_id', 3003).as('b')
+   .addE('includes').property('amount', '2 cloves').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2001).as('a')
+   .V().has('ingredient', 'ingred_id', 3004).as('b')
+   .addE('includes').property('amount', '3.5 Tbsp').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2001).as('a')
+   .V().has('ingredient', 'ingred_id', 3005).as('b')
+   .addE('includes').property('amount', '1 Tbsp').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2002).as('a')
+   .V().has('ingredient', 'ingred_id', 3006).as('b')
+   .addE('includes').property('amount', '1 lb').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2002).as('a')
+   .V().has('ingredient', 'ingred_id', 3007).as('b')
+   .addE('includes').property('amount', '1 lb').from('a').to('b')
+   .iterate()
+g.V().has('recipe', 'recipe_id', 2002).as('a')
+   .V().has('ingredient', 'ingred_id', 3003).as('b')
+   .addE('includes').property('amount', '2 cloves').from('a').to('b')
+   .iterate()
+
+g.V().has('recipe', 'recipe_id', 2002).as('a')
+   .V().has('ingredient', 'ingred_id', 3008).as('b')
+   .addE('includes').property('amount', '4-6 Tbsp').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2002).as('a')
+   .V().has('ingredient', 'ingred_id', 3009).as('b')
+   .addE('includes').property('amount', '1 1/2 cups or 1/2 lb thinly sliced').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2003).as('a')
+   .V().has('ingredient', 'ingred_id', 3008).as('b')
+   .addE('includes').property('amount', '2-3 Tbsp').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2003).as('a')
+   .V().has('ingredient', 'ingred_id', 3010).as('b')
+   .addE('includes').property('amount', '1 1/2 lbs blanched, trimmed').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2003).as('a')
+   .V().has('ingredient', 'ingred_id', 3011).as('b')
+   .addE('includes').property('amount', '8-10 ozs oil-packed, drained and flaked').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2003).as('a')
+   .V().has('ingredient', 'ingred_id', 3012).as('b')
+   .addE('includes').property('amount', '3 or 4 red, peeled, quartered, cored, and seasoned').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2003).as('a')
+   .V().has('ingredient', 'ingred_id', 3013).as('b')
+   .addE('includes').property('amount', '8 halved lengthwise').from('a').to('b')
+   .iterate()
+
+g.V().has('recipe', 'recipe_id', 2004).as('a')
+   .V().has('ingredient', 'ingred_id', 3014).as('b')
+   .addE('includes').property('amount', '16 ozs wide').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2004).as('a')
+   .V().has('ingredient', 'ingred_id', 3015).as('b')
+   .addE('includes').property('amount', '2 lbs wild or exotic, cleaned, stemmed, and sliced').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2004).as('a')
+   .V().has('ingredient', 'ingred_id', 3009).as('b')
+   .addE('includes').property('amount', '1 cup thinly sliced').from('a').to('b')
+   .iterate()
+
+g.V().has('recipe', 'recipe_id', 2005).as('a')
+   .V().has('ingredient', 'ingred_id', 3016).as('b')
+   .addE('includes').property('amount', '3 ozs diced').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2005).as('a')
+   .V().has('ingredient', 'ingred_id', 3002).as('b')
+   .addE('includes').property('amount', '2 cups finely chopped').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2005).as('a')
+   .V().has('ingredient', 'ingred_id', 3017).as('b')
+   .addE('includes').property('amount', '2 cups finely chopped').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2005).as('a')
+   .V().has('ingredient', 'ingred_id', 3018).as('b')
+   .addE('includes').property('amount', '1/4 cup finely chopped').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2005).as('a')
+   .V().has('ingredient', 'ingred_id', 3020).as('b')
+   .addE('includes').property('amount', '3/4 lbs hot').from('a').to('b')
+   .iterate()
+ 
+g.V().has('recipe', 'recipe_id', 2005).as('a')
+   .V().has('ingredient', 'ingred_id', 3019).as('b')
+   .addE('includes').property('amount', '1 1/2 lbs chuck').from('a').to('b')
+   .iterate()  
+
+g.V().has('recipe', 'recipe_id', 2006).as('a')
+   .V().has('ingredient', 'ingred_id', 3021).as('b')
+   .addE('includes').property('amount', '1/4 cup chopped').from('a').to('b')
+   .iterate()  
+
+g.V().has('recipe', 'recipe_id', 2006).as('a')
+   .V().has('ingredient', 'ingred_id', 3017).as('b')
+   .addE('includes').property('amount', '1/4 cup chopped').from('a').to('b')
+   .iterate() 
+
+g.V().has('recipe', 'recipe_id', 2006).as('a')
+   .V().has('ingredient', 'ingred_id', 3022).as('b')
+   .addE('includes').property('amount', '1 tsp').from('a').to('b')
+   .iterate() 
+   
+g.V().has('recipe', 'recipe_id', 2006).as('a')
+   .V().has('ingredient', 'ingred_id', 3023).as('b')
+   .addE('includes').property('amount', '1/3 cup chopped').from('a').to('b')
+   .iterate() 
+   
+g.V().has('recipe', 'recipe_id', 2006).as('a')
+   .V().has('ingredient', 'ingred_id', 3024).as('b')
+   .addE('includes').property('amount', '1/3 cup chopped').from('a').to('b')
+   .iterate() 
+   
+g.V().has('recipe', 'recipe_id', 2006).as('a')
+   .V().has('ingredient', 'ingred_id', 3025).as('b')
+   .addE('includes').property('amount', '1 dozen on the half shell').from('a').to('b')
+   .iterate() 
+   
+g.V().has('recipe', 'recipe_id', 2006).as('a')
+   .V().has('ingredient', 'ingred_id', 3026).as('b')
+   .addE('includes').property('amount', '1/3 cup').from('a').to('b')
+   .iterate() 
+
+g.V().has('recipe', 'recipe_id', 2007).as('a')
+   .V().has('ingredient', 'ingred_id', 3004).as('b')
+   .addE('includes').property('amount', '4 Tbsp').from('a').to('b')
+   .iterate()
+
+g.V().has('recipe', 'recipe_id', 2007).as('a')
+   .V().has('ingredient', 'ingred_id', 3002).as('b')
+   .addE('includes').property('amount', '2 medium sliced').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2007).as('a')
+   .V().has('ingredient', 'ingred_id', 3027).as('b')
+   .addE('includes').property('amount', '1 sprig').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2007).as('a')
+   .V().has('ingredient', 'ingred_id', 3028).as('b')
+   .addE('includes').property('amount', '2 1/2 lbs, peeled and sliced').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2007).as('a')
+   .V().has('ingredient', 'ingred_id', 3029).as('b')
+   .addE('includes').property('amount', '6 cups').from('a').to('b')
+   .iterate()
+
+g.V().has('recipe', 'recipe_id', 2008).as('a')
+   .V().has('ingredient', 'ingred_id', 3030).as('b')
+   .addE('includes').property('amount', '1 bone-in, 4-rib').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2008).as('a')
+   .V().has('ingredient', 'ingred_id', 3031).as('b')
+   .addE('includes').property('amount', '1/2 cup').from('a').to('b')
+   .iterate()
+   
+g.V().has('recipe', 'recipe_id', 2008).as('a')
+   .V().has('ingredient', 'ingred_id', 3029).as('b')
+   .addE('includes').property('amount', '1 cup').from('a').to('b')
+   .iterate()
+// person_reviewed_recipe
+
+g.V().has('person', 'person_id', UUID.fromString("46ad98ac-f5c9-4411-815a-f81b3b667921")).as('a')
+   .V().has('recipe', 'recipe_id', 2001).as('b')
+   .addE('reviewed')
+   .property('time', '12:00:00')
+   .property('year', '2014-01-01')
+   .property('stars', 5)
+   .property('comment', 'Pretty tasty!')
+   .from('a').to('b')
+   .iterate()
+   
+g.V().has('person', 'person_id', UUID.fromString("4954d71d-f78c-4a6d-9c4a-f40903edbf3c")).as('a')
+   .V().has('recipe', 'recipe_id', 2001).as('b')
+   .addE('reviewed')
+   .property('time', '12:00:00')
+   .property('year', '2014-01-23')
+   .property('stars', 4)
+   .from('a').to('b')
+   .iterate()
+   
+g.V().has('person', 'person_id', UUID.fromString("6c09f656-5aef-46df-97f9-e7f984c9a3d9")).as('a')
+   .V().has('recipe', 'recipe_id', 2001).as('b')
+   .addE('reviewed')
+   .property('time', '12:00:00')
+   .property('year', '2014-02-01')
+   .property('stars', 5)
+   .property('comment', 'Yummy!')
+   .from('a').to('b')
+   .iterate()
+   
+g.V().has('person', 'person_id', UUID.fromString("daa02698-df4f-4436-8855-941774f4c3e0")).as('a')
+   .V().has('recipe', 'recipe_id', 2001).as('b')
+   .addE('reviewed')
+   .property('time', '12:00:00')
+   .property('year', '2015-12-31')
+   .property('stars', 3)
+   .property('comment', 'It was okay.')
+   .from('a').to('b')
+   .iterate()
+   
+g.V().has('person', 'person_id', UUID.fromString("46ad98ac-f5c9-4411-815a-f81b3b667921")).as('a')
+   .V().has('recipe', 'recipe_id', 2005).as('b')
+   .addE('reviewed')
+   .property('time', '12:00:00')
+   .property('year', '2015-12-31')
+   .property('stars', 4)
+   .property('comment', 'Really spicy - be careful!')
+   .from('a').to('b')
+   .iterate()
+   
+g.V().has('person', 'person_id', UUID.fromString("daa02698-df4f-4436-8855-941774f4c3e0")).as('a')
+   .V().has('recipe', 'recipe_id', 2005).as('b')
+   .addE('reviewed')
+   .property('time', '12:00:00')
+   .property('year', '2014-07-23')
+   .property('stars', 3)
+   .property('comment', 'Too spicy for me. Use less garlic.')
+   .from('a').to('b')
+   .iterate()
+   
+g.V().has('person', 'person_id', UUID.fromString("6c09f656-5aef-46df-97f9-e7f984c9a3d9")).as('a')
+   .V().has('recipe', 'recipe_id', 2007).as('b')
+   .addE('reviewed')
+   .property('time', '12:00:00')
+   .property('year', '2015-12-30')
+   .property('stars', 5)
+   .property('comment', 'Loved this soup! Yummy vegetarian!')
+   .from('a').to('b')
+   .iterate()
+// reviewer vertices
+
+g.addV('person')
+  .property('person_id', UUID.fromString("46ad98ac-f5c9-4411-815a-f81b3b667921"))
+  .property('name', 'John DOE')
+  .property('gender','M')
+  .iterate();
+  g.addV('person')
+  .property('person_id', UUID.fromString("4954d71d-f78c-4a6d-9c4a-f40903edbf3c"))
+  .property('name', 'John Smith')
+  .property('gender','M')
+  .iterate();
+  g.addV('person')
+  .property('person_id', UUID.fromString("6c09f656-5aef-46df-97f9-e7f984c9a3d9"))
+  .property('name', 'Jane DOE')
+  .property('gender','F')
+  .iterate();
+  g.addV('person')
+  .property('person_id', UUID.fromString("daa02698-df4f-4436-8855-941774f4c3e0"))
+  .property('name', 'Sharon SMITH')
+  .property('gender','F')
+  .iterate();
+  g.addV('person')
+  .property('person_id', UUID.fromString("6bda1b37-fe96-42bd-a2db-682073d10c37"))
+  .property('name', 'Betsy JONES')
+  .property('gender','F')
+  .iterate();
+:remote config alias g food.g
+:remote config alias g food_cql.g
+// Look at the created edge labels using CQL
+select * from system_schema.edges;
+
+// Look at the created edge labels using CQL
+select * from system_schema.edges WHERE keyspace_name='food';
+// Look at the created UDTs using CQL
+// There is not currently a way to look at just UDTs with Gremlin
+
+select * from system_schema.types WHERE keyspace_name='food';
+// Look at the created vertex labels using CQL
+select * from system_schema.vertices;
+
+// Look at the created vertex labels using CQL
+select * from system_schema.vertices WHERE keyspace_name='food';
+// Examine book table using CQL
+select * from food.book;
+SELECT * FROM food.person__authored__book;
+select * from food.person;
+SELECT * FROM food.recipe_table;
+USE food;
+
+SELECT * FROM food.recipe_table;
+system.graph('food').describe()
+// WORKS FOR BOTH NATIVE AND LEGACY
+
+system.graphs()
+// VERBOSE INFO FOR ALL GRAPHS
+
+system.list()
+system.graph('food').
+  ifExists().
+  truncate()
