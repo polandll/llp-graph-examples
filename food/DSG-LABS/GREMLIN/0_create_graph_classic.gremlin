@@ -1,8 +1,7 @@
-// Replace DC_NAME with cluster name
 
 system.graph('test').
-    replication("{'class' : 'NetworkTopologyStrategy', 'DC_NAME' : 1 }").
-    systemReplication("{'class' : 'NetworkTopologyStrategy', 'DC_NAME' : 1 }").
+    replication("{'class' : 'NetworkTopologyStrategy', 'SearchGraphAnalytics' : 1 }").
+    systemReplication("{'class' : 'NetworkTopologyStrategy', 'SearchGraphAnalytics' : 1 }").
     option('graph.schema_mode').
     set('Production').
     engine(Classic).

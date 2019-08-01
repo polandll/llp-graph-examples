@@ -1,4 +1,4 @@
-// THIS COMMAND APPLIES TO BOTH NATIVE AND LEGACY GRAPHS
+// THIS COMMAND APPLIES TO BOTH Core AND Classic GRAPHS
 
 system.graph('food').
   ifExists().
