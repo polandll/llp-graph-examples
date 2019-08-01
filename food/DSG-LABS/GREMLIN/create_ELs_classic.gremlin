@@ -1,0 +1,47 @@
+// ********
+// EDGE LABELS
+// ********
+// SYNTAX:
+//schema.edgeLabel('edgeLabel').
+//    [ single() | multiple() ].
+//    [ connection( outVertex, inVertex) ].
+//    [ ttl ].
+//    [ properties(property[, property]) ].
+//    [ ifNotExists() ].
+//    [ create() | add() | describe() | exists() ]
+// DEFAULT IS MULTIPLE CARDINALITY
+// ********
+
+schema.edgeLabel('ate').multiple().ifNotExists().create()
+schema.edgeLabel('ate').properties('meal_date').add()
+schema.edgeLabel('ate').connection('person', 'meal').add()
+schema.edgeLabel('knows').multiple().ifNotExists().create()
+schema.edgeLabel('knows').properties('since').add()
+schema.edgeLabel('knows').connection('person','person').add()
+schema.edgeLabel('includes').multiple().ifNotExists().create()
+schema.edgeLabel('includes').properties('num_serv').add()
+schema.edgeLabel('includes').connection('meal','meal_item').add()
+schema.edgeLabel('includedIn').multiple().ifNotExists().create()
+schema.edgeLabel('includedIn').properties('amount').add()
+schema.edgeLabel('includedIn').connection('recipe','meal').add()
+schema.edgeLabel('includedIn').connection('meal','book').add()
+schema.edgeLabel('includedIn').connection('recipe','book').add()
+schema.edgeLabel('includedIn').connection('ingredient','recipe').add()
+schema.edgeLabel('created').multiple().ifNotExists().create()
+schema.edgeLabel('created').properties('create_date').add()
+schema.edgeLabel('created').connection('person', 'recipe').add()
+schema.edgeLabel('reviewed').multiple().ifNotExists().create()
+schema.edgeLabel('reviewed').properties('time','year','stars','comment').add()
+schema.edgeLabel('reviewed').connection('person','recipe').add()
+schema.edgeLabel('authored').multiple().ifNotExists().create()
+schema.edgeLabel('authored').connection('person', 'book').add()
+schema.edgeLabel('contains').multiple().ttl(60800).ifNotExists().create()
+schema.edgeLabel('contains').properties('expire_date').add()
+schema.edgeLabel('contains').connection('fridgeSensor','ingredient').add()
+schema.edgeLabel('isStockedWith').multiple().ttl(60800).ifNotExists().create()
+schema.edgeLabel('isStockedWith').properties('expire_date').add()
+schema.edgeLabel('isStockedWith').connection('store','ingredient').add()
+schema.edgeLabel('isLocatedAt').multiple().ifNotExists().create()
+schema.edgeLabel('isLocatedAt').connection('home','location').add()
+schema.edgeLabel('isLocatedAt').connection('store','location').add()
+schema.edgeLabel('isLocatedAt').connection('fridgeSensor','home').add()
