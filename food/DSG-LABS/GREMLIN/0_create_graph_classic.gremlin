@@ -1,5 +1,5 @@
 
-system.graph('test').
+system.graph('food').
     replication("{'class' : 'NetworkTopologyStrategy', 'SearchGraphAnalytics' : 1 }").
     systemReplication("{'class' : 'NetworkTopologyStrategy', 'SearchGraphAnalytics' : 1 }").
     option('graph.schema_mode').
