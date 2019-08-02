@@ -1,8 +1,10 @@
 
 system.graph('food').
-    replication("{'class' : 'NetworkTopologyStrategy', 'SearchGraphAnalytics' : 1 }").
-    systemReplication("{'class' : 'NetworkTopologyStrategy', 'SearchGraphAnalytics' : 1 }").
-    option('graph.schema_mode').
-    set('Production').
-    engine(Classic).
-    create()
+   replication("{'class' : 'NetworkTopologyStrategy', 'SearchGraphAnalytics' : 1 }").
+   systemReplication("{'class' : 'NetworkTopologyStrategy', 'SearchGraphAnalytics' : 1 }").
+   option('graph.schema_mode').
+   set('Production').
+   option('graph.allow_scan').
+   set('true').
+   engine(Classic).
+   create()
