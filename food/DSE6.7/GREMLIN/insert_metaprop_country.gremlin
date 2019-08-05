@@ -1,0 +1,6 @@
+g.addV('person').
+  property('person_id', UUID.fromString("316b446d-f88c-4d79-9d49-d998ca834fd7")).
+  property('name', 'Joe AMERICAN').
+  property('gender','M').
+  property('country', 'France', 'start_year', 1970, 'end_year',1973).
+  property('country', 'USA', 'start_year', 1973, 'end_year', 2017)
