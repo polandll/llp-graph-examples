@@ -14,7 +14,9 @@
 // macro_goal is a list of carbohydrate, protein, fat
 // country is a list of tuple of country, start date, end date; replacement for a meta-property in classic graph
 // Also, country demonstrates multi-property, being a list of countries and dates lived in
-// badge is level:year, such as gold:2015, expert:2019, or sous-chef:2009 (mainly expect to use for reviewers)
+//    country, start_date, end_date
+// badge is  a replacement for a meta-property in earlier versions
+//    level:year, such as gold:2015, expert:2019, or sous-chef:2009 (mainly expect to use for reviewers)
 
 // NEED TO ADD NEW FEATURE DSP_18625
 //  .tableName('personTable')
@@ -28,21 +30,19 @@ schema.vertexLabel('person').
   property('nickname', setOf(Text)).
   property('cal_goal', Int).
   property('macro_goal', listOf(Int)).
-  property('country', listOf(tupleOf(Text, Int, Int))).
-  property('badge', mapOf(Text, Int)).
+  property('country', listOf(tupleOf(Text, Date, Date))).
+  property('badge', mapOf(Text, Date)).
   create()
 
-// book_discount was a property in the old data model that had a ttl; it has been deleted
-// but could be included as another vertex label; however, without the ttl, it is not interesting
-// I don't really want a list of authors attached as a property, DO I??? The edges will provide that info.
+// book_discount was a property in the old data model that had a ttl; I'm including here to use the same datasets 
 schema.vertexLabel('book').
   ifNotExists().
   partitionBy('book_id', Int).
   property('name', Text).
-  property('authors', listOf(frozen(typeOf('fullname')))).
   property('publish_year', Int).
   property('isbn', Text).
   property('category', setOf(Text)).
+  property('book_discount', Text).
   create()
 
 // Going to create vertexLabel recipe through converting a CQL table to a VL

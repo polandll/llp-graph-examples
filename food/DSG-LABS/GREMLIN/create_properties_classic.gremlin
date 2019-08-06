@@ -53,12 +53,12 @@ schema.propertyKey('amount').Text().single().create()
 schema.propertyKey('nickname').Text().multiple().create()
 schema.propertyKey('cuisine').Text().multiple().create()
 // MULTIPLE CARDINALITY PROPERTY KEY WITH SINGLE CARDINALITY META-PROPERTY
-schema.propertyKey('since').Int().single().create() // meta-property
+schema.propertyKey('since').Date().single().create() // meta-property
 schema.propertyKey('badge').Text().multiple().properties('since').create()
 // MULTIPLE CARDINALITY PROPERTY KEY WITH MULTIPLE CARDINALITY META-PROPERTY
-schema.propertyKey('start_year').Int().multiple().create()   // meta-property
-schema.propertyKey('end_year').Int().multiple().create()   // meta-property
-schema.propertyKey('country').Text().multiple().properties('start_year','end_year').create()
+schema.propertyKey('start_date').Date().multiple().create()   // meta-property
+schema.propertyKey('end_date').Date().multiple().create()   // meta-property
+schema.propertyKey('country').Text().multiple().properties('start_date','end_date').create()
 
 // EDGE PROPERTIES
 schema.propertyKey('num_serv').Int().single().create()
