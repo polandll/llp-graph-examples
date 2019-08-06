@@ -1,4 +1,4 @@
-schema.vertexLabel('person')
-    .materializedView('person_by_gender')
-    .ifExists()
-    .drop()
+schema.vertexLabel('person').
+    materializedView('person_by_gender').
+    ifExists().
+    drop()
