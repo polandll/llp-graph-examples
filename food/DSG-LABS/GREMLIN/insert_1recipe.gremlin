@@ -1,7 +1,7 @@
 g.addV('recipe').
   property('recipe_id',3001).
   property('name',"Beef Bourguignon").
-  property('cuisine', setOf(Text).create('French')).
+  property('cuisine', ['French'] as Set).
   iterate();
 
 g.V().hasLabel('recipe')
