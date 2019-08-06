@@ -10,7 +10,7 @@ g.addV('person').
 g.addV('person').
   property('person_id', 'adb8744c-d015-4d78-918a-d7f062c59e8f' as UUID).
   property('name', 'Simone BECK').
-  property('gender','F').property('nickname', setOf(Text).create('Simca', 'Simone')).
+  property('gender','F').property('nickname', ['Simca', 'Simone'] as Set).
   iterate();
 g.addV('person').
   property('person_id', '888ad970-0efc-4e2c-b234-b6a71c30efb5' as UUID).

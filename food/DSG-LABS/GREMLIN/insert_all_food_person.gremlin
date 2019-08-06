@@ -8,7 +8,7 @@ g.addV('person').
   property('person_id', 'adb8744c-d015-4d78-918a-d7f062c59e8f' as UUID).
   property('name', 'Simone BECK').
   property('gender','F').
-  property('nickname', setOf(Text).create('Simca', 'Simone')).
+  property('nickname', ['Simca', 'Simone'] as Set).
   iterate();
 g.addV('person').
   property('person_id', '888ad970-0efc-4e2c-b234-b6a71c30efb5' as UUID).
@@ -24,7 +24,7 @@ g.addV('person').
   property('person_id', 'ef811281-f954-4fd6-ace0-bf67d057771a' as UUID).
   property('name', 'Patricia SIMON').
   property('gender','F').
-  property('nickname', setOf(Text).create('Pat')).
+  property('nickname', ['Pat'] as Set).
   iterate();
 g.addV('person').
   property('person_id', 'd45c76bc-6f93-4d0e-9d9f-33298dae0524' as UUID).
@@ -35,7 +35,7 @@ g.addV('person').
   property('person_id', '7f969e16-b81e-4fcd-87c5-1911abbed132' as UUID).
   property('name', 'Patricia CURTAN').
   property('gender','F').
-  property('nickname', setOf(Text).create('Pattie')).
+  property('nickname', ['Pattie'] as Set).
   iterate();
 g.addV('person').
   property('person_id', '01e22ca6-da10-4cf7-8903-9b7e30c25805' as UUID).
@@ -51,5 +51,5 @@ g.addV('person').
   property('person_id', '4ce9caf1-25b8-468e-a983-69bad20c017a' as UUID).
   property('name', 'James BEARD').
   property('gender','M').
-  property('nickname', setOf(Text).create('Jim', 'Jimmy')).
+  property('nickname', ['Jim', 'Jimmy'] as Set).
   iterate();
