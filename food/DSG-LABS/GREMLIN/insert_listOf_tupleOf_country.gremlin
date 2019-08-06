@@ -15,5 +15,4 @@ g.addV('person').
 g.addV('person').
   property('person_id', UUID.fromString("d7b22796-c4f7-4d3c-8401-5c48092f4b75")).
   property('name', 'Jane CANADIAN').
-  property('country', ['France', 1970, 1973]).
-  property('country', ['USA', 1973, 2017])
+  property('country', [ ['France', 1970, 1973 as Tuple] , ['USA', 1973, 2017 as Tuple] ])
