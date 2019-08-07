@@ -1,17 +1,18 @@
-// Add three person vertices and display using Gremlin
+// Add three person vertices to Core graph and display, using Gremlin
 // Note the use of the Traversal API; the Graph API has been eliminated for DataStax Graph
 
 g.addV('person').
-// changing to "bb6d..." as UUID
   property('person_id', 'bb6d7af7-f674-4de7-8b4c-c0fdcdaa5cca' as UUID).
   property('name', 'Julia CHILD').
   property('gender','F').
   iterate();
+
 g.addV('person').
   property('person_id', 'adb8744c-d015-4d78-918a-d7f062c59e8f' as UUID).
   property('name', 'Simone BECK').
   property('gender','F').property('nickname', ['Simca', 'Simone'] as Set).
   iterate();
+
 g.addV('person').
   property('person_id', '888ad970-0efc-4e2c-b234-b6a71c30efb5' as UUID).
   property('name', 'Fritz STREIFF').
