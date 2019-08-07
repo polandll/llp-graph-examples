@@ -2,32 +2,32 @@
 g.addV('meal').
    property('meal_id', 4001).
    property('type', 'lunch').
-   iterate()
+   iterate();
 g.addV('meal').
    property('meal_id', 4002).
    property('type', 'lunch').
-   iterate()
+   iterate();
 g.addV('meal').
    property('meal_id', 4003).
    property('type', 'lunch').
-   iterate()
+   iterate();
 g.addV('meal').
    property('meal_id', 4004).
    property('type', 'lunch').
-   iterate()
+   iterate();
 g.addV('meal').
    property('meal_id', 4005).
    property('type', 'breakfast').
-   iterate()
+   iterate();
 g.addV('meal').
    property('meal_id', 4006).
    property('type', 'snack').
-   iterate()
+   iterate();
 g.addV('meal').
    property('meal_id', 4007).
    property('type', 'dinner').
-   iterate()
+   iterate();
 g.addV('meal').
    property('meal_id', 4008).
    property('type', 'dinner').
-   iterate()
+   iterate();

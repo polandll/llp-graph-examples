@@ -64,7 +64,7 @@ schema.vertexLabel('meal_item').
   partitionBy('item_id', Int).
   property('name', Text).
   property('serv_amt', Text).
-  property('macro', Text).
+  property('macro', listOf(Int)).
   property('calories', Int).
   create()
 
