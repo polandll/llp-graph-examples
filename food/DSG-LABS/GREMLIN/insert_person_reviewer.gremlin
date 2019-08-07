@@ -12,6 +12,8 @@ g.addV('person').
    property('person_id', '4954d71d-f78c-4a6d-9c4a-f40903edbf3c' as UUID).
    property('name', 'John Smith').
    property('gender','M').
+   property('cal_goal', 1850).
+   property('macro_goal', [5,20,75]).
    iterate();
 g.addV('person').
    property('person_id', '6c09f656-5aef-46df-97f9-e7f984c9a3d9' as UUID).
