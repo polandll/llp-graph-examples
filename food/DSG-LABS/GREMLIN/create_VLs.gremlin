@@ -113,10 +113,10 @@ schema.vertexLabel('fridge_sensor').
 
 schema.vertexLabel('location').
   ifNotExists().
-  partitionBy('loc_id', Int).
+  partitionBy('loc_id', Text).
   property('name', Text).
   property('loc_details', frozen(typeOf('location_details')).
-  property('geo_point',Point).
+  property('geo_point', Point).
   create()
 
 // STATIC COLUMN

@@ -1,0 +1,95 @@
+g.addV('location').
+   property('loc_id', 'g1').
+   property('name', 'Paris').
+   property('geo_point', 'POINT (2.352222 48.856614)' as Point).
+   iterate();
+
+g.addV('location').
+   property('loc_id', 'g2').
+   property('name', 'London').
+   property('geo_point', 'POINT (-0.127758 51.507351)' as Point).
+   iterate();
+
+g.addV('location').
+   property('loc_id', 'g3').
+   property('name', 'Dublin').
+   property('geo_point', 'POINT (-6.26031 53.349805)' as Point).
+   iterate();
+
+g.addV('location').
+   property('loc_id', 'g4').
+   property('name', 'Aachen').
+   property('geo_point', 'POINT (6.083887 50.775346)' as Point).
+   iterate();
+
+g.addV('location').
+   property('loc_id', 'g5').
+   property('name', 'Tokyo').
+   property('geo_point', 'POINT (139.691706 35.689487)' as Point).
+   iterate();
+
+g.addV('location').
+   property('loc_id', 'g5').
+   property('name', 'Tokyo').
+   property('geo_point', 'POINT (139.691706 35.689487)' as Point).
+   iterate();
+
+g.addV('location').
+   property('loc_id', 'g6').
+   property('name', 'New York').
+   property('geo_point', 'POINT (74.0059 40.7128)' as Point).
+   iterate();
+
+g.addV('location').
+   property('loc_id', 'g7').
+   property('name', 'New Orleans').
+   property('geo_point', 'POINT (90.0715 29.9511)' as Point).
+   iterate();
+
+g.addV('location').
+   property('loc_id', 'g8').
+   property('name', 'Los Angeles').
+   property('geo_point', 'POINT (118.2437 34.0522)' as Point).
+   iterate();
+
+g.addV('location').
+   property('loc_id', 'g9').
+   property('name', 'Chicago').
+   property('geo_point', 'POINT (-87.6298 41.8781136)' as Point).
+   iterate();
+
+g.addV('location').
+   property('loc_id', 'g10').
+   property('name', "Jane's house").
+   property('geo_point', 'POINT (118.5 34.0000)' as Point).
+   iterate();
+
+g.addV('location').
+   property('loc_id', 'g11').
+   property('name', "John Smith's place").
+   property('geo_point', 'POINT (90.0000 30.000)' as Point).
+   iterate();
+
+g.addV('location').
+   property('loc_id', 'g12').
+   property('name', "Mary's house").
+   property('geo_point', 'POINT(-106.372802 35.107546)' as Point).
+   iterate();
+
+g.addV('location').
+   property('loc_id', 'g13').
+   property('name', 'Zippy Mart').
+   property('geo_point', 'POINT(-112.347309 34.622238)' as Point).
+   iterate();
+
+g.addV('location').
+   property('loc_id', 'g14').
+   property('name', 'Quik Station').
+   property('geo_point', 'POINT(-74.575156 39.339838)' as Point).
+   iterate();
+
+g.addV('location').
+   property('loc_id', 'g15').
+   property('name', "Mamma's Grocery").
+   property('geo_point', 'POINT()-74.423251 42.323255' as Point).
+   iterate();
