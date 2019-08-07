@@ -5,7 +5,6 @@ g.addV('book').
   property('name',"The Art of French Cooking, Vol. 1").
   property('publish_year', 1961).
   property('category', ['French', 'American'] as Set).
-//  property('authors', Arrays.asList(typeOf('fullname').create('BECK', 'Simone'), typeOf('fullname').create('CHILD', 'Julia'))).
   iterate();
 
 g.addV('book').
@@ -13,8 +12,7 @@ g.addV('book').
   property('name',"Simca's Cuisine: 100 Classic French Recipes for Every Occasion").
   property('isbn', '0-394-40152-2').
   property('publish_year', 1972).
-  property('category', ('French', 'American'] as Set).
-//  property('authors', Arrays.asList(typeOf('fullname').create('BECK', 'Simone'))).
+  property('category', ['French', 'American'] as Set).
   iterate();
   
 g.addV('book').
@@ -23,7 +21,7 @@ g.addV('book').
   property('isbn', '0-394-40135-2').
   property('publish_year', 1968).
   property('category', ['French'] as Set).
-//  property('authors', Arrays.asList(typeOf('fullname').create('CHILD', 'Julia'))).
+  property('book_discount', '10%').
   iterate();
 
 // Show all currently inserted books
