@@ -3,10 +3,10 @@
 // SYNTAX:
 // schema.vertexLabel('vertexLabel')
 //    [ .ifNotExists() ]
-//    .partitionBy(propertyKey, propertyKeyType) [ ... ]
-//    [ .clusterBy(propertyKey, propertyKeyType) ... ]
-//    [ .property(property, propertyType) ]
-//    [ .create() | .describe() | .addProperty(propertyKey, propertyKeyType).alter() ]
+//    .partitionBy('propertyName', propertyType) [ ... ]
+//    [ .clusterBy('propertyName', propertyType) ... ]
+//    [ .property('propertyName', propertyType) ]
+//    [ .create() | .describe() | .addProperty('propertyName', propertyType).alter() ]
 
  
 // SINGLE PARTITION KEY Vertex Labels
@@ -35,6 +35,7 @@ schema.vertexLabel('person').
   create()
 
 // book_discount was a property in the old data model that had a ttl; I'm including here to use the same datasets 
+
 schema.vertexLabel('book').
   ifNotExists().
   partitionBy('book_id', Int).
@@ -48,6 +49,7 @@ schema.vertexLabel('book').
 // Going to create vertexLabel recipe through converting a CQL table to a VL
 // Although the notebook shows creating a table for recipe with CQL, then converting,
 // this is the Gremlin schema to make the recipe vertex label
+
 schema.vertexLabel('recipe').
   ifNotExists().
   partitionBy('recipe_id', Int).

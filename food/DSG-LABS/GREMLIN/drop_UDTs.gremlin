@@ -1,5 +1,11 @@
-// Drop user-defined types (UDTs) with Gremlin
+// Drop user-defined types (UDTs) with Gremlin if they exist
 
-schema.type('address').ifExists().drop()
-schema.type('fullname').ifExists().drop()
-schema.type('location_details').ifExists().drop()
+schema.type('address').
+   ifExists().
+   drop()
+schema.type('fullname').
+   ifExists().
+   drop()
+schema.type('location_details').
+   ifExists().
+   drop()

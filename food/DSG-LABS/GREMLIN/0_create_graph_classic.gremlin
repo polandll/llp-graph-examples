@@ -1,3 +1,10 @@
+//Create a Classic Graph in DS Graph
+// replication sets the replication strategy and replication factor for the graph keyspace
+// systemReplication sets the replication strategy and replication factor for the graph_system keyspace
+// options can be set to values:
+//	graph.schema_mode set to Production
+//	graph.allow_scan set to true
+// engine(Classic) specifies that the graph created is a Classic Graph
 
 system.graph('food').
    replication("{'class' : 'NetworkTopologyStrategy', 'SearchGraphAnalytics' : 1 }").

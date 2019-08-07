@@ -1,4 +1,5 @@
-// Note that the graph will have the same name as the existing keyspace name
+// Create a graph from an existing CQL keyspace
+// The graph will have the same name as the existing keyspace name
 
 system.graph('food')
    .fromExistingKeyspace()

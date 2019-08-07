@@ -1,3 +1,5 @@
+// Add edge labels for food graph
+
 // ********
 // EDGE LABELS
 // ********
@@ -5,8 +7,8 @@
 //schema.edgeLabel('edgeLabel')
 //    	[ .ifNotExists() ]
 //	.from('vertexLabel').to('vertexLabel')
-// 	[ .property(propertyName, propertyType) ]
-//    	[ .create() | .describe() | .addProperty(propertyName, propertyType).alter() ]
+// 	[ .property('propertyName', propertyType) ]
+//    	[ .create() | .describe() | .addProperty('propertyName', propertyType).alter() ]
 // ********
 
 // NEED TO ADD DSP-18625

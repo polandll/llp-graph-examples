@@ -1,3 +1,5 @@
+// Create vertex labels for a Classic graph
+
 // ********
 // VERTEX LABELS
 // ********
@@ -15,15 +17,9 @@
 // ********
 
 // SINGLE-KEY VERTEX ID
+
 schema.vertexLabel('person').partitionKey('person_id').ifNotExists().create()
-// ********* NEED TO ADD BADGE TO PERSON !!! USED FOR REVIEWS ***********
-// ==>{badge=[Silver Badge, Gold Badge], gender=[F], name=[Jane Doe]}
-// ==>{badge=[Gold Badge], gender=[M], name=[Jon Doe]}
-// gremlin> g.V().properties('badge').valueMap()
-// ==>{since=2005}
-// ==>{since=2011}
-// ==>{since=2012}
-schema.vertexLabel('person').properties('name','nickname','gender','cal_goal','macro_goal','country').add()
+schema.vertexLabel('person').properties('name','nickname','gender','cal_goal','macro_goal','country','badge').add()
 schema.vertexLabel('book').partitionKey('book_id').ifNotExists().create()
 schema.vertexLabel('book').properties('name','publish_year','isbn').add()
 schema.vertexLabel('meal_item').partitionKey('item_id').ifNotExists().create()
@@ -36,11 +32,17 @@ schema.vertexLabel('store').partitionKey('store_id').ifNotExists().create()
 schema.vertexLabel('store').properties('name','address').add()
 schema.vertexLabel('recipe').partitionKey('recipe_id').ifNotExists().create()
 schema.vertexLabel('recipe').properties('name','cuisine', 'instructions','notes').add()
+
 // GEOSPATIAL
+
 schema.vertexLabel('location').partitionKey('loc_id').ifNotExists().create()
 schema.vertexLabel('location').properties('name', 'geo_point').add()
+
 // MULTIPLE-KEY VERTEX ID
+
 schema.vertexLabel('meal').partitionKey('type', 'meal_id').ifNotExists().create()
+
 // COMPOSITE KEY VERTEX ID
+
 schema.vertexLabel('fridgeSensor').partitionKey('state_id', 'city_id', 'zipcode_id').clusteringKey('sensor_id').ifNotExists().create()
 schema.vertexLabel('fridgeSensor').properties('name').add()
