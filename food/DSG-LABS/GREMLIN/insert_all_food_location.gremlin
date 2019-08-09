@@ -73,23 +73,35 @@ g.addV('location').
 g.addV('location').
    property('loc_id', 'g12').
    property('name', "Mary's house").
+   property('loc_details', [ loc_address: [address1:'215 1st St', city_code:'Winston', state_code:'CA', zip_code:'93002'] as address, telephone: ['530-555-1255', '916-442-2211'] ] as location_details).
    property('geo_point', 'POINT(-106.372802 35.107546)' as Point).
    iterate();
 
 g.addV('location').
    property('loc_id', 'g13').
    property('name', 'Zippy Mart').
+   property('loc_details', [ loc_address: [address1:'213 F St', city_code:'Winston', state_code:'CA', zip_code:'93001'] as address, telephone: ['530-555-3455', '916-446-2211'] ] as location_details).
    property('geo_point', 'POINT(-112.347309 34.622238)' as Point).
    iterate();
 
 g.addV('location').
    property('loc_id', 'g14').
    property('name', 'Quik Station').
+   property('loc_details', [ loc_address: [address1:'500 C St', city_code:'Winston', state_code:'CA', zip_code:'93001'] as address, telephone: ['530-555-3454', '916-446-1111'] ] as location_details).
    property('geo_point', 'POINT(-74.575156 39.339838)' as Point).
    iterate();
 
 g.addV('location').
    property('loc_id', 'g15').
    property('name', "Mamma's Grocery").
+   property('loc_details', [ loc_address: [address1:'1000 A St', city_code:'Winston', state_code:'CA', zip_code:'93001'] as address, telephone: ['530-555-1212', '916-444-3454'] ] as location_details).
    property('geo_point', 'POINT()-74.423251 42.323255' as Point).
    iterate();
+
+g.addV('location').
+   property('loc_id', 'g100').
+   property('name', 'test location').
+   property('loc_details', [ loc_address: [address1:'757 Jay St', city_code:'Arbuckle', state_code:'CA', zip_code:'95691'] as address, telephone: ['530-555-1212', '916-4444-3454'] ] as location_details).
+   property('geo_point', 'POINT (1.352222 48.856614)' as Point).
+   iterate();
+

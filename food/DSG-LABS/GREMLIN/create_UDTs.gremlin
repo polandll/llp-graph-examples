@@ -13,6 +13,7 @@ schema.type('address').
   property('address1', Text).
   property('address2', Text).
   property('city_code', Text).
+  property('state_code', Text).
   property('zip_code', Text).
   create()
 
