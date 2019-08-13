@@ -1,0 +1,5 @@
+// THIS COMMAND APPLIES TO BOTH Core AND Classic GRAPHS
+
+system.graph('food_classic').
+  ifExists().
+  drop()
