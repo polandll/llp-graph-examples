@@ -36,5 +36,5 @@ g.addV('person').
    property('name', 'Betsy JONES').
    property('gender','F').
    property('cal_goal', 1700).
-   property('macro_goal', [10,50,30).
+   property('macro_goal', [10,50,30]).
    iterate();

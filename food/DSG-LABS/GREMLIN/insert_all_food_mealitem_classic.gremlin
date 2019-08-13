@@ -1,0 +1,24 @@
+// meal_items
+g.addV('meal_item').
+  property('item_id', 5001).
+  property('name', 'taco').
+  property('serv_amt', '1').
+  property('macro', '15,65,65').
+  property('calories', 650).
+  iterate();
+
+g.addV('meal_item').
+  property('item_id', 5002).
+  property('name', 'burrito').
+  property('serv_amt', '1').
+  property('macro', '15,65,65').
+  property('calories', 1230).
+  iterate();
+
+g.addV('meal_item').
+  property('item_id', 5003).
+  property('name', 'iced tea').
+  property('serv_amt', '2 cups').
+  property('macro', '0,0,0').
+  property('calories', 0).
+  iterate();
