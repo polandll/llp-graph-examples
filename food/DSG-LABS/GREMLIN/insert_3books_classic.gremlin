@@ -1,0 +1,30 @@
+// Add three book vertices and display using Gremlin
+
+g.addV('book').
+  property('book_id',1001).
+  property('name',"The Art of French Cooking, Vol. 1").
+  property('publish_year', 1961).
+  property('category', 'French').
+  property('category', 'American').
+  iterate();
+
+g.addV('book').
+  property('book_id',1002).
+  property('name',"Simca's Cuisine: 100 Classic French Recipes for Every Occasion").
+  property('isbn', '0-394-40152-2').
+  property('publish_year', 1972).
+  property('category', 'French').
+  property('category', 'American').
+  iterate();
+  
+g.addV('book').
+  property('book_id',1003).
+  property('name','The French Chef Cookbook').
+  property('isbn', '0-394-40135-2').
+  property('publish_year', 1968).
+  property('category', 'French').
+  property('book_discount', '10%').
+  iterate();
+
+// Show all currently inserted books
+g.V().hasLabel('book')

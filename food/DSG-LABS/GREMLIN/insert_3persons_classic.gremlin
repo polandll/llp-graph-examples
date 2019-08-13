@@ -1,0 +1,28 @@
+// Add three person vertices to Classic graph and display, using Gremlin
+// Note the use of the Traversal API; the Graph API has been eliminated for DataStax Graph
+
+g.addV('person').
+   property('person_id', UUID.fromString('bb6d7af7-f674-4de7-8b4c-c0fdcdaa5cca')).
+   property('name', 'Julia CHILD').
+   property('gender','F').
+   property('nickname', 'Jay').
+   property('nickname', 'Julia').
+   property('country', 'USA', 'start_date', '1912-08-12', 'end_date', '1944-01-01').
+   property('country', 'Ceylon', 'start_date', '1944-01-01', 'end_date', '1945-06-01').
+   iterate();
+
+g.addV('person').
+   property('person_id', UUID.fromString('adb8744c-d015-4d78-918a-d7f062c59e8f')).
+   property('name', 'Simone BECK').
+   property('gender','F').
+   property('nickname', 'Simca').
+   property('nickname', 'Simone').
+   iterate();
+
+g.addV('person').
+   property('person_id', UUID.fromString('888ad970-0efc-4e2c-b234-b6a71c30efb5')).
+   property('name', 'Fritz STREIFF').
+   property('gender','M').
+   iterate();
+
+g.V().hasLabel('person')
