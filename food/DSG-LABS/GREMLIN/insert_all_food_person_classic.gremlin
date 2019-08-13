@@ -1,0 +1,62 @@
+// person vertices
+
+g.addV('person').
+   property(UUID.fromString('person_id', 'bb6d7af7-f674-4de7-8b4c-c0fdcdaa5cca').
+   property('name', 'Julia CHILD').
+   property('gender','F').
+   property('nickname', 'Jay').
+   property('nickname', 'Julia').
+   property('country', 'USA', 'start_date', '1912-08-12', 'end_date', '1944-01-01').
+   property('country', 'Ceylon', 'start_date', '1944-01-01', 'end_date', '1945-06-01').
+  iterate();
+g.addV('person').
+   property(UUID.fromString('person_id', 'adb8744c-d015-4d78-918a-d7f062c59e8f').
+   property('name', 'Simone BECK').
+   property('gender','F').
+   property('nickname', 'Simca').
+   property('nickname', 'Simone').
+   iterate();
+g.addV('person').
+   property(UUID.fromString('person_id', '888ad970-0efc-4e2c-b234-b6a71c30efb5').
+   property('name', 'Fritz STREIFF').
+   property('gender','M').
+   iterate();
+g.addV('person').
+   property(UUID.fromString('person_id', 'f092107c-0c5c-47e7-917c-c82c7fc2a2493').
+   property('name', 'Louisette BERTHOLIE').
+   property('gender','F').
+   iterate();
+g.addV('person').
+   property(UUID.fromString('person_id', 'ef811281-f954-4fd6-ace0-bf67d057771a').
+   property('name', 'Patricia SIMON').
+   property('gender','F').
+   property('nickname', 'Pat').
+  iterate();
+g.addV('person').
+   property(UUID.fromString('person_id', 'd45c76bc-6f93-4d0e-9d9f-33298dae0524').
+   property('name', 'Alice WATERS').
+   property('gender','F').
+   iterate();
+g.addV('person').
+   property(UUID.fromString('person_id', '7f969e16-b81e-4fcd-87c5-1911abbed132').
+   property('name', 'Patricia CURTAN').
+   property('gender','F').
+   property('nickname', 'Pattie').
+   iterate();
+g.addV('person').
+   property(UUID.fromString('person_id', '01e22ca6-da10-4cf7-8903-9b7e30c25805').
+   property('name', 'Kelsie KERR').
+   property('gender','F').
+   iterate();
+g.addV('person').
+   property(UUID.fromString('person_id', 'ad58b8bd-033f-48ee-8f3b-a84f9c24e7de').
+   property('name', 'Emeril LAGASSE').
+   property('gender','M').
+   iterate();
+g.addV('person').
+   property(UUID.fromString('person_id', '4ce9caf1-25b8-468e-a983-69bad20c017a').
+   property('name', 'James BEARD').
+   property('gender','M').
+   property('nickname', 'Jim').
+   property('nickname', 'Jimmy').
+   iterate();

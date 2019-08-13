@@ -1,0 +1,40 @@
+// reviewer vertices
+
+g.addV('person').
+   property('person_id', '46ad98ac-f5c9-4411-815a-f81b3b667921' as UUID).
+   property('name', 'John DOE').
+   property('gender','M').
+   property('cal_goal', 1750).
+   property('macro_goal', [10,30,60]).
+   property('badge', [level:'silver', since:'2016-01-01' as LocalDate]).
+   iterate();
+g.addV('person').
+   property('person_id', '4954d71d-f78c-4a6d-9c4a-f40903edbf3c' as UUID).
+   property('name', 'John Smith').
+   property('gender','M').
+   property('nickname', ['Johnie'] as Set).
+   property('cal_goal', 1800).
+   property('macro_goal', [30,20,50]).
+   iterate();
+g.addV('person').
+   property('person_id', '6c09f656-5aef-46df-97f9-e7f984c9a3d9' as UUID).
+   property('name', 'Jane DOE').
+   property('gender','F').
+   property('nickname', ['Janie'] as Set).
+   property('cal_goal', 1500).
+   property('macro_goal', [50,15,35]).
+   iterate();
+g.addV('person').
+   property('person_id', 'daa02698-df4f-4436-8855-941774f4c3e0' as UUID).
+   property('name', 'Sharon SMITH').
+   property('gender','F').
+   property('cal_goal', 1600).
+   property('macro_goal', [30,20,50]).
+   iterate();
+g.addV('person').
+   property('person_id', '6bda1b37-fe96-42bd-a2db-682073d10c37' as UUID).
+   property('name', 'Betsy JONES').
+   property('gender','F').
+   property('cal_goal', 1700).
+   property('macro_goal', [10,50,30).
+   iterate();
