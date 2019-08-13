@@ -1,16 +1,16 @@
-person_id|lastname|firstname|gender|nickname|calgoal|macrogoal
-e7cd5752-bc0d-4157-a80f-7523add8dbcd|CHILD|Julia|F|[Jay,Julia]|1400|[25,25,50]
-???|BECK|Simone|F|[Simca]|1400|[50,25,25]
-???|BERTHOLIE|Louisette|F|null|1400|[50,25,25]
-???|SIMON|Patricia|F|[Pat]|1500|[35,35,30]
-???|WATERS|Alice|F|null|1500|[35,35,30]
-???|CURTAN|Patricia|F|[Pattie]||1500|[35,35,30]
-???|KERR|Kelsie|F|null||1500|[35,35,30]
-???|STREIFF|Fritz|M|null|1700|[50,25,25]
-fb372533-eb95-4bb4-8685-6ef61e994caa|LAGASSE|Emeril|M|[Poppy,Emeril]|1600|[25,25,50]
-???|BEARD|James|M|[Jim]|1800|[50,40,10]
-???|DOE|John|M|null|1750|[10,30,60]
-???|SMITH|John|M|[Johnnie]|1800|[30,20,50]
-???|DOE|Jane|F|null|1500|[50,15,35]
-???|SMITH|Sharon|F|null|1600|[30,20,50]
-???|JONES|Betsy|F|null|1700|[10,50,30]
+person_id|name|gender|nickname|cal_goal|macro_goal
+e7cd5752-bc0d-4157-a80f-7523add8dbcd|Julia CHILD|F|[Jay,Julia]||
+adb8744c-d015-4d78-918a-d7f062c59e8f|Simone BECK|F|[Simca, Simone]||
+f092107c-0c5c-47e7-917c-c82c7fc2a249||Louisette BERTHOLIE|F|null||
+ef811281-f954-4fd6-ace0-bf67d057771a|Patricia SIMON|F|[Pat]||
+d45c76bc-6f93-4d0e-9d9f-33298dae0524|Alice WATERS|F|null||
+7f969e16-b81e-4fcd-87c5-1911abbed132|Patricia CURTAN|F|[Pattie]|||
+01e22ca6-da10-4cf7-8903-9b7e30c25805|Kelsie KERR|F|null|||
+888ad970-0efc-4e2c-b234-b6a71c30efb5|Fritz STREIFF|M|null||
+ad58b8bd-033f-48ee-8f3b-a84f9c24e7de|Emeril LAGASSE|M|[Poppy,Emeril]||
+4ce9caf1-25b8-468e-a983-69bad20c017a|James BEARD|M|[Jim]||
+65fd73f7-0e06-49af-abd6-0725dc64737d|John DOE|M|null|1750|[10,30,60]
+3b3e89f4-5ca2-437e-b8e8-fe7c5e580068|John SMITH|M|[Johnnie]|1800|[30,20,50]
+9b564212-9544-4f85-af36-57615e927f89|Jane DOE|F|[Janie]|1500|[50,15,35]
+ba6a6766-beae-4a35-965b-6f3878581702|Sharon SMITH|F|null|1600|[30,20,50]
+a3e7ab29-2ac9-4abf-9d4a-285bf2714a9f|Betsy JONES|F|null|1700|[10,50,30]
