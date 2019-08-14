@@ -1,0 +1,3 @@
+Each vertex label must include at least one property that is used as the partition key (_partitionBy_). Composite partition keys are defined by multiple _partitionBy_ steps in the vertex label schema. Additionally, a property or properties that will be used as a clustering key or keys can be defined with _clusteringBy_. Finally, any additional properties that are not part of the partition key or clustering keys are defined with a _property_ step. The property data type must also be specified. Lastly, a _create_ step completes the schema statement.
+
+See the All Food Schema notebook for a wider variety of edge labels.

@@ -1,0 +1,1 @@
+Now insert the edges. Note that the traversal identifies each of the vertices using their partitioning keys (a UUID for _person_id_ and an Integer for _book_id_), and then adds the edge with _addE_ using the edge label and _from_/_to_ values.

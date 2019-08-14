@@ -1,0 +1,1 @@
+Properties can also be added or dropped from vertex labels. The properties added here with _addProperty()_ are used to track the calorie goals and macro goals (protein, carb, fat) of a person. To drop properties, use _dropProperty()_.

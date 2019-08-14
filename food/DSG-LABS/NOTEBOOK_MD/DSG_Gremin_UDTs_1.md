@@ -1,0 +1,1 @@
+DataStax Graph stores graph schema data in several tables in the _system_schema_ keyspace: _types_, _vertices_, _edges_, _indexes_. Either Gremlin can be used to view the existing elements in the corresponding schema, or a CQL query can be used to view the information. In addition, Gremlin can more specifically define a particular element to view, as shown for _address_.
