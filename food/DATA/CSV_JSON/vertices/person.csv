@@ -1,14 +1,14 @@
 person_id|name|gender|nickname|cal_goal|macro_goal|badge|country
 e7cd5752-bc0d-4157-a80f-7523add8dbcd|Julia CHILD|F||||'Jay','Julia'||[['USA', '1912-08-12', '1944-01-01'], ['Ceylon', '1944-01-01', '1945-06-01']]
-adb8744c-d015-4d78-918a-d7f062c59e8f|Simone BECK|F||||'Simca','Simone'||
-888ad970-0efc-4e2c-b234-b6a71c30efb5|Fritz STREIFF|M||||||
-f092107c-0c5c-47e7-917c-c82c7fc2a249|Louisette BERTHOLIE|F||||||
-ef811281-f954-4fd6-ace0-bf67d057771a|Patricia SIMON|F|'Pat'|||||
-d45c76bc-6f93-4d0e-9d9f-33298dae0524|Alice WATERS|F||||||
-7f969e16-b81e-4fcd-87c5-1911abbed132|Patricia CURTAN|F|'Pattie'|||||
-01e22ca6-da10-4cf7-8903-9b7e30c25805|Kelsie KERR|F||||||
-ad58b8bd-033f-48ee-8f3b-a84f9c24e7de|Emeril LAGASSE|M||||||
-4ce9caf1-25b8-468e-a983-69bad20c017a|James BEARD|M|'Jim', 'Jimmy'|||||
+adb8744c-d015-4d78-918a-d7f062c59e8f|Simone BECK|F|'Simca','Simone'|||||
+888ad970-0efc-4e2c-b234-b6a71c30efb5|Fritz STREIFF|M|||||
+f092107c-0c5c-47e7-917c-c82c7fc2a249|Louisette BERTHOLIE|F|||||
+ef811281-f954-4fd6-ace0-bf67d057771a|Patricia SIMON|F|'Pat'||||
+d45c76bc-6f93-4d0e-9d9f-33298dae0524|Alice WATERS|F|||||
+7f969e16-b81e-4fcd-87c5-1911abbed132|Patricia CURTAN|F|'Pattie'||||
+01e22ca6-da10-4cf7-8903-9b7e30c25805|Kelsie KERR|F|||||
+ad58b8bd-033f-48ee-8f3b-a84f9c24e7de|Emeril LAGASSE|M|||||
+4ce9caf1-25b8-468e-a983-69bad20c017a|James BEARD|M|'Jim', 'Jimmy'||||
 65fd73f7-0e06-49af-abd6-0725dc64737d|John DOE|M||'Johnny'|1750|10,30,60|level:'silver', since:'2016-01-01'|
 3b3e89f4-5ca2-437e-b8e8-fe7c5e580068|John SMITH|M|'Johnnie'|1800|30,20,50||
 9b564212-9544-4f85-af36-57615e927f89|Jane DOE|F|'Janie'|1500|50,15,35||
