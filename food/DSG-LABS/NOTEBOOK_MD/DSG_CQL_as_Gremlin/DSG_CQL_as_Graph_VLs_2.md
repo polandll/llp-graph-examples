@@ -1,0 +1,3 @@
+The _VERTEX LABEL_ will default to the same value as the table name, but can be defined as a different value, with _VERTEX LABEL person_vl_, for instance.
+
+In the vertex labels created above, note the use of collections (set, list, map), tuples, and lists of collections, tuples, and UDTs. These data types provide a remarkable amount of flexibility in defining meta-properties (a property on a property) and multi-properties (a property with multiple values). For instance, the _badge_ property is stored as a map of Text:Integer, such as Gold:2015, the meta-property of _year achieved_ on the _badge level_. Similarly, a set of Text values for _nickname_ store the various values for the multi-property _nickname_. 

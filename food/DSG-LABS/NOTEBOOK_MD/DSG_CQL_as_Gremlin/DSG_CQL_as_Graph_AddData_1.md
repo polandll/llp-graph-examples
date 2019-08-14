@@ -1,0 +1,1 @@
+Because the CQL tables were identified as vertex labels on creation, it is interesting that Gremlin can now also be used to examine the vertices inserted. However, the keyspace must be altered to a graph prior to the Gremlin query:
