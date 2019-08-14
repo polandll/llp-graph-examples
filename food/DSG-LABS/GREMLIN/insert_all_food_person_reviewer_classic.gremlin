@@ -7,6 +7,7 @@ g.addV('person').
    property('cal_goal', 1750).
    property('macro_goal', '10,30,60').
    property('badge', 'silver', 'since', '2016-01-01').
+   property('badge', 'gold', 'since', '2017-01-01').
    iterate();
 g.addV('person').
    property('person_id', UUID.fromString('4954d71d-f78c-4a6d-9c4a-f40903edbf3c')).
