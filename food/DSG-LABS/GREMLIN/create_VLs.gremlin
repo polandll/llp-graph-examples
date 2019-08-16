@@ -115,7 +115,7 @@ schema.vertexLabel('location').
   ifNotExists().
   partitionBy('loc_id', Text).
   property('name', Text).
-  property('loc_details', frozen(typeOf('location_details')).
+  property('loc_details', frozen(typeOf('location_details'))).
   property('geo_point', Point).
   create()
 
