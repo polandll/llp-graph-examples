@@ -1,0 +1,1 @@
+For edge label tables, the table is named with the pattern _startingVertexLabel_edgeLabel_endingVertexLabel_.  Edge properties can be defined similarly to vertex labels. Finally, using _AND EDGE LABEL_ ... _FROM_ ... _TO_, the definition of the primary keys to use for the edges is defined.
