@@ -8,7 +8,7 @@
 
 repoGremlinDir="/home/automaton/graph-examples/food/DSG-LABS/GREMLIN"
 
-cat $repoGremlinDir/0_create_graph.gremlin | dse gremlin-console;
+cat $repoGremlinDir/0_create_graph_QS.gremlin | dse gremlin-console;
 cat $repoGremlinDir/remoteQS.gremlin $repoGremlinDir/create_VLs.gremlin | dse gremlin-console; 
 cat $repoGremlinDir/remoteQS.gremlin $repoGremlinDir/create_ELs.gremlin  | dse gremlin-console;
 cqlsh -f $repoGremlinDir/create_table_recipe.cql; 
