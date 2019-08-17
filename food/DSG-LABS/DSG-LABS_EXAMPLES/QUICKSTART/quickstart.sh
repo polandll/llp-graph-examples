@@ -1,4 +1,4 @@
-cd /home/automaton/graph-examples/DSG-LABS/GREMLIN; /
+cd /home/automaton/graph-examples/food/DSG-LABS/GREMLIN; /
 cat 0_create_graph.gremlin | dse gremlin-console
 cat /
 remoteQS.gremlin /
