@@ -1,5 +1,7 @@
+cd /home/automaton/graph-examples/DSG-LABS/GREMLIN; /
+cat 0_create_graph.gremlin | dse gremlin-console
 cat /
-0_create_graph.gremlin /		
+remoteQS.gremlin /
 create_VLs.gremlin /		
 create_ELs.gremlin /
 create_table_recipe.cql /	
