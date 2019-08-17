@@ -1,1 +1,0 @@
-../../DSG-LABS/GREMLIN/create_table_recipe.cql
