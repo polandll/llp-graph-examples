@@ -1,5 +1,14 @@
-cd /home/automaton/graph-examples/food/DSG-LABS/GREMLIN; /
-cat 0_create_graph.gremlin | dse gremlin-console
+#!/bin/bash
+
+#**********************************
+# quickstart.sh
+# QuickStart code
+# Lorina Poland
+#**********************************
+
+
+cd /home/automaton/graph-examples/food/DSG-LABS/GREMLIN; 
+cat 0_create_graph.gremlin | dse gremlin-console;
 cat /
 remoteQS.gremlin /
 create_VLs.gremlin /		
