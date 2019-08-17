@@ -16,8 +16,8 @@ cat $repoGremlinDir/0_create_graph_QS.gremlin | dse gremlin-console;
 #cat $repoGremlinDir/remoteQS.gremlin $repoGremlinDir/insert_3books.gremlin | dse gremlin-console;
 #cat $repoGremlinDir/remoteQS.gremlin $repoGremlinDir/insert_2edges.gremlin | dse gremlin-console;
 
-cat $repoGremlinDir/0_create_graph_QS.gremlin /
- $repoGremlinDir/remoteQS.gremlin / 
+cat $repoGremlinDir/0_create_graph_QS.gremlin | dse gremlin-console;
+cat  $repoGremlinDir/remoteQS.gremlin / 
  $repoGremlinDir/create_VLs.gremlin /
  $repoGremlinDir/create_ELs.gremlin  | dse gremlin-console;
 cqlsh -f $repoGremlinDir/create_table_recipe.cql;
