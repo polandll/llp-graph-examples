@@ -26,6 +26,6 @@ cat  $repoGremlinDir/remoteQS.gremlin \
 cqlsh -f $repoGremlinDir/create_table_recipe.cql;
 cat $repoGremlinDir/remoteQS.gremlin \
   $repoGremlinDir/insert_3persons.gremlin \
-  $repoGremlinDir/insert_3books.gremlin 
+  $repoGremlinDir/insert_3books.gremlin \
   $repoGremlinDir/insert_2edges.gremlin | dse gremlin-console;
 
