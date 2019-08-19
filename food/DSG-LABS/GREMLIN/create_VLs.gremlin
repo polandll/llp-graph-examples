@@ -43,7 +43,8 @@ schema.vertexLabel('book').
   property('publish_year', Int).
   property('isbn', Text).
   property('category', setOf(Text)).
-  property('book_discount', Text).
+  // Add as an added property 
+  //property('book_discount', Text).
   create()
 
 // Going to create vertexLabel recipe through converting a CQL table to a VL
