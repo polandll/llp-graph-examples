@@ -120,7 +120,6 @@ schema.vertexLabel('location').
 
 schema.vertexLabel('flag').
   ifNotExists().
-  partitionBy('country_id', Int).
-  clusterBy('country', Text).
-  property('flag', Text, STATIC).
+  partitionBy('country', Text).
+  property('flag', Text, Static).
   create()
