@@ -1,0 +1,3 @@
+Need to add a snippet for querying about a VL/EL with a pre-determined ID.
+hasId()
+has('id', ...)
