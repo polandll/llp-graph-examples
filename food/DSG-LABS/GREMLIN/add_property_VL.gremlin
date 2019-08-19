@@ -1,4 +1,3 @@
-schema.vertexLabel('person').
-    addProperty('one', Int).
-    addProperty('two', Int).
+schema.vertexLabel('book').
+    addProperty('book_discount', Text).
     alter()

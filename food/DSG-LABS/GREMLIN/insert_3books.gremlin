@@ -21,7 +21,8 @@ g.addV('book').
   property('isbn', '0-394-40135-2').
   property('publish_year', 1968).
   property('category', ['French'] as Set).
-  property('book_discount', '10%').
+  // Used after the property is added
+  //property('book_discount', '10%').
   iterate();
 
 // Show all currently inserted books

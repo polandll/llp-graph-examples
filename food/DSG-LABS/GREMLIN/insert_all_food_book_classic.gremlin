@@ -22,7 +22,8 @@ g.addV('book').
    property('isbn', '0-394-40135-2').
    property('category', 'French').
    property('category', 'cooking').
-   property('book_discount', '10%').
+   // Used after property is added
+   //property('book_discount', '10%').
    iterate();
 g.addV('book').
    property('book_id', 1004).
