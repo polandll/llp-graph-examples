@@ -1,4 +1,4 @@
-// THIS COMMAND APPLIES TO BOTH Core AND Classic GRAPHS
+// Drop a graph if it already exists
 
 system.graph('food').
   ifExists().
