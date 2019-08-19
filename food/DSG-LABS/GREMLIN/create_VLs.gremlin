@@ -78,15 +78,12 @@ schema.vertexLabel('home').
   ifNotExists().
   partitionBy('home_id', Int).
   property('name', Text).
-  //property('address', Text).
-  property('address', frozen(typeOf('address'))).
   create()
 
 schema.vertexLabel('store').
   ifNotExists().
   partitionBy('store_id', Int).
   property('name', Text).
-  property('address', Text).
   create()
 
 

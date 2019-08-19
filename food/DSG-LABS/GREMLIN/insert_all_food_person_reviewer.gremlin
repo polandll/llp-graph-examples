@@ -6,8 +6,7 @@ g.addV('person').
    property('gender','M').
    property('cal_goal', 1750).
    property('macro_goal', [10,30,60]).
-// ***** need to change this to a setOf(mapOf) to add the second level gold stats
-   property('badge', [level:'silver', since:'2016-01-01' as LocalDate]).
+   property('badge', ['silver':'2016-01-01' as LocalDate, 'gold':'2017-01-01' as LocalDate]).
    iterate();
 g.addV('person').
    property('person_id', '4954d71d-f78c-4a6d-9c4a-f40903edbf3c' as UUID).
