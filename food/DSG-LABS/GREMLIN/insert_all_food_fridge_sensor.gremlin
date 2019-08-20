@@ -1,0 +1,64 @@
+// fridge_sensor vertices
+
+g.addV('fridge_sensor').
+   property('state_id', 31).
+   property('city_id', 100).
+   property('zipcode_id', 55555).
+   property('sensor_id', 001)
+   iterate();
+
+g.addV('fridge_sensor').
+   property('state_id', 31).
+   property('city_id', 100).
+   property('zipcode_id', 55555).
+   property('sensor_id', 002)
+   iterate();
+
+g.addV('fridge_sensor').
+   property('state_id', 31).
+   property('city_id', 100).
+   property('zipcode_id', 55555).
+   property('sensor_id', 003)
+   iterate();
+
+g.addV('fridge_sensor').
+   property('state_id', 31).
+   property('city_id', 200).
+   property('zipcode_id', 55556).
+   property('sensor_id', 001)
+   iterate();
+
+g.addV('fridge_sensor').
+   property('state_id', 31).
+   property('city_id', 200).
+   property('zipcode_id', 55556).
+   property('sensor_id', 002)
+   iterate();
+
+g.addV('fridge_sensor').
+   property('state_id', 31).
+   property('city_id', 200).
+   property('zipcode_id', 55556).
+   property('sensor_id', 003)
+   iterate();
+
+g.addV('fridge_sensor').
+   property('state_id', 45).
+   property('city_id', 300).
+   property('zipcode_id', 66665).
+   property('sensor_id', 001)
+   iterate();
+
+g.addV('fridge_sensor').
+   property('state_id', 45).
+   property('city_id', 300).
+   property('zipcode_id', 66665).
+   property('sensor_id', 002)
+   iterate();
+
+g.addV('fridge_sensor').
+   property('state_id', 45).
+   property('city_id', 300).
+   property('zipcode_id', 66665).
+   property('sensor_id', 003)
+   iterate();

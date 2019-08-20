@@ -1,0 +1,14 @@
+g.addV('home').
+   property('home_id', '9000').
+   property('name', "Jane's house").
+   iterate();
+
+g.addV('home').
+   property('home_id', '9001').
+   property('name', "John Smith's place").
+   iterate();
+
+g.addV('home').
+   property('home_id', '9002').
+   property('name', "Mary's house").
+   iterate();
