@@ -42,15 +42,15 @@ schema.edgeLabel('includes').
   property('num_serv', Int).
   create()
 
-// recipe_includedIn_meal
-schema.edgeLabel('includedIn').
+// recipe_included_in_meal
+schema.edgeLabel('included_in').
   ifNotExists().
   from('recipe').to('meal').
   property('amount', Text).
   create()
 
-// recipe_includedIn_book_
-schema.edgeLabel('includedIn').
+// recipe_included_in_book_
+schema.edgeLabel('included_in').
   ifNotExists().
   from('recipe').to('book').
   create()
@@ -81,29 +81,28 @@ schema.edgeLabel('contains').
   create()
 
 
-// store_isStockedWith_ingredient
-schema.edgeLabel('isStockedWith').
+// store_is_stocked_with_ingredient
+schema.edgeLabel('is_stocked_with').
   ifNotExists().
   from('store').to('ingredient').
   property('expire_date', Date).
 //  ttl(60800).
   create()
 
-// home_isLocatedAt_location
-schema.edgeLabel('isLocatedAt').
+// home_is_located_at_location
+schema.edgeLabel('is_located_at').
   ifNotExists().
   from('home').to('location').
   create()
 
 // store_isLocatedAt_location
-schema.edgeLabel('isLocatedAt').
+schema.edgeLabel('is_located_at').
   ifNotExists().
   from('store').to('location').
   create()
 
-//fridgeSensor_isLocatedAt_location
-schema.edgeLabel('isLocatedAt').
+//fridgeSensor_is_located_at_location
+schema.edgeLabel('is_located_at').
   ifNotExists().
   from('fridge_sensor').to('location').
   create()
-
