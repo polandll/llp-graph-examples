@@ -2,15 +2,15 @@
 
 g.V().has('recipe', 'recipe_id', 2001).as('a')
    .V().has('book', 'book_id', 1001).as('b')
-   .addE('includedIn').from('a').to('b')
+   .addE('included_in').from('a').to('b')
    .iterate()
    
 g.V().has('recipe', 'recipe_id', 2003).as('a')
    .V().has('book', 'book_id', 1001).as('b')
-   .addE('includedIn').from('a').to('b')
+   .addE('included_in').from('a').to('b')
    .iterate()
    
 g.V().has('recipe', 'recipe_id', 2007).as('a')
    .V().has('book', 'book_id', 1004).as('b')
-   .addE('includedIn').from('a').to('b')
+   .addE('included_in').from('a').to('b')
    .iterate()
