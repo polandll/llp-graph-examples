@@ -1,0 +1,13 @@
+// meal includes meal_item edges
+
+g.V().has('meal', 'meal_id', 4001).has('meal', 'type', 'lunch').as('a').
+   V().has('meal_item', 'meal_item_id', 1001).as('b').
+   addE('includes').property('num_serv', 1).from('a').to('b').
+   iterate();
+
+
+type|mealId|itemId|numServ
+lunch|4001|5001|1
+lunch|4001|5002|1
+lunch|4001|5003|2
+lunch|4002|5001|2
