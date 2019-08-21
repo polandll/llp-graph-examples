@@ -1,0 +1,58 @@
+// home located_at fridge_sensor edges
+
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 100).
+      has('fridge_sensor', 'zipcode_id', 55555).
+      has('fridge_sensor', 'sensor_id', 001).as('a').
+   V().has('home', 'home_id', 9001).as('b').
+   addE('located_at').from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 100).
+      has('fridge_sensor', 'zipcode_id', 55555).
+      has('fridge_sensor', 'sensor_id', 004).as('a').
+   V().has('home', 'home_id', 9001).as('b').
+   addE('located_at').from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 100).
+      has('fridge_sensor', 'zipcode_id', 55555).
+      has('fridge_sensor', 'sensor_id', 002).as('a').
+   V().has('home', 'home_id', 9002).as('b').
+   addE('located_at').from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 100).
+      has('fridge_sensor', 'zipcode_id', 55555).
+      has('fridge_sensor', 'sensor_id', 003).as('a').
+   V().has('home', 'home_id', 9003).as('b').
+   addE('located_at').from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 200).
+      has('fridge_sensor', 'zipcode_id', 55556).
+      has('fridge_sensor', 'sensor_id', 001).as('a').
+   V().has('home', 'home_id', 9002).as('b').
+   addE('located_at').from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 200).
+      has('fridge_sensor', 'zipcode_id', 55556).
+      has('fridge_sensor', 'sensor_id', 002).as('a').
+   V().has('home', 'home_id', 9003).as('b').
+   addE('located_at').from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 200).
+      has('fridge_sensor', 'zipcode_id', 55556).
+      has('fridge_sensor', 'sensor_id', 003).as('a').
+   V().has('home', 'home_id', 9001).as('b').
+   addE('located_at').from('a').to('b').
+   iterate();
