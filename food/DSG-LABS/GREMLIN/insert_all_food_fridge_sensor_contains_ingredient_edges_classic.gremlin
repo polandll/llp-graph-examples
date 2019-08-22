@@ -1,0 +1,181 @@
+// fridge_sensor contains ingredient edges
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 100).
+      has('fridge_sensor', 'zipcode_id', 55555).
+      has('fridge_sensor', 'sensor_id', 001).as('a').
+   V().has('ingredient', 'ingred_id', 3016).as('b').
+   addE('contains').
+   property('expire_date', '2017-10-01').
+   from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 100).
+      has('fridge_sensor', 'zipcode_id', 55555).
+      has('fridge_sensor', 'sensor_id', 001).as('a').
+   V().has('ingredient', 'ingred_id', 3001).as('b').
+   addE('contains').
+   property('expire_date', '2017-10-01').
+   from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 100).
+      has('fridge_sensor', 'zipcode_id', 55555).
+      has('fridge_sensor', 'sensor_id', 001).as('a').
+   V().has('ingredient', 'ingred_id', 3020).as('b').
+   addE('contains').
+   property('expire_date', '2017-08-01').
+   from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 100).
+      has('fridge_sensor', 'zipcode_id', 55555).
+      has('fridge_sensor', 'sensor_id', 001).as('a').
+   V().has('ingredient', 'ingred_id', 3015).as('b').
+   addE('contains').
+   property('expire_date', '2017-09-01').
+   from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 100).
+      has('fridge_sensor', 'zipcode_id', 55555).
+      has('fridge_sensor', 'sensor_id', 001).as('a').
+   V().has('ingredient', 'ingred_id', 3007).as('b').
+   addE('contains').
+   property('expire_date', '2017-07-20').
+   from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 100).
+      has('fridge_sensor', 'zipcode_id', 55555).
+      has('fridge_sensor', 'sensor_id', 003).as('a').
+   V().has('ingredient', 'ingred_id', 3016).as('b').
+   addE('contains').
+   property('expire_date', '2017-11-01').
+   from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 100).
+      has('fridge_sensor', 'zipcode_id', 55555).
+      has('fridge_sensor', 'sensor_id', 003).as('a').
+   V().has('ingredient', 'ingred_id', 3005).as('b').
+   addE('contains').
+   property('expire_date', '2017-08-01').
+   from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 100).
+      has('fridge_sensor', 'zipcode_id', 55555).
+      has('fridge_sensor', 'sensor_id', 003).as('a').
+   V().has('ingredient', 'ingred_id', 3015).as('b').
+   addE('contains').
+   property('expire_date', '2017-09-03').
+   from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 200).
+      has('fridge_sensor', 'zipcode_id', 55555).
+      has('fridge_sensor', 'sensor_id', 001).as('a').
+   V().has('ingredient', 'ingred_id', 3005).as('b').
+   addE('contains').
+   property('expire_date', '2017-09-03').
+   from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 200).
+      has('fridge_sensor', 'zipcode_id', 55555).
+      has('fridge_sensor', 'sensor_id', 003).as('a').
+   V().has('ingredient', 'ingred_id', 3010).as('b').
+   addE('contains').
+   property('expire_date', '2017-07-15').
+   from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 200).
+      has('fridge_sensor', 'zipcode_id', 55555).
+      has('fridge_sensor', 'sensor_id', 003).as('a').
+   V().has('ingredient', 'ingred_id', 3015).as('b').
+   addE('contains').
+   property('expire_date', '2018-01-01').
+   from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 200).
+      has('fridge_sensor', 'zipcode_id', 55555).
+      has('fridge_sensor', 'sensor_id', 003).as('a').
+   V().has('ingredient', 'ingred_id', 3008).as('b').
+   addE('contains').
+   property('expire_date', '2017-07-12').
+   from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 200).
+      has('fridge_sensor', 'zipcode_id', 55555).
+      has('fridge_sensor', 'sensor_id', 003).as('a').
+   V().has('ingredient', 'ingred_id', 3015).as('b').
+   addE('contains').
+   property('expire_date', '2017-09-03').
+   from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 200).
+      has('fridge_sensor', 'zipcode_id', 55555).
+      has('fridge_sensor', 'sensor_id', 002).as('a').
+   V().has('ingredient', 'ingred_id', 3016).as('b').
+   addE('contains').
+   property('expire_date', '2017-09-09').
+   from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 200).
+      has('fridge_sensor', 'zipcode_id', 55555).
+      has('fridge_sensor', 'sensor_id', 002).as('a').
+   V().has('ingredient', 'ingred_id', 3001).as('b').
+   addE('contains').
+   property('expire_date', '2017-07-17').
+   from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 200).
+      has('fridge_sensor', 'zipcode_id', 55555).
+      has('fridge_sensor', 'sensor_id', 002).as('a').
+   V().has('ingredient', 'ingred_id', 3002).as('b').
+   addE('contains').
+   property('expire_date', '2017-07-18').
+   from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 200).
+      has('fridge_sensor', 'zipcode_id', 55555).
+      has('fridge_sensor', 'sensor_id', 002).as('a').
+   V().has('ingredient', 'ingred_id', 3003).as('b').
+   addE('contains').
+   property('expire_date', '2017-11-11').
+   from('a').to('b').
+   iterate();
+
+g.V().has('fridge_sensor', 'state_id', 31).
+      has('fridge_sensor', 'city_id', 200).
+      has('fridge_sensor', 'zipcode_id', 55555).
+      has('fridge_sensor', 'sensor_id', 002).as('a').
+   V().has('ingredient', 'ingred_id', 3004).as('b').
+   addE('contains').
+   property('expire_date', '2017-09-08').
+   from('a').to('b').
+   iterate();

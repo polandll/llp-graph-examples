@@ -1,0 +1,156 @@
+// store is_stocked_with ingredient edges
+
+g.V().has('store', 'store_id', 8001).as('a').
+   V().has('ingredient', 'ingred_id', 3001).as('b').
+   addE('is_stocked_with').
+   property('expire_date', '2017-01-10').
+   from('a').to('b').
+   iterate();
+
+g.V().has('store', 'store_id', 8001).as('a').
+   V().has('ingredient', 'ingred_id', 3002).as('b').
+   addE('is_stocked_with').
+   property('expire_date', '2017-01-01').
+   from('a').to('b').
+   iterate();
+
+g.V().has('store', 'store_id', 8001).as('a').
+   V().has('ingredient', 'ingred_id', 3004).as('b').
+   addE('is_stocked_with').
+   property('expire_date', '2017-06-23').
+   from('a').to('b').
+   iterate();
+
+g.V().has('store', 'store_id', 8001).as('a').
+   V().has('ingredient', 'ingred_id', 3001).as('b').
+   addE('is_stocked_with').
+   property('expire_date', '2017-06-09').
+   from('a').to('b').
+   iterate();
+
+g.V().has('store', 'store_id', 8001).as('a').
+   V().has('ingredient', 'ingred_id', 3015).as('b').
+   addE('is_stocked_with').
+   property('expire_date', '2017-11-01').
+   from('a').to('b').
+   iterate();
+
+g.V().has('store', 'store_id', 8001).as('a').
+   V().has('ingredient', 'ingred_id', 3016).as('b').
+   addE('is_stocked_with').
+   property('expire_date', '2017-11-11').
+   from('a').to('b').
+   iterate();
+
+g.V().has('store', 'store_id', 8001).as('a').
+   V().has('ingredient', 'ingred_id', 3020).as('b').
+   addE('is_stocked_with').
+   property('expire_date', '2017-12-12').
+   from('a').to('b').
+   iterate();
+
+g.V().has('store', 'store_id', 8002).as('a').
+   V().has('ingredient', 'ingred_id', 3003).as('b').
+   addE('is_stocked_with').
+   property('expire_date', '2017-12-12').
+   from('a').to('b').
+   iterate();
+
+g.V().has('store', 'store_id', 8002).as('a').
+   V().has('ingredient', 'ingred_id', 3005).as('b').
+   addE('is_stocked_with').
+   property('expire_date', '2017-01-01').
+   from('a').to('b').
+   iterate();
+
+g.V().has('store', 'store_id', 8002).as('a').
+   V().has('ingredient', 'ingred_id', 3007).as('b').
+   addE('is_stocked_with').
+   property('expire_date', '2017-05-03').
+   from('a').to('b').
+   iterate();
+
+g.V().has('store', 'store_id', 8002).as('a').
+   V().has('ingredient', 'ingred_id', 3009).as('b').
+   addE('is_stocked_with').
+   property('expire_date', '2017-05-02').
+   from('a').to('b').
+   iterate();
+
+g.V().has('store', 'store_id', 8002).as('a').
+   V().has('ingredient', 'ingred_id', 3011).as('b').
+   addE('is_stocked_with').
+   property('expire_date', '2017-02-03').
+   from('a').to('b').
+   iterate();
+
+g.V().has('store', 'store_id', 8002).as('a').
+   V().has('ingredient', 'ingred_id', 3015).as('b').
+   addE('is_stocked_with').
+   property('expire_date', '2017-02-02').
+   from('a').to('b').
+   iterate();
+
+g.V().has('store', 'store_id', 8002).as('a').
+   V().has('ingredient', 'ingred_id', 3016).as('b').
+   addE('is_stocked_with').
+   property('expire_date', '2017-10-17').
+   from('a').to('b').
+   iterate();
+
+g.V().has('store', 'store_id', 8002).as('a').
+   V().has('ingredient', 'ingred_id', 3019).as('b').
+   addE('is_stocked_with').
+   property('expire_date', '2017-10-10').
+   from('a').to('b').
+   iterate();
+
+g.V().has('store', 'store_id', 8003).as('a').
+   V().has('ingredient', 'ingred_id', 3002).as('b').
+   addE('is_stocked_with').
+   property('expire_date', '2017-04-03').
+   from('a').to('b').
+   iterate();
+
+g.V().has('store', 'store_id', 8003).as('a').
+   V().has('ingredient', 'ingred_id', 3007).as('b').
+   addE('is_stocked_with').
+   property('expire_date', '2017-03-04').
+   from('a').to('b').
+   iterate();
+
+g.V().has('store', 'store_id', 8003).as('a').
+   V().has('ingredient', 'ingred_id', 3008).as('b').
+   addE('is_stocked_with').
+   property('expire_date', '2017-07-30').
+   from('a').to('b').
+   iterate();
+
+g.V().has('store', 'store_id', 8003).as('a').
+   V().has('ingredient', 'ingred_id', 3012).as('b').
+   addE('is_stocked_with').
+   property('expire_date', '2017-09-30').
+   from('a').to('b').
+   iterate();
+
+// duplication?? 
+g.V().has('store', 'store_id', 8003).as('a').
+   V().has('ingredient', 'ingred_id', 3008).as('b').
+   addE('is_stocked_with').
+   property('expire_date', '2017-02-02').
+   from('a').to('b').
+   iterate();
+
+g.V().has('store', 'store_id', 8003).as('a').
+   V().has('ingredient', 'ingred_id', 3006).as('b').
+   addE('is_stocked_with').
+   property('expire_date', '2017-01-01').
+   from('a').to('b').
+   iterate();
+
+g.V().has('store', 'store_id', 8003).as('a').
+   V().has('ingredient', 'ingred_id', 3004).as('b').
+   addE('is_stocked_with').
+   property('expire_date', '2017-04-25').
+   from('a').to('b').
+   iterate();

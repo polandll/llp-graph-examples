@@ -1,0 +1,11 @@
+// person knows person edges
+
+g.V().has('person', 'person_id', UUID.fromString('bb6d7af7-f674-4de7-8b4c-c0fdcdaa5cca').as('a').
+    V().has('person', 'person_id', UUID.fromString('adb8744c-d015-4d78-918a-d7f062c59e8f').as('b').
+    addE('knows').from('a').to('b').
+    iterate();
+    
+g.V().has('person', 'person_id', UUID.fromString('adb8744c-d015-4d78-918a-d7f062c59e8f').as('a')
+    V().has('person', 'person_id', UUID.fromString('bb6d7af7-f674-4de7-8b4c-c0fdcdaa5cca').as('b')
+    addE('knows').from('a').to('b')
+    iterate();
