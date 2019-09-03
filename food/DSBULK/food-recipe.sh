@@ -7,5 +7,6 @@
 #**********************************
 
 repoDataDir="/home/automaton/graph-examples/food/DATA/CSV_JSON/vertices"
+ks="food"
 
-dsbulk load --schema.keyspace food_cql --schema.table recipe -url $repoDataDir/recipe.csv -delim '|' -header true --schema.allowMissingFields true
+dsbulk load --schema.keyspace $ks --schema.table recipe -url $repoDataDir/recipe.csv -delim '|' -header true --schema.allowMissingFields true
