@@ -1,1 +1,3 @@
+#START-dropKS-CQL
 DROP KEYSPACE IF EXISTS food_cql;
+#END-dropKS-CQL
