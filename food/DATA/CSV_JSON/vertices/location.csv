@@ -1,4 +1,4 @@
-locId|name|geoPoint
+loc_id|name|geo_point
 g1|Paris|POINT(2.352222 48.856614)
 g2|London|POINT(-0.127758 51.507351)
 g3|Dublin|POINT(-6.26031 53.349805)

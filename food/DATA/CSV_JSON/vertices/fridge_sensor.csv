@@ -1,4 +1,4 @@
-stateId|cityId|zipcodeId|sensorId
+state_id|city_id|zipcode_id|sensor_id
 31|100|55555|001
 31|100|55555|002
 31|100|55555|003
