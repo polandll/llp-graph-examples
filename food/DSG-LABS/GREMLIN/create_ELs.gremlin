@@ -72,7 +72,7 @@ schema.edgeLabel('reviewed').
   property('comment', Text).
   create()
 
-// fridgeSensor_contains_ingredient
+// fridge_sensor_contains_ingredient
 schema.edgeLabel('contains').
   ifNotExists().
   from('fridge_sensor').to('ingredient').
@@ -101,7 +101,7 @@ schema.edgeLabel('is_located_at').
   from('store').to('location').
   create()
 
-//fridgeSensor_is_located_at_location
+//fridge_sensor_is_located_at_location
 schema.edgeLabel('is_located_at').
   ifNotExists().
   from('fridge_sensor').to('location').

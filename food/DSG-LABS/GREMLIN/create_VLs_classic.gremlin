@@ -44,5 +44,5 @@ schema.vertexLabel('meal').partitionKey('type', 'meal_id').ifNotExists().create(
 
 // COMPOSITE KEY VERTEX ID
 
-schema.vertexLabel('fridgeSensor').partitionKey('state_id', 'city_id', 'zipcode_id').clusteringKey('sensor_id').ifNotExists().create()
-schema.vertexLabel('fridgeSensor').properties('name').add()
+schema.vertexLabel('fridge_sensor').partitionKey('state_id', 'city_id', 'zipcode_id').clusteringKey('sensor_id').ifNotExists().create()
+schema.vertexLabel('fridge_sensor').properties('name').add()

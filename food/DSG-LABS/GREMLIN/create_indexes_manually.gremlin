@@ -78,7 +78,7 @@ schema.vertexLabel('home').
   by('name').
   create()
 
-schema.vertexLabel('fridgeSensor').
+schema.vertexLabel('fridge_sensor').
   searchIndex().
   ifNotExists().
   by('cityId').
