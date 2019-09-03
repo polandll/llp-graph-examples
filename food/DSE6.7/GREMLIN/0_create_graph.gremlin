@@ -1,5 +1,0 @@
-// Create a new graph if it doesn't currently exist
-
-system.graph('food').
-  ifNotExists().
-  create()

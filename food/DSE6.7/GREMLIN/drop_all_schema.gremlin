@@ -1,2 +1,0 @@
-// To drop all schema with Gremlin
-schema.drop()

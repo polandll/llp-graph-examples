@@ -1,3 +1,0 @@
-schema.edgeLabel('authored').
-  ifExists().
-  drop()

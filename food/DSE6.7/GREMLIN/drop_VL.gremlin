@@ -1,6 +1,0 @@
-schema.vertexLabel('person')
-  .ifExists()
-  .drop()
-schema.vertexLabel('book')
-  .ifExists()
-  .drop()

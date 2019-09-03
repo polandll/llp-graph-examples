@@ -1,3 +1,0 @@
-system.graph('food').
-  ifExists().
-  drop()

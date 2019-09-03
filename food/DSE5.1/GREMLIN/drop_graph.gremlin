@@ -1,3 +1,0 @@
-system.graph('cleanup')
-  .ifExists()
-  .drop()

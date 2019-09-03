@@ -1,2 +1,0 @@
-// Examine details for a particular EL using Gremlin
-schema.edgeLabel('authored').describe()

@@ -1,5 +1,0 @@
-// DSP-19096/DSP-17609 will add truncate to 5.1.17 
-system.graph('cleanup')
-// DSP-19357 will add .ifExists()
-  .ifExists()
-  .truncate()

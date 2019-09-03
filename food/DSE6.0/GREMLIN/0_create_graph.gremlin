@@ -1,8 +1,0 @@
-system.graph('food_dse60').
-  ifNotExists().
-  replication("{'class' : 'NetworkTopologyStrategy', 'SearchAnalyticsGraph' : 1 }").
-  systemReplication("{'class' : 'NetworkTopologyStrategy', 'SearchAnalyticsGraph' : 1 }").
-  option("graph.schema_mode").set("Production").
-  option("graph.allow_scan").set("true").
-  option("graph.default_property_key_cardinality").set("multiple").
-  create()
