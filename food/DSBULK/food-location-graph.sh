@@ -6,7 +6,7 @@
 # Lorina Poland
 #**********************************
 
-repoDataDir="/home/automaton/graph-examples/food/DATA/CSV_JSON/vertices"
+repoDataDir="/home/automaton/graph-examples/food/DATA/CSV/vertices"
 ks="food"
 
 dsbulk load --schema.graph $ks --schema.vertex location -url $repoDataDir/location.csv -delim '|' -header true --schema.allowMissingFields true
