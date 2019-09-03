@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #**********************************
-# food-book.sh
+# food-book-graph.sh
 # Use dsbulk to add book data to graph
 # Lorina Poland
 #**********************************
