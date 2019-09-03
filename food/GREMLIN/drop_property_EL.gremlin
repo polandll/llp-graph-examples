@@ -1,15 +1,15 @@
 // SIMPLE VERSION
 
-schema.edgeLabel('authored')
-    .dropProperty('one')
-    .dropProperty('two')
-    .alter()
+schema.edgeLabel('authored').
+    dropProperty('one').
+    dropProperty('two').
+    alter()
 
 // EXPANDED VERSION
 
-schema.edgeLabel('authored')
-    .from('person')
-    .to('software')
-    .dropProperty('one')
-    .dropProperty('two')
-    .alter()
+schema.edgeLabel('authored').
+    from('person').
+    to('software').
+    dropProperty('one').
+    dropProperty('two').
+    alter()
