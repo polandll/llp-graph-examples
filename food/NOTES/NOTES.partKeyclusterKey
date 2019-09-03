@@ -8,8 +8,8 @@ multiple-key vertex id - bucketing
   pull property, get vertex from property (supernode with no edges)
 composite-key vertex id is not good for data locality (do I mean multiple-key perhaps?)
 
-GeneByGene - groups by families
-Intuit - creating communities (friends? families?)
+ - groups by families
+ - creating communities (friends? families?)
 
 celebrities - you can be friends with a celebrity, but a celebrity cannot be friends with you; otherwise, supernode problems
 ---------------------------
