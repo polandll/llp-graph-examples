@@ -1,4 +1,7 @@
+#START-insert_AllBook_classic
+
 // book vertices
+
 g.addV('book').
    property('book_id',1001).
    property('name','The Art of French Cooking, Vol. 1').
@@ -7,6 +10,7 @@ g.addV('book').
    property('category', 'general').
    property('category', 'cooking').
    iterate();
+
 g.addV('book').
    property('book_id', 1002).
    property('name',"Simca's Cuisine: 100 Classic French Recipes for Every Occasion").
@@ -15,6 +19,7 @@ g.addV('book').
    property('category', 'French').
    property('category', 'cooking').
    iterate();
+
 g.addV('book').
    property('book_id', 1003).
    property('name','The French Chef Cookbook').
@@ -24,6 +29,7 @@ g.addV('book').
    property('category', 'cooking').
    property('book_discount', '10%').
    iterate();
+
 g.addV('book').
    property('book_id', 1004).
    property('name', 'The Art of Simple Food: Notes, Lessons, and Recipes from a Delicious Revolution').
@@ -33,3 +39,5 @@ g.addV('book').
    property('category', 'cooking').
    property('category', 'simple').
    iterate();
+
+#END-insert_AllBook_classic

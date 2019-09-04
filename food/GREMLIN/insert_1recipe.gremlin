@@ -1,7 +1,15 @@
+#START-insert_1recipe
+
+// Insert 1 recipe for Simple Example
+
 g.addV('recipe').
   property('recipe_id',3001).
   property('name',"Beef Bourguignon").
   property('cuisine', ['French'] as Set).
   iterate();
 
+// Check that the 1 recipe was inserted
+
 g.V().hasLabel('recipe')
+
+#END-insert_1recipe

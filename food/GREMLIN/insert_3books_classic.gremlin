@@ -1,3 +1,5 @@
+#START-insert_3books_classic
+
 // Add three book vertices and display using Gremlin
 
 g.addV('book').
@@ -26,5 +28,8 @@ g.addV('book').
   property('book_discount', '10%').
   iterate();
 
-// Show all currently inserted books
+// Check inserted books
+
 g.V().hasLabel('book')
+
+#END-insert_3books_classic

@@ -1,3 +1,5 @@
+#START-insert_3persons_classic
+
 // Add three person vertices to Classic graph and display, using Gremlin
 // Note the use of the Traversal API; the Graph API has been eliminated for DataStax Graph
 
@@ -25,4 +27,8 @@ g.addV('person').
    property('gender','M').
    iterate();
 
+// Check inserted person data
+
 g.V().hasLabel('person')
+
+#END-insert_3persons_classic
