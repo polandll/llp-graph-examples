@@ -1,1 +1,7 @@
+#START-systemGraphDescribe_classic
+
+// Get the graph schema information
+
 system.graph('food_classic').describe()
+
+#END-systemGraphDescribe_classic

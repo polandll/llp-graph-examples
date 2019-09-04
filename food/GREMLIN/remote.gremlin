@@ -1,1 +1,7 @@
+#START-remote
+
+// Set the specified graph as the active graph
+
 :remote config alias g food.g
+
+#END-remote

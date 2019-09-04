@@ -1,3 +1,7 @@
-// VERBOSE INFO FOR ALL GRAPHS
+#START-sytemList
+
+// Verbose infor on all DataStax Graph graphs
 
 system.list()
+
+#END-sytemList
