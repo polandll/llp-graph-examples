@@ -1,6 +1,8 @@
 //***** fix partitionBy and clusterBy? IN,OUT
 // edge label index
 
+#START-createEdgeIndex-manually
+
 schema.edgeLabel('includes').
   from('recipe').to('ingredient').
   materializedView('recipe__includes__ingredient_by_ingredient_ingred_id').
@@ -9,6 +11,9 @@ schema.edgeLabel('includes').
   clusterBy('recipe_recipe_id', Asc).
   create()
 
+#END-createEdgeIndex-manually
+
+#START-createEdgeIndexInverse-manually
 
 // inverse()
 schema.edgeLabel('authored').
@@ -17,3 +22,5 @@ schema.edgeLabel('authored').
     ifNotExists().
     inverse().
     create()
+
+#END-createEdgeIndexInverse-manually

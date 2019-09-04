@@ -1,7 +1,8 @@
+#START-describeUDTs
 // Describe all UDTs
 schema.types().describe()
 
 // Examine details for a particular UDT using Gremlin
 schema.type('address').describe()
 
-
+#END-describeUDTs

@@ -1,6 +1,10 @@
+#START-dropELMetadata
+
 // This will drop the edge label authored but keep the underlying table. 
-// Please note that this will drop all connections where this particular label is being used.
+// Note that this will drop all connections where this particular label is being used.
+
 schema.edgeLabel('authored').
     ifExists().
     dropMetadata()
 
+#END-dropELMetadata

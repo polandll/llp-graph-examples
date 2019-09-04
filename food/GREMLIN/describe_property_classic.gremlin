@@ -1,2 +1,7 @@
+#START-describeProp_classic
+
+// Describe a particular property in Classic engine
 schema.propertyKey("name").
   describe()
+
+#END-describeProp_classic

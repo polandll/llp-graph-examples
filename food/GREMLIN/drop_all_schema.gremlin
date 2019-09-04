@@ -1,2 +1,7 @@
+#START-dropAllSchema
+
 // To drop all schema with Gremlin
+
 schema.drop()
+
+#END-dropAllSchema

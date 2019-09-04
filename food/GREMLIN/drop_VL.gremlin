@@ -1,6 +1,13 @@
+#START-dropVLs
+
+// Drop a specified vertex label
+
 schema.vertexLabel('person').
   ifExists().
   drop()
+
 schema.vertexLabel('book').
   ifExists().
   drop()
+
+#END-dropVLs

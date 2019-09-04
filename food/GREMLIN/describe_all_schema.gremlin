@@ -1,3 +1,5 @@
+#START-describeAllSchema
 // Describe all the schema using Gremlin
 
 schema.describe()
+#END-describeAllSchema

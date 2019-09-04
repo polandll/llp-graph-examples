@@ -1,5 +1,9 @@
+#START-dropGraph_classic
+
 // Drop a graph if it already exists
 
 system.graph('food_classic').
   ifExists().
   drop()
+
+#END-dropGraph_classic
