@@ -1,3 +1,5 @@
+#START-addVLProp
 schema.vertexLabel('book').
     addProperty('book_discount', Text).
     alter()
+#END-addVLProp

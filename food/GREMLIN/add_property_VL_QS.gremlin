@@ -1,3 +1,5 @@
 // Used in QuickStart
+#START-addVLPropQS
 schema.propertyKey('nonsenseToDrop').Int().single().create()
 schema.describe().split('\n').grep(~/.*nonsenseToDrop.*/)
+#END-addVLPropQS

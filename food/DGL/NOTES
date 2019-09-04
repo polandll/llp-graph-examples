@@ -1,6 +1,7 @@
 graphAddVertexData.groovy and graphAddVertexDataReviewer.groovy are out of date
 
-schema.groovy and recipeMap.groovy are partially updated to new data model
+schema.groovy and recipeMap.groovy are partially updated to new data model;
+schema.groovy is actually better accomplished with create_VL.gremlin, etc. scripts
 
 recipeMap.groovy.config needed no changes
 

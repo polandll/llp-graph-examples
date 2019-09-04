@@ -1,15 +1,21 @@
 // SIMPLE VERSION
 
+#START-addEdgePropSimple
 schema.edgeLabel('authored').
     addProperty('one', Int).
     addProperty('two', Int).
     alter()
 
+#END-addEdgePropSimple
+
 // EXPANDED VERSION
 // ****** CHANGE THIS
+
+#START-addEdgePropExpanded
 schema.edgeLabel('authored').
     from('person').
     to('book').
     addProperty('one', Int).
     addProperty('two', Int).
     alter()
+#END-addEdgePropExpanded
