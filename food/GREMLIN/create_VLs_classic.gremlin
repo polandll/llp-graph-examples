@@ -18,6 +18,7 @@
 
 // SINGLE-KEY VERTEX ID
 
+#START-createVLs_classic
 schema.vertexLabel('person').partitionKey('person_id').ifNotExists().create()
 schema.vertexLabel('person').properties('name','nickname','gender','cal_goal','macro_goal','country','badge').add()
 schema.vertexLabel('book').partitionKey('book_id').ifNotExists().create()
@@ -46,3 +47,4 @@ schema.vertexLabel('meal').partitionKey('type', 'meal_id').ifNotExists().create(
 
 schema.vertexLabel('fridge_sensor').partitionKey('state_id', 'city_id', 'zipcode_id').clusteringKey('sensor_id').ifNotExists().create()
 schema.vertexLabel('fridge_sensor').properties('name').add()
+#END-createVLs_classic

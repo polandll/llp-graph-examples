@@ -7,6 +7,7 @@
 //    [ .property(property, propertyType) ]
 //    [ .create() | .describe() ]
 
+#START-createUDTs
 // USER-DEFINED TYPE
 schema.type('address').
   ifNotExists().
@@ -29,3 +30,4 @@ schema.type('location_details').
   property('loc_address', frozen(typeOf('address'))).
   property('telephone', listOf(Text)).
   create()
+#END-createUDTs

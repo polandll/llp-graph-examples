@@ -21,6 +21,7 @@
 // NEED TO ADD NEW FEATURE DSP_18625
 //  .tableName('personTable')
 
+#START-createVLs
 
 schema.vertexLabel('person').
   ifNotExists().
@@ -125,3 +126,4 @@ schema.vertexLabel('flag').
   clusteringBy('country', Text).
   property('flag', Text, Static).
   create()
+#END-createVLs

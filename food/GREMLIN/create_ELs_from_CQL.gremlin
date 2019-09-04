@@ -1,5 +1,6 @@
 // ******* FIX THIS!
 
+#START-createELs_from_CQL
 schema.edgeLabel('authored')
     .fromExistingTable('authored_table')
     .from('person')
@@ -10,3 +11,4 @@ schema.edgeLabel('authored')
     .mappingProperty('book_name')
     .mappingProperty('isbn')
     .create()
+#END-createELs_from_CQL

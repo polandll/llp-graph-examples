@@ -1,5 +1,7 @@
 // Convert an existing non-graph keyspace into a core engine graph
 
+#START-convertKStoGraph
 system.graph("nongraph_ks").
     fromExistingKeyspace().
     create()
+#END-convertKStoGraph
