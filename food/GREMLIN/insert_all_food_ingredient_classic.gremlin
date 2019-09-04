@@ -1,4 +1,7 @@
+#START-insertAllIngred_classic
+
 // ingredients vertices
+
 g.addV('ingredient')
   .property('ingred_id', 3001)
   .property('name', 'beef')
@@ -122,4 +125,6 @@ g.addV('ingredient')
 g.addV('ingredient')
   .property('ingred_id', 3031)
   .property('name', 'red wine')
+
+#END-insertAllIngred_classic
    .iterate()

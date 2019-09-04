@@ -1,3 +1,7 @@
+#START-insertAllLocation
+
+// Insert location data
+
 g.addV('location').
    property('loc_id', 'g1').
    property('name', 'Paris').
@@ -104,4 +108,6 @@ g.addV('location').
    property('loc_details', [ loc_address: [address1:'757 Jay St', city_code:'Arbuckle', state_code:'CA', zip_code:'95691'] as address, telephone: ['530-555-1212', '916-4444-3454'] ] as location_details).
    property('geo_point', 'POINT (1.352222 48.856614)' as Point).
    iterate();
+
+#END-insertAllLocation
 

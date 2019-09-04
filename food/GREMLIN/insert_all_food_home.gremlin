@@ -1,3 +1,7 @@
+#START-insertAllHome
+
+// Insert home data
+
 g.addV('home').
    property('home_id', '9000').
    property('name', "Jane's house").
@@ -12,3 +16,5 @@ g.addV('home').
    property('home_id', '9002').
    property('name', "Mary's house").
    iterate();
+
+#END-insertAllHome
