@@ -1,3 +1,4 @@
+// START-createTable-book-asCQL
 CREATE TABLE IF NOT EXISTS food_cql.book ( 
    book_id int, 
    name text,
@@ -7,3 +8,4 @@ CREATE TABLE IF NOT EXISTS food_cql.book (
    category set<text>,
    PRIMARY KEY (name, book_id)
 ) WITH CLUSTERING ORDER BY (book_id ASC) AND VERTEX LABEL;
+// END-createTable-book-asCQL

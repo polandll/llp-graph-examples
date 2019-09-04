@@ -1,5 +1,6 @@
 USE food_cql_conversion;
 
+// START-createUDTs-convert
 CREATE TYPE IF NOT EXISTS food_cql_conversion.address (
    address1 text,
    address2 text,
@@ -17,3 +18,4 @@ CREATE TYPE IF NOT EXISTS food_cql_conversion.location_details (
    loc_address frozen<address>,
    telephone list<text>
 );
+// END-createUDTs-convert

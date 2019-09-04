@@ -1,6 +1,7 @@
 // Alternative shown in Creating Graphs
 // Note that DC name is set, and must be changed to meet circumtances
 
+#START-createGraph-Classic-withOptions
 system.graph('food2').
   replication("{'class' : 'NetworkTopologyStrategy', 'SearchGraphAnalytics' : 3 }").
   systemReplication("{'class' : 'NetworkTopologyStrategy', 'SearchGraphAnalytics' : 3 }").
@@ -8,3 +9,4 @@ system.graph('food2').
   option("graph.allow_scan").set("false").
   option("graph.default_property_key_cardinality").set("multiple").
   option("graph.tx_groups.*.write_consistency").set("QUORUM").create()
+#END-createGraph-Classic-withOptions

@@ -1,6 +1,8 @@
 // Create a graph from an existing CQL keyspace
 // The graph will have the same name as the existing keyspace name
 
+#START-createGraph-fromExisting
 system.graph('food')
    .fromExistingKeyspace()
    .create()
+#END-createGraph-fromExisting

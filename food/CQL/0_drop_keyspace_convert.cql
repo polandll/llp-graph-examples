@@ -1,3 +1,3 @@
-#START-dropKS-convert
+// START-dropKS-convert
 DROP KEYSPACE IF EXISTS food_cql_conversion;
-#END-dropKS-convert
+// END-dropKS-convert

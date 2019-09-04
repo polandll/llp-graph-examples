@@ -7,7 +7,7 @@ WITH REPLICATION = {
    'replication_factor' : 1 };
 
 USE food;
-
+// START-createTable-recipe-cql
 CREATE TABLE food.recipe_table (
    recipe_id int,
    name text,
@@ -15,3 +15,4 @@ CREATE TABLE food.recipe_table (
    instructions text,
    notes text,
    PRIMARY KEY (recipe_id));
+// END-createTable-recipe-cql

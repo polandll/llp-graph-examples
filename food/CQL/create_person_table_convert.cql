@@ -1,3 +1,4 @@
+// START-createTable-person-convert
 CREATE TABLE IF NOT EXISTS food_cql_conversion.person ( 
    person_id UUID, 
    name text, 
@@ -8,3 +9,4 @@ CREATE TABLE IF NOT EXISTS food_cql_conversion.person (
    badge map<text, date>,
    PRIMARY KEY (name, person_id)
 ) WITH CLUSTERING ORDER BY (person_id ASC);
+// END-createTable-person-convert

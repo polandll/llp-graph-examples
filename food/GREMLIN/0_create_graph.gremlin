@@ -5,6 +5,7 @@
 // 	For NetworkTopologyStrategy, replace DC_NAME with the name of the cluster (ex. DC_NAME=SearchGraphAnalytics)
 // Durable writes, not recommended, provides a means to instruct Cassandra whether to use "commitlog" for updates on the current keyspace or not. 
 
+#START-createGraph-Core
 system.graph('food').
   ifNotExists().
 //  withReplication not required for SimpleStrategy
@@ -12,3 +13,4 @@ system.graph('food').
 // ADDRESS THE DURABLE WRITES THING!!! NOT RECOMMENDED
 // andDurableWrites(false).
   create()
+#END-createGraph-Core
