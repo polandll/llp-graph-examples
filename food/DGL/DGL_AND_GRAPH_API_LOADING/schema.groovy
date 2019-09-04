@@ -1,5 +1,6 @@
 system.graph('dse51').ifNotExists().create()
 :remote config alias g dse51.g
+
 schema.clear()
 schema.config().option('graph.schema_mode').set('Development')
 schema.config().option('graph.allow_scan').set('true')
@@ -26,33 +27,33 @@ schema.config().option('graph.allow_scan').set('true')
 // ********
 
 // SINGLE CARDINALITY PROPERTY KEY
-schema.propertyKey('personId').Int().single().create()
-schema.propertyKey('mealId').Int().single().create()
-schema.propertyKey('itemId').Int().single().create()
-schema.propertyKey('recipeId').Int().single().create()
-schema.propertyKey('bookId').Int().single().create()
-schema.propertyKey('ingredId').Int().single().create()
-schema.propertyKey('homeId').Int().single().create()
-schema.propertyKey('storeId').Int().single().create()
-schema.propertyKey('locId').Text().single().create()
-schema.propertyKey('stateId').Int().single().create()
-schema.propertyKey('cityId').Int().single().create()
-schema.propertyKey('zipcodeId').Int().single().create()
-schema.propertyKey('sensorId').Int().single().create()
+schema.propertyKey('person_id').Int().single().create()
+schema.propertyKey('meal_id').Int().single().create()
+schema.propertyKey('item_id').Int().single().create()
+schema.propertyKey('recipe_id').Int().single().create()
+schema.propertyKey('book_id').Int().single().create()
+schema.propertyKey('ingred_id').Int().single().create()
+schema.propertyKey('home_id').Int().single().create()
+schema.propertyKey('store_id').Int().single().create()
+schema.propertyKey('loc_id').Text().single().create()
+schema.propertyKey('state_id').Int().single().create()
+schema.propertyKey('city_id').Int().single().create()
+schema.propertyKey('zipcode_id').Int().single().create()
+schema.propertyKey('sensor_id').Int().single().create()
 schema.propertyKey('name').Text().single().create()
 schema.propertyKey('gender').Text().single().create()
-schema.propertyKey('calGoal').Int().single().create()
-schema.propertyKey('macroGoal').Text().single().create()
-schema.propertyKey('publishYear').Int().single().create()
-schema.propertyKey('ISBN').Text().single().create()
-schema.propertyKey('bookDiscount').Text().ttl(604800).create()
+schema.propertyKey('cal_goal').Int().single().create()
+schema.propertyKey('macro_goal').Text().single().create()
+schema.propertyKey('publish_year').Int().single().create()
+schema.propertyKey('isbn').Text().single().create()
+schema.propertyKey('book_discount').Text().ttl(604800).create()
 schema.propertyKey('instructions').Text().single().create()
 schema.propertyKey('notes').Text().single().create()
 schema.propertyKey('type').Text().single().create()
-schema.propertyKey('servAmt').Text().single().create()
+schema.propertyKey('serv_amt').Text().single().create()
 schema.propertyKey('macro').Text().single().create()
 schema.propertyKey('calories').Int().single().create()
-schema.propertyKey('geoPoint').Point().withGeoBounds().create()
+schema.propertyKey('geo_point').Point().withGeoBounds().create()
 schema.propertyKey('address').Text().single().create()
 schema.propertyKey('amount').Text().single().create()
 // MULTIPLE CARDINALITY PROPERTY KEY
@@ -62,16 +63,16 @@ schema.propertyKey('cuisine').Text().multiple().create()
 schema.propertyKey('since').Int().single().create() // meta-property
 schema.propertyKey('badge').Text().multiple().properties('since').create()
 // MULTIPLE CARDINALITY PROPERTY KEY WITH MULTIPLE CARDINALITY META-PROPERTY
-schema.propertyKey('startYear').Int().multiple().create()   // meta-property
-schema.propertyKey('endYear').Int().multiple().create()   // meta-property
-schema.propertyKey('country').Text().multiple().properties('startYear','endYear').create()
+schema.propertyKey('start_year').Int().multiple().create()   // meta-property
+schema.propertyKey('end_year').Int().multiple().create()   // meta-property
+schema.propertyKey('country').Text().multiple().properties('start_year','end_year').create()
 
 // EDGE PROPERTIES
-schema.propertyKey('numServ').Int().single().create()
-schema.propertyKey('mealDate').Date().single().create()
-schema.propertyKey('useDate').Date().single().create()
-schema.propertyKey('createDate').Date().single().create()
-schema.propertyKey('expireDate').Date().single().create()
+schema.propertyKey('num_serv').Int().single().create()
+schema.propertyKey('meal_date').Date().single().create()
+schema.propertyKey('use_date').Date().single().create()
+schema.propertyKey('create_date').Date().single().create()
+schema.propertyKey('expire_date').Date().single().create()
 schema.propertyKey('stars').Int().single().create()
 schema.propertyKey('time').Time().single().create()
 schema.propertyKey('year').Date().single().create()
@@ -102,26 +103,26 @@ schema.vertexLabel('person').partitionKey('personId').create()
 // ==>{since=2005}
 // ==>{since=2011}
 // ==>{since=2012}
-schema.vertexLabel('person').properties('name','nickname','gender','calGoal','macroGoal','country').add()
-schema.vertexLabel('book').partitionKey('bookId').create()
-schema.vertexLabel('book').properties('name','publishYear','ISBN','bookDiscount').add()
-schema.vertexLabel('meal_item').partitionKey('itemId').create()
-schema.vertexLabel('meal_item').properties('name','servAmt', 'macro', 'calories').add()
-schema.vertexLabel('ingredient').partitionKey('ingredId').create()
+schema.vertexLabel('person').properties('name','nickname','gender','cal_goal','macro_goal','country').add()
+schema.vertexLabel('book').partitionKey('book_id').create()
+schema.vertexLabel('book').properties('name','publish_year','isbn','book_discount').add()
+schema.vertexLabel('meal_item').partitionKey('item_id').create()
+schema.vertexLabel('meal_item').properties('name','serv_amt', 'macro', 'calories').add()
+schema.vertexLabel('ingredient').partitionKey('ingred_id').create()
 schema.vertexLabel('ingredient').properties('name').add()
-schema.vertexLabel('home').partitionKey('homeId').create()
+schema.vertexLabel('home').partitionKey('home_id').create()
 schema.vertexLabel('home').properties('name','address').add()
-schema.vertexLabel('store').partitionKey('storeId').create()
+schema.vertexLabel('store').partitionKey('store_id').create()
 schema.vertexLabel('store').properties('name','address').add()
-schema.vertexLabel('location').partitionKey('locId').create()
-schema.vertexLabel('location').properties('name', 'geoPoint').add()
-schema.vertexLabel('recipe').partitionKey('recipeId').create()
+schema.vertexLabel('location').partitionKey('loc_id').create()
+schema.vertexLabel('location').properties('name', 'geo_point').add()
+schema.vertexLabel('recipe').partitionKey('recipe_id').create()
 schema.vertexLabel('recipe').properties('name','cuisine', 'instructions','notes').add()
 // MULTIPLE-KEY VERTEX ID
-schema.vertexLabel('meal').partitionKey('type', 'mealId').create()
+schema.vertexLabel('meal').partitionKey('type', 'meal_id').create()
 // COMPOSITE KEY VERTEX ID
-schema.vertexLabel('fridgeSensor').partitionKey('stateId', 'cityId', 'zipcodeId').clusteringKey('sensorId').create()
-schema.vertexLabel('fridgeSensor').properties('name').add()
+schema.vertexLabel('fridge_sensor').partitionKey('state_id', 'city_id', 'zipcode_id').clusteringKey('sensor_id').create()
+schema.vertexLabel('fridge_sensor').properties('name').add()
 
 // ********
 // EDGE LABELS
@@ -138,13 +139,13 @@ schema.vertexLabel('fridgeSensor').properties('name').add()
 // ********
 
 schema.edgeLabel('ate').multiple().create()
-schema.edgeLabel('ate').properties('mealDate').add()
+schema.edgeLabel('ate').properties('meal_date').add()
 schema.edgeLabel('ate').connection('person', 'meal').add()
 schema.edgeLabel('knows').multiple().create()
 schema.edgeLabel('knows').properties('since').add()
 schema.edgeLabel('knows').connection('person','person').add()
 schema.edgeLabel('includes').multiple().create()
-schema.edgeLabel('includes').properties('numServ').add()
+schema.edgeLabel('includes').properties('num_serv').add()
 schema.edgeLabel('includes').connection('meal','meal_item').add()
 schema.edgeLabel('includedIn').multiple().create()
 schema.edgeLabel('includedIn').properties('amount').add()
@@ -153,7 +154,7 @@ schema.edgeLabel('includedIn').connection('meal','book').add()
 schema.edgeLabel('includedIn').connection('recipe','book').add()
 schema.edgeLabel('includedIn').connection('ingredient','recipe').add()
 schema.edgeLabel('created').multiple().create()
-schema.edgeLabel('created').properties('createDate').add()
+schema.edgeLabel('created').properties('create_date').add()
 schema.edgeLabel('created').connection('person', 'recipe').add()
 schema.edgeLabel('reviewed').multiple().create()
 schema.edgeLabel('reviewed').properties('time','year','stars','comment').add()
@@ -161,15 +162,15 @@ schema.edgeLabel('reviewed').connection('person','recipe').add()
 schema.edgeLabel('authored').multiple().create()
 schema.edgeLabel('authored').connection('person', 'book').add()
 schema.edgeLabel('contains').multiple().ttl(60800).create()
-schema.edgeLabel('contains').properties('expireDate').add()
-schema.edgeLabel('contains').connection('fridgeSensor','ingredient').add()
+schema.edgeLabel('contains').properties('expire_date').add()
+schema.edgeLabel('contains').connection('fridge_sensor','ingredient').add()
 schema.edgeLabel('isStockedWith').multiple().ttl(60800).create()
-schema.edgeLabel('isStockedWith').properties('expireDate').add()
+schema.edgeLabel('isStockedWith').properties('expire_date').add()
 schema.edgeLabel('isStockedWith').connection('store','ingredient').add()
 schema.edgeLabel('isLocatedAt').multiple().create()
 schema.edgeLabel('isLocatedAt').connection('home','location').add()
 schema.edgeLabel('isLocatedAt').connection('store','location').add()
-schema.edgeLabel('isLocatedAt').connection('fridgeSensor','home').add()
+schema.edgeLabel('isLocatedAt').connection('fridge_sensor','home').add()
 
 // ********
 // VERTEX INDEX
@@ -196,7 +197,7 @@ schema.vertexLabel('book').index('search').search().
 schema.vertexLabel('location').index('search').search().by('geoPoint').withError(0.000009,0.0).add()
 schema.vertexLabel('store').index('search').search().by('name').add()
 schema.vertexLabel('home').index('search').search().by('name').add()
-schema.vertexLabel('fridgeSensor').index('search').search().by('cityId').by('sensorId').by('name').add()
+schema.vertexLabel('fridge_sensor').index('search').search().by('cityId').by('sensorId').by('name').add()
 
 // ********
 // EDGE INDEX
@@ -217,7 +218,7 @@ schema.vertexLabel('person').index('ratedByDate').outE('reviewed').
 schema.vertexLabel('person').index('ratedByComments').outE('reviewed').
   by('comment').ifNotExists().add()
 schema.vertexLabel('recipe').index('byPersonOrRecipe').bothE('created').
-  by('createDate').ifNotExists().add()
+  by('create_date').ifNotExists().add()
 
 // ********
 // PROPERTY INDEX using meta-property 'livedIn'
@@ -230,6 +231,6 @@ schema.vertexLabel('recipe').index('byPersonOrRecipe').bothE('created').
 // ********
 
 schema.vertexLabel('person').index('byStartYear').
-  property('country').by('startYear').add()
+  property('country').by('start_year').add()
 schema.vertexLabel('person').index('byEndYear').
-  property('country').by('endYear').add()
+  property('country').by('end_year').add()
