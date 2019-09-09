@@ -1,7 +1,7 @@
-#START-remote_qs
+// START-remote_qs
 
 // Set the specified graph as the active graph
 
 :remote config alias g food_qs.g
 
-#END-remote_qs
+// END-remote_qs

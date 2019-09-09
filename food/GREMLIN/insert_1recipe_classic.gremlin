@@ -1,4 +1,4 @@
-#START-insert_1recipe_classic
+// START-insert_1recipe_classic
 
 // Insert 1 recipe for Simple Example
 
@@ -12,4 +12,4 @@ g.addV('recipe').
 
 g.V().hasLabel('recipe')
 
-#END-insert_1recipe_classic
+// END-insert_1recipe_classic

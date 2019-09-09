@@ -1,7 +1,7 @@
 // ************ FIX THIS!
 // all fields need to be fixed
 
-#START-createELs_with_mapping
+// START-createELs_with_mapping
 schema.edgeLabel('authored')
     .from('person')
     .to('book')
@@ -14,4 +14,4 @@ schema.edgeLabel('authored')
     .clusterBy(IN, 'license', 'software_license')
     .clusterBy('creation_year', Int, Desc)
     .create()
-#END-createELs_with_mapping
+// END-createELs_with_mapping

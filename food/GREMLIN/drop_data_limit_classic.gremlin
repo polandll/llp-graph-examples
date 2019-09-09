@@ -1,7 +1,7 @@
-#START-dropLimit_classic
+// START-dropLimit_classic
 
 // Drop a specified element with a limit of how many instances to drop
 
 g.V().hasLabel('person').limit(100).drop()
 
-#END-dropLimit_classic
+// END-dropLimit_classic

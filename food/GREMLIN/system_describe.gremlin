@@ -1,7 +1,7 @@
-#START-systemGraphDescribe
+// START-systemGraphDescribe
 
 // Get the graph schema information
 
 system.graph('food').describe()
 
-#END-systemGraphDescribe
+// END-systemGraphDescribe

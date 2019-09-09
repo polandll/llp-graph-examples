@@ -1,8 +1,8 @@
-#START-systemGraphs
+// START-systemGraphs
 
 // Get a list of graphs that exist on a cluster
 // WORKS FOR BOTH Core AND Classic
 
 system.graphs()
 
-#END-systemGraphs
+// END-systemGraphs

@@ -1,4 +1,4 @@
-#START-insert_3books
+// START-insert_3books
 
 // Add three book vertices and display using Gremlin
 
@@ -30,4 +30,4 @@ g.addV('book').
 
 g.V().hasLabel('book')
 
-#END-insert_3books
+// END-insert_3books

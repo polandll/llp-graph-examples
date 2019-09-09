@@ -1,4 +1,4 @@
-#START-insert_AllBook_classic
+// START-insert_AllBook_classic
 
 // book vertices
 
@@ -40,4 +40,4 @@ g.addV('book').
    property('category', 'simple').
    iterate();
 
-#END-insert_AllBook_classic
+// END-insert_AllBook_classic

@@ -14,7 +14,7 @@
 // NEED TO ADD DSP-18625
 //  .tableName('createdTable')
 
-#START-createELs
+// START-createELs
 
 // person_authored_book
 schema.edgeLabel('authored').
@@ -108,4 +108,4 @@ schema.edgeLabel('is_located_at').
   from('fridge_sensor').to('location').
   create()
 
-#END-createELs
+// END-createELs

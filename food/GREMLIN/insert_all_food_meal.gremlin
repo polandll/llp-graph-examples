@@ -1,4 +1,4 @@
-#START-insertAllMeals
+// START-insertAllMeals
 
 // Insert meal vertices
 
@@ -42,4 +42,4 @@ g.addV('meal').
    property('type', 'dinner').
    iterate();
 
-#END-insertAllMeals
+// END-insertAllMeals

@@ -1,4 +1,4 @@
-#START-insertAllLocation_classic
+// START-insertAllLocation_classic
 
 // Insert location data
 
@@ -109,4 +109,4 @@ g.addV('location').
    property('geo_point', 'POINT (1.352222 48.856614)' as Point).
    iterate();
 
-#END-insertAllLocation_classic
+// END-insertAllLocation_classic

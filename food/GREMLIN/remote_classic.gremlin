@@ -1,7 +1,7 @@
-#START-remote_classic
+// START-remote_classic
 
 // Set the specified graph as the active graph
 
 :remote config alias g food_classic.g
 
-#END-remote_classic
+// END-remote_classic

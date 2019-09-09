@@ -1,8 +1,8 @@
 // Create a materialized view index if it doesn't already exist
 
-#START-addMVindex
+// START-addMVindex
 schema.vertexLabel('person')
     .materializedView('person_by_gender')
     .ifNotExists()
     .create()
-#END-addMVindex
+// END-addMVindex

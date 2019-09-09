@@ -22,7 +22,7 @@
 // DEFAULT IS SINGLE CARDINALITY
 // ********
 
-#START-createProps_classic
+// START-createProps_classic
 
 // SINGLE CARDINALITY PROPERTY KEY
 schema.propertyKey('person_id').Uuid().single().create()
@@ -76,4 +76,4 @@ schema.propertyKey('stars').Int().single().create()
 schema.propertyKey('time').Time().single().create()
 schema.propertyKey('year').Date().single().create()
 schema.propertyKey('comment').Text().single().create()
-#END-createProps_classic
+// END-createProps_classic

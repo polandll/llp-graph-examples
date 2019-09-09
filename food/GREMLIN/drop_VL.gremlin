@@ -1,4 +1,4 @@
-#START-dropVLs
+// START-dropVLs
 
 // Drop a specified vertex label
 
@@ -10,4 +10,4 @@ schema.vertexLabel('book').
   ifExists().
   drop()
 
-#END-dropVLs
+// END-dropVLs

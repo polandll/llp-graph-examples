@@ -1,7 +1,7 @@
 // Create a vertex label from an existing CQL table
 
-#START-createVL_from_cql
+// START-createVL_from_cql
 schema.vertexLabel('recipe').
   fromExistingTable('recipe_table').
   create()
-#END-createVL_from_cql
+// END-createVL_from_cql

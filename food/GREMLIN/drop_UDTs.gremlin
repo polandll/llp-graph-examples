@@ -1,4 +1,4 @@
-#START-dropUDTs
+// START-dropUDTs
 
 // Drop user-defined types (UDTs) with Gremlin if they exist
 
@@ -14,4 +14,4 @@ schema.type('location_details').
    ifExists().
    drop()
 
-#END-dropUDTs
+// END-dropUDTs

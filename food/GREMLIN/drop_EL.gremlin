@@ -1,4 +1,4 @@
-#START-dropEL
+// START-dropEL
 
 // Drop a specified edge label
 
@@ -6,4 +6,4 @@ schema.edgeLabel('authored').
   ifExists().
   drop()
 
-#END-dropEL
+// END-dropEL

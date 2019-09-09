@@ -11,7 +11,7 @@
 //    add()
 // ********
 
-#START-createIndexes-qs
+// START-createIndexes-qs
 schema.vertexLabel('person').index('byName').materialized().by('name').add()
 schema.vertexLabel('meal_item').index('byName').materialized().by('name').add()
 schema.vertexLabel('ingredient').index('byName').materialized().by('name').add()
@@ -67,4 +67,4 @@ schema.vertexLabel('person').index('byStartYear').
 schema.vertexLabel('person').index('byEndYear').
   property('country').by('end_year').add()
 
-#END-createIndexes-qs
+// END-createIndexes-qs

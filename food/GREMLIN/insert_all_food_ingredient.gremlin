@@ -1,4 +1,4 @@
-#START-insertAllIngred
+// START-insertAllIngred
 
 // ingredients vertices
 
@@ -127,4 +127,4 @@ g.addV('ingredient')
   .property('name', 'red wine')
    .iterate()
 
-#END-insertAllIngred
+// END-insertAllIngred

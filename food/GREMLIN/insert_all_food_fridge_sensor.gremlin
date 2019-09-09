@@ -1,4 +1,4 @@
-#START-insertAllFridge_sensor
+// START-insertAllFridge_sensor
 
 // fridge_sensor vertices
 
@@ -65,4 +65,4 @@ g.addV('fridge_sensor').
    property('sensor_id', 003)
    iterate();
 
-#END-insertAllFridge_sensor
+// END-insertAllFridge_sensor

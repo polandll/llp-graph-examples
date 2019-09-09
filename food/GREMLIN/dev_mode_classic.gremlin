@@ -1,4 +1,4 @@
-#START-devMode_classic
+// START-devMode_classic
 
 // dev mode is for development exploration
 // full scans are also set to true
@@ -10,4 +10,4 @@ schema.config().
   option('graph.allow_scan').
   set('true')
 
-#END-devMode_classic
+// END-devMode_classic

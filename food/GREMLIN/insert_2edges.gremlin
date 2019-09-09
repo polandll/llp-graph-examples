@@ -1,4 +1,4 @@
-#START-insert_2edges
+// START-insert_2edges
 
 // INSERT two edges between a person and a book using Gremlin
 
@@ -16,4 +16,4 @@ g.V().has('person', 'person_id', 'bb6d7af7-f674-4de7-8b4c-c0fdcdaa5cca' as UUID)
 
 g.E().hasLabel('authored')
 
-#END-insert_2edges
+// END-insert_2edges

@@ -1,4 +1,4 @@
-#START-insertAllHome
+// START-insertAllHome
 
 // Insert home data
 
@@ -17,4 +17,4 @@ g.addV('home').
    property('name', "Mary's house").
    iterate();
 
-#END-insertAllHome
+// END-insertAllHome

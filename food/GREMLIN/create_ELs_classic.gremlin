@@ -14,7 +14,7 @@
 // DEFAULT IS MULTIPLE CARDINALITY
 // ********
 
-#START-createELs_classic
+// START-createELs_classic
 schema.edgeLabel('authored').multiple().ifNotExists().create()
 schema.edgeLabel('authored').connection('person', 'book').add()
 
@@ -57,4 +57,4 @@ schema.edgeLabel('contains').connection('fridge_sensor','ingredient').add()
 schema.edgeLabel('is_stocked_with').multiple().ttl(60800).ifNotExists().create()
 schema.edgeLabel('is_stocked_with').properties('expire_date').add()
 schema.edgeLabel('is_stocked_with').connection('store','ingredient').add()
-#END-createELs_classic
+// END-createELs_classic

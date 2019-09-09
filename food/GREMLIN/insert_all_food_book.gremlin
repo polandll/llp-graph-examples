@@ -1,4 +1,4 @@
-#START-insertAllBook
+// START-insertAllBook
 
 // book vertices
 
@@ -34,4 +34,4 @@ g.addV('book').
    property('category', ['American', 'cooking', 'simple'] as Set).
    iterate();
 
-#END-insertAllBook
+// END-insertAllBook

@@ -1,5 +1,5 @@
-#START-addVLProp_classic
+// START-addVLProp_classic
 schema.vertexLabel('book').
   properties('book_discount').
   add()
-#END-addVLProp_classic
+// END-addVLProp_classic

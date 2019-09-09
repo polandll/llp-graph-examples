@@ -1,4 +1,4 @@
-#START-truncateGraph
+// START-truncateGraph
 
 // Truncate a graph if it exists
 
@@ -6,4 +6,4 @@ system.graph('food').
   ifExists().
   truncate()
 
-#END-truncateGraph
+// END-truncateGraph

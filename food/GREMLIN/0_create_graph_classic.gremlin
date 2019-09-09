@@ -6,7 +6,7 @@
 //	graph.allow_scan set to true
 // engine(Classic) specifies that the graph created is a Classic Graph
 
-#START-createGraph-Classic
+// START-createGraph-Classic
 system.graph('food_classic').
    replication("{'class' : 'NetworkTopologyStrategy', 'SearchGraphAnalytics' : 1 }").
    systemReplication("{'class' : 'NetworkTopologyStrategy', 'SearchGraphAnalytics' : 1 }").
@@ -16,4 +16,4 @@ system.graph('food_classic').
    set('true').
    engine(Classic).
    create()
-#END-createGraph-Classic
+// END-createGraph-Classic

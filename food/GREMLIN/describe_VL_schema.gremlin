@@ -1,8 +1,8 @@
-#START-describeVLs
+// START-describeVLs
 // Describe all vertex labels (VLs)
 schema.vertexLabels().describe()
 
 // Examine details for a particular VL using Gremlin
 schema.vertexLabel('person').describe()
 
-#END-describeVLs
+// END-describeVLs

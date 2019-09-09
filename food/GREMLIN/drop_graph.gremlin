@@ -1,4 +1,4 @@
-#START-dropGraph
+// START-dropGraph
 
 // Drop a graph if it already exists
 
@@ -6,4 +6,4 @@ system.graph('food').
   ifExists().
   drop()
 
-#END-dropGraph
+// END-dropGraph
