@@ -1,0 +1,13 @@
+need to add examples of all the with() things:
+WHICH OF THESE ARE CUSTOMER-FACING?
+
+
+with(allow-filtering)
+with(ignore-unauthorized)
+with(ignore-unindexed)
+with(max-mutations)
+with(consistency)
+with(force-vertex-deletion)
+with(batch)
+with(read-before-write)
+with(label-warning)
