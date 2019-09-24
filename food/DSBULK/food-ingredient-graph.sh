@@ -6,7 +6,8 @@
 # Lorina Poland
 #**********************************
 
+dsbulkBinDir="/home/automaton/dsbulk-1.3.4/bin"
 repoDataDir="/home/automaton/graph-examples/food/DATA/CSV/vertices"
 ks="food"
 
-dsbulk load --schema.graph $ks --schema.vertex ingredient -url $repoDataDir/ingredient.csv -delim '|' -header true --schema.allowMissingFields true
+$dsbulkBinDir/dsbulk load --schema.graph $ks --schema.vertex ingredient -url $repoDataDir/ingredient.csv -delim '|' -header true --schema.allowMissingFields true
