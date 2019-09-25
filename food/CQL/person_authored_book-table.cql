@@ -1,5 +1,7 @@
 USE food_cql;
 
+// START-createTablePersonAuthoredBook-cql
+
 // Create edge label table using CQL
 
 CREATE TABLE IF NOT EXISTS food_cql.person_authored_book (
@@ -11,3 +13,5 @@ CREATE TABLE IF NOT EXISTS food_cql.person_authored_book (
 ) WITH EDGE LABEL person_authored_book
       FROM person(person_name, person_id)
       TO book(book_name, book_id);
+
+// END-createTablePersonAuthoredBook-cql

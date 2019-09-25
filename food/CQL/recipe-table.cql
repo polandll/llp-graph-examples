@@ -1,3 +1,7 @@
+USE food_cql;
+
+// START-createTableRecipe-cql
+
 // Assume we have the following existing non-vertex label table.
 // Create a CQL table that can be converted into a vertex label
 
@@ -8,3 +12,5 @@
    instructions text,
    notes text,
    PRIMARY KEY (recipe_id));
+
+// END-createTableRecipe-cql
