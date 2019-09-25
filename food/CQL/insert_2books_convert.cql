@@ -1,5 +1,7 @@
 USE food_cql_conversion;
 
+// START-insert2books_convert-cql
+
 // Insert book data using CQL:
 
 INSERT INTO food_cql_conversion.book (name,book_id,publish_year,isbn,category) VALUES (
@@ -17,3 +19,5 @@ INSERT INTO food_cql_conversion.book (name,book_id,publish_year,isbn,category) V
   '0-394-40152-2',
   {'American','French'}
 );
+
+// END-insert2books_convert-cql

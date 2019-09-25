@@ -1,1 +1,5 @@
+// START-descUDTFull-cql
+
 DESC TYPE food.fullname
+
+// END-descUDTFull-cql

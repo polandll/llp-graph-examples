@@ -1,5 +1,7 @@
 USE food_cql;
 
+// START-insert3persons-cql
+
 // Insert person data using CQL:
 
 INSERT INTO food_cql.person (person_id, name, gender) VALUES (
@@ -20,3 +22,5 @@ INSERT INTO food_cql.person (person_id, name, gender) VALUES (
 
    'M'
 );
+
+// END-insert3persons-cql

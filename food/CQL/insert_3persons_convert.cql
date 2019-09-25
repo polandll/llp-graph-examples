@@ -1,5 +1,7 @@
 USE food_cql_conversion;
 
+// START-insert3persons_convert-cql
+
 // Insert person data using CQL:
 
 INSERT INTO food_cql_conversion.person (person_id, name, gender) VALUES (
@@ -19,3 +21,5 @@ INSERT INTO food_cql_conversion.person (person_id, name, gender) VALUES (
    'Fritz STREIFF',
    'M'
 );
+
+// END-insert3persons_convert-cql
