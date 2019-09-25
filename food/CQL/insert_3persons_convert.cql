@@ -1,5 +1,3 @@
-USE food_cql_conversion;
-
 // START-insert3persons_convert-cql
 
 // Insert person data using CQL:

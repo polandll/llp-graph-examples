@@ -1,5 +1,3 @@
-USE food_cql;
-
 // START-insert2books-cql
 
 // Insert book data using CQL:

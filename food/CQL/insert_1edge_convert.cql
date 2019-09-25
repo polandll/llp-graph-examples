@@ -1,6 +1,4 @@
-USE food_cql_conversion;
-
-// START-insert1Edge-cql
+// START-insert1Edge_convert-cql
 
 // Insert 1 person_authored_book edge using CQL:
 
@@ -11,4 +9,4 @@ INSERT INTO food_cql_conversion.person_authored_book (person_id, person_name, bo
    'The French Chef Cookbook'
 );
 
-// END-insert1Edge-cql
+// END-insert1Edge_convert-cql

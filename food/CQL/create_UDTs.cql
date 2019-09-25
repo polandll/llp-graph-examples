@@ -1,5 +1,3 @@
-USE food_cql;
-
 // START-createUDTs-cql
 CREATE TYPE IF NOT EXISTS food_cql.address (
    address1 text,

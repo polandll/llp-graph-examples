@@ -1,5 +1,3 @@
-USE food_cql_conversion;
-
 // START-selectBook_convert-cql
 
 // Examine book table using CQL

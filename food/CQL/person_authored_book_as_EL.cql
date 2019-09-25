@@ -1,5 +1,3 @@
-USE food_cql;
-
 // START-createTablePersonAuthoredBookAsEL-cql
 
 // Create edge label table using CQL

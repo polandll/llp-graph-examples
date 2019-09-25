@@ -1,6 +1,5 @@
-USE food_cql_conversion;
-
 // START-createTable-book-convert
+
 CREATE TABLE IF NOT EXISTS food_cql_conversion.book ( 
    book_id int, 
    name text,
@@ -10,4 +9,5 @@ CREATE TABLE IF NOT EXISTS food_cql_conversion.book (
    category set<text>,
    PRIMARY KEY (name, book_id)
 ) WITH CLUSTERING ORDER BY (book_id ASC);
+
 // END-createTable-book-convert

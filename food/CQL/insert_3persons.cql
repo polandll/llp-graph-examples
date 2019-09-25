@@ -1,5 +1,3 @@
-USE food_cql;
-
 // START-insert3persons-cql
 
 // Insert person data using CQL:

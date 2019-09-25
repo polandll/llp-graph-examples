@@ -1,5 +1,3 @@
-USE food_cql;
-
 // START-dropUDTs-cql
 
 DROP TYPE IF EXISTS food_cql.location_details;

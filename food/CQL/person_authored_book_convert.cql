@@ -1,5 +1,3 @@
-USE food_cql_conversion;
-
 // START-createTablePersonAuthoredBook_convert-cql
 
 // Create table for conversion to edge label table using CQL:

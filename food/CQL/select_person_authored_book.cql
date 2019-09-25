@@ -1,5 +1,3 @@
-USE food_cql;
-
 // START-selectPersonAuthoredBook-cql
 
 // Examine person_authored_book table using CQL:

@@ -1,5 +1,3 @@
-USE food_cql;
-
 // START-createTableRecipe-cql
 
 // Assume we have the following existing non-vertex label table.

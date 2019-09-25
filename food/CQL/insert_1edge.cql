@@ -1,5 +1,3 @@
-USE food_cql;
-
 // START-insert1Edge-cql
 
 // Insert 1 person_authored_book edge using CQL:
