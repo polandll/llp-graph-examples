@@ -1,6 +1,9 @@
+// START-dropIndex2i_EL
+
 schema.edgeLabel('reviewed').
   from('person').
   to('recipe').
   secondaryIndex('review_by_date').
   ifExists().
   drop()
+// END-dropIndex2i_EL

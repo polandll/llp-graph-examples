@@ -1,4 +1,7 @@
+// START-dropPropVL
+
 schema.vertexLabel('person').
     dropProperty('one', Int).
     dropProperty('two', Int).
     alter()
+// END-dropPropVL

@@ -1,3 +1,6 @@
+// START-graphIoWrite
+
 // Used in Graph QuickStart
 
 graph.io(gryo()).writeGraph("/tmp/recipe.gryo")
+// END-graphIoWrite

@@ -1,3 +1,5 @@
+// START-insertAllMealitems
+
 // meal_items
 g.addV('meal_item').
   property('item_id',5001).
@@ -22,3 +24,5 @@ g.addV('meal_item').
   property('macro',[0,0,0]).
   property('calories',0).
   iterate();
+
+// END-insertAllMealitems

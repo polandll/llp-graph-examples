@@ -1,3 +1,5 @@
+// START-insertAllPersons
+
 // person vertices
 
 g.addV('person').
@@ -56,3 +58,5 @@ g.addV('person').
   property('gender','M').
   property('nickname', ['Jim', 'Jimmy'] as Set).
   iterate();
+
+// END-insertAllPersons

@@ -1,4 +1,7 @@
+// START-dropIndexMVVL
+
 schema.vertexLabel('person').
     materializedView('person_by_gender').
     ifExists().
     drop()
+// END-dropIndexMVVL

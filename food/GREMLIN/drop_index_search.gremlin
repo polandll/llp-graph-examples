@@ -1,8 +1,13 @@
+// START-dropIndexSearch
+
 // SIMPLE VERSION
 
 schema.vertexLabel('person')
     .searchIndex()
     .drop()
+// END-dropIndexSearch
+
+// START-dropIndexSearchExpanded
 
 // EXPANDED VERSION
 
@@ -11,3 +16,5 @@ schema.edgeLabel('authored')
     .to('book')
     .searchIndex()
     .drop()
+
+    // END-dropIndexSearchExpanded

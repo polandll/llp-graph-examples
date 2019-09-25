@@ -1,3 +1,5 @@
+// START-insertAllPersons_classic
+
 // person vertices
 
 g.addV('person').
@@ -60,3 +62,5 @@ g.addV('person').
    property('nickname', 'Jim').
    property('nickname', 'Jimmy').
    iterate();
+
+// END-insertAllPersons_classic

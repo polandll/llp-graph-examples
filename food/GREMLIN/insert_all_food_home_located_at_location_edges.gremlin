@@ -1,3 +1,4 @@
+// START-AllHomeLocatedAtLocation
 // home located_at location edges
 
 g.V().has('home', 'home_id', 9001).as('a').
@@ -14,3 +15,4 @@ g.V().has('home', 'home_id', 9003).as('a').
    V().has('location', 'loc_id', 'g12').as('b').
    addE('located_at').from('a').to('b').
    iterate();
+// END-AllHomeLocatedAtLocation

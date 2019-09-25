@@ -1,3 +1,4 @@
+// START-AllFridgeSensorLocatedAtHome_classic
 // home located_at fridge_sensor edges
 
 
@@ -56,3 +57,4 @@ g.V().has('fridge_sensor', 'state_id', 31).
    V().has('home', 'home_id', 9001).as('b').
    addE('located_at').from('a').to('b').
    iterate();
+// END-AllFridgeSensorLocatedAtHome_classic

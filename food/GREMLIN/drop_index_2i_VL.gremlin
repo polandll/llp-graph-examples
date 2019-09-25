@@ -1,4 +1,7 @@
+// START-dropIndex2i_VL
+
 schema.vertexLabel('person')
     .secondaryIndex('???')
     .ifExists()
     .drop()
+// END-dropIndex2i_VL

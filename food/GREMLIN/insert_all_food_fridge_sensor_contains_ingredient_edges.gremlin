@@ -1,3 +1,4 @@
+// START-AllFridgeSensorContainsIngred
 // fridge_sensor contains ingredient edges
 
 g.V().has('fridge_sensor', 'state_id', 31).
@@ -179,3 +180,4 @@ g.V().has('fridge_sensor', 'state_id', 31).
    property('expire_date', '2017-09-08' as LocalDate).
    from('a').to('b').
    iterate();
+// END-AllFridgeSensorContainsIngred

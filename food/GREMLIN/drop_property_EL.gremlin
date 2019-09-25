@@ -1,10 +1,15 @@
+
+// START-dropPropEL
+
 // SIMPLE VERSION
 
 schema.edgeLabel('authored').
     dropProperty('one').
     dropProperty('two').
     alter()
+// END-dropPropEL
 
+// START-dropPropELExpanded
 // EXPANDED VERSION
 
 schema.edgeLabel('authored').
@@ -13,3 +18,4 @@ schema.edgeLabel('authored').
     dropProperty('one').
     dropProperty('two').
     alter()
+// END-dropPropELExpanded

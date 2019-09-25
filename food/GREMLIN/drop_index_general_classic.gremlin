@@ -1,1 +1,5 @@
+// START-dropIndexGeneral_classic
+
 schema.vertexLabel('meal').index('byMeal').drop()
+
+// END-dropIndexGeneral_classic

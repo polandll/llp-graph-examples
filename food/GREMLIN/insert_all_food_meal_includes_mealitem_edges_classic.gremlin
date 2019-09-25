@@ -1,3 +1,5 @@
+// START-AllMealIncludesMealItem_classic
+
 // meal includes meal_item edges
 
 g.V().has('meal', 'meal_id', 4001).
@@ -20,3 +22,4 @@ g.V().has('meal', 'meal_id', 4002).has('meal', 'type', 'lunch').as('a').
    V().has('meal_item', 'meal_item_id', 5001).as('b').
    addE('includes').property('num_serv', 2).from('a').to('b').
    iterate();
+// END-AllMealIncludesMealItem_classic

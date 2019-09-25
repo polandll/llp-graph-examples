@@ -1,22 +1,24 @@
+// START-AllPersonAteMeal_classic
 // person ate meal edges
 
-g.V().has('person', 'person_id', UUID.fromString('46ad98ac-f5c9-4411-815a-f81b3b667921').as('a')
-   .V().has('meal', 'meal_id', 4001).as('b')
-   .addE('ate').property('meal_date', '2019-08-20').from('a').to('b')
-   .iterate()
+g.V().has('person', 'person_id', UUID.fromString('46ad98ac-f5c9-4411-815a-f81b3b667921').as('a').
+   V().has('meal', 'meal_id', 4001).as('b').
+   addE('ate').property('meal_date', '2019-08-20').from('a').to('b').
+   iterate()
 
 
-g.V().has('person', 'person_id', UUID.fromString('46ad98ac-f5c9-4411-815a-f81b3b667921').as('a')
-   .V().has('meal', 'meal_id', 4002).as('b')
-   .addE('ate').property('meal_date', '2019-08-20').from('a').to('b')
-   .iterate()
+g.V().has('person', 'person_id', UUID.fromString('46ad98ac-f5c9-4411-815a-f81b3b667921').as('a').
+   V().has('meal', 'meal_id', 4002).as('b').
+   addE('ate').property('meal_date', '2019-08-20').from('a').to('b').
+   iterate()
 
-g.V().has('person', 'person_id', UUID.fromString('6c09f656-5aef-46df-97f9-e7f984c9a3d9').as('a')
-   .V().has('meal', 'meal_id', 4003).as('b')
-   .addE('ate').property('meal_date', '2019-08-20').from('a').to('b')
-   .iterate()
+g.V().has('person', 'person_id', UUID.fromString('6c09f656-5aef-46df-97f9-e7f984c9a3d9').as('a').
+   V().has('meal', 'meal_id', 4003).as('b').
+   addE('ate').property('meal_date', '2019-08-20').from('a').to('b').
+   iterate()
 
-g.V().has('person', 'person_id', UUID.fromString('6c09f656-5aef-46df-97f9-e7f984c9a3d9').as('a')
-   .V().has('meal', 'meal_id', 4004).as('b')
-   .addE('ate').property('meal_date', '2019-08-21').from('a').to('b')
-   .iterate()
+g.V().has('person', 'person_id', UUID.fromString('6c09f656-5aef-46df-97f9-e7f984c9a3d9').as('a').
+   V().has('meal', 'meal_id', 4004).as('b').
+   addE('ate').property('meal_date', '2019-08-21').from('a').to('b').
+   iterate()
+// END-AllPersonAteMeal_classic
