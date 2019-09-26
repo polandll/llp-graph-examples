@@ -1,3 +1,4 @@
+// START-AllStoreLocatedAtLocation
 // store located_at location edges
 
 g.V().has('store', 'store_id', 8001).as('a').
@@ -14,3 +15,4 @@ g.V().has('store', 'store_id', 8003).as('a').
    V().has('location', 'loc_id', 'g15').as('b').
    addE('located_at').from('a').to('b').
    iterate();
+// END-AllStoreLocatedAtLocation

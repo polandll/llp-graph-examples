@@ -1,4 +1,6 @@
-g.addV('home').
+//START-insertAllStore_classic
+// Insert all store vertices
+//g.addV('home').
    property('home_id', '9003').
    property('name', 'Zippy Mart').
    iterate();
@@ -12,3 +14,4 @@ g.addV('home').
    property('home_id', '9005').
    property('name', "Mamma's Grocery").
    iterate();
+//END-insertAllStore_classic

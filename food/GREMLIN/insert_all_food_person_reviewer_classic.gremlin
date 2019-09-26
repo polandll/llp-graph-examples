@@ -1,3 +1,4 @@
+// START-AllPersonReviewers_classic
 // reviewer vertices
 
 g.addV('person').
@@ -39,3 +40,4 @@ g.addV('person').
    property('cal_goal', 1700).
    property('macro_goal', '10,50,30').
    iterate();
+// END-AllPersonReviewers_classic

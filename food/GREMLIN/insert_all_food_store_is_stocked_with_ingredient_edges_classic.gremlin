@@ -1,3 +1,4 @@
+// START-AllStoreStockedWithIngred_classic
 // store is_stocked_with ingredient edges
 
 g.V().has('store', 'store_id', 8001).as('a').
@@ -133,7 +134,7 @@ g.V().has('store', 'store_id', 8003).as('a').
    from('a').to('b').
    iterate();
 
-// duplication?? 
+// duplication??
 g.V().has('store', 'store_id', 8003).as('a').
    V().has('ingredient', 'ingred_id', 3008).as('b').
    addE('is_stocked_with').
@@ -154,3 +155,4 @@ g.V().has('store', 'store_id', 8003).as('a').
    property('expire_date', '2017-04-25').
    from('a').to('b').
    iterate();
+// END-AllStoreStockedWithIngred_classic
