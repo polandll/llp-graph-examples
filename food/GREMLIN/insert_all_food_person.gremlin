@@ -3,17 +3,18 @@
 // person vertices
 
 g.addV('person').
-  property('person_id', 'bb6d7af7-f674-4de7-8b4c-c0fdcdaa5cca' as UUID).
+  property('person_id', 'e7cd5752-bc0d-4157-a80f-7523add8dbcd' as UUID).
   property('name', 'Julia CHILD').
   property('gender','F').
   property('nickname', ['Jay', 'Julia'] as Set).
-   property('country', [['USA', '1912-08-12' as LocalDate, '1944-01-01' as LocalDate] as Tuple, ['Ceylon', '1944-01-01' as LocalDate, '1945-06-01' as LocalDate] as Tuple]).
+  property('country', [['USA', '1912-08-12' as LocalDate, '1944-01-01' as LocalDate] as Tuple, ['Ceylon', '1944-01-01' as LocalDate, '1945-06-01' as LocalDate] as Tuple, ['France', '1948-01-01' as LocalDate, '1950-01-01' as LocalDate] as Tuple, ['USA', '1960-01-01' as LocalDate, '2004-08-13' as LocalDate] as Tuple]).
   iterate();
 g.addV('person').
   property('person_id', 'adb8744c-d015-4d78-918a-d7f062c59e8f' as UUID).
   property('name', 'Simone BECK').
   property('gender','F').
   property('nickname', ['Simca', 'Simone'] as Set).
+  property('country', [['France', '1904-07-07' as LocalDate, '1991-12-20' as LocalDate] as Tuple]).
   iterate();
 g.addV('person').
   property('person_id', '888ad970-0efc-4e2c-b234-b6a71c30efb5' as UUID).

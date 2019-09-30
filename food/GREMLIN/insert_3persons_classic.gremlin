@@ -4,13 +4,15 @@
 // Note the use of the Traversal API; the Graph API has been eliminated for DataStax Graph
 
 g.addV('person').
-   property('person_id', UUID.fromString('bb6d7af7-f674-4de7-8b4c-c0fdcdaa5cca')).
+   property('person_id', UUID.fromString('e7cd5752-bc0d-4157-a80f-7523add8dbcd')).
    property('name', 'Julia CHILD').
    property('gender','F').
    property('nickname', 'Jay').
    property('nickname', 'Julia').
    property('country', 'USA', 'start_date', '1912-08-12', 'end_date', '1944-01-01').
    property('country', 'Ceylon', 'start_date', '1944-01-01', 'end_date', '1945-06-01').
+   property('country', 'France', 'start_date', '1948-01-01', 'end_date', '1960-01-01').
+   property('country', 'USA', 'start_date', '1960-01-01', 'end_date', '2004-08-13').
    iterate();
 
 g.addV('person').
@@ -19,6 +21,7 @@ g.addV('person').
    property('gender','F').
    property('nickname', 'Simca').
    property('nickname', 'Simone').
+   property('country', 'France', 'start_date', '1904-07-07', 'end_date', '1991-12-20').
    iterate();
 
 g.addV('person').

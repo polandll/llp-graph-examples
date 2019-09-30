@@ -1,7 +1,7 @@
 // START-AllPersonAuthoredBook
 // person to book edges
 
-g.V().has('person', 'person_id', 'bb6d7af7-f674-4de7-8b4c-c0fdcdaa5cca' as UUID).as('a').
+g.V().has('person', 'person_id', 'e7cd5752-bc0d-4157-a80f-7523add8dbcd' as UUID).as('a').
     V().has('book', 'book_id', 1001).as('b').
     addE('authored').from('a').to('b').
     iterate();
@@ -26,7 +26,7 @@ g.V().has('person', 'person_id', 'ef811281-f954-4fd6-ace0-bf67d057771a' as UUID)
     addE('authored').from('a').to('b').
     iterate();
 
-g.V().has('person', 'person_id', 'bb6d7af7-f674-4de7-8b4c-c0fdcdaa5cca' as UUID).as('a').
+g.V().has('person', 'person_id', 'e7cd5752-bc0d-4157-a80f-7523add8dbcd' as UUID).as('a').
     V().has('book', 'book_id', 1003).as('b').
     addE('authored').from('a').to('b').
     iterate();
