@@ -10,7 +10,7 @@ g8|Los Angeles|POINT(118.2437 34.0522)|
 g9|Chicago|POINT(-87.6298 41.8781136)|
 g10|Jane's house|POINT(118.5 34.0000)|
 g11|John Smith's place|POINT(90.0000 30.000)|
-g12|Mary's house|POINT(-106.372802 35.107546)|[ [address1:'215 1st St', city_code:'Winston', state_code:'CA', zip_code:'93002'], ['530-555-1255', '916-442-2211'] ]
+g12|Mary's house|POINT(-106.372802 35.107546)|[ loc_address: [address1:'215 1st St', city_code:'Winston', state_code:'CA', zip_code:'93002'], telephone: ['530-555-1255', '916-442-2211'] ]
 g13|Zippy Mart|POINT(-112.347309 34.622238)|
 g14|Quik Station|POINT(-74.575156 39.339838)|
 g15|Mamma's Grocery|POINT(-74.423251 42.323255)|
