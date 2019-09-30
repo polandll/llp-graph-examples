@@ -1,6 +1,6 @@
 person_id|name|gender|nickname|cal_goal|macro_goal|badge|country
-e7cd5752-bc0d-4157-a80f-7523add8dbcd|Julia CHILD|F|'Jay','Julia'||||[['USA', '1912-08-12', '1944-01-01'], ['Ceylon', '1944-01-01', '1945-06-01']]
-adb8744c-d015-4d78-918a-d7f062c59e8f|Simone BECK|F|'Simca','Simone'||||
+e7cd5752-bc0d-4157-a80f-7523add8dbcd|Julia CHILD|F|'Jay','Julia'||||[['USA', '1912-08-12', '1944-01-01'], ['Ceylon', '1944-01-01', '1945-06-01'], ['France', '1948-01-01', '1960-01-01'], ['USA','1960-01-01', '2004-08-13']]
+adb8744c-d015-4d78-918a-d7f062c59e8f|Simone BECK|F|'Simca','Simone'||||[['France', '1904-07-07', '1991-12-20']]
 888ad970-0efc-4e2c-b234-b6a71c30efb5|Fritz STREIFF|M|||||
 f092107c-0c5c-47e7-917c-c82c7fc2a249|Louisette BERTHOLIE|F|||||
 ef811281-f954-4fd6-ace0-bf67d057771a|Patricia SIMON|F|'Pat'||||
