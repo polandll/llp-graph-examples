@@ -8,7 +8,7 @@ g.addV('person').
    property('name', 'Julia CHILD').
    property('gender','F').
    property('nickname', ['Jay', 'Julia'] as Set).
-   property('country', [['USA', '1912-08-12' as LocalDate, '1944-01-01' as LocalDate] as Tuple, ['Ceylon', '1944-01-01' as LocalDate, '1945-06-01' as LocalDate] as Tuple], ['France', '1948-01-01' as LocalDate, '1960-01-01' as LocalDate] as Tuple, ['USA', '1960-01-01' as LocalDate, '2004-08-13' as LocalDate] as Tuple).
+   property('country', [['USA', '1912-08-12' as LocalDate, '1944-01-01' as LocalDate] as Tuple, ['Ceylon', '1944-01-01' as LocalDate, '1945-06-01' as LocalDate] as Tuple], ['France', '1948-01-01' as LocalDate, '1960-01-01' as LocalDate] as Tuple, ['USA', '1960-01-01' as LocalDate, '2004-08-13' as LocalDate] as Tuple]).
    iterate();
 
 g.addV('person').
