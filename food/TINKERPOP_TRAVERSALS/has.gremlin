@@ -1,0 +1,3 @@
+// has() step
+
+g.V().has('meal_item', 'name', 'taco')
