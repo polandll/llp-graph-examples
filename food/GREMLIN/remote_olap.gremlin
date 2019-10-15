@@ -1,0 +1,6 @@
+// For use with cleanUp_olap
+
+// START-remote_olap
+:remote config alias g graphCleanupTest_olap.a
+
+// END-remote_olap

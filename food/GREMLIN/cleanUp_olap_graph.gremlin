@@ -1,0 +1,11 @@
+// cleanUp after schema change to take care of dangling edges and such
+// An OLAP graph must be set prior to using this code example
+
+// START-cleanup
+
+g.cleanUp()
+
+//after cleanup count
+g.E().count()
+
+// END-cleanup

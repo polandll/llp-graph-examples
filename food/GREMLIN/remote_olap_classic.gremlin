@@ -1,0 +1,7 @@
+// For use with cleanUp for classic
+
+// START-remote_olap_classic
+:remote config alias g graphCleanupTest_classic.a
+schema.config().option('graph.allow_scan').set('true')
+
+// END-remote_olap_classic
