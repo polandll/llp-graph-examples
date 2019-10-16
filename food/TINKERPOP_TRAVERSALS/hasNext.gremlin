@@ -1,4 +1,7 @@
 // hasNext() step
 // determines whether there are available results
 
+// START-hasNext
 g.V().hasLabel('book').hasNext()
+
+// END-hasNext

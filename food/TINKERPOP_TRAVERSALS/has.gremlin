@@ -1,3 +1,25 @@
 // has() step
 
+// START-has
+// has(key)
+g.V().has('name')
+
+// END-has
+
+// START-hasKeyValue
+// has(key,value)
+g.V().has('name', 'taco')
+
+// END-hasKeyValue
+
+// START-hasLabelKeyValue
+// has(label, key, value)
 g.V().has('meal_item', 'name', 'taco')
+
+// END-hasLabelKeyValue
+
+// START-hasKeyPred
+// has(key, predicate)
+g.V().has('name',within('taco','burrito'))
+
+// END-hasKeyPred

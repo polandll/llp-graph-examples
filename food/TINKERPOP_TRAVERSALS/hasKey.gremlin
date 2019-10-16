@@ -1,3 +1,6 @@
 // hasKey() step
 
+// START-hasKey
 g.V().properties().hasKey('cuisine').value()
+
+// END-hasKey

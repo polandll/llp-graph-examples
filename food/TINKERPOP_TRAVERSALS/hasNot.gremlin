@@ -1,3 +1,6 @@
 // hasNot() step
 
+// START-hasNot
 g.V().hasLabel('meal_item').properties().hasNot('name').value()
+
+// END-hasNot
