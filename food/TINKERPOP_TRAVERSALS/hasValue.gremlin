@@ -1,0 +1,7 @@
+// hasValue() step
+// returns an item with the supplied value
+
+// START-hasValue
+g.V().properties('gender').hasValue('F').id()
+
+// END-hasValue

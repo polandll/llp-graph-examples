@@ -1,0 +1,7 @@
+// hasId() step
+// returns an item with the supplied Id
+
+// START-hasId
+g.V().hasId(['~label':'book', 'book_id':1004]).valueMap()
+
+// END-hasId

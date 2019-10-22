@@ -1,0 +1,7 @@
+// hasLabel() step
+// determines whether there are available results for a list of labels
+
+// START-hasLabel
+g.V().hasLabel('book', 'person')
+
+// END-hasLabel
