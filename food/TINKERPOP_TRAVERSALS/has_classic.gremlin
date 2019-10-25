@@ -8,7 +8,7 @@ g.V().has('name')
 
 // START-hasKeyValue
 // has(key,value)
-g.with('allow'allow-filtering').V().has('name', 'taco')
+g.V().has('name', 'taco')
 
 // END-hasKeyValue
 
