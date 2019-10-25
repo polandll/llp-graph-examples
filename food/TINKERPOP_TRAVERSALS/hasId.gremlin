@@ -1,7 +1,7 @@
-// hasId() step
+// hasId() step for core
 // returns an item with the supplied Id
 
 // START-hasId
-g.V().hasId(['~label':'book', 'book_id':1004]).valueMap()
+g.V().hasId('dseg:/book/1004').valueMap()
 
 // END-hasId
