@@ -20,6 +20,6 @@ g.V().has('meal_item', 'name', 'taco')
 
 // START-hasKeyPred
 // has(key, predicate)
-g.V().has('name',within('taco','burrito'))
+g.with('allow-filtering').V().has('name',within('taco','burrito'))
 
 // END-hasKeyPred
