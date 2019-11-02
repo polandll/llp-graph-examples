@@ -18,7 +18,7 @@
 schema.edgeLabel('authored').multiple().ifNotExists().create()
 schema.edgeLabel('authored').connection('person', 'book').add()
 
-schema.edgeLabel('created').multiple().ifNotExists().create()
+schema.edgeLabel('created').single().ifNotExists().create()
 schema.edgeLabel('created').properties('create_date').add()
 schema.edgeLabel('created').connection('person', 'recipe').add()
 
